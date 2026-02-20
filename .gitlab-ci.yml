@@ -1,0 +1,52 @@
+image: alpine:latest
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - apk add --no-cache typst fontconfig ttf-freefont
+  - mkdir -p /usr/share/fonts/truetype/msttcorefonts
+  - cp .fonts/* /usr/share/fonts/truetype/msttcorefonts/
+  - fc-cache -fv
+
+protocols_pdf_build:
+  stage: build
+  script:
+    - mkdir -p output
+    - echo '#import "sections/02 Project Documentation/meeting-minutes.typ":protocols_doc' > protocols.typ
+    - echo '#protocols_doc' >> protocols.typ
+    - typst compile --root . --font-path /usr/share/fonts/truetype/msttcorefonts protocols.typ output/protokolle.pdf
+  artifacts:
+    paths:
+      - output/protokolle.pdf
+    expire_in: 7 days
+  only:
+    - main
+
+main_pdf_build:
+  stage: build
+  script:
+    - mkdir -p output
+    - typst compile --root . --font-path /usr/share/fonts/truetype/msttcorefonts main.typ output/documentation.pdf
+  artifacts:
+    paths:
+      - output/documentation.pdf
+    expire_in: 7 days
+  only:
+    - main
+
+pages:
+  stage: deploy
+  dependencies:
+    - main_pdf_build
+  script:
+    - rm -rf public
+    - mkdir -p public
+    - cp output/documentation.pdf public/
+  artifacts:
+    paths:
+      - public/documentation.pdf
+  only:
+    - main
+    

@@ -1,0 +1,7 @@
+*.pdf
+!resources/apendix/*/*.pdf
+
+output/
+.vscode/
+ltex.*
+
