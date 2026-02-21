@@ -52,7 +52,7 @@
 #context { counter(page).update(1) }
 #set page( 
   header: context [
-    #text("ProjectName | SE Project | Yoris, Nathanael, Dominic und Cedric")
+    #text("GlowCore | SE Project | Yoris, Nathanael, Dominic und Cedric")
   ],
   footer: context [
     #table(
