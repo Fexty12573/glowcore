@@ -234,6 +234,7 @@
   title: "", 
   sub-title: "",
   version: "", 
+  gitVersion: "",
   date: none, 
   authors: (),
   advisor: "",
@@ -241,7 +242,7 @@
   overlay: none
 ) = {
   set document(author: authors, title: title)
-  let authors-text = {authors.join("\n")}
+  let authors-text = {authors.map(a => "\t" + a).join("\n")}
   place(top + left, dx: -35mm, dy: 5mm, background)
   place(top + left, dx: -20mm, dy: -40mm, overlay)
 
@@ -253,11 +254,9 @@
       text(weight: title_weight, titel_size_depth_1_fist, title),
       text(titel_size_depth_3, sub-title),
       v(0.5em),
-      text("Version:"),
-      text(titel_size_depth_4, version),
-      v(0.5em),
-      text("Date:"),
-      text(titel_size_depth_5, date),
+      text("Version: " + version ),
+      text("Date: " + date ),
+      text("Git Version: " + gitVersion),
       v(0.5em),
       text("Project Team:"),
       text(titel_size_depth_5, authors-text),
