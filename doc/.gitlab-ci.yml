@@ -1,16 +1,37 @@
 image: alpine:latest
 
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_TAG'
+    - when: never
+
 stages:
   - build
   - deploy
 
-before_script:
-  - apk add --no-cache typst fontconfig ttf-freefont git
-  - mkdir -p /usr/share/fonts/truetype/msttcorefonts
-  - cp doc/.fonts/* /usr/share/fonts/truetype/msttcorefonts/
-  - fc-cache -fv
+.default_doc_job: &default_doc_job
+  before_script:
+    - apk add --no-cache typst fontconfig ttf-freefont git
+    - mkdir -p /usr/share/fonts/truetype/msttcorefonts
+    - cp doc/.fonts/* /usr/share/fonts/truetype/msttcorefonts/
+    - fc-cache -fv
+
+.build_rules: &build_rules
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_TAG'
+
+.deploy_rules: &deploy_rules
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_TAG'
 
 protocols_pdf_build:
+  <<: *default_doc_job
   stage: build
   script:
     - mkdir -p doc/output
@@ -21,10 +42,10 @@ protocols_pdf_build:
     paths:
       - doc/output/protokolle.pdf
     expire_in: 7 days
-  only:
-    - main
+  <<: *build_rules
 
 main_pdf_build:
+  <<: *default_doc_job
   stage: build
   script:
     - mkdir -p doc/output
@@ -42,20 +63,23 @@ main_pdf_build:
     paths:
       - doc/output/documentation.pdf
     expire_in: 7 days
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'
+  <<: *build_rules
 
 pages:
+  <<: *default_doc_job
   stage: deploy
-  dependencies:
-    - main_pdf_build
+  needs:
+    - job: main_pdf_build
+      artifacts: true
+    - job: protocols_pdf_build
+      artifacts: true
   script:
     - rm -rf public
     - mkdir -p public
     - cp doc/output/documentation.pdf public/
+    - cp doc/output/protokolle.pdf public/
   artifacts:
     paths:
       - public/documentation.pdf
-  rules:
-    - if: '$CI_COMMIT_TAG'
-    
+      - public/protokolle.pdf
+  <<: *deploy_rules
