@@ -1,4 +1,4 @@
-#import "../lib.typ": titel_size_depth_5, text_size, main_color_table, main_color_link_underline
+#import "/lib.typ": titel_size_depth_5, text_size, main_color_table, main_color_link_underline
 #import "@preview/cmarker:0.1.2"
 
 #show heading: it => {
