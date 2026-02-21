@@ -5,7 +5,7 @@ stages:
   - deploy
 
 before_script:
-  - apk add --no-cache typst fontconfig ttf-freefont
+  - apk add --no-cache typst fontconfig ttf-freefont git
   - mkdir -p /usr/share/fonts/truetype/msttcorefonts
   - cp .fonts/* /usr/share/fonts/truetype/msttcorefonts/
   - fc-cache -fv
@@ -28,13 +28,21 @@ main_pdf_build:
   stage: build
   script:
     - mkdir -p output
-    - typst compile --root . --font-path /usr/share/fonts/truetype/msttcorefonts main.typ output/documentation.pdf
+    - git fetch --tags --force
+    - VERSION="$(git tag --list '[0-9][0-9].[0-9][0-9]' --sort=-v:refname | head -n 1)"
+    - if [ -n "$CI_COMMIT_TAG" ] && echo "$CI_COMMIT_TAG" | grep -Eq '^[0-9]{2}\.[0-9]{2}$'; then VERSION="$CI_COMMIT_TAG"; fi
+    - if [ -z "$VERSION" ]; then VERSION="00.00"; fi
+    - GIT_VERSION="${CI_COMMIT_SHORT_SHA}"
+    - SAFE_VERSION="$(printf '%s' "$VERSION" | sed 's/[&|]/\\&/g')"
+    - SAFE_GIT_VERSION="$(printf '%s' "$GIT_VERSION" | sed 's/[&|]/\\&/g')"
+    - sed -e "s|__VERSION__|$SAFE_VERSION|g" -e "s|__GIT_VERSION__|$SAFE_GIT_VERSION|g" main.typ > main.ci.typ
+    - typst compile --root . --font-path /usr/share/fonts/truetype/msttcorefonts main.ci.typ output/documentation.pdf
   artifacts:
     paths:
       - output/documentation.pdf
     expire_in: 7 days
-  only:
-    - main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
 
 pages:
   stage: deploy
@@ -47,6 +55,6 @@ pages:
   artifacts:
     paths:
       - public/documentation.pdf
-  only:
-    - main
+  rules:
+    - if: '$CI_COMMIT_TAG'
     

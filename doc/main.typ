@@ -10,7 +10,8 @@
 #maketitle(
   title: "GlowCore",
   sub-title: "SE Project Documentation",
-  version: "XX.XX",
+  version: "__VERSION__",
+  gitVersion: "__GIT_VERSION__",
   date: datetime.today().display("[day].[month].[year]"),
   authors: ("Cedric Cathomas", "Yoris Kucera", "Dominik Wyss", "Nathanael Fässler"),
   advisor: "Thomas Bocek",
