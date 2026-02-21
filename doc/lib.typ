@@ -242,7 +242,7 @@
   overlay: none
 ) = {
   set document(author: authors, title: title)
-  let authors-text = {authors.map(a => "\t" + a).join("\n")}
+  let authors-text = {authors.join("\n"+[#h(7em)])}
   place(top + left, dx: -35mm, dy: 5mm, background)
   place(top + left, dx: -20mm, dy: -40mm, overlay)
 
@@ -254,16 +254,16 @@
       text(weight: title_weight, titel_size_depth_1_fist, title),
       text(titel_size_depth_3, sub-title),
       v(0.5em),
+
       text("Version: " + version ),
       text("Date: " + date ),
       text("Git Version: " + gitVersion),
       v(0.5em),
-      text("Project Team:"),
-      text(titel_size_depth_5, authors-text),
+      text([*Project Team:* #h(1em)] + authors-text),
       v(0.5em),
-      text("Project Advisor:"),
-      text(titel_size_depth_5, advisor),
+      text([*Project Advisor:*#h(0.4em)] + advisor),
       v(0.5em),
+      align(left)[School of Computer Science \ OST Eastern Switzerland University of Applied Sciences]
 
     )
   )
