@@ -1,1 +1,1 @@
-Hier können die Notizen der Sitzung notiert werden.
+Make the notes of the meetings here
