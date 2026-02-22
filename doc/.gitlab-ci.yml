@@ -3,7 +3,11 @@ image: alpine:latest
 workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+      changes:
+        - doc/**/*
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      changes:
+        - doc/**/*
     - if: '$CI_COMMIT_TAG'
     - when: never
 
