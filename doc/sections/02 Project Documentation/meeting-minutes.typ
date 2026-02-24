@@ -16,7 +16,7 @@
   #context { counter(page).update(1) }
   #set page( 
     header: context [
-      #text("ProjectName | Meeting Minutes | Yoris, Nathanael, Dominic and Cedric")
+      #text("GlowCore | Meeting Minutes ")
     ],
     footer: context [
       #table(
@@ -41,3 +41,4 @@
 
   #include "../../protocols/Protokolle.typ"
 ]
+

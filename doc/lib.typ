@@ -483,3 +483,70 @@
   ])
   #pagebreak()
 ]
+
+
+// ==============================
+// Meeting Minutes
+// ==============================
+
+// --- Helpers (reusable tables) ---
+#let meeting_info(
+  date: "YYYY-MM-DD",
+  time: "HH:MM–HH:MM",
+  sprint: "-",
+  location: "Room/Online",
+  participants: "Names",
+  excused: "-",
+  absent: "-",
+  lead: "Name",
+  scribe: "Name",
+  links: "-"
+) = [
+  #table(
+    columns: (1.2fr, 2.8fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Field*], [*Value*],
+    [Date], [#date],
+    [Time], [#time],
+    [Sprint], [#sprint],
+    [Location], [#location],
+    [Participants], [#participants],
+    [Excused], [#excused],
+    [Absent], [#absent],
+    [Meeting lead], [#lead],
+    [Minutes by], [#scribe],
+    [Links], [#links],
+  )
+]
+
+#let agenda_table(rows) = [
+  #table(
+    columns: (2fr, 1fr, 2fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Agenda item*], [*Owner*], [*Result / Decision*],
+    ..rows
+  )
+]
+
+#let todo_table(rows) = [
+  #table(
+    columns: (1.35fr, 1fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Todo*], [*Owner*], [*Due*],
+    ..rows
+  )
+]
+
+#let next_dates(rows) = [
+  #table(
+    columns: (2fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Next date*], [*When*],
+    ..rows
+  )
+]
+
