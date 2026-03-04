@@ -1,1 +1,0 @@
-Hier können die Notizen der Sitzung notiert werden.

@@ -1,3 +1,5 @@
+
+
 #let main_doc = [
   == Meeting Minutes
 
@@ -14,7 +16,7 @@
   #context { counter(page).update(1) }
   #set page( 
     header: context [
-      #text("ProjectName | Meeting Minutes | Cedric")
+      #text("GlowCore | Meeting Minutes ")
     ],
     footer: context [
       #table(
@@ -31,7 +33,7 @@
     ]
   )
 
-  #title_without_numbering(title: "ProjectName")
+  #title_without_numbering(title: "GlowCore")
 
   This document contains all meeting minutes of the project.
 
@@ -39,3 +41,4 @@
 
   #include "../../protocols/Protokolle.typ"
 ]
+
