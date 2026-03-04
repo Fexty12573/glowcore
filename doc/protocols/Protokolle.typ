@@ -23,9 +23,8 @@
 
 // include all the meeting minutes of all the meetings
 
-#include "01_Kickoff_17.2.2026.typ"
-#include "02_Team_kickoff_20.02.2026.typ"
-#include "03_Weekly_Scrum_27.02.2026.typ"
+
+#include "03_Weekly_Scrum_28.02.2026.typ"
 
 
 
