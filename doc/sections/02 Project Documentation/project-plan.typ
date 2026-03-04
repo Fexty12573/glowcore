@@ -234,15 +234,145 @@ The project meetings follow mainly the Scrum standard. With weekly Scrum meeting
 === Schedule
 The project follows the OST internal SCRUM+ framework for its overall organization. SCRUM+ combines elements of Scrum with the Rational Unified Process (RUP). Long-term planning is based on the RUP approach, while short-term development is organized using Scrum with two-week iterations.
 
-
+==== Work Items
+We work with 5 types of Work Items
+#table(
+  columns: (1fr, 1fr),
+  stroke: 0.5pt + gray,
+  fill: (x, y) => if y == 0 { luma(230) },
+  [*Name*], [*Description*],
+  [Epic], [A group of features that we want to implement.],
+  [Story], [Describes a feature that is directly related to the game],
+  [Task], [Everything that isn't directly related to the game],
+  [Bug], [Bugs are created when a bug is found and fixed in an unplanned matter.],
+  [Documentation], [Work related to the documentation]
+)
 ==== Long Term Planning
+The Long Term Planning is separated into two categories:
+- Milestones: Serve as checkpoint for releases and review meetings.
+- Epics: Provide the structure to organize the stories.
+===== Milestones
+The milestones for the review meetings and for the releases are interleaved and independent.
+#table(
+  columns: (0.3fr, 1fr, 1fr, 2fr),
+  stroke: 0.5pt + gray,
+  fill: (x, y) => if y == 0 { luma(230) },
 
+  [*Nr*], [*Milestone Name*], [*Duration*], [*Description*],
 
+  [M01], [Review 1], [16.02.2026 - 10.03.2026], [
+    Initial Project Setup
+  ],
+  [M02], [Review 2], [11.03.2026 - 24.03.2026], [
+    Requirements
+  ],
+  [M03], [Review 3], [25.03.2026 - 07.04.2026], [
+    End of Elaboration
+  ],
+  [M04], [Review 4], [08.04.2026 - 28.04.2026], [
+    Quality
+  ],
+  [M05], [Review 5], [29.04.02.2026 - 12.05.2026], [
+    Architecture
+  ],
+  [M06], [Project Presentation], [16.02.2026 - 10.03.2026], [
+    Final Presentation to SEProject-Advisors and fellow students. Completion of SEProject.
+  ],
+  [M07], [Pre-Alpha Release], [16.02.2026 - 20.03.2026], [
+    First playable prototype is ready. Core gameplay loops are implemented. The player can chop trees, pick up wood and expand the GlowCore.
+  ],
+  [M08], [Alpha Release], [21.03.2026 - 10.04.2026], [
+    MVP is done and working. Core gameplay Mechanics are implemented. Player can craft, build, expand the map and he has an inventory. The player can save his savestate.
+  ],
+  [M09], [Beta Release], [11.04.2026 - 15.05.2026], [
+    More Biomes and Materials are added. There is a combat system with enemies and peaceful mobs. There is a title screen and a settings menu.
+
+    Automation mechanics are implemented. There are more GlowCore Phases.
+  ],
+  [M10], [Official Release and Final Submission], [16.05.2026 - 05.06.2026], [
+    The game is polished and has no mayor bugs. The game has a beginning and an ending.
+  ],
+)
+
+#v(1em)
+===== Epics
+#table(
+  columns: (0.4fr, 1fr),
+  stroke: 0.5pt + gray,
+  fill: (x, y) => if y == 0 { luma(230) },
+
+  [*Epic Name*], [*Description/Requirements*], 
+  [Documentation], [
+    This epic includes all documentation related work.
+  ],
+  [Project Setup], [
+    This epic contains all work that is done in the Inception-Phase.
+  ],
+  [Core Gameplay Loop Mechanics], [
+    - The player can chop down trees, collect wood and feed it into the GlowcCore.
+    - The GlowCore levels up and expands the map.
+    - The player is restricted to the unlocked map. The grid system is implemented.
+  ],
+  [Inventory, Crafting, Building], [
+    - Inventory: The player has an inventory and can store a limited amount of items. He can have items in his hands and in his backpack(or similar).
+    - Crafting: The player can craft items to other items on different workstations.
+    - Building: The player can place objects onto the world-grid.
+  ],
+  [Graphics], [
+    - The Artstyle of the game ist set.
+    - The 3D Models follow a consistent Artstyle.
+    - A Shader is implementet.
+  ],
+  [Game Framework & Completeness], [
+    This epic contains everything that makes a game complete and feel like a game.
+    - Intro: When the Game starts the GlowCore Logo is displayed. After the title screen a Cutscene is played that leads into the game.
+    - Ending: A ending of the game is defined. When the player finishes the game, a Cutscene is played and the credits roll.
+    - UI: A Title Screen is available. In-Game there is a Debug Screen, and a Settings Menu.
+    - Gamedata Saving: The player can save his progress.
+  ],
+  [Big World & GlowCore Phases], [
+  - World building: The game has a complete world to play in.
+  - GlowCore Phases: The GlowCore has multiple phases, all of which need different materials to level up. The GlowCore changes visually with every Level.
+  ],
+  [Biomes & Materials], [
+  - The world has multitple biomes: e.g. Forest, Grassland, Mountain, Volcano, Jungle etc. 
+  - Each biome has unique ressources. 
+  - There are Caves which you can enter.
+  ],
+  [Combat], [
+    - Enemies can spawn and fight with the player.
+    - The player can take damage and can die.
+    - A respawn mechanic is set up.
+    - There are peacuful mobs.
+  ],
+  [Resource Automation], [
+    - The Player can replant trees.
+    - The Player can craft machines that automatically gather resources.
+  ],
+  [Playtesting & Release], [
+    - Playtesting: The game is testet by players that play it for the first time (blind test).
+    - Release: The game is released on steam on its own steam page and has a trailer, screenshots and a description.
+  ],
+)
+The following image shows the Timeline in Jira as of 04.03.2026.
+#image("../../resources/02 Project Documentation/jira-epics-timeline.png")
+#v(1em)
+
+===== Initial Backlog & MVP
+The priority of Stories is defined by the ordering in the backlog. As we progress in Agile, we may divide Stories further and add new Stories. The MVP is reached when every Story up to and including *GC-101 Build World* is completed.
+
+The following is the Initial Backlog as of 04.03.2026.
+#image("../../resources/02 Project Documentation/jira-initial-backlog-1.png")
+#image("../../resources/02 Project Documentation/jira-initial-backlog-2.png")
+#image("../../resources/02 Project Documentation/jira-initial-backlog-3.png")
 #v(1em)
 
 ==== Short Term Plan
+In a Sprint the priority of the tasks and stories is defined by the ordering.
 
-
+===== Sprint 1 (Sprint Zero) 20.02.2026 - 06.03.2026
+The following shows the Jira sprint backlog as of 04.03.2026
+#image("../../resources/02 Project Documentation/jira-sprint-1.png")
 #v(1em)
 
 
