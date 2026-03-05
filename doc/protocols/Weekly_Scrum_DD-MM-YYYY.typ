@@ -3,13 +3,13 @@
 === Weekly Scrum / 27.02.2026
 #meeting_info(
   date: "27.02.2026",
-  sprint: "Sprint 1",
+  sprint: "Sprint x",
   lead: "tbd",
   scribe: "tbd",
   time: "14:00–15:00",
   location: "Online",
-  participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera",
-  excused: "Cedric Cathomas",
+  participants: "Cedric Cathomas, Nathanael Fässler, Dominik Wyss, Yoris Kucera",
+  excused: "-",
   links: "-"
 )
 
