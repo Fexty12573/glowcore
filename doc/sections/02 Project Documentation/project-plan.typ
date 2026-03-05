@@ -95,7 +95,7 @@ The project team consists of 4 students. Each member contributes approximately 8
   ],
   [Cedric Cathomas],
 
-  [Graphics Programmer (Particle Systems)],
+  [Graphics Programmer],
   [
     - Shader development  
     - Particle effects  
@@ -156,7 +156,7 @@ The project meetings follow mainly the Scrum standard. With weekly Scrum meeting
     - Collect advisor feedback  
     - Document decisions
   ],
-  [Every 2 weeks \ Tuesday 15:00 - 17:00],
+  [Every 2 weeks \ Tuesday 15:00 - 16:00],
 
   [Weekly Scrum],
   [
