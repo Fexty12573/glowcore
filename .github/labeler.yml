@@ -1,7 +1,7 @@
 documentation:
   - changed-files:
     - any-glob-to-any-file: 'doc/**/*'
-  - head-branch: ['^doc/.*']
+  - head-branch: ['^docs/.*']
 
 feature:
   - head-branch: ['^feature/.*']

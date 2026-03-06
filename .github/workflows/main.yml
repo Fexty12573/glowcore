@@ -153,7 +153,7 @@ jobs:
           name: Windows-Build-Exe
           path: Windows-Build
       - name: Zip Windows
-        run: zip -r Windows-Release-${{ github.ref_name }}.zip Windows-Build/
+        run: zip -r GlowCore-Windows-${{ github.ref_name }}.zip Windows-Build/
 
       - name: Download Linux Artifact
         uses: actions/download-artifact@v4
@@ -161,7 +161,7 @@ jobs:
           name: Linux-Build-Binary
           path: Linux-Build
       - name: Zip Linux
-        run: zip -r Linux-Release-${{ github.ref_name }}.zip Linux-Build/
+        run: zip -r GlowCore-Linux-${{ github.ref_name }}.zip Linux-Build/
 
       - name: Release Content
         uses: softprops/action-gh-release@v2
@@ -171,8 +171,8 @@ jobs:
             
             ---
           files: |
-            Windows-Release-${{ github.ref_name }}.zip
-            Linux-Release-${{ github.ref_name }}.zip
+            GlowCore-Windows-${{ github.ref_name }}.zip
+            GlowCore-Linux-${{ github.ref_name }}.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
