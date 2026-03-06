@@ -8,7 +8,7 @@
 === Team Members
 
 + Cedric Cathomas (#link("mailto:Cedric.Cathomas@ost.ch")[Cedric.Cathomas\@ost.ch])
-+ Dominik Wyss (#link("mailto:Dominik.Wyss@ost.ch")[Dominik.Wyss\@ost.ch])
++ Dominik Wyss (#link("mailto:Dominik.Wyss1@ost.ch")[Dominik.Wyss1\@ost.ch])
 + Nathanael Fässler (#link("mailto:Nathanael.Faessler@ost.ch")[Nathanael.Faessler\@ost.ch])
 + Yoris Kucera (#link("mailto:Yoris.Kucera@ost.ch")[Yoris.Kucera\@ost.ch])
 
