@@ -54,9 +54,9 @@
 
 ==== Todos
 #todo_table((
-  [Finish CICD Pipeline], [Dominik], [2026-03-06],
-  [Ask Advisor about contract], [Nathanael], [2026-03-04],
-  [Ask Advisor about project plan], [Nathanael], [2026-03-04],
+  [Finish CICD Pipeline], [Dominik], [06.03.2026],
+  [Ask Advisor about contract], [Nathanael], [04.03.2026],
+  [Ask Advisor about project plan], [Nathanael], [04.03.2026],
 ))
 
 #pagebreak()

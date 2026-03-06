@@ -34,19 +34,7 @@ stages:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
     - if: '$CI_COMMIT_TAG'
 
-protocols_pdf_build:
-  <<: *default_doc_job
-  stage: build
-  script:
-    - mkdir -p doc/output
-    - echo '#import "sections/02 Project Documentation/meeting-minutes.typ":protocols_doc' > doc/protocols.typ
-    - echo '#protocols_doc' >> doc/protocols.typ
-    - typst compile --root doc --font-path /usr/share/fonts/truetype/msttcorefonts doc/protocols.typ doc/output/protokolle.pdf
-  artifacts:
-    paths:
-      - doc/output/protokolle.pdf
-    expire_in: 7 days
-  <<: *build_rules
+
 
 main_pdf_build:
   <<: *default_doc_job
