@@ -1,6 +1,6 @@
 == Initial Project Proposal
 
-*Project name:* #h(0.5em) GlowCore \ 
+*Project name:* #h(0.5em) GlowCore \
 *Date: * #h(4em) 19.12.2025
 
 #v(1em)
@@ -18,7 +18,7 @@
 // XO = Available online | XR = Available in Rapperswil | XS = Available in St. Gallen
 // (XO)/(XR)/(XS) = Available but not optimal | - = Not available
 // Minimum 5 slots during regular working hours (08h-12h, 13h-17h) required.
-// 
+//
 #v(2em)
 
 #figure(
@@ -40,7 +40,7 @@
     [18h00–19h00], [-], [(XR)], [-], [-], [-],
   ),
   caption: [Team availability for review meetings],
-  supplement: [Table]
+  supplement: [Table],
 )
 
 #v(4em)

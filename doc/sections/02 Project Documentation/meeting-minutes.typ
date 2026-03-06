@@ -4,7 +4,7 @@
   == Meeting Minutes
 
   #include "../../protocols/Protokolle.typ"
-] 
+]
 
 #let protocols_doc = [
   #import "../../lib.typ": *
@@ -14,7 +14,7 @@
   )
 
   #context { counter(page).update(1) }
-  #set page( 
+  #set page(
     header: context [
       #text("GlowCore | Meeting Minutes ")
     ],
@@ -23,14 +23,16 @@
         columns: (1fr, auto, 1fr),
         stroke: none,
         inset: 0mm,
-        [], [
+        [],
+        [
           #counter(page).display(
             "1",
             both: false,
           )
-        ], []
+        ],
+        [],
       )
-    ]
+    ],
   )
 
   #title_without_numbering(title: "GlowCore")
