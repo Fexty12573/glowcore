@@ -18,13 +18,13 @@
   authors: ("Cedric Cathomas", "Yoris Kucera", "Dominik Wyss", "Nathanael Fässler"),
   advisor: "Thomas Bocek",
   background: image("resources/Background.png", width: 245mm, height: auto, fit: "cover"),
-  overlay: image("resources/Overlay.png", width: 210mm, height: 300mm, fit: "cover")
+  overlay: image("resources/Overlay.png", width: 210mm, height: 300mm, fit: "cover"),
 )
 
 // ── Table of Contents ──
 #pagebreak()
 #context { counter(page).update(1) }
-#set page( 
+#set page(
   header: context [
     #text("")
   ],
@@ -33,14 +33,16 @@
       columns: (1fr, auto, 1fr),
       stroke: none,
       inset: 0mm,
-      [], [
+      [],
+      [
         #counter(page).display(
           "i",
           both: false,
         )
-      ], []
+      ],
+      [],
     )
-  ]
+  ],
 )
 
 #title_without_numbering(title: "Contents")
@@ -52,7 +54,7 @@
 // ── Main Content ──
 #pagebreak()
 #context { counter(page).update(1) }
-#set page( 
+#set page(
   header: context [
     #text("GlowCore | SE Project ")
   ],
@@ -61,14 +63,16 @@
       columns: (1fr, auto, 1fr),
       stroke: none,
       inset: 0mm,
-      [], [
+      [],
+      [
         #counter(page).display(
           "1",
           both: false,
         )
-      ], []
+      ],
+      [],
     )
-  ]
+  ],
 )
 
 // ── Part I: Management Summary ──

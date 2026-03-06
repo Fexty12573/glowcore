@@ -20,12 +20,9 @@ The time is grouped by member and by sprint. Per sprint and person the time is r
     [6], [], [], [], [], [],
     [7], [], [], [], [], [],
     [Total], [], [], [], [], [],
-
-
-
   ),
   caption: [Time Statistics Sprint 1],
-  supplement: [Table]
+  supplement: [Table],
 )
 // TODO: The goal is to show stakeholders that the project is on track.
 // Cover two topics:

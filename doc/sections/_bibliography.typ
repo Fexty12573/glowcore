@@ -3,7 +3,7 @@
 #show outline.where(target: figure.where(kind: image)).or(outline.where(target: figure.where(kind: table))): it => {
   text(
     top-edge: 0mm,
-    it
+    it,
   )
 }
 

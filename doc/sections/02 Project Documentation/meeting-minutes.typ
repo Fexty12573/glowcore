@@ -4,5 +4,5 @@
   == Meeting Minutes
 
   #include "../../protocols/Protokolle.typ"
-] 
+]
 
