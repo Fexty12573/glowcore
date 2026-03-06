@@ -24,7 +24,7 @@
 // include all the meeting minutes of all the meetings
 
 
-#include "01_Weekly_Scrum_28.02.2026.typ"
+#include "01_Weekly_Scrum_28-02-2026.typ"
 
 
 

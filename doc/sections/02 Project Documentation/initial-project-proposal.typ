@@ -1,3 +1,6 @@
+#set text(lang: "en")
+
+
 == Initial Project Proposal
 
 *Project name:* #h(0.5em) GlowCore \ 
