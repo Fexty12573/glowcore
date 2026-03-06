@@ -6,122 +6,134 @@
 The project team consists of 4 students. Each member contributes approximately 8.6 hours per week and is responsible for tasks of their defined roles.
 
 ===== Project Management Roles
-#table(
-  columns: (1fr, 1.5fr, 1fr),
-  stroke: 0.5pt + gray,
-  fill: (x, y) => if y == 0 { luma(230) },
+#figure(
+  table(
+    columns: (1fr, 1.5fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    align: left,
 
-  [*Role*], [*Description*], [*Names*],
+    [*Role*], [*Description*], [*Names*],
 
-  [Product Owner],
-  [
-    - Define product vision  
-    - Manage backlog  
-    - Prioritize features  
-    - Validate requirements
-  ],
-  [Nathanael Fässler],
+    [Product Owner],
+    [
+      - Define product vision  
+      - Manage backlog  
+      - Prioritize features  
+      - Validate requirements
+    ],
+    [Nathanael Fässler],
 
-  [Scrum Master],
-  [
-    - Facilitate meetings  
-    - Remove blockers  
-    - Ensure Scrum process  
-    - Support team workflow
-  ],
-  [Dominik Wyss],
+    [Scrum Master],
+    [
+      - Facilitate meetings  
+      - Remove blockers  
+      - Ensure Scrum process  
+      - Support team workflow
+    ],
+    [Dominik Wyss],
 
-  [Project Manager],
-  [
-    - Schedule planning  
-    - Resource management  
-    - Risk control  
-    - Progress reporting
-  ],
-  [Cedric Cathomas],
+    [Project Manager],
+    [
+      - Schedule planning  
+      - Resource management  
+      - Risk control  
+      - Progress reporting
+    ],
+    [Cedric Cathomas],
 
-  [DevOps Engineer],
-  [
-    - CI/CD maintenance  
-    - Build automation  
-    - Deployment support  
-    - Infrastructure management
-  ],
-  [Yoris Kucera],
+    [DevOps Engineer],
+    [
+      - CI/CD maintenance  
+      - Build automation  
+      - Deployment support  
+      - Infrastructure management
+    ],
+    [Yoris Kucera],
+  ),
+  caption: [Project Management Roles],
+  supplement: [Table]
 )
 
 ===== Developer Roles
-#table(
-  columns: (1fr, 1.5fr, 1fr),
-  stroke: 0.5pt + gray,
-  fill: (x, y) => if y == 0 { luma(230) },
 
-  [*Role*], [*Description*], [*Names*],
+#figure(
+  table(
+    columns: (1fr, 1.5fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    align: left,
 
-  [Lead Developer],
-  [
-    - Overall technical coordination  
-    - Code quality control  
-    - Architecture decisions  
-    - Integration management
-  ],
-  [Yoris Kucera],
+    [*Role*], [*Description*], [*Names*],
 
-  [Developer],
-  [
-    - Gameplay implementation  
-    - Bug fixing  
-    - Feature development  
-    - System integration
-    - Writing Test Cases
-  ],
-  [Dominik Wyss \ Yoris Kucera \ Nathanael Fässler \ Cedric Cathomas],
+    [Lead Developer],
+    [
+      - Overall technical coordination  
+      - Code quality control  
+      - Architecture decisions  
+      - Integration management
+    ],
+    [Yoris Kucera],
 
-  [Art Director / 3D Artist],
-  [
-    - Asset creation  
-    - Scene design  
-    - Visual consistency  
-    - Asset optimization
-  ],
-  [Nathanael Fässler],
+    [Developer],
+    [
+      - Gameplay implementation  
+      - Bug fixing  
+      - Feature development  
+      - System integration
+      - Writing Test Cases
+    ],
+    [Dominik Wyss \ Yoris Kucera \ Nathanael Fässler \ Cedric Cathomas],
 
-  [UI Architect],
-  [
-    - UI/UX design  
-    - Menu systems  
-    - HUD implementation  
-    - User interaction flow
-  ],
-  [Cedric Cathomas],
+    [Art Director / 3D Artist],
+    [
+      - Asset creation  
+      - Scene design  
+      - Visual consistency  
+      - Asset optimization
+    ],
+    [Nathanael Fässler],
+  
+    [UI Architect],
+    [
+      - UI/UX design  
+      - Menu systems  
+      - HUD implementation  
+      - User interaction flow
+    ],
+    [Cedric Cathomas],
 
-  [Graphics Programmer],
-  [
-    - Shader development  
-    - Particle effects  
-    - Performance optimization  
-    - Visual effects integration
-  ],
-  [Yoris Kucera],
+    [Graphics Programmer],
+    [
+      - Shader development  
+      - Particle effects  
+      - Performance optimization  
+      - Visual effects integration
+    ],
+    [Yoris Kucera],
 
-  [Audio Engineer],
-  [
-    - Sound design  
-    - Audio integration  
-    - Music management  
-    - Audio balancing
-  ],
-  [Dominik Wyss],
+    [Audio Engineer],
+    [
+      - Sound design  
+      - Audio integration  
+      - Music management  
+      - Audio balancing
+    ],
+    [Dominik Wyss],
 
-  [Level Designer],
-  [
-    - Level layout  
-    - Gameplay balancing  
-    - Difficulty tuning  
-    - Playtesting feedback
-  ],
-  [Nathanael Fässler \\ Cedric Cathomas],
+    [Level Designer],
+    [
+      - Level layout  
+      - Gameplay balancing  
+      - Difficulty tuning  
+      - Playtesting feedback
+    ],
+    [Nathanael Fässler \\ Cedric Cathomas],
+  ),
+  caption: [Developer Roles],
+  supplement: [Table]
 )
+
 
 
 #v(1em)
@@ -141,92 +153,107 @@ No direct financial costs are currently planned, as all required tools and platf
 ==== Meetings
 The project meetings follow mainly the Scrum standard. With weekly Scrum meetings replacing daily stand-ups and biweekly sprint planning including retrospectives. Also the Regular advisor meetings to present and discuss our results so far.
 
-#table(
-  columns: (1fr, 2fr, 1fr),
-  stroke: 0.5pt + gray,
-  fill: (x, y) => if y == 0 { luma(230) },
+#figure(
+  table(
+    columns: (1fr, 2fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    align: left,
 
-  [*Type*], [*Todos*], [*Frequency*],
+    [*Type*], [*Todos*], [*Frequency*],
 
-  [Sprint Review (Advisor)],
-  [
-    - Present sprint results  
-    - Demonstrate features  
-    - Discuss open issues  
-    - Collect advisor feedback  
-    - Document decisions
-  ],
-  [Every 2 weeks \ Tuesday 15:00 - 16:00],
+    [Sprint Review (Advisor)],
+    [
+      - Present sprint results  
+      - Demonstrate features  
+      - Discuss open issues  
+      - Collect advisor feedback  
+      - Document decisions
+    ],
+    [Every 2 weeks \ Tuesday 15:00 - 16:00],
 
-  [Weekly Scrum],
-  [
-    - Report progress  
-    - Define next steps  
-    - Identify blockers  
-    - Update tasks  
-    - Support team members
-  ],
-  [Weekly \ Friday 14:00 - 15:00],
+    [Weekly Scrum],
+    [
+      - Report progress  
+      - Define next steps  
+      - Identify blockers  
+      - Update tasks  
+      - Support team members
+    ],
+    [Weekly \ Friday 14:00 - 15:00],
 
-  [Sprint Retrospective],
-  [
-    - Analyze sprint process  
-    - Identify problems  
-    - Define improvements  
-    - Document lessons learned
-  ],
-  [Every 2 weeks \ Friday 15:00 - 16:00],
+    [Sprint Retrospective],
+    [
+      - Analyze sprint process  
+      - Identify problems  
+      - Define improvements  
+      - Document lessons learned
+    ],
+    [Every 2 weeks \ Friday 15:00 - 16:00],
 
-  [Sprint Planning],
-  [
-    - Define sprint goals  
-    - Select backlog items  
-    - Estimate effort  
-    - Assign tasks  
-    - Update schedule
-  ],
-  [Every 2 weeks \ Friday 16:00 - 17:00 \ (after retro)],
+    [Sprint Planning],
+    [
+      - Define sprint goals  
+      - Select backlog items  
+      - Estimate effort  
+      - Assign tasks  
+      - Update schedule
+    ],
+    [Every 2 weeks \ Friday 16:00 - 17:00 \ (after retro)],
+  ),
+  caption: [Planned Meetings Overview],
+  supplement: [Table]
 )
 
 
 
 #v(1em)
 ==== Planning Tools
-#table(
-  columns: (1fr, 1.5fr),
-  stroke: 0.5pt + gray,
-  fill: (x, y) => if y == 0 { luma(230) },
 
-  [*Tool*], [*Use Case*],
+#figure(
+  table(
+    columns: (1fr, 1.5fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    align: left,
 
-  [GitLab],
-  [- Version control  
-   - CI/CD pipelines    
-   - Merge requests
-   - Time tracking],
+    [*Tool*], [*Use Case*],
 
-  [Typst],
-  [- Project documentation  
-   - PDF generation],
+    [GitHub],
+    [- Version control  
+    - GitHub Actions (CI/CD)    
+    - Pull requests
+    - GitHub notifications via Discord],
 
-  [Microsoft Teams],
-  [- File sharing  ],
+    [Typst],
+    [- Project documentation  
+    - PDF generation],
 
-  [Jira],
-  [- Task management  
-   - Sprint planning  
-   - Backlog tracking
-   - Issue tracking],
+    [Microsoft Teams],
+    [- File sharing
+    - Communication  ],
+    
 
-  [Miro],
-  [- Brainstorming  
-   - Diagrams  
-   - Project planning],
+    [Jira],
+    [- Task management  
+    - Sprint planning  
+    - Backlog tracking
+    - Issue tracking
+    - Time tracking],
 
-  [Discord],
-  [- Online meetings
-   - Informal communication  
-   - Quick coordination],
+    [Miro],
+    [- Brainstorming  
+    - Diagrams  
+    - Project planning],
+
+    [Discord],
+    [- Online meetings
+    - Informal communication  
+    - Quick coordination
+    - GitHub activity notifications],
+  ),
+  caption: [Planning Tools],
+  supplement: [Table]
 )
 #v(1em)
 

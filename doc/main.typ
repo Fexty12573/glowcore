@@ -6,6 +6,8 @@
   top-right-logo: image("resources/OST-Logo.png", width: auto, height: 15mm, fit: "cover"),
 )
 
+
+
 // ── Cover Page ──
 #maketitle(
   title: "GlowCore",
