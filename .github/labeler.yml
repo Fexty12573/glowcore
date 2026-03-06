@@ -1,0 +1,14 @@
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: 'doc/**/*'
+  - head-branch: ['^docs/.*']
+
+feature:
+  - head-branch: ['^feature/.*']
+
+bug:
+  - head-branch: ['^bug/.*']
+
+skip-changelog:
+  - base-branch: ['main']
+    head-branch: ['dev']
