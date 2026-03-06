@@ -17,42 +17,42 @@ The project team consists of 4 students. Each member contributes approximately 8
 
     [Product Owner],
     [
-      - Define product vision  
-      - Manage backlog  
-      - Prioritize features  
+      - Define product vision
+      - Manage backlog
+      - Prioritize features
       - Validate requirements
     ],
     [Nathanael Fässler],
 
     [Scrum Master],
     [
-      - Facilitate meetings  
-      - Remove blockers  
-      - Ensure Scrum process  
+      - Facilitate meetings
+      - Remove blockers
+      - Ensure Scrum process
       - Support team workflow
     ],
     [Dominik Wyss],
 
     [Project Manager],
     [
-      - Schedule planning  
-      - Resource management  
-      - Risk control  
+      - Schedule planning
+      - Resource management
+      - Risk control
       - Progress reporting
     ],
     [Cedric Cathomas],
 
     [DevOps Engineer],
     [
-      - CI/CD maintenance  
-      - Build automation  
-      - Deployment support  
+      - CI/CD maintenance
+      - Build automation
+      - Deployment support
       - Infrastructure management
     ],
     [Yoris Kucera],
   ),
   caption: [Project Management Roles],
-  supplement: [Table]
+  supplement: [Table],
 )
 
 ===== Developer Roles
@@ -68,18 +68,18 @@ The project team consists of 4 students. Each member contributes approximately 8
 
     [Lead Developer],
     [
-      - Overall technical coordination  
-      - Code quality control  
-      - Architecture decisions  
+      - Overall technical coordination
+      - Code quality control
+      - Architecture decisions
       - Integration management
     ],
     [Yoris Kucera],
 
     [Developer],
     [
-      - Gameplay implementation  
-      - Bug fixing  
-      - Feature development  
+      - Gameplay implementation
+      - Bug fixing
+      - Feature development
       - System integration
       - Writing Test Cases
     ],
@@ -87,51 +87,51 @@ The project team consists of 4 students. Each member contributes approximately 8
 
     [Art Director / 3D Artist],
     [
-      - Asset creation  
-      - Scene design  
-      - Visual consistency  
+      - Asset creation
+      - Scene design
+      - Visual consistency
       - Asset optimization
     ],
     [Nathanael Fässler],
-  
+
     [UI Architect],
     [
-      - UI/UX design  
-      - Menu systems  
-      - HUD implementation  
+      - UI/UX design
+      - Menu systems
+      - HUD implementation
       - User interaction flow
     ],
     [Cedric Cathomas],
 
     [Graphics Programmer],
     [
-      - Shader development  
-      - Particle effects  
-      - Performance optimization  
+      - Shader development
+      - Particle effects
+      - Performance optimization
       - Visual effects integration
     ],
     [Yoris Kucera],
 
     [Audio Engineer],
     [
-      - Sound design  
-      - Audio integration  
-      - Music management  
+      - Sound design
+      - Audio integration
+      - Music management
       - Audio balancing
     ],
     [Dominik Wyss],
 
     [Level Designer],
     [
-      - Level layout  
-      - Gameplay balancing  
-      - Difficulty tuning  
+      - Level layout
+      - Gameplay balancing
+      - Difficulty tuning
       - Playtesting feedback
     ],
     [Nathanael Fässler \\ Cedric Cathomas],
   ),
   caption: [Developer Roles],
-  supplement: [Table]
+  supplement: [Table],
 )
 
 
@@ -164,45 +164,45 @@ The project meetings follow mainly the Scrum standard. With weekly Scrum meeting
 
     [Sprint Review (Advisor)],
     [
-      - Present sprint results  
-      - Demonstrate features  
-      - Discuss open issues  
-      - Collect advisor feedback  
+      - Present sprint results
+      - Demonstrate features
+      - Discuss open issues
+      - Collect advisor feedback
       - Document decisions
     ],
     [Every 2 weeks \ Tuesday 15:00 - 16:00],
 
     [Weekly Scrum],
     [
-      - Report progress  
-      - Define next steps  
-      - Identify blockers  
-      - Update tasks  
+      - Report progress
+      - Define next steps
+      - Identify blockers
+      - Update tasks
       - Support team members
     ],
     [Weekly \ Friday 14:00 - 15:00],
 
     [Sprint Retrospective],
     [
-      - Analyze sprint process  
-      - Identify problems  
-      - Define improvements  
+      - Analyze sprint process
+      - Identify problems
+      - Define improvements
       - Document lessons learned
     ],
     [Every 2 weeks \ Friday 15:00 - 16:00],
 
     [Sprint Planning],
     [
-      - Define sprint goals  
-      - Select backlog items  
-      - Estimate effort  
-      - Assign tasks  
+      - Define sprint goals
+      - Select backlog items
+      - Estimate effort
+      - Assign tasks
       - Update schedule
     ],
     [Every 2 weeks \ Friday 16:00 - 17:00 \ (after retro)],
   ),
   caption: [Planned Meetings Overview],
-  supplement: [Table]
+  supplement: [Table],
 )
 
 
@@ -220,40 +220,51 @@ The project meetings follow mainly the Scrum standard. With weekly Scrum meeting
     [*Tool*], [*Use Case*],
 
     [GitHub],
-    [- Version control  
-    - GitHub Actions (CI/CD)    
-    - Pull requests
-    - GitHub notifications via Discord],
+    [
+      - Version control
+      - GitHub Actions (CI/CD)
+      - Pull requests
+      - GitHub notifications via Discord
+    ],
 
     [Typst],
-    [- Project documentation  
-    - PDF generation],
+    [
+      - Project documentation
+      - PDF generation
+    ],
 
     [Microsoft Teams],
-    [- File sharing
-    - Communication  ],
-    
+    [
+      - File sharing
+      - Communication
+    ],
 
     [Jira],
-    [- Task management  
-    - Sprint planning  
-    - Backlog tracking
-    - Issue tracking
-    - Time tracking],
+    [
+      - Task management
+      - Sprint planning
+      - Backlog tracking
+      - Issue tracking
+      - Time tracking
+    ],
 
     [Miro],
-    [- Brainstorming  
-    - Diagrams  
-    - Project planning],
+    [
+      - Brainstorming
+      - Diagrams
+      - Project planning
+    ],
 
     [Discord],
-    [- Online meetings
-    - Informal communication  
-    - Quick coordination
-    - GitHub activity notifications],
+    [
+      - Online meetings
+      - Informal communication
+      - Quick coordination
+      - GitHub activity notifications
+    ],
   ),
   caption: [Planning Tools],
-  supplement: [Table]
+  supplement: [Table],
 )
 #v(1em)
 
@@ -272,7 +283,7 @@ We work with 5 types of Work Items
   [Story], [Describes a feature that is directly related to the game],
   [Task], [Everything that isn't directly related to the game],
   [Bug], [Bugs are created when a bug is found and fixed in an unplanned matter.],
-  [Documentation], [Work related to the documentation]
+  [Documentation], [Work related to the documentation],
 )
 ==== Long Term Planning
 The Long Term Planning is separated into two categories:
@@ -287,36 +298,75 @@ The milestones for the review meetings and for the releases are interleaved and 
 
   [*Nr*], [*Milestone Name*], [*Duration*], [*Description*],
 
-  [M01], [Review 1], [16.02.2026 - 10.03.2026], [
+  [M01],
+  [Review 1],
+  [16.02.2026 - 10.03.2026],
+  [
     Initial Project Setup
   ],
-  [M02], [Review 2], [11.03.2026 - 24.03.2026], [
+
+  [M02],
+  [Review 2],
+  [11.03.2026 - 24.03.2026],
+  [
     Requirements
   ],
-  [M03], [Review 3], [25.03.2026 - 07.04.2026], [
+
+  [M03],
+  [Review 3],
+  [25.03.2026 - 07.04.2026],
+  [
     End of Elaboration
   ],
-  [M04], [Review 4], [08.04.2026 - 28.04.2026], [
+
+  [M04],
+  [Review 4],
+  [08.04.2026 - 28.04.2026],
+  [
     Quality
   ],
-  [M05], [Review 5], [29.04.02.2026 - 12.05.2026], [
+
+  [M05],
+  [Review 5],
+  [29.04.02.2026 - 12.05.2026],
+  [
     Architecture
   ],
-  [M06], [Project Presentation], [16.02.2026 - 10.03.2026], [
+
+  [M06],
+  [Project Presentation],
+  [16.02.2026 - 10.03.2026],
+  [
     Final Presentation to SEProject-Advisors and fellow students. Completion of SEProject.
   ],
-  [M07], [Pre-Alpha Release], [16.02.2026 - 20.03.2026], [
+
+  [M07],
+  [Pre-Alpha Release],
+  [16.02.2026 - 20.03.2026],
+  [
     First playable prototype is ready. Core gameplay loops are implemented. The player can chop trees, pick up wood and expand the GlowCore.
   ],
-  [M08], [Alpha Release], [21.03.2026 - 10.04.2026], [
+
+  [M08],
+  [Alpha Release],
+  [21.03.2026 - 10.04.2026],
+  [
     MVP is done and working. Core gameplay Mechanics are implemented. Player can craft, build, expand the map and he has an inventory. The player can save his savestate.
   ],
-  [M09], [Beta Release], [11.04.2026 - 15.05.2026], [
+
+  [M09],
+  [Beta Release],
+  [11.04.2026 - 15.05.2026],
+  [
     More Biomes and Materials are added. There is a combat system with enemies and peaceful mobs. There is a title screen and a settings menu.
 
     Automation mechanics are implemented. There are more GlowCore Phases.
   ],
-  [M10], [Official Release and Final Submission], [16.05.2026 - 05.06.2026], [
+
+  [M10],
+  [Official Release and Final Submission],
+  [16.05.2026 - 05.06.2026],
+  [
     The game is polished and has no mayor bugs. The game has a beginning and an ending.
   ],
 )
@@ -328,55 +378,76 @@ The milestones for the review meetings and for the releases are interleaved and 
   stroke: 0.5pt + gray,
   fill: (x, y) => if y == 0 { luma(230) },
 
-  [*Epic Name*], [*Description/Requirements*], 
-  [Documentation], [
+  [*Epic Name*], [*Description/Requirements*],
+  [Documentation],
+  [
     This epic includes all documentation related work.
   ],
-  [Project Setup], [
+
+  [Project Setup],
+  [
     This epic contains all work that is done in the Inception-Phase.
   ],
-  [Core Gameplay Loop Mechanics], [
+
+  [Core Gameplay Loop Mechanics],
+  [
     - The player can chop down trees, collect wood and feed it into the GlowcCore.
     - The GlowCore levels up and expands the map.
     - The player is restricted to the unlocked map. The grid system is implemented.
   ],
-  [Inventory, Crafting, Building], [
+
+  [Inventory, Crafting, Building],
+  [
     - Inventory: The player has an inventory and can store a limited amount of items. He can have items in his hands and in his backpack(or similar).
     - Crafting: The player can craft items to other items on different workstations.
     - Building: The player can place objects onto the world-grid.
   ],
-  [Graphics], [
+
+  [Graphics],
+  [
     - The Artstyle of the game ist set.
     - The 3D Models follow a consistent Artstyle.
     - A Shader is implementet.
   ],
-  [Game Framework & Completeness], [
+
+  [Game Framework & Completeness],
+  [
     This epic contains everything that makes a game complete and feel like a game.
     - Intro: When the Game starts the GlowCore Logo is displayed. After the title screen a Cutscene is played that leads into the game.
     - Ending: A ending of the game is defined. When the player finishes the game, a Cutscene is played and the credits roll.
     - UI: A Title Screen is available. In-Game there is a Debug Screen, and a Settings Menu.
     - Gamedata Saving: The player can save his progress.
   ],
-  [Big World & GlowCore Phases], [
-  - World building: The game has a complete world to play in.
-  - GlowCore Phases: The GlowCore has multiple phases, all of which need different materials to level up. The GlowCore changes visually with every Level.
+
+  [Big World & GlowCore Phases],
+  [
+    - World building: The game has a complete world to play in.
+    - GlowCore Phases: The GlowCore has multiple phases, all of which need different materials to level up. The GlowCore changes visually with every Level.
   ],
-  [Biomes & Materials], [
-  - The world has multitple biomes: e.g. Forest, Grassland, Mountain, Volcano, Jungle etc. 
-  - Each biome has unique ressources. 
-  - There are Caves which you can enter.
+
+  [Biomes & Materials],
+  [
+    - The world has multitple biomes: e.g. Forest, Grassland, Mountain, Volcano, Jungle etc.
+    - Each biome has unique ressources.
+    - There are Caves which you can enter.
   ],
-  [Combat], [
+
+  [Combat],
+  [
     - Enemies can spawn and fight with the player.
     - The player can take damage and can die.
     - A respawn mechanic is set up.
     - There are peacuful mobs.
   ],
-  [Resource Automation], [
+
+  [Resource Automation],
+  [
     - The Player can replant trees.
     - The Player can craft machines that automatically gather resources.
   ],
-  [Playtesting & Release], [
+
+  [Playtesting & Release],
+  [
     - Playtesting: The game is testet by players that play it for the first time (blind test).
     - Release: The game is released on steam on its own steam page and has a trailer, screenshots and a description.
   ],
@@ -405,6 +476,201 @@ The following shows the Jira sprint backlog as of 04.03.2026
 
 === Risk Management
 
+This chapter describes potential risks to the project and how we plan to mitigate them. We identified 8 risks, which are listed in the table below. Additionally, these risks are visualized in two risk matrices, one showing the initial risk assessment and the other showing the risk assessment after mitigation strategies are applied.
+
+#table(
+  columns: (0.2fr, 0.7fr, 1fr, 1fr),
+  stroke: 0.5pt + gray,
+  fill: (x, y) => if y == 0 { luma(230) },
+
+  [*No.*], [*Risk*], [*Description*], [*Mitigation Strategy*],
+  [R01],
+  [Lack of familiarity with Unity],
+  [
+    None of our team members have any significant experience with the Unity Engine. As such, this could heavily impact our development times.
+  ],
+  [
+    We made ourselves familiar with the engine before the actual start
+    of the project, to get an idea of the workflows.
+  ],
+
+  [R02],
+  [Unity CI/CD Complexity],
+  [
+    We are depending on Unity's build system being robust enough to work in
+    the context of a CI/CD pipeline. We also potentially rely on pre-existing GitHub Actions for Unity, which may not be well-maintained or compatible with our project.
+  ],
+  [
+    We will set up the CI/CD pipeline very early into the project and did
+    earlier tests. We tried out pre-existing GitHub Actions to make sure they satisfy our needs.
+  ],
+
+  [R03],
+  [Scope/Feature Creep],
+  [
+    As we are developing a game, we run the risk of encountering scope creep, i.e. continuously planning new features, which would result in us eventually not being able to keep up with the workload.
+  ],
+  [
+    We created a detailed project plan with long-term and short-term planning, along with well defined milestones and a clear MVP.
+  ],
+
+  [R04],
+  [Bad Code Quality],
+  [
+    In large codebases it is easy to end up with badly designed systems that don't fit together with the rest of the code. This would hinder further development.
+  ],
+  [
+    We do mandatory code reviews before changes can be merged. Additionally, we will set up CI/CD pipelines to automatically run code quality and formatting checks on pull requests.
+  ],
+
+  [R05],
+  [Team Member is MIA],
+  [
+    A team member might be MIA for an extended period of time due to various reasons, such as an illness or damaged hardware. This would recude our capacity and slow down development.
+  ],
+  [
+    We can't reduce the possibility of this occurring, but we can distribute work across the remaining team members. We also avoid knowledge monopolies and always aim to share discoveries with the other team members.
+  ],
+
+  [R06],
+  [Personal Conflicts],
+  [
+    There is always the potential for personal conflicts within the team, which would complicate development.
+  ],
+  [
+    We openly communicate any interpersonal issues and try to resolve conflicts as early as possible.
+  ],
+
+  [R07],
+  [Data Loss],
+  [
+    There is the potential of local storage media failing, resulting in significant data loss.
+  ],
+  [
+    We mititage this by prequently committing our changes to GitHub, and keeping untracked files in cloud based locations.
+  ],
+
+  [R08],
+  [Workload Underestimation],
+  [
+    We might be underestimating the amount of work required for specific features and tasks.
+  ],
+  [
+    We plan with a buffer and try to be conservative with our estimates. We also try to break down large tasks into smaller ones, which are easier to estimate.
+  ],
+)
+
+#figure(
+  kind: table,
+  caption: [Risk Analysis],
+  supplement: [Table],
+  none,
+)
+
+#let table-header = rgb("#e6e6e6")
+#let cell-bg-default = rgb("#ededed")
+#let cell-bg-high = rgb("#ffa787")
+#let cell-bg-medium = rgb("#fff987")
+#let cell-bg-low = rgb("#8fff87")
+#let cell-bg-very-high = rgb("#f2665c")
+#let cell-bg-eliminated = rgb("#b3f6ff")
+
+==== Risk Matrix <risk-matrix>
+
+The below table shows the risk assessment of the identified risks, before any mitigation strategies are applied. The risks are categorized based on their probability of occurrence and their potential severity.
+
+#let risk-cell(level, content: none) = {
+  let bg = if level == "Very High" {
+    cell-bg-very-high
+  } else if level == "High" {
+    cell-bg-high
+  } else if level == "Medium" {
+    cell-bg-medium
+  } else if level == "Low" {
+    cell-bg-low
+  } else {
+    cell-bg-default
+  }
+
+  // let body = if content != none { content } else { level }
+  table.cell(fill: bg)[#content]
+}
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    stroke: 1pt + rgb("#333333"),
+    align: center + horizon,
+
+    table.cell(fill: table-header, rowspan: 2)[*Probability*],
+    table.cell(fill: table-header, colspan: 4)[*Severity*],
+    table.cell(fill: table-header)[Negligible],
+    table.cell(fill: table-header)[Marginal],
+    table.cell(fill: table-header)[Critical],
+    table.cell(fill: table-header)[Catastrophic],
+
+    [Certain], risk-cell("High"), risk-cell("High"), risk-cell("Very High"), risk-cell("Very High"),
+    [Likely],
+    risk-cell("Medium"),
+    risk-cell("High"),
+    risk-cell("High", content: [R04]),
+    risk-cell("Very High", content: [R01]),
+    [Possible],
+    risk-cell("Low"),
+    risk-cell("Medium", content: [R02/R06]),
+    risk-cell("High"),
+    risk-cell("Very High", content: [R03/R08]),
+    [Unlikely], risk-cell("Low"), risk-cell("Medium"), risk-cell("Medium"), risk-cell("High", content: [R05]),
+    [Rare], risk-cell("Low"), risk-cell("Low"), risk-cell("Medium"), risk-cell("Medium", content: [R07]),
+    [None], table.cell(fill: cell-bg-eliminated, colspan: 4)[],
+  ),
+  caption: [Risk Matrix],
+  supplement: [Table],
+)
+
+==== Risk Matrix (Mitigated) <risk-matrix-mitigated>
+
+The below table shows the risk assessment of the identified risks, after mitigation strategies have been applied.
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    stroke: 1pt + rgb("#333333"),
+    align: center + horizon,
+
+    table.cell(fill: table-header, rowspan: 2)[*Probability*],
+    table.cell(fill: table-header, colspan: 4)[*Severity*],
+    table.cell(fill: table-header)[Negligible],
+    table.cell(fill: table-header)[Marginal],
+    table.cell(fill: table-header)[Critical],
+    table.cell(fill: table-header)[Catastrophic],
+
+    [Certain], risk-cell("High"), risk-cell("High"), risk-cell("Very High"), risk-cell("Very High"),
+    [Likely],
+    risk-cell("Medium"),
+    risk-cell("High"),
+    risk-cell("High"),
+    risk-cell("Very High"),
+    [Possible],
+    risk-cell("Low"),
+    risk-cell("Medium"),
+    risk-cell("High"),
+    risk-cell("Very High"),
+    [Unlikely],
+    risk-cell("Low"),
+    risk-cell("Medium", content: [R06]),
+    risk-cell("Medium", content: [R01/R04/R05]),
+    risk-cell("High", content: [R08]),
+    [Rare],
+    risk-cell("Low", content: [R07]),
+    risk-cell("Low", content: [R02]),
+    risk-cell("Medium"),
+    risk-cell("Medium"),
+    [None], table.cell(fill: cell-bg-eliminated, colspan: 3)[], table.cell(fill: cell-bg-eliminated)[R03],
+  ),
+  caption: [Risk Matrix (Mitigated)],
+  supplement: [Table],
+)
 
 #v(1em)
 
