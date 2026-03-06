@@ -103,7 +103,7 @@ The project team consists of 4 students. Each member contributes approximately 8
     ],
     [Cedric Cathomas],
 
-    [Graphics Programmer (Particle Systems)],
+    [Graphics Programmer],
     [
       - Shader development  
       - Particle effects  

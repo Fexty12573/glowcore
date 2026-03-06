@@ -1,6 +1,3 @@
-#set text(lang: "en")
-
-
 == Initial Project Proposal
 
 *Project name:* #h(0.5em) GlowCore \ 
@@ -43,6 +40,7 @@
     [18h00–19h00], [-], [(XR)], [-], [-], [-],
   ),
   caption: [Team availability for review meetings],
+  supplement: [Table]
 )
 
 #v(4em)
