@@ -144,8 +144,7 @@ The project runs from 16.02.2026 to 12.06.2026 with an estimated effort of 120 h
 
 #v(1em)
 ==== Cost
-No direct financial costs are currently planned, as all required tools and platforms are available through free or student licenses. Potential future costs are not expected.
-
+Most required tools and platform are freely available through free or student licenses. We plan on publishing GlowCore on steam for which steam charges a 100 US-Dollar publishing fee. The cost will be shared by the members.
 #v(1em)
 
 
@@ -272,6 +271,8 @@ The project meetings follow mainly the Scrum standard. With weekly Scrum meeting
 === Schedule
 The project follows the OST internal SCRUM+ framework for its overall organization. SCRUM+ combines elements of Scrum with the Rational Unified Process (RUP). Long-term planning is based on the RUP approach, while short-term development is organized using Scrum with two-week iterations.
 
+At the start of each iteration, we estimate all tickets with storypoints. The story *GC-54 Make Player* is the reference story which is worth 5 story points.
+
 ==== Work Items
 We work with 5 types of Work Items
 #figure(
@@ -289,7 +290,7 @@ We work with 5 types of Work Items
   caption: [Work Items],
   supplement: [Table],
 )
-==== Long Term Planning
+==== Long Term Plan
 The Long Term Planning is separated into two categories:
 - Milestones: Serve as checkpoint for releases and review meetings.
 - Epics: Provide the structure to organize the stories.
@@ -302,7 +303,7 @@ The milestones for the review meetings and for the releases are interleaved and 
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
 
-    [*Nr*], [*Milestone Name*], [*Duration*], [*Description*],
+    [*Nr*], [*Milestone Name*], [*Date*], [*Description*],
 
     [M01],
     [Review 1],
@@ -469,24 +470,39 @@ The milestones for the review meetings and for the releases are interleaved and 
 )
 
 The following image shows the Timeline in Jira as of 04.03.2026.
-#image("../../resources/02 Project Documentation/jira-epics-timeline.png")
+#figure(
+  image("../../resources/02 Project Documentation/jira-epics-timeline.png"),
+  caption: [Jira Timeline],
+  supplement: [Image],
+)
 #v(1em)
 
 ===== Initial Backlog & MVP
 The priority of Stories is defined by the ordering in the backlog. As we progress in Agile, we may divide Stories further and add new Stories. The MVP is reached when every Story up to and including *GC-101 Build World* is completed.
 
 The following is the Initial Backlog as of 04.03.2026.
+
 #image("../../resources/02 Project Documentation/jira-initial-backlog-1.png")
-#image("../../resources/02 Project Documentation/jira-initial-backlog-2.png")
-#image("../../resources/02 Project Documentation/jira-initial-backlog-3.png")
+#figure(
+  image("../../resources/02 Project Documentation/jira-initial-backlog-2.png"),
+  caption: [Inital Backlog],
+  supplement: [Image],
+)
+
 #v(1em)
 
 ==== Short Term Plan
 In a Sprint the priority of the tasks and stories is defined by the ordering.
 
-===== Sprint 1 (Sprint Zero) 20.02.2026 - 06.03.2026
-The following shows the Jira sprint backlog as of 04.03.2026
-#image("../../resources/02 Project Documentation/jira-sprint-1.png")
+===== Sprint 1 (Sprint-Zero) 20.02.2026 - 06.03.2026
+The following shows the Jira sprint backlog of the first sprint. As this was Sprint-Zero not all guidelines were followed initially, because they yet to implement at that point.
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-1-backlog.png"),
+  caption: [Sprint 1 Backlog],
+  supplement: [Image],
+)
+
 #v(1em)
 
 
