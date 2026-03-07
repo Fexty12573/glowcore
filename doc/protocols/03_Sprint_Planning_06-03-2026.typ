@@ -8,7 +8,7 @@
   sprint: "Sprint 2",
   lead: "PO / SM",
   scribe: "Name",
-  time: "16:00–17:00",
+  time: "16:00–18:00",
   location: "Online",
   participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera, Cedric Cathomas",
   links: "-",
