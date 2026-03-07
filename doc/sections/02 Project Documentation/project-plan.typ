@@ -495,7 +495,7 @@ The following is the Initial Backlog as of 04.03.2026.
 In a Sprint the priority of the tasks and stories is defined by the ordering.
 
 ===== Sprint 1 (Sprint-Zero) 20.02.2026 - 06.03.2026
-The following shows the Jira sprint backlog of the first sprint. As this was Sprint-Zero not all guidelines were followed initially, because they yet to implement at that point.
+The following shows the Jira sprint backlog of the first sprint. Since this was Sprint Zero, not all guidelines were followed initially because they had not yet been established.
 
 #figure(
   image("../../resources/02 Project Documentation/Sprints/sprint-1-backlog.png"),
