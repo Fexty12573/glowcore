@@ -694,11 +694,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1141561732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &608932048 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6192860682458780908, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
-  m_PrefabInstance: {fileID: 4775361754903699258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &657392914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,10 +1358,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4112851724278303701, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
-      propertyPath: CameraAnchor
-      value: 
-      objectReference: {fileID: 608932048}
     - target: {fileID: 9090418907346557860, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1

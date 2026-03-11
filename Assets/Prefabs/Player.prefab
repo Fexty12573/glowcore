@@ -242,10 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52f11adfecfb1147b455981b2066810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  controller: {fileID: 1105745996694965811}
-  cameraAnchor: {fileID: 6192860682458780908}
-  movementSpeed: 5
-  rotationSpeed: 15
+  m_controller: {fileID: 1105745996694965811}
+  m_cameraAnchor: {fileID: 6192860682458780908}
+  m_movementSpeedi: 5
+  m_rotationSpeed: 15
 --- !u!1 &6180008198752448360
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43a2c3f95b7cc5428e23176a1cc41a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
-  CameraAnchor: {fileID: 0}
-  CameraSpeed: 40
+  m_cameraAnchor: {fileID: 6192860682458780908}
+  m_cameraSpeed: 40
 --- !u!1 &8745356415939709086
 GameObject:
   m_ObjectHideFlags: 0
