@@ -28,6 +28,9 @@
 #include "01_Weekly_Scrum_28-02-2026.typ"
 #include "02_Sprint_Retrospective_06-03-2026.typ"
 #include "03_Sprint_Planning_06-03-2026.typ"
-
+#include "04_Sprint_Review_(Advisor)_10-03-2026.typ"
+#include "05_Weekly_Scrum_13-03-2026.typ"
+#include "06_Sprint_Retrospective_20-03-2026.typ"
+#include "07_Sprint_Planning_20-03-2026.typ"
 
 
