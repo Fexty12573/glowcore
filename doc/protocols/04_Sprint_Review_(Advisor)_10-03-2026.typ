@@ -1,49 +1,57 @@
-#import "../lib.typ": meeting_info, todo_table, agenda_table, next_dates
+#import "../lib.typ": agenda_table, meeting_info, next_dates, todo_table
 
 // ==============================
 // 1) Sprint Review (Advisor)
 // ==============================
-=== Sprint Review (Advisor) / YYYY-MM-DD
+=== Sprint Review (Advisor) / 10.03.2026
 #meeting_info(
-
-  sprint: "Sprint 3",
-  lead: "Name",
-  scribe: "Name",
-  time: "15:00–17:00",
-  location: "Online (Teams)",
-  participants: "Team A, Team B, Advisor",
-  links: "Repo / Jira / Doc link"
+  date: "10.03.2026",
+  sprint: "Sprint 1",
+  lead: "Yoris Kucera",
+  scribe: "Nathanael Fässler",
+  time: "15:00–16:00",
+  location: "Building 8",
+  participants: "Thomas Bocek, Dominik Wyss,  Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
+  links: "-",
 )
 
 ==== Agenda
 #agenda_table((
-  [Approval last minutes], [Lead], [Approved / changes: ...],
-  [Demo], [Dev], [OK / open issues: ...],
-  [Feedback], [Advisor], [Notes: ...],
-  [Decisions], [Lead], [Recorded decisions: ...],
+  [Status of Work],
+  [Yoris],
+  [Feedback was good],
+  [Project Plan],
+  [Yoris],
+  [Good impression. Advisor liked that we asked him at 02.03.2026 on our initiative],
+  [Showcase Pipeline],
+  [Yoris],
+  [Positive that Dominik sent the pipeline beforehand],
+  [Feedback],
+  [Thomas],
+  [Overall very good],
+  [Questions about Grading & Review Schedule],
+  [Dominik & Nathanael],
+  [
+    - To get a better grade we have to do more than what is required on the checklist.
+    - The group can choose when the Review Meetings take place.
+    - Meeting 5 has to be before 05.06.2026 (final submission)
+  ],
 ))
-
-==== Demo / Increment
-- Shown: ...
-- Not shown (and why): ...
-
-==== Advisor feedback (key points)
-- ...
-- ...
-
-==== Decisions
-- Decision: ... (Reason: ...)
-
 
 ==== Todos
 #todo_table((
-  [Update architecture doc section X], [Name], [YYYY-MM-DD], [Open],
-  [Fix bug #123], [Name], [YYYY-MM-DD], [Open],
+  [Update README on GitLab to indicate that project has moved to GitHub],
+  [Yoris],
+  [20.03.2026],
+  [Configure Pipeline to build documentation],
+  [Not assigned],
+  [20.03.2026],
 ))
 
 ==== Next dates
 #next_dates((
-  [Next advisor review], [YYYY-MM-DD HH:MM],
+  [Review 2 - Requirements],
+  [24.03.2026 15:00],
 ))
 
 #pagebreak()

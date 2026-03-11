@@ -5,9 +5,10 @@
 // ==============================
 === Sprint Planning / 06.03.2026
 #meeting_info(
+  date: "06.03.2026",
   sprint: "Sprint 2",
   lead: "PO / SM",
-  scribe: "Name",
+  scribe: "Nathanael Fässler",
   time: "16:00–18:00",
   location: "Online",
   participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera, Cedric Cathomas",
