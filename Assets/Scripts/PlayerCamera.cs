@@ -3,21 +3,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerCamera : MonoBehaviour
 {
-
-    public Transform partToRotate;
-    public float cameraSpeed = 40;
+    [SerializeField]
+    private Transform CameraAnchor;
+    [SerializeField]
+    private float CameraSpeed = 40;
     
-    private Vector2 _lookInput;
+    private Vector2 m_lookInput;
     
-    void Update()
+    private void FixedUpdate()
     {
-        float rotateDegrees = _lookInput.x * Time.deltaTime  * cameraSpeed;
-        partToRotate.Rotate(new Vector3(0, rotateDegrees, 0));
+        float rotateDegrees = m_lookInput.x * Time.fixedDeltaTime  * CameraSpeed;
+        CameraAnchor.Rotate(new Vector3(0, rotateDegrees, 0));
     }
 
     private void OnLook(InputValue inputValue)
     {
-        _lookInput = inputValue.Get<Vector2>();
+        m_lookInput = inputValue.Get<Vector2>();
     }
     
     

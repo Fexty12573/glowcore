@@ -5,46 +5,48 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    public Transform cameraAnchor;
-    public float movementSpeed = 5;
-    public float rotationSpeed = 15;
+    [SerializeField]
+    private CharacterController controller;
+    [SerializeField]
+    private Transform cameraAnchor;
+    [SerializeField]
+    private float movementSpeed = 5;
+    [SerializeField]
+    private float rotationSpeed = 15;
 
-    private Vector2 _moveInput;
+    private Vector2 m_moveInput = new Vector2(0, 0);
 
     private void OnMove(InputValue inputValue) // called on press and release
     {
-        _moveInput = inputValue.Get<Vector2>();
+        m_moveInput = inputValue.Get<Vector2>();
     }
     
-    void Update()
+    private void FixedUpdate()
     {
-        if (_moveInput != Vector2.zero)
+        if (m_moveInput != Vector2.zero)
         {
-            Vector3 movement3D = new Vector3(_moveInput.x, 0, _moveInput.y);
+            Vector3 movement3D = new(m_moveInput.x, 0, m_moveInput.y);
             Vector3 relativeMovement = cameraAnchor.rotation * movement3D;
             UpdateMovement(relativeMovement);
             UpdateCamera();
             UpdateRotation(relativeMovement);
         }
-
     }
 
     private void UpdateMovement(Vector3 movement)
     {
-        controller.Move(Time.deltaTime * movementSpeed * movement);
+        controller.Move(Time.fixedDeltaTime * movementSpeed * movement);
     }
 
     private void UpdateCamera()
     {
-        cameraAnchor.position = transform.position;
+        cameraAnchor.position = transform.position; // necessary since the camera is not a child of the player
     }
 
     private void UpdateRotation(Vector3 movement)
     {
-        Quaternion newDirection = Quaternion.LookRotation(movement);
-        Quaternion lerpedDirection = Quaternion.Lerp(transform.rotation, newDirection, Time.deltaTime * rotationSpeed);
-        transform.rotation = lerpedDirection;
+        var newDirection = Quaternion.LookRotation(movement);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newDirection, Time.fixedDeltaTime * rotationSpeed); // makes the player turn around smoothly
     }
     
 }
