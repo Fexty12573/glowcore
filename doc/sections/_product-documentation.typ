@@ -2,6 +2,8 @@
 
 #part_page("II", "Product Documentation")
 
+#include "01 Product Documentation/glossary.typ"
+#pagebreak()
 #include "01 Product Documentation/requirements.typ"
 #pagebreak()
 #include "01 Product Documentation/domain-analysis.typ"
