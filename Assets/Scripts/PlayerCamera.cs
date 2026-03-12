@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
     
     private void FixedUpdate()
     {
-        float rotateDegrees = m_lookInput.x * Time.fixedDeltaTime  * m_cameraSpeed;
+        float rotateDegrees = m_lookInput.x * Time.fixedDeltaTime * m_cameraSpeed;
         m_cameraAnchor.Rotate(new Vector3(0, rotateDegrees, 0));
     }
 }

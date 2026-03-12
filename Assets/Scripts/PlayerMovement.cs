@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public void HandleMove(Vector2 movement)
     {
         m_moveInput = movement;
-
     }
     private void OnMove(InputValue inputValue) // called on press and release
     {
@@ -53,5 +52,4 @@ public class PlayerMovement : MonoBehaviour
         var newDirection = Quaternion.LookRotation(movement);
         transform.rotation = Quaternion.Lerp(transform.rotation, newDirection, Time.fixedDeltaTime * m_rotationSpeed); // makes the player turn around smoothly
     }
-    
 }

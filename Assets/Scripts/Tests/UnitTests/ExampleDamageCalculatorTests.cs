@@ -8,40 +8,31 @@ public class ExampleDamageCalculatorTests
 {
     private const float kEpsilon = 0.001f;
         
-    private GameObject m_DamageGO;
-    private DamageCalculator m_DamageCalculator;
+    private GameObject m_damageGameObj;
+    private DamageCalculator m_damageCalculator;
 
     [SetUp]
     public void Setup()
     {
-        m_DamageGO = new();
-        m_DamageCalculator = m_DamageGO.AddComponent<DamageCalculator>();
-        m_DamageCalculator.Weapon = new MockWeapon();
-        m_DamageCalculator.DamageMultiplier = 1.5f;
+        m_damageGameObj = new();
+        m_damageCalculator = m_damageGameObj.AddComponent<DamageCalculator>();
+        m_damageCalculator.Weapon = new MockWeapon();
+        m_damageCalculator.DamageMultiplier = 1.5f;
     }
 
     [TearDown]
     public void TearDown()
     {
-        Object.DestroyImmediate(m_DamageGO);
+        Object.DestroyImmediate(m_damageGameObj);
     }
 
     [Test]
     public void CalculateDamage_Works()
     {
-        // Arrange
-        float expectedDamage = m_DamageCalculator.Weapon.BaseDamage * m_DamageCalculator.DamageMultiplier;
+        float expectedDamage = m_damageCalculator.Weapon.BaseDamage * m_damageCalculator.DamageMultiplier;
         
-        // Act
-        float damage = m_DamageCalculator.CalculateDamage();
+        float damage = m_damageCalculator.CalculateDamage();
         
-        // Assert
         Assert.AreEqual(expectedDamage, damage, kEpsilon);
-    }
-    
-    [Test]
-    public void UnitTestThatShouldFail() // Comment out to test if testing works
-    {
-        Assert.AreEqual(true, false);
     }
 }

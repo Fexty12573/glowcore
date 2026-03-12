@@ -29,15 +29,12 @@ public class PlayerIntegrationTests
     [UnityTest]
     public IEnumerator PlayerMovesOnInput()
     {
-        // Arrange
         Vector2 movementInput = new(1, 1);
         Vector3 oldPosition = m_playerMovement.transform.position;
         
-        // Act
         m_playerMovement.HandleMove(movementInput);
-        yield return new WaitForFixedUpdate(); // FixedUpdate is guaranteed to be called
+        yield return new WaitForFixedUpdate();
 
-        // Assert
         Vector3 newPosition = m_playerMovement.transform.position;
         Assert.AreNotEqual(oldPosition, newPosition);
     }
@@ -45,13 +42,10 @@ public class PlayerIntegrationTests
     [UnityTest]
     public IEnumerator PlayerDoesntMoveOnNoInput()
     {
-        // Arrange
         Vector3 oldPosition = m_playerMovement.transform.position;
         
-        // Act
-        yield return new WaitForFixedUpdate(); // FixedUpdate is guaranteed to be called
+        yield return new WaitForFixedUpdate();
 
-        // Assert
         Vector3 newPosition = m_playerMovement.transform.position;
         Assert.AreEqual(oldPosition, newPosition);
     }
@@ -59,15 +53,12 @@ public class PlayerIntegrationTests
     [UnityTest]
     public IEnumerator PlayerCameraMovesOnInput()
     {
-        // Arrange
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
         
-        // Act
         m_playerCamera.HandleLook(lookInput);
-        yield return new WaitForFixedUpdate(); // FixedUpdate is guaranteed to be called
+        yield return new WaitForFixedUpdate();
 
-        // Assert
         Quaternion newRotation = m_playerCamera.transform.rotation;
         Assert.AreNotEqual(oldRotation, newRotation);
     }
@@ -75,21 +66,11 @@ public class PlayerIntegrationTests
     [UnityTest]
     public IEnumerator PlayerCameraDoesntChangeOnNoInput()
     {
-        // Arrange
         Quaternion oldRotation = m_playerCamera.transform.rotation;
         
-        // Act
-        yield return new WaitForFixedUpdate(); // FixedUpdate is guaranteed to be called
+        yield return new WaitForFixedUpdate();
 
-        // Assert
         Quaternion newRotation = m_playerCamera.transform.rotation;
         Assert.AreEqual(oldRotation, newRotation);
-    }
-    
-    [UnityTest]
-    public IEnumerator IntegrationTestThatShouldFail() // Comment out to test if testing works
-    {
-        Assert.AreEqual(false, true);
-        yield return null;
     }
 }
