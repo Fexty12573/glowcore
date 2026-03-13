@@ -6,7 +6,7 @@
 === Sprint Review (Advisor) / 10.03.2026
 #meeting_info(
   date: "10.03.2026",
-  sprint: "Sprint 1",
+  sprint: "Sprint 2",
   lead: "Yoris Kucera",
   scribe: "Nathanael Fässler",
   time: "15:00–16:00",
@@ -24,7 +24,7 @@
   [Yoris],
   [Good impression. Advisor liked that we asked him at 02.03.2026 on our initiative],
   [Showcase Pipeline],
-  [Yoris],
+  [Dominik],
   [Positive that Dominik sent the pipeline beforehand],
   [Feedback],
   [Thomas],
@@ -45,6 +45,9 @@
   [20.03.2026],
   [Configure Pipeline to build documentation],
   [Not assigned],
+  [20.03.2026],
+  [Add AGENTS.md],
+  [Cedric Cathomas],
   [20.03.2026],
 ))
 

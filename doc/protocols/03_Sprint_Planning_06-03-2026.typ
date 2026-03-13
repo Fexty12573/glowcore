@@ -7,7 +7,7 @@
 #meeting_info(
   date: "06.03.2026",
   sprint: "Sprint 2",
-  lead: "PO / SM",
+  lead: "Yoris Kucera",
   scribe: "Nathanael Fässler",
   time: "16:00–18:00",
   location: "Online",
