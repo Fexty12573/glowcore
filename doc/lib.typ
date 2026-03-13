@@ -17,7 +17,7 @@
 #let title_top_edge = 3mm
 #let title_bottom_edge = -3mm
 
-#let main_color_table = rgb("#ffe4ee")
+#let main_color_table = luma(93.31%)
 #let main_color_link_background = rgb("#fff7fa")
 #let main_color_link_underline = rgb("#d62863")
 
@@ -367,31 +367,35 @@
 
 #let nfr_table(
   id: [],
-  beschreibung: [],
-  anforderungen: [],
-  priorität: [],
-  messung: [],
-  testen: [],
-  resultat: [],
+  description: [],
+  requirements: [],
+  priority: [],
+  measurement: [],
+  verification: [],
+  result: [],
   nfr_caption: [],
   status_color: blue,
 ) = {
   set table(
     align: start,
     columns: (1fr, 4.1fr, 0.2fr),
-    fill: (x, _) => if calc.even(x) { main_color_table } else { none },
+    fill: (x, _) =>
+      if calc.even(x) { main_color_table }
+      else { none
+    }
   )
   figure(
     table(
       [#strong("ID")], strong(id), table.cell(fill: status_color, []),
-      [#strong("Beschreibung")], table.cell(colspan: 2, beschreibung),
-      [#strong("Anforderungen")], table.cell(colspan: 2, anforderungen),
-      [#strong("Priorität")], table.cell(colspan: 2, priorität),
-      [#strong("Messung")], table.cell(colspan: 2, messung),
-      [#strong("Testen")], table.cell(colspan: 2, testen),
-      [#strong("Resultat")], table.cell(colspan: 2, resultat),
+      [#strong("Description")], table.cell(colspan: 2, description),
+      [#strong("Acceptance \nCriteria")], table.cell(colspan: 2, requirements),
+      [#strong("Priority")], table.cell(colspan: 2, priority),
+      [#strong("Measurement")], table.cell(colspan: 2, measurement),
+      [#strong("Verification")], table.cell(colspan: 2, verification),
+      [#strong("Result")], table.cell(colspan: 2, result),
     ),
     caption: nfr_caption,
+    supplement: [Table],
   )
 }
 

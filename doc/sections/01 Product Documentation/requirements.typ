@@ -208,9 +208,398 @@ The Use Cases marked with *Priority: Middle* are planned to be implemented, but 
 
 === Non-Functional Requirements
 
-// TODO: Include:
-// - Choose an appropriate form (ISO/IEC 25010:2011, FURPS, ...) for your NFRs
-// - Concentrate on NFRs most relevant or special to the SUD
-// - Make sure NFRs are verifiable (acceptance criteria)
-// - Document how and when you plan to verify them
-// - Tip: Use identifiers such as 'NFR1', 'NFR2', ... as references
+#import "../../lib.typ": nfr_table
+
+// ── NFR Status Registry ──
+// Update the status color here once — it syncs to both the overview table and the detail table.
+// Colors: blue (not tested), green (passed), orange (partial), red (failed)
+#let nfr-status = (
+  nfr101: blue,
+  nfr102: blue,
+  nfr103: blue,
+  nfr104: blue,
+  nfr105: blue,
+  nfr201: blue,
+  nfr202: blue,
+  nfr203: blue,
+  nfr204: blue,
+  nfr205: blue,
+  nfr206: blue,
+  nfr301: blue,
+  nfr302: blue,
+  nfr303: blue,
+  nfr401: blue,
+  nfr402: blue,
+  nfr501: blue,
+  nfr502: blue,
+  nfr503: blue,
+)
+
+// Helper to render a status box from the registry
+#let status-box(id) = box(width: 10pt, height: 10pt, fill: nfr-status.at(id))
+
+// ── Priority Matrix Colors ──
+#let prio-req-high = rgb("#f2665c")    // red — critical MVP
+#let prio-req-med = rgb("#ffa787")     // orange — important MVP
+#let prio-opt-med = rgb("#fff987")     // yellow — post-MVP
+#let prio-opt-low = rgb("#8fff87")     // green — nice to have
+#let prio-empty = luma(245)            // light gray — no NFRs
+
+This chapter documents the Non-Functional Requirements (NFRs) for the GlowCore project, categorized according to the ISO/IEC 25010:2011 quality model. The ISO/IEC 25010 standard defines a comprehensive set of software quality characteristics that serve as a framework for specifying and evaluating system quality. The following categories are used to structure our NFRs:
+
+- *Performance Efficiency* -- NFR1XX
+- *Usability* -- NFR2XX
+- *Reliability* -- NFR3XX
+- *Maintainability* -- NFR4XX
+- *Portability* -- NFR5XX
+\
+
+Each NFR is documented with a description, concrete acceptance criteria, a measurement method, a verification approach, and a priority. The priority consists of two parts:
+
+- *MVP Relevance*: \
+  - *Required* -- must be fulfilled for the MVP.\
+  - *Optional* -- planned for a later stage, not required for MVP delivery.
+- *Importance*: 
+  - *High* -- critical for the product.
+  - *Medium* -- important but not blocking. 
+  - *Low* -- nice to have.
+
+\
+
+Each NFR table includes a colored status indicator in the top-right corner representing its current verification state:
+
+#table(
+  columns: (0.4fr, 1fr),
+  stroke: 0.5pt + gray,
+  align: left,
+  fill: (x, y) => if y == 0 { luma(230) },
+  [*Color*], [*Status*],
+  [#box(width: 12pt, height: 12pt, fill: blue)], [Not yet tested (default)],
+  [#box(width: 12pt, height: 12pt, fill: green)], [Passed -- all acceptance criteria met],
+  [#box(width: 12pt, height: 12pt, fill: orange)], [Partially met -- some criteria passed, others pending],
+  [#box(width: 12pt, height: 12pt, fill: red)], [Failed -- acceptance criteria not met],
+)
+
+==== NFR Overview
+
+The following table provides a compact overview of all non-functional requirements, their category, priority, verification milestone, and current status. This serves as a quick reference before diving into the detailed NFR descriptions below.
+
+#figure(
+  table(
+    columns: (0.6fr, 1.8fr, 1.2fr, 1.2fr, 1.2fr, 0.5fr),
+    stroke: 0.5pt + gray,
+    align: left,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*ID*], [*Name*], [*Category*], [*Priority*], [*Verify at*], [*Status*],
+    [NFR101], [World Load Time], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr101")],
+    [NFR102], [In-Game Transition Time], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr102")],
+    [NFR103], [Frame Rate], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr103")],
+    [NFR104], [Save File Size], [Performance], [Required / Medium], [M08 Alpha], [#status-box("nfr104")],
+    [NFR105], [Minimal Hardware Req.], [Performance], [Optional / Medium], [M09 Beta], [#status-box("nfr105")],
+    [NFR201], [Player Restriction Visibility], [Usability], [Required / High], [M08 Alpha], [#status-box("nfr201")],
+    [NFR202], [Light Upgrade Progress], [Usability], [Required / High], [M08 Alpha], [#status-box("nfr202")],
+    [NFR203], [New Player Learnability], [Usability], [Required / High], [M09 Beta], [#status-box("nfr203")],
+    [NFR204], [Input Support], [Usability], [Optional / Medium], [M09 Beta], [#status-box("nfr204")],
+    [NFR205], [Game Language], [Usability], [Optional / Low], [M10 Release], [#status-box("nfr205")],
+    [NFR206], [Visual Style Consistency], [Usability], [Optional / Medium], [M09 Beta], [#status-box("nfr206")],
+    [NFR301], [Save File Portability], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr301")],
+    [NFR302], [Game Progress Persistence], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr302")],
+    [NFR303], [Save Data Integrity], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr303")],
+    [NFR401], [Extensibility of Game Systems], [Maintainability], [Optional / Medium], [M09 Beta], [#status-box("nfr401")],
+    [NFR402], [Automated Test Coverage], [Maintainability], [Required / Medium], [M09 Beta], [#status-box("nfr402")],
+    [NFR501], [Multi-Platform Support], [Portability], [Required / Medium], [M09 Beta], [#status-box("nfr501")],
+    [NFR502], [Engine and Rendering Pipeline], [Portability], [Optional / Low], [M10 Release], [#status-box("nfr502")],
+    [NFR503], [Display Resolution Support], [Portability], [Optional / Medium], [M10 Release], [#status-box("nfr503")],
+  ),
+  caption: [NFR Overview -- All Non-Functional Requirements at a Glance],
+  supplement: [Table],
+)
+
+Verification is tied to project milestones (see @milestones-table) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
+
+- *M08 -- Alpha Release (10.04.2026)*: All Required / High NFRs must pass. This is the MVP gate.
+- *M09 -- Beta Release (15.05.2026)*: Required / Medium and Optional / Medium NFRs are verified. Performance tuning and playtesting rounds.
+- *M10 -- Official Release (05.06.2026)*: Remaining Optional / Low NFRs are verified. Final polish and compliance check.
+
+==== Priority Matrix
+
+The priority matrix visualizes the distribution of NFRs across the two priority dimensions. This helps identify where the project's quality focus lies and whether the prioritization is balanced.
+
+#figure(
+  table(
+    columns: (0.8fr, 1.6fr, 1.6fr),
+    stroke: 0.5pt + gray,
+    align: left,
+    fill: (x, y) => {
+      if y == 0 or x == 0 { luma(230) }
+      else if x == 1 and y == 1 { prio-req-high }
+      else if x == 2 and y == 1 { prio-empty }
+      else if x == 1 and y == 2 { prio-req-med }
+      else if x == 2 and y == 2 { prio-opt-med }
+      else if x == 1 and y == 3 { prio-empty }
+      else if x == 2 and y == 3 { prio-opt-low }
+    },
+    [], [*Required (MVP)*], [*Optional (Post-MVP)*],
+    [*High*],
+    [NFR101, NFR102, NFR103 \ NFR201, NFR202, NFR203 \ NFR301, NFR302, NFR303],
+    [--],
+    [*Medium*],
+    [NFR104, NFR402, NFR501],
+    [NFR105, NFR204, NFR206 \ NFR401, NFR503],
+    [*Low*],
+    [--],
+    [NFR205, NFR502],
+  ),
+  caption: [NFR Priority Matrix -- MVP Relevance vs. Importance],
+  supplement: [Table],
+)
+
+The matrix shows that the core quality effort is concentrated in the *Required / High* cell (9 NFRs), covering performance, usability, and reliability -- the three pillars that directly impact the player experience in the MVP. The *Optional / Low* cell contains only 2 NFRs that represent project constraints rather than testable quality goals. This distribution confirms a deliberate focus on delivering a stable, playable MVP before addressing polish and platform breadth.
+
+==== Performance Efficiency
+
+Performance Efficiency addresses the amount of resources used under stated conditions. For GlowCore, this primarily concerns load times, frame rates, and resource consumption to ensure a smooth and responsive gameplay experience.
+
+#nfr_table(
+  id: [NFR101],
+  description: [World Load Time],
+  requirements: [Existing and newly created worlds must load within 3 seconds when the player presses "Start".],
+  priority: [Required / High],
+  measurement: [Measure elapsed time from pressing "Start" until the world is fully loaded and interactive. Tested on minimum hardware specification.],
+  verification: [Automated load-time benchmark test across 10 consecutive loads with varying world states (new and existing). All runs must complete within 3 seconds.],
+  result: [],
+  nfr_caption: [NFR101 -- World Load Time],
+  status_color: nfr-status.at("nfr101"),
+)
+
+#nfr_table(
+  id: [NFR102],
+  description: [In-Game Transition Time],
+  requirements: [In-game transitions (e.g. walking into a cave) shall not exceed 2 seconds.],
+  priority: [Required / High],
+  measurement: [Measure elapsed time from triggering the transition until the new scene is fully loaded and interactive.],
+  verification: [Trigger each scene transition during playtesting and record the load time. Automated scene-transition benchmark covering all transition points.],
+  result: [],
+  nfr_caption: [NFR102 -- In-Game Transition Time],
+  status_color: nfr-status.at("nfr102"),
+)
+
+#nfr_table(
+  id: [NFR103],
+  description: [Frame Rate],
+  requirements: [The game must run at a minimum of 60 FPS with 1% lows not dropping below 50 FPS on recommended hardware.],
+  priority: [Required / High],
+  measurement: [Use Unity Profiler or an external frame-time analysis tool to record FPS over a 5-minute gameplay session. Evaluate average FPS and 1% low values.],
+  verification: [Run a standardized gameplay scenario on minimum and recommended hardware. Capture FPS metrics and verify thresholds are met.],
+  result: [],
+  nfr_caption: [NFR103 -- Frame Rate],
+  status_color: nfr-status.at("nfr103"),
+)
+
+#nfr_table(
+  id: [NFR104],
+  description: [Save File Size],
+  requirements: [The save file must not exceed 1 MB in size. Binary serialization must be used.],
+  priority: [Required / Medium],
+  measurement: [Measure the file size of the save file after a full gameplay session with maximum expected game progress.],
+  verification: [Create a save file at various progression stages and verify the file size stays below 1 MB. Confirm binary serialization format by inspecting the file structure.],
+  result: [],
+  nfr_caption: [NFR104 -- Save File Size],
+  status_color: nfr-status.at("nfr104"),
+)
+
+#nfr_table(
+  id: [NFR105],
+  description: [Minimal Hardware Requirements],
+  requirements: [The game must run on minimal hardware, targeting low-end systems to maximize accessibility.],
+  priority: [Optional / Medium],
+  measurement: [Test the game on a defined minimum hardware baseline and verify all performance NFRs (FPS, load times) are met.],
+  verification: [Execute a full gameplay session on minimum-spec hardware. Record FPS, load times, and memory usage to confirm compliance.],
+  result: [],
+  nfr_caption: [NFR105 -- Minimal Hardware Requirements],
+  status_color: nfr-status.at("nfr105"),
+)
+
+==== Usability
+
+Usability covers the degree to which the product can be used effectively, efficiently, and satisfactorily. For GlowCore, this includes visual clarity of game mechanics, learnability for new players, and input support.
+
+#nfr_table(
+  id: [NFR201],
+  description: [Player Restriction Visibility],
+  requirements: [Player restrictions in the game must be clearly communicated through visual indicators such as greyed-out or red-tinted elements. Players must understand restrictions without additional explanation.],
+  priority: [Required / High],
+  measurement: [Conduct playtesting with at least 3 new players. Each player must correctly identify restricted actions without external guidance.],
+  verification: [During playtesting sessions, observe whether players attempt restricted actions and whether they understand the visual cues. Document success rate.],
+  result: [],
+  nfr_caption: [NFR201 -- Player Restriction Visibility],
+  status_color: nfr-status.at("nfr201"),
+)
+
+#nfr_table(
+  id: [NFR202],
+  description: [Light Upgrade Progress Indication],
+  requirements: [Light upgrade progress must be clearly indicated to the player at all times during gameplay.],
+  priority: [Required / High],
+  measurement: [During playtesting, ask players to describe their current upgrade progress. At least 80% must answer correctly.],
+  verification: [Conduct playtesting sessions and survey players about their perceived progress. Verify the UI communicates upgrade status unambiguously.],
+  result: [],
+  nfr_caption: [NFR202 -- Light Upgrade Progress Indication],
+  status_color: nfr-status.at("nfr202"),
+)
+
+#nfr_table(
+  id: [NFR203],
+  description: [New Player Learnability],
+  requirements: [A new player shall understand core mechanics (movement, gathering, upgrading) within 5 minutes without external instructions.],
+  priority: [Required / High],
+  measurement: [Time how long a new player takes to perform their first gather, move to a new area, and initiate an upgrade without any external help.],
+  verification: [Conduct playtesting with at least 3 players who have never seen the game. Measure time to complete core actions. All players must achieve this within 5 minutes.],
+  result: [],
+  nfr_caption: [NFR203 -- New Player Learnability],
+  status_color: nfr-status.at("nfr203"),
+)
+
+#nfr_table(
+  id: [NFR204],
+  description: [Input Support],
+  requirements: [The game must support both controller and keyboard input methods.],
+  priority: [Optional / Medium],
+  measurement: [Test all core gameplay actions with both a standard controller (e.g. Xbox controller) and keyboard. All actions must be executable with both input methods.],
+  verification: [Perform a full gameplay session using only controller, then only keyboard. Verify all interactions, menus, and gameplay mechanics are fully accessible with each input method.],
+  result: [],
+  nfr_caption: [NFR204 -- Input Support],
+  status_color: nfr-status.at("nfr204"),
+)
+
+#nfr_table(
+  id: [NFR205],
+  description: [Game Language],
+  requirements: [All in-game text, UI elements, and instructions must be in English.],
+  priority: [Optional / Low],
+  measurement: [Review all in-game text and UI elements for non-English content.],
+  verification: [Manual review of all text-containing assets and UI screens to confirm English language throughout.],
+  result: [],
+  nfr_caption: [NFR205 -- Game Language],
+  status_color: nfr-status.at("nfr205"),
+)
+
+#nfr_table(
+  id: [NFR206],
+  description: [Visual Style Consistency],
+  requirements: [All visual assets must follow the low-poly pastel art style consistently throughout the game.],
+  priority: [Optional / Medium],
+  measurement: [Visual review of all assets against the defined art style guide. No asset shall deviate from the low-poly pastel aesthetic.],
+  verification: [Conduct an art review session where all in-game assets are compared against reference material. Flag and correct any deviations.],
+  result: [],
+  nfr_caption: [NFR206 -- Visual Style Consistency],
+  status_color: nfr-status.at("nfr206"),
+)
+
+==== Reliability
+
+Reliability addresses the degree to which a system performs specified functions under specified conditions for a specified period of time. For GlowCore, this is critical for save data integrity and game stability.
+
+#nfr_table(
+  id: [NFR301],
+  description: [Save File Portability],
+  requirements: [The save file must be a single file that can be copied and moved. When placed into the game's save file folder, the save file must be recognized and function without issues.],
+  priority: [Required / High],
+  measurement: [Copy a save file to a different machine or location, place it in the save folder, and verify the game loads it correctly with all progress intact.],
+  verification: [Create a save file with significant progress. Copy it to a new installation. Load the game and verify all progress, items, and world state are preserved.],
+  result: [],
+  nfr_caption: [NFR301 -- Save File Portability],
+  status_color: nfr-status.at("nfr301"),
+)
+
+#nfr_table(
+  id: [NFR302],
+  description: [Game Progress Persistence],
+  requirements: [Game progress shall not be lost during normal shutdown. Auto-save shall occur at least every 2 minutes or immediately after a light upgrade.],
+  priority: [Required / High],
+  measurement: [Verify auto-save triggers by monitoring save file timestamps during gameplay. Confirm no data loss after normal shutdown.],
+  verification: [Play for several minutes, perform a light upgrade, then shut down the game normally. Restart and verify all progress is retained. Additionally, verify auto-save timestamps occur within 2-minute intervals.],
+  result: [],
+  nfr_caption: [NFR302 -- Game Progress Persistence],
+  status_color: nfr-status.at("nfr302"),
+)
+
+#nfr_table(
+  id: [NFR303],
+  description: [Save Data Integrity],
+  requirements: [Save data must persist correctly across sessions without corruption.],
+  priority: [Required / High],
+  measurement: [Perform repeated save/load cycles (minimum 20) and verify data integrity after each cycle by comparing expected vs. actual game state.],
+  verification: [Automated test that saves game state, reloads it, and compares all serialized fields for correctness. Run across multiple sessions and verify zero corruption occurrences.],
+  result: [],
+  nfr_caption: [NFR303 -- Save Data Integrity],
+  status_color: nfr-status.at("nfr303"),
+)
+
+==== Maintainability
+
+Maintainability represents the degree of effectiveness and efficiency with which a product can be modified. For GlowCore, this covers extensibility of game systems and test coverage.
+
+#nfr_table(
+  id: [NFR401],
+  description: [Extensibility of Game Systems],
+  requirements: [The code must allow adding new LightCore upgrades and new items with their resource nodes without requiring code restructuring.],
+  priority: [Optional / Medium],
+  measurement: [A developer unfamiliar with the codebase must be able to add a new upgrade or item by following existing patterns, without modifying core system code.],
+  verification: [Task a team member with adding a new test upgrade and resource node. Measure the time required and verify no structural code changes were necessary.],
+  result: [],
+  nfr_caption: [NFR401 -- Extensibility of Game Systems],
+  status_color: nfr-status.at("nfr401"),
+)
+
+#nfr_table(
+  id: [NFR402],
+  description: [Automated Test Coverage],
+  requirements: [All systems must be covered by automated tests. The project targets a minimum of 40% code coverage.],
+  priority: [Required / Medium],
+  measurement: [Measure code coverage using the Unity Code Coverage package. Report overall and per-system coverage percentages.],
+  verification: [Run the full automated test suite and generate a coverage report. Verify that overall coverage meets or exceeds 40%.],
+  result: [],
+  nfr_caption: [NFR402 -- Automated Test Coverage],
+  status_color: nfr-status.at("nfr402"),
+)
+
+==== Portability
+
+Portability addresses the degree of effectiveness and efficiency with which a system can be transferred from one environment to another. For GlowCore, this covers platform support and display resolution compatibility.
+
+#nfr_table(
+  id: [NFR501],
+  description: [Multi-Platform Support],
+  requirements: [The game must run on Windows, Linux, and Web platforms.],
+  priority: [Required / Medium],
+  measurement: [Build and deploy the game on all three platforms. Launch and complete a full gameplay session on each.],
+  verification: [Execute the full test suite and a manual gameplay session on Windows, Linux, and a Web browser. Verify all features work identically across platforms.],
+  result: [],
+  nfr_caption: [NFR501 -- Multi-Platform Support],
+  status_color: nfr-status.at("nfr501"),
+)
+
+#nfr_table(
+  id: [NFR502],
+  description: [Engine and Rendering Pipeline],
+  requirements: [The game must run on the Unity engine using the PhysX physics engine and the Universal Render Pipeline (URP).],
+  priority: [Optional / Low],
+  measurement: [Verify project settings confirm Unity with PhysX and URP are configured as the active engine and rendering pipeline.],
+  verification: [Review Unity project settings and confirm PhysX is the active physics engine and URP is the active render pipeline. Verify no fallback to built-in pipeline occurs during gameplay.],
+  result: [],
+  nfr_caption: [NFR502 -- Engine and Rendering Pipeline],
+  status_color: nfr-status.at("nfr502"),
+)
+
+#nfr_table(
+  id: [NFR503],
+  description: [Display Resolution Support],
+  requirements: [The game must support common display resolutions with a 16:9 aspect ratio. Minimum: 1280×720. Recommended: 1920×1080, 2560×1440, and 3840×2160 (4K).],
+  priority: [Optional / Medium],
+  measurement: [Launch the game at each supported resolution and verify the UI scales correctly, no elements are clipped, and the game renders properly.],
+  verification: [Test the game at all specified resolutions. Take screenshots and verify correct rendering, UI scaling, and absence of visual artifacts.],
+  result: [],
+  nfr_caption: [NFR503 -- Display Resolution Support],
+  status_color: nfr-status.at("nfr503"),
+)
