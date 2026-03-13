@@ -375,16 +375,15 @@
   result: [],
   nfr_caption: [],
   status_color: blue,
-) = {
-  set table(
-    align: start,
-    columns: (1fr, 4.1fr, 0.2fr),
-    fill: (x, _) =>
-      if calc.even(x) { main_color_table }
-      else { none
-    }
-  )
-  figure(
+) = figure(
+  {
+    set table(
+      align: start,
+      columns: (1fr, 4.1fr, 0.2fr),
+      fill: (x, _) =>
+        if calc.even(x) { main_color_table }
+        else { none }
+    )
     table(
       [#strong("ID")], strong(id), table.cell(fill: status_color, []),
       [#strong("Description")], table.cell(colspan: 2, description),
@@ -393,11 +392,11 @@
       [#strong("Measurement")], table.cell(colspan: 2, measurement),
       [#strong("Verification")], table.cell(colspan: 2, verification),
       [#strong("Result")], table.cell(colspan: 2, result),
-    ),
-    caption: nfr_caption,
-    supplement: [Table],
-  )
-}
+    )
+  },
+  caption: nfr_caption,
+  supplement: [Table],
+)
 
 #let testAblauf_table(
   id: [],

@@ -210,6 +210,14 @@ The Use Cases marked with *Priority: Middle* are planned to be implemented, but 
 
 #import "../../lib.typ": nfr_table
 
+#show ref: it => {
+  if it.element != none and it.element.func() == figure {
+    link(it.target, str(it.target))
+  } else {
+    it
+  }
+}
+
 // ── NFR Status Registry ──
 // Update the status color here once — it syncs to both the overview table and the detail table.
 // Colors: blue (not tested), green (passed), orange (partial), red (failed)
@@ -291,31 +299,32 @@ The following table provides a compact overview of all non-functional requiremen
     align: left,
     fill: (x, y) => if y == 0 { luma(230) },
     [*ID*], [*Name*], [*Category*], [*Priority*], [*Verify at*], [*Status*],
-    [NFR101], [World Load Time], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr101")],
-    [NFR102], [In-Game Transition Time], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr102")],
-    [NFR103], [Frame Rate], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr103")],
-    [NFR104], [Save File Size], [Performance], [Required / Medium], [M08 Alpha], [#status-box("nfr104")],
-    [NFR105], [Minimal Hardware Req.], [Performance], [Optional / Medium], [M09 Beta], [#status-box("nfr105")],
-    [NFR201], [Player Restriction Visibility], [Usability], [Required / High], [M08 Alpha], [#status-box("nfr201")],
-    [NFR202], [Light Upgrade Progress], [Usability], [Required / High], [M08 Alpha], [#status-box("nfr202")],
-    [NFR203], [New Player Learnability], [Usability], [Required / High], [M09 Beta], [#status-box("nfr203")],
-    [NFR204], [Input Support], [Usability], [Optional / Medium], [M09 Beta], [#status-box("nfr204")],
-    [NFR205], [Game Language], [Usability], [Optional / Low], [M10 Release], [#status-box("nfr205")],
-    [NFR206], [Visual Style Consistency], [Usability], [Optional / Medium], [M09 Beta], [#status-box("nfr206")],
-    [NFR301], [Save File Portability], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr301")],
-    [NFR302], [Game Progress Persistence], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr302")],
-    [NFR303], [Save Data Integrity], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr303")],
-    [NFR401], [Extensibility of Game Systems], [Maintainability], [Optional / Medium], [M09 Beta], [#status-box("nfr401")],
-    [NFR402], [Automated Test Coverage], [Maintainability], [Required / Medium], [M09 Beta], [#status-box("nfr402")],
-    [NFR501], [Multi-Platform Support], [Portability], [Required / Medium], [M09 Beta], [#status-box("nfr501")],
-    [NFR502], [Engine and Rendering Pipeline], [Portability], [Optional / Low], [M10 Release], [#status-box("nfr502")],
-    [NFR503], [Display Resolution Support], [Portability], [Optional / Medium], [M10 Release], [#status-box("nfr503")],
+    [@NFR101], [World Load Time], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr101")],
+    [@NFR102], [In-Game Transition Time], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr102")],
+    [@NFR103], [Frame Rate], [Performance], [Required / High], [M08 Alpha], [#status-box("nfr103")],
+    [@NFR104], [Save File Size], [Performance], [Required /\ Medium], [M08 Alpha], [#status-box("nfr104")],
+    [@NFR105], [Minimal Hardware Req.], [Performance], [Optional /\ Medium], [M09 Beta], [#status-box("nfr105")],
+    [@NFR201], [Player Restriction Visibility], [Usability], [Required / High], [M08 Alpha], [#status-box("nfr201")],
+    [@NFR202], [Light Upgrade Progress], [Usability], [Required / High], [M08 Alpha], [#status-box("nfr202")],
+    [@NFR203], [New Player Learnability], [Usability], [Required / High], [M09 Beta], [#status-box("nfr203")],
+    [@NFR204], [Input Support], [Usability], [Optional /\ Medium], [M09 Beta], [#status-box("nfr204")],
+    [@NFR205], [Game Language], [Usability], [Optional / Low], [M10 Release], [#status-box("nfr205")],
+    [@NFR206], [Visual Style Consistency], [Usability], [Optional /\ Medium], [M09 Beta], [#status-box("nfr206")],
+    [@NFR301], [Save File Portability], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr301")],
+    [@NFR302], [Game Progress Persistence], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr302")],
+    [@NFR303], [Save Data Integrity], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr303")],
+    [@NFR401], [Extensibility of Game Systems], [Maintainability], [Optional /\ Medium], [M09 Beta], [#status-box("nfr401")],
+    [@NFR402], [Automated Test Coverage], [Maintainability], [Required /\ Medium], [M09 Beta], [#status-box("nfr402")],
+    [@NFR501], [Multi-Platform Support], [Portability], [Required /\ Medium], [M09 Beta], [#status-box("nfr501")],
+    [@NFR502], [Engine and Rendering Pipeline], [Portability], [Optional / Low], [M10 Release], [#status-box("nfr502")],
+    [@NFR503], [Display Resolution Support], [Portability], [Optional /\ Medium], [M10 Release], [#status-box("nfr503")],
   ),
   caption: [NFR Overview -- All Non-Functional Requirements at a Glance],
   supplement: [Table],
 )
 
-Verification is tied to project milestones (see @milestones-table) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
+
+Verification is tied to project milestones (see @Milestones) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
 
 - *M08 -- Alpha Release (10.04.2026)*: All Required / High NFRs must pass. This is the MVP gate.
 - *M09 -- Beta Release (15.05.2026)*: Required / Medium and Optional / Medium NFRs are verified. Performance tuning and playtesting rounds.
@@ -354,11 +363,12 @@ The priority matrix visualizes the distribution of NFRs across the two priority 
   supplement: [Table],
 )
 
-The matrix shows that the core quality effort is concentrated in the *Required / High* cell (9 NFRs), covering performance, usability, and reliability -- the three pillars that directly impact the player experience in the MVP. The *Optional / Low* cell contains only 2 NFRs that represent project constraints rather than testable quality goals. This distribution confirms a deliberate focus on delivering a stable, playable MVP before addressing polish and platform breadth.
+The matrix shows that the core quality effort is concentrated in the *Required / High* cell (9 NFRs), covering performance, usability, and reliability which are the three pillars that directly impact the player experience in the MVP. The *Optional / Low* cell contains only 2 NFRs that represent project constraints rather than testable quality goals. Priority is on delivering a stable, playable MVP before addressing optional requirements.
 
 ==== Performance Efficiency
 
 Performance Efficiency addresses the amount of resources used under stated conditions. For GlowCore, this primarily concerns load times, frame rates, and resource consumption to ensure a smooth and responsive gameplay experience.
+
 
 #nfr_table(
   id: [NFR101],
@@ -370,7 +380,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   result: [],
   nfr_caption: [NFR101 -- World Load Time],
   status_color: nfr-status.at("nfr101"),
-)
+) <NFR101>
 
 #nfr_table(
   id: [NFR102],
@@ -382,7 +392,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   result: [],
   nfr_caption: [NFR102 -- In-Game Transition Time],
   status_color: nfr-status.at("nfr102"),
-)
+) <NFR102>
 
 #nfr_table(
   id: [NFR103],
@@ -394,7 +404,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   result: [],
   nfr_caption: [NFR103 -- Frame Rate],
   status_color: nfr-status.at("nfr103"),
-)
+)<NFR103>
 
 #nfr_table(
   id: [NFR104],
@@ -406,7 +416,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   result: [],
   nfr_caption: [NFR104 -- Save File Size],
   status_color: nfr-status.at("nfr104"),
-)
+)<NFR104>
 
 #nfr_table(
   id: [NFR105],
@@ -418,7 +428,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   result: [],
   nfr_caption: [NFR105 -- Minimal Hardware Requirements],
   status_color: nfr-status.at("nfr105"),
-)
+)<NFR105>
 
 ==== Usability
 
@@ -434,7 +444,7 @@ Usability covers the degree to which the product can be used effectively, effici
   result: [],
   nfr_caption: [NFR201 -- Player Restriction Visibility],
   status_color: nfr-status.at("nfr201"),
-)
+)<NFR201>
 
 #nfr_table(
   id: [NFR202],
@@ -446,7 +456,7 @@ Usability covers the degree to which the product can be used effectively, effici
   result: [],
   nfr_caption: [NFR202 -- Light Upgrade Progress Indication],
   status_color: nfr-status.at("nfr202"),
-)
+)<NFR202>
 
 #nfr_table(
   id: [NFR203],
@@ -458,7 +468,7 @@ Usability covers the degree to which the product can be used effectively, effici
   result: [],
   nfr_caption: [NFR203 -- New Player Learnability],
   status_color: nfr-status.at("nfr203"),
-)
+)<NFR203>
 
 #nfr_table(
   id: [NFR204],
@@ -470,7 +480,7 @@ Usability covers the degree to which the product can be used effectively, effici
   result: [],
   nfr_caption: [NFR204 -- Input Support],
   status_color: nfr-status.at("nfr204"),
-)
+)<NFR204>
 
 #nfr_table(
   id: [NFR205],
@@ -482,7 +492,7 @@ Usability covers the degree to which the product can be used effectively, effici
   result: [],
   nfr_caption: [NFR205 -- Game Language],
   status_color: nfr-status.at("nfr205"),
-)
+)<NFR205>
 
 #nfr_table(
   id: [NFR206],
@@ -494,7 +504,7 @@ Usability covers the degree to which the product can be used effectively, effici
   result: [],
   nfr_caption: [NFR206 -- Visual Style Consistency],
   status_color: nfr-status.at("nfr206"),
-)
+)<NFR206>
 
 ==== Reliability
 
@@ -510,7 +520,7 @@ Reliability addresses the degree to which a system performs specified functions 
   result: [],
   nfr_caption: [NFR301 -- Save File Portability],
   status_color: nfr-status.at("nfr301"),
-)
+)<NFR301>
 
 #nfr_table(
   id: [NFR302],
@@ -522,7 +532,7 @@ Reliability addresses the degree to which a system performs specified functions 
   result: [],
   nfr_caption: [NFR302 -- Game Progress Persistence],
   status_color: nfr-status.at("nfr302"),
-)
+)<NFR302>
 
 #nfr_table(
   id: [NFR303],
@@ -534,7 +544,7 @@ Reliability addresses the degree to which a system performs specified functions 
   result: [],
   nfr_caption: [NFR303 -- Save Data Integrity],
   status_color: nfr-status.at("nfr303"),
-)
+)<NFR303>
 
 ==== Maintainability
 
@@ -550,7 +560,7 @@ Maintainability represents the degree of effectiveness and efficiency with which
   result: [],
   nfr_caption: [NFR401 -- Extensibility of Game Systems],
   status_color: nfr-status.at("nfr401"),
-)
+)<NFR401>
 
 #nfr_table(
   id: [NFR402],
@@ -562,7 +572,7 @@ Maintainability represents the degree of effectiveness and efficiency with which
   result: [],
   nfr_caption: [NFR402 -- Automated Test Coverage],
   status_color: nfr-status.at("nfr402"),
-)
+)<NFR402>
 
 ==== Portability
 
@@ -578,7 +588,7 @@ Portability addresses the degree of effectiveness and efficiency with which a sy
   result: [],
   nfr_caption: [NFR501 -- Multi-Platform Support],
   status_color: nfr-status.at("nfr501"),
-)
+) <NFR501>
 
 #nfr_table(
   id: [NFR502],
@@ -590,7 +600,7 @@ Portability addresses the degree of effectiveness and efficiency with which a sy
   result: [],
   nfr_caption: [NFR502 -- Engine and Rendering Pipeline],
   status_color: nfr-status.at("nfr502"),
-)
+) <NFR502>
 
 #nfr_table(
   id: [NFR503],
@@ -602,4 +612,4 @@ Portability addresses the degree of effectiveness and efficiency with which a sy
   result: [],
   nfr_caption: [NFR503 -- Display Resolution Support],
   status_color: nfr-status.at("nfr503"),
-)
+) <NFR503>

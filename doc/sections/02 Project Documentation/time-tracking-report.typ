@@ -11,7 +11,7 @@ The time is grouped by member and by sprint. Per sprint and person the time is r
     fill: (x, y) => if y == 0 { luma(230) },
     align: left,
 
-    [*Sprint*], [*Cedric Cathomas*], [*Nathanael Fässler*], [*Yoris Kucera*], [*Dominik Wyss*], [*Total*],
+    [*Sprint*], [*Cedric\ Cathomas*], [*Nathanael Fässler*], [*Yoris Kucera*], [*Dominik Wyss*], [*Total*],
     [1], [23h], [29h], [21h], [24h], [97h],
     [2], [], [], [], [], [],
     [3], [], [], [], [], [],

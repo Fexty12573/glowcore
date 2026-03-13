@@ -379,7 +379,7 @@ The milestones for the review meetings and for the releases are interleaved and 
   ),
   caption: [Milestones],
   supplement: [Table],
-) <milestones-table>
+) <Milestones>
 
 #v(1em)
 ===== Epics
