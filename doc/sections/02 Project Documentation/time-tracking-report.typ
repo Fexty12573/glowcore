@@ -6,7 +6,7 @@ Every member tracks time on Jira on the corresponding task/story. Time spent in 
 The time is grouped by member and by sprint. Per sprint and person the time is rounded to the nearest hour.
 #figure(
   table(
-    columns: (0.6fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    columns: (0.6fr, 1fr, 1fr, 1fr, 1fr, 0.6fr),
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     align: left,

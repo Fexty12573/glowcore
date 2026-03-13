@@ -307,35 +307,35 @@ The milestones for the review meetings and for the releases are interleaved and 
 
     [M01],
     [Review 1],
-    [16.02.2026],
+    [10.03.2026],
     [
       Initial Project Setup
     ],
 
     [M02],
     [Review 2],
-    [11.03.2026],
+    [24.03.2026],
     [
       Requirements
     ],
 
     [M03],
     [Review 3],
-    [25.03.2026],
+    [14.04.2026],
     [
       End of Elaboration
     ],
 
     [M04],
     [Review 4],
-    [08.04.20266],
+    [28.04.2026 ],
     [
       Quality
     ],
 
     [M05],
     [Review 5],
-    [29.04.02.2026],
+    [12.05.2026],
     [
       Architecture
     ],
