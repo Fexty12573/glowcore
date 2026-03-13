@@ -1,0 +1,89 @@
+name: Documentation Build
+
+on:
+  push:
+    branches: [main, dev]
+    tags: ['d*.*']
+    paths:
+      - 'doc/**/*'
+  pull_request:
+    branches: [main, dev]
+
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Typst
+        uses: typst-community/setup-typst@v4
+      
+      - name: Install Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontconfig fonts-freefont-ttf
+          sudo mkdir -p /usr/share/fonts/truetype/msttcorefonts
+          sudo cp doc/.fonts/* /usr/share/fonts/truetype/msttcorefonts/
+          fc-cache -fv    
+
+      - name: Build Main Documentation
+        run: |
+          mkdir -p doc/output
+          git fetch --tags --force
+          VERSION="$(git tag --list --sort=-v:refname | grep -E '^d[0-9]+\.[0-9]+$' | head -n 1 || true)"
+          if [ -n "$GITHUB_REF" ] && echo "$GITHUB_REF" | grep -Eq '^refs/tags/d[0-9]+\.[0-9]+$'; then VERSION="${GITHUB_REF#refs/tags/}"; fi
+          if [ -z "$VERSION" ]; then VERSION="d00.00"; fi
+          VERSION_DOC="${VERSION#d}"
+          GIT_VERSION="$(git rev-parse --short HEAD)"
+          # Replace build placeholders in all Typst sources before compiling.
+          find doc -type f -name '*.typ' -print0 | xargs -0 sed -i "s/__VERSION__/${VERSION_DOC}/g"
+          find doc -type f -name '*.typ' -print0 | xargs -0 sed -i "s/__GIT_VERSION__/${GIT_VERSION}/g"
+          echo "Building documentation for version $VERSION_DOC (tag: $VERSION)"
+          echo "Using git version $GIT_VERSION"
+          typst compile --root doc --font-path /usr/share/fonts/truetype/msttcorefonts doc/main.typ doc/output/documentation.pdf
+        
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: Documentation-PDFs
+          path: doc/output/*.pdf
+      
+  deploy-docs:
+    name: Deploy Documentation
+    needs: build-docs
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: Documentation-PDFs
+          path: docs
+        
+      - name: Find Target Dir
+        id: find-dir
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "dest=prod/docs" >> $GITHUB_OUTPUT
+          else
+            echo "dest=dev/docs" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Copy Index Page
+        run: cp doc/index.html docs/index.html
+
+      - name: Deploy to Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs
+          target-folder: ${{ steps.find-dir.outputs.dest }}
+          branch: pages
+          clean: false
