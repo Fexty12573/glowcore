@@ -1,4 +1,19 @@
-# GlowCore
+<div align="center">
+    <h1>GlowCore</h1>
+    <a href="https://fexty12573.github.io/glowcore/dev/webgl/">
+        <img src="https://img.shields.io/badge/webgl-latest-orange?logo=webgl">
+    </a>
+    <a href="https://fexty12573.github.io/glowcore/dev/docs/">
+        <img src="https://img.shields.io/badge/docs-latest-orange?logo=typst">
+    </a>
+    <br/>
+    <a href="https://fexty12573.github.io/glowcore/prod/webgl/">
+        <img src="https://img.shields.io/badge/webgl-stable-blue?logo=webgl">
+    </a>
+    <a href="https://fexty12573.github.io/glowcore/prod/docs/">
+        <img src="https://img.shields.io/badge/docs-stable-blue?logo=typst">
+    </a>
+</div>
 
 ## Contributing
 Please refer to the [Coding Guidelines](CODING-GUIDELINES.md) for details on code style and best practices when contributing to this project.
