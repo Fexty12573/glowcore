@@ -4,7 +4,7 @@
 
 === Functional Requirements
 ==== Actors / Personas
-Since a game typically only has one primary actor - *The Player* - it makes sense to define Personas that reflect different types of players. The categorization into Casual- and Dedicated Players covers most player types.
+Since a game typically only has one primary actor - *The Player* - it makes sense to define Personas that reflect different types of players. The categorization into Casual- and Dedicated Players covers most player types. In the following, the pronoun *he* is used for simplicity, but the Personas are meant to include all players.
 
 
 
@@ -14,12 +14,12 @@ Since a game typically only has one primary actor - *The Player* - it makes sens
 - The Casual Player never changes settings in games, he never feels the need to customize anything. He likes to play the game as it is.
 
 ===== Dedicated Player
-- The Dedicated Player plays GlowCore in long sessions. He loves games where you build factories and automate everything. He searches for the feeling of progress and finds satisfaction in it. He always searches for a better way to progress and optimize his gameplay.
+- The Dedicated Player plays GlowCore in long sessions. He loves games where you build factories and automate everything. He searches for the feeling of progression and finds satisfaction in it. He always searches for a better way to progress and optimize his gameplay.
 - The Dedicated Player has already played the game multiple times before, thus he doesn't want to be bored with a long tutorial everytime he starts a new game. He wants to be able to dictate the pacing of the game.
 - He doesn't care for the story and lore in games. He doesn't want to read through dialogues and doesn't like long cutscenes.
 
 ==== Use Case Diagram
-The diagram shows a modified version of the Use Case Diagram. The Personas take the place of the Actors. An arrow indicates that a Persona uses a feature. A missing arrow means that the persona is not interested in using a feature, although it remains accessible to him.
+The diagram shows a modified version of the Use Case Diagram. The Personas take the place of the Actors. An arrow indicates that a Persona uses a feature. A missing arrow means that the Persona is not interested in using a feature, although it remains accessible to him.
 
 #figure(
   image("../../resources/02 Project Documentation/UseCaseDiagram.png"),
