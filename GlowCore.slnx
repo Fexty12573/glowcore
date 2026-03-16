@@ -1,4 +1,7 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Gameplay.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="UnitTests.csproj" />
+  <Project Path="IntegrationTests.csproj" />
 </Solution>
