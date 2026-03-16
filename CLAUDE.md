@@ -92,7 +92,7 @@ Assets/
 - **Main branches:** `main` (production), `dev` (integration)
 - **Branch naming:** `<type>/gc-<jira-id>-description`
   - Types: `feature`, `bug`, `docs`, `task`
-- PRs target `main` from feature branches. Reference the Jira issue in PR descriptions.
+- PRs target `dev` from feature branches. Reference the Jira issue in PR descriptions.
 - Do not commit Unity-generated folders: `Library/`, `Temp/`, `Obj/`, `Logs/`, `UserSettings/`, `Build/`.
 
 ## CI/CD
