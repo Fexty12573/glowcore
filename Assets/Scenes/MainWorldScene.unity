@@ -293,6 +293,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1536647946650228223, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
   m_PrefabInstance: {fileID: 172706882}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &249066554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+  m_PrefabInstance: {fileID: 4775361754903699258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &249066560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249066554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.PhysicsRaycaster
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
+--- !u!20 &249066566 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7304261506459258767, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+  m_PrefabInstance: {fileID: 4775361754903699258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &249066567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249066554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d596befe5824b818b68fb55e6427e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::InteractionSystem
+  cam: {fileID: 249066566}
+--- !u!1 &365406999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 365407003}
+  - component: {fileID: 365407002}
+  - component: {fileID: 365407001}
+  - component: {fileID: 365407000}
+  - component: {fileID: 365407004}
+  m_Layer: 0
+  m_Name: Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &365407004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365406999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 8
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &384104869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1389519735
 Transform:
   m_ObjectHideFlags: 0
@@ -1316,7 +1393,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}, insertIndex: -1, addedObject: {fileID: 249066560}},
+      {targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}, insertIndex: -1, addedObject: {fileID: 249066567}}]
   m_SourcePrefab: {fileID: 100100000, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
