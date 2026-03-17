@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d596befe5824b818b68fb55e6427e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::InteractionSystem
-  cam: {fileID: 249066566}
+  m_cam: {fileID: 249066566}
 --- !u!1 &365406999
 GameObject:
   m_ObjectHideFlags: 0

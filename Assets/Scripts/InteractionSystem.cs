@@ -10,40 +10,53 @@ public interface IInteractable
 
 public class InteractionSystem : MonoBehaviour
 {
-    public Camera cam;
-    private IInteractable currentInteractable;
-    private Outline currentOutline;
+    [SerializeField] private Camera m_camera;
+    [SerializeField] private Transform m_player;
+    [SerializeField] private float m_raycastRange = 100f;
+    private IInteractable m_currentInteractable;
+    private Outline m_currentOutline;
+    private Vector2 m_mousePos;
 
-    void Update()
+    private void Update()
     {
-        Vector2 mousePos = Mouse.current.position.ReadValue();
-        Ray ray = cam.ScreenPointToRay(mousePos);
-        RaycastHit hit;
+        Ray ray = m_camera.ScreenPointToRay(m_mousePos);
 
-        if (Physics.Raycast(ray, out hit, 100f))
+        if (Physics.Raycast(ray, out RaycastHit hit, m_raycastRange))
         {
-            IInteractable interactable;
-            Outline outline;
+            Vector3 playerPos = m_player.position;
+            Vector3 hitPos = hit.collider.transform.position;
 
-            hit.collider.TryGetComponent(out interactable);
-            hit.collider.TryGetComponent(out outline);
-            if (interactable != currentInteractable || outline != currentOutline)
+            playerPos.y = 0;
+            hitPos.y = 0;
+
+            float distance = Vector3.Distance(playerPos, hitPos);
+
+            // TODO read interactable distance from ScriptableObject attribute
+            if (distance > 3f)
+            {
+                Clear();
+                return;
+            }
+
+            hit.collider.TryGetComponent(out IInteractable interactable);
+            hit.collider.TryGetComponent(out Outline outline);
+            if (interactable != m_currentInteractable || outline != m_currentOutline)
             {
                 Clear();
 
-                currentInteractable = interactable;
-                currentOutline = outline;
+                m_currentInteractable = interactable;
+                m_currentOutline = outline;
 
-                currentInteractable?.OnHover();
+                m_currentInteractable?.OnHover();
 
-                if (currentOutline is not null)
-                    currentOutline.enabled = true;
+                if (m_currentOutline)
+                    m_currentOutline.enabled = true;
             }
 
-            if (currentInteractable is not null && (Keyboard.current.eKey.wasPressedThisFrame ||
-                                                    Mouse.current.leftButton.wasPressedThisFrame))
+            if (m_currentInteractable is not null && (Keyboard.current.eKey.wasPressedThisFrame ||
+                                                      Mouse.current.leftButton.wasPressedThisFrame))
             {
-                currentInteractable.Interact();
+                m_currentInteractable.Interact();
             }
         }
         else
@@ -52,14 +65,19 @@ public class InteractionSystem : MonoBehaviour
         }
     }
 
-    void Clear()
+    private void Clear()
     {
-        if (currentOutline)
-            currentOutline.enabled = false;
+        if (m_currentOutline)
+            m_currentOutline.enabled = false;
 
-        currentInteractable?.OnHoverExit();
+        m_currentInteractable?.OnHoverExit();
 
-        currentInteractable = null;
-        currentOutline = null;
+        m_currentInteractable = null;
+        m_currentOutline = null;
+    }
+
+    private void OnPoint(InputValue value)
+    {
+        m_mousePos = value.Get<Vector2>();
     }
 }
