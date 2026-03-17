@@ -58,31 +58,22 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e381248844a07f845ab002d1834e50b5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6231194398735481887}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e381248844a07f845ab002d1834e50b5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6472058499595927783}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e381248844a07f845ab002d1834e50b5, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6231194398735481887}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e381248844a07f845ab002d1834e50b5, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5555478296076920935}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e381248844a07f845ab002d1834e50b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3350061873274811192}
   m_SourcePrefab: {fileID: 100100000, guid: e381248844a07f845ab002d1834e50b5, type: 3}
 --- !u!1 &7316264147354456548 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e381248844a07f845ab002d1834e50b5, type: 3}
   m_PrefabInstance: {fileID: 7586875059653848245}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6231194398735481887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7316264147354456548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e64003e57435541ab6d9e6b072d105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
 --- !u!135 &6472058499595927783
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104,6 +95,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6231194398735481887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316264147354456548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e64003e57435541ab6d9e6b072d105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
 --- !u!114 &5555478296076920935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,4 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f4bddb0f72c4045a1954e15cdd4e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Fire
-  m_worldGrid: {fileID: 0}
+  m_expandPerWood: 1
+--- !u!114 &-3350061873274811192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316264147354456548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8fbb66452f24e4b8404e220dada2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.World.GlowCoreObject
+  m_logs: []
