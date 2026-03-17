@@ -331,7 +331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d596befe5824b818b68fb55e6427e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::InteractionSystem
-  m_cam: {fileID: 249066566}
+  m_camera: {fileID: 249066566}
+  m_player: {fileID: 713368940}
+  m_raycastRange: 100
 --- !u!1 &365406999
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +785,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657392914}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &713368940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1631564033306397339, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+  m_PrefabInstance: {fileID: 4775361754903699258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &743787138
 GameObject:
   m_ObjectHideFlags: 0
