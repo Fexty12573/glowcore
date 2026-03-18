@@ -13,7 +13,7 @@ public class InteractionSystem : MonoBehaviour
     [SerializeField] private Camera m_camera;
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_raycastRange = 100f;
-    private IInteractable m_currentInteractable;
+    private InteractableRoot m_currentInteractable;
     private Outline m_currentOutline;
     private Vector2 m_mousePos;
 
@@ -23,6 +23,12 @@ public class InteractionSystem : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, m_raycastRange))
         {
+            if (!hit.collider.TryGetComponent(out InteractableChild child))
+            {
+                Clear();
+                return;
+            }
+
             Vector3 playerPos = m_player.position;
             Vector3 hitPos = hit.collider.transform.position;
 
@@ -38,8 +44,16 @@ public class InteractionSystem : MonoBehaviour
                 return;
             }
 
-            hit.collider.TryGetComponent(out IInteractable interactable);
-            hit.collider.TryGetComponent(out Outline outline);
+            // hit.collider.TryGetComponent(out InteractableChild interactableChild);
+            // IInteractable interactable = interactableChild.root;
+            // // hit.collider.TryGetComponent(out IInteractable interactable);
+            // hit.collider.TryGetComponent(out Outline outline);
+            // if (interactable != m_currentInteractable || outline != m_currentOutline)
+            // {
+
+            InteractableRoot interactable = child.root;
+            interactable.TryGetComponent(out Outline outline);
+
             if (interactable != m_currentInteractable || outline != m_currentOutline)
             {
                 Clear();

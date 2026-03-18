@@ -239,6 +239,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1141561732}
     m_Modifications:
+    - target: {fileID: 204529527427736150, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1536647946650228223, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -342,10 +346,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 365407003}
-  - component: {fileID: 365407002}
-  - component: {fileID: 365407001}
-  - component: {fileID: 365407000}
+  - component: {fileID: 365407005}
   - component: {fileID: 365407004}
   m_Layer: 0
   m_Name: Tree
@@ -372,6 +373,21 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!4 &365407005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365406999}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384104869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,13 +1416,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}, insertIndex: -1, addedObject: {fileID: 249066560}},
-      {targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}, insertIndex: -1, addedObject: {fileID: 249066567}}]
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 249066560}
+    - targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 249066567}
   m_SourcePrefab: {fileID: 100100000, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 365407005}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1993837537}
