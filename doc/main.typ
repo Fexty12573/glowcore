@@ -6,6 +6,9 @@
   top-right-logo: image("resources/OST-Logo.png", width: auto, height: 15mm, fit: "cover"),
 )
 
+#show link: set text(fill: blue.darken(20%))
+
+
 
 
 // ── Cover Page ──
