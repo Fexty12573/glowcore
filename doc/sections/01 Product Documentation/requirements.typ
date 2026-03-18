@@ -409,10 +409,10 @@ Performance Efficiency addresses the amount of resources used under stated condi
 #nfr_table(
   id: [NFR104],
   description: [Save File Size],
-  requirements: [Save files should remain compact and use an efficient binary serialization format. Under the currently defined maximum expected game progression and world configuration, a save file should not exceed 5MB.],
+  requirements: [Save files should remain compact and use a binary serialization format. Under the currently defined maximum expected game progression and world configuration, a save file should not exceed 5MB.],
   priority: [Required / Medium],
   measurement: [Measure the file size of the save file after a full gameplay session under the defined maximum expected game progression and world configuration.],
-  verification: [Create save files at various progression stages and verify the file size remains within the defined limit for the current scope. Confirm that an efficient binary serialization format is used.],
+  verification: [Create save files at various progression stages and verify the file size remains within the defined limit for the current scope. Confirm that a binary serialization format is used.],
   result: [],
   nfr_caption: [NFR104 -- Save File Size],
   status_color: nfr-status.at("nfr104"),
