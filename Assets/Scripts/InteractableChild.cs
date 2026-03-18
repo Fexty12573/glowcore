@@ -2,5 +2,5 @@
 
 public class InteractableChild : MonoBehaviour
 {
-    public InteractableRoot root;
+    public InteractableRoot Root;
 }

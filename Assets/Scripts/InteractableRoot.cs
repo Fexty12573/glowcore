@@ -16,7 +16,7 @@ public class InteractableRoot : MonoBehaviour, IInteractable
                 child = col.gameObject.AddComponent<InteractableChild>();
             }
 
-            child.root = this;
+            child.Root = this;
         }
     }
 

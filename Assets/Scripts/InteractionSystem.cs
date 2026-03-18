@@ -44,14 +44,7 @@ public class InteractionSystem : MonoBehaviour
                 return;
             }
 
-            // hit.collider.TryGetComponent(out InteractableChild interactableChild);
-            // IInteractable interactable = interactableChild.root;
-            // // hit.collider.TryGetComponent(out IInteractable interactable);
-            // hit.collider.TryGetComponent(out Outline outline);
-            // if (interactable != m_currentInteractable || outline != m_currentOutline)
-            // {
-
-            InteractableRoot interactable = child.root;
+            InteractableRoot interactable = child.Root;
             interactable.TryGetComponent(out Outline outline);
 
             if (interactable != m_currentInteractable || outline != m_currentOutline)
