@@ -14,6 +14,8 @@ One of the key aspects of the domain is the relationship between "Nodes", "Items
 
 === Enemy State Machine
 
+The below diagram represents the state machine for the enemy behavior in our project. It captures the various states an enemy can be in as well as the transitions between those states and the conditions that trigger those transitions.
+
 #align(center)[
   #figure(
     image("../../resources/02 Project Documentation/enemy-state-machine.png"),
