@@ -1,0 +1,61 @@
+name: Lint
+
+on:
+  push:
+    branches: [main, dev]
+    tags: ['v*.*.*']
+    paths-ignore:
+      - 'doc/**'
+  pull_request:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+env:
+  SOLUTION_FILE: GlowCore.slnx
+  LINT_PROJECT_FILE: Tools/Lint/GlowCore.Lint.csproj
+  UNITY_VERSION: 6000.3.9f1
+  UNITY_MODULES: 'StandaloneWindows64'
+
+jobs:
+  lint:
+    name: Setup Unity
+    runs-on: windows-latest
+
+    steps:
+      - name: Setup Unity
+        id: unity-setup
+        uses: buildalon/unity-setup@v2
+        with:
+          unity-version: ${{ env.UNITY_VERSION }}
+          modules: ${{ env.UNITY_MODULES }}
+
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+      
+      - name: Generate Project Files
+        run: |
+          & ${{ steps.unity-setup.outputs.unity-editor-path }} -batchmode -nographics -quit `
+            -projectPath ${{ github.workspace }} `
+            -executeMethod CiProjectFiles.Generate `
+            -logFile -
+      
+      - name: Restore Projects
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
+      
+      - name: Run Code Analysis
+        id: code-analysis
+        run: |
+          dotnet build ${{ env.SOLUTION_FILE }} `
+            -p:EnforceCodeStyleInBuild=true `
+            -p:RunAnalyzersDuringBuild=true `
+            -p:EnableNETAnalyzers=true `
+            -p:AnalysisLevel=latest `
+            -warnaserror `
+            --no-incremental
+      
+      - name: Check Formatting
+        id: format-check
+        run: |
+          dotnet format ${{ env.LINT_PROJECT_FILE }} --verify-no-changes --severity error
