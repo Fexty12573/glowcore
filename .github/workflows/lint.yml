@@ -24,6 +24,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
       - name: Setup Unity
         id: unity-setup
         uses: buildalon/unity-setup@v2
@@ -31,26 +34,23 @@ jobs:
           version-file: ${{ env.VERSION_FILE }}
           modules: ${{ env.UNITY_MODULES }}
           cache-installation: true
-      
+
       - name: Activate Unity License
         uses: buildalon/activate-unity-license@v2
         with:
           username: ${{ secrets.UNITY_EMAIL }}
           password: ${{ secrets.UNITY_PASSWORD }}
 
-      - name: Checkout Repository
-        uses: actions/checkout@v6
-      
       - name: Generate Project Files
         run: |
           & ${{ steps.unity-setup.outputs.unity-editor-path }} -batchmode -nographics -quit `
             -projectPath ${{ github.workspace }} `
             -executeMethod UnityEditor.SyncVS.SyncSolution `
             -logFile -
-      
+
       - name: Restore Projects
         run: dotnet restore ${{ env.SOLUTION_FILE }}
-      
+
       - name: Run Code Analysis
         id: code-analysis
         run: |
@@ -61,7 +61,7 @@ jobs:
             -p:AnalysisLevel=latest `
             -warnaserror `
             --no-incremental
-      
+
       - name: Check Formatting
         id: format-check
         run: |
