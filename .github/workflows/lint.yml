@@ -43,9 +43,9 @@ jobs:
 
       - name: Generate Project Files
         run: |
-          "${{ steps.unity-setup.outputs.unity-editor-path }}" -batchmode -nographics -quit `
-            -projectPath "${{ github.workspace }}" `
-            -executeMethod UnityEditor.SyncVS.SyncSolution `
+          "${{ steps.unity-setup.outputs.unity-editor-path }}" -batchmode -nographics -quit \
+            -projectPath "${{ github.workspace }}" \
+            -executeMethod UnityEditor.SyncVS.SyncSolution \
             -logFile -
 
       - name: Restore Projects
