@@ -38,7 +38,7 @@ jobs:
         run: |
           & ${{ steps.unity-setup.outputs.unity-editor-path }} -batchmode -nographics -quit `
             -projectPath ${{ github.workspace }} `
-            -executeMethod CiProjectFiles.Generate `
+            -executeMethod UnityEditor.SyncVS.SyncSolution `
             -logFile -
       
       - name: Restore Projects
