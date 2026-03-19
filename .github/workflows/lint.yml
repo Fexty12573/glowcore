@@ -15,12 +15,12 @@ permissions:
 env:
   SOLUTION_FILE: GlowCore.slnx
   LINT_PROJECT_FILE: Tools/Lint/GlowCore.Lint.csproj
-  UNITY_VERSION: 6000.3.9f1
+  VERSION_FILE: ProjectSettings/ProjectVersion.txt
   UNITY_MODULES: 'StandaloneWindows64'
 
 jobs:
   lint:
-    name: Setup Unity
+    name: Lint Code
     runs-on: windows-latest
 
     steps:
@@ -28,8 +28,15 @@ jobs:
         id: unity-setup
         uses: buildalon/unity-setup@v2
         with:
-          unity-version: ${{ env.UNITY_VERSION }}
+          version-file: ${{ env.VERSION_FILE }}
           modules: ${{ env.UNITY_MODULES }}
+          cache-installation: true
+      
+      - name: Activate Unity License
+        uses: buildalon/activate-unity-license@v2
+        with:
+          username: ${{ secrets.UNITY_EMAIL }}
+          password: ${{ secrets.UNITY_PASSWORD }}
 
       - name: Checkout Repository
         uses: actions/checkout@v6
