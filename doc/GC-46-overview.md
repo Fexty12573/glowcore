@@ -29,12 +29,16 @@ Fire.FeedWood(amount)
     |             WorldGrid.Instance.Expand(m_regularExpansionSize)
     |
     +---> GlowCoreObject.FeedWood(amount)
-              |
-              +---> ActivateLogs(amount)      (visual log reveal)
-              +---> accumulates wood toward m_woodToLevelUp
-              +---> returns true if leveled up
-                        |
-                        Fire --> WorldGrid.Instance.Expand(m_levelUpExpansionSize, isLevelUp: true)
+    |         |
+    |         +---> ActivateLogs(amount)      (visual log reveal)
+    |         +---> accumulates wood toward m_woodToLevelUp
+    |         +---> returns true if leveled up
+    |                   |
+    |                   Fire --> WorldGrid.Instance.Expand(m_levelUpExpansionSize, isLevelUp: true)
+    |
+    +---> UpdateFireScale()
+              scale = lerp(minFireScale, maxFireScale, totalWood / woodForMaxFire)
+              applies scale to fire particle system transform
 ```
 
 ---
@@ -162,6 +166,13 @@ The four border walls serve as both **physics colliders** (stopping the player) 
   - `Wood Per Expansion` — how many wood must be fed to trigger one regular border expansion (default 1)
   - `Regular Expansion Size` — tiles added per regular expansion (default 1)
   - `Level Up Expansion Size` — tiles added when GlowCore levels up (default 5, should be large)
+  - **Fire VFX**
+    - `Fire Particles` — assign the fire particle system child object
+    - `Min Fire Scale` — starting scale of the fire (default 0.5)
+    - `Max Fire Scale` — maximum scale of the fire (default 3.0)
+    - `Wood For Max Fire` — total wood needed to reach maximum fire size (default 50)
+  - **Debug**
+    - `Debug Wood Amount` — amount of wood fed when using the ContextMenu debug action (default 1)
 - `GlowCoreObject` component
   - `Logs` — assign all log child GameObjects for this level
   - `Next Level Prefab` — the prefab to spawn when this GlowCore levels up. Each prefab only references the next one (chain, not a tree)
@@ -221,6 +232,7 @@ The four border walls serve as both **physics colliders** (stopping the player) 
 - [x] Pending nodes — out-of-bounds nodes held and registered (or destroyed) on next covering expansion
 - [x] Lazy tree cleanup — in ProceduralGeneration, designer-placed trees outside the initial grid are destroyed dynamically as `Expand()` reaches them, not upfront
 - [x] Fog border walls — 100-unit deep walls cover the outside world; inner face aligns with grid edge so player collision is unaffected; corners fully covered
+- [x] Fire VFX scales with total wood fed — particle system grows linearly from `m_minFireScale` to `m_maxFireScale` over `m_woodForMaxFire` wood (uses free "VFX URP - Fire Package" by Wallcoeur)
 
 ### Blocked / Waiting
 - [ ] Real inventory + wood pickup mechanic (another team member) — when ready, call `Fire.FeedWood(amount)` from the interaction system
@@ -231,4 +243,4 @@ The four border walls serve as both **physics colliders** (stopping the player) 
 
 | Location | Description |
 |----------|-------------|
-| `Fire` — `DebugFeedWood()` (private) | ContextMenu: right-click Fire component → "Debug: Feed 1 Wood". Simulates feeding without player interaction. Remove when real interaction is wired up. |
+| `Fire` — `DebugFeedWood()` (private) | ContextMenu: right-click Fire component → "Debug: Feed Wood". Feeds `m_debugWoodAmount` (configurable in Inspector). Remove when real interaction is wired up. |

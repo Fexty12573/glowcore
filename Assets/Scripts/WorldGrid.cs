@@ -271,6 +271,7 @@ namespace GlowCore.World
 
             m_borderWest.position = new Vector3(-center, kBorderHeight / 2f, 0f);
             m_borderWest.localScale = borderScaleEW;
+
         }
 
         private void LogGrid()
