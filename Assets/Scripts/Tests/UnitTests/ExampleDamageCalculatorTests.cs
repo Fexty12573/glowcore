@@ -7,7 +7,7 @@ using UnityEngine.TestTools;
 public class ExampleDamageCalculatorTests
 {
     private const float kEpsilon = 0.001f;
-        
+
     private GameObject m_damageGameObj;
     private DamageCalculator m_damageCalculator;
 
@@ -29,10 +29,10 @@ public class ExampleDamageCalculatorTests
     [Test]
     public void CalculateDamage_Works()
     {
-        float expectedDamage = m_damageCalculator.Weapon.BaseDamage * m_damageCalculator.DamageMultiplier;
-        
-        float damage = m_damageCalculator.CalculateDamage();
-        
+        var expectedDamage = m_damageCalculator.Weapon.BaseDamage * m_damageCalculator.DamageMultiplier;
+
+        var damage = m_damageCalculator.CalculateDamage();
+
         Assert.AreEqual(expectedDamage, damage, kEpsilon);
     }
 }

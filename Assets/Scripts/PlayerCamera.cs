@@ -7,24 +7,24 @@ public class PlayerCamera : MonoBehaviour
     private Transform m_cameraAnchor;
     [SerializeField]
     private float m_cameraSpeed = 40;
-    
+
     private Vector2 m_lookInput;
 
     public void HandleLook(Vector2 lookInput)
     {
         m_lookInput = lookInput;
     }
-    
+
     private void OnLook(InputValue inputValue)
     {
         HandleLook(inputValue.Get<Vector2>());
     }
-    
+
     private void FixedUpdate()
     {
         if (Mouse.current.rightButton.isPressed)
         {
-            float rotateDegrees = m_lookInput.x * Time.fixedDeltaTime * m_cameraSpeed;
+            var rotateDegrees = m_lookInput.x * Time.fixedDeltaTime * m_cameraSpeed;
             m_cameraAnchor.Rotate(new Vector3(0, rotateDegrees, 0));
         }
     }
