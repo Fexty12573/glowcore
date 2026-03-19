@@ -42,12 +42,17 @@ namespace GlowCore.World
             int toActivate = Mathf.Min(amount, m_logs.Length - m_activeLogs);
             for (int i = 0; i < toActivate; i++)
             {
-                m_logs[m_activeLogs].SetActive(true);
+                GameObject log = m_logs[m_activeLogs];
+                log.SetActive(true);
+                RegisterInteractableChildren(log);
                 m_activeLogs++;
                 m_woodAccumulated ++;
             }
 
             Debug.Log($"GlowCore: Activated {toActivate} log(s). Total active: {m_activeLogs}/{m_logs.Length}.");
+
+            if (TryGetComponent(out Outline outline))
+                outline.RefreshRenderers();
         }
 
         // Private Methods
@@ -88,6 +93,21 @@ namespace GlowCore.World
             }
 
             Destroy(gameObject);
+        }
+
+        private void RegisterInteractableChildren(GameObject target)
+        {
+            InteractableRoot root = GetComponentInParent<InteractableRoot>();
+            if (root == null)
+                return;
+
+            foreach (Collider col in target.GetComponentsInChildren<Collider>())
+            {
+                if (!col.TryGetComponent(out InteractableChild child))
+                    child = col.gameObject.AddComponent<InteractableChild>();
+
+                child.Root = root;
+            }
         }
     }
 }
