@@ -1,7 +1,7 @@
 using Unity.CodeEditor;
 using UnityEditor;
 
-public static class CiProjectFilescs
+public static class CiProjectFiles
 {
     public static void Generate()
     {

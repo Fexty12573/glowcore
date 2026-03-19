@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -31,7 +31,7 @@ public class PlayerIntegrationTests
     {
         Vector2 movementInput = new(1, 1);
         Vector3 oldPosition = m_playerMovement.transform.position;
-        
+
         m_playerMovement.HandleMove(movementInput);
         yield return new WaitForFixedUpdate();
 
@@ -43,19 +43,19 @@ public class PlayerIntegrationTests
     public IEnumerator PlayerDoesntMoveOnNoInput()
     {
         Vector3 oldPosition = m_playerMovement.transform.position;
-        
+
         yield return new WaitForFixedUpdate();
 
         Vector3 newPosition = m_playerMovement.transform.position;
         Assert.AreEqual(oldPosition, newPosition);
     }
-    
+
     [UnityTest]
     public IEnumerator PlayerCameraMovesOnInput()
     {
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
-        
+
         m_playerCamera.HandleLook(lookInput);
         yield return new WaitForFixedUpdate();
 
@@ -67,7 +67,7 @@ public class PlayerIntegrationTests
     public IEnumerator PlayerCameraDoesntChangeOnNoInput()
     {
         Quaternion oldRotation = m_playerCamera.transform.rotation;
-        
+
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;

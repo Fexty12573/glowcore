@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DamageCalculator : MonoBehaviour
 {
@@ -8,6 +8,6 @@ public class DamageCalculator : MonoBehaviour
 
     public float CalculateDamage()
     {
-        return Weapon.BaseDamage * DamageMultiplier ;
+        return Weapon.BaseDamage * DamageMultiplier;
     }
 }
