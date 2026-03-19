@@ -16,12 +16,12 @@ env:
   SOLUTION_FILE: GlowCore.slnx
   LINT_PROJECT_FILE: Tools/Lint/GlowCore.Lint.csproj
   VERSION_FILE: ProjectSettings/ProjectVersion.txt
-  UNITY_MODULES: 'StandaloneWindows64'
+  UNITY_MODULES: ''
 
 jobs:
   lint:
     name: Lint Code
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
