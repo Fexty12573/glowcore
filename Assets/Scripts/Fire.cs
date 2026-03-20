@@ -16,11 +16,10 @@ namespace GlowCore.World
         [SerializeField] private float m_minFireScale = 0.5f;
         [SerializeField] private float m_maxFireScale = 3f;
         [SerializeField] private int m_woodForMaxFire = 50;
-        private int m_totalWoodReceived;
         private int m_woodAccumulatedForExpansion;
 
         // Properties
-        public int TotalWoodReceived => m_totalWoodReceived;
+        public int TotalWoodReceived { get; private set; }
 
         // Public Methods
         public void FeedWood(int amount)
@@ -28,7 +27,7 @@ namespace GlowCore.World
             if (amount <= 0)
                 return;
 
-            m_totalWoodReceived += amount;
+            TotalWoodReceived += amount;
             m_woodAccumulatedForExpansion += amount;
 
             while (m_woodAccumulatedForExpansion >= m_woodPerExpansion)
@@ -50,7 +49,7 @@ namespace GlowCore.World
             if (m_fireParticles == null)
                 return;
 
-            float t = Mathf.Clamp01((float)m_totalWoodReceived / m_woodForMaxFire);
+            float t = Mathf.Clamp01((float)TotalWoodReceived / m_woodForMaxFire);
             float scale = Mathf.Lerp(m_minFireScale, m_maxFireScale, t);
             m_fireParticles.transform.localScale = Vector3.one * scale;
         }

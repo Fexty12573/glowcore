@@ -5,16 +5,7 @@ namespace GlowCore.World
 {
     public enum WorldMode
     {
-        /// <summary>
-        /// Clears all scene-placed trees on start and spawns a fresh random set.
-        /// On expansion, new trees are spawned in the outer ring.
-        /// </summary>
         ProceduralGeneration,
-
-        /// <summary>
-        /// Registers nodes that were hand-placed in the scene without altering them.
-        /// On expansion, no trees are auto-spawned — the designer controls all content.
-        /// </summary>
         DesignedWorld
     }
 
@@ -109,13 +100,11 @@ namespace GlowCore.World
                 return null;
             }
 
-            node.SetGridPosition(new Vector2Int(x, z));
             SetNodeAt(x, z, node);
             m_totalTreeCount++;
             return node;
         }
 
-        /// <summary>Spawns trees across all current free tiles at the given density (0–1).</summary>
         public void SpawnRandomTrees(float density)
         {
             density = Mathf.Clamp01(density);
@@ -228,12 +217,6 @@ namespace GlowCore.World
             UpdateBorders();
         }
 
-        /// <summary>
-        /// Registers any non-tree scene nodes, clears only the in-bounds trees, and spawns a
-        /// fresh random set. Designer-placed trees outside the initial grid survive until
-        /// Expand() sweeps over them, at which point they are destroyed and replaced by the
-        /// procedural ring spawner.
-        /// </summary>
         private void InitializeProceduralWorld()
         {
             RegisterExistingNodes();
@@ -241,9 +224,6 @@ namespace GlowCore.World
             SpawnTrees(m_initialTreeCount);
         }
 
-        /// <summary>
-        /// Registers all nodes that were hand-placed in the scene without altering them.
-        /// </summary>
         private void InitializeDesignedWorld()
         {
             RegisterExistingNodes();
@@ -294,10 +274,6 @@ namespace GlowCore.World
             Debug.Log(sb.ToString());
         }
 
-        /// <summary>
-        /// Destroys only the trees that are currently tracked inside m_tiles.
-        /// Pending trees outside the grid bounds are left untouched.
-        /// </summary>
         private void ClearTreesInGrid()
         {
             for (int x = 0; x < m_gridSize; x++)
@@ -398,7 +374,6 @@ namespace GlowCore.World
                     continue;
                 }
 
-                node.SetGridPosition(new Vector2Int(worldX, worldZ));
                 SetNodeAt(worldX, worldZ, node);
             }
         }
@@ -439,7 +414,6 @@ namespace GlowCore.World
                     continue;
                 }
 
-                node.SetGridPosition(new Vector2Int(worldX, worldZ));
                 SetNodeAt(worldX, worldZ, node);
                 m_pendingNodes.RemoveAt(i);
             }

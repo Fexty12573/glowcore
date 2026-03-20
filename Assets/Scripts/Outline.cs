@@ -101,6 +101,8 @@ public class Outline : MonoBehaviour {
     needsUpdate = true;
   }
 
+  // GlowCore modification: Added to re-cache renderers when child objects change at runtime.
+  // The original script only caches renderers in Awake(), with no way to update them.
   public void RefreshRenderers() {
     if (enabled) {
       // Remove outline materials from current renderers

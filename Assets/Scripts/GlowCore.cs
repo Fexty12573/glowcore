@@ -11,11 +11,11 @@ namespace GlowCore.World
         [SerializeField] [Min(1)] private int m_startingLevel = 1;
         [SerializeField] [Min(1)] private int m_woodToLevelUp = 17;
         private int m_activeLogs;
-        private int m_glowCoreLevel;
+        private int m_level;
         private int m_woodAccumulated;
 
         // Properties
-        public int GlowCoreLevel => m_glowCoreLevel;
+        public int Level => m_level;
         public int WoodAccumulated => m_woodAccumulated;
         public int WoodToLevelUp => m_woodToLevelUp;
 
@@ -28,8 +28,8 @@ namespace GlowCore.World
                 return false;
 
             m_woodAccumulated -= m_woodToLevelUp;
-            m_glowCoreLevel++;
-            Debug.Log($"GlowCore leveled up to level {m_glowCoreLevel}!");
+            m_level++;
+            Debug.Log($"GlowCore leveled up to level {m_level}!");
             UpgradeGlowCore();
             return true;
         }
@@ -58,7 +58,7 @@ namespace GlowCore.World
         // Private Methods
         private void Awake()
         {
-            m_glowCoreLevel = m_startingLevel;
+            m_level = m_startingLevel;
 
             foreach (GameObject log in m_logs)
                 log.SetActive(false);
@@ -84,7 +84,6 @@ namespace GlowCore.World
 
             if (newGlowCore.TryGetComponent(out Node newNode))
             {
-                newNode.SetGridPosition(new Vector2Int(worldX, worldZ));
                 WorldGrid.Instance.SetNodeAt(worldX, worldZ, newNode);
             }
             else
