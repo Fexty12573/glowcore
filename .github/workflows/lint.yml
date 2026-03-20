@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOLUTION_FILE: GlowCore.sln
+  SOLUTION_FILE: glowcore.sln
   LINT_PROJECT_FILE: Tools/Lint/GlowCore.Lint.csproj
   VERSION_FILE: ProjectSettings/ProjectVersion.txt
   UNITY_MODULES: ''
