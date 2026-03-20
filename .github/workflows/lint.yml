@@ -21,11 +21,19 @@ env:
 jobs:
   lint:
     name: Lint Code
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+
+      - name: Cache Unity Library
+        uses: actions/cache@v5
+        with:
+          path: Library
+          key: ${{ runner.os }}-unity-library-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/packages-lock.json', 'Packages/manifest.json') }}
+          restore-keys: |
+            ${{ runner.os }}-unity-library-
 
       - name: Setup Unity
         id: unity-setup
@@ -43,9 +51,9 @@ jobs:
 
       - name: Generate Project Files
         run: |
-          "${{ steps.unity-setup.outputs.unity-editor-path }}" -batchmode -nographics -quit \
-            -projectPath "${{ github.workspace }}" \
-            -executeMethod UnityEditor.SyncVS.SyncSolution \
+          & "${{ steps.unity-setup.outputs.unity-editor-path }}" -batchmode -nographics -quit `
+            -projectPath "${{ github.workspace }}" `
+            -executeMethod UnityEditor.SyncVS.SyncSolution `
             -logFile -
 
       - name: Restore Projects
@@ -54,12 +62,12 @@ jobs:
       - name: Run Code Analysis
         id: code-analysis
         run: |
-          dotnet build "${{ env.SOLUTION_FILE }}" \
-            -p:EnforceCodeStyleInBuild=true \
-            -p:RunAnalyzersDuringBuild=true \
-            -p:EnableNETAnalyzers=true \
-            -p:AnalysisLevel=latest \
-            -warnaserror \
+          dotnet build "${{ env.SOLUTION_FILE }}" `
+            -p:EnforceCodeStyleInBuild=true `
+            -p:RunAnalyzersDuringBuild=true `
+            -p:EnableNETAnalyzers=true `
+            -p:AnalysisLevel=latest `
+            -warnaserror `
             --no-incremental
 
       - name: Check Formatting
