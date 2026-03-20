@@ -10,7 +10,7 @@ Below is the domain model diagram for the problem domain of our project. Due to 
   )
 ]
 
-One of the key aspects of the domain is the relationship between "Nodes", "Items", and "Interactables". Some items can be placed in the world which turns them into interactables. This means that the same concept can have different representations and behaviors depending on the context.
+One of the key aspects of the domain is the relationship between "Nodes" and "Items". Some items can be placed in the world which turns them into Nodes. This means that the same concept can have different representations and behaviors depending on the context.
 
 === Enemy State Machine
 
