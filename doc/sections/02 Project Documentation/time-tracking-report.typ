@@ -13,7 +13,7 @@ The time is grouped by member and by sprint. Per sprint and person the time is r
 
     [*Sprint*], [*Cedric\ Cathomas*], [*Nathanael Fässler*], [*Yoris Kucera*], [*Dominik Wyss*], [*Total*],
     [1], [23h], [29h], [21h], [24h], [97h],
-    [2], [22h], [20h], [19h], [23h], [79h],
+    [2], [22h], [20h], [19h], [23h], [84h],
     [3], [], [], [], [], [],
     [4], [], [], [], [], [],
     [5], [], [], [], [], [],
