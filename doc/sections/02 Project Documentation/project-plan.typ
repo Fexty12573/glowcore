@@ -503,8 +503,24 @@ The following shows the Jira sprint backlog of the first sprint. Since this was 
   supplement: [Image],
 )
 
-#v(1em)
+#pagebreak()
 
+===== Sprint 2 06.03.2026 - 20.03.2026
+In this sprint the first actual work on the game was carried out in Unity. The focus was to implement an initial working prototype.
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-2-burndown.png"),
+  caption: [Sprint 2 Burndown Chart],
+  supplement: [Image],
+)
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-2-backlog.png"),
+  caption: [Sprint 2 Backlog],
+  supplement: [Image],
+)
+
+#pagebreak()
 
 === Risk Management
 
