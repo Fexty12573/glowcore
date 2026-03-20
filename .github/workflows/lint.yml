@@ -35,6 +35,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-unity-library-
 
+      - name: Install VC++ Redistributables
+        shell: pwsh
+        run: |
+          winget install --id Microsoft.VCRedist.2015+.x64 --silent --accept-source-agreements --accept-package-agreements
+          winget install --id Microsoft.VCRedist.2015+.x86 --silent --accept-source-agreements --accept-package-agreements
+
       - name: Setup Unity
         id: unity-setup
         uses: buildalon/unity-setup@v2
