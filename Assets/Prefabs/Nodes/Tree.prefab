@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6454605932608049016}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4953368032286117947}
   m_SourcePrefab: {fileID: 100100000, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
 --- !u!1 &2168647627201826629 stripped
 GameObject:
@@ -98,3 +101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22733d3555cc41b78bf65acb1844d6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::InteractableRoot
+--- !u!114 &-4953368032286117947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2168647627201826629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe3cd15b9dfaa04f8aa7c78f86bd008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.World.TreeNode
