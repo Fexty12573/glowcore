@@ -39,6 +39,7 @@ jobs:
         with:
           projectPath: .
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
       
       - name: Upload Test Results
         uses: actions/upload-artifact@v7

@@ -186,6 +186,9 @@ dotnet_naming_style.m_prefixed_camel_case_style.required_prefix = m_
 # k_prefixed_pascal_case_style - Constants must use k prefix + PascalCase
 dotnet_naming_style.k_prefixed_pascal_case_style.capitalization = pascal_case
 dotnet_naming_style.k_prefixed_pascal_case_style.required_prefix = k
+# s_prefixed_camel_case_style - Private static fields must use s_ prefix + camelCase
+dotnet_naming_style.s_prefixed_camel_case_style.capitalization = camel_case
+dotnet_naming_style.s_prefixed_camel_case_style.required_prefix = s_
 # on_prefixed_pascal_case_style - Events must use On prefix + PascalCase
 dotnet_naming_style.on_prefixed_pascal_case_style.capitalization = pascal_case
 dotnet_naming_style.on_prefixed_pascal_case_style.required_prefix = On
@@ -258,6 +261,15 @@ dotnet_naming_symbols.private_fields_group.applicable_kinds                     
 dotnet_naming_rule.private_fields_must_be_camel_case_with_m_prefix_rule.symbols         = private_fields_group
 dotnet_naming_rule.private_fields_must_be_camel_case_with_m_prefix_rule.style           = m_prefixed_camel_case_style
 dotnet_naming_rule.private_fields_must_be_camel_case_with_m_prefix_rule.severity        = warning
+
+# Private static fields must be camelCase with an s_ prefix
+dotnet_naming_symbols.private_static_fields_group.applicable_accessibilities            = private
+dotnet_naming_symbols.private_static_fields_group.required_modifiers                    = static
+dotnet_naming_symbols.private_static_fields_group.applicable_kinds                      = field
+dotnet_naming_rule.private_static_fields_must_be_camel_case_with_s_prefix_rule.symbols  = private_static_fields_group
+dotnet_naming_rule.private_static_fields_must_be_camel_case_with_s_prefix_rule.style    = s_prefixed_camel_case_style
+dotnet_naming_rule.private_static_fields_must_be_camel_case_with_s_prefix_rule.severity = warning
+
 
 ##########################################
 # Other Naming Rules
