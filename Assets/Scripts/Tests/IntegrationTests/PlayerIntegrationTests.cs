@@ -2,8 +2,8 @@
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.TestTools;
 using UnityEngine.InputSystem;
+using UnityEngine.TestTools;
 
 public class PlayerIntegrationTests : InputTestFixture
 {
@@ -74,6 +74,8 @@ public class PlayerIntegrationTests : InputTestFixture
     public IEnumerator PlayerCameraDoesntMoveOnNoInputIfRmbIsPressed()
     {
         Quaternion oldRotation = m_playerCamera.transform.rotation;
+
+        m_playerCamera.HandleLook(Vector2.zero);
 
         Press(m_mouse.rightButton);
         yield return new WaitForFixedUpdate();

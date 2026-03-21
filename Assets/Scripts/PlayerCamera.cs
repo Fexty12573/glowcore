@@ -26,6 +26,7 @@ public class PlayerCamera : MonoBehaviour
         {
             var rotateDegrees = m_lookInput.x * Time.fixedDeltaTime * m_cameraSpeed;
             m_cameraAnchor.Rotate(new Vector3(0, rotateDegrees, 0));
+            m_lookInput = Vector2.zero;
         }
     }
 }
