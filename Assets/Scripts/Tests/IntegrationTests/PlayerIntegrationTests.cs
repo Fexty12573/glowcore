@@ -3,13 +3,15 @@ using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.InputSystem;
 
-public class PlayerIntegrationTests
+public class PlayerIntegrationTests : InputTestFixture
 {
     private GameObject m_playerPrefab;
     private GameObject m_playerInstance;
     private PlayerMovement m_playerMovement;
     private PlayerCamera m_playerCamera;
+    private Mouse m_mouse;
 
     [SetUp]
     public void SetUp()
@@ -18,6 +20,7 @@ public class PlayerIntegrationTests
         m_playerInstance = GameObject.Instantiate(m_playerPrefab);
         m_playerMovement = m_playerInstance.GetComponentInChildren<PlayerMovement>();
         m_playerCamera = m_playerInstance.GetComponentInChildren<PlayerCamera>();
+        m_mouse = InputSystem.AddDevice<Mouse>();
     }
 
     [TearDown]
@@ -51,7 +54,37 @@ public class PlayerIntegrationTests
     }
 
     [UnityTest]
-    public IEnumerator PlayerCameraMovesOnInput()
+    public IEnumerator PlayerCameraMovesOnInputIfRmbIsPressed()
+    {
+        Vector2 lookInput = new(5, -9);
+        Quaternion oldRotation = m_playerCamera.transform.rotation;
+
+        Press(m_mouse.rightButton);
+
+        m_playerCamera.HandleLook(lookInput);
+        yield return new WaitForFixedUpdate();
+
+        Release(m_mouse.rightButton);
+
+        Quaternion newRotation = m_playerCamera.transform.rotation;
+        Assert.AreEqual(oldRotation, newRotation);
+    }
+
+    [UnityTest]
+    public IEnumerator PlayerCameraDoesntMoveOnNoInputIfRmbIsPressed()
+    {
+        Quaternion oldRotation = m_playerCamera.transform.rotation;
+
+        Press(m_mouse.rightButton);
+        yield return new WaitForFixedUpdate();
+        Release(m_mouse.rightButton);
+
+        Quaternion newRotation = m_playerCamera.transform.rotation;
+        Assert.AreEqual(oldRotation, newRotation);
+    }
+
+    [UnityTest]
+    public IEnumerator PlayerCameraDoesntMoveOnInputIfRmbIsNotPressed()
     {
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
@@ -60,11 +93,11 @@ public class PlayerIntegrationTests
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
-        Assert.AreNotEqual(oldRotation, newRotation);
+        Assert.AreEqual(oldRotation, newRotation);
     }
 
     [UnityTest]
-    public IEnumerator PlayerCameraDoesntChangeOnNoInput()
+    public IEnumerator PlayerCameraDoesntMoveOnNoInput()
     {
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
