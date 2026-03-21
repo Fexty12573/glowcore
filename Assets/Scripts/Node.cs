@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using ScriptableObjectScripts;
 using UnityEngine;
 using Random = UnityEngine.Random;

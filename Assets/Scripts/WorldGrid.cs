@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -37,9 +37,9 @@ namespace GlowCore.World
         [SerializeField] private Transform m_nodesParent;
 
         [Header("Tree Expansion (ProceduralGeneration only)")]
-        [SerializeField] [Min(0)] private int m_initialTreeCount = 10;
-        [SerializeField] [Min(0)] private int m_treesPerRegularExpansion = 5;
-        [SerializeField] [Min(0)] private int m_treesPerLevelUpExpansion = 20;
+        [SerializeField][Min(0)] private int m_initialTreeCount = 10;
+        [SerializeField][Min(0)] private int m_treesPerRegularExpansion = 5;
+        [SerializeField][Min(0)] private int m_treesPerLevelUpExpansion = 20;
 
         private Node[,] m_tiles;
         private Vector2Int m_origin;
@@ -90,7 +90,7 @@ namespace GlowCore.World
             if (GetNodeAt(x, z) != null)
                 return null;
 
-            Transform parent = m_nodesParent != null ? m_nodesParent : transform;
+            Transform parent = m_nodesParent ?? transform;
             GameObject treeObject = Instantiate(m_treePrefab, new Vector3(x, 0f, z), Quaternion.identity, parent);
 
             if (!treeObject.TryGetComponent(out Node node))
@@ -109,9 +109,9 @@ namespace GlowCore.World
         {
             density = Mathf.Clamp01(density);
 
-            for (int x = 0; x < m_gridSize; x++)
+            for (var x = 0; x < m_gridSize; x++)
             {
-                for (int z = 0; z < m_gridSize; z++)
+                for (var z = 0; z < m_gridSize; z++)
                 {
                     if (x == m_origin.x && z == m_origin.y)
                         continue;
@@ -143,13 +143,13 @@ namespace GlowCore.World
 
         public void Expand(int amount, bool isLevelUp = false)
         {
-            int newSize = m_gridSize + amount * 2;
+            var newSize = m_gridSize + amount * 2;
             Node[,] newTiles = new Node[newSize, newSize];
             Vector2Int newOrigin = new(newSize / 2, newSize / 2);
 
-            for (int x = 0; x < m_gridSize; x++)
+            for (var x = 0; x < m_gridSize; x++)
             {
-                for (int z = 0; z < m_gridSize; z++)
+                for (var z = 0; z < m_gridSize; z++)
                 {
                     if (m_tiles[x, z] == null)
                         continue;
@@ -160,7 +160,7 @@ namespace GlowCore.World
                 }
             }
 
-            int oldSize = m_gridSize;
+            var oldSize = m_gridSize;
             m_tiles = newTiles;
             m_gridSize = newSize;
             m_origin = newOrigin;
@@ -170,7 +170,7 @@ namespace GlowCore.World
 
             if (m_worldMode == WorldMode.ProceduralGeneration)
             {
-                int count = isLevelUp ? m_treesPerLevelUpExpansion : m_treesPerRegularExpansion;
+                var count = isLevelUp ? m_treesPerLevelUpExpansion : m_treesPerRegularExpansion;
                 SpawnTreesOnNewRing(oldSize, count);
             }
         }
@@ -231,9 +231,9 @@ namespace GlowCore.World
 
         private void UpdateBorders()
         {
-            float halfSize = m_gridSize / 2f;
-            float center = halfSize + kBorderFogDepth / 2f;
-            float fullWidth = m_gridSize + kBorderFogDepth * 2f;
+            var halfSize = m_gridSize / 2f;
+            var center = halfSize + kBorderFogDepth / 2f;
+            var fullWidth = m_gridSize + kBorderFogDepth * 2f;
 
             // North/South: inner face sits exactly at the grid edge, extends outward by kBorderFogDepth.
             // Width is padded by kBorderFogDepth on each side to cover the corners.
@@ -259,9 +259,9 @@ namespace GlowCore.World
             System.Text.StringBuilder sb = new();
             sb.AppendLine($"WorldGrid ({m_gridSize}x{m_gridSize}) [{m_worldMode}]:");
 
-            for (int z = m_gridSize - 1; z >= 0; z--)
+            for (var z = m_gridSize - 1; z >= 0; z--)
             {
-                for (int x = 0; x < m_gridSize; x++)
+                for (var x = 0; x < m_gridSize; x++)
                 {
                     Node node = m_tiles[x, z];
                     sb.Append(node != null ? $"[{node.name}]" : "[ . ]");
@@ -297,7 +297,7 @@ namespace GlowCore.World
             Shuffle(freeCells);
 
             int toSpawn = Mathf.Min(count, freeCells.Count);
-            for (int i = 0; i < toSpawn; i++)
+            for (var i = 0; i < toSpawn; i++)
                 PlaceTree(freeCells[i].x, freeCells[i].y);
         }
 
@@ -306,14 +306,14 @@ namespace GlowCore.World
             if (count <= 0)
                 return;
 
-            int offset = (m_gridSize - oldSize) / 2;
+            var offset = (m_gridSize - oldSize) / 2;
             List<Vector2Int> ringCells = new();
 
-            for (int x = 0; x < m_gridSize; x++)
+            for (var x = 0; x < m_gridSize; x++)
             {
-                for (int z = 0; z < m_gridSize; z++)
+                for (var z = 0; z < m_gridSize; z++)
                 {
-                    bool wasInOldGrid = x >= offset && x < offset + oldSize
+                    var wasInOldGrid = x >= offset && x < offset + oldSize
                                     && z >= offset && z < offset + oldSize;
                     if (!wasInOldGrid && m_tiles[x, z] == null)
                         ringCells.Add(GridToWorld(x, z));
@@ -323,7 +323,7 @@ namespace GlowCore.World
             Shuffle(ringCells);
 
             int toSpawn = Mathf.Min(count, ringCells.Count);
-            for (int i = 0; i < toSpawn; i++)
+            for (var i = 0; i < toSpawn; i++)
                 PlaceTree(ringCells[i].x, ringCells[i].y);
         }
 
@@ -331,9 +331,9 @@ namespace GlowCore.World
         {
             List<Vector2Int> freeCells = new();
 
-            for (int x = 0; x < m_gridSize; x++)
+            for (var x = 0; x < m_gridSize; x++)
             {
-                for (int z = 0; z < m_gridSize; z++)
+                for (var z = 0; z < m_gridSize; z++)
                 {
                     if (m_tiles[x, z] == null)
                         freeCells.Add(GridToWorld(x, z));
@@ -345,7 +345,7 @@ namespace GlowCore.World
 
         private static void Shuffle<T>(List<T> list)
         {
-            for (int i = list.Count - 1; i > 0; i--)
+            for (var i = list.Count - 1; i > 0; i--)
             {
                 int j = Random.Range(0, i + 1);
                 (list[i], list[j]) = (list[j], list[i]);
@@ -380,7 +380,7 @@ namespace GlowCore.World
 
         private void RegisterPendingNodes()
         {
-            for (int i = m_pendingNodes.Count - 1; i >= 0; i--)
+            for (var i = m_pendingNodes.Count - 1; i >= 0; i--)
             {
                 Node node = m_pendingNodes[i];
 

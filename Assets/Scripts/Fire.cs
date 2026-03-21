@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GlowCore.World
 {
@@ -8,9 +8,9 @@ namespace GlowCore.World
     {
         // Instance Fields
         [SerializeField] private GlowCoreObject m_glowCore;
-        [SerializeField] [Min(1)] private int m_woodPerExpansion = 1;
-        [SerializeField] [Min(1)] private int m_regularExpansionSize = 1;
-        [SerializeField] [Min(1)] private int m_levelUpExpansionSize = 5;
+        [SerializeField][Min(1)] private int m_woodPerExpansion = 1;
+        [SerializeField][Min(1)] private int m_regularExpansionSize = 1;
+        [SerializeField][Min(1)] private int m_levelUpExpansionSize = 5;
         [Header("Fire VFX")]
         [SerializeField] private ParticleSystem m_fireParticles;
         [SerializeField] private float m_minFireScale = 0.5f;
@@ -40,7 +40,7 @@ namespace GlowCore.World
             if (m_glowCore != null && m_glowCore.FeedWood(amount))
                 WorldGrid.Instance.Expand(m_levelUpExpansionSize, isLevelUp: true);
 
-             UpdateFireScale();
+            UpdateFireScale();
         }
 
         // Private Methods
@@ -55,7 +55,7 @@ namespace GlowCore.World
         }
 
         [Header("Debug")]
-        [SerializeField] [Min(1)] private int m_debugWoodAmount = 1;
+        [SerializeField][Min(1)] private int m_debugWoodAmount = 1;
 
         [ContextMenu("Debug: Feed Wood")]
         private void DebugFeedWood()
