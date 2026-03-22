@@ -2,7 +2,7 @@
 
 namespace ScriptableObjectScripts
 {
-    [CreateAssetMenu(menuName = "Interactables/InteractableData")]
+    [CreateAssetMenu(menuName = "Nodes/NodeData")]
     public class NodeData : ScriptableObject
     {
         [SerializeField] public float InteractRange;
@@ -15,8 +15,8 @@ namespace ScriptableObjectScripts
     [System.Serializable]
     public class ItemDrop
     {
-        public ItemData item;
-        public int min;
-        public int max;
+        public ItemData Item;
+        public int Min;
+        public int Max;
     }
 }

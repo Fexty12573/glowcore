@@ -12,7 +12,7 @@ public class NodeActionSystem : MonoBehaviour
     [SerializeField] private Camera m_camera;
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_raycastRange = 100f;
-    private Node m_CurrentNode;
+    private Node m_currentNode;
     private Outline m_currentOutline;
     private Vector2 m_mousePos;
     private bool m_mouseMoved;
@@ -21,9 +21,9 @@ public class NodeActionSystem : MonoBehaviour
     private void Update()
     {
         UpdateOutlineHover();
-        if (m_CurrentNode is not null && m_isHolding)
+        if (m_currentNode is not null && m_isHolding)
         {
-            m_CurrentNode.UpdateHold(Time.deltaTime);
+            m_currentNode.UpdateHold(Time.deltaTime);
         }
     }
 
@@ -58,11 +58,11 @@ public class NodeActionSystem : MonoBehaviour
                 return;
             }
 
-            if (node != m_CurrentNode || outline != m_currentOutline)
+            if (node != m_currentNode || outline != m_currentOutline)
             {
                 Clear();
 
-                m_CurrentNode = node;
+                m_currentNode = node;
                 m_currentOutline = outline;
 
                 if (m_currentOutline)
@@ -77,23 +77,23 @@ public class NodeActionSystem : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (m_CurrentNode != null)
+        if (m_currentNode != null)
         {
-            m_CurrentNode.Interact();
+            m_currentNode.Interact();
         }
     }
 
     private void OnBreak(InputValue value)
     {
-        if (m_CurrentNode is null) return;
+        if (m_currentNode is null) return;
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)
         {
-            m_CurrentNode.StartHold();
+            m_currentNode.StartHold();
         }
         else
         {
-            m_CurrentNode.EndHold();
+            m_currentNode.EndHold();
         }
     }
 
@@ -102,7 +102,7 @@ public class NodeActionSystem : MonoBehaviour
         if (m_currentOutline)
             m_currentOutline.enabled = false;
 
-        m_CurrentNode = null;
+        m_currentNode = null;
         m_currentOutline = null;
     }
 

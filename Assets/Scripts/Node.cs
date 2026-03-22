@@ -7,10 +7,10 @@ namespace GlowCore.World
 {
     public class Node : MonoBehaviour
     {
-        [SerializeField] private NodeData m_NodeData;
+        [SerializeField] private NodeData m_nodeData;
         private float m_holdTimer;
         private bool m_isHolding;
-        private IInteractable m_Interactable;
+        private IInteractable m_interactable;
         public Outline Outline;
 
         private void Awake()
@@ -34,29 +34,29 @@ namespace GlowCore.World
 
         private void Start()
         {
-            TryGetComponent(out m_Interactable);
+            TryGetComponent(out m_interactable);
         }
 
         public float GetInteractRange()
         {
-            return m_NodeData.InteractRange;
+            return m_nodeData.InteractRange;
         }
 
         public void Interact()
         {
-            m_Interactable?.Interact();
+            m_interactable?.Interact();
         }
 
         private void Break()
         {
-            foreach (var drop in m_NodeData.ItemDrops)
+            foreach (var drop in m_nodeData.ItemDrops)
             {
-                int amount = Random.Range(drop.min, drop.max + 1);
+                int amount = Random.Range(drop.Min, drop.Max + 1);
                 for (int i = 0; i < amount; i++)
                 {
                     Vector3 spawnPos = transform.position +
                                        new Vector3(Random.Range(-0.5f, 0.5f), 0.5f, Random.Range(-0.5f, 0.5f));
-                    Instantiate(drop.item.Prefab, spawnPos, Quaternion.identity);
+                    Instantiate(drop.Item.Prefab, spawnPos, Quaternion.identity);
                 }
             }
 
@@ -77,10 +77,10 @@ namespace GlowCore.World
 
         public void UpdateHold(float deltaTime)
         {
-            if (!m_isHolding || m_NodeData.IsIndestructible) return;
+            if (!m_isHolding || m_nodeData.IsIndestructible) return;
 
             m_holdTimer += deltaTime;
-            if (m_holdTimer >= m_NodeData.BreakTime)
+            if (m_holdTimer >= m_nodeData.BreakTime)
             {
                 Break();
                 m_isHolding = false;
