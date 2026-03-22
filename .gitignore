@@ -9,6 +9,8 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log
+obj/
+bin/
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
 *.blend1
@@ -47,6 +49,7 @@ ExportedObj/
 *.csproj
 *.unityproj
 *.sln
+*.slnx
 *.suo
 *.tmp
 *.user
@@ -58,6 +61,9 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+
+# Exclude linting project
+!Tools/Lint/*.csproj
 
 # Unity3D generated meta files
 *.pidb.meta

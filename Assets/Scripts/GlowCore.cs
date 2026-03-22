@@ -7,9 +7,9 @@ namespace GlowCore.World
         // Instance Fields
         [SerializeField] private GameObject[] m_logs;
         [SerializeField] private GameObject m_nextLevelPrefab;
-        [SerializeField] [Range(0, 17)] private int m_initialActiveLogs = 3;
-        [SerializeField] [Min(1)] private int m_startingLevel = 1;
-        [SerializeField] [Min(1)] private int m_woodToLevelUp = 17;
+        [SerializeField][Range(0, 17)] private int m_initialActiveLogs = 3;
+        [SerializeField][Min(1)] private int m_startingLevel = 1;
+        [SerializeField][Min(1)] private int m_woodToLevelUp = 17;
         private int m_activeLogs;
         private int m_level;
         private int m_woodAccumulated;
@@ -39,14 +39,14 @@ namespace GlowCore.World
             if (m_activeLogs >= m_logs.Length)
                 return;
 
-            int toActivate = Mathf.Min(amount, m_logs.Length - m_activeLogs);
-            for (int i = 0; i < toActivate; i++)
+            var toActivate = Mathf.Min(amount, m_logs.Length - m_activeLogs);
+            for (var i = 0; i < toActivate; i++)
             {
                 GameObject log = m_logs[m_activeLogs];
                 log.SetActive(true);
                 RegisterInteractableChildren(log);
                 m_activeLogs++;
-                m_woodAccumulated ++;
+                m_woodAccumulated++;
             }
 
             Debug.Log($"GlowCore: Activated {toActivate} log(s). Total active: {m_activeLogs}/{m_logs.Length}.");
@@ -75,8 +75,8 @@ namespace GlowCore.World
             }
 
             Vector3 position = transform.position;
-            int worldX = Mathf.RoundToInt(position.x);
-            int worldZ = Mathf.RoundToInt(position.z);
+            var worldX = Mathf.RoundToInt(position.x);
+            var worldZ = Mathf.RoundToInt(position.z);
 
             WorldGrid.Instance.SetNodeAt(worldX, worldZ, null);
 

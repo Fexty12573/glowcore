@@ -1,0 +1,58 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, dev]
+    tags: ['v*.*.*']
+    paths-ignore:
+      - 'doc/**'
+  pull_request:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Cache Unity Library
+        uses: actions/cache@v5
+        with:
+          path: Library
+          key: ${{ runner.os }}-unity-library-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/packages-lock.json', 'Packages/manifest.json') }}
+          restore-keys: |
+            ${{ runner.os }}-unity-library-
+      
+      - name: Run Tests
+        id: run-tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: .
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
+      
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: Test-Results
+          path: ${{ steps.run-tests.outputs.artifactsPath }}
+      
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: Coverage-Report
+          path: ${{ steps.run-tests.outputs.coveragePath }}

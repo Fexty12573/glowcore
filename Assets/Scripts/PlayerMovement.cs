@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleMove(inputValue.Get<Vector2>());
     }
-    
+
     private void FixedUpdate()
     {
         if (m_moveInput != Vector2.zero)

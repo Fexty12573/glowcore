@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using ScriptableObjectScripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,7 +21,8 @@ namespace GlowCore.World
 
             foreach (var col in colliders)
             {
-                if (!processed.Add(col.gameObject)) continue;
+                if (!processed.Add(col.gameObject))
+                    continue;
                 if (!col.TryGetComponent(out NodeActionChild child))
                 {
                     child = col.gameObject.AddComponent<NodeActionChild>();
@@ -52,7 +53,7 @@ namespace GlowCore.World
             foreach (var drop in m_nodeData.ItemDrops)
             {
                 int amount = Random.Range(drop.Min, drop.Max + 1);
-                for (int i = 0; i < amount; i++)
+                for (var i = 0; i < amount; i++)
                 {
                     Vector3 spawnPos = transform.position +
                                        new Vector3(Random.Range(-0.5f, 0.5f), 0.5f, Random.Range(-0.5f, 0.5f));
@@ -77,7 +78,8 @@ namespace GlowCore.World
 
         public void UpdateHold(float deltaTime)
         {
-            if (!m_isHolding || m_nodeData.IsIndestructible) return;
+            if (!m_isHolding || m_nodeData.IsIndestructible)
+                return;
 
             m_holdTimer += deltaTime;
             if (m_holdTimer >= m_nodeData.BreakTime)

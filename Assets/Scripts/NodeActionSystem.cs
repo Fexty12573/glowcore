@@ -1,4 +1,4 @@
-﻿using GlowCore.World;
+using GlowCore.World;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,7 +29,8 @@ public class NodeActionSystem : MonoBehaviour
 
     private void UpdateOutlineHover()
     {
-        if (!m_mouseMoved) return;
+        if (!m_mouseMoved)
+            return;
         m_mouseMoved = false;
         Ray ray = m_camera.ScreenPointToRay(m_mousePos);
 
@@ -77,15 +78,13 @@ public class NodeActionSystem : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (m_currentNode != null)
-        {
-            m_currentNode.Interact();
-        }
+        m_currentNode?.Interact();
     }
 
     private void OnBreak(InputValue value)
     {
-        if (m_currentNode is null) return;
+        if (m_currentNode is null)
+            return;
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)
         {
