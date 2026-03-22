@@ -96,14 +96,14 @@ namespace GlowCore.World
 
         private void RegisterInteractableChildren(GameObject target)
         {
-            InteractableRoot root = GetComponentInParent<InteractableRoot>();
+            Node root = GetComponentInParent<Node>();
             if (root == null)
                 return;
 
             foreach (Collider col in target.GetComponentsInChildren<Collider>())
             {
-                if (!col.TryGetComponent(out InteractableChild child))
-                    child = col.gameObject.AddComponent<InteractableChild>();
+                if (!col.TryGetComponent(out NodeActionChild child))
+                    child = col.gameObject.AddComponent<NodeActionChild>();
 
                 child.Root = root;
             }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1358394213260522004
+--- !u!1001 &5874496388993094666
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -58,26 +58,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 204529527427736150}
+      addedObject: {fileID: 1276782729435525690}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6454605932608049016}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4953368032286117947}
+      addedObject: {fileID: 6089828254267944864}
   m_SourcePrefab: {fileID: 100100000, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
---- !u!1 &2168647627201826629 stripped
+--- !u!1 &6721356939712964955 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
-  m_PrefabInstance: {fileID: 1358394213260522004}
+  m_PrefabInstance: {fileID: 5874496388993094666}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &204529527427736150
+--- !u!114 &1276782729435525690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2168647627201826629}
+  m_GameObject: {fileID: 6721356939712964955}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -85,31 +82,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::Outline
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 5
+  outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6454605932608049016
+--- !u!114 &6089828254267944864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2168647627201826629}
+  m_GameObject: {fileID: 6721356939712964955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22733d3555cc41b78bf65acb1844d6d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Gameplay::InteractableRoot
---- !u!114 &-4953368032286117947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2168647627201826629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffe3cd15b9dfaa04f8aa7c78f86bd008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::GlowCore.World.TreeNode
+  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
+  m_nodeData: {fileID: 11400000, guid: a610496409598994abf163c7c6e8d914, type: 2}
+  Outline: {fileID: 1276782729435525690}
