@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ScriptableObjectScripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -77,7 +77,7 @@ namespace GlowCore.World
 
         public void UpdateHold(float deltaTime)
         {
-            if (!m_isHolding) return;
+            if (!m_isHolding || m_NodeData.IsIndestructible) return;
 
             m_holdTimer += deltaTime;
             if (m_holdTimer >= m_NodeData.BreakTime)

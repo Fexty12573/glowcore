@@ -93,7 +93,7 @@ namespace GlowCore.World
             Transform parent = m_nodesParent != null ? m_nodesParent : transform;
             GameObject treeObject = Instantiate(m_treePrefab, new Vector3(x, 0f, z), Quaternion.identity, parent);
 
-            if (!treeObject.TryGetComponent(out TreeNode node))
+            if (!treeObject.TryGetComponent(out Node node))
             {
                 Debug.LogError("WorldGrid: Tree prefab does not have a TreeNode component.");
                 Destroy(treeObject);
@@ -176,19 +176,19 @@ namespace GlowCore.World
         }
 
 
-        public void ClearAllTrees()
-        {
-            ClearTreesInGrid();
-
-            // Also destroy any TreeNode children of the nodes parent that slipped through
-            // (e.g. pending nodes outside the grid bounds, or designer-placed trees)
-            Transform root = m_nodesParent != null ? m_nodesParent : transform;
-            foreach (TreeNode tree in root.GetComponentsInChildren<TreeNode>())
-                Destroy(tree.gameObject);
-
-            // Remove destroyed entries from the pending list
-            m_pendingNodes.RemoveAll(n => n == null || n.TryGetComponent(out TreeNode _));
-        }
+        // public void ClearAllTrees()
+        // {
+        //     ClearTreesInGrid();
+        //
+        //     // Also destroy any TreeNode children of the nodes parent that slipped through
+        //     // (e.g. pending nodes outside the grid bounds, or designer-placed trees)
+        //     Transform root = m_nodesParent != null ? m_nodesParent : transform;
+        //     foreach (TreeNode tree in root.GetComponentsInChildren<TreeNode>())
+        //         Destroy(tree.gameObject);
+        //
+        //     // Remove destroyed entries from the pending list
+        //     m_pendingNodes.RemoveAll(n => n == null || n.TryGetComponent(out TreeNode _));
+        // }
 
         // Private Methods
         private void Awake()
@@ -220,7 +220,7 @@ namespace GlowCore.World
         private void InitializeProceduralWorld()
         {
             RegisterExistingNodes();
-            ClearTreesInGrid();
+            // ClearTreesInGrid();
             SpawnTrees(m_initialTreeCount);
         }
 
@@ -274,22 +274,22 @@ namespace GlowCore.World
             Debug.Log(sb.ToString());
         }
 
-        private void ClearTreesInGrid()
-        {
-            for (int x = 0; x < m_gridSize; x++)
-            {
-                for (int z = 0; z < m_gridSize; z++)
-                {
-                    if (m_tiles[x, z] == null || !m_tiles[x, z].TryGetComponent(out TreeNode _))
-                        continue;
-
-                    Destroy(m_tiles[x, z].gameObject);
-                    m_tiles[x, z] = null;
-                }
-            }
-
-            m_totalTreeCount = 0;
-        }
+        // private void ClearTreesInGrid()
+        // {
+        //     for (int x = 0; x < m_gridSize; x++)
+        //     {
+        //         for (int z = 0; z < m_gridSize; z++)
+        //         {
+        //             if (m_tiles[x, z] == null || !m_tiles[x, z].TryGetComponent(out Node _))
+        //                 continue;
+        //
+        //             Destroy(m_tiles[x, z].gameObject);
+        //             m_tiles[x, z] = null;
+        //         }
+        //     }
+        //
+        //     m_totalTreeCount = 0;
+        // }
 
         private void SpawnTrees(int count)
         {
@@ -399,7 +399,7 @@ namespace GlowCore.World
 
                 // In procedural mode, trees outside the initial grid are replaced by the
                 // ring spawner as the grid expands over them.
-                if (m_worldMode == WorldMode.ProceduralGeneration && node.TryGetComponent(out TreeNode _))
+                if (m_worldMode == WorldMode.ProceduralGeneration && node.TryGetComponent(out Node _))
                 {
                     Destroy(node.gameObject);
                     m_pendingNodes.RemoveAt(i);

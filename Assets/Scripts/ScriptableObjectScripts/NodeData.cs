@@ -8,6 +8,7 @@ namespace ScriptableObjectScripts
         [SerializeField] public float InteractRange;
         [SerializeField] public ItemDrop[] ItemDrops;
         [SerializeField] public float BreakTime;
+        [SerializeField] public bool IsIndestructible;
         [SerializeField] public ToolData[] UsableTools;
     }
 

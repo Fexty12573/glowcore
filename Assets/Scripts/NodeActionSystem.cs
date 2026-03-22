@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GlowCore.World;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public interface IInteractable

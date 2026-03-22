@@ -6,7 +6,6 @@ namespace ScriptableObjectScripts
     public class ItemData : ScriptableObject
     {
         [SerializeField] public string ItemName;
-
         [SerializeField] public GameObject Prefab;
     }
 }
