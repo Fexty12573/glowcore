@@ -5,7 +5,7 @@ root = true
 
 [*]
 end_of_line = lf
-charset = utf-8-bom
+charset = utf-8
 
 [*.{c,c++,cc,cp,cpp,cs,cu,cuh,cxx,h,hh,hpp,hxx,inc,inl,ino,ipp,mpp,proto,tpp}]
 indent_style=space
