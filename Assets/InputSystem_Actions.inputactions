@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -243,12 +244,12 @@
                 },
                 {
                     "name": "",
-                    "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "041dbcfa-19d0-40e5-9851-cec0cc276728",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Look",
+                    "groups": "",
+                    "action": "Break",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -154,8 +154,8 @@ namespace GlowCore.World
                     if (m_tiles[x, z] == null)
                         continue;
 
-                    int newX = x + (newOrigin.x - m_origin.x);
-                    int newZ = z + (newOrigin.y - m_origin.y);
+                    var newX = x + (newOrigin.x - m_origin.x);
+                    var newZ = z + (newOrigin.y - m_origin.y);
                     newTiles[newX, newZ] = m_tiles[x, z];
                 }
             }
@@ -296,7 +296,7 @@ namespace GlowCore.World
             List<Vector2Int> freeCells = CollectFreeCells();
             Shuffle(freeCells);
 
-            int toSpawn = Mathf.Min(count, freeCells.Count);
+            var toSpawn = Mathf.Min(count, freeCells.Count);
             for (var i = 0; i < toSpawn; i++)
                 PlaceTree(freeCells[i].x, freeCells[i].y);
         }
@@ -322,7 +322,7 @@ namespace GlowCore.World
 
             Shuffle(ringCells);
 
-            int toSpawn = Mathf.Min(count, ringCells.Count);
+            var toSpawn = Mathf.Min(count, ringCells.Count);
             for (var i = 0; i < toSpawn; i++)
                 PlaceTree(ringCells[i].x, ringCells[i].y);
         }
@@ -347,7 +347,7 @@ namespace GlowCore.World
         {
             for (var i = list.Count - 1; i > 0; i--)
             {
-                int j = Random.Range(0, i + 1);
+                var j = Random.Range(0, i + 1);
                 (list[i], list[j]) = (list[j], list[i]);
             }
         }
@@ -357,8 +357,8 @@ namespace GlowCore.World
             Node[] nodes = FindObjectsByType<Node>(FindObjectsSortMode.None);
             foreach (Node node in nodes)
             {
-                int worldX = Mathf.RoundToInt(node.transform.position.x);
-                int worldZ = Mathf.RoundToInt(node.transform.position.z);
+                var worldX = Mathf.RoundToInt(node.transform.position.x);
+                var worldZ = Mathf.RoundToInt(node.transform.position.z);
                 Vector2Int gridIndex = WorldToGrid(worldX, worldZ);
 
                 if (!IsInBounds(gridIndex))
@@ -390,8 +390,8 @@ namespace GlowCore.World
                     continue;
                 }
 
-                int worldX = Mathf.RoundToInt(node.transform.position.x);
-                int worldZ = Mathf.RoundToInt(node.transform.position.z);
+                var worldX = Mathf.RoundToInt(node.transform.position.x);
+                var worldZ = Mathf.RoundToInt(node.transform.position.z);
                 Vector2Int gridIndex = WorldToGrid(worldX, worldZ);
 
                 if (!IsInBounds(gridIndex))

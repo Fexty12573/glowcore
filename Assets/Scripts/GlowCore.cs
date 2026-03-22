@@ -39,7 +39,7 @@ namespace GlowCore.World
             if (m_activeLogs >= m_logs.Length)
                 return;
 
-            int toActivate = Mathf.Min(amount, m_logs.Length - m_activeLogs);
+            var toActivate = Mathf.Min(amount, m_logs.Length - m_activeLogs);
             for (var i = 0; i < toActivate; i++)
             {
                 GameObject log = m_logs[m_activeLogs];
@@ -75,8 +75,8 @@ namespace GlowCore.World
             }
 
             Vector3 position = transform.position;
-            int worldX = Mathf.RoundToInt(position.x);
-            int worldZ = Mathf.RoundToInt(position.z);
+            var worldX = Mathf.RoundToInt(position.x);
+            var worldZ = Mathf.RoundToInt(position.z);
 
             WorldGrid.Instance.SetNodeAt(worldX, worldZ, null);
 

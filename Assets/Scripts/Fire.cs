@@ -49,8 +49,8 @@ namespace GlowCore.World
             if (m_fireParticles == null)
                 return;
 
-            float t = Mathf.Clamp01((float)TotalWoodReceived / m_woodForMaxFire);
-            float scale = Mathf.Lerp(m_minFireScale, m_maxFireScale, t);
+            var t = Mathf.Clamp01((float)TotalWoodReceived / m_woodForMaxFire);
+            var scale = Mathf.Lerp(m_minFireScale, m_maxFireScale, t);
             m_fireParticles.transform.localScale = Vector3.one * scale;
         }
 

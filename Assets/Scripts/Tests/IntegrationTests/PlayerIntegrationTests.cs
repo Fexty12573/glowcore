@@ -3,6 +3,7 @@ using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.TestTools;
 
 public class PlayerIntegrationTests : InputTestFixture
@@ -16,6 +17,7 @@ public class PlayerIntegrationTests : InputTestFixture
     [SetUp]
     public void SetUp()
     {
+        InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
         m_playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Player.prefab");
         m_playerInstance = GameObject.Instantiate(m_playerPrefab);
         m_playerMovement = m_playerInstance.GetComponentInChildren<PlayerMovement>();
@@ -59,12 +61,8 @@ public class PlayerIntegrationTests : InputTestFixture
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        Press(m_mouse.rightButton);
-
-        m_playerCamera.HandleLook(lookInput);
+        InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = lookInput, buttons = 1 << (int)MouseButton.Right });
         yield return new WaitForFixedUpdate();
-
-        Release(m_mouse.rightButton);
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
         Assert.AreEqual(oldRotation, newRotation);
@@ -75,11 +73,8 @@ public class PlayerIntegrationTests : InputTestFixture
     {
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        m_playerCamera.HandleLook(Vector2.zero);
-
-        Press(m_mouse.rightButton);
+        InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = Vector2.zero, buttons = 1 << (int)MouseButton.Right });
         yield return new WaitForFixedUpdate();
-        Release(m_mouse.rightButton);
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
         Assert.AreEqual(oldRotation, newRotation);
@@ -91,7 +86,7 @@ public class PlayerIntegrationTests : InputTestFixture
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        m_playerCamera.HandleLook(lookInput);
+        InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = lookInput });
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;

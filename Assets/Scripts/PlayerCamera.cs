@@ -22,11 +22,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Mouse.current.rightButton.isPressed)
-        {
-            var rotateDegrees = m_lookInput.x * Time.fixedDeltaTime * m_cameraSpeed;
-            m_cameraAnchor.Rotate(new Vector3(0, rotateDegrees, 0));
-            m_lookInput = Vector2.zero;
-        }
+        var rotateDegrees = m_lookInput.x * Time.fixedDeltaTime * m_cameraSpeed;
+        m_cameraAnchor.Rotate(new Vector3(0, rotateDegrees, 0));
     }
 }
