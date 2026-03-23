@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: 
-  Prefab: {fileID: 0}
+  Name: Axe
+  Prefab: {fileID: 5056978600972422149, guid: d5c34e1fef54e8443aef867101228340, type: 3}
   Icon: {fileID: 0}
-  MaxStack: 99
+  DropScale: 1
+  MaxStack: 1

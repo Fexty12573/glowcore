@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087e992aa4245d84684ab1478c8d3014, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: b75a868f316258a478b262029554ee18, type: 2}
