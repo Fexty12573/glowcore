@@ -20,6 +20,13 @@ namespace GlowCore.World
         public int WoodToLevelUp => m_woodToLevelUp;
 
         // Public Methods
+        public void Interact()
+        {
+            gameObject.TryGetComponent<Fire>(out Fire fire);
+            Debug.Log(fire);
+            fire?.FeedWood(1);
+        }
+        
         public bool FeedWood(int amount)
         {
             ActivateLogs(amount);
@@ -107,13 +114,6 @@ namespace GlowCore.World
 
                 child.Root = root;
             }
-        }
-
-        public void Interact()
-        {
-            gameObject.TryGetComponent<Fire>(out Fire fire);
-            Debug.Log(fire);
-            fire?.FeedWood(1);
         }
     }
 }
