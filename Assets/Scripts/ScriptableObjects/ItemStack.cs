@@ -10,10 +10,18 @@ namespace ScriptableObjects
 
         public bool Valid => Item != null && Amount != 0;
 
-        public int Add(int amount)
+        public static ItemStack Create(Item item, int amount)
         {
-            var newAmount = Math.Clamp(Amount + amount, 0, Item.MaxStack);
-            var added = newAmount + amount;
+            var stack = CreateInstance<ItemStack>();
+            stack.Item = item;
+            stack.Amount = amount;
+            return stack;
+        }
+
+        public int Add(int amountToAdd)
+        {
+            var newAmount = Math.Clamp(Amount + amountToAdd, 0, Item.MaxStack);
+            var added = newAmount - Amount;
             Amount = newAmount;
 
             return added;
@@ -37,6 +45,12 @@ namespace ScriptableObjects
             Amount = stack.Amount;
 
             stack.Amount = 0;
+        }
+
+        public void Set(Item item, int amount)
+        {
+            Item = item;
+            Amount = amount;
         }
     }
 }
