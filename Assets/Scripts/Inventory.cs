@@ -26,8 +26,7 @@ public class Inventory
             return false;
 
         var existing = GetSlotWithItem(stack.Item);
-        if (existing != null)
-            existing.Add(stack);
+        existing?.Add(stack);
 
         if (stack.Amount > 0)
         {
