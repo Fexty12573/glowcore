@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -5,18 +7,37 @@ namespace ScriptableObjects
     [CreateAssetMenu(menuName = "Nodes/NodeData")]
     public class NodeData : ScriptableObject
     {
-        [SerializeField] public float InteractRange;
-        [SerializeField] public ItemDrop[] ItemDrops;
-        [SerializeField] public float BreakTime;
-        [SerializeField] public bool IsIndestructible;
-        [SerializeField] public ToolData[] UsableTools;
+        public float InteractionRange;
+        public ItemDrop[] ItemDrops;
+        public float BreakTime;
+        public bool IsIndestructible;
+        public UsableTool[] UsableTools;
+
+        public float GetBreakTime(Tool usedTool)
+        {
+            if (!usedTool)
+                return BreakTime;
+
+            var usableTool = UsableTools.SingleOrDefault(tool => tool.Tool == usedTool);
+            if (usableTool is not null)
+                return BreakTime * usableTool.BreakMultiplier;
+
+            return BreakTime;
+        }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class ItemDrop
     {
-        public ItemData Item;
-        public int Min;
-        public int Max;
+        public Item Item;
+        [Min(0)] public int Min;
+        [Min(0)] public int Max;
+    }
+
+    [Serializable]
+    public class UsableTool
+    {
+        public Tool Tool;
+        public float BreakMultiplier;
     }
 }

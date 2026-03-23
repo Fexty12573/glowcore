@@ -6,5 +6,7 @@ namespace ScriptableObjects
     {
         public Item Item;
         public int Amount;
+
+        public bool Valid => Item != null && Amount != 0;
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
-  m_Name: WoodItem2
+  m_Name: Wood
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: 
-  Prefab: {fileID: 0}
+  Name: Wood
+  Prefab: {fileID: 1694080080886985426, guid: 19790610027d32d42bcc066fa90ea64f, type: 3}
   Icon: {fileID: 0}
-  MaxStack: 0
+  MaxStack: 99

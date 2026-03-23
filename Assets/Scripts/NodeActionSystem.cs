@@ -53,7 +53,7 @@ public class NodeActionSystem : MonoBehaviour
             Node node = child.Root;
             Outline outline = node.Outline;
 
-            if (distance > node.GetInteractRange())
+            if (distance > node.GetInteractionRange())
             {
                 Clear();
                 return;

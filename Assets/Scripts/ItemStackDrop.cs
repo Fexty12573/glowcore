@@ -1,0 +1,104 @@
+using System;
+using ScriptableObjects;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class ItemStackDrop : MonoBehaviour
+{
+    private const float kVisualSpread = 0.1f;
+    private const float kBobSpeed = 3f;
+    private const float kBobAmplitude = 0.05f;
+    private const float kGroundOffset = 0.1f;
+
+    public ItemStack Stack { get; private set; }
+
+    private float m_bobPhase;
+    private Vector3 m_baseLocalPos;
+
+    public static ItemStackDrop Spawn(ItemDrop drop, Vector3 position)
+    {
+        if (drop == null)
+            return null;
+
+        var amount = Random.Range(drop.Min, drop.Max + 1);
+
+        var dropRoot = new GameObject($"{drop.Item.Name}_x{amount}_Stack")
+        {
+            transform = { position = position }
+        };
+
+        var stackDrop = dropRoot.AddComponent<ItemStackDrop>();
+        stackDrop.Initialize(drop.Item, amount);
+
+        return stackDrop;
+    }
+
+    public void Initialize(Item item, int amount)
+    {
+        if (item == null || amount == 0)
+            return;
+
+        Stack = ScriptableObject.CreateInstance<ItemStack>();
+        Stack.Item = item;
+        Stack.Amount = amount;
+
+        BuildVisuals();
+    }
+
+    private void BuildVisuals()
+    {
+        if (Stack == null || !Stack.Valid)
+            return;
+
+        var visibleAmount = Math.Clamp(Stack.Amount, 1, 3);
+        for (var i = 0; i < visibleAmount; i++)
+        {
+            var offset = new Vector3(
+                Random.Range(-kVisualSpread, kVisualSpread),
+                0f,
+                Random.Range(-kVisualSpread, kVisualSpread));
+
+            var visual = Instantiate(Stack.Item.Prefab, transform);
+            visual.transform.SetLocalPositionAndRotation(offset, Quaternion.identity);
+            visual.transform.localScale *= Stack.Item.DropScale;
+
+            RemoveCollisions(visual);
+        }
+    }
+
+    private static void RemoveCollisions(GameObject obj)
+    {
+        foreach (var collider in obj.GetComponentsInChildren<Collider>())
+            collider.enabled = false;
+
+        foreach (var rb in obj.GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+    }
+
+    private void Start()
+    {
+        m_baseLocalPos = transform.localPosition;
+        m_baseLocalPos.y += kGroundOffset;
+
+        m_bobPhase = Random.Range(0f, Mathf.PI * 2f);
+    }
+
+    private void FixedUpdate()
+    {
+        var height = Mathf.Sin(m_bobPhase + (Time.time * kBobSpeed)) * kBobAmplitude;
+        var pos = m_baseLocalPos;
+        pos.y += height;
+        transform.localPosition = pos;
+    }
+
+    private void OnDestroy()
+    {
+        if (Stack != null)
+            Destroy(Stack);
+    }
+}
