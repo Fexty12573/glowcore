@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GlowCore.World
 {
-    public class GlowCoreObject : MonoBehaviour
+    public class GlowCoreObject : MonoBehaviour, IInteractable
     {
         // Instance Fields
         [SerializeField] private GameObject[] m_logs;
@@ -107,6 +107,13 @@ namespace GlowCore.World
 
                 child.Root = root;
             }
+        }
+
+        public void Interact()
+        {
+            gameObject.TryGetComponent<Fire>(out Fire fire);
+            Debug.Log(fire);
+            fire?.FeedWood(1);
         }
     }
 }
