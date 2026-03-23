@@ -26,7 +26,7 @@ namespace GlowCore.World
             Debug.Log(fire);
             fire?.FeedWood(1);
         }
-        
+
         public bool FeedWood(int amount)
         {
             ActivateLogs(amount);
