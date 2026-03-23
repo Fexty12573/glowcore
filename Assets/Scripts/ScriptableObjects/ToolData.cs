@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ScriptableObjectScripts
+namespace ScriptableObjects
 {
     [CreateAssetMenu(menuName = "Items/Tool")]
     public class ToolData : ScriptableObject

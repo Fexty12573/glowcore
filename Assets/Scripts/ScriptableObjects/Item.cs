@@ -1,0 +1,14 @@
+using UnityEngine;
+
+namespace ScriptableObjects
+{
+    [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Objects/Item")]
+    public class Item : ScriptableObject
+    {
+        public string Name;
+        public GameObject Prefab;
+        public Texture2D Icon;
+        [Min(0)] public int MaxStack = 99;
+    }
+}
+
