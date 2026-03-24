@@ -61,9 +61,7 @@ public class ItemStackDrop : MonoBehaviour
         if (item == null || amount == 0)
             return;
 
-        Stack = ScriptableObject.CreateInstance<ItemStack>();
-        Stack.Item = item;
-        Stack.Amount = amount;
+        Stack = new ItemStack(item, amount);
 
         BuildVisuals();
     }
@@ -138,11 +136,5 @@ public class ItemStackDrop : MonoBehaviour
         inventory.Add(Stack);
         m_collected = true;
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        if (Stack != null)
-            Destroy(Stack);
     }
 }

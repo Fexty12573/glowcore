@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace ScriptableObjects
 {
-    public class ItemStack : ScriptableObject
+    [Serializable]
+    public class ItemStack
     {
         public Item Item;
         public int Amount;
@@ -11,12 +12,11 @@ namespace ScriptableObjects
         public bool IsFull => Item != null && Amount >= Item.MaxStack;
         public bool IsValid => Item != null && Amount != 0;
 
-        public static ItemStack Create(Item item, int amount)
+        public ItemStack() { }
+        public ItemStack(Item item, int amount)
         {
-            var stack = CreateInstance<ItemStack>();
-            stack.Item = item;
-            stack.Amount = amount;
-            return stack;
+            Item = item;
+            Amount = amount;
         }
 
         public int Add(int amountToAdd)

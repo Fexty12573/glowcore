@@ -24,7 +24,7 @@ public class InventoryTests
     {
         var inventory = new Inventory(2, 2);
         inventory[0, 0].Set(m_item, 1);
-        inventory.AddItems(ItemStack.Create(m_item, 5));
+        inventory.AddItems(new ItemStack(m_item, 5));
 
         Assert.AreEqual(inventory[0, 0].Amount, 6);
     }
@@ -43,7 +43,7 @@ public class InventoryTests
     public void AddItems_ShouldPlaceStackInFirstEmptySlot_WhenNoExistingStack()
     {
         var inventory = new Inventory(2, 2);
-        var stack = ItemStack.Create(m_item, 3);
+        var stack = new ItemStack(m_item, 3);
 
         inventory.AddItems(stack);
 
@@ -57,7 +57,7 @@ public class InventoryTests
     {
         var inventory = new Inventory(2, 2);
         inventory[0, 0].Set(m_item, 1);
-        var stack = ItemStack.Create(m_item, 2);
+        var stack = new ItemStack(m_item, 2);
 
         inventory.AddItems(stack);
 
