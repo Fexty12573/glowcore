@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateMovement(Vector3 movement)
     {
+        movement += Vector3.down; // this brings the player back to the ground
         m_controller.Move(Time.fixedDeltaTime * m_movementSpeed * movement);
     }
 
