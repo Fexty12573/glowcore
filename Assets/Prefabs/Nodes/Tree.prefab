@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
-  m_nodeData: {fileID: 11400000, guid: a610496409598994abf163c7c6e8d914, type: 2}
+  m_nodeData: {fileID: 11400000, guid: a7ec7f1147e620346be7e7086ee7bc5b, type: 2}
   Outline: {fileID: 1276782729435525690}

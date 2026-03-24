@@ -11,13 +11,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: Tree
-  m_EditorClassIdentifier: Gameplay::ScriptableObjectScripts.InteractableData
-  InteractRange: 3
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
+  InteractionRange: 3
   ItemDrops:
-  - Item: {fileID: 11400000, guid: bf18490b801e527468ee03e04a8e024a, type: 2}
+  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Min: 2
     Max: 3
   BreakTime: 1
   IsIndestructible: 0
   UsableTools:
-  - {fileID: 11400000, guid: a4dbdeb21c1f32a4eaec24044c0499b0, type: 2}
+  - Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+    BreakMultiplier: 0

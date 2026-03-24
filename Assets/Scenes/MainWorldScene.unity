@@ -1297,6 +1297,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1345484427660632876, guid: b06ebf33f9717d545b7bedcda0ff8bbc, type: 3}
   m_PrefabInstance: {fileID: 960147465}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1189741024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9090418907346557860, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+  m_PrefabInstance: {fileID: 4775361754903699258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258743175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4752792618590677546, guid: b06ebf33f9717d545b7bedcda0ff8bbc, type: 3}
@@ -1483,6 +1488,54 @@ Transform:
   - {fileID: 1389519735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2044457284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044457285}
+  - component: {fileID: 2044457286}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2044457285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044457284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1189741024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2044457286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044457284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaf62ba1ac416a498f5b89dc96f9d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::PlayerInventory
+  m_inventory:
+    m_items: []
+    m_width: 0
+    m_height: 0
 --- !u!1001 &2026931509539895344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1598,7 +1651,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 9090418907346557860, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2044457285}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6180008198752448360, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       insertIndex: -1

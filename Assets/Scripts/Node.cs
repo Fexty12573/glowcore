@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using ScriptableObjectScripts;
+using ScriptableObjects;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace GlowCore.World
 {
@@ -38,9 +37,9 @@ namespace GlowCore.World
             TryGetComponent(out m_interactable);
         }
 
-        public float GetInteractRange()
+        public float GetInteractionRange()
         {
-            return m_nodeData.InteractRange;
+            return m_nodeData.InteractionRange;
         }
 
         public void Interact()
@@ -52,13 +51,11 @@ namespace GlowCore.World
         {
             foreach (var drop in m_nodeData.ItemDrops)
             {
-                int amount = Random.Range(drop.Min, drop.Max + 1);
-                for (var i = 0; i < amount; i++)
-                {
-                    Vector3 spawnPos = transform.position +
-                                       new Vector3(Random.Range(-0.5f, 0.5f), 0.5f, Random.Range(-0.5f, 0.5f));
-                    Instantiate(drop.Item.Prefab, spawnPos, Quaternion.identity);
-                }
+                var offset = new Vector3(
+                    Random.Range(-0.2f, 0.2f),
+                    0f,
+                    Random.Range(-0.2f, 0.2f));
+                ItemStackDrop.Spawn(drop, transform.position + offset);
             }
 
             Destroy(gameObject);
