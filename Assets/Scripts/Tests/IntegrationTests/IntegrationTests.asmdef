@@ -6,7 +6,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Unity.InputSystem.TestFramework",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "PostProcessing"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
