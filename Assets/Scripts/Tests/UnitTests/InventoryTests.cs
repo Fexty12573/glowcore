@@ -67,6 +67,22 @@ public class InventoryTests
     }
 
     [Test]
+    public void AddItems_ShouldFillAllPartialStacksBeforeUsingEmptySlot()
+    {
+        var inventory = new Inventory(2, 2);
+        inventory[0, 0].Set(m_item, 8);
+        inventory[1, 0].Set(m_item, 9);
+        var stack = new ItemStack(m_item, 5);
+
+        inventory.AddItems(stack);
+
+        Assert.AreEqual(m_item.MaxStack, inventory[0, 0].Amount);
+        Assert.AreEqual(m_item.MaxStack, inventory[1, 0].Amount);
+        Assert.AreEqual(2, inventory[0, 1].Amount + inventory[1, 1].Amount);
+        Assert.AreEqual(0, stack.Amount);
+    }
+
+    [Test]
     public void GetFirstEmptySlot_ShouldReturnNull_WhenInventoryIsFull()
     {
         var inventory = new Inventory(2, 2);
