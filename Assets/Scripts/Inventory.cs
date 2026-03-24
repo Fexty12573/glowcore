@@ -26,16 +26,25 @@ public class Inventory
             return false;
 
         var existing = GetSlotWithItem(stack.Item);
-        existing?.Add(stack);
-
-        if (stack.Amount > 0)
+        while (stack.Amount > 0 && existing != null)
         {
-            var empty = GetFirstEmptySlot();
-            if (empty.HasValue)
-                this[empty.Value.x, empty.Value.y].Set(stack);
+            if (!existing.IsFull)
+                existing.Add(stack);
+
+            existing = GetSlotWithItem(stack.Item);
         }
 
-        return true;
+        if (stack.Amount == 0)
+            return true;
+
+        var empty = GetFirstEmptySlot();
+        if (empty.HasValue)
+        {
+            this[empty.Value.x, empty.Value.y].Set(stack);
+            return true;
+        }
+
+        return false;
     }
 
     public ItemStack GetSlotWithItem(Item item)

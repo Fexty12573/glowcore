@@ -8,7 +8,8 @@ namespace ScriptableObjects
         public Item Item;
         public int Amount;
 
-        public bool Valid => Item != null && Amount != 0;
+        public bool IsFull => Item != null && Amount >= Item.MaxStack;
+        public bool IsValid => Item != null && Amount != 0;
 
         public static ItemStack Create(Item item, int amount)
         {
