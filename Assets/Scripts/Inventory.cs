@@ -25,13 +25,13 @@ public class Inventory
         if (stack == null)
             return false;
 
-        var existing = GetSlotWithItem(stack.Item);
-        while (stack.Amount > 0 && existing != null)
+        var existing = GetSlotWithItem(0, stack.Item);
+        while (stack.Amount > 0 && existing != -1)
         {
-            if (!existing.IsFull)
-                existing.Add(stack);
+            if (!m_items[existing].IsFull)
+                m_items[existing].Add(stack);
 
-            existing = GetSlotWithItem(stack.Item);
+            existing = GetSlotWithItem(existing + 1, stack.Item);
         }
 
         if (stack.Amount == 0)
@@ -56,6 +56,17 @@ public class Inventory
         }
 
         return null;
+    }
+
+    public int GetSlotWithItem(int startIndex, Item item)
+    {
+        for (var i = startIndex; i < m_items.Length; i++)
+        {
+            if (m_items[i].Item == item && m_items[i].Amount > 0)
+                return i;
+        }
+
+        return -1;
     }
 
     public Vector2Int? GetFirstEmptySlot()
