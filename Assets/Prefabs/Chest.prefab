@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: aaf591e3296eb6941867eb327512ac56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aaf591e3296eb6941867eb327512ac56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000007642723
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aaf591e3296eb6941867eb327512ac56, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aaf591e3296eb6941867eb327512ac56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4146224734655527241}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aaf591e3296eb6941867eb327512ac56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1650554821984015822}
   m_SourcePrefab: {fileID: 100100000, guid: aaf591e3296eb6941867eb327512ac56, type: 3}
 --- !u!1 &6348191760633195365 stripped
 GameObject:
@@ -100,3 +103,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 4ee04bed3397ce34caaf820f7048120b, type: 2}
   Outline: {fileID: 3485674928449247075}
+--- !u!114 &-1650554821984015822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348191760633195365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5966d91db41848359d3a8f4f90f9dea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::Chest
+  m_drops:
+  - {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+  - {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}

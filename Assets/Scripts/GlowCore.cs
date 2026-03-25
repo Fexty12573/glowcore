@@ -1,3 +1,4 @@
+using ScriptableObjects;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -22,9 +23,20 @@ namespace GlowCore.World
         // Public Methods
         public void Interact()
         {
-            gameObject.TryGetComponent<Fire>(out Fire fire);
-            Debug.Log(fire);
-            fire?.FeedWood(1);
+            ItemStack itemsInHand = PlayerHand.Instance?.ItemsInHand;
+            if (itemsInHand.Item is null)
+                return;
+
+            if (itemsInHand.Item.name == "Wood")
+            {            
+                int woodAmount = itemsInHand.Amount;
+                itemsInHand.Amount = 0;
+                itemsInHand.Item = null;
+                gameObject.TryGetComponent<Fire>(out Fire fire);
+                fire?.FeedWood(woodAmount);
+                PlayerHand.Instance?.UpdateHandVisual();
+            }
+
         }
 
         public bool FeedWood(int amount)
