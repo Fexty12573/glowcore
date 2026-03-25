@@ -1,3 +1,4 @@
+using System.Linq;
 using GlowCore.World;
 using ScriptableObjects;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
     {
         Node actionNode = NodeActionSystem.Instance.CurrentNode;
         if (actionNode is null)
+            return;
+        if (!actionNode.NodeData.UsableTools.Any(t => t.Tool == Tool))
             return;
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)

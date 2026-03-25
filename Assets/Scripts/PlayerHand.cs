@@ -42,6 +42,7 @@ public class PlayerHand : MonoBehaviour
         if (m_itemsInHand.Item is null)
             return;
         m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, m_playerHand);
+        m_itemGameObject.transform.localScale *= m_itemsInHand.Item.InHandScale;
         Rigidbody rb = m_itemGameObject.GetComponent<Rigidbody>();
         Destroy(rb);
         Outline outline = m_itemGameObject.GetComponent<Outline>();
