@@ -14,7 +14,7 @@ public class PlayerInventory : MonoBehaviour
     private void Awake() => m_inventory = new Inventory(kWidth, kHeight);
 
     public void Add(ItemStack stack) => m_inventory.AddItems(stack);
-    
+
     private void OnPrevious(InputValue value)
     {
         m_hotbarIndex = (m_hotbarIndex + 1) % kWidth;

@@ -9,7 +9,6 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
 
     public Tool Tool;
     
-    
     public void Use(InputValue value)
     {
         Node actionNode = NodeActionSystem.Instance.CurrentNode;

@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour, IInteractable
 {
-    [SerializeField] private List<Item> m_drops = new();
+    [SerializeField] private Item[] m_drops;
     public void Interact()
     {
         foreach (var item in m_drops)
         {
-            ItemStackDrop.Spawn(new ItemDrop()
-            {
-                Item = item,
-                Min = 1,
-                Max = 1
-            }, transform.position + Vector3.right);
+            ItemStackDrop.Spawn(new ItemStack(item, 1), transform.position + Vector3.right);
         }
     }
 }

@@ -10,10 +10,10 @@ public interface IHandItem
 public class PlayerHand : MonoBehaviour
 {
     private static PlayerHand s_instance;
-    
+
     [SerializeField] private Transform m_playerHand;
     private ItemStack m_itemsInHand;
-    private GameObject itemGameObject;
+    private GameObject m_itemGameObject;
 
     public static PlayerHand Instance => s_instance;
     public ItemStack ItemsInHand => m_itemsInHand;
@@ -28,7 +28,7 @@ public class PlayerHand : MonoBehaviour
         }
         s_instance = this;
     }
-    
+
     public void SetItemInHand(ItemStack itemStack)
     {
         m_itemsInHand = itemStack;
@@ -37,19 +37,19 @@ public class PlayerHand : MonoBehaviour
 
     public void UpdateHandVisual()
     {
-        Destroy(itemGameObject);
+        Destroy(m_itemGameObject);
         if (m_itemsInHand.Item is null)
             return;
-        itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, m_playerHand);
-        Rigidbody rb = itemGameObject.GetComponent<Rigidbody>();
+        m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, m_playerHand);
+        Rigidbody rb = m_itemGameObject.GetComponent<Rigidbody>();
         Destroy(rb);
-        Outline outline = itemGameObject.GetComponent<Outline>();
+        Outline outline = m_itemGameObject.GetComponent<Outline>();
         Destroy(outline);
     }
-    
+
     private void OnUse(InputValue value)
     {
-        var handItem = itemGameObject?.GetComponent<IHandItem>();
+        var handItem = m_itemGameObject?.GetComponent<IHandItem>();
         if (handItem is null)
             return;
         handItem.Use(value);

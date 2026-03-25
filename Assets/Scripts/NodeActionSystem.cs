@@ -10,7 +10,7 @@ public interface IInteractable
 public class NodeActionSystem : MonoBehaviour
 {
     private static NodeActionSystem s_instance;
-    
+
     [SerializeField] private Camera m_camera;
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_raycastRange = 100f;
@@ -18,7 +18,7 @@ public class NodeActionSystem : MonoBehaviour
     private Outline m_currentOutline;
     private Vector2 m_mousePos;
     private bool m_mouseMoved;
-    
+
     public static NodeActionSystem Instance => s_instance;
     public Node CurrentNode => m_currentNode;
 
@@ -26,7 +26,7 @@ public class NodeActionSystem : MonoBehaviour
     {
         if (s_instance != null)
         {
-            Debug.LogWarning("NodeActionSystem: Duplicate instance detected. Destroying this one.");
+            Debug.LogError("NodeActionSystem: Duplicate instance detected. Destroying this one.");
             Destroy(gameObject);
             return;
         }

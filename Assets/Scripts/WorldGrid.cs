@@ -195,7 +195,7 @@ namespace GlowCore.World
         {
             if (s_instance != null)
             {
-                Debug.LogWarning("WorldGrid: Duplicate instance detected. Destroying this one.");
+                Debug.LogError("WorldGrid: Duplicate instance detected. Destroying this one.");
                 Destroy(gameObject);
                 return;
             }

@@ -27,11 +27,10 @@ namespace GlowCore.World
             if (itemsInHand.Item is null)
                 return;
 
-            if (itemsInHand.Item.name == "Wood")
-            {            
+            if (itemsInHand.Item.Name == "Wood")
+            {
                 int woodAmount = itemsInHand.Amount;
-                itemsInHand.Amount = 0;
-                itemsInHand.Item = null;
+                itemsInHand.Clear();
                 gameObject.TryGetComponent<Fire>(out Fire fire);
                 fire?.FeedWood(woodAmount);
                 PlayerHand.Instance?.UpdateHandVisual();
