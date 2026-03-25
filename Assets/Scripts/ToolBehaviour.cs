@@ -8,7 +8,7 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
     private bool m_isHolding;
 
     public Tool Tool;
-    
+
     public void Use(InputValue value)
     {
         Node actionNode = NodeActionSystem.Instance.CurrentNode;
@@ -32,7 +32,7 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
             Debug.LogError($"Tool {Tool.Name} has no ToolBehaviour Component.");
         }
     }
-    
+
     void Update()
     {
         Node actionNode = NodeActionSystem.Instance?.CurrentNode;

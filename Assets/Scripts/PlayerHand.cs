@@ -38,6 +38,7 @@ public class PlayerHand : MonoBehaviour
     public void UpdateHandVisual()
     {
         Destroy(m_itemGameObject);
+        m_itemGameObject = null;
         if (m_itemsInHand.Item is null)
             return;
         m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, m_playerHand);

@@ -24,7 +24,7 @@ namespace GlowCore.World
         public void Interact()
         {
             ItemStack itemsInHand = PlayerHand.Instance?.ItemsInHand;
-            if (itemsInHand.Item is null)
+            if (itemsInHand?.Item is null)
                 return;
 
             if (itemsInHand.Item.Name == "Wood")
