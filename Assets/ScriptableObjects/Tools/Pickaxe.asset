@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
-  m_Name: Chest
-  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: Chest
-  Prefab: {fileID: 6348191760633195365, guid: e88a89ab48c141b47970093c6a02adf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 087e992aa4245d84684ab1478c8d3014, type: 3}
+  m_Name: Pickaxe
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
+  Name: Pickaxe
+  Prefab: {fileID: 0}
   Icon: {fileID: 0}
   DropScale: 1
-  InHandScale: 0.5
-  MaxStack: 99
+  MaxStack: 1

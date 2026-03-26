@@ -9,6 +9,8 @@ public interface IInteractable
 
 public class NodeActionSystem : MonoBehaviour
 {
+    private static NodeActionSystem s_instance;
+
     [SerializeField] private Camera m_camera;
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_raycastRange = 100f;
@@ -16,15 +18,23 @@ public class NodeActionSystem : MonoBehaviour
     private Outline m_currentOutline;
     private Vector2 m_mousePos;
     private bool m_mouseMoved;
-    private bool m_isHolding;
 
+    public static NodeActionSystem Instance => s_instance;
+    public Node CurrentNode => m_currentNode;
+
+    private void Awake()
+    {
+        if (s_instance != null)
+        {
+            Debug.LogError("NodeActionSystem: Duplicate instance detected. Destroying this one.");
+            Destroy(gameObject);
+            return;
+        }
+        s_instance = this;
+    }
     private void Update()
     {
         UpdateOutlineHover();
-        if (m_currentNode is not null && m_isHolding)
-        {
-            m_currentNode.UpdateHold(Time.deltaTime);
-        }
     }
 
     private void UpdateOutlineHover()
@@ -79,21 +89,6 @@ public class NodeActionSystem : MonoBehaviour
     private void OnInteract(InputValue value)
     {
         m_currentNode?.Interact();
-    }
-
-    private void OnBreak(InputValue value)
-    {
-        if (m_currentNode is null)
-            return;
-        m_isHolding = value.Get<float>() >= 0.5f;
-        if (m_isHolding)
-        {
-            m_currentNode.StartHold();
-        }
-        else
-        {
-            m_currentNode.EndHold();
-        }
     }
 
     private void Clear()

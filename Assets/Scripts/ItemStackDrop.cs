@@ -56,6 +56,12 @@ public class ItemStackDrop : MonoBehaviour
         return stackDrop;
     }
 
+    public static ItemStackDrop Spawn(ItemStack itemStack, Vector3 position)
+    {
+        ItemDrop drop = new() { Item = itemStack.Item, Min = itemStack.Amount, Max = itemStack.Amount };
+        return Spawn(drop, position);
+    }
+
     public void Initialize(Item item, int amount)
     {
         if (item == null || amount == 0)

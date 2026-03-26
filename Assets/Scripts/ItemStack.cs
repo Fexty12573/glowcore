@@ -51,4 +51,10 @@ public class ItemStack
         Item = item;
         Amount = amount;
     }
+
+    public void Clear()
+    {
+        Item = null;
+        Amount = 0;
+    }
 }
