@@ -1,4 +1,3 @@
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +10,6 @@ public class PlayerHand : MonoBehaviour
 {
     private static PlayerHand s_instance;
 
-    [SerializeField] private Transform m_playerHand;
     private ItemStack m_itemsInHand;
     private GameObject m_itemGameObject;
 
@@ -41,7 +39,7 @@ public class PlayerHand : MonoBehaviour
         m_itemGameObject = null;
         if (m_itemsInHand.Item is null)
             return;
-        m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, m_playerHand);
+        m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, transform);
         m_itemGameObject.transform.localScale *= m_itemsInHand.Item.InHandScale;
         Rigidbody rb = m_itemGameObject.GetComponent<Rigidbody>();
         Destroy(rb);
