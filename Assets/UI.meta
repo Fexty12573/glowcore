@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 6c32fb687f307de43b0d143bdd64ec24
+=======
+guid: 74db03f307720d940884df8e41e2320d
+>>>>>>> f5b77c6 (Import TMP Essential Resources and missing folder meta files)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
