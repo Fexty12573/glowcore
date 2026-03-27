@@ -18,6 +18,12 @@ namespace GlowCore.UI.Inventory
         [SerializeField] private RawImage m_cursorIcon;
         [SerializeField] private Canvas m_parentCanvas;
 
+        [Header("Backdrop")]
+        [SerializeField] private CanvasGroup m_backdropCanvasGroup;
+
+        [Header("World Drop")]
+        [SerializeField] private Transform m_dropPoint;
+
         [Header("Tooltip")]
         [SerializeField] private TooltipUI m_tooltip;
 
@@ -73,27 +79,24 @@ namespace GlowCore.UI.Inventory
         {
             var inv = m_playerInventory.Inventory;
             var totalSlots = inv.Size;
-            var hotbarStart = m_playerInventory.HotbarStartIndex;
+            var hotbarSlots = m_playerInventory.HotbarSlots;
 
             m_allSlots = new ItemSlotUI[totalSlots];
 
-            for (var i = 0; i < hotbarStart; i++)
-            {
-                var slotGo = Instantiate(m_slotPrefab, m_gridParent);
-                var slotUI = slotGo.GetComponent<ItemSlotUI>();
-                slotUI.Initialize(this, i);
-                m_allSlots[i] = slotUI;
-            }
-
-            for (var i = hotbarStart; i < totalSlots; i++)
+            for (var i = 0; i < hotbarSlots; i++)
             {
                 var slotGo = Instantiate(m_slotPrefab, m_hotbarRowParent);
                 var slotUI = slotGo.GetComponent<ItemSlotUI>();
                 slotUI.Initialize(this, i);
+                slotUI.SetHotbarStyle(i + 1);
+                m_allSlots[i] = slotUI;
+            }
 
-                var keyNumber = i - hotbarStart + 1;
-                slotUI.SetHotbarStyle(keyNumber);
-
+            for (var i = hotbarSlots; i < totalSlots; i++)
+            {
+                var slotGo = Instantiate(m_slotPrefab, m_gridParent);
+                var slotUI = slotGo.GetComponent<ItemSlotUI>();
+                slotUI.Initialize(this, i);
                 m_allSlots[i] = slotUI;
             }
         }
@@ -120,6 +123,9 @@ namespace GlowCore.UI.Inventory
                 m_panelCanvasGroup.interactable = visible;
                 m_panelCanvasGroup.blocksRaycasts = visible;
             }
+
+            if (m_backdropCanvasGroup != null)
+                m_backdropCanvasGroup.alpha = visible ? 1f : 0f;
         }
 
         /// <summary>Called by ItemSlotUI on pointer down. Starts dragging if the slot has an item.</summary>
@@ -198,8 +204,24 @@ namespace GlowCore.UI.Inventory
                     inv.Swap(m_heldSlotIndex, m_hoveredSlotIndex);
                 }
             }
+            else if (m_hoveredSlotIndex == -1)
+            {
+                DropItemToWorld();
+            }
 
             CancelHeldItem();
+        }
+
+        private void DropItemToWorld()
+        {
+            var inv = m_playerInventory.Inventory;
+            var stack = inv.GetSlot(m_heldSlotIndex);
+            if (stack == null || !stack.Valid) return;
+
+            var dropPos = m_dropPoint != null ? m_dropPoint.position : m_playerInventory.transform.position;
+            ItemStackDrop.Spawn(stack, dropPos);
+            stack.Set(null, 0);
+            inv.NotifySlotChanged(m_heldSlotIndex);
         }
 
         private void CancelHeldItem()

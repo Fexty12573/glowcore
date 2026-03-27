@@ -3,19 +3,24 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>Player inventory: grid of kColumns x kTotalRows. Last kHotbarSlots slots are the hotbar.</summary>
+/// <summary>Player inventory: grid of kColumns x kTotalRows. First kHotbarSlots slots are the hotbar.</summary>
 public class PlayerInventory : MonoBehaviour
 {
     private const int kColumns = 4;
     private const int kTotalRows = 8;
     private const int kHotbarSlots = 8;
 
+<<<<<<< HEAD
     private GameObject m_handItemGameObject;
     private int m_hotbarIndex = 0;
     [SerializeField] private Inventory m_inventory;
+=======
+    
+>>>>>>> a192f6a (Fix inventory/hotbar interaction bugs and add world drop)
     [SerializeField] private PlayerHand m_playerHand;
 
     private int m_selectedHotbarIndex;
+    private Inventory m_inventory;
 
     public Inventory Inventory => m_inventory;
     public int Columns => kColumns;
@@ -23,8 +28,8 @@ public class PlayerInventory : MonoBehaviour
     public int HotbarSlots => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
 
-    /// <summary>Flat index where the hotbar region starts in the inventory array.</summary>
-    public int HotbarStartIndex => m_inventory.Size - kHotbarSlots;
+    /// <summary>Flat index where the hotbar region starts in the inventory array (always 0 — hotbar is first).</summary>
+    public int HotbarStartIndex => 0;
 
     /// <summary>Number of non-hotbar slots (the upper inventory grid).</summary>
     public int UpperSlotCount => m_inventory.Size - kHotbarSlots;
@@ -41,6 +46,19 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         m_inventory = new Inventory(kColumns, kTotalRows);
+        m_inventory.OnSlotChanged += OnInventorySlotChanged;
+    }
+
+    private void OnDestroy()
+    {
+        if (m_inventory != null)
+            m_inventory.OnSlotChanged -= OnInventorySlotChanged;
+    }
+
+    private void OnInventorySlotChanged(int flatIndex)
+    {
+        if (flatIndex == HotbarToInventoryIndex(m_selectedHotbarIndex))
+            UpdatePlayerHand();
     }
 
     private void Update()
@@ -50,6 +68,15 @@ public class PlayerInventory : MonoBehaviour
     }
 
     public void Add(ItemStack stack) => m_inventory.AddItems(stack, HotbarStartIndex);
+
+    /// <summary>Clear the currently selected hotbar slot and notify all UI listeners.</summary>
+    public void ConsumeHandItem()
+    {
+        var slot = GetHotbarSlot(m_selectedHotbarIndex);
+        if (slot != null) slot.Set(null, 0);
+        UpdatePlayerHand();
+        m_inventory.NotifySlotChanged(m_selectedHotbarIndex);
+    }
 
     public void SelectHotbarSlot(int index)
     {
@@ -83,16 +110,16 @@ public class PlayerInventory : MonoBehaviour
     }
 
     /// <summary>Convert a hotbar index (0-7) to the flat inventory index.</summary>
-    public int HotbarToInventoryIndex(int hotbarIndex) => HotbarStartIndex + hotbarIndex;
+    public int HotbarToInventoryIndex(int hotbarIndex) => hotbarIndex;
 
     /// <summary>Check if a flat inventory index is in the hotbar region.</summary>
-    public bool IsHotbarSlot(int flatIndex) => flatIndex >= HotbarStartIndex;
+    public bool IsHotbarSlot(int flatIndex) => flatIndex < kHotbarSlots;
 
     /// <summary>Convert a flat inventory index to a hotbar index. Returns -1 if not a hotbar slot.</summary>
     public int InventoryToHotbarIndex(int flatIndex)
     {
-        if (flatIndex < HotbarStartIndex) return -1;
-        return flatIndex - HotbarStartIndex;
+        if (flatIndex >= kHotbarSlots) return -1;
+        return flatIndex;
     }
 
     public void ToggleInventory()

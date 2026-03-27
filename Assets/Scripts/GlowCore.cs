@@ -6,6 +6,7 @@ namespace GlowCore.World
     public class GlowCoreObject : MonoBehaviour, IInteractable
     {
         // Instance Fields
+        [SerializeField] private PlayerInventory m_playerInventory;
         [SerializeField] private GameObject[] m_logs;
         [SerializeField] private GameObject m_nextLevelPrefab;
         [SerializeField][Range(0, 17)] private int m_initialActiveLogs = 3;
@@ -31,7 +32,7 @@ namespace GlowCore.World
             if (itemsInHand.Item.Name == "Wood")
             {
                 int woodAmount = itemsInHand.Amount;
-                itemsInHand.Set(null, 0);
+                m_playerInventory.ConsumeHandItem();
                 gameObject.TryGetComponent<Fire>(out Fire fire);
                 fire?.FeedWood(woodAmount);
             }

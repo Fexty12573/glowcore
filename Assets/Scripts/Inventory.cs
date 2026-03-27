@@ -104,6 +104,9 @@ public class Inventory
         return source.Amount == 0;
     }
 
+    /// <summary>Notify listeners that the slot at the given flat index has changed.</summary>
+    public void NotifySlotChanged(int index) => OnSlotChanged?.Invoke(index);
+
     /// <summary>Get slot by flat index.</summary>
     public ItemStack GetSlot(int index)
     {
