@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
   Name: Wood
   Prefab: {fileID: 1694080080886985426, guid: 19790610027d32d42bcc066fa90ea64f, type: 3}
-  Icon: {fileID: 0}
+  Icon: {fileID: 8228938214290033325, guid: 5bade23bbad20df4590bbc3b4a7cf770, type: 3}
   DropScale: 0.5
   MaxStack: 99

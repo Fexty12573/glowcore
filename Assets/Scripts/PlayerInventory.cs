@@ -1,77 +1,92 @@
-using GlowCore.World;
+using System;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public interface IPlayerInventoryAware
-{
-    void SetInventory(PlayerInventory inventory);
-}
-
+/// <summary>Player inventory: grid of kColumns x kTotalRows. Last kHotbarSlots slots are the hotbar.</summary>
 public class PlayerInventory : MonoBehaviour
 {
-    private const int kWidth = 8;
-    private const int kHeight = 4;
+    private const int kColumns = 4;
+    private const int kTotalRows = 8;
+    private const int kHotbarSlots = 8;
 
     private GameObject m_handItemGameObject;
     private int m_hotbarIndex = 0;
     [SerializeField] private Inventory m_inventory;
 
-    public ItemStack ItemsInHand => m_inventory[m_hotbarIndex, 0];
-    public void Add(ItemStack stack) => m_inventory.AddItems(ref stack);
-    public bool ConsumeItemInHand(int amount) => m_inventory.RemoveItemsAt(m_hotbarIndex, 0, amount);
+    private int m_selectedHotbarIndex;
+
+    public Inventory Inventory => m_inventory;
+    public int Columns => kColumns;
+    public int TotalRows => kTotalRows;
+    public int HotbarSlots => kHotbarSlots;
+    public int SelectedHotbarIndex => m_selectedHotbarIndex;
+
+    /// <summary>Flat index where the hotbar region starts in the inventory array.</summary>
+    public int HotbarStartIndex => m_inventory.Size - kHotbarSlots;
+
+    /// <summary>Number of non-hotbar slots (the upper inventory grid).</summary>
+    public int UpperSlotCount => m_inventory.Size - kHotbarSlots;
+
+    /// <summary>Fired when the selected hotbar slot changes.</summary>
+    public event Action<int> OnHotbarSelectionChanged;
+
+    /// <summary>Fired when the inventory panel opens or closes.</summary>
+    public event Action<bool> OnInventoryToggled;
+
+    private bool m_isOpen;
+    public bool IsOpen => m_isOpen;
 
     private void Awake()
     {
-        m_inventory = new Inventory(kWidth, kHeight);
-        m_inventory.OnInventoryChange += UpdatePlayerHand;
+        m_inventory = new Inventory(kColumns, kTotalRows);
     }
 
-    private void OnDestroy() => m_inventory.OnInventoryChange -= UpdatePlayerHand;
-
-    private void UpdatePlayerHand()
+    private void Update()
     {
-        Destroy(m_handItemGameObject);
-        m_handItemGameObject = null;
-        ItemStack itemsInHand = m_inventory[m_hotbarIndex, 0];
-        if (itemsInHand.Item is null)
-            return;
-
-        m_handItemGameObject = Instantiate(itemsInHand.Item.Prefab, transform);
-        m_handItemGameObject.transform.localScale *= itemsInHand.Item.InHandScale;
-        Rigidbody rb = m_handItemGameObject.GetComponent<Rigidbody>();
-        Destroy(rb);
-        Outline outline = m_handItemGameObject.GetComponent<Outline>();
-        Destroy(outline);
-        ActivateHandItem();
+        if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)
+            ToggleInventory();
     }
 
-    private void ActivateHandItem()
-    {
-        IHandItem handItem = m_handItemGameObject?.GetComponent<IHandItem>();
-        if (handItem is MonoBehaviour bhv)
-            bhv.enabled = true;
+    public void Add(ItemStack stack) => m_inventory.AddItems(stack);
 
-        if (handItem is IPlayerInventoryAware inventoryAware)
-            inventoryAware.SetInventory(this);
+    public void SelectHotbarSlot(int index)
+    {
+        if (index < 0 || index >= kHotbarSlots) return;
+        m_selectedHotbarIndex = index;
+        OnHotbarSelectionChanged?.Invoke(index);
     }
 
-    private void OnUse(InputValue value)
+    /// <summary>Get the hotbar ItemStack at the given hotbar position (0 to kHotbarSlots-1).</summary>
+    public ItemStack GetHotbarSlot(int hotbarIndex)
     {
-        IHandItem handItem = m_handItemGameObject?.GetComponent<IHandItem>();
-        handItem?.Use(value);
+        if (hotbarIndex < 0 || hotbarIndex >= kHotbarSlots) return null;
+        return m_inventory.GetSlot(HotbarStartIndex + hotbarIndex);
     }
 
+    /// <summary>Convert a hotbar index (0-7) to the flat inventory index.</summary>
+    public int HotbarToInventoryIndex(int hotbarIndex) => HotbarStartIndex + hotbarIndex;
 
-    private void OnPrevious(InputValue value)
+    /// <summary>Check if a flat inventory index is in the hotbar region.</summary>
+    public bool IsHotbarSlot(int flatIndex) => flatIndex >= HotbarStartIndex;
+
+    /// <summary>Convert a flat inventory index to a hotbar index. Returns -1 if not a hotbar slot.</summary>
+    public int InventoryToHotbarIndex(int flatIndex)
     {
-        m_hotbarIndex = (m_hotbarIndex - 1 + kWidth) % kWidth;
-        UpdatePlayerHand();
+        if (flatIndex < HotbarStartIndex) return -1;
+        return flatIndex - HotbarStartIndex;
     }
 
-    private void OnNext(InputValue value)
+    public void ToggleInventory()
     {
-        m_hotbarIndex = (m_hotbarIndex + 1) % kWidth;
-        UpdatePlayerHand();
+        m_isOpen = !m_isOpen;
+        OnInventoryToggled?.Invoke(m_isOpen);
+    }
+
+    public void SetInventoryOpen(bool open)
+    {
+        if (m_isOpen == open) return;
+        m_isOpen = open;
+        OnInventoryToggled?.Invoke(m_isOpen);
     }
 }

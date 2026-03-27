@@ -23,8 +23,8 @@ public class InventoryTests
     public void AddItems_ShouldAddToExistingStack()
     {
         var inventory = new Inventory(2, 2);
-        inventory[0, 0] = new ItemStack(m_item, 1);
-        ItemStack stack = new(m_item, 5);
+        inventory[0, 0].Set(m_item, 1);
+        var stack = ItemStack.Create(m_item, 5);
         inventory.AddItems(ref stack);
 
         Assert.AreEqual(inventory[0, 0].Amount, 6);
@@ -34,7 +34,7 @@ public class InventoryTests
     public void AddItems_ShouldPlaceStackInFirstEmptySlot_WhenNoExistingStack()
     {
         var inventory = new Inventory(2, 2);
-        var stack = new ItemStack(m_item, 3);
+        var stack = ItemStack.Create(m_item, 3);
 
         inventory.AddItems(ref stack);
 
@@ -47,8 +47,8 @@ public class InventoryTests
     public void AddItems_ShouldNotUseEmptySlot_WhenExistingStackHandledIt()
     {
         var inventory = new Inventory(2, 2);
-        inventory[0, 0] = new ItemStack(m_item, 1);
-        var stack = new ItemStack(m_item, 2);
+        inventory[0, 0].Set(m_item, 1);
+        var stack = ItemStack.Create(m_item, 2);
 
         inventory.AddItems(ref stack);
 
@@ -61,9 +61,9 @@ public class InventoryTests
     public void AddItems_ShouldFillAllPartialStacksBeforeUsingEmptySlot()
     {
         var inventory = new Inventory(2, 2);
-        inventory[0, 0] = new ItemStack(m_item, 8);
-        inventory[1, 0] = new ItemStack(m_item, 9);
-        var stack = new ItemStack(m_item, 5);
+        inventory[0, 0].Set(m_item, 8);
+        inventory[1, 0].Set(m_item, 9);
+        var stack = ItemStack.Create(m_item, 5);
 
         inventory.AddItems(ref stack);
 
@@ -77,10 +77,10 @@ public class InventoryTests
     public void GetFirstEmptySlot_ShouldReturnNull_WhenInventoryIsFull()
     {
         var inventory = new Inventory(2, 2);
-        inventory[0, 0] = new ItemStack(m_item, 1);
-        inventory[1, 0] = new ItemStack(m_otherItem, 1);
-        inventory[0, 1] = new ItemStack(m_item, 1);
-        inventory[1, 1] = new ItemStack(m_otherItem, 1);
+        inventory[0, 0].Set(m_item, 1);
+        inventory[1, 0].Set(m_otherItem, 1);
+        inventory[0, 1].Set(m_item, 1);
+        inventory[1, 1].Set(m_otherItem, 1);
 
         var empty = inventory.GetFirstEmptySlot();
 
@@ -92,8 +92,8 @@ public class InventoryTests
     {
         var inventory = new Inventory(2, 2);
 
-        inventory[1, 0] = new ItemStack(m_item, 4);
-        inventory[0, 1] = new ItemStack(m_otherItem, 7);
+        inventory[1, 0].Set(m_item, 4);
+        inventory[0, 1].Set(m_otherItem, 7);
 
         Assert.AreSame(m_item, inventory[1, 0].Item);
         Assert.AreEqual(4, inventory[1, 0].Amount);

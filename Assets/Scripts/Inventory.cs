@@ -10,7 +10,13 @@ public class Inventory
     [SerializeField][ReadOnly(true)] private int m_width;
     [SerializeField][ReadOnly(true)] private int m_height;
 
-    public event Action OnInventoryChange;
+    public int Width => m_width;
+    public int Height => m_height;
+    public int Size => m_items.Length;
+
+    /// <summary>Fired whenever a slot changes. Argument is the flat index.</summary>
+    public event Action<int> OnSlotChanged;
+
     public Inventory(int width, int height)
     {
         m_items = new ItemStack[width * height];
@@ -18,75 +24,91 @@ public class Inventory
         m_height = height;
 
         for (var i = 0; i < m_items.Length; i++)
-            m_items[i] = new ItemStack();
+            m_items[i] = ScriptableObject.CreateInstance<ItemStack>();
     }
 
     public bool AddItems(ref ItemStack stack)
     {
-        var existing = GetSlotWithItem(0, stack.Item);
-        while (stack.Amount > 0 && existing != -1)
-        {
-            ref ItemStack toAddStack = ref m_items[existing];
-            if (!toAddStack.IsFull)
-                toAddStack.Add(ref stack);
-
-            existing = GetSlotWithItem(existing + 1, stack.Item);
-        }
-
-        if (stack.Amount == 0)
-        {
-            OnInventoryChange?.Invoke();
-            return true;
-        }
-
-        var empty = GetFirstEmptySlot();
-        if (empty.HasValue)
-        {
-            this[empty.Value.x, empty.Value.y] = stack;
-            stack.Amount = 0;
-            stack.Item = null;
-            OnInventoryChange?.Invoke();
-            return true;
-        }
-
-        OnInventoryChange?.Invoke();
-        return false;
-    }
-
-    public bool RemoveItemsAt(int x, int y, int amount)
-    {
-        ref ItemStack itemStack = ref this[x, y];
-        if (itemStack.Amount < amount)
+        if (stack == null)
             return false;
 
-        itemStack.Amount -= amount;
-        if (itemStack.Amount == 0)
-            itemStack.Item = null;
+        var existing = GetSlotWithItem(stack.Item);
+        if (existing.index >= 0)
+        {
+            existing.slot.Add(stack);
+            OnSlotChanged?.Invoke(existing.index);
+        }
 
-        OnInventoryChange?.Invoke();
+        if (stack.Amount > 0)
+        {
+            var empty = GetFirstEmptySlot();
+            if (empty.HasValue)
+            {
+                var flatIndex = (empty.Value.y * m_width) + empty.Value.x;
+                m_items[flatIndex].Set(stack);
+                OnSlotChanged?.Invoke(flatIndex);
+            }
+        }
+
         return true;
     }
 
-    public ItemStack GetSlotWithItem(Item item)
+    /// <summary>Swap the contents of two slots by flat index.</summary>
+    public void Swap(int indexA, int indexB)
     {
-        foreach (var slot in m_items)
-        {
-            if (slot.Item == item && slot.Amount > 0)
-                return slot;
-        }
+        if (indexA < 0 || indexA >= m_items.Length) return;
+        if (indexB < 0 || indexB >= m_items.Length) return;
+        if (indexA == indexB) return;
 
-        return new ItemStack();
+        var slotA = m_items[indexA];
+        var slotB = m_items[indexB];
+
+        var tempItem = slotA.Item;
+        var tempAmount = slotA.Amount;
+
+        slotA.Set(slotB.Item, slotB.Amount);
+        slotB.Set(tempItem, tempAmount);
+
+        OnSlotChanged?.Invoke(indexA);
+        OnSlotChanged?.Invoke(indexB);
     }
 
-    public int GetSlotWithItem(int startIndex, Item item)
+    /// <summary>Try to stack sourceIndex onto targetIndex. Returns true if fully merged.</summary>
+    public bool TryMerge(int sourceIndex, int targetIndex)
     {
-        for (var i = startIndex; i < m_items.Length; i++)
+        if (sourceIndex < 0 || sourceIndex >= m_items.Length) return false;
+        if (targetIndex < 0 || targetIndex >= m_items.Length) return false;
+        if (sourceIndex == targetIndex) return false;
+
+        var source = m_items[sourceIndex];
+        var target = m_items[targetIndex];
+
+        if (!source.Valid || !target.Valid) return false;
+        if (source.Item != target.Item) return false;
+
+        target.Add(source);
+        OnSlotChanged?.Invoke(sourceIndex);
+        OnSlotChanged?.Invoke(targetIndex);
+
+        return source.Amount == 0;
+    }
+
+    /// <summary>Get slot by flat index.</summary>
+    public ItemStack GetSlot(int index)
+    {
+        if (index < 0 || index >= m_items.Length) return null;
+        return m_items[index];
+    }
+
+    public (ItemStack slot, int index) GetSlotWithItem(Item item)
+    {
+        for (var i = 0; i < m_items.Length; i++)
         {
             if (m_items[i].Item == item && m_items[i].Amount > 0)
-                return i;
+                return (m_items[i], i);
         }
 
-        return -1;
+        return (null, -1);
     }
 
     public Vector2Int? GetFirstEmptySlot()
