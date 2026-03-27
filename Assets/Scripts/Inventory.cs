@@ -32,25 +32,28 @@ public class Inventory
         if (stack == null)
             return false;
 
-        var existing = GetSlotWithItem(stack.Item);
-        if (existing.index >= 0)
+        for (var i = 0; i < m_items.Length && stack.Amount > 0; i++)
         {
-            existing.slot.Add(stack);
-            OnSlotChanged?.Invoke(existing.index);
-        }
-
-        if (stack.Amount > 0)
-        {
-            var empty = GetFirstEmptySlot();
-            if (empty.HasValue)
+            if (m_items[i].Item == stack.Item && m_items[i].Amount < m_items[i].Item.MaxStack)
             {
-                var flatIndex = (empty.Value.y * m_width) + empty.Value.x;
-                m_items[flatIndex].Set(stack);
-                OnSlotChanged?.Invoke(flatIndex);
+                m_items[i].Add(stack);
+                OnSlotChanged?.Invoke(i);
             }
         }
 
-        return true;
+        if (stack.Amount == 0)
+            return true;
+
+        var empty = GetFirstEmptySlot();
+        if (empty.HasValue)
+        {
+            var flatIndex = (empty.Value.y * m_width) + empty.Value.x;
+            m_items[flatIndex].Set(stack);
+            OnSlotChanged?.Invoke(flatIndex);
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>Swap the contents of two slots by flat index.</summary>
