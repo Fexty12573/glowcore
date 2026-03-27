@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
   m_Name: Chest
-  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Chest
-  Prefab: {fileID: 6348191760633195365, guid: e88a89ab48c141b47970093c6a02adf0, type: 3}
+  Prefab: {fileID: 7208416411730412183, guid: d9e0ca1360705e8489a7ac4647ca1566, type: 3}
   Icon: {fileID: 0}
-  DropScale: 1
+  DropScale: 0.5
   InHandScale: 0.5
   MaxStack: 99
+  NodeToBuild: {fileID: 6348191760633195365, guid: e88a89ab48c141b47970093c6a02adf0, type: 3}

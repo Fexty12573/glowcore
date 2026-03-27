@@ -1,4 +1,5 @@
 using System.Linq;
+using System.ComponentModel;
 using GlowCore.World;
 using ScriptableObjects;
 using UnityEngine;
@@ -6,29 +7,29 @@ using UnityEngine.InputSystem;
 
 public class ToolBehaviour : MonoBehaviour, IHandItem
 {
-    private bool m_isHolding;
+    bool m_isHolding;
+    [SerializeField] Node m_selectedNode;
 
-    public Tool Tool;
+    [SerializeField][ReadOnly(true)] private Tool Tool;
 
     public void Use(InputValue value)
     {
-        Node actionNode = NodeActionSystem.Instance.CurrentNode;
-        if (actionNode is null)
+        if (m_selectedNode is null)
             return;
-        if (!actionNode.NodeData.UsableTools.Any(t => t.Tool == Tool))
+        if (m_selectedNode.NodeData.UsableTools.All(t => t.Tool != Tool))
             return;
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)
         {
-            actionNode.StartHold();
+            m_selectedNode.StartHold();
         }
         else
         {
-            actionNode.EndHold();
+            m_selectedNode.EndHold();
         }
     }
 
-    void Start()
+    private void Start()
     {
         if (!Tool.Prefab.TryGetComponent(out ToolBehaviour toolBehaviour))
         {
@@ -36,12 +37,31 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
         }
     }
 
-    void Update()
+    private void Update()
     {
-        Node actionNode = NodeActionSystem.Instance?.CurrentNode;
-        if (actionNode is not null && m_isHolding)
+        if (m_isHolding)
         {
-            actionNode.UpdateHold(Time.deltaTime);
+            m_selectedNode?.UpdateHold(Time.deltaTime);
         }
+    }
+    private void OnEnable()
+    {
+        NodeActionSystem.OnChangeSelectedNode += HandleNodeChanged;
+    }
+
+    private void OnDisable()
+    {
+        NodeActionSystem.OnChangeSelectedNode -= HandleNodeChanged;
+        m_selectedNode?.EndHold();
+    }
+
+    private void HandleNodeChanged(Node newNode)
+    {
+        if (m_selectedNode != newNode)
+        {
+            m_selectedNode?.EndHold();
+            m_isHolding = false;
+        }
+        m_selectedNode = newNode;
     }
 }

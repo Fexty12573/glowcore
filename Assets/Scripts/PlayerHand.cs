@@ -49,9 +49,10 @@ public class PlayerHand : MonoBehaviour
 
     private void OnUse(InputValue value)
     {
-        var handItem = m_itemGameObject?.GetComponent<IHandItem>();
+        IHandItem handItem = m_itemGameObject?.GetComponent<IHandItem>();
         if (handItem is null)
             return;
+        (handItem as MonoBehaviour).enabled = true;
         handItem.Use(value);
     }
 }

@@ -10,8 +10,8 @@ namespace GlowCore.World
         private float m_holdTimer;
         private bool m_isHolding;
         private IInteractable m_interactable;
-        public Outline Outline;
 
+        public Outline Outline;
         public NodeData NodeData => m_nodeData;
         private void Awake()
         {

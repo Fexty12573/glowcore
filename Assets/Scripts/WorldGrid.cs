@@ -25,6 +25,7 @@ namespace GlowCore.World
 
         [Header("Grid")]
         [SerializeField] private int m_gridSize = kInitialSize;
+        // [SerializeField] private GameObject m_nodeParent;
 
         [Header("Borders")]
         [SerializeField] private Transform m_borderNorth;
@@ -79,6 +80,33 @@ namespace GlowCore.World
             return true;
         }
 
+        // public bool SetNodeAt(Vector2Int tile, Node node) //todo löschen
+        // {
+        //     return SetNodeAt(tile.x, tile.y, node);
+        // }
+
+        public bool CreateNodeAt(Vector2Int tile, GameObject prefab)
+        {
+            Vector3 spawnPosition = GetSpawnPosition(tile);
+            GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.identity, m_nodesParent);
+            if (!nodeObject.TryGetComponent(out Node node))
+            {
+                return false;
+            }
+            if (!SetNodeAt(tile.x, tile.y, node))
+            {
+                Destroy(nodeObject);
+                return false;
+            }
+            return true;
+        }
+
+        public Vector3 GetSpawnPosition(Vector2Int tile)
+        {
+            Vector2Int position = GridToWorld(tile);
+            return new(position.x, 0, position.y);
+        }
+
         public Node PlaceTree(int x, int z)
         {
             if (m_treePrefab == null)
@@ -125,20 +153,34 @@ namespace GlowCore.World
             }
         }
 
-        public bool IsInBounds(Vector2Int index)
+        public bool IsInBounds(Vector2Int tile)
         {
-            return index.x >= 0 && index.x < m_gridSize
-                && index.y >= 0 && index.y < m_gridSize;
+            return tile.x >= 0 && tile.x < m_gridSize
+                && tile.y >= 0 && tile.y < m_gridSize;
         }
 
+        public bool IsOccupied(Vector2Int tile)
+        {
+            return !IsInBounds(tile) || m_tiles[tile.x, tile.y] is not null;
+        }
         public Vector2Int WorldToGrid(int worldX, int worldZ)
         {
             return new Vector2Int(worldX + m_origin.x, worldZ + m_origin.y);
         }
 
+        public Vector2Int WorldToGrid(Vector3 worldVector)
+        {
+            return WorldToGrid(Mathf.RoundToInt(worldVector.x), Mathf.RoundToInt(worldVector.z));
+        }
+
         public Vector2Int GridToWorld(int gridX, int gridZ)
         {
             return new Vector2Int(gridX - m_origin.x, gridZ - m_origin.y);
+        }
+
+        public Vector2Int GridToWorld(Vector2Int tile)
+        {
+            return GridToWorld(tile.x, tile.y);
         }
 
         public void Expand(int amount, bool isLevelUp = false)

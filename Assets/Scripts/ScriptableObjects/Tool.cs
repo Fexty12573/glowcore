@@ -6,6 +6,6 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "Tool", menuName = "Scriptable Objects/Tool")]
     public class Tool : Item
     {
-        public float BreakSpeedMultiplier = 1f;
+
     }
 }
