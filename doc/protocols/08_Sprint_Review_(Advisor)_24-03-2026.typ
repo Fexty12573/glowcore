@@ -49,7 +49,7 @@
 
 ==== Next dates
 #next_dates((
-  [Review 4 - Sprint Review],
+  [Review 3 - End of Elaboration],
   [14.04.2026 15:00],
 ))
 
