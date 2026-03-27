@@ -49,7 +49,7 @@ public class PlayerInventory : MonoBehaviour
             ToggleInventory();
     }
 
-    public void Add(ItemStack stack) => m_inventory.AddItems(stack);
+    public void Add(ItemStack stack) => m_inventory.AddItems(stack, HotbarStartIndex);
 
     public void SelectHotbarSlot(int index)
     {
