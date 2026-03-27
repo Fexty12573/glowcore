@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         foreach (var item in m_drops)
         {
-            ItemStackDrop.Spawn(new ItemStack(item, 1), transform.position + Vector3.right);
+            ItemStackDrop.Spawn(ItemStack.Create(item, 1), transform.position + Vector3.right);
         }
     }
 }

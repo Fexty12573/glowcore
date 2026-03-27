@@ -31,12 +31,8 @@ namespace GlowCore.World
             if (itemsInHand.Item.Name == "Wood")
             {
                 int woodAmount = itemsInHand.Amount;
-                if (!m_playerInventory.ConsumeItemInHand(woodAmount))
-                {
-                    Debug.LogError("Failed to consume wood to feed GlowCore.");
-                    return;
-                }
-                gameObject.TryGetComponent(out Fire fire);
+                itemsInHand.Set(null, 0);
+                gameObject.TryGetComponent<Fire>(out Fire fire);
                 fire?.FeedWood(woodAmount);
             }
         }
