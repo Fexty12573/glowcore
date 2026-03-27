@@ -13,6 +13,7 @@ public class PlayerInventory : MonoBehaviour
     private GameObject m_handItemGameObject;
     private int m_hotbarIndex = 0;
     [SerializeField] private Inventory m_inventory;
+    [SerializeField] private PlayerHand m_playerHand;
 
     private int m_selectedHotbarIndex;
 
@@ -55,6 +56,23 @@ public class PlayerInventory : MonoBehaviour
         if (index < 0 || index >= kHotbarSlots) return;
         m_selectedHotbarIndex = index;
         OnHotbarSelectionChanged?.Invoke(index);
+        UpdatePlayerHand();
+    }
+
+    private void OnPrevious(InputValue value)
+    {
+        SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
+    }
+
+    private void OnNext(InputValue value)
+    {
+        SelectHotbarSlot((m_selectedHotbarIndex - 1 + kHotbarSlots) % kHotbarSlots);
+    }
+
+    private void UpdatePlayerHand()
+    {
+        if (m_playerHand == null) return;
+        m_playerHand.SetItemInHand(GetHotbarSlot(m_selectedHotbarIndex));
     }
 
     /// <summary>Get the hotbar ItemStack at the given hotbar position (0 to kHotbarSlots-1).</summary>
