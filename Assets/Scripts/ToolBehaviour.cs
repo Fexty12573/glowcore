@@ -8,20 +8,19 @@ using UnityEngine.InputSystem;
 public class ToolBehaviour : MonoBehaviour, IHandItem
 {
     bool m_isHolding;
-    [SerializeField] Node m_selectedNode;
-
-    [SerializeField][ReadOnly(true)] private Tool Tool;
+    [SerializeField][ReadOnly(true)] private Node m_selectedNode;
+    [SerializeField] private Tool m_tool;
 
     public void Use(InputValue value)
     {
         if (m_selectedNode is null)
             return;
-        if (m_selectedNode.NodeData.UsableTools.All(t => t.Tool != Tool))
+        if (m_selectedNode.NodeData.UsableTools.All(t => t.Tool != m_tool))
             return;
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)
         {
-            m_selectedNode.StartHold(Tool);
+            m_selectedNode.StartHold(m_tool);
         }
         else
         {
@@ -31,9 +30,9 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
 
     private void Start()
     {
-        if (!Tool.Prefab.TryGetComponent(out ToolBehaviour toolBehaviour))
+        if (!m_tool.Prefab.TryGetComponent(out ToolBehaviour toolBehaviour))
         {
-            Debug.LogError($"Tool {Tool.Name} has no ToolBehaviour Component.");
+            Debug.LogError($"Tool {m_tool.Name} has no ToolBehaviour Component.");
         }
     }
 

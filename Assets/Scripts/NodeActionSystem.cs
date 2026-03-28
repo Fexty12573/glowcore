@@ -14,10 +14,10 @@ public class NodeActionSystem : MonoBehaviour
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_raycastRange = 100f;
 
-    private static Node m_currentNode;
-    private static Outline m_currentOutline;
-    private static Vector2Int? m_currentTile;
-    private static Vector2 m_mousePos;
+    private static Node s_currentNode;
+    private static Outline s_currentOutline;
+    private static Vector2Int? s_currentTile;
+    private static Vector2 s_mousePos;
 
     // both can also be called with null to notify that no Node is hovered over.
     public static event Action<Node> OnChangeSelectedNode;
@@ -25,12 +25,12 @@ public class NodeActionSystem : MonoBehaviour
 
     public static void OnHandItemChange()
     {
-        OnChangeSelectedNode?.Invoke(m_currentNode);
-        OnChangeSelectedTile?.Invoke(m_currentTile);
+        OnChangeSelectedNode?.Invoke(s_currentNode);
+        OnChangeSelectedTile?.Invoke(s_currentTile);
     }
     private void Update()
     {
-        Ray ray = m_camera.ScreenPointToRay(m_mousePos);
+        Ray ray = m_camera.ScreenPointToRay(s_mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit, m_raycastRange))
         {
             UpdateHoverNode(hit);
@@ -46,7 +46,7 @@ public class NodeActionSystem : MonoBehaviour
     {
         if (!hit.collider.TryGetComponent(out NodeActionChild child))
         {
-            if (m_currentNode is not null)
+            if (s_currentNode is not null)
             {
                 OnChangeSelectedNode?.Invoke(null);
                 Clear();
@@ -71,17 +71,17 @@ public class NodeActionSystem : MonoBehaviour
             return;
         }
 
-        if (node != m_currentNode || outline != m_currentOutline)
+        if (node != s_currentNode || outline != s_currentOutline)
         {
             Clear();
 
-            m_currentNode = node;
-            m_currentOutline = outline;
+            s_currentNode = node;
+            s_currentOutline = outline;
 
-            if (m_currentOutline)
-                m_currentOutline.enabled = true;
+            if (s_currentOutline)
+                s_currentOutline.enabled = true;
 
-            OnChangeSelectedNode?.Invoke(m_currentNode);
+            OnChangeSelectedNode?.Invoke(s_currentNode);
         }
     }
 
@@ -92,30 +92,30 @@ public class NodeActionSystem : MonoBehaviour
         {
             newTile = WorldGrid.Instance.WorldToGrid(hit.point);
         }
-        if (newTile != m_currentTile)
+        if (newTile != s_currentTile)
         {
-            m_currentTile = newTile;
-            OnChangeSelectedTile?.Invoke(m_currentTile);
+            s_currentTile = newTile;
+            OnChangeSelectedTile?.Invoke(s_currentTile);
         }
     }
 
     private void OnInteract(InputValue value)
     {
-        m_currentNode?.Interact();
+        s_currentNode?.Interact();
     }
 
     private void Clear()
     {
-        if (m_currentOutline)
-            m_currentOutline.enabled = false;
+        if (s_currentOutline)
+            s_currentOutline.enabled = false;
 
-        m_currentNode = null;
-        m_currentOutline = null;
-        m_currentTile = null;
+        s_currentNode = null;
+        s_currentOutline = null;
+        s_currentTile = null;
     }
 
     private void OnPoint(InputValue value)
     {
-        m_mousePos = value.Get<Vector2>();
+        s_mousePos = value.Get<Vector2>();
     }
 }

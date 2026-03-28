@@ -78,4 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::ToolBehaviour
   m_selectedNode: {fileID: 0}
-  Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+  m_tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}

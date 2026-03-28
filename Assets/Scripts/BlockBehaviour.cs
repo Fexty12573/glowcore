@@ -7,44 +7,29 @@ using UnityEngine.InputSystem;
 public class BlockBehaviour : MonoBehaviour, IHandItem
 {
     private Vector2Int? m_selectedTile;
-    public Node m_nodeToBuild;
     private GameObject m_activeBuildGhost;
 
-    [SerializeField] private float BuildRadius = 4f;
-    [SerializeField] private Block Block;
-    [SerializeField] private GameObject BuildGhostAllowed;
-    [SerializeField] private GameObject BuildGhostOccupied;
-    
+    [SerializeField] private Block m_block;
+    [SerializeField] private GameObject m_buildGhostAllowed;
+    [SerializeField] private GameObject m_buildGhostOccupied;
+
     public void Use(InputValue inputValue)
     {
         if (inputValue.Get<float>() >= 0.5f)
-        {
             TryToBuild();
-        }
     }
 
     private void Start()
     {
-        if (!Block.NodeToBuild.TryGetComponent(out Node node))
-        {
-            Debug.LogError($"{Block.Name}'s NodeToBuild Prefab has no Node Component!");
-        }
+        if (!m_block.NodeToBuild.TryGetComponent(out Node node))
+            Debug.LogError($"{m_block.Name}'s NodeToBuild Prefab has no Node Component!");
     }
 
-    private void OnDestroy()
-    {
-        ClearBuildGhost();
-    }
+    private void OnDestroy() => ClearBuildGhost();
 
-    private void OnEnable()
-    {
-        NodeActionSystem.OnChangeSelectedTile += HandleTileChanged;
-    }
+    private void OnEnable() => NodeActionSystem.OnChangeSelectedTile += HandleTileChanged;
 
-    private void OnDisable()
-    {
-        NodeActionSystem.OnChangeSelectedTile -= HandleTileChanged;
-    }
+    private void OnDisable() => NodeActionSystem.OnChangeSelectedTile -= HandleTileChanged;
 
     private void HandleTileChanged(Vector2Int? newTile)
     {
@@ -66,13 +51,9 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
             return;
 
         if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
-        {
-            m_activeBuildGhost = Instantiate(BuildGhostOccupied, spawnPosition, Quaternion.identity);
-        }
+            m_activeBuildGhost = Instantiate(m_buildGhostOccupied, spawnPosition, Quaternion.identity);
         else
-        {
-            m_activeBuildGhost = Instantiate(BuildGhostAllowed, spawnPosition, Quaternion.identity);
-        }
+            m_activeBuildGhost = Instantiate(m_buildGhostAllowed, spawnPosition, Quaternion.identity);
     }
 
     private void TryToBuild()
@@ -84,21 +65,15 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
         if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value))
             return;
 
-        if (!WorldGrid.Instance.CreateNodeAt(m_selectedTile.Value, Block.NodeToBuild))
-        {
+        if (!WorldGrid.Instance.CreateNodeAt(m_selectedTile.Value, m_block.NodeToBuild))
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
-        }
         else
-        {
             PlayerInventory.Instance.ConsumeItemInHand(1);
-        }
+
         ChangeBuildGhost();
     }
 
-    private bool IsWithinBuildRange(Vector3 spawnPosition)
-    {
-        return Vector3.Distance(spawnPosition, transform.position) <= BuildRadius;
-    }
+    private bool IsWithinBuildRange(Vector3 spawnPosition) => Vector3.Distance(spawnPosition, transform.position) <= m_block.BuildRadius;
 
     private void ClearBuildGhost()
     {

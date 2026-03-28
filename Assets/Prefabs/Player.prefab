@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &671950625791981345
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6483266551800071773}
-  - component: {fileID: 3209044725388426275}
-  m_Layer: 0
-  m_Name: Hand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6483266551800071773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671950625791981345}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.07668138, y: -0.017649556, z: -0.055006616, w: 0.9953807}
-  m_LocalPosition: {x: 0.365, y: 0.21399999, z: 0.08499998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1631564033306397339}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3209044725388426275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671950625791981345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62df953d1f21792498096a7c72a0f449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::PlayerHand
 --- !u!1 &1763016267932274052
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763016267932274052}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.07668138, y: -0.017649556, z: -0.055006616, w: 0.9953807}
+  m_LocalPosition: {x: 0.365, y: 0.21399999, z: 0.08499998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,7 +80,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4652771526564327730}
-  - {fileID: 6483266551800071773}
   - {fileID: 4916830113643737402}
   m_Father: {fileID: 9090418907346557860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
