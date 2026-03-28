@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62df953d1f21792498096a7c72a0f449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::PlayerHand
-  m_playerHand: {fileID: 6483266551800071773}
 --- !u!1 &1763016267932274052
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,13 +146,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.9999999
-  m_Radius: 0.5
+  m_Height: 1.4
+  m_Radius: 0.4
   m_SlopeLimit: 0
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &322522996022309848
 MonoBehaviour:
   m_ObjectHideFlags: 0

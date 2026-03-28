@@ -33,7 +33,7 @@ namespace GlowCore.World
                 itemsInHand.Clear();
                 gameObject.TryGetComponent<Fire>(out Fire fire);
                 fire?.FeedWood(woodAmount);
-                PlayerHand.Instance?.UpdateHandVisual();
+                PlayerHand.Instance?.UpdateGameObject();
             }
 
         }

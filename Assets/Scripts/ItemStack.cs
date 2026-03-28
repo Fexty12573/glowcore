@@ -57,4 +57,18 @@ public class ItemStack
         Item = null;
         Amount = 0;
     }
+
+    public static ItemStack operator --(ItemStack stack)
+    {
+        if (stack.Amount <= 0)
+        {
+            throw new InvalidOperationException("Can't consume Item of an empty ItemStack");
+        }
+        stack.Amount--;
+        if (stack.Amount == 0)
+        {
+            stack.Clear();
+        }
+        return stack;
+    }
 }

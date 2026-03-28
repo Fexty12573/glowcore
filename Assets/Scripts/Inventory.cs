@@ -10,6 +10,7 @@ public class Inventory
     [SerializeField][ReadOnly(true)] private int m_width;
     [SerializeField][ReadOnly(true)] private int m_height;
 
+    public static event Action OnInventoryChange;
     public Inventory(int width, int height)
     {
         m_items = new ItemStack[width * height];
@@ -35,15 +36,20 @@ public class Inventory
         }
 
         if (stack.Amount == 0)
+        {
+            OnInventoryChange?.Invoke();
             return true;
+        }
 
         var empty = GetFirstEmptySlot();
         if (empty.HasValue)
         {
             this[empty.Value.x, empty.Value.y].Set(stack);
+            OnInventoryChange?.Invoke();
             return true;
         }
 
+        OnInventoryChange?.Invoke();
         return false;
     }
 
@@ -86,6 +92,10 @@ public class Inventory
     public ItemStack this[int x, int y]
     {
         get => m_items[(y * m_width) + x];
-        set => m_items[(y * m_width) + x] = value;
+        set
+        {
+            m_items[(y * m_width) + x] = value;
+            OnInventoryChange?.Invoke();
+        }
     }
 }

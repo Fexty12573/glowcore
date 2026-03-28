@@ -25,10 +25,15 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
 
     private void Start()
     {
-        if (!Block.NodeToBuild.TryGetComponent<Node>(out Node node))
+        if (!Block.NodeToBuild.TryGetComponent(out Node node))
         {
             Debug.LogError($"{Block.Name}'s NodeToBuild Prefab has no Node Component!");
         }
+    }
+
+    private void OnDestroy()
+    {
+        ClearBuildGhost();
     }
 
     private void OnEnable()
@@ -39,7 +44,6 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
     private void OnDisable()
     {
         NodeActionSystem.OnChangeSelectedTile -= HandleTileChanged;
-        ClearBuildGhost();
     }
 
     private void HandleTileChanged(Vector2Int? newTile)
@@ -61,7 +65,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
         if (!IsWithinBuildRange(spawnPosition))
             return;
 
-        if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value))
+        if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
         {
             m_activeBuildGhost = Instantiate(BuildGhostOccupied, spawnPosition, Quaternion.identity);
         }
@@ -77,17 +81,20 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
             return;
 
         Vector3 spawnPosition = WorldGrid.Instance.GetSpawnPosition(m_selectedTile.Value);
-        if (!IsWithinBuildRange(spawnPosition))
+        if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value))
             return;
 
         if (!WorldGrid.Instance.CreateNodeAt(m_selectedTile.Value, Block.NodeToBuild))
         {
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         }
+        else
+        {
+            ItemStack blockStack = PlayerHand.Instance.ItemsInHand;
+            --blockStack;
+            PlayerHand.Instance.UpdateGameObject();
+        }
         ChangeBuildGhost();
-        // GameObject newObject = Instantiate
-        // WorldGrid.Instance.SetNodeAt(m_selectedTile.Value, m_nodeToBuild);
-        // Debug.Log($"trying to build {Block.Name}");
     }
 
     private bool IsWithinBuildRange(Vector3 spawnPosition)
@@ -100,4 +107,6 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
         Destroy(m_activeBuildGhost);
         m_activeBuildGhost = null;
     }
+
+
 }

@@ -20,12 +20,13 @@ namespace GlowCore.World
         private static WorldGrid s_instance;
 
         // Instance Fields
+        [Header("General")] [SerializeField] private Transform m_player;
+        
         [Header("World Mode")]
         [SerializeField] private WorldMode m_worldMode = WorldMode.ProceduralGeneration;
 
         [Header("Grid")]
         [SerializeField] private int m_gridSize = kInitialSize;
-        // [SerializeField] private GameObject m_nodeParent;
 
         [Header("Borders")]
         [SerializeField] private Transform m_borderNorth;
@@ -70,37 +71,31 @@ namespace GlowCore.World
             return m_tiles[index.x, index.y];
         }
 
+        public bool SetNodeAtTile(Vector2Int tile, Node node)
+        {
+            if (!IsInBounds(tile) || IsOccupied(tile))
+                return false;
+            m_tiles[tile.x, tile.y] = node;
+            return true;
+        }
         public bool SetNodeAt(int x, int z, Node node)
         {
             Vector2Int index = WorldToGrid(x, z);
-            if (!IsInBounds(index))
-                return false;
-
-            m_tiles[index.x, index.y] = node;
-            return true;
+            return SetNodeAtTile(index, node);
         }
-
-        // public bool SetNodeAt(Vector2Int tile, Node node) //todo löschen
-        // {
-        //     return SetNodeAt(tile.x, tile.y, node);
-        // }
 
         public bool CreateNodeAt(Vector2Int tile, GameObject prefab)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
             GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.identity, m_nodesParent);
-            if (!nodeObject.TryGetComponent(out Node node))
-            {
-                return false;
-            }
-            if (!SetNodeAt(tile.x, tile.y, node))
+            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !SetNodeAtTile(tile, node))
             {
                 Destroy(nodeObject);
                 return false;
             }
             return true;
         }
-
+        
         public Vector3 GetSpawnPosition(Vector2Int tile)
         {
             Vector2Int position = GridToWorld(tile);
@@ -163,6 +158,11 @@ namespace GlowCore.World
         {
             return !IsInBounds(tile) || m_tiles[tile.x, tile.y] is not null;
         }
+
+        public bool IsPlayerObstructing(Vector3 worldPosition)
+        {
+            return Vector3.Distance(worldPosition, m_player.position) <= 0.9f;
+        } 
         public Vector2Int WorldToGrid(int worldX, int worldZ)
         {
             return new Vector2Int(worldX + m_origin.x, worldZ + m_origin.y);

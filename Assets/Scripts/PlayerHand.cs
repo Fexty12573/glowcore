@@ -18,6 +18,7 @@ public class PlayerHand : MonoBehaviour
 
     private void Awake()
     {
+        Inventory.OnInventoryChange += UpdateGameObject;
         if (s_instance != null)
         {
             Debug.LogWarning("PlayerHand: Duplicate instance detected. Destroying this one.");
@@ -27,17 +28,23 @@ public class PlayerHand : MonoBehaviour
         s_instance = this;
     }
 
+    private void OnDestroy()
+    {
+        Inventory.OnInventoryChange -= UpdateGameObject;
+    }
+
     public void SetItemInHand(ItemStack itemStack)
     {
         m_itemsInHand = itemStack;
-        UpdateHandVisual();
+        UpdateGameObject();
+        NodeActionSystem.OnHandItemChange();
     }
 
-    public void UpdateHandVisual()
+    public void UpdateGameObject()
     {
         Destroy(m_itemGameObject);
         m_itemGameObject = null;
-        if (m_itemsInHand.Item is null)
+        if (m_itemsInHand?.Item is null)
             return;
         m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, transform);
         m_itemGameObject.transform.localScale *= m_itemsInHand.Item.InHandScale;
@@ -45,14 +52,19 @@ public class PlayerHand : MonoBehaviour
         Destroy(rb);
         Outline outline = m_itemGameObject.GetComponent<Outline>();
         Destroy(outline);
+        ActivateHandItem();
+    }
+
+    private void ActivateHandItem()
+    {
+        IHandItem handItem = m_itemGameObject?.GetComponent<IHandItem>();
+        if (handItem is not null)
+            (handItem as MonoBehaviour).enabled = true;
     }
 
     private void OnUse(InputValue value)
     {
         IHandItem handItem = m_itemGameObject?.GetComponent<IHandItem>();
-        if (handItem is null)
-            return;
-        (handItem as MonoBehaviour).enabled = true;
-        handItem.Use(value);
+        handItem?.Use(value);
     }
 }

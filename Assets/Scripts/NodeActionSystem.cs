@@ -13,15 +13,21 @@ public class NodeActionSystem : MonoBehaviour
     [SerializeField] private Camera m_camera;
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_raycastRange = 100f;
-    private Node m_currentNode;
-    private Outline m_currentOutline;
-    private Vector2Int? m_currentTile;
-    private Vector2 m_mousePos;
+
+    private static Node m_currentNode;
+    private static Outline m_currentOutline;
+    private static Vector2Int? m_currentTile;
+    private static Vector2 m_mousePos;
 
     // both can also be called with null to notify that no Node is hovered over.
     public static event Action<Node> OnChangeSelectedNode;
     public static event Action<Vector2Int?> OnChangeSelectedTile;
 
+    public static void OnHandItemChange()
+    {
+        OnChangeSelectedNode?.Invoke(m_currentNode);
+        OnChangeSelectedTile?.Invoke(m_currentTile);
+    }
     private void Update()
     {
         Ray ray = m_camera.ScreenPointToRay(m_mousePos);
