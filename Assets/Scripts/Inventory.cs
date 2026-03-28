@@ -53,6 +53,20 @@ public class Inventory
         return false;
     }
 
+    public bool RemoveItemsAt(int x, int y, int amount)
+    {
+        ItemStack itemStack = this[x, y];
+        if (itemStack is null || itemStack.Amount < amount)
+            return false;
+
+        itemStack.Amount -= amount;
+        if (itemStack.Amount == 0)
+            itemStack.Clear();
+
+        OnInventoryChange?.Invoke();
+        return true;
+    }
+
     public ItemStack GetSlotWithItem(Item item)
     {
         foreach (var slot in m_items)

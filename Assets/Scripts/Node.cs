@@ -8,11 +8,51 @@ namespace GlowCore.World
     {
         [SerializeField] private NodeData m_nodeData;
         private float m_holdTimer;
+        private float m_effectiveBreakTime;
         private bool m_isHolding;
         private IInteractable m_interactable;
 
+        public List<Vector2Int> TilesUsed = new();
         public Outline Outline;
         public NodeData NodeData => m_nodeData;
+
+        public float GetInteractionRange()
+        {
+            return m_nodeData.InteractionRange;
+        }
+
+        public void Interact()
+        {
+            m_interactable?.Interact();
+        }
+
+        public void StartHold(Tool tool)
+        {
+            m_effectiveBreakTime = m_nodeData.GetEffectiveBreakTime(tool);
+            m_isHolding = true;
+            m_holdTimer = 0f;
+        }
+
+        public void EndHold()
+        {
+            m_effectiveBreakTime = m_nodeData.BaseBreakTime;
+            m_isHolding = false;
+            m_holdTimer = 0f;
+        }
+
+        public void UpdateHold(float deltaTime)
+        {
+            if (!m_isHolding || m_nodeData.IsIndestructible)
+                return;
+
+            m_holdTimer += deltaTime;
+            if (m_holdTimer >= m_effectiveBreakTime)
+            {
+                Break();
+                m_isHolding = false;
+            }
+        }
+
         private void Awake()
         {
             TryGetComponent(out Outline);
@@ -32,20 +72,9 @@ namespace GlowCore.World
             }
         }
 
-
         private void Start()
         {
             TryGetComponent(out m_interactable);
-        }
-
-        public float GetInteractionRange()
-        {
-            return m_nodeData.InteractionRange;
-        }
-
-        public void Interact()
-        {
-            m_interactable?.Interact();
         }
 
         private void Break()
@@ -58,33 +87,11 @@ namespace GlowCore.World
                     Random.Range(-0.2f, 0.2f));
                 ItemStackDrop.Spawn(drop, transform.position + offset);
             }
-
-            Destroy(gameObject);
-        }
-
-        public void StartHold()
-        {
-            m_isHolding = true;
-            m_holdTimer = 0f;
-        }
-
-        public void EndHold()
-        {
-            m_isHolding = false;
-            m_holdTimer = 0f;
-        }
-
-        public void UpdateHold(float deltaTime)
-        {
-            if (!m_isHolding || m_nodeData.IsIndestructible)
-                return;
-
-            m_holdTimer += deltaTime;
-            if (m_holdTimer >= m_nodeData.BreakTime)
+            foreach (var tile in TilesUsed)
             {
-                Break();
-                m_isHolding = false;
+                WorldGrid.Instance.ClearNodeAt(tile);
             }
+            Destroy(gameObject);
         }
     }
 }

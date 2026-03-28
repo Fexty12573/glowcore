@@ -90,9 +90,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
         }
         else
         {
-            ItemStack blockStack = PlayerHand.Instance.ItemsInHand;
-            --blockStack;
-            PlayerHand.Instance.UpdateGameObject();
+            PlayerInventory.Instance.ConsumeItemInHand(1);
         }
         ChangeBuildGhost();
     }

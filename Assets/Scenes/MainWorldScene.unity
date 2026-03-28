@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 124898382}
   m_Layer: 0
   m_Name: BorderWest
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 657392916}
   m_Layer: 0
   m_Name: BorderNorth
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 743787140}
   m_Layer: 0
   m_Name: BorderSouth
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 1011745732}
   m_Layer: 0
   m_Name: BorderEast
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1088,8 +1088,8 @@ MonoBehaviour:
   m_borderWest: {fileID: 124898381}
   m_treePrefab: {fileID: 6721356939712964955, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
   m_nodesParent: {fileID: 1141561732}
-  m_initialTreeCount: 5
-  m_treesPerRegularExpansion: 10
+  m_initialTreeCount: 2
+  m_treesPerRegularExpansion: 5
   m_treesPerLevelUpExpansion: 20
 --- !u!4 &1963786528
 Transform:
@@ -1147,6 +1147,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.365
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21399999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9953807
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.07668138
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.017649556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916830113643737402, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.055006616
+      objectReference: {fileID: 0}
     - target: {fileID: 9090418907346557860, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -1192,7 +1220,8 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 671950625791981345, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45e0011ac58073b4c934996fb562a634, type: 3}

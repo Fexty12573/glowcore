@@ -21,7 +21,7 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)
         {
-            m_selectedNode.StartHold();
+            m_selectedNode.StartHold(Tool);
         }
         else
         {
@@ -44,6 +44,7 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
             m_selectedNode?.UpdateHold(Time.deltaTime);
         }
     }
+
     private void OnEnable()
     {
         NodeActionSystem.OnChangeSelectedNode += HandleNodeChanged;

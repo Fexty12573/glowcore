@@ -23,19 +23,21 @@ namespace GlowCore.World
         // Public Methods
         public void Interact()
         {
-            ItemStack itemsInHand = PlayerHand.Instance?.ItemsInHand;
+            ItemStack itemsInHand = PlayerInventory.Instance.ItemsInHand;
             if (itemsInHand?.Item is null)
                 return;
 
             if (itemsInHand.Item.Name == "Wood")
             {
                 int woodAmount = itemsInHand.Amount;
-                itemsInHand.Clear();
-                gameObject.TryGetComponent<Fire>(out Fire fire);
+                if (!PlayerInventory.Instance.ConsumeItemInHand(woodAmount))
+                {
+                    Debug.LogError("Failed to consume wood to feed GlowCore.");
+                    return;
+                }
+                gameObject.TryGetComponent(out Fire fire);
                 fire?.FeedWood(woodAmount);
-                PlayerHand.Instance?.UpdateGameObject();
             }
-
         }
 
         public bool FeedWood(int amount)
