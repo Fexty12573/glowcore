@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: Axe
-  Description: 'a wooden axe to chop trees in 3 seconds hhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+  Description: 'a wooden axe to chop trees in 3 seconds
 
 '
   Prefab: {fileID: 5056978600972422149, guid: d5c34e1fef54e8443aef867101228340, type: 3}

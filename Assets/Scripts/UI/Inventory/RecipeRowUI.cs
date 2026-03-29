@@ -1,6 +1,7 @@
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
@@ -20,6 +21,21 @@ namespace GlowCore.UI.Inventory
         private Recipe m_recipe;
         private IngredientLabel[] m_ingredientLabels;
 
+        private sealed class ResultIconTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+        {
+            private TooltipUI m_tooltip;
+            private Item m_item;
+
+            public void Initialize(TooltipUI tooltip, Item item)
+            {
+                m_tooltip = tooltip;
+                m_item = item;
+            }
+
+            public void OnPointerEnter(PointerEventData eventData) => m_tooltip?.Show(m_item);
+            public void OnPointerExit(PointerEventData eventData) => m_tooltip?.Hide();
+        }
+
         private struct IngredientLabel
         {
             public TextMeshProUGUI Text;
@@ -27,7 +43,7 @@ namespace GlowCore.UI.Inventory
             public Recipe.Ingredient Ingredient;
         }
 
-        public void Initialize(CraftingUI craftingUI, Recipe recipe)
+        public void Initialize(CraftingUI craftingUI, Recipe recipe, TooltipUI tooltip)
         {
             m_craftingUI = craftingUI;
             m_recipe = recipe;
@@ -45,6 +61,13 @@ namespace GlowCore.UI.Inventory
                 else
                 {
                     m_resultIcon.enabled = false;
+                }
+
+                if (tooltip != null)
+                {
+                    m_resultIcon.raycastTarget = true;
+                    var trigger = m_resultIcon.gameObject.AddComponent<ResultIconTooltipTrigger>();
+                    trigger.Initialize(tooltip, recipe.ResultItem);
                 }
             }
 

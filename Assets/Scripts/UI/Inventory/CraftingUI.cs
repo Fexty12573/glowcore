@@ -12,6 +12,7 @@ namespace GlowCore.UI.Inventory
         [SerializeField] private CanvasGroup m_panelCanvasGroup;
         [SerializeField] private Transform m_contentParent;
         [SerializeField] private GameObject m_recipeRowPrefab;
+        [SerializeField] private TooltipUI m_tooltip;
 
         [Header("Recipes")]
         [SerializeField] private Recipe[] m_recipes;
@@ -48,7 +49,7 @@ namespace GlowCore.UI.Inventory
             {
                 var go = Instantiate(m_recipeRowPrefab, m_contentParent);
                 var row = go.GetComponent<RecipeRowUI>();
-                row.Initialize(this, m_recipes[i]);
+                row.Initialize(this, m_recipes[i], m_tooltip);
                 m_rows[i] = row;
             }
         }

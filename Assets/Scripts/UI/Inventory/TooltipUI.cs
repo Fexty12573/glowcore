@@ -34,13 +34,23 @@ namespace GlowCore.UI.Inventory
         public void Show(ItemStack stack)
         {
             if (stack == null || !stack.Valid) return;
+            ShowItem(stack.Item);
+        }
 
+        public void Show(Item item)
+        {
+            if (item == null) return;
+            ShowItem(item);
+        }
+
+        private void ShowItem(Item item)
+        {
             if (m_nameText != null)
-                m_nameText.text = stack.Item.Name;
+                m_nameText.text = item.Name;
 
             if (m_descriptionText != null)
             {
-                var desc = stack.Item.Description;
+                var desc = item.Description;
                 m_descriptionText.text = string.IsNullOrEmpty(desc) ? "" : desc;
                 m_descriptionText.enabled = !string.IsNullOrEmpty(desc);
             }

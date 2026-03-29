@@ -35,8 +35,8 @@ RectTransform:
   - {fileID: 339393549263552233}
   - {fileID: 2426443693191673916}
   - {fileID: 900290933391706208}
-  - {fileID: 9008663450865715571}
   - {fileID: 3696936948127763312}
+  - {fileID: 9008663450865715571}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -830,6 +830,7 @@ MonoBehaviour:
   m_panelCanvasGroup: {fileID: 2952469863762078430}
   m_contentParent: {fileID: 8385731840307857249}
   m_recipeRowPrefab: {fileID: 853131864586746573, guid: ebad62af9951c8a418a66720a8a44937, type: 3}
+  m_tooltip: {fileID: 0}
   m_recipes: []
 --- !u!222 &5101285037919839412
 CanvasRenderer:

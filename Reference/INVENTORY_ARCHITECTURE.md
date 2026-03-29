@@ -1,7 +1,7 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-03-28 (crafting panel: Recipe SO, CraftingUI, RecipeRowUI; Inventory.CountItem/RemoveItems/CanAccept)
+> Last updated: 2026-03-29 (TooltipUI.Show(Item) overload; CraftingUI.m_tooltip; result icon tooltip on hover in RecipeRowUI)
 
 ---
 
@@ -268,6 +268,7 @@ inventory panel. One instance per slot, spawned at runtime from a prefab.
 | `m_contentParent`   | Transform of the ScrollRect Content area          |
 | `m_recipeRowPrefab` | The RecipeRow prefab                              |
 | `m_recipes`         | Array of Recipe assets to display                 |
+| `m_tooltip`         | The shared TooltipUI component (same as InventoryUI uses) |
 
 **Public API:**
 | Method             | Purpose                                                        |
@@ -322,7 +323,7 @@ a hotbar index. Reads from `PlayerInventory.GetHotbarSlot(i)`.
 - Pivot set to (0, 1) → top-left corner anchors to mouse; tooltip expands right and down
 - `blocksRaycasts = false` → doesn't intercept pointer events from slots underneath
 - Offset: 14px right, 14px down from cursor
-- Shows on slot hover via `Show(ItemStack)`, hides on exit or when dragging starts
+- Shows on slot hover via `Show(ItemStack)` or `Show(Item)` (crafting icon), hides on exit or when dragging starts
 - **Layout:** fixed width (~180 px) with `VerticalLayoutGroup` (8 px padding, 4 px spacing) + `ContentSizeFitter` (Vertical Fit = Preferred Size). Both TMP children have word wrap enabled and Overflow = Overflow so long descriptions wrap and the panel grows in height automatically.
 
 ### `ItemIconHelper` — Static class (`ItemIconHelper.cs`)
