@@ -109,94 +109,189 @@ The Use Cases marked with *Priority: Middle* are planned to be implemented, but 
 #import "../../lib.typ": fr_table
 #import "../../lib.typ": use_case
 
+#show ref: it => {
+  if it.element != none and it.element.func() == figure {
+    link(it.target, str(it.target))
+  } else {
+    it
+  }
+}
+
+// ── UC Status Registry ──
+// Update the status color here once — it syncs to both the overview table and the detail table.
+// Colors: blue (not tested), green (passed), orange (partial), red (failed)
+#let uc-status = (
+  uc01: blue,
+  uc02: blue,
+  uc03: blue,
+  uc04: blue,
+  uc05: blue,
+  uc06: blue,
+  uc07: blue,
+  uc08: blue,
+  uc09: blue,
+  uc10: blue,
+  uc11: blue,
+)
+
+// Helper to render a status box from the registry
+#let uc-status-box(id) = box(width: 10pt, height: 10pt, fill: uc-status.at(id))
+
+Each Use Case table includes a colored status indicator in the top-right corner representing its current verification state:
+
+#figure(
+  table(
+    columns: (0.4fr, 1fr),
+    stroke: 0.5pt + gray,
+    align: left,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Color*], [*Status*],
+    [#box(width: 12pt, height: 12pt, fill: blue)], [Not yet verified (default)],
+    [#box(width: 12pt, height: 12pt, fill: green)], [Implemented -- use case fully functional and verified],
+    [#box(width: 12pt, height: 12pt, fill: orange)], [Partially implemented -- some aspects functional, others pending],
+    [#box(width: 12pt, height: 12pt, fill: red)], [Not implemented -- use case not yet functional],
+  ),
+  caption: [UC Status Color Legend],
+  supplement: [Table],
+)
+
+==== UC Overview
+
+The following table provides a compact overview of all Use Cases, their persona, priority, and current verification status.
+
+#figure(
+  table(
+    columns: (0.5fr, 1.8fr, 1.6fr, 1.2fr, 1.2fr, 0.5fr),
+    stroke: 0.5pt + gray,
+    align: left,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*ID*], [*Name*], [*Persona*], [*Priority*], [*Verify at*], [*Status*],
+    [@UC01], [Install Game], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc01")],
+    [@UC02], [Save Game], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc02")],
+    [@UC03], [Break Nodes], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc03")],
+    [@UC04], [Expand Map], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc04")],
+    [@UC05], [Store Items], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc05")],
+    [@UC06], [Craft Items], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc06")],
+    [@UC07], [Build Nodes], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc07")],
+    [@UC08], [Experience Story], [Casual Player], [Low], [M10 Release], [#uc-status-box("uc08")],
+    [@UC09], [Fight Enemies], [Casual & Dedicated Player], [Middle], [M09 Beta], [#uc-status-box("uc09")],
+    [@UC10], [Automate Resource Gathering], [Dedicated Player], [Middle], [M09 Beta], [#uc-status-box("uc10")],
+    [@UC11], [Change Settings], [Dedicated Player], [Middle], [M09 Beta], [#uc-status-box("uc11")],
+  ),
+  caption: [UC Overview -- All Use Cases at a Glance],
+  supplement: [Table],
+)
+
 #use_case(
   id: "UC01",
   name: "Install Game",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player can install the game. The installation requires no technical skills.",
+  result: [],
   uc_caption: "UC01 - Install Game",
-)
+  status_color: uc-status.at("uc01"),
+) <UC01>
 #use_case(
   id: "UC02",
   name: "Save Game",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "When the player stops playing, the game saves his save state in a file and loads it when he resumes the game.",
+  result: [],
   uc_caption: "UC02 - Save Game",
-)
+  status_color: uc-status.at("uc02"),
+) <UC02>
 #use_case(
   id: "UC03",
   name: "Break Nodes",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player can break Nodes in the world with his hands or with tools. The usage of tools e.g. an axe to break a tree, increases the speed significantly. When the Nodes break, they drop items depending on the type of Node. E.g. a Tree drops a Wood-Item. Certain Nodes that are built by the player themselves such as a workbench drop themselves upon breaking.",
+  result: [],
   uc_caption: "UC03 - Break Nodes",
-)
+  status_color: uc-status.at("uc03"),
+) <UC03>
 #use_case(
   id: "UC04",
   name: "Expand Map",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player is confined to only move on tiles that are unlocked at a given point. The player can drop off items at the GlowCore, whereupon the map expands. The player can then move into and explore the new area.",
+  result: [],
   uc_caption: "UC04 - Expand Map",
-)
+  status_color: uc-status.at("uc04"),
+) <UC04>
 #use_case(
   id: "UC05",
   name: "Store Items",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "Items that the player picks up are stored in his inventory. The player's inventory has a limited size. To organize items, the player can move items into chests and take them out again.",
+  result: [],
   uc_caption: "UC05 - Store Items",
-)
+  status_color: uc-status.at("uc05"),
+) <UC05>
 #use_case(
   id: "UC06",
   name: "Craft Items",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player can craft items into other items with predefined recipes. Without a workbench the player is limited to a few simple recipes. The player can interact with a workstation such as a workbench to unlock more crafting recipes. Workstations such as an oven require additional items: e.g. Coal to smelt an Ingot.",
+  result: [],
   uc_caption: "UC06 - Craft Items",
-)
+  status_color: uc-status.at("uc06"),
+) <UC06>
 #use_case(
   id: "UC07",
   name: "Build Nodes",
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player can place certain items onto the world, where they become Nodes. Each Tile can hold only one Node, and the player is not allowed to build a Node on an already occupied Tile.",
+  result: [],
   uc_caption: "UC07 - Build Nodes",
-)
+  status_color: uc-status.at("uc07"),
+) <UC07>
 #use_case(
   id: "UC08",
   name: "Experience Story",
   persona: "Casual Player",
   priority: "Low",
   description: "The player can experience a story while playing the game. When the game starts there is an intro sequence. There is an end to the game, at which point a cutscene is played. The game contains small narrative hints that fit into the story conveyed by the GlowCore-World, including the acoustic, the visual art style and the overall gameplay experience.",
+  result: [],
   uc_caption: "UC08 - Experience Story",
-)
+  status_color: uc-status.at("uc08"),
+) <UC08>
 #use_case(
   id: "UC09",
   name: "Fight Enemies",
   persona: "Casual Player & Dedicated Player",
   priority: "Middle",
   description: "The player can engage in combat with enemies. Defeated enemies drop items that are useful for the player. When the enemy hits the player, he loses hitpoints. When the player has no hitpoints left, he loses some of his items and respawns near the center of the map.",
+  result: [],
   uc_caption: "UC09 - Fight Enemies",
-)
+  status_color: uc-status.at("uc09"),
+) <UC09>
 #use_case(
   id: "UC10",
   name: "Automate Resource Gathering",
   persona: "Dedicated Player",
   priority: "Middle",
   description: "The player can automate tedious tasks, such as breaking Nodes. He can craft machines that are placed as Nodes and they automatically perform a task e.g. chopping down trees. There is a selection of machines that can be combined to automate more and more. Example: The player places multiple Replanter-Machines in a row which automatically replant trees on the neighbouring tile. The player places an Axe-Machine onto the start of the line, at which point the Axe-Machine chops one tree after another and then moves onto the next tile. To automate it even further, the player places Rotaters on both which cause the Axe-Machine to turn around on contact.",
+  result: [],
   uc_caption: "UC10 - Automate Resource Gathering",
-)
+  status_color: uc-status.at("uc10"),
+) <UC10>
 #use_case(
   id: "UC11",
   name: "Change Settings",
   persona: "Dedicated Player",
   priority: "Middle",
   description: "The player can change settings of the game, such as the FOV and the Volume.",
+  result: [],
   uc_caption: "UC11 - Change Settings",
-)
+  status_color: uc-status.at("uc11"),
+) <UC11>
 
 
 // TODO: Include at least:
@@ -209,14 +304,6 @@ The Use Cases marked with *Priority: Middle* are planned to be implemented, but 
 === Non-Functional Requirements
 
 #import "../../lib.typ": nfr_table
-
-#show ref: it => {
-  if it.element != none and it.element.func() == figure {
-    link(it.target, str(it.target))
-  } else {
-    it
-  }
-}
 
 // ── NFR Status Registry ──
 // Update the status color here once — it syncs to both the overview table and the detail table.
@@ -276,16 +363,20 @@ Each NFR is documented with a description, concrete acceptance criteria, a measu
 
 Each NFR table includes a colored status indicator in the top-right corner representing its current verification state:
 
-#table(
-  columns: (0.4fr, 1fr),
-  stroke: 0.5pt + gray,
-  align: left,
-  fill: (x, y) => if y == 0 { luma(230) },
-  [*Color*], [*Status*],
-  [#box(width: 12pt, height: 12pt, fill: blue)], [Not yet tested (default)],
-  [#box(width: 12pt, height: 12pt, fill: green)], [Passed -- all acceptance criteria met],
-  [#box(width: 12pt, height: 12pt, fill: orange)], [Partially met -- some criteria passed, others pending],
-  [#box(width: 12pt, height: 12pt, fill: red)], [Failed -- acceptance criteria not met],
+#figure(
+  table(
+    columns: (0.4fr, 1fr),
+    stroke: 0.5pt + gray,
+    align: left,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Color*], [*Status*],
+    [#box(width: 12pt, height: 12pt, fill: blue)], [Not yet tested (default)],
+    [#box(width: 12pt, height: 12pt, fill: green)], [Passed -- all acceptance criteria met],
+    [#box(width: 12pt, height: 12pt, fill: orange)], [Partially met -- some criteria passed, others pending],
+    [#box(width: 12pt, height: 12pt, fill: red)], [Failed -- acceptance criteria not met],
+  ),
+  caption: [NFR Status Color Legend],
+  supplement: [Table],
 )
 
 ==== NFR Overview

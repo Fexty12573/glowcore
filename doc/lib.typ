@@ -344,26 +344,28 @@
   persona: [],
   priority: [],
   description: [],
+  result: [],
   uc_caption: [],
-  status_color: green,
-) = {
-  set table(
-    align: start,
-    columns: (1fr, 4fr, 0.2fr),
-    fill: (x, _) => if calc.even(x) { main_color_table } else { none },
-  )
-  figure(
+  status_color: blue,
+) = figure(
+  {
+    set table(
+      align: start,
+      columns: (1fr, 4fr, 0.2fr),
+      fill: (x, _) => if calc.even(x) { main_color_table } else { none },
+    )
     table(
-      [#strong("ID")], table.cell(colspan: 2, id),
+      [#strong("ID")], strong(id), table.cell(fill: status_color, []),
       [#strong("Name")], table.cell(colspan: 2, name),
       [#strong("Persona")], table.cell(colspan: 2, persona),
-
       [#strong("Priority")], table.cell(colspan: 2, priority),
       [#strong("Description")], table.cell(colspan: 2, description),
-    ),
-    caption: uc_caption,
-  )
-}
+      [#strong("Result")], table.cell(colspan: 2, result),
+    )
+  },
+  caption: uc_caption,
+  supplement: [Table],
+)
 
 #let nfr_table(
   id: [],
