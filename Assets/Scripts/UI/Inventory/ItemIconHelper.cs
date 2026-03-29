@@ -11,7 +11,8 @@ namespace GlowCore.UI.Inventory
 
         public static Sprite GetSprite(Item item)
         {
-            if (item == null || item.Icon == null) return null;
+            if (item == null || item.Icon == null)
+                return null;
 
             if (s_cache.TryGetValue(item.Icon, out var cached))
                 return cached;

@@ -20,6 +20,7 @@ namespace GlowCore.UI.Inventory
         private int m_hotbarIndex;
         private bool m_isSelected;
         private bool m_isHovered;
+        private bool m_hasItem;
 
         public void Initialize(PlayerInventory playerInventory, int hotbarIndex)
         {
@@ -37,11 +38,12 @@ namespace GlowCore.UI.Inventory
 
         public void Refresh()
         {
-            if (m_playerInventory == null) return;
+            if (m_playerInventory == null)
+                return;
 
             var stack = m_playerInventory.GetHotbarSlot(m_hotbarIndex);
-            var hasItem = stack != null && stack.Valid;
-            var sprite = hasItem ? ItemIconHelper.GetSprite(stack.Item) : null;
+            m_hasItem = stack != null && stack.Valid;
+            var sprite = m_hasItem ? ItemIconHelper.GetSprite(stack.Item) : null;
 
             if (m_icon != null)
             {
@@ -52,21 +54,18 @@ namespace GlowCore.UI.Inventory
 
             if (m_countText != null)
             {
-                m_countText.enabled = hasItem && stack.Amount > 1;
-                if (hasItem && stack.Amount > 1)
+                m_countText.enabled = m_hasItem && stack.Amount > 1;
+                if (m_hasItem && stack.Amount > 1)
                     m_countText.text = stack.Amount.ToString();
             }
 
-            if (m_background != null)
-                m_background.color = hasItem ? UIColors.SlotFilledBg : UIColors.SlotBg;
-
-            UpdateBorderColor();
+            UpdateVisuals();
         }
 
         public void SetSelected(bool selected)
         {
             m_isSelected = selected;
-            UpdateBorderColor();
+            UpdateVisuals();
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -78,25 +77,27 @@ namespace GlowCore.UI.Inventory
         public void OnPointerEnter(PointerEventData eventData)
         {
             m_isHovered = true;
-            UpdateBorderColor();
+            UpdateVisuals();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             m_isHovered = false;
-            UpdateBorderColor();
+            UpdateVisuals();
         }
 
-        private void UpdateBorderColor()
+        private void UpdateVisuals()
         {
-            if (m_border == null) return;
+            if (m_border != null)
+                m_border.enabled = m_isSelected;
 
-            if (m_isSelected)
-                m_border.color = UIColors.SelectedBorder;
-            else if (m_isHovered)
-                m_border.color = UIColors.SlotHoverBorder;
-            else
-                m_border.color = UIColors.SlotBorder;
+            if (m_background != null)
+            {
+                if (m_isHovered)
+                    m_background.color = UIColors.SlotHoverBg;
+                else
+                    m_background.color = m_hasItem ? UIColors.SlotFilledBg : UIColors.SlotBg;
+            }
         }
     }
 }

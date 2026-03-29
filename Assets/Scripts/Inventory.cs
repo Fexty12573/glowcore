@@ -58,18 +58,23 @@ public class Inventory
     private int FindFirstEmptySlotFrom(int startIndex)
     {
         for (var i = startIndex; i < m_items.Length; i++)
-            if (m_items[i].Amount == 0) return i;
+            if (m_items[i].Amount == 0)
+                return i;
         for (var i = 0; i < startIndex; i++)
-            if (m_items[i].Amount == 0) return i;
+            if (m_items[i].Amount == 0)
+                return i;
         return -1;
     }
 
     /// <summary>Swap the contents of two slots by flat index.</summary>
     public void Swap(int indexA, int indexB)
     {
-        if (indexA < 0 || indexA >= m_items.Length) return;
-        if (indexB < 0 || indexB >= m_items.Length) return;
-        if (indexA == indexB) return;
+        if (indexA < 0 || indexA >= m_items.Length)
+            return;
+        if (indexB < 0 || indexB >= m_items.Length)
+            return;
+        if (indexA == indexB)
+            return;
 
         var slotA = m_items[indexA];
         var slotB = m_items[indexB];
@@ -87,15 +92,20 @@ public class Inventory
     /// <summary>Try to stack sourceIndex onto targetIndex. Returns true if fully merged.</summary>
     public bool TryMerge(int sourceIndex, int targetIndex)
     {
-        if (sourceIndex < 0 || sourceIndex >= m_items.Length) return false;
-        if (targetIndex < 0 || targetIndex >= m_items.Length) return false;
-        if (sourceIndex == targetIndex) return false;
+        if (sourceIndex < 0 || sourceIndex >= m_items.Length)
+            return false;
+        if (targetIndex < 0 || targetIndex >= m_items.Length)
+            return false;
+        if (sourceIndex == targetIndex)
+            return false;
 
         var source = m_items[sourceIndex];
         var target = m_items[targetIndex];
 
-        if (!source.Valid || !target.Valid) return false;
-        if (source.Item != target.Item) return false;
+        if (!source.Valid || !target.Valid)
+            return false;
+        if (source.Item != target.Item)
+            return false;
 
         target.Add(source);
         OnSlotChanged?.Invoke(sourceIndex);
@@ -110,7 +120,8 @@ public class Inventory
     /// <summary>Get slot by flat index.</summary>
     public ItemStack GetSlot(int index)
     {
-        if (index < 0 || index >= m_items.Length) return null;
+        if (index < 0 || index >= m_items.Length)
+            return null;
         return m_items[index];
     }
 
@@ -143,7 +154,8 @@ public class Inventory
         var remaining = amount;
         for (var i = 0; i < m_items.Length && remaining > 0; i++)
         {
-            if (m_items[i].Item != item) continue;
+            if (m_items[i].Item != item)
+                continue;
 
             var take = Mathf.Min(m_items[i].Amount, remaining);
             m_items[i].Amount -= take;
@@ -168,7 +180,8 @@ public class Inventory
             else if (m_items[i].Item == item)
                 space += item.MaxStack - m_items[i].Amount;
 
-            if (space >= amount) return true;
+            if (space >= amount)
+                return true;
         }
         return space >= amount;
     }

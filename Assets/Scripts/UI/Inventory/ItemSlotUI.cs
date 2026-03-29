@@ -60,7 +60,8 @@ namespace GlowCore.UI.Inventory
 
         public void Refresh()
         {
-            if (m_owner == null) return;
+            if (m_owner == null)
+                return;
 
             var stack = m_owner.PlayerInventory.Inventory.GetSlot(m_slotIndex);
             var hasItem = stack != null && stack.Valid;
@@ -109,7 +110,8 @@ namespace GlowCore.UI.Inventory
 
         private void UpdateBorderColor()
         {
-            if (m_border == null) return;
+            if (m_border == null)
+                return;
 
             if (m_isHovered)
                 m_border.color = UIColors.SlotHoverBorder;
@@ -133,7 +135,8 @@ namespace GlowCore.UI.Inventory
         /// <summary>Returns the ItemStack for tooltip display.</summary>
         public ItemStack GetItemStack()
         {
-            if (m_owner == null) return null;
+            if (m_owner == null)
+                return null;
             var stack = m_owner.PlayerInventory.Inventory.GetSlot(m_slotIndex);
             return (stack != null && stack.Valid) ? stack : null;
         }

@@ -33,13 +33,15 @@ namespace GlowCore.UI.Inventory
 
         public void Show(ItemStack stack)
         {
-            if (stack == null || !stack.Valid) return;
+            if (stack == null || !stack.Valid)
+                return;
             ShowItem(stack.Item);
         }
 
         public void Show(Item item)
         {
-            if (item == null) return;
+            if (item == null)
+                return;
             ShowItem(item);
         }
 
@@ -79,7 +81,8 @@ namespace GlowCore.UI.Inventory
 
         private void UpdatePosition()
         {
-            if (m_rectTransform == null || m_parentCanvas == null) return;
+            if (m_rectTransform == null || m_parentCanvas == null)
+                return;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 m_parentCanvas.transform as RectTransform,

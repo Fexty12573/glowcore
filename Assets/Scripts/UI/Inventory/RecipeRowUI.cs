@@ -105,7 +105,8 @@ namespace GlowCore.UI.Inventory
                 iconImage.preserveAspect = true;
                 iconImage.raycastTarget = false;
                 var iconSprite = ItemIconHelper.GetSprite(ingredient.Item);
-                if (iconSprite != null) iconImage.sprite = iconSprite;
+                if (iconSprite != null)
+                    iconImage.sprite = iconSprite;
 
                 var iconRect = iconGo.GetComponent<RectTransform>();
                 var iconLayout = iconGo.AddComponent<LayoutElement>();
@@ -133,7 +134,8 @@ namespace GlowCore.UI.Inventory
 
         public void Refresh()
         {
-            if (m_craftingUI == null || m_recipe == null) return;
+            if (m_craftingUI == null || m_recipe == null)
+                return;
 
             var canCraft = m_craftingUI.CanCraft(m_recipe);
 

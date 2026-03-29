@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: Pickaxe
   Prefab: {fileID: 380041252782059481, guid: b11b6e8ad91eafa48855c8b047160c8b, type: 3}
+  Description: Pickaxe
+  Prefab: {fileID: 0}
   Icon: {fileID: 0}
   DropScale: 1
   InHandScale: 1

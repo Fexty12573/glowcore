@@ -10,13 +10,7 @@ public class PlayerInventory : MonoBehaviour
     private const int kTotalRows = 8;
     private const int kHotbarSlots = 8;
 
-<<<<<<< HEAD
-    private GameObject m_handItemGameObject;
-    private int m_hotbarIndex = 0;
-    [SerializeField] private Inventory m_inventory;
-=======
-    
->>>>>>> a192f6a (Fix inventory/hotbar interaction bugs and add world drop)
+
     [SerializeField] private PlayerHand m_playerHand;
 
     private int m_selectedHotbarIndex;
@@ -73,14 +67,16 @@ public class PlayerInventory : MonoBehaviour
     public void ConsumeHandItem()
     {
         var slot = GetHotbarSlot(m_selectedHotbarIndex);
-        if (slot != null) slot.Set(null, 0);
+        if (slot != null)
+            slot.Set(null, 0);
         UpdatePlayerHand();
         m_inventory.NotifySlotChanged(m_selectedHotbarIndex);
     }
 
     public void SelectHotbarSlot(int index)
     {
-        if (index < 0 || index >= kHotbarSlots) return;
+        if (index < 0 || index >= kHotbarSlots)
+            return;
         m_selectedHotbarIndex = index;
         OnHotbarSelectionChanged?.Invoke(index);
         UpdatePlayerHand();
@@ -98,14 +94,16 @@ public class PlayerInventory : MonoBehaviour
 
     private void UpdatePlayerHand()
     {
-        if (m_playerHand == null) return;
+        if (m_playerHand == null)
+            return;
         m_playerHand.SetItemInHand(GetHotbarSlot(m_selectedHotbarIndex));
     }
 
     /// <summary>Get the hotbar ItemStack at the given hotbar position (0 to kHotbarSlots-1).</summary>
     public ItemStack GetHotbarSlot(int hotbarIndex)
     {
-        if (hotbarIndex < 0 || hotbarIndex >= kHotbarSlots) return null;
+        if (hotbarIndex < 0 || hotbarIndex >= kHotbarSlots)
+            return null;
         return m_inventory.GetSlot(HotbarStartIndex + hotbarIndex);
     }
 
@@ -118,7 +116,8 @@ public class PlayerInventory : MonoBehaviour
     /// <summary>Convert a flat inventory index to a hotbar index. Returns -1 if not a hotbar slot.</summary>
     public int InventoryToHotbarIndex(int flatIndex)
     {
-        if (flatIndex >= kHotbarSlots) return -1;
+        if (flatIndex >= kHotbarSlots)
+            return -1;
         return flatIndex;
     }
 
@@ -130,7 +129,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void SetInventoryOpen(bool open)
     {
-        if (m_isOpen == open) return;
+        if (m_isOpen == open)
+            return;
         m_isOpen = open;
         OnInventoryToggled?.Invoke(m_isOpen);
     }

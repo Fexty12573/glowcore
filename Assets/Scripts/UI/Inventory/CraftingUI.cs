@@ -56,7 +56,8 @@ namespace GlowCore.UI.Inventory
 
         private void OnSlotChanged(int slotIndex)
         {
-            if (!m_isVisible) return;
+            if (!m_isVisible)
+                return;
             RefreshAll();
         }
 
@@ -101,7 +102,8 @@ namespace GlowCore.UI.Inventory
         /// <summary>Consume ingredients and add the crafted result to the inventory.</summary>
         public void Craft(Recipe recipe)
         {
-            if (!CanCraft(recipe)) return;
+            if (!CanCraft(recipe))
+                return;
 
             var inv = m_playerInventory.Inventory;
 
@@ -119,7 +121,8 @@ namespace GlowCore.UI.Inventory
 
         private void RefreshAll()
         {
-            if (m_rows == null) return;
+            if (m_rows == null)
+                return;
             for (var i = 0; i < m_rows.Length; i++)
                 m_rows[i].Refresh();
         }

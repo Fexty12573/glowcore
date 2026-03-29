@@ -99,6 +99,35 @@ Assets/
 - PRs target `dev` from feature branches. Reference the Jira issue in PR descriptions.
 - Do not commit Unity-generated folders: `Library/`, `Temp/`, `Obj/`, `Logs/`, `UserSettings/`, `Build/`.
 
+## Linting & Formatting
+
+The CI pipeline (`.github/workflows/lint.yml`) runs two checks on every push/PR to `main` and `dev`:
+
+1. **Code Analysis** — Roslyn analyzers via `dotnet build` with `-warnaserror`. Enforces naming rules, code style, and `.editorconfig` conventions.
+2. **Formatting** — `dotnet format` against `Tools/Lint/GlowCore.Lint.csproj`. Enforces whitespace, indentation, and line endings.
+
+### Key formatting rules (from `.editorconfig`)
+
+- **Line endings:** LF (`\n`) only — never CRLF.
+- **Indentation:** 4 spaces for C# files, no tabs.
+- **Braces:** Allman style (opening brace on its own line).
+- **Single-line statements:** `if`, `for`, `while`, etc. with single-line bodies should omit braces and keep the body on the next indented line.
+- **Qualifier:** Do not use `this.` unless necessary.
+- **Type keywords:** Use language keywords (`int`, `string`) over framework names (`Int32`, `String`).
+- **Modifier order:** `public`/`private`/`protected`/`internal` → `static` → `readonly` → other.
+
+### Verify locally before pushing
+
+```bash
+dotnet format Tools/Lint/GlowCore.Lint.csproj --verify-no-changes --severity error
+```
+
+To auto-fix violations:
+
+```bash
+dotnet format Tools/Lint/GlowCore.Lint.csproj --severity error
+```
+
 ## CI/CD
 
 - WebGL builds run on every push to `main` and `dev`.

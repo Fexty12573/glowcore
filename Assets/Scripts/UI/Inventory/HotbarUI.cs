@@ -37,7 +37,8 @@ namespace GlowCore.UI.Inventory
 
         private void Update()
         {
-            if (Keyboard.current == null) return;
+            if (Keyboard.current == null)
+                return;
 
             for (var i = 0; i < m_playerInventory.HotbarSlots; i++)
             {
@@ -70,7 +71,8 @@ namespace GlowCore.UI.Inventory
         private void OnSlotDataChanged(int flatIndex)
         {
             var hotbarIndex = m_playerInventory.InventoryToHotbarIndex(flatIndex);
-            if (hotbarIndex < 0 || hotbarIndex >= m_slots.Length) return;
+            if (hotbarIndex < 0 || hotbarIndex >= m_slots.Length)
+                return;
             m_slots[hotbarIndex].Refresh();
         }
 
@@ -81,7 +83,8 @@ namespace GlowCore.UI.Inventory
 
         private void SetDimmed(bool dimmed)
         {
-            if (m_canvasGroup == null) return;
+            if (m_canvasGroup == null)
+                return;
             m_canvasGroup.alpha = dimmed ? kDimmedAlpha : 1f;
             m_canvasGroup.interactable = !dimmed;
             m_canvasGroup.blocksRaycasts = !dimmed;
@@ -96,7 +99,8 @@ namespace GlowCore.UI.Inventory
         /// <summary>Refresh all hotbar slot visuals.</summary>
         public void RefreshAll()
         {
-            if (m_slots == null) return;
+            if (m_slots == null)
+                return;
             for (var i = 0; i < m_slots.Length; i++)
                 m_slots[i].Refresh();
         }

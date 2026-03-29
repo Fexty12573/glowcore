@@ -117,7 +117,8 @@ namespace GlowCore.UI.Inventory
             if (!isOpen)
             {
                 CancelHeldItem();
-                if (m_craftingUI != null) m_craftingUI.Hide();
+                if (m_craftingUI != null)
+                    m_craftingUI.Hide();
             }
         }
 
@@ -137,7 +138,8 @@ namespace GlowCore.UI.Inventory
         /// <summary>Called by ItemSlotUI on pointer down. Starts dragging if the slot has an item.</summary>
         public void OnSlotPressed(int slotIndex)
         {
-            if (m_isHolding) return;
+            if (m_isHolding)
+                return;
 
             var stack = m_playerInventory.Inventory.GetSlot(slotIndex);
             if (stack != null && stack.Valid)
@@ -191,7 +193,8 @@ namespace GlowCore.UI.Inventory
 
         private void DropHeldItem()
         {
-            if (!m_isHolding) return;
+            if (!m_isHolding)
+                return;
 
             var inv = m_playerInventory.Inventory;
 
@@ -222,7 +225,8 @@ namespace GlowCore.UI.Inventory
         {
             var inv = m_playerInventory.Inventory;
             var stack = inv.GetSlot(m_heldSlotIndex);
-            if (stack == null || !stack.Valid) return;
+            if (stack == null || !stack.Valid)
+                return;
 
             var dropPos = m_dropPoint != null ? m_dropPoint.position : m_playerInventory.transform.position;
             ItemStackDrop.Spawn(stack, dropPos);
@@ -248,13 +252,15 @@ namespace GlowCore.UI.Inventory
 
         private void SetSlotGhosted(int flatIndex, bool ghosted)
         {
-            if (flatIndex < 0 || flatIndex >= m_allSlots.Length) return;
+            if (flatIndex < 0 || flatIndex >= m_allSlots.Length)
+                return;
             m_allSlots[flatIndex].SetGhosted(ghosted);
         }
 
         private void UpdateCursorPosition()
         {
-            if (m_cursorIcon == null || m_parentCanvas == null) return;
+            if (m_cursorIcon == null || m_parentCanvas == null)
+                return;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 m_parentCanvas.transform as RectTransform,
@@ -268,7 +274,8 @@ namespace GlowCore.UI.Inventory
         /// <summary>Refresh all slots (upper grid + hotbar row).</summary>
         public void RefreshAll()
         {
-            if (m_allSlots == null) return;
+            if (m_allSlots == null)
+                return;
             for (var i = 0; i < m_allSlots.Length; i++)
                 m_allSlots[i].Refresh();
         }
