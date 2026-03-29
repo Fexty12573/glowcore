@@ -27,6 +27,9 @@ namespace GlowCore.UI.Inventory
         [Header("Tooltip")]
         [SerializeField] private TooltipUI m_tooltip;
 
+        [Header("Crafting")]
+        [SerializeField] private CraftingUI m_craftingUI;
+
         private ItemSlotUI[] m_allSlots;
         private int m_heldSlotIndex = -1;
         private bool m_isHolding;
@@ -112,7 +115,10 @@ namespace GlowCore.UI.Inventory
             SetPanelVisible(isOpen);
 
             if (!isOpen)
+            {
                 CancelHeldItem();
+                if (m_craftingUI != null) m_craftingUI.Hide();
+            }
         }
 
         private void SetPanelVisible(bool visible)

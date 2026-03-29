@@ -1,7 +1,7 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-03-27 (tooltip auto-height; ConsumeHandItem; NotifySlotChanged)
+> Last updated: 2026-03-28 (crafting panel: Recipe SO, CraftingUI, RecipeRowUI; Inventory.CountItem/RemoveItems/CanAccept)
 
 ---
 
@@ -29,6 +29,7 @@ to change events — it never modifies item data directly, only calls data-layer
 │                                                             │
 │  InventoryUI ──► ItemSlotUI (×32)                           │
 │                  TooltipUI                                   │
+│                  CraftingUI ──► RecipeRowUI (×N)            │
 │  HotbarUI ────► HotbarSlotUI (×8)                           │
 │                  ItemIconHelper (static)                     │
 │                  UIColors (static)                           │
@@ -70,6 +71,19 @@ A runtime instance representing "X amount of item Y" in a single slot. Created v
 | `Set(ItemStack)`| Copy another stack's data, zeroing the source's amount   |
 | `Set(Item, int)`| Directly set item and amount                             |
 
+### `Recipe` — ScriptableObject (`Assets/Scripts/ScriptableObjects/Recipe.cs`)
+
+Defines a crafting recipe. Created as `.asset` files in the Unity Editor.
+
+| Field         | Type            | Purpose                              |
+|---------------|-----------------|--------------------------------------|
+| `Name`        | string          | Display name shown in the recipe row |
+| `Ingredients` | Ingredient[]    | Array of required items and amounts  |
+| `ResultItem`  | Item            | The item produced by crafting        |
+| `ResultAmount`| int             | How many of the result item (min 1)  |
+
+**`Ingredient`** (nested serializable struct): `Item` + `Amount` (min 1).
+
 ### `Inventory` — Serializable class (`Assets/Scripts/Inventory.cs`)
 
 A flat array of `ItemStack` slots organized as a 2D grid (width × height).
@@ -85,6 +99,9 @@ This is **not** a MonoBehaviour — it's a plain C# class owned by `PlayerInvent
 | `Swap(a, b)`                | Swap contents of two slots by flat index                          |
 | `TryMerge(src, dst)`        | Stack src onto dst if same item type. Returns true if fully merged|
 | `GetSlotWithItem(Item)`     | Returns `(ItemStack slot, int index)` tuple — first match, or `(null, -1)` |
+| `CountItem(Item)`           | Sums total amount of a given item across all slots (pure query)       |
+| `RemoveItems(Item, int)`    | Consumes items across slots, fires `OnSlotChanged` per affected slot. Returns amount removed. Clears slot via `Set(null, 0)` when depleted. |
+| `CanAccept(Item, int)`      | Checks if inventory has enough space (partial stacks + empty slots) for the given item and amount |
 | `GetFirstEmptySlot()`       | Returns `Vector2Int?` of first empty slot in row-major order, or null |
 | `NotifySlotChanged(int)`    | Fires `OnSlotChanged` for the given flat index. Use when slot data is mutated outside of `Inventory`'s own methods. |
 
@@ -233,6 +250,50 @@ inventory panel. One instance per slot, spawned at runtime from a prefab.
 - `IPointerDownHandler` → tells InventoryUI to start drag (left button only)
 - `IPointerEnterHandler / IPointerExitHandler` → hover visuals + tooltip show/hide
 
+### `CraftingUI` — MonoBehaviour (`CraftingUI.cs`)
+
+**Crafting panel controller.** Manages recipe display, crafting logic, and panel visibility.
+
+**Key behavior:**
+- Opens via a button click (`Toggle()`) or `C` key while inventory is open
+- Spawns `RecipeRowUI` rows from a `Recipe[]` array assigned in the inspector
+- Auto-refreshes all rows when any inventory slot changes (while visible)
+- Closed automatically when the inventory closes (via `InventoryUI.OnInventoryToggled`)
+
+**Inspector fields:**
+| Field               | What to assign                                    |
+|---------------------|---------------------------------------------------|
+| `m_playerInventory` | Player's PlayerInventory component                |
+| `m_panelCanvasGroup`| CanvasGroup on the crafting panel                 |
+| `m_contentParent`   | Transform of the ScrollRect Content area          |
+| `m_recipeRowPrefab` | The RecipeRow prefab                              |
+| `m_recipes`         | Array of Recipe assets to display                 |
+
+**Public API:**
+| Method             | Purpose                                                        |
+|--------------------|----------------------------------------------------------------|
+| `Toggle()`         | Show/hide the crafting panel                                   |
+| `Show()` / `Hide()`| Explicit show/hide                                             |
+| `CanCraft(Recipe)` | Checks material counts AND inventory space for result          |
+| `Craft(Recipe)`    | Consumes ingredients, adds result, refreshes all rows          |
+| `GetItemCount(Item)`| Returns total count of an item in the inventory               |
+
+### `RecipeRowUI` — MonoBehaviour (`RecipeRowUI.cs`)
+
+**Single recipe row.** Shows result icon, recipe name, ingredient requirements with have/need counts, and a CRAFT button.
+
+**Visual states:**
+- **Craftable:** green border (`UIColors.Green`), normal background, button enabled, ingredient counts green
+- **Not craftable:** default border (`UIColors.SlotBorder`), dimmed background (alpha 0.35), button disabled, insufficient ingredients shown in `UIColors.MissingMat`
+
+**Inspector fields:** `m_bgImage`, `m_borderImage`, `m_resultIcon`, `m_recipeName`, `m_ingredientParent`, `m_craftButton`
+
+**Public API:**
+| Method       | Purpose                                            |
+|--------------|----------------------------------------------------|
+| `Initialize(CraftingUI, Recipe)` | Sets up static content, builds ingredient labels |
+| `Refresh()`  | Updates have/need counts, visual state, button interactability |
+
 ### `HotbarUI` — MonoBehaviour (`HotbarUI.cs`)
 
 **Always-visible hotbar** at the bottom of the screen. Spawns 8 `HotbarSlotUI` instances.
@@ -310,6 +371,15 @@ InventoryCanvas (Canvas — Screen Space Overlay, CanvasScaler 854×480)
   │     │
   │     └── HotbarRow (HorizontalLayoutGroup: 4px spacing)
   │           └── [8 ItemSlotUI spawned at runtime, hotbar-styled — indices 24–31]
+  │
+  ├── CraftTabButton (Button — anchored top-right of inventory panel, onClick → CraftingUI.Toggle())
+  │
+  ├── CraftingPanel (CraftingUI + CanvasGroup, positioned right of inventory)
+  │     ├── Title (TMP — "CRAFTING", Cinzel Bold, AccentDim)
+  │     └── ScrollView (ScrollRect, vertical only)
+  │           └── Viewport (Mask + Image)
+  │                 └── Content (VerticalLayoutGroup spacing 4 + ContentSizeFitter)
+  │                       └── [RecipeRowUI instances spawned at runtime]
   │
   ├── HotbarPanel (CanvasGroup, anchored bottom-center)
   │     └── HotbarGrid (HorizontalLayoutGroup: 4px spacing)
@@ -391,6 +461,24 @@ GlowCoreObject.Interact()
   → Fire.FeedWood(woodAmount)
 ```
 
+### Crafting an item
+```
+User opens inventory (TAB), then opens crafting panel (C key or Craft button):
+  CraftingUI.Toggle() → SetVisible(true) → RefreshAll()
+    → each RecipeRowUI.Refresh():
+        checks CanCraft(recipe) → green border + enabled button, or dimmed + disabled
+
+User clicks CRAFT on a recipe row:
+  RecipeRowUI.OnCraftClicked() → CraftingUI.Craft(recipe)
+    → CanCraft(recipe): checks CountItem() for each ingredient + CanAccept() for result
+    → For each ingredient: Inventory.RemoveItems(item, amount)
+         → fires OnSlotChanged per affected slot
+    → ItemStack.Create(resultItem, resultAmount)
+    → Inventory.AddItems(result)
+         → fires OnSlotChanged for the target slot
+    → CraftingUI.RefreshAll() → all rows re-evaluate CanCraft and update visuals
+```
+
 ### Opening/closing inventory
 ```
 User presses TAB:
@@ -401,7 +489,7 @@ User presses TAB:
 
 User presses TAB again:
   → OnInventoryToggled(false)
-       → InventoryUI: alpha=0, interactable=false; cancels any held item
+       → InventoryUI: alpha=0, interactable=false; cancels any held item; hides CraftingUI
        → HotbarUI: restores full alpha and interactivity
 ```
 
@@ -427,11 +515,14 @@ User presses key 3 (or scrolls mouse wheel):
 | `ScriptableObjects/Item.cs` | Data | ScriptableObject | Item type definition |
 | `ScriptableObjects/ItemStack.cs` | Data | ScriptableObject | Runtime stack instance |
 | `ScriptableObjects/NodeData.cs` | Data | ScriptableObject | Node resource config; defines `ItemDrop` and `UsableTool` |
-| `Inventory.cs` | Data | Plain C# class | Slot grid with swap/merge/events |
+| `ScriptableObjects/Recipe.cs` | Data | ScriptableObject | Crafting recipe definition |
+| `Inventory.cs` | Data | Plain C# class | Slot grid with swap/merge/count/remove/events |
 | `PlayerInventory.cs` | Data | MonoBehaviour | Owns Inventory, handles input, coordinates PlayerHand |
 | `PlayerHand.cs` | Data | MonoBehaviour (Singleton) | Manages in-hand item visual; implements `IHandItem` dispatch |
 | `ItemStackDrop.cs` | Data | MonoBehaviour | World-dropped item with bobbing animation and auto-pickup |
-| `UI/Inventory/InventoryUI.cs` | UI | MonoBehaviour | Panel controller + drag-and-drop |
+| `UI/Inventory/InventoryUI.cs` | UI | MonoBehaviour | Panel controller + drag-and-drop + crafting wire |
+| `UI/Inventory/CraftingUI.cs` | UI | MonoBehaviour | Crafting panel controller |
+| `UI/Inventory/RecipeRowUI.cs` | UI | MonoBehaviour | Single recipe row display |
 | `UI/Inventory/ItemSlotUI.cs` | UI | MonoBehaviour | Single slot (upper grid + hotbar row in panel) |
 | `UI/Inventory/HotbarUI.cs` | UI | MonoBehaviour | Standalone hotbar controller |
 | `UI/Inventory/HotbarSlotUI.cs` | UI | MonoBehaviour | Single standalone hotbar slot |
@@ -475,10 +566,11 @@ Edit `kHotbarSlots` in `PlayerInventory.cs`. The last N slots become the hotbar.
 Add an `IPointerClickHandler` to `ItemSlotUI` and check for `PointerEventData.InputButton.Right`.
 Call a new method on `InventoryUI` such as `OnSlotRightClicked(index)`.
 
-### Add crafting panel
-Create a `CraftingUI` MonoBehaviour that reads from `Inventory` via `PlayerInventory`.
-Use `Inventory.GetSlotWithItem()` to check for required materials. On craft, modify
-stacks directly and let `OnSlotChanged` drive the UI refresh.
+### Add a new crafting recipe
+1. Right-click in Project → Create → Scriptable Objects → Recipe
+2. Fill in Name, Ingredients (Item + Amount pairs), ResultItem, ResultAmount
+3. Add the Recipe asset to `CraftingUI.m_recipes` array in the InventoryCanvas prefab
+4. Done — the crafting panel picks it up automatically on next Start()
 
 ### Add equipment slots
 Create `EquipmentUI` with specialized `ItemSlotUI` instances that validate item type before

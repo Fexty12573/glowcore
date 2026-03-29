@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Wood
   Description: 
   Prefab: {fileID: 1694080080886985426, guid: 19790610027d32d42bcc066fa90ea64f, type: 3}
-  Icon: {fileID: 0}
+  Icon: {fileID: 2800000, guid: 2ce5c55e85304b819a1826ecbc839aa5, type: 3}
   DropScale: 0.5
   InHandScale: 1
   MaxStack: 99

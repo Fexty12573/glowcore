@@ -125,6 +125,54 @@ public class Inventory
         return (null, -1);
     }
 
+    /// <summary>Count total amount of the given item across all slots.</summary>
+    public int CountItem(Item item)
+    {
+        var total = 0;
+        for (var i = 0; i < m_items.Length; i++)
+        {
+            if (m_items[i].Item == item)
+                total += m_items[i].Amount;
+        }
+        return total;
+    }
+
+    /// <summary>Remove up to the requested amount of the given item across all slots. Returns the amount actually removed.</summary>
+    public int RemoveItems(Item item, int amount)
+    {
+        var remaining = amount;
+        for (var i = 0; i < m_items.Length && remaining > 0; i++)
+        {
+            if (m_items[i].Item != item) continue;
+
+            var take = Mathf.Min(m_items[i].Amount, remaining);
+            m_items[i].Amount -= take;
+            remaining -= take;
+
+            if (m_items[i].Amount == 0)
+                m_items[i].Set(null, 0);
+
+            OnSlotChanged?.Invoke(i);
+        }
+        return amount - remaining;
+    }
+
+    /// <summary>Check if the inventory can accept the given item and amount (partial stacks + empty slots).</summary>
+    public bool CanAccept(Item item, int amount)
+    {
+        var space = 0;
+        for (var i = 0; i < m_items.Length; i++)
+        {
+            if (m_items[i].Amount == 0)
+                space += item.MaxStack;
+            else if (m_items[i].Item == item)
+                space += item.MaxStack - m_items[i].Amount;
+
+            if (space >= amount) return true;
+        }
+        return space >= amount;
+    }
+
     public Vector2Int? GetFirstEmptySlot()
     {
         for (var y = 0; y < m_height; y++)
