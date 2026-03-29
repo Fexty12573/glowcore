@@ -36,9 +36,6 @@
 
 ==== Todos
 #todo_table((
-  [FR: clarify whether "dedicated player" is categorized as "casual player"],
-  [Nathanael Fässler],
-  [27.03.2026],
   [FR: align color definitions and structure as in the NFRs],
   [Cedric Cathomas],
   [27.03.2026],
