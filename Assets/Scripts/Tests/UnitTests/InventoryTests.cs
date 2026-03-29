@@ -34,7 +34,7 @@ public class InventoryTests
     public void AddItems_ShouldPlaceStackInFirstEmptySlot_WhenNoExistingStack()
     {
         var inventory = new Inventory(2, 2);
-        var stack = ItemStack.Create(m_item, 3);
+        var stack = new ItemStack(m_item, 3);
 
         inventory.AddItems(ref stack);
 
@@ -48,7 +48,7 @@ public class InventoryTests
     {
         var inventory = new Inventory(2, 2);
         inventory[0, 0].Set(m_item, 1);
-        var stack = ItemStack.Create(m_item, 2);
+        var stack = new ItemStack(m_item, 2);
 
         inventory.AddItems(ref stack);
 
@@ -63,7 +63,7 @@ public class InventoryTests
         var inventory = new Inventory(2, 2);
         inventory[0, 0].Set(m_item, 8);
         inventory[1, 0].Set(m_item, 9);
-        var stack = ItemStack.Create(m_item, 5);
+        var stack = new ItemStack(m_item, 5);
 
         inventory.AddItems(ref stack);
 

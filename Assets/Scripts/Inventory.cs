@@ -24,7 +24,7 @@ public class Inventory
         m_height = height;
 
         for (var i = 0; i < m_items.Length; i++)
-            m_items[i] = ScriptableObject.CreateInstance<ItemStack>();
+            m_items[i] = new ItemStack();
     }
 
     public bool AddItems(ref ItemStack stack)

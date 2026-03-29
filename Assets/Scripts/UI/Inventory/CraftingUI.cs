@@ -110,7 +110,7 @@ namespace GlowCore.UI.Inventory
             foreach (var ingredient in recipe.Ingredients)
                 inv.RemoveItems(ingredient.Item, ingredient.Amount);
 
-            var result = ItemStack.Create(recipe.ResultItem, recipe.ResultAmount);
+            var result = new ItemStack(recipe.ResultItem, recipe.ResultAmount);
             inv.AddItems(result);
 
             RefreshAll();

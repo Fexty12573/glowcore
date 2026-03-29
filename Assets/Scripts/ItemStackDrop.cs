@@ -67,7 +67,7 @@ public class ItemStackDrop : MonoBehaviour
         if (item == null || amount == 0)
             return;
 
-        Stack = ItemStack.Create(item, amount);
+        Stack = new ItemStack(item, amount);
 
         BuildVisuals();
     }

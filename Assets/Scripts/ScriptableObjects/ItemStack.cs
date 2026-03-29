@@ -1,56 +1,61 @@
 using System;
-using UnityEngine;
+using ScriptableObjects;
 
-namespace ScriptableObjects
+[Serializable]
+public class ItemStack
 {
-    public class ItemStack : ScriptableObject
+    public Item Item;
+    public int Amount;
+
+    public bool IsFull => Item != null && Amount >= Item.MaxStack;
+    public bool Valid => Item != null && Amount != 0;
+
+    public ItemStack() { }
+
+    public ItemStack(Item item, int amount)
     {
-        public Item Item;
-        public int Amount;
+        Item = item;
+        Amount = amount;
+    }
 
-        public bool Valid => Item != null && Amount != 0;
+    public int Add(int amountToAdd)
+    {
+        var newAmount = Math.Clamp(Amount + amountToAdd, 0, Item.MaxStack);
+        var added = newAmount - Amount;
+        Amount = newAmount;
 
-        public static ItemStack Create(Item item, int amount)
-        {
-            var stack = CreateInstance<ItemStack>();
-            stack.Item = item;
-            stack.Amount = amount;
-            return stack;
-        }
+        return added;
+    }
 
-        public int Add(int amountToAdd)
-        {
-            var newAmount = Math.Clamp(Amount + amountToAdd, 0, Item.MaxStack);
-            var added = newAmount - Amount;
-            Amount = newAmount;
+    public void Add(ItemStack stack)
+    {
+        if (stack == null || Item != stack.Item)
+            return;
 
-            return added;
-        }
+        var added = Add(stack.Amount);
+        stack.Amount -= added;
+    }
 
-        public void Add(ItemStack stack)
-        {
-            if (stack == null || Item != stack.Item)
-                return;
+    public void Set(ItemStack stack)
+    {
+        if (stack == null)
+            return;
 
-            var added = Add(stack.Amount);
-            stack.Amount -= added;
-        }
+        Item = stack.Item;
+        Amount = stack.Amount;
 
-        public void Set(ItemStack stack)
-        {
-            if (stack == null)
-                return;
+        stack.Amount = 0;
+    }
 
-            Item = stack.Item;
-            Amount = stack.Amount;
+    public void Set(Item item, int amount)
+    {
+        Item = item;
+        Amount = amount;
+    }
 
-            stack.Amount = 0;
-        }
-
-        public void Set(Item item, int amount)
-        {
-            Item = item;
-            Amount = amount;
-        }
+    public void Clear()
+    {
+        Item = null;
+        Amount = 0;
     }
 }
