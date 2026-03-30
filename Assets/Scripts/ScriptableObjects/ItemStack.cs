@@ -8,7 +8,7 @@ public class ItemStack
     public int Amount;
 
     public bool IsFull => Item != null && Amount >= Item.MaxStack;
-    public bool Valid => Item != null && Amount != 0;
+    public bool IsValid => Item != null && Amount != 0;
 
     public ItemStack() { }
 

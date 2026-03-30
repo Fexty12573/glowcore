@@ -61,7 +61,7 @@ namespace GlowCore.UI.Inventory
                 return;
 
             var stack = m_owner.PlayerInventory.Inventory.GetSlot(m_slotIndex);
-            var hasItem = stack != null && stack.Valid;
+            var hasItem = stack != null && stack.IsValid;
             var showItem = hasItem && !m_isGhosted;
             var sprite = showItem ? ItemIconHelper.GetSprite(stack.Item) : null;
 
@@ -120,7 +120,7 @@ namespace GlowCore.UI.Inventory
             if (m_background != null)
             {
                 var stack = m_owner?.PlayerInventory.Inventory.GetSlot(m_slotIndex);
-                var hasItem = stack != null && stack.Valid && !m_isGhosted;
+                var hasItem = stack != null && stack.IsValid && !m_isGhosted;
 
                 if (m_isHovered)
                     m_background.color = hasItem ? UIColors.SlotFilledBg : UIColors.SlotHoverBg;
@@ -134,7 +134,7 @@ namespace GlowCore.UI.Inventory
             if (m_owner == null)
                 return null;
             var stack = m_owner.PlayerInventory.Inventory.GetSlot(m_slotIndex);
-            return (stack != null && stack.Valid) ? stack : null;
+            return (stack != null && stack.IsValid) ? stack : null;
         }
     }
 }

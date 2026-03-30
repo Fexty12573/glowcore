@@ -41,7 +41,7 @@ namespace GlowCore.UI.Inventory
                 return;
 
             var stack = m_playerInventory.GetHotbarSlot(m_hotbarIndex);
-            m_hasItem = stack != null && stack.Valid;
+            m_hasItem = stack != null && stack.IsValid;
             var sprite = m_hasItem ? ItemIconHelper.GetSprite(stack.Item) : null;
 
             if (m_icon != null)

@@ -32,7 +32,7 @@ namespace GlowCore.UI.Inventory
 
         public void Show(ItemStack stack)
         {
-            if (stack == null || !stack.Valid)
+            if (stack == null || !stack.IsValid)
                 return;
             ShowItem(stack.Item);
         }

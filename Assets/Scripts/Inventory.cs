@@ -99,7 +99,7 @@ public class Inventory
         var source = m_items[sourceIndex];
         var target = m_items[targetIndex];
 
-        if (!source.Valid || !target.Valid)
+        if (!source.IsValid || !target.IsValid)
             return false;
         if (source.Item != target.Item)
             return false;

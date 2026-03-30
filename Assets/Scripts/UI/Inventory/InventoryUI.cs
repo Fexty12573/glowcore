@@ -140,7 +140,7 @@ namespace GlowCore.UI.Inventory
                 return;
 
             var stack = m_playerInventory.Inventory.GetSlot(slotIndex);
-            if (stack != null && stack.Valid)
+            if (stack != null && stack.IsValid)
                 PickUpItem(slotIndex);
         }
 
@@ -199,7 +199,7 @@ namespace GlowCore.UI.Inventory
                 var targetStack = inv.GetSlot(m_hoveredSlotIndex);
                 var heldStack = inv.GetSlot(m_heldSlotIndex);
 
-                if (targetStack != null && targetStack.Valid && heldStack != null &&
+                if (targetStack != null && targetStack.IsValid && heldStack != null &&
                     heldStack.Item == targetStack.Item)
                 {
                     inv.TryMerge(m_heldSlotIndex, m_hoveredSlotIndex);
@@ -221,7 +221,7 @@ namespace GlowCore.UI.Inventory
         {
             var inv = m_playerInventory.Inventory;
             var stack = inv.GetSlot(m_heldSlotIndex);
-            if (stack == null || !stack.Valid)
+            if (stack == null || !stack.IsValid)
                 return;
 
             var dropPos = m_dropPoint != null ? m_dropPoint.position : m_playerInventory.transform.position;
