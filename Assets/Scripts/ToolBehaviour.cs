@@ -15,43 +15,39 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
     {
         if (m_selectedNode is null)
             return;
+
         if (m_selectedNode.NodeData.UsableTools.All(t => t.Tool != m_tool))
             return;
+
         m_isHolding = value.Get<float>() >= 0.5f;
         if (m_isHolding)
-        {
             m_selectedNode.StartHold(m_tool);
-        }
         else
-        {
             m_selectedNode.EndHold();
-        }
     }
 
     private void Start()
     {
         if (!m_tool.Prefab.TryGetComponent(out ToolBehaviour toolBehaviour))
-        {
             Debug.LogError($"Tool {m_tool.Name} has no ToolBehaviour Component.");
-        }
     }
 
     private void Update()
     {
         if (m_isHolding)
-        {
             m_selectedNode?.UpdateHold(Time.deltaTime);
-        }
     }
 
     private void OnEnable()
     {
-        NodeActionSystem.OnChangeSelectedNode += HandleNodeChanged;
+        NodeActionSystem.Instance.OnChangeSelectedNode += HandleNodeChanged;
+        // Initialize
+        HandleNodeChanged(NodeActionSystem.Instance.CurrentNode);
     }
 
     private void OnDisable()
     {
-        NodeActionSystem.OnChangeSelectedNode -= HandleNodeChanged;
+        NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
         m_selectedNode?.EndHold();
     }
 

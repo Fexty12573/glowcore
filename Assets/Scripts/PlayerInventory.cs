@@ -1,11 +1,15 @@
+using GlowCore.World;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public interface IPlayerInventoryAware
+{
+    void SetInventory(PlayerInventory inventory);
+}
+
 public class PlayerInventory : MonoBehaviour
 {
-    private static PlayerInventory s_instance;
-
     private const int kWidth = 8;
     private const int kHeight = 4;
 
@@ -13,29 +17,19 @@ public class PlayerInventory : MonoBehaviour
     private int m_hotbarIndex = 0;
     [SerializeField] private Inventory m_inventory;
 
-    public static PlayerInventory Instance => s_instance;
-
     public ItemStack ItemsInHand => m_inventory[m_hotbarIndex, 0];
     public void Add(ItemStack stack) => m_inventory.AddItems(stack);
-
     public bool ConsumeItemInHand(int amount) => m_inventory.RemoveItemsAt(m_hotbarIndex, 0, amount);
 
     private void Awake()
     {
-        if (s_instance != null)
-        {
-            Debug.LogError("PlayerInventory: Duplicate instance detected. Destroying this one.");
-            Destroy(gameObject);
-            return;
-        }
-        s_instance = this;
         m_inventory = new Inventory(kWidth, kHeight);
-        Inventory.OnInventoryChange += UpdateHandGameObject;
+        m_inventory.OnInventoryChange += UpdatePlayerHand;
     }
 
-    private void OnDestroy() => Inventory.OnInventoryChange -= UpdateHandGameObject;
+    private void OnDestroy() => m_inventory.OnInventoryChange -= UpdatePlayerHand;
 
-    private void UpdateHandGameObject()
+    private void UpdatePlayerHand()
     {
         Destroy(m_handItemGameObject);
         m_handItemGameObject = null;
@@ -55,8 +49,11 @@ public class PlayerInventory : MonoBehaviour
     private void ActivateHandItem()
     {
         IHandItem handItem = m_handItemGameObject?.GetComponent<IHandItem>();
-        if (handItem is not null)
-            (handItem as MonoBehaviour).enabled = true;
+        if (handItem is MonoBehaviour bhv)
+            bhv.enabled = true;
+
+        if (handItem is IPlayerInventoryAware inventoryAware)
+            inventoryAware.SetInventory(this);
     }
 
     private void OnUse(InputValue value)
@@ -76,13 +73,5 @@ public class PlayerInventory : MonoBehaviour
     {
         m_hotbarIndex = (m_hotbarIndex + 1) % kWidth;
         UpdatePlayerHand();
-    }
-
-    private void UpdatePlayerHand()
-    {
-        UpdateHandGameObject();
-        // This ensures that the HandItem is notified at the start of its lifetime about the hovered Node/Tile
-        // without the need to move the mouse.
-        NodeActionSystem.OnHandItemChange();
     }
 }

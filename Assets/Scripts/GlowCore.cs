@@ -11,6 +11,7 @@ namespace GlowCore.World
         [SerializeField][Range(0, 17)] private int m_initialActiveLogs = 3;
         [SerializeField][Min(1)] private int m_startingLevel = 1;
         [SerializeField][Min(1)] private int m_woodToLevelUp = 17;
+        [SerializeField] private PlayerInventory m_playerInventory;
         private int m_activeLogs;
         private int m_level;
         private int m_woodAccumulated;
@@ -23,14 +24,14 @@ namespace GlowCore.World
         // Public Methods
         public void Interact()
         {
-            ItemStack itemsInHand = PlayerInventory.Instance.ItemsInHand;
+            ItemStack itemsInHand = m_playerInventory.ItemsInHand;
             if (itemsInHand?.Item is null)
                 return;
 
             if (itemsInHand.Item.Name == "Wood")
             {
                 int woodAmount = itemsInHand.Amount;
-                if (!PlayerInventory.Instance.ConsumeItemInHand(woodAmount))
+                if (!m_playerInventory.ConsumeItemInHand(woodAmount))
                 {
                     Debug.LogError("Failed to consume wood to feed GlowCore.");
                     return;
@@ -98,13 +99,13 @@ namespace GlowCore.World
             var worldX = Mathf.RoundToInt(position.x);
             var worldZ = Mathf.RoundToInt(position.z);
 
-            WorldGrid.Instance.SetNodeAt(worldX, worldZ, null);
+            WorldGrid.Instance.PlaceNodeAt(null, worldX, worldZ);
 
             GameObject newGlowCore = Instantiate(m_nextLevelPrefab, position, Quaternion.identity);
 
             if (newGlowCore.TryGetComponent(out Node newNode))
             {
-                WorldGrid.Instance.SetNodeAt(worldX, worldZ, newNode);
+                WorldGrid.Instance.PlaceNodeAt(null, worldX, worldZ);
             }
             else
             {

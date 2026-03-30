@@ -531,6 +531,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &434734451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4257862106641557325, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+  m_PrefabInstance: {fileID: 1228001991296023307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaf62ba1ac416a498f5b89dc96f9d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::PlayerInventory
 --- !u!1 &657392914
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +823,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1141561732}
     m_Modifications:
+    - target: {fileID: 2562424217584133505, guid: b06ebf33f9717d545b7bedcda0ff8bbc, type: 3}
+      propertyPath: m_playerInventory
+      value: 
+      objectReference: {fileID: 434734451}
     - target: {fileID: 7316264147354456548, guid: b06ebf33f9717d545b7bedcda0ff8bbc, type: 3}
       propertyPath: m_Name
       value: GlowCore
@@ -1147,6 +1162,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 426592839029847546, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584684100353147303, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9090418907346557860, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1

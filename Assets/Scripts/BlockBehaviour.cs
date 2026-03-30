@@ -4,10 +4,11 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BlockBehaviour : MonoBehaviour, IHandItem
+public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
 {
     private Vector2Int? m_selectedTile;
     private GameObject m_activeBuildGhost;
+    private PlayerInventory m_inventory;
 
     [SerializeField] private Block m_block;
     [SerializeField] private GameObject m_buildGhostAllowed;
@@ -19,6 +20,8 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
             TryToBuild();
     }
 
+    public void SetInventory(PlayerInventory inventory) => m_inventory = inventory;
+
     private void Start()
     {
         if (!m_block.NodeToBuild.TryGetComponent(out Node node))
@@ -27,9 +30,14 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
 
     private void OnDestroy() => ClearBuildGhost();
 
-    private void OnEnable() => NodeActionSystem.OnChangeSelectedTile += HandleTileChanged;
+    private void OnEnable()
+    {
+        NodeActionSystem.Instance.OnChangeSelectedTile += HandleTileChanged;
+        // Initialize
+        HandleTileChanged(NodeActionSystem.Instance.CurrentTile);
+    }
 
-    private void OnDisable() => NodeActionSystem.OnChangeSelectedTile -= HandleTileChanged;
+    private void OnDisable() => NodeActionSystem.Instance.OnChangeSelectedTile -= HandleTileChanged;
 
     private void HandleTileChanged(Vector2Int? newTile)
     {
@@ -65,10 +73,10 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
         if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value))
             return;
 
-        if (!WorldGrid.Instance.CreateNodeAt(m_selectedTile.Value, m_block.NodeToBuild))
+        if (!WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value))
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         else
-            PlayerInventory.Instance.ConsumeItemInHand(1);
+            m_inventory.ConsumeItemInHand(1);
 
         ChangeBuildGhost();
     }
@@ -80,6 +88,4 @@ public class BlockBehaviour : MonoBehaviour, IHandItem
         Destroy(m_activeBuildGhost);
         m_activeBuildGhost = null;
     }
-
-
 }

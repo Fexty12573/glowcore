@@ -71,7 +71,7 @@ namespace GlowCore.World
             return m_tiles[index.x, index.y];
         }
 
-        public bool SetNodeAtTile(Vector2Int tile, Node node)
+        public bool PlaceNodeAtTile(Vector2Int tile, Node node)
         {
             if (!IsInBounds(tile) || IsOccupied(tile))
                 return false;
@@ -80,19 +80,19 @@ namespace GlowCore.World
             return true;
         }
 
-        public bool SetNodeAt(int x, int z, Node node)
+        public bool PlaceNodeAt(Node node, int x, int z)
         {
             Vector2Int index = WorldToGrid(x, z);
-            return SetNodeAtTile(index, node);
+            return PlaceNodeAtTile(index, node);
         }
 
         public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
 
-        public bool CreateNodeAt(Vector2Int tile, GameObject prefab)
+        public bool CreateNodeAt(GameObject prefab, Vector2Int tile)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
             GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.identity, m_nodesParent);
-            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !SetNodeAtTile(tile, node))
+            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
             {
                 Destroy(nodeObject);
                 return false;
@@ -127,7 +127,7 @@ namespace GlowCore.World
                 return null;
             }
 
-            SetNodeAt(x, z, node);
+            PlaceNodeAt(node, x, z);
             m_totalTreeCount++;
             return node;
         }
@@ -167,14 +167,15 @@ namespace GlowCore.World
         {
             return Vector3.Distance(worldPosition, m_player.position) <= 0.9f;
         }
+
         public Vector2Int WorldToGrid(int worldX, int worldZ)
         {
             return new Vector2Int(worldX + m_origin.x, worldZ + m_origin.y);
         }
 
-        public Vector2Int WorldToGrid(Vector3 worldVector)
+        public Vector2Int WorldToGrid(Vector3 worldPosition)
         {
-            return WorldToGrid(Mathf.RoundToInt(worldVector.x), Mathf.RoundToInt(worldVector.z));
+            return WorldToGrid(Mathf.RoundToInt(worldPosition.x), Mathf.RoundToInt(worldPosition.z));
         }
 
         public Vector2Int GridToWorld(int gridX, int gridZ)
@@ -420,7 +421,7 @@ namespace GlowCore.World
                     continue;
                 }
 
-                SetNodeAt(worldX, worldZ, node);
+                PlaceNodeAt(node, worldX, worldZ);
             }
         }
 
@@ -460,7 +461,7 @@ namespace GlowCore.World
                     continue;
                 }
 
-                SetNodeAt(worldX, worldZ, node);
+                PlaceNodeAt(node, worldX, worldZ);
                 m_pendingNodes.RemoveAt(i);
             }
         }

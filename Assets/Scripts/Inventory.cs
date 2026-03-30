@@ -4,13 +4,13 @@ using ScriptableObjects;
 using UnityEngine;
 
 [Serializable]
-public class Inventory
+public struct Inventory
 {
     [SerializeField] private ItemStack[] m_items;
     [SerializeField][ReadOnly(true)] private int m_width;
     [SerializeField][ReadOnly(true)] private int m_height;
 
-    public static event Action OnInventoryChange;
+    public event Action OnInventoryChange;
     public Inventory(int width, int height)
     {
         m_items = new ItemStack[width * height];
@@ -19,6 +19,8 @@ public class Inventory
 
         for (var i = 0; i < m_items.Length; i++)
             m_items[i] = new ItemStack();
+
+        OnInventoryChange = null;
     }
 
     public bool AddItems(ItemStack stack)
@@ -103,13 +105,5 @@ public class Inventory
         return null;
     }
 
-    public ItemStack this[int x, int y]
-    {
-        get => m_items[(y * m_width) + x];
-        set
-        {
-            m_items[(y * m_width) + x] = value;
-            OnInventoryChange?.Invoke();
-        }
-    }
+    public ItemStack this[int x, int y] => m_items[(y * m_width) + x];
 }
