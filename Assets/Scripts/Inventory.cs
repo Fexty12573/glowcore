@@ -4,7 +4,7 @@ using ScriptableObjects;
 using UnityEngine;
 
 [Serializable]
-public struct Inventory
+public class Inventory
 {
     [SerializeField] private ItemStack[] m_items;
     [SerializeField][ReadOnly(true)] private int m_width;
@@ -19,20 +19,16 @@ public struct Inventory
 
         for (var i = 0; i < m_items.Length; i++)
             m_items[i] = new ItemStack();
-
-        OnInventoryChange = null;
     }
 
-    public bool AddItems(ItemStack stack)
+    public bool AddItems(ref ItemStack stack)
     {
-        if (stack == null)
-            return false;
-
         var existing = GetSlotWithItem(0, stack.Item);
         while (stack.Amount > 0 && existing != -1)
         {
-            if (!m_items[existing].IsFull)
-                m_items[existing].Add(stack);
+            ref ItemStack toAddStack = ref m_items[existing];
+            if (!toAddStack.IsFull)
+                toAddStack.Add(ref stack);
 
             existing = GetSlotWithItem(existing + 1, stack.Item);
         }
@@ -46,7 +42,9 @@ public struct Inventory
         var empty = GetFirstEmptySlot();
         if (empty.HasValue)
         {
-            this[empty.Value.x, empty.Value.y].Set(stack);
+            this[empty.Value.x, empty.Value.y] = stack;
+            stack.Amount = 0;
+            stack.Item = null;
             OnInventoryChange?.Invoke();
             return true;
         }
@@ -57,13 +55,13 @@ public struct Inventory
 
     public bool RemoveItemsAt(int x, int y, int amount)
     {
-        ItemStack itemStack = this[x, y];
-        if (itemStack is null || itemStack.Amount < amount)
+        ref ItemStack itemStack = ref this[x, y];
+        if (itemStack.Amount < amount)
             return false;
 
         itemStack.Amount -= amount;
         if (itemStack.Amount == 0)
-            itemStack.Clear();
+            itemStack.Item = null;
 
         OnInventoryChange?.Invoke();
         return true;
@@ -77,7 +75,7 @@ public struct Inventory
                 return slot;
         }
 
-        return null;
+        return new ItemStack();
     }
 
     public int GetSlotWithItem(int startIndex, Item item)
@@ -105,5 +103,5 @@ public struct Inventory
         return null;
     }
 
-    public ItemStack this[int x, int y] => m_items[(y * m_width) + x];
+    public ref ItemStack this[int x, int y] => ref m_items[(y * m_width) + x];
 }

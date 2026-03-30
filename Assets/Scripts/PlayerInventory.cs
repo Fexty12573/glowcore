@@ -18,7 +18,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Inventory m_inventory;
 
     public ItemStack ItemsInHand => m_inventory[m_hotbarIndex, 0];
-    public void Add(ItemStack stack) => m_inventory.AddItems(stack);
+    public void Add(ItemStack stack) => m_inventory.AddItems(ref stack);
     public bool ConsumeItemInHand(int amount) => m_inventory.RemoveItemsAt(m_hotbarIndex, 0, amount);
 
     private void Awake()
@@ -34,7 +34,7 @@ public class PlayerInventory : MonoBehaviour
         Destroy(m_handItemGameObject);
         m_handItemGameObject = null;
         ItemStack itemsInHand = m_inventory[m_hotbarIndex, 0];
-        if (itemsInHand?.Item is null)
+        if (itemsInHand.Item is null)
             return;
 
         m_handItemGameObject = Instantiate(itemsInHand.Item.Prefab, transform);

@@ -70,7 +70,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
             return;
 
         Vector3 spawnPosition = WorldGrid.Instance.GetSpawnPosition(m_selectedTile.Value);
-        if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value))
+        if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
             return;
 
         if (!WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value))
