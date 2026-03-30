@@ -3,7 +3,6 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>Player inventory: grid of kColumns x kTotalRows. First kHotbarSlots slots are the hotbar.</summary>
 public class PlayerInventory : MonoBehaviour
 {
     private const int kColumns = 4;
@@ -22,16 +21,12 @@ public class PlayerInventory : MonoBehaviour
     public int HotbarSlots => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
 
-    /// <summary>Flat index where the hotbar region starts in the inventory array (always 0 — hotbar is first).</summary>
     public int HotbarStartIndex => 0;
 
-    /// <summary>Number of non-hotbar slots (the upper inventory grid).</summary>
     public int UpperSlotCount => m_inventory.Size - kHotbarSlots;
 
-    /// <summary>Fired when the selected hotbar slot changes.</summary>
     public event Action<int> OnHotbarSelectionChanged;
 
-    /// <summary>Fired when the inventory panel opens or closes.</summary>
     public event Action<bool> OnInventoryToggled;
 
     private bool m_isOpen;
@@ -63,7 +58,6 @@ public class PlayerInventory : MonoBehaviour
 
     public void Add(ItemStack stack) => m_inventory.AddItems(stack, HotbarStartIndex);
 
-    /// <summary>Clear the currently selected hotbar slot and notify all UI listeners.</summary>
     public void ConsumeHandItem()
     {
         var slot = GetHotbarSlot(m_selectedHotbarIndex);
@@ -99,7 +93,6 @@ public class PlayerInventory : MonoBehaviour
         m_playerHand.SetItemInHand(GetHotbarSlot(m_selectedHotbarIndex));
     }
 
-    /// <summary>Get the hotbar ItemStack at the given hotbar position (0 to kHotbarSlots-1).</summary>
     public ItemStack GetHotbarSlot(int hotbarIndex)
     {
         if (hotbarIndex < 0 || hotbarIndex >= kHotbarSlots)
@@ -107,13 +100,10 @@ public class PlayerInventory : MonoBehaviour
         return m_inventory.GetSlot(HotbarStartIndex + hotbarIndex);
     }
 
-    /// <summary>Convert a hotbar index (0-7) to the flat inventory index.</summary>
     public int HotbarToInventoryIndex(int hotbarIndex) => hotbarIndex;
 
-    /// <summary>Check if a flat inventory index is in the hotbar region.</summary>
     public bool IsHotbarSlot(int flatIndex) => flatIndex < kHotbarSlots;
 
-    /// <summary>Convert a flat inventory index to a hotbar index. Returns -1 if not a hotbar slot.</summary>
     public int InventoryToHotbarIndex(int flatIndex)
     {
         if (flatIndex >= kHotbarSlots)

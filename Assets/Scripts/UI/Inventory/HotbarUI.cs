@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Always-visible hotbar reading from the bottom row of the inventory. Grays out when inventory is open.</summary>
     public class HotbarUI : MonoBehaviour
     {
         [SerializeField] private PlayerInventory m_playerInventory;
@@ -96,7 +95,6 @@ namespace GlowCore.UI.Inventory
                 m_slots[i].SetSelected(i == m_playerInventory.SelectedHotbarIndex);
         }
 
-        /// <summary>Refresh all hotbar slot visuals.</summary>
         public void RefreshAll()
         {
             if (m_slots == null)

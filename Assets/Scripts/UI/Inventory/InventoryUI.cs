@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Manages the inventory panel UI. Hold left mouse to drag items, release to drop.</summary>
     public class InventoryUI : MonoBehaviour
     {
         [Header("References")]
@@ -135,7 +134,6 @@ namespace GlowCore.UI.Inventory
                 m_backdropCanvasGroup.alpha = visible ? 1f : 0f;
         }
 
-        /// <summary>Called by ItemSlotUI on pointer down. Starts dragging if the slot has an item.</summary>
         public void OnSlotPressed(int slotIndex)
         {
             if (m_isHolding)
@@ -146,7 +144,6 @@ namespace GlowCore.UI.Inventory
                 PickUpItem(slotIndex);
         }
 
-        /// <summary>Called by ItemSlotUI on hover enter.</summary>
         public void OnSlotHoverEnter(ItemSlotUI slot)
         {
             m_hoveredSlotIndex = slot.SlotIndex;
@@ -159,7 +156,6 @@ namespace GlowCore.UI.Inventory
             }
         }
 
-        /// <summary>Called by ItemSlotUI on hover exit.</summary>
         public void OnSlotHoverExit(ItemSlotUI slot)
         {
             if (m_hoveredSlotIndex == slot.SlotIndex)
@@ -271,7 +267,6 @@ namespace GlowCore.UI.Inventory
             m_cursorIcon.rectTransform.localPosition = localPoint;
         }
 
-        /// <summary>Refresh all slots (upper grid + hotbar row).</summary>
         public void RefreshAll()
         {
             if (m_allSlots == null)

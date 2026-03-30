@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Manages the crafting panel: toggles visibility, spawns recipe rows, handles craft logic.</summary>
     public class CraftingUI : MonoBehaviour
     {
         [Header("References")]
@@ -85,7 +84,6 @@ namespace GlowCore.UI.Inventory
                 RefreshAll();
         }
 
-        /// <summary>Check if the player has all ingredients and inventory space for the result.</summary>
         public bool CanCraft(Recipe recipe)
         {
             var inv = m_playerInventory.Inventory;
@@ -99,7 +97,6 @@ namespace GlowCore.UI.Inventory
             return inv.CanAccept(recipe.ResultItem, recipe.ResultAmount);
         }
 
-        /// <summary>Consume ingredients and add the crafted result to the inventory.</summary>
         public void Craft(Recipe recipe)
         {
             if (!CanCraft(recipe))
@@ -116,7 +113,6 @@ namespace GlowCore.UI.Inventory
             RefreshAll();
         }
 
-        /// <summary>Get how many of the given item the player currently has.</summary>
         public int GetItemCount(Item item) => m_playerInventory.Inventory.CountItem(item);
 
         private void RefreshAll()

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Renders a single inventory slot. Press-and-hold to drag items.</summary>
     [RequireComponent(typeof(Image))]
     public class ItemSlotUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
     {
@@ -36,14 +35,12 @@ namespace GlowCore.UI.Inventory
             Refresh();
         }
 
-        /// <summary>Ghost this slot (item picked up and on cursor). Hides icon and count.</summary>
         public void SetGhosted(bool ghosted)
         {
             m_isGhosted = ghosted;
             Refresh();
         }
 
-        /// <summary>Mark this slot as a hotbar slot with a visible key number and accent border.</summary>
         public void SetHotbarStyle(int keyNumber)
         {
             m_isHotbarSlot = true;
@@ -132,7 +129,6 @@ namespace GlowCore.UI.Inventory
             }
         }
 
-        /// <summary>Returns the ItemStack for tooltip display.</summary>
         public ItemStack GetItemStack()
         {
             if (m_owner == null)

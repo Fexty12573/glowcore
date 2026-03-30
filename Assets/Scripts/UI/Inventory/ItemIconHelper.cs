@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Converts Item Texture2D icons to Sprites for uGUI, with caching.</summary>
     public static class ItemIconHelper
     {
         private static readonly Dictionary<Texture2D, Sprite> s_cache = new Dictionary<Texture2D, Sprite>();

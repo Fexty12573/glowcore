@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace GlowCore.UI
 {
-    /// <summary>Color tokens matching the approved HTML prototype (v4).</summary>
     public static class UIColors
     {
         // Panels

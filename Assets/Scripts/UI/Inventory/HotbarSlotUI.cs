@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Single slot in the always-visible hotbar. Displays item icon, count, key number, and selection highlight.</summary>
     [RequireComponent(typeof(Image))]
     public class HotbarSlotUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
     {

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Displays a single crafting recipe row: result icon, name, ingredient list, and CRAFT button.</summary>
     public class RecipeRowUI : MonoBehaviour
     {
         [Header("References")]

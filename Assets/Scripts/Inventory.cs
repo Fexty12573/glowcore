@@ -14,7 +14,6 @@ public class Inventory
     public int Height => m_height;
     public int Size => m_items.Length;
 
-    /// <summary>Fired whenever a slot changes. Argument is the flat index.</summary>
     public event Action<int> OnSlotChanged;
 
     public Inventory(int width, int height)
@@ -66,7 +65,6 @@ public class Inventory
         return -1;
     }
 
-    /// <summary>Swap the contents of two slots by flat index.</summary>
     public void Swap(int indexA, int indexB)
     {
         if (indexA < 0 || indexA >= m_items.Length)
@@ -89,7 +87,6 @@ public class Inventory
         OnSlotChanged?.Invoke(indexB);
     }
 
-    /// <summary>Try to stack sourceIndex onto targetIndex. Returns true if fully merged.</summary>
     public bool TryMerge(int sourceIndex, int targetIndex)
     {
         if (sourceIndex < 0 || sourceIndex >= m_items.Length)
@@ -114,10 +111,8 @@ public class Inventory
         return source.Amount == 0;
     }
 
-    /// <summary>Notify listeners that the slot at the given flat index has changed.</summary>
     public void NotifySlotChanged(int index) => OnSlotChanged?.Invoke(index);
 
-    /// <summary>Get slot by flat index.</summary>
     public ItemStack GetSlot(int index)
     {
         if (index < 0 || index >= m_items.Length)
@@ -136,7 +131,6 @@ public class Inventory
         return (null, -1);
     }
 
-    /// <summary>Count total amount of the given item across all slots.</summary>
     public int CountItem(Item item)
     {
         var total = 0;
@@ -148,7 +142,6 @@ public class Inventory
         return total;
     }
 
-    /// <summary>Remove up to the requested amount of the given item across all slots. Returns the amount actually removed.</summary>
     public int RemoveItems(Item item, int amount)
     {
         var remaining = amount;
@@ -169,7 +162,6 @@ public class Inventory
         return amount - remaining;
     }
 
-    /// <summary>Check if the inventory can accept the given item and amount (partial stacks + empty slots).</summary>
     public bool CanAccept(Item item, int amount)
     {
         var space = 0;

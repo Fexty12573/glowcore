@@ -1,6 +1,5 @@
 namespace GlowCore.UI
 {
-    /// <summary>Animation duration tokens for DOTween UI transitions.</summary>
     public static class UITiming
     {
         public const float kPanelOpen = 0.35f;

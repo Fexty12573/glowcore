@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 namespace GlowCore.UI.Inventory
 {
-    /// <summary>Floating tooltip that follows the mouse cursor and displays item info.</summary>
     public class TooltipUI : MonoBehaviour
     {
         [SerializeField] private RectTransform m_rectTransform;
