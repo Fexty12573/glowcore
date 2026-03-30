@@ -3,62 +3,51 @@
 // ==============================
 // 1) Sprint Review (Advisor)
 // ==============================
-=== Sprint Review (Advisor) / DD.MM.YYYY
+=== Sprint Review (Advisor) / 24.03.2026
 #meeting_info(
-  date: "DD.MM.YYYY",
+  date: "24.03.2026",
   sprint: "Sprint 3",
   lead: "Yoris Kucera",
-  scribe: "Nathanael Fässler",
-  time: "15:00–17:00",
+  scribe: "Cedric Cathomas",
+  time: "15:00–16:00",
   location: "Building 8",
-  participants: "Thomas Bocek, Dominik Wyss,  Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
-  links: "Repo / Jira / Doc link",
+  participants: "Thomas Bocek, Dominik Wyss, Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
+  links: "GitHub repository + Jira board (internal team links)",
 )
 
 ==== Agenda
 #agenda_table((
-  [Approval last minutes],
-  [Lead],
-  [Approved / changes: ...],
-  [Demo],
-  [Dev],
-  [OK / open issues: ...],
-  [Feedback],
-  [Advisor],
-  [Notes: ...],
-  [Decisions],
-  [Lead],
-  [Recorded decisions: ...],
+  [Documentation status (FR, architecture, protocols)],
+  [Yoris Kucera],
+  [Overall quality was positively received; minor consistency updates required (see Todos)],
+  [Current game state demo],
+  [Yoris Kucera],
+  [Game is playable as planned for pre-alpha release],
+  [Mockups],
+  [Yoris Kucera],
+  [Gave a clear picture of how our UI will look],
+  [Code quality (linter/status)],
+  [Yoris Kucera],
+  [Everything was good],
+  [Advisor feedback],
+  [Thomas Bocek],
+  [Very good feedback, overall impression better than last week],
 ))
-
-==== Demo / Increment
-- Shown: ...
-- Not shown (and why): ...
-
-==== Advisor feedback (key points)
-- ...
-- ...
-
-==== Decisions
-- Decision: ... (Reason: ...)
-
 
 ==== Todos
 #todo_table((
-  [Update architecture doc section X],
-  [Name],
-  [DD.MM.YYYY],
-  [Open],
-  [Fix bug #123],
-  [Name],
-  [DD.MM.YYYY],
-  [Open],
+  [FR: align color definitions and structure as in the NFRs],
+  [Cedric Cathomas],
+  [27.03.2026],
+  [Enemy state machine: add explicit color legend to diagram],
+  [Yoris Kucera],
+  [27.03.2026],
 ))
 
 ==== Next dates
 #next_dates((
-  [Next advisor review],
-  [DD.MM.YYYY HH:MM],
+  [Review 3 - End of Elaboration],
+  [14.04.2026 15:00],
 ))
 
 #pagebreak()
