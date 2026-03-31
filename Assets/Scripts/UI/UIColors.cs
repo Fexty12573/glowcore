@@ -4,6 +4,13 @@ namespace GlowCore.UI
 {
     public static class UIColors
     {
+        public static void SetVisible(this CanvasGroup group, bool visible)
+        {
+            group.alpha = visible ? 1f : 0f;
+            group.interactable = visible;
+            group.blocksRaycasts = visible;
+        }
+
         // Panels
         public static readonly Color32 WoodDark = new Color32(28, 20, 12, 235);
         public static readonly Color32 WoodBorder = new Color32(90, 65, 35, 153);

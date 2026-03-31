@@ -8,6 +8,11 @@ namespace GlowCore.UI.Inventory
 {
     public class RecipeRowUI : MonoBehaviour
     {
+        private const float kIngredientRowHeight = 20f;
+        private const float kIngredientIconSize = 14f;
+        private const float kIngredientSpacing = 2f;
+        private const int kIngredientFontSize = 9;
+
         [Header("References")]
         [SerializeField] private Image m_bgImage;
         [SerializeField] private Image m_borderImage;
@@ -16,7 +21,7 @@ namespace GlowCore.UI.Inventory
         [SerializeField] private Transform m_ingredientParent;
         [SerializeField] private Button m_craftButton;
 
-        private CraftingUI m_craftingUI;
+        private ICraftingService m_craftingService;
         private Recipe m_recipe;
         private IngredientLabel[] m_ingredientLabels;
 
@@ -42,9 +47,9 @@ namespace GlowCore.UI.Inventory
             public Recipe.Ingredient Ingredient;
         }
 
-        public void Initialize(CraftingUI craftingUI, Recipe recipe, TooltipUI tooltip)
+        public void Initialize(ICraftingService craftingService, Recipe recipe, TooltipUI tooltip)
         {
-            m_craftingUI = craftingUI;
+            m_craftingService = craftingService;
             m_recipe = recipe;
 
             m_recipeName.text = recipe.Name;
@@ -90,10 +95,10 @@ namespace GlowCore.UI.Inventory
                 labelGo.transform.SetParent(m_ingredientParent, false);
 
                 var labelLayout = labelGo.AddComponent<LayoutElement>();
-                labelLayout.preferredHeight = 20;
+                labelLayout.preferredHeight = kIngredientRowHeight;
 
                 var hlg = labelGo.GetComponent<HorizontalLayoutGroup>();
-                hlg.spacing = 2;
+                hlg.spacing = kIngredientSpacing;
                 hlg.childAlignment = TextAnchor.MiddleLeft;
                 hlg.childForceExpandWidth = false;
                 hlg.childForceExpandHeight = false;
@@ -107,20 +112,19 @@ namespace GlowCore.UI.Inventory
                 if (iconSprite != null)
                     iconImage.sprite = iconSprite;
 
-                var iconRect = iconGo.GetComponent<RectTransform>();
                 var iconLayout = iconGo.AddComponent<LayoutElement>();
-                iconLayout.preferredWidth = 14;
-                iconLayout.preferredHeight = 14;
+                iconLayout.preferredWidth = kIngredientIconSize;
+                iconLayout.preferredHeight = kIngredientIconSize;
 
                 var textGo = new GameObject("Text", typeof(RectTransform), typeof(TextMeshProUGUI));
                 textGo.transform.SetParent(labelGo.transform, false);
                 var tmp = textGo.GetComponent<TextMeshProUGUI>();
-                tmp.fontSize = 9;
+                tmp.fontSize = kIngredientFontSize;
                 tmp.raycastTarget = false;
                 tmp.enableAutoSizing = false;
 
                 var textLayout = textGo.AddComponent<LayoutElement>();
-                textLayout.preferredHeight = 14;
+                textLayout.preferredHeight = kIngredientIconSize;
 
                 m_ingredientLabels[i] = new IngredientLabel
                 {
@@ -133,15 +137,15 @@ namespace GlowCore.UI.Inventory
 
         public void Refresh()
         {
-            if (m_craftingUI == null || m_recipe == null)
+            if (m_craftingService == null || m_recipe == null)
                 return;
 
-            var canCraft = m_craftingUI.CanCraft(m_recipe);
+            var canCraft = m_craftingService.CanCraft(m_recipe);
 
             for (var i = 0; i < m_ingredientLabels.Length; i++)
             {
                 var label = m_ingredientLabels[i];
-                var have = m_craftingUI.GetItemCount(label.Ingredient.Item);
+                var have = m_craftingService.GetItemCount(label.Ingredient.Item);
                 var need = label.Ingredient.Amount;
                 var enough = have >= need;
 
@@ -164,7 +168,7 @@ namespace GlowCore.UI.Inventory
 
         private void OnCraftClicked()
         {
-            m_craftingUI.Craft(m_recipe);
+            m_craftingService.Craft(m_recipe);
         }
     }
 }

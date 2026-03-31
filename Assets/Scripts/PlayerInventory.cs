@@ -1,72 +1,50 @@
 using System;
 using ScriptableObjects;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : MonoBehaviour, IInventoryService
 {
-    private const int kColumns = 4;
-    private const int kTotalRows = 8;
+    // Constants
+    private const int kColumns = 8;
+    private const int kRows = 4;
     private const int kHotbarSlots = 8;
+    private const int kHotbarStartIndex = 0;
 
-
+    // Instance Fields
     [SerializeField] private PlayerHand m_playerHand;
 
-    private int m_selectedHotbarIndex;
     private Inventory m_inventory;
-
-    public Inventory Inventory => m_inventory;
-    public int Columns => kColumns;
-    public int TotalRows => kTotalRows;
-    public int HotbarSlots => kHotbarSlots;
-    public int SelectedHotbarIndex => m_selectedHotbarIndex;
-
-    public int HotbarStartIndex => 0;
-
-    public int UpperSlotCount => m_inventory.Size - kHotbarSlots;
-
-    public event Action<int> OnHotbarSelectionChanged;
-
-    public event Action<bool> OnInventoryToggled;
-
+    private int m_selectedHotbarIndex;
     private bool m_isOpen;
+
+    // IInventoryService — Properties
+    public int SlotCount => m_inventory.Size;
+    public int HotbarSlotCount => kHotbarSlots;
+    public int SelectedHotbarIndex => m_selectedHotbarIndex;
     public bool IsOpen => m_isOpen;
 
-    private void Awake()
+    // IInventoryService — Events
+    public event Action<SlotChangedEvent> OnSlotChanged;
+    public event Action<int> OnHotbarSelectionChanged;
+    public event Action<bool> OnInventoryToggled;
+    public event Action OnCraftingToggled;
+
+    // Public Methods — IInventoryService Queries
+    public SlotData GetSlotData(int flatIndex)
     {
-        m_inventory = new Inventory(kColumns, kTotalRows);
-        m_inventory.OnSlotChanged += OnInventorySlotChanged;
+        var stack = m_inventory.GetSlot(flatIndex);
+        return stack != null ? new SlotData(stack) : SlotData.Empty;
     }
 
-    private void OnDestroy()
-    {
-        if (m_inventory != null)
-            m_inventory.OnSlotChanged -= OnInventorySlotChanged;
-    }
+    public int CountItem(Item item) => m_inventory.CountItem(item);
 
-    private void OnInventorySlotChanged(int flatIndex)
-    {
-        if (flatIndex == HotbarToInventoryIndex(m_selectedHotbarIndex))
-            UpdatePlayerHand();
-    }
+    public bool CanAcceptItem(Item item, int amount) => m_inventory.CanAccept(item, amount);
 
-    private void Update()
-    {
-        if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)
-            ToggleInventory();
-    }
+    public bool IsHotbarSlot(int flatIndex) => flatIndex is >= 0 and < kHotbarSlots;
 
-    public void Add(ItemStack stack) => m_inventory.AddItems(stack, HotbarStartIndex);
-
-    public void ConsumeHandItem()
-    {
-        var slot = GetHotbarSlot(m_selectedHotbarIndex);
-        if (slot != null)
-            slot.Set(null, 0);
-        UpdatePlayerHand();
-        m_inventory.NotifySlotChanged(m_selectedHotbarIndex);
-    }
-
+    // Public Methods — IInventoryService Commands
     public void SelectHotbarSlot(int index)
     {
         if (index < 0 || index >= kHotbarSlots)
@@ -76,39 +54,22 @@ public class PlayerInventory : MonoBehaviour
         UpdatePlayerHand();
     }
 
-    private void OnPrevious(InputValue value)
+    public void Swap(int indexA, int indexB) => m_inventory.Swap(indexA, indexB);
+
+    public bool TryMerge(int srcIndex, int dstIndex) => m_inventory.TryMerge(srcIndex, dstIndex);
+
+    public void DropItem(int slotIndex, Vector3 dropPosition)
     {
-        SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
+        ItemStackDrop.Spawn(m_inventory.GetSlot(slotIndex), dropPosition);
+        m_inventory.ClearSlot(slotIndex);
     }
 
-    private void OnNext(InputValue value)
+    public int RemoveItems(Item item, int amount) => m_inventory.RemoveItems(item, amount);
+
+    public bool AddItem(Item item, int amount)
     {
-        SelectHotbarSlot((m_selectedHotbarIndex - 1 + kHotbarSlots) % kHotbarSlots);
-    }
-
-    private void UpdatePlayerHand()
-    {
-        if (m_playerHand == null)
-            return;
-        m_playerHand.SetItemInHand(GetHotbarSlot(m_selectedHotbarIndex));
-    }
-
-    public ItemStack GetHotbarSlot(int hotbarIndex)
-    {
-        if (hotbarIndex < 0 || hotbarIndex >= kHotbarSlots)
-            return null;
-        return m_inventory.GetSlot(HotbarStartIndex + hotbarIndex);
-    }
-
-    public int HotbarToInventoryIndex(int hotbarIndex) => hotbarIndex;
-
-    public bool IsHotbarSlot(int flatIndex) => flatIndex < kHotbarSlots;
-
-    public int InventoryToHotbarIndex(int flatIndex)
-    {
-        if (flatIndex >= kHotbarSlots)
-            return -1;
-        return flatIndex;
+        var stack = new ItemStack(item, amount);
+        return m_inventory.AddItems(stack, kHotbarStartIndex);
     }
 
     public void ToggleInventory()
@@ -124,4 +85,67 @@ public class PlayerInventory : MonoBehaviour
         m_isOpen = open;
         OnInventoryToggled?.Invoke(m_isOpen);
     }
+
+    // Public Methods — Game Logic (not on IInventoryService)
+    public void Add(ItemStack stack) => m_inventory.AddItems(stack, kHotbarStartIndex);
+
+    public void ConsumeHandItem()
+    {
+        m_inventory.ClearSlot(m_selectedHotbarIndex);
+        UpdatePlayerHand();
+    }
+
+    // Private Methods — Lifecycle
+    private void Awake()
+    {
+        m_inventory = new Inventory(kColumns, kRows);
+        m_inventory.OnSlotChanged += OnInventorySlotChanged;
+    }
+
+    private void OnDestroy()
+    {
+        if (m_inventory != null)
+            m_inventory.OnSlotChanged -= OnInventorySlotChanged;
+    }
+
+    // Private Methods — Input Action Callbacks
+    private void OnInventory(InputValue value) => ToggleInventory();
+
+    private void OnCrafting(InputValue value)
+    {
+        if (m_isOpen)
+            OnCraftingToggled?.Invoke();
+    }
+
+    private void OnHotbarSlot1(InputValue value) => SelectHotbarSlot(0);
+    private void OnHotbarSlot2(InputValue value) => SelectHotbarSlot(1);
+    private void OnHotbarSlot3(InputValue value) => SelectHotbarSlot(2);
+    private void OnHotbarSlot4(InputValue value) => SelectHotbarSlot(3);
+    private void OnHotbarSlot5(InputValue value) => SelectHotbarSlot(4);
+    private void OnHotbarSlot6(InputValue value) => SelectHotbarSlot(5);
+    private void OnHotbarSlot7(InputValue value) => SelectHotbarSlot(6);
+    private void OnHotbarSlot8(InputValue value) => SelectHotbarSlot(7);
+
+    private void OnPrevious(InputValue value) =>
+        SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
+
+    private void OnNext(InputValue value) =>
+        SelectHotbarSlot((m_selectedHotbarIndex - 1 + kHotbarSlots) % kHotbarSlots);
+
+    // Private Methods — Internal
+    private void OnInventorySlotChanged(int flatIndex)
+    {
+        UpdatePlayerHand();
+
+        var data = new SlotData(m_inventory.GetSlot(flatIndex));
+        OnSlotChanged?.Invoke(new SlotChangedEvent(flatIndex, data));
+    }
+
+    private void UpdatePlayerHand()
+    {
+        if (m_playerHand == null)
+            return;
+        m_playerHand.SetItemInHand(m_inventory.GetSlot(m_selectedHotbarIndex));
+    }
+
 }

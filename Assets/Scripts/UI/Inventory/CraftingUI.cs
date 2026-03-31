@@ -1,6 +1,5 @@
 using ScriptableObjects;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace GlowCore.UI.Inventory
 {
@@ -16,6 +15,8 @@ namespace GlowCore.UI.Inventory
         [Header("Recipes")]
         [SerializeField] private Recipe[] m_recipes;
 
+        private IInventoryService m_inventoryService;
+        private ICraftingService m_craftingService;
         private RecipeRowUI[] m_rows;
         private bool m_isVisible;
 
@@ -23,37 +24,42 @@ namespace GlowCore.UI.Inventory
 
         private void Start()
         {
+            m_inventoryService = m_playerInventory;
+            m_craftingService = new CraftingSystem(m_inventoryService, m_recipes);
+
             BuildRows();
             SetVisible(false);
 
-            m_playerInventory.Inventory.OnSlotChanged += OnSlotChanged;
+            m_craftingService.OnRecipesRefreshed += OnRecipesRefreshed;
+            m_inventoryService.OnCraftingToggled += Toggle;
         }
 
         private void OnDestroy()
         {
-            if (m_playerInventory != null && m_playerInventory.Inventory != null)
-                m_playerInventory.Inventory.OnSlotChanged -= OnSlotChanged;
-        }
+            if (m_craftingService != null)
+            {
+                m_craftingService.OnRecipesRefreshed -= OnRecipesRefreshed;
+                m_craftingService.Dispose();
+            }
 
-        private void Update()
-        {
-            if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame && m_playerInventory.IsOpen)
-                Toggle();
+            if (m_inventoryService != null)
+                m_inventoryService.OnCraftingToggled -= Toggle;
         }
 
         private void BuildRows()
         {
-            m_rows = new RecipeRowUI[m_recipes.Length];
-            for (var i = 0; i < m_recipes.Length; i++)
+            var recipes = m_craftingService.Recipes;
+            m_rows = new RecipeRowUI[recipes.Count];
+            for (var i = 0; i < recipes.Count; i++)
             {
                 var go = Instantiate(m_recipeRowPrefab, m_contentParent);
                 var row = go.GetComponent<RecipeRowUI>();
-                row.Initialize(this, m_recipes[i], m_tooltip);
+                row.Initialize(m_craftingService, recipes[i], m_tooltip);
                 m_rows[i] = row;
             }
         }
 
-        private void OnSlotChanged(int slotIndex)
+        private void OnRecipesRefreshed()
         {
             if (!m_isVisible)
                 return;
@@ -73,47 +79,11 @@ namespace GlowCore.UI.Inventory
         {
             m_isVisible = visible;
 
-            if (m_panelCanvasGroup != null)
-            {
-                m_panelCanvasGroup.alpha = visible ? 1f : 0f;
-                m_panelCanvasGroup.interactable = visible;
-                m_panelCanvasGroup.blocksRaycasts = visible;
-            }
+            m_panelCanvasGroup?.SetVisible(visible);
 
             if (visible)
                 RefreshAll();
         }
-
-        public bool CanCraft(Recipe recipe)
-        {
-            var inv = m_playerInventory.Inventory;
-
-            foreach (var ingredient in recipe.Ingredients)
-            {
-                if (inv.CountItem(ingredient.Item) < ingredient.Amount)
-                    return false;
-            }
-
-            return inv.CanAccept(recipe.ResultItem, recipe.ResultAmount);
-        }
-
-        public void Craft(Recipe recipe)
-        {
-            if (!CanCraft(recipe))
-                return;
-
-            var inv = m_playerInventory.Inventory;
-
-            foreach (var ingredient in recipe.Ingredients)
-                inv.RemoveItems(ingredient.Item, ingredient.Amount);
-
-            var result = new ItemStack(recipe.ResultItem, recipe.ResultAmount);
-            inv.AddItems(result);
-
-            RefreshAll();
-        }
-
-        public int GetItemCount(Item item) => m_playerInventory.Inventory.CountItem(item);
 
         private void RefreshAll()
         {

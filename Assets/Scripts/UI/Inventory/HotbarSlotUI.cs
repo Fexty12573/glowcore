@@ -15,15 +15,15 @@ namespace GlowCore.UI.Inventory
         [SerializeField] private TextMeshProUGUI m_keyLabel;
         [SerializeField] private Image m_border;
 
-        private PlayerInventory m_playerInventory;
+        private IInventoryService m_service;
         private int m_hotbarIndex;
         private bool m_isSelected;
         private bool m_isHovered;
         private bool m_hasItem;
 
-        public void Initialize(PlayerInventory playerInventory, int hotbarIndex)
+        public void Initialize(IInventoryService service, int hotbarIndex)
         {
-            m_playerInventory = playerInventory;
+            m_service = service;
             m_hotbarIndex = hotbarIndex;
 
             if (m_keyLabel != null)
@@ -32,32 +32,13 @@ namespace GlowCore.UI.Inventory
                 m_keyLabel.color = UIColors.WhiteFaint;
             }
 
-            Refresh();
+            Refresh(m_service.GetSlotData(hotbarIndex));
         }
 
-        public void Refresh()
+        public void Refresh(SlotData data)
         {
-            if (m_playerInventory == null)
-                return;
-
-            var stack = m_playerInventory.GetHotbarSlot(m_hotbarIndex);
-            m_hasItem = stack != null && stack.IsValid;
-            var sprite = m_hasItem ? ItemIconHelper.GetSprite(stack.Item) : null;
-
-            if (m_icon != null)
-            {
-                m_icon.enabled = sprite != null;
-                if (sprite != null)
-                    m_icon.sprite = sprite;
-            }
-
-            if (m_countText != null)
-            {
-                m_countText.enabled = m_hasItem && stack.Amount > 1;
-                if (m_hasItem && stack.Amount > 1)
-                    m_countText.text = stack.Amount.ToString();
-            }
-
+            m_hasItem = data.IsValid;
+            ItemIconHelper.ApplyIconAndCount(m_icon, m_countText, data, m_hasItem);
             UpdateVisuals();
         }
 
@@ -70,7 +51,7 @@ namespace GlowCore.UI.Inventory
         public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
-                m_playerInventory.SelectHotbarSlot(m_hotbarIndex);
+                m_service?.SelectHotbarSlot(m_hotbarIndex);
         }
 
         public void OnPointerEnter(PointerEventData eventData)

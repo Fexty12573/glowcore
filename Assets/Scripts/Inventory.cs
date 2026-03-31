@@ -56,12 +56,18 @@ public class Inventory
 
     private int FindFirstEmptySlotFrom(int startIndex)
     {
-        for (var i = startIndex; i < m_items.Length; i++)
+        for(var i = startIndex; i < m_items.Length; i++)
+        {
             if (m_items[i].Amount == 0)
                 return i;
+        }
+
         for (var i = 0; i < startIndex; i++)
+        {
             if (m_items[i].Amount == 0)
                 return i;
+        }
+
         return -1;
     }
 
@@ -111,7 +117,14 @@ public class Inventory
         return source.Amount == 0;
     }
 
-    public void NotifySlotChanged(int index) => OnSlotChanged?.Invoke(index);
+    public void ClearSlot(int index)
+    {
+        if (index < 0 || index >= m_items.Length)
+            return;
+        m_items[index].Set(null, 0);
+        OnSlotChanged?.Invoke(index);
+    }
+
 
     public ItemStack GetSlot(int index)
     {

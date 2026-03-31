@@ -30,13 +30,6 @@ namespace GlowCore.UI.Inventory
                 m_rectTransform.pivot = new Vector2(0f, 1f);
         }
 
-        public void Show(ItemStack stack)
-        {
-            if (stack == null || !stack.IsValid)
-                return;
-            ShowItem(stack.Item);
-        }
-
         public void Show(Item item)
         {
             if (item == null)
@@ -72,15 +65,15 @@ namespace GlowCore.UI.Inventory
                 m_canvasGroup.alpha = 0f;
         }
 
-        private void Update()
+        /// <summary>
+        /// Call from parent UI when pointer moves to update tooltip position.
+        /// </summary>
+        public void UpdatePosition()
         {
-            if (m_isVisible)
-                UpdatePosition();
-        }
+            if (!m_isVisible || m_rectTransform == null || m_parentCanvas == null)
+                return;
 
-        private void UpdatePosition()
-        {
-            if (m_rectTransform == null || m_parentCanvas == null)
+            if (Mouse.current == null)
                 return;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(

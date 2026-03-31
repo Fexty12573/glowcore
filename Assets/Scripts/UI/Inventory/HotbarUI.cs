@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace GlowCore.UI.Inventory
 {
@@ -12,52 +11,37 @@ namespace GlowCore.UI.Inventory
 
         private const float kDimmedAlpha = 0.35f;
 
+        private IInventoryService m_service;
         private HotbarSlotUI[] m_slots;
 
         private void Start()
         {
+            m_service = m_playerInventory;
             BuildSlots();
-            m_playerInventory.OnHotbarSelectionChanged += OnSelectionChanged;
-            m_playerInventory.Inventory.OnSlotChanged += OnSlotDataChanged;
-            m_playerInventory.OnInventoryToggled += OnInventoryToggled;
+            m_service.OnHotbarSelectionChanged += OnSelectionChanged;
+            m_service.OnSlotChanged += OnSlotDataChanged;
+            m_service.OnInventoryToggled += OnInventoryToggled;
             UpdateSelection();
         }
 
         private void OnDestroy()
         {
-            if (m_playerInventory != null)
+            if (m_service != null)
             {
-                m_playerInventory.OnHotbarSelectionChanged -= OnSelectionChanged;
-                m_playerInventory.OnInventoryToggled -= OnInventoryToggled;
-                if (m_playerInventory.Inventory != null)
-                    m_playerInventory.Inventory.OnSlotChanged -= OnSlotDataChanged;
-            }
-        }
-
-        private void Update()
-        {
-            if (Keyboard.current == null)
-                return;
-
-            for (var i = 0; i < m_playerInventory.HotbarSlots; i++)
-            {
-                var key = Keyboard.current[(Key)((int)Key.Digit1 + i)];
-                if (key.wasPressedThisFrame)
-                {
-                    m_playerInventory.SelectHotbarSlot(i);
-                    break;
-                }
+                m_service.OnHotbarSelectionChanged -= OnSelectionChanged;
+                m_service.OnSlotChanged -= OnSlotDataChanged;
+                m_service.OnInventoryToggled -= OnInventoryToggled;
             }
         }
 
         private void BuildSlots()
         {
-            m_slots = new HotbarSlotUI[m_playerInventory.HotbarSlots];
-            for (var i = 0; i < m_playerInventory.HotbarSlots; i++)
+            m_slots = new HotbarSlotUI[m_service.HotbarSlotCount];
+            for (var i = 0; i < m_service.HotbarSlotCount; i++)
             {
                 var go = Instantiate(m_slotPrefab, m_slotParent);
                 var slot = go.GetComponent<HotbarSlotUI>();
-                slot.Initialize(m_playerInventory, i);
+                slot.Initialize(m_service, i);
                 m_slots[i] = slot;
             }
         }
@@ -67,12 +51,12 @@ namespace GlowCore.UI.Inventory
             UpdateSelection();
         }
 
-        private void OnSlotDataChanged(int flatIndex)
+        private void OnSlotDataChanged(SlotChangedEvent e)
         {
-            var hotbarIndex = m_playerInventory.InventoryToHotbarIndex(flatIndex);
-            if (hotbarIndex < 0 || hotbarIndex >= m_slots.Length)
-                return;
-            m_slots[hotbarIndex].Refresh();
+            if (m_service.IsHotbarSlot(e.SlotIndex))
+            {
+                m_slots[e.SlotIndex].Refresh(e.Data);
+            }
         }
 
         private void OnInventoryToggled(bool isOpen)
@@ -92,7 +76,7 @@ namespace GlowCore.UI.Inventory
         private void UpdateSelection()
         {
             for (var i = 0; i < m_slots.Length; i++)
-                m_slots[i].SetSelected(i == m_playerInventory.SelectedHotbarIndex);
+                m_slots[i].SetSelected(i == m_service.SelectedHotbarIndex);
         }
 
         public void RefreshAll()
@@ -100,7 +84,7 @@ namespace GlowCore.UI.Inventory
             if (m_slots == null)
                 return;
             for (var i = 0; i < m_slots.Length; i++)
-                m_slots[i].Refresh();
+                m_slots[i].Refresh(m_service.GetSlotData(i));
         }
     }
 }
