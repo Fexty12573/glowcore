@@ -56,7 +56,7 @@ public class Inventory
 
     private int FindFirstEmptySlotFrom(int startIndex)
     {
-        for(var i = startIndex; i < m_items.Length; i++)
+        for (var i = startIndex; i < m_items.Length; i++)
         {
             if (m_items[i].Amount == 0)
                 return i;
