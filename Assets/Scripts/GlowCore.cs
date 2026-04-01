@@ -11,6 +11,7 @@ namespace GlowCore.World
         [SerializeField][Range(0, 17)] private int m_initialActiveLogs = 3;
         [SerializeField][Min(1)] private int m_startingLevel = 1;
         [SerializeField][Min(1)] private int m_woodToLevelUp = 17;
+        [SerializeField] private PlayerInventory m_playerInventory;
         private int m_activeLogs;
         private int m_level;
         private int m_woodAccumulated;
@@ -23,19 +24,21 @@ namespace GlowCore.World
         // Public Methods
         public void Interact()
         {
-            ItemStack itemsInHand = PlayerHand.Instance?.ItemsInHand;
-            if (itemsInHand?.Item is null)
+            ItemStack itemsInHand = m_playerInventory.ItemsInHand;
+            if (itemsInHand.Item is null)
                 return;
 
             if (itemsInHand.Item.Name == "Wood")
             {
                 int woodAmount = itemsInHand.Amount;
-                itemsInHand.Clear();
-                gameObject.TryGetComponent<Fire>(out Fire fire);
+                if (!m_playerInventory.ConsumeItemInHand(woodAmount))
+                {
+                    Debug.LogError("Failed to consume wood to feed GlowCore.");
+                    return;
+                }
+                gameObject.TryGetComponent(out Fire fire);
                 fire?.FeedWood(woodAmount);
-                PlayerHand.Instance?.UpdateHandVisual();
             }
-
         }
 
         public bool FeedWood(int amount)
@@ -96,13 +99,13 @@ namespace GlowCore.World
             var worldX = Mathf.RoundToInt(position.x);
             var worldZ = Mathf.RoundToInt(position.z);
 
-            WorldGrid.Instance.SetNodeAt(worldX, worldZ, null);
+            WorldGrid.Instance.PlaceNodeAt(null, worldX, worldZ);
 
             GameObject newGlowCore = Instantiate(m_nextLevelPrefab, position, Quaternion.identity);
 
             if (newGlowCore.TryGetComponent(out Node newNode))
             {
-                WorldGrid.Instance.SetNodeAt(worldX, worldZ, newNode);
+                WorldGrid.Instance.PlaceNodeAt(null, worldX, worldZ);
             }
             else
             {

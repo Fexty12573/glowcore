@@ -1,3 +1,4 @@
+using System;
 using GlowCore.World;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,11 +17,23 @@ public class NodeActionSystem : MonoBehaviour
     [SerializeField] private float m_raycastRange = 100f;
     private Node m_currentNode;
     private Outline m_currentOutline;
+    private Vector2Int? m_currentTile;
     private Vector2 m_mousePos;
-    private bool m_mouseMoved;
 
     public static NodeActionSystem Instance => s_instance;
+
     public Node CurrentNode => m_currentNode;
+    public Vector2Int? CurrentTile => m_currentTile;
+
+    // both can also be called with null to notify that nothing is hovered over.
+    public event Action<Node> OnChangeSelectedNode;
+    public event Action<Vector2Int?> OnChangeSelectedTile;
+
+    public void OnHandItemChange()
+    {
+        OnChangeSelectedNode?.Invoke(m_currentNode);
+        OnChangeSelectedTile?.Invoke(m_currentTile);
+    }
 
     private void Awake()
     {
@@ -32,57 +45,75 @@ public class NodeActionSystem : MonoBehaviour
         }
         s_instance = this;
     }
+
     private void Update()
     {
-        UpdateOutlineHover();
-    }
-
-    private void UpdateOutlineHover()
-    {
-        if (!m_mouseMoved)
-            return;
-        m_mouseMoved = false;
         Ray ray = m_camera.ScreenPointToRay(m_mousePos);
-
         if (Physics.Raycast(ray, out RaycastHit hit, m_raycastRange))
         {
-            if (!hit.collider.TryGetComponent(out NodeActionChild child))
-            {
-                Clear();
-                return;
-            }
-
-            Vector3 playerPos = m_player.position;
-            Vector3 hitPos = hit.collider.transform.position;
-
-            playerPos.y = 0;
-            hitPos.y = 0;
-
-            float distance = Vector3.Distance(playerPos, hitPos);
-
-            Node node = child.Root;
-            Outline outline = node.Outline;
-
-            if (distance > node.GetInteractionRange())
-            {
-                Clear();
-                return;
-            }
-
-            if (node != m_currentNode || outline != m_currentOutline)
-            {
-                Clear();
-
-                m_currentNode = node;
-                m_currentOutline = outline;
-
-                if (m_currentOutline)
-                    m_currentOutline.enabled = true;
-            }
+            UpdateHoverNode(hit);
+            UpdateHoverTile(hit);
         }
         else
         {
             Clear();
+        }
+    }
+
+    private void UpdateHoverNode(RaycastHit hit)
+    {
+        if (!hit.collider.TryGetComponent(out NodeActionChild child))
+        {
+            if (m_currentNode is not null)
+            {
+                OnChangeSelectedNode?.Invoke(null);
+                Clear();
+            }
+            return;
+        }
+
+        Vector3 playerPos = m_player.position;
+        Vector3 hitPos = hit.collider.transform.position;
+
+        playerPos.y = 0;
+        hitPos.y = 0;
+
+        float distance = Vector3.Distance(playerPos, hitPos);
+
+        Node node = child.Root;
+        Outline outline = node.Outline;
+
+        if (distance > node.GetInteractionRange())
+        {
+            Clear();
+            return;
+        }
+
+        if (node != m_currentNode || outline != m_currentOutline)
+        {
+            Clear();
+
+            m_currentNode = node;
+            m_currentOutline = outline;
+
+            if (m_currentOutline)
+                m_currentOutline.enabled = true;
+
+            OnChangeSelectedNode?.Invoke(m_currentNode);
+        }
+    }
+
+    private void UpdateHoverTile(RaycastHit hit)
+    {
+        Vector2Int? newTile = null;
+        if (!hit.collider.CompareTag("Border"))
+        {
+            newTile = WorldGrid.Instance.WorldToGrid(hit.point);
+        }
+        if (newTile != m_currentTile)
+        {
+            m_currentTile = newTile;
+            OnChangeSelectedTile?.Invoke(m_currentTile);
         }
     }
 
@@ -98,15 +129,11 @@ public class NodeActionSystem : MonoBehaviour
 
         m_currentNode = null;
         m_currentOutline = null;
+        m_currentTile = null;
     }
 
     private void OnPoint(InputValue value)
     {
-        Vector2 newMousePos = value.Get<Vector2>();
-        if (newMousePos != m_mousePos)
-        {
-            m_mouseMoved = true;
-            m_mousePos = newMousePos;
-        }
+        m_mousePos = value.Get<Vector2>();
     }
 }

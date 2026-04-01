@@ -20,6 +20,8 @@ namespace GlowCore.World
         private static WorldGrid s_instance;
 
         // Instance Fields
+        [Header("General")][SerializeField] private Transform m_player;
+
         [Header("World Mode")]
         [SerializeField] private WorldMode m_worldMode = WorldMode.ProceduralGeneration;
 
@@ -69,14 +71,39 @@ namespace GlowCore.World
             return m_tiles[index.x, index.y];
         }
 
-        public bool SetNodeAt(int x, int z, Node node)
+        public bool PlaceNodeAtTile(Vector2Int tile, Node node)
+        {
+            if (!IsInBounds(tile) || IsOccupied(tile))
+                return false;
+            m_tiles[tile.x, tile.y] = node;
+            node.TilesUsed.Add(tile);
+            return true;
+        }
+
+        public bool PlaceNodeAt(Node node, int x, int z)
         {
             Vector2Int index = WorldToGrid(x, z);
-            if (!IsInBounds(index))
-                return false;
+            return PlaceNodeAtTile(index, node);
+        }
 
-            m_tiles[index.x, index.y] = node;
+        public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
+
+        public bool CreateNodeAt(GameObject prefab, Vector2Int tile)
+        {
+            Vector3 spawnPosition = GetSpawnPosition(tile);
+            GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.identity, m_nodesParent);
+            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
+            {
+                Destroy(nodeObject);
+                return false;
+            }
             return true;
+        }
+
+        public Vector3 GetSpawnPosition(Vector2Int tile)
+        {
+            Vector2Int position = GridToWorld(tile);
+            return new(position.x, 0, position.y);
         }
 
         public Node PlaceTree(int x, int z)
@@ -100,7 +127,7 @@ namespace GlowCore.World
                 return null;
             }
 
-            SetNodeAt(x, z, node);
+            PlaceNodeAt(node, x, z);
             m_totalTreeCount++;
             return node;
         }
@@ -125,10 +152,20 @@ namespace GlowCore.World
             }
         }
 
-        public bool IsInBounds(Vector2Int index)
+        public bool IsInBounds(Vector2Int tile)
         {
-            return index.x >= 0 && index.x < m_gridSize
-                && index.y >= 0 && index.y < m_gridSize;
+            return tile.x >= 0 && tile.x < m_gridSize
+                && tile.y >= 0 && tile.y < m_gridSize;
+        }
+
+        public bool IsOccupied(Vector2Int tile)
+        {
+            return !IsInBounds(tile) || m_tiles[tile.x, tile.y] is not null;
+        }
+
+        public bool IsPlayerObstructing(Vector3 worldPosition)
+        {
+            return Vector3.Distance(worldPosition, m_player.position) <= 0.9f;
         }
 
         public Vector2Int WorldToGrid(int worldX, int worldZ)
@@ -136,9 +173,19 @@ namespace GlowCore.World
             return new Vector2Int(worldX + m_origin.x, worldZ + m_origin.y);
         }
 
+        public Vector2Int WorldToGrid(Vector3 worldPosition)
+        {
+            return WorldToGrid(Mathf.RoundToInt(worldPosition.x), Mathf.RoundToInt(worldPosition.z));
+        }
+
         public Vector2Int GridToWorld(int gridX, int gridZ)
         {
             return new Vector2Int(gridX - m_origin.x, gridZ - m_origin.y);
+        }
+
+        public Vector2Int GridToWorld(Vector2Int tile)
+        {
+            return GridToWorld(tile.x, tile.y);
         }
 
         public void Expand(int amount, bool isLevelUp = false)
@@ -374,7 +421,7 @@ namespace GlowCore.World
                     continue;
                 }
 
-                SetNodeAt(worldX, worldZ, node);
+                PlaceNodeAt(node, worldX, worldZ);
             }
         }
 
@@ -414,7 +461,7 @@ namespace GlowCore.World
                     continue;
                 }
 
-                SetNodeAt(worldX, worldZ, node);
+                PlaceNodeAt(node, worldX, worldZ);
                 m_pendingNodes.RemoveAt(i);
             }
         }

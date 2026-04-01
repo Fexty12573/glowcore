@@ -9,20 +9,20 @@ namespace ScriptableObjects
     {
         public float InteractionRange;
         public ItemDrop[] ItemDrops;
-        public float BreakTime;
+        public float BaseBreakTime;
         public bool IsIndestructible;
         public UsableTool[] UsableTools;
 
-        public float GetBreakTime(Tool usedTool)
+        public float GetEffectiveBreakTime(Tool usedTool)
         {
             if (!usedTool)
-                return BreakTime;
+                return BaseBreakTime;
 
             var usableTool = UsableTools.SingleOrDefault(tool => tool.Tool == usedTool);
             if (usableTool is not null)
-                return BreakTime * usableTool.BreakMultiplier;
+                return BaseBreakTime * usableTool.BreakMultiplier;
 
-            return BreakTime;
+            return BaseBreakTime;
         }
     }
 

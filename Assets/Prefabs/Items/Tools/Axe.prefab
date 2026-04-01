@@ -72,9 +72,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5056978600972422149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56f71f3ca5a48b94eba65135b62dce31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::ToolBehaviour
-  Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+  m_selectedNode: {fileID: 0}
+  m_tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}

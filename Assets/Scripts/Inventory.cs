@@ -10,6 +10,7 @@ public class Inventory
     [SerializeField][ReadOnly(true)] private int m_width;
     [SerializeField][ReadOnly(true)] private int m_height;
 
+    public event Action OnInventoryChange;
     public Inventory(int width, int height)
     {
         m_items = new ItemStack[width * height];
@@ -20,31 +21,50 @@ public class Inventory
             m_items[i] = new ItemStack();
     }
 
-    public bool AddItems(ItemStack stack)
+    public bool AddItems(ref ItemStack stack)
     {
-        if (stack == null)
-            return false;
-
         var existing = GetSlotWithItem(0, stack.Item);
         while (stack.Amount > 0 && existing != -1)
         {
-            if (!m_items[existing].IsFull)
-                m_items[existing].Add(stack);
+            ref ItemStack toAddStack = ref m_items[existing];
+            if (!toAddStack.IsFull)
+                toAddStack.Add(ref stack);
 
             existing = GetSlotWithItem(existing + 1, stack.Item);
         }
 
         if (stack.Amount == 0)
+        {
+            OnInventoryChange?.Invoke();
             return true;
+        }
 
         var empty = GetFirstEmptySlot();
         if (empty.HasValue)
         {
-            this[empty.Value.x, empty.Value.y].Set(stack);
+            this[empty.Value.x, empty.Value.y] = stack;
+            stack.Amount = 0;
+            stack.Item = null;
+            OnInventoryChange?.Invoke();
             return true;
         }
 
+        OnInventoryChange?.Invoke();
         return false;
+    }
+
+    public bool RemoveItemsAt(int x, int y, int amount)
+    {
+        ref ItemStack itemStack = ref this[x, y];
+        if (itemStack.Amount < amount)
+            return false;
+
+        itemStack.Amount -= amount;
+        if (itemStack.Amount == 0)
+            itemStack.Item = null;
+
+        OnInventoryChange?.Invoke();
+        return true;
     }
 
     public ItemStack GetSlotWithItem(Item item)
@@ -55,7 +75,7 @@ public class Inventory
                 return slot;
         }
 
-        return null;
+        return new ItemStack();
     }
 
     public int GetSlotWithItem(int startIndex, Item item)
@@ -83,9 +103,5 @@ public class Inventory
         return null;
     }
 
-    public ItemStack this[int x, int y]
-    {
-        get => m_items[(y * m_width) + x];
-        set => m_items[(y * m_width) + x] = value;
-    }
+    public ref ItemStack this[int x, int y] => ref m_items[(y * m_width) + x];
 }

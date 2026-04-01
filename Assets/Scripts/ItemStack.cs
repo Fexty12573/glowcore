@@ -2,7 +2,7 @@ using System;
 using ScriptableObjects;
 
 [Serializable]
-public class ItemStack
+public struct ItemStack
 {
     public Item Item;
     public int Amount;
@@ -10,7 +10,6 @@ public class ItemStack
     public bool IsFull => Item != null && Amount >= Item.MaxStack;
     public bool IsValid => Item != null && Amount != 0;
 
-    public ItemStack() { }
     public ItemStack(Item item, int amount)
     {
         Item = item;
@@ -26,35 +25,12 @@ public class ItemStack
         return added;
     }
 
-    public void Add(ItemStack stack)
+    public void Add(ref ItemStack stack)
     {
-        if (stack == null || Item != stack.Item)
+        if (Item != stack.Item)
             return;
 
         var added = Add(stack.Amount);
         stack.Amount -= added;
-    }
-
-    public void Set(ItemStack stack)
-    {
-        if (stack == null)
-            return;
-
-        Item = stack.Item;
-        Amount = stack.Amount;
-
-        stack.Amount = 0;
-    }
-
-    public void Set(Item item, int amount)
-    {
-        Item = item;
-        Amount = amount;
-    }
-
-    public void Clear()
-    {
-        Item = null;
-        Amount = 0;
     }
 }
