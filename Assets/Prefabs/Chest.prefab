@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 4ee04bed3397ce34caaf820f7048120b, type: 2}
+  TilesUsed: []
   Outline: {fileID: 3485674928449247075}
 --- !u!114 &-1650554821984015822
 MonoBehaviour:
@@ -118,3 +119,4 @@ MonoBehaviour:
   m_drops:
   - {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
   - {fileID: 11400000, guid: ae7388be54fb6ce458ac89a0768a1c3e, type: 2}
+  - {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
