@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Items.meta
+guid: 2108449fc56673b4a9ec32a4a1eb7a23
+folderAsset: yes
+DefaultImporter:
+========
+guid: 067c600f31750094999992f13299775b
+PrefabImporter:
+>>>>>>>> 7f90599 (add pickaxe):Assets/Prefabs/Nodes/Stone.prefab.meta
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
