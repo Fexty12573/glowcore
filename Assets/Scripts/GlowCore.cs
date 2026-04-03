@@ -1,4 +1,3 @@
-using ScriptableObjects;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -6,7 +5,6 @@ namespace GlowCore.World
     public class GlowCoreObject : MonoBehaviour, IInteractable
     {
         // Instance Fields
-        [SerializeField] private PlayerInventory m_playerInventory;
         [SerializeField] private GameObject[] m_logs;
         [SerializeField] private GameObject m_nextLevelPrefab;
         [SerializeField][Range(0, 17)] private int m_initialActiveLogs = 3;
@@ -25,8 +23,8 @@ namespace GlowCore.World
         // Public Methods
         public void Interact()
         {
-            ItemStack itemsInHand = m_playerInventory.ItemsInHand;
-            if (itemsInHand.Item is null)
+            SlotData itemsInHand = m_playerInventory.GetSlotData(m_playerInventory.SelectedHotbarIndex);
+            if (!itemsInHand.IsValid)
                 return;
 
             if (itemsInHand.Item.Name == "Wood")

@@ -191,9 +191,36 @@ Lives on the Player GameObject. Owns the `Inventory` instance and delegates to i
 
 **Inspector fields:** `m_playerHand` — reference to the `PlayerHand` component.
 
+### `IHandItem` — Interface (`Assets/Scripts/IHandItem.cs`)
+
+Contract for components attached to hand item prefabs that respond to the Use action (left click).
+
+| Member | Purpose |
+|---|---|
+| `Use(InputValue)` | Called by `PlayerHand.OnUse` when the player uses the held item |
+
+**Note:** Components implementing `IHandItem` are stored **disabled** (`m_Enabled: 0`) in their prefab. `PlayerHand.UpdateHandVisual()` explicitly enables the MonoBehaviour after instantiation so Unity lifecycle (`OnEnable`, `Start`) runs correctly.
+
+### `IPlayerInventoryAware` — Interface (`Assets/Scripts/IPlayerInventoryAware.cs`)
+
+Optional contract for hand item components that need access to `PlayerInventory` (e.g. to consume the item after use).
+
+| Member | Purpose |
+|---|---|
+| `SetInventory(PlayerInventory)` | Called by `PlayerHand.UpdateHandVisual()` after instantiating the hand item |
+
 ### `PlayerHand` — MonoBehaviour (`Assets/Scripts/PlayerHand.cs`)
 
 Manages the item physically held in the player's hand. Singleton (`s_instance`).
+
+**Inspector field:** `m_playerInventory` — must be wired to the `PlayerInventory` component on the Player GameObject.
+
+**`UpdateHandVisual()` sequence:**
+1. Destroys the previous hand item GameObject
+2. Instantiates `Item.Prefab` as a child of the hand transform
+3. Removes `Rigidbody` and `Outline` components
+4. If the root has an `IHandItem` MonoBehaviour: **enables it** (prefabs store it disabled)
+5. If the root implements `IPlayerInventoryAware`: calls `SetInventory(m_playerInventory)`
 
 ### `ItemStackDrop` — MonoBehaviour (`Assets/Scripts/ItemStackDrop.cs`)
 
@@ -405,9 +432,12 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `ScriptableObjects/Recipe.cs` | Data | ScriptableObject | Crafting recipe definition |
 | `Inventory.cs` | Data | Plain C# class | Slot grid logic |
 | `PlayerInventory.cs` | Data | MonoBehaviour | Implements IInventoryService, owns Inventory |
-| `PlayerHand.cs` | Data | MonoBehaviour | In-hand item visual |
+| `IHandItem.cs` | Data | Interface | Contract for usable held items |
+| `IPlayerInventoryAware.cs` | Data | Interface | Contract for held items needing inventory access |
+| `PlayerHand.cs` | Data | MonoBehaviour | In-hand item visual, enables IHandItem, wires SetInventory |
 | `ItemStackDrop.cs` | Data | MonoBehaviour | World-dropped item |
 | `CraftingSystem.cs` | Crafting | Plain C# class | Implements ICraftingService |
+| `BlockBehaviour.cs` | Data | MonoBehaviour | IHandItem + IPlayerInventoryAware — block placement |
 | `UI/Inventory/InventoryUI.cs` | UI | MonoBehaviour | Panel controller + drag-and-drop |
 | `UI/Inventory/CraftingUI.cs` | UI | MonoBehaviour | Crafting panel, creates CraftingSystem |
 | `UI/Inventory/RecipeRowUI.cs` | UI | MonoBehaviour | Single recipe row |
@@ -429,7 +459,9 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 - **`PlayerInventory` is the `IInventoryService` implementor.** It wraps `Inventory.OnSlotChanged(int)` into rich `SlotChangedEvent` payloads.
 - **Crouch is now Left Ctrl**, C is Crafting toggle.
 - **`Item.Icon` must have Read/Write Enabled** in texture import settings.
-- **`PlayerHand` is a singleton** (`PlayerHand.Instance`).
+- **`PlayerHand` is a singleton** (`PlayerHand.Instance`). Its `m_playerInventory` field must be wired in the Inspector.
+- **Hand item prefabs store `IHandItem` components disabled.** `PlayerHand.UpdateHandVisual()` enables them. Do not enable them in the prefab — that breaks the lifecycle ordering.
+- **`IPlayerInventoryAware` is called automatically** by `PlayerHand.UpdateHandVisual()` — no manual wiring needed beyond prefab setup.
 - **`Add()` fills hotbar first.** `PlayerInventory.Add()` passes `emptySlotStart = HotbarStartIndex`.
 
 ---
@@ -454,4 +486,6 @@ Add `IPointerClickHandler` to `ItemSlotUI`, check for `InputButton.Right`,
 call a new method on `InventoryUI`.
 
 ### Make a usable held item
-Attach a component implementing `IHandItem` to the item's Prefab root.
+1. Attach a component implementing `IHandItem` to the item's Prefab root.
+2. **Disable the component** in the prefab (`m_Enabled: 0`) — `PlayerHand.UpdateHandVisual()` enables it at runtime.
+3. If the item needs to consume itself from the inventory, also implement `IPlayerInventoryAware` — `SetInventory` will be called automatically.

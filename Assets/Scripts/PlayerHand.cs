@@ -1,14 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public interface IHandItem
-{
-    void Use(InputValue value);
-}
-
 public class PlayerHand : MonoBehaviour
 {
     private static PlayerHand s_instance;
+
+    [SerializeField] private PlayerInventory m_playerInventory;
 
     private ItemStack m_itemsInHand;
     private GameObject m_itemGameObject;
@@ -37,7 +34,7 @@ public class PlayerHand : MonoBehaviour
     {
         Destroy(m_itemGameObject);
         m_itemGameObject = null;
-        if (m_itemsInHand.Item is null)
+        if (m_itemsInHand?.Item is null)
             return;
         m_itemGameObject = Instantiate(m_itemsInHand.Item.Prefab, transform);
         m_itemGameObject.transform.localScale *= m_itemsInHand.Item.InHandScale;
@@ -45,6 +42,10 @@ public class PlayerHand : MonoBehaviour
         Destroy(rb);
         Outline outline = m_itemGameObject.GetComponent<Outline>();
         Destroy(outline);
+        if (m_itemGameObject.TryGetComponent(out IHandItem handItem) && handItem is MonoBehaviour bhv)
+            bhv.enabled = true;
+        if (m_itemGameObject.TryGetComponent(out IPlayerInventoryAware inventoryAware))
+            inventoryAware.SetInventory(m_playerInventory);
     }
 
     private void OnUse(InputValue value)

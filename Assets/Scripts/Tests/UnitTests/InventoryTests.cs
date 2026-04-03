@@ -24,10 +24,10 @@ public class InventoryTests
     {
         var inventory = new Inventory(2, 2);
         inventory[0, 0].Set(m_item, 1);
-        var stack = ItemStack.Create(m_item, 5);
-        inventory.AddItems(ref stack);
+        var stack = new ItemStack(m_item, 5);
+        inventory.AddItems(stack);
 
-        Assert.AreEqual(inventory[0, 0].Amount, 6);
+        Assert.AreEqual(6, inventory[0, 0].Amount);
     }
 
     [Test]
@@ -36,7 +36,7 @@ public class InventoryTests
         var inventory = new Inventory(2, 2);
         var stack = new ItemStack(m_item, 3);
 
-        inventory.AddItems(ref stack);
+        inventory.AddItems(stack);
 
         Assert.AreSame(m_item, inventory[0, 0].Item);
         Assert.AreEqual(3, inventory[0, 0].Amount);
@@ -50,7 +50,7 @@ public class InventoryTests
         inventory[0, 0].Set(m_item, 1);
         var stack = new ItemStack(m_item, 2);
 
-        inventory.AddItems(ref stack);
+        inventory.AddItems(stack);
 
         Assert.AreEqual(3, inventory[0, 0].Amount);
         Assert.AreEqual(0, inventory[1, 0].Amount);
@@ -65,7 +65,7 @@ public class InventoryTests
         inventory[1, 0].Set(m_item, 9);
         var stack = new ItemStack(m_item, 5);
 
-        inventory.AddItems(ref stack);
+        inventory.AddItems(stack);
 
         Assert.AreEqual(m_item.MaxStack, inventory[0, 0].Amount);
         Assert.AreEqual(m_item.MaxStack, inventory[1, 0].Amount);

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6483266551800071773}
-  - component: {fileID: 3209044725388426275}
+  - component: {fileID: 6665130063918306497}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1631564033306397339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3209044725388426275
+--- !u!114 &6665130063918306497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 671950625791981345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62df953d1f21792498096a7c72a0f449, type: 3}
+  m_Script: {fileID: 11500000, guid: ceddb25dad7231e4e92a0100aa75adfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::PlayerHand
+  m_playerInventory: {fileID: 0}
 --- !u!1 &1763016267932274052
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deaf62ba1ac416a498f5b89dc96f9d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::PlayerInventory
-  m_playerHand: {fileID: 3209044725388426275}
+  m_playerHand: {fileID: 0}
 --- !u!1 &3634898018015719376
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +155,7 @@ Transform:
   - {fileID: 4652771526564327730}
   - {fileID: 6483266551800071773}
   - {fileID: 609734049189646819}
+  - {fileID: 4916830113643737402}
   m_Father: {fileID: 9090418907346557860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1105745996694965811

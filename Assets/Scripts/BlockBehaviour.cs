@@ -1,4 +1,3 @@
-using System;
 using GlowCore.World;
 using ScriptableObjects;
 using UnityEngine;
@@ -14,13 +13,13 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
     [SerializeField] private GameObject m_buildGhostAllowed;
     [SerializeField] private GameObject m_buildGhostOccupied;
 
+    public void SetInventory(PlayerInventory inventory) => m_inventory = inventory;
+
     public void Use(InputValue inputValue)
     {
         if (inputValue.Get<float>() >= 0.5f)
             TryToBuild();
     }
-
-    public void SetInventory(PlayerInventory inventory) => m_inventory = inventory;
 
     private void Start()
     {
@@ -76,7 +75,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value))
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         else
-            m_inventory.ConsumeItemInHand(1);
+            m_inventory.ConsumeHandItem();
 
         ChangeBuildGhost();
     }

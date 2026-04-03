@@ -26,7 +26,7 @@ public class Inventory
             m_items[i] = new ItemStack();
     }
 
-    public bool AddItems(ref ItemStack stack)
+    public bool AddItems(ItemStack stack, int emptySlotStart = 0)
     {
         if (stack == null)
             return false;

@@ -20,6 +20,7 @@ public class NodeActionSystem : MonoBehaviour
     private Outline m_currentOutline;
     private Vector2Int? m_currentTile;
     private Vector2 m_mousePos;
+    private bool m_mouseMoved;
 
     public static NodeActionSystem Instance => s_instance;
 
@@ -153,5 +154,6 @@ public class NodeActionSystem : MonoBehaviour
     private void OnPoint(InputValue value)
     {
         m_mousePos = value.Get<Vector2>();
+        m_mouseMoved = true;
     }
 }
