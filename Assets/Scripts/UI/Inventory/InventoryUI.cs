@@ -158,7 +158,7 @@ namespace GlowCore.UI.Inventory
 
             if (m_cursorIcon != null && data.Icon != null)
             {
-                m_cursorIcon.texture = data.Icon;
+                m_cursorIcon.texture = data.Icon.texture;
                 m_cursorIcon.color = new Color(1f, 1f, 1f, 0.75f);
                 m_cursorIcon.enabled = true;
                 m_cursorIcon.transform.SetAsLastSibling();

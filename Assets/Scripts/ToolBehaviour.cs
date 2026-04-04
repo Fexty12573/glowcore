@@ -13,7 +13,8 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
 
     public void Use(InputValue value)
     {
-        if (m_selectedNode is null)
+        // Use == null, not 'is null': destroyed Unity objects are fake-null and bypass 'is null'
+        if (m_selectedNode == null)
             return;
 
         if (m_selectedNode.NodeData.UsableTools.All(t => t.Tool != m_tool))
@@ -34,8 +35,8 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
 
     private void Update()
     {
-        if (m_isHolding)
-            m_selectedNode?.UpdateHold(Time.deltaTime);
+        if (m_isHolding && m_selectedNode != null)
+            m_selectedNode.UpdateHold(Time.deltaTime);
     }
 
     private void OnEnable()

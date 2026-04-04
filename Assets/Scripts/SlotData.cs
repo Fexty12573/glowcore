@@ -6,7 +6,7 @@ public readonly struct SlotData
     public readonly Item Item;
     public readonly int Amount;
     public readonly bool IsValid;
-    public readonly Texture2D Icon;
+    public readonly Sprite Icon;
 
     public SlotData(ItemStack stack)
     {

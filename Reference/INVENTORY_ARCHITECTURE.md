@@ -1,7 +1,7 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-03-31 (Synced to current interfaces and drag event flow)
+> Last updated: 2026-04-04 (Icon type changed to Sprite; ItemIconHelper simplified; ConsumeHandItem takes amount)
 
 ---
 
@@ -102,7 +102,7 @@ Immutable value type snapshot of a slot. UI never holds references to live `Item
 | `Item` | `Item` | The item type (null if empty) |
 | `Amount` | `int` | Stack count |
 | `IsValid` | `bool` | True if Item != null and Amount > 0 |
-| `Icon` | `Texture2D` | Convenience: Item?.Icon |
+| `Icon` | `Sprite` | Convenience: Item?.Icon |
 
 ### `SlotChangedEvent` — (`Assets/Scripts/SlotData.cs`)
 
@@ -126,7 +126,7 @@ The definition of an item type. Created as `.asset` files in the Unity Editor.
 | `Name` | string | Display name shown in tooltip |
 | `Description` | string | Tooltip description (TextArea, can be empty) |
 | `Prefab` | GameObject | 3D model used for world drops and in-hand visual |
-| `Icon` | Texture2D | Icon used in UI slots and drag cursor |
+| `Icon` | Sprite | Icon used in UI slots and drag cursor |
 | `DropScale` | float | Scale multiplier for world-drop visuals |
 | `InHandScale` | float | Scale multiplier when item is held in hand |
 | `MaxStack` | int | Maximum items per stack (default 99, min 0) |
@@ -190,6 +190,8 @@ Lives on the Player GameObject. Owns the `Inventory` instance and delegates to i
 - `OnNext(InputValue)` / `OnPrevious(InputValue)` → scroll wheel navigation
 
 **Inspector fields:** `m_playerHand` — reference to the `PlayerHand` component.
+
+**Extra public method (not on `IInventoryService`):** `ConsumeHandItem(int amount)` — removes `amount` items from the currently selected hotbar slot. Used by `BlockBehaviour` after a successful block placement.
 
 ### `IHandItem` — Interface (`Assets/Scripts/IHandItem.cs`)
 
@@ -304,7 +306,7 @@ Receives `SlotData` via `Refresh(SlotData)`.
 
 ### `ItemIconHelper` — Static class (`ItemIconHelper.cs`)
 
-Converts `Texture2D` → `Sprite` for uGUI `Image` components. Caches results.
+Thin helper for applying item icons to uGUI `Image` components. Since `Item.Icon` is now a `Sprite`, no conversion or caching is needed — `GetSprite(item)` returns `item?.Icon` directly.
 
 ### `UIColors` — Static class (`Assets/Scripts/UI/UIColors.cs`)
 
@@ -445,7 +447,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `UI/Inventory/HotbarUI.cs` | UI | MonoBehaviour | Standalone hotbar controller |
 | `UI/Inventory/HotbarSlotUI.cs` | UI | MonoBehaviour | Single standalone hotbar slot |
 | `UI/Inventory/TooltipUI.cs` | UI | MonoBehaviour | Mouse-following tooltip |
-| `UI/Inventory/ItemIconHelper.cs` | UI | Static utility | Texture2D → Sprite cache |
+| `UI/Inventory/ItemIconHelper.cs` | UI | Static utility | Applies Sprite icons to Image components |
 | `UI/UIColors.cs` | UI | Static constants | Color tokens |
 
 ---
@@ -458,7 +460,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 - **`CraftingSystem` is a plain C# class**, not a MonoBehaviour. Created by `CraftingUI` and disposed in `OnDestroy()`.
 - **`PlayerInventory` is the `IInventoryService` implementor.** It wraps `Inventory.OnSlotChanged(int)` into rich `SlotChangedEvent` payloads.
 - **Crouch is now Left Ctrl**, C is Crafting toggle.
-- **`Item.Icon` must have Read/Write Enabled** in texture import settings.
+- **`Item.Icon` is a `Sprite`.** Import textures with Texture Type = Sprite (2D and UI). Read/Write is **not** required. The `RawImage` drag cursor accesses `sprite.texture` directly — this is intentional.
 - **`PlayerHand` is a singleton** (`PlayerHand.Instance`). Its `m_playerInventory` field must be wired in the Inspector.
 - **Hand item prefabs store `IHandItem` components disabled.** `PlayerHand.UpdateHandVisual()` enables them. Do not enable them in the prefab — that breaks the lifecycle ordering.
 - **`IPlayerInventoryAware` is called automatically** by `PlayerHand.UpdateHandVisual()` — no manual wiring needed beyond prefab setup.
@@ -474,7 +476,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 3. Call service commands (`Swap`, `TryMerge`, etc.) — never access `Inventory` directly
 
 ### Add a new item
-1. Create → Scriptable Objects → Item, fill fields (Icon must have Read/Write ON)
+1. Create → Scriptable Objects → Item, fill fields (Icon must be a Sprite asset — Texture Type: Sprite (2D and UI))
 2. Done — system picks it up automatically
 
 ### Add a new crafting recipe
