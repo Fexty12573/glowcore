@@ -23,6 +23,7 @@ public interface IInventoryService
     void SetInventoryOpen(bool open);
     int RemoveItems(Item item, int amount);
     bool AddItem(Item item, int amount);
+    bool AddItem(ItemStack stack);
 
     // Events
     event Action<SlotChangedEvent> OnSlotChanged;

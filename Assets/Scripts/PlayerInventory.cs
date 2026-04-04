@@ -65,11 +65,9 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
 
     public int RemoveItems(Item item, int amount) => m_inventory.RemoveItems(item, amount);
 
-    public bool AddItem(Item item, int amount)
-    {
-        var stack = new ItemStack(item, amount);
-        return m_inventory.AddItems(stack, kHotbarStartIndex);
-    }
+    public bool AddItem(Item item, int amount) => AddItem(new ItemStack(item, amount));
+
+    public bool AddItem(ItemStack stack) => m_inventory.AddItems(stack, kHotbarStartIndex);
 
     public void ToggleInventory()
     {
@@ -86,8 +84,6 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     }
 
     // Public Methods — Game Logic (not on IInventoryService)
-    public void Add(ItemStack stack) => m_inventory.AddItems(stack, kHotbarStartIndex);
-
     public void ConsumeHandItem()
     {
         m_inventory.ClearSlot(m_selectedHotbarIndex);

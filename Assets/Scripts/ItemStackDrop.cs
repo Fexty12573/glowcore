@@ -139,8 +139,10 @@ public class ItemStackDrop : MonoBehaviour
         if (inventory == null)
             return;
 
-        inventory.Add(Stack);
-        m_collected = true;
-        Destroy(gameObject);
+        if (inventory.CanAcceptItem(Stack.Item, Stack.Amount) && inventory.AddItem(Stack))
+        {
+            m_collected = true;
+            Destroy(gameObject);
+        }
     }
 }
