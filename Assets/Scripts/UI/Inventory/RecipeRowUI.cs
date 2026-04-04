@@ -169,6 +169,7 @@ namespace GlowCore.UI.Inventory
         private void OnCraftClicked()
         {
             m_craftingService.Craft(m_recipe);
+            UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
         }
     }
 }
