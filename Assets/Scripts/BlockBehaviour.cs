@@ -75,7 +75,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value))
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         else
-            m_inventory.ConsumeHandItem();
+            m_inventory.ConsumeHandItem(1);
 
         ChangeBuildGhost();
     }

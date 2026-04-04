@@ -84,9 +84,12 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     }
 
     // Public Methods — Game Logic (not on IInventoryService)
-    public void ConsumeHandItem()
+    public void ConsumeHandItem(int amount)
     {
-        m_inventory.ClearSlot(m_selectedHotbarIndex);
+        var slot = m_inventory.GetSlot(m_selectedHotbarIndex);
+        if (slot == null || !slot.IsValid)
+            return;
+        m_inventory.RemoveItems(slot.Item, amount);
         UpdatePlayerHand();
     }
 
