@@ -16,6 +16,13 @@ namespace GlowCore.World
         private const float kBorderHeight = 100f;
         private const float kBorderFogDepth = 100f;
 
+        [System.Serializable]
+        private struct SpawnableNode
+        {
+            public GameObject Prefab;
+            [Min(0)] public float Weight;
+        }
+
         // Static Fields
         private static WorldGrid s_instance;
 
@@ -34,18 +41,18 @@ namespace GlowCore.World
         [SerializeField] private Transform m_borderEast;
         [SerializeField] private Transform m_borderWest;
 
-        [Header("Trees")]
-        [SerializeField] private GameObject m_treePrefab;
+        [Header("Nodes")]
+        [SerializeField] private SpawnableNode[] m_spawnableNodes;
         [SerializeField] private Transform m_nodesParent;
 
-        [Header("Tree Expansion (ProceduralGeneration only)")]
-        [SerializeField][Min(0)] private int m_initialTreeCount = 10;
-        [SerializeField][Min(0)] private int m_treesPerRegularExpansion = 5;
-        [SerializeField][Min(0)] private int m_treesPerLevelUpExpansion = 20;
+        [Header("Node Expansion (ProceduralGeneration only)")]
+        [SerializeField][Min(0)] private int m_initialNodeCount = 10;
+        [SerializeField][Min(0)] private int m_nodesPerRegularExpansion = 5;
+        [SerializeField][Min(0)] private int m_nodesPerLevelUpExpansion = 20;
 
         private Node[,] m_tiles;
         private Vector2Int m_origin;
-        private int m_totalTreeCount;
+        private int m_totalNodeCount;
         private readonly List<Node> m_pendingNodes = new();
 
         // Properties
@@ -53,7 +60,7 @@ namespace GlowCore.World
         public WorldMode Mode => m_worldMode;
         public int GridSize => m_gridSize;
         public int TotalTileCount => m_tiles.Length;
-        public int TotalTreeCount => m_totalTreeCount;
+        public int TotalNodeCount => m_totalNodeCount;
 
         // Public Methods
         public void Initialize()
@@ -106,11 +113,12 @@ namespace GlowCore.World
             return new(position.x, 0, position.y);
         }
 
-        public Node PlaceTree(int x, int z)
+        public Node PlaceNode(int x, int z)
         {
-            if (m_treePrefab == null)
+            GameObject prefab = PickRandomNodePrefab();
+            if (prefab == null)
             {
-                Debug.LogError("WorldGrid: m_treePrefab is not assigned.");
+                Debug.LogError("WorldGrid: No spawnable nodes assigned.");
                 return null;
             }
 
@@ -118,39 +126,20 @@ namespace GlowCore.World
                 return null;
 
             Transform parent = m_nodesParent ?? transform;
-            GameObject treeObject = Instantiate(m_treePrefab, new Vector3(x, 0f, z), Quaternion.identity, parent);
+            GameObject nodeObject = Instantiate(prefab, new Vector3(x, 0f, z), Quaternion.identity, parent);
 
-            if (!treeObject.TryGetComponent(out Node node))
+            if (!nodeObject.TryGetComponent(out Node node))
             {
-                Debug.LogError("WorldGrid: Tree prefab does not have a TreeNode component.");
-                Destroy(treeObject);
+                Debug.LogError($"WorldGrid: Prefab '{prefab.name}' does not have a Node component.");
+                Destroy(nodeObject);
                 return null;
             }
 
             PlaceNodeAt(node, x, z);
-            m_totalTreeCount++;
+            m_totalNodeCount++;
             return node;
         }
 
-        public void SpawnRandomTrees(float density)
-        {
-            density = Mathf.Clamp01(density);
-
-            for (var x = 0; x < m_gridSize; x++)
-            {
-                for (var z = 0; z < m_gridSize; z++)
-                {
-                    if (x == m_origin.x && z == m_origin.y)
-                        continue;
-
-                    if (Random.value <= density)
-                    {
-                        Vector2Int worldPos = GridToWorld(x, z);
-                        PlaceTree(worldPos.x, worldPos.y);
-                    }
-                }
-            }
-        }
 
         public bool IsInBounds(Vector2Int tile)
         {
@@ -217,8 +206,8 @@ namespace GlowCore.World
 
             if (m_worldMode == WorldMode.ProceduralGeneration)
             {
-                var count = isLevelUp ? m_treesPerLevelUpExpansion : m_treesPerRegularExpansion;
-                SpawnTreesOnNewRing(oldSize, count);
+                var count = isLevelUp ? m_nodesPerLevelUpExpansion : m_nodesPerRegularExpansion;
+                SpawnNodesOnNewRing(oldSize, count);
             }
         }
 
@@ -268,7 +257,7 @@ namespace GlowCore.World
         {
             RegisterExistingNodes();
             // ClearTreesInGrid();
-            SpawnTrees(m_initialTreeCount);
+            SpawnNodes(m_initialNodeCount);
         }
 
         private void InitializeDesignedWorld()
@@ -338,17 +327,41 @@ namespace GlowCore.World
         //     m_totalTreeCount = 0;
         // }
 
-        private void SpawnTrees(int count)
+        private GameObject PickRandomNodePrefab()
+        {
+            if (m_spawnableNodes == null || m_spawnableNodes.Length == 0)
+                return null;
+
+            var totalWeight = 0f;
+            foreach (var entry in m_spawnableNodes)
+                totalWeight += entry.Weight;
+
+            if (totalWeight <= 0f)
+                return null;
+
+            var roll = Random.Range(0f, totalWeight);
+            var cumulative = 0f;
+            foreach (var entry in m_spawnableNodes)
+            {
+                cumulative += entry.Weight;
+                if (roll < cumulative)
+                    return entry.Prefab;
+            }
+
+            return m_spawnableNodes[^1].Prefab;
+        }
+
+        private void SpawnNodes(int count)
         {
             List<Vector2Int> freeCells = CollectFreeCells();
             Shuffle(freeCells);
 
             var toSpawn = Mathf.Min(count, freeCells.Count);
             for (var i = 0; i < toSpawn; i++)
-                PlaceTree(freeCells[i].x, freeCells[i].y);
+                PlaceNode(freeCells[i].x, freeCells[i].y);
         }
 
-        private void SpawnTreesOnNewRing(int oldSize, int count)
+        private void SpawnNodesOnNewRing(int oldSize, int count)
         {
             if (count <= 0)
                 return;
@@ -371,7 +384,7 @@ namespace GlowCore.World
 
             var toSpawn = Mathf.Min(count, ringCells.Count);
             for (var i = 0; i < toSpawn; i++)
-                PlaceTree(ringCells[i].x, ringCells[i].y);
+                PlaceNode(ringCells[i].x, ringCells[i].y);
         }
 
         private List<Vector2Int> CollectFreeCells()
