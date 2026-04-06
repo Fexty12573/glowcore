@@ -1,12 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/ScriptableObjects/Blocks.meta
 guid: b11b6e8ad91eafa48855c8b047160c8b
-folderAsset: yes
-DefaultImporter:
-========
-guid: 83fc066558a716e49a0ebde79cfa67ae
 PrefabImporter:
->>>>>>>> 7f90599 (add pickaxe):Assets/Prefabs/Items/Tools/Pickaxe.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
