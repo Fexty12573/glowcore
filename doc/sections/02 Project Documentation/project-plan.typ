@@ -720,6 +720,58 @@ The below table shows the risk assessment of the identified risks, after mitigat
   supplement: [Table],
 )
 
+==== Actual Risk Matrix (14.04.2026) <actual-risk-matrix-14.04.2026>
+
+The below table shows the risk assessment of the identified risks, after mitigation strategies have been applied.
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    stroke: 1pt + rgb("#333333"),
+    align: center + horizon,
+
+    table.cell(fill: table-header, rowspan: 2)[*Probability*],
+    table.cell(fill: table-header, colspan: 4)[*Severity*],
+    table.cell(fill: table-header)[Negligible],
+    table.cell(fill: table-header)[Marginal],
+    table.cell(fill: table-header)[Critical],
+    table.cell(fill: table-header)[Catastrophic],
+
+    [Certain], risk-cell("High"), risk-cell("High"), risk-cell("Very High"), risk-cell("Very High"),
+    [Likely],
+    risk-cell("Medium"),
+    risk-cell("High"),
+    risk-cell("High"),
+    risk-cell("Very High"),
+    [Possible],
+    risk-cell("Low"),
+    risk-cell("Medium"),
+    risk-cell("High", content: [R01]),
+    risk-cell("Very High"),
+    [Unlikely],
+    risk-cell("Low"),
+    risk-cell("Medium", content: [R06/R02]),
+    risk-cell("Medium", content: [R04/R05]),
+    risk-cell("High", content: [R08]),
+    [Rare],
+    risk-cell("Low", content: [R07]),
+    risk-cell("Low"),
+    risk-cell("Medium"),
+    risk-cell("Medium"),
+    [None], table.cell(fill: cell-bg-eliminated, colspan: 3)[], table.cell(fill: cell-bg-eliminated)[R03],
+  ),
+  caption: [Actual Risk Matrix (14.04.2026)],
+  supplement: [Table],
+)
+==== Adjustment of Current Risk Assessment
+
+In the current risk matrix, we increased the probability by one level for both R01 (Lack of familiarity with Unity) and R02 (Unity CI/CD Complexity).
+
+For R01, we observed that working with Unity involves more aspects than initially expected, especially issues that only become visible during actual implementation. The project description already pointed out that Unity could be a risk, so we were aware of this from the beginning. However, during development we realized that some parts are more complex in practice. Despite this, we are still very motivated to use Unity for our project and try to reduce the risk through clear communication and well-defined implementation strategies.
+
+For R02, there are recurring challenges with the CI/CD setup in Unity, which is why we increased the probability here as well. In particular, there is a risk of running out of GitHub Actions minutes. At the moment, we expect the available minutes to be sufficient, but if needed, we already have a plan to set up and use a self-hosted runner on our own machine.
+
+Overall, both risks are now considered slightly more likely, but appropriate mitigation measures are in place.
 #v(1em)
 
 
