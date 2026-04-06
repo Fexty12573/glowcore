@@ -37,14 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-unity-library-
       
-      - name: Free Disk Space
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /usr/local/lib/android
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /opt/hostedtoolcache/CodeQL
-          df -h
-
       - name: Run Tests
         id: run-tests
         uses: game-ci/unity-test-runner@v4
