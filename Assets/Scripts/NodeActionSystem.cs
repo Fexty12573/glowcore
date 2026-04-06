@@ -14,11 +14,13 @@ public class NodeActionSystem : MonoBehaviour
 
     [SerializeField] private Camera m_camera;
     [SerializeField] private Transform m_player;
+    [SerializeField] private PlayerInventory m_playerInventory;
     [SerializeField] private float m_raycastRange = 100f;
     private Node m_currentNode;
     private Outline m_currentOutline;
     private Vector2Int? m_currentTile;
     private Vector2 m_mousePos;
+    private bool m_mouseMoved;
 
     public static NodeActionSystem Instance => s_instance;
 
@@ -48,6 +50,20 @@ public class NodeActionSystem : MonoBehaviour
 
     private void Update()
     {
+        UpdateOutlineHover();
+    }
+
+    private void UpdateOutlineHover()
+    {
+        if (m_playerInventory != null && m_playerInventory.IsOpen)
+        {
+            Clear();
+            return;
+        }
+
+        if (!m_mouseMoved)
+            return;
+        m_mouseMoved = false;
         Ray ray = m_camera.ScreenPointToRay(m_mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit, m_raycastRange))
         {
@@ -119,6 +135,9 @@ public class NodeActionSystem : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
+        if (m_playerInventory != null && m_playerInventory.IsOpen)
+            return;
+
         m_currentNode?.Interact();
     }
 
@@ -135,5 +154,6 @@ public class NodeActionSystem : MonoBehaviour
     private void OnPoint(InputValue value)
     {
         m_mousePos = value.Get<Vector2>();
+        m_mouseMoved = true;
     }
 }

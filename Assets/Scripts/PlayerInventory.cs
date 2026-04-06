@@ -1,77 +1,149 @@
-using GlowCore.World;
+using System;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public interface IPlayerInventoryAware
+public class PlayerInventory : MonoBehaviour, IInventoryService
 {
-    void SetInventory(PlayerInventory inventory);
-}
+    // Constants
+    private const int kColumns = 8;
+    private const int kRows = 4;
+    private const int kHotbarSlots = 8;
+    private const int kHotbarStartIndex = 0;
 
-public class PlayerInventory : MonoBehaviour
-{
-    private const int kWidth = 8;
-    private const int kHeight = 4;
+    // Instance Fields
+    [SerializeField] private PlayerHand m_playerHand;
 
-    private GameObject m_handItemGameObject;
-    private int m_hotbarIndex = 0;
-    [SerializeField] private Inventory m_inventory;
+    private Inventory m_inventory;
+    private int m_selectedHotbarIndex;
+    private bool m_isOpen;
 
-    public ItemStack ItemsInHand => m_inventory[m_hotbarIndex, 0];
-    public void Add(ItemStack stack) => m_inventory.AddItems(ref stack);
-    public bool ConsumeItemInHand(int amount) => m_inventory.RemoveItemsAt(m_hotbarIndex, 0, amount);
+    // IInventoryService — Properties
+    public int SlotCount => m_inventory.Size;
+    public int HotbarSlotCount => kHotbarSlots;
+    public int SelectedHotbarIndex => m_selectedHotbarIndex;
+    public bool IsOpen => m_isOpen;
 
-    private void Awake()
+    // IInventoryService — Events
+    public event Action<SlotChangedEvent> OnSlotChanged;
+    public event Action<int> OnHotbarSelectionChanged;
+    public event Action<bool> OnInventoryToggled;
+    public event Action OnCraftingToggled;
+
+    // Public Methods — IInventoryService Queries
+    public SlotData GetSlotData(int flatIndex)
     {
-        m_inventory = new Inventory(kWidth, kHeight);
-        m_inventory.OnInventoryChange += UpdatePlayerHand;
+        var stack = m_inventory.GetSlot(flatIndex);
+        return stack != null ? new SlotData(stack) : SlotData.Empty;
     }
 
-    private void OnDestroy() => m_inventory.OnInventoryChange -= UpdatePlayerHand;
+    public int CountItem(Item item) => m_inventory.CountItem(item);
+
+    public bool CanAcceptItem(Item item, int amount) => m_inventory.CanAccept(item, amount);
+
+    public bool IsHotbarSlot(int flatIndex) => flatIndex is >= 0 and < kHotbarSlots;
+
+    // Public Methods — IInventoryService Commands
+    public void SelectHotbarSlot(int index)
+    {
+        if (index < 0 || index >= kHotbarSlots)
+            return;
+        m_selectedHotbarIndex = index;
+        OnHotbarSelectionChanged?.Invoke(index);
+        UpdatePlayerHand();
+    }
+
+    public void Swap(int indexA, int indexB) => m_inventory.Swap(indexA, indexB);
+
+    public bool TryMerge(int srcIndex, int dstIndex) => m_inventory.TryMerge(srcIndex, dstIndex);
+
+    public void DropItem(int slotIndex, Vector3 dropPosition)
+    {
+        ItemStackDrop.Spawn(m_inventory.GetSlot(slotIndex), dropPosition);
+        m_inventory.ClearSlot(slotIndex);
+    }
+
+    public int RemoveItems(Item item, int amount) => m_inventory.RemoveItems(item, amount);
+
+    public bool AddItem(Item item, int amount) => AddItem(new ItemStack(item, amount));
+
+    public bool AddItem(ItemStack stack) => m_inventory.AddItems(stack, kHotbarStartIndex);
+
+    public void ToggleInventory()
+    {
+        m_isOpen = !m_isOpen;
+        OnInventoryToggled?.Invoke(m_isOpen);
+    }
+
+    public void SetInventoryOpen(bool open)
+    {
+        if (m_isOpen == open)
+            return;
+        m_isOpen = open;
+        OnInventoryToggled?.Invoke(m_isOpen);
+    }
+
+    // Public Methods — Game Logic (not on IInventoryService)
+    public void ConsumeHandItem(int amount)
+    {
+        var slot = m_inventory.GetSlot(m_selectedHotbarIndex);
+        if (slot == null || !slot.IsValid)
+            return;
+        m_inventory.RemoveItems(slot.Item, amount);
+        UpdatePlayerHand();
+    }
+
+    // Private Methods — Lifecycle
+    private void Awake()
+    {
+        m_inventory = new Inventory(kColumns, kRows);
+        m_inventory.OnSlotChanged += OnInventorySlotChanged;
+    }
+
+    private void OnDestroy()
+    {
+        if (m_inventory != null)
+            m_inventory.OnSlotChanged -= OnInventorySlotChanged;
+    }
+
+    // Private Methods — Input Action Callbacks
+    private void OnInventory(InputValue value) => ToggleInventory();
+
+    private void OnCrafting(InputValue value)
+    {
+        if (m_isOpen)
+            OnCraftingToggled?.Invoke();
+    }
+
+    private void OnHotbarSlot1(InputValue value) => SelectHotbarSlot(0);
+    private void OnHotbarSlot2(InputValue value) => SelectHotbarSlot(1);
+    private void OnHotbarSlot3(InputValue value) => SelectHotbarSlot(2);
+    private void OnHotbarSlot4(InputValue value) => SelectHotbarSlot(3);
+    private void OnHotbarSlot5(InputValue value) => SelectHotbarSlot(4);
+    private void OnHotbarSlot6(InputValue value) => SelectHotbarSlot(5);
+    private void OnHotbarSlot7(InputValue value) => SelectHotbarSlot(6);
+    private void OnHotbarSlot8(InputValue value) => SelectHotbarSlot(7);
+
+    private void OnPrevious(InputValue value) =>
+        SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
+
+    private void OnNext(InputValue value) =>
+        SelectHotbarSlot((m_selectedHotbarIndex - 1 + kHotbarSlots) % kHotbarSlots);
+
+    // Private Methods — Internal
+    private void OnInventorySlotChanged(int flatIndex)
+    {
+        UpdatePlayerHand();
+
+        var data = new SlotData(m_inventory.GetSlot(flatIndex));
+        OnSlotChanged?.Invoke(new SlotChangedEvent(flatIndex, data));
+    }
 
     private void UpdatePlayerHand()
     {
-        Destroy(m_handItemGameObject);
-        m_handItemGameObject = null;
-        ItemStack itemsInHand = m_inventory[m_hotbarIndex, 0];
-        if (itemsInHand.Item is null)
+        if (m_playerHand == null)
             return;
-
-        m_handItemGameObject = Instantiate(itemsInHand.Item.Prefab, transform);
-        m_handItemGameObject.transform.localScale *= itemsInHand.Item.InHandScale;
-        Rigidbody rb = m_handItemGameObject.GetComponent<Rigidbody>();
-        Destroy(rb);
-        Outline outline = m_handItemGameObject.GetComponent<Outline>();
-        Destroy(outline);
-        ActivateHandItem();
+        m_playerHand.SetItemInHand(m_inventory.GetSlot(m_selectedHotbarIndex));
     }
 
-    private void ActivateHandItem()
-    {
-        IHandItem handItem = m_handItemGameObject?.GetComponent<IHandItem>();
-        if (handItem is MonoBehaviour bhv)
-            bhv.enabled = true;
-
-        if (handItem is IPlayerInventoryAware inventoryAware)
-            inventoryAware.SetInventory(this);
-    }
-
-    private void OnUse(InputValue value)
-    {
-        IHandItem handItem = m_handItemGameObject?.GetComponent<IHandItem>();
-        handItem?.Use(value);
-    }
-
-
-    private void OnPrevious(InputValue value)
-    {
-        m_hotbarIndex = (m_hotbarIndex - 1 + kWidth) % kWidth;
-        UpdatePlayerHand();
-    }
-
-    private void OnNext(InputValue value)
-    {
-        m_hotbarIndex = (m_hotbarIndex + 1) % kWidth;
-        UpdatePlayerHand();
-    }
 }

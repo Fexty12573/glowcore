@@ -10,7 +10,12 @@ public class Inventory
     [SerializeField][ReadOnly(true)] private int m_width;
     [SerializeField][ReadOnly(true)] private int m_height;
 
-    public event Action OnInventoryChange;
+    public int Width => m_width;
+    public int Height => m_height;
+    public int Size => m_items.Length;
+
+    public event Action<int> OnSlotChanged;
+
     public Inventory(int width, int height)
     {
         m_items = new ItemStack[width * height];
@@ -21,72 +26,169 @@ public class Inventory
             m_items[i] = new ItemStack();
     }
 
-    public bool AddItems(ref ItemStack stack)
+    public bool AddItems(ItemStack stack, int emptySlotStart = 0)
     {
-        var existing = GetSlotWithItem(0, stack.Item);
-        while (stack.Amount > 0 && existing != -1)
-        {
-            ref ItemStack toAddStack = ref m_items[existing];
-            if (!toAddStack.IsFull)
-                toAddStack.Add(ref stack);
+        if (stack == null)
+            return false;
 
-            existing = GetSlotWithItem(existing + 1, stack.Item);
+        for (var i = 0; i < m_items.Length && stack.Amount > 0; i++)
+        {
+            if (m_items[i].Item == stack.Item && m_items[i].Amount < m_items[i].Item.MaxStack)
+            {
+                m_items[i].Add(stack);
+                OnSlotChanged?.Invoke(i);
+            }
         }
 
         if (stack.Amount == 0)
+            return true;
+
+        var emptyIndex = FindFirstEmptySlotFrom(emptySlotStart);
+        if (emptyIndex >= 0)
         {
-            OnInventoryChange?.Invoke();
+            m_items[emptyIndex].Set(stack);
+            OnSlotChanged?.Invoke(emptyIndex);
             return true;
         }
 
-        var empty = GetFirstEmptySlot();
-        if (empty.HasValue)
-        {
-            this[empty.Value.x, empty.Value.y] = stack;
-            stack.Amount = 0;
-            stack.Item = null;
-            OnInventoryChange?.Invoke();
-            return true;
-        }
-
-        OnInventoryChange?.Invoke();
         return false;
     }
 
-    public bool RemoveItemsAt(int x, int y, int amount)
-    {
-        ref ItemStack itemStack = ref this[x, y];
-        if (itemStack.Amount < amount)
-            return false;
-
-        itemStack.Amount -= amount;
-        if (itemStack.Amount == 0)
-            itemStack.Item = null;
-
-        OnInventoryChange?.Invoke();
-        return true;
-    }
-
-    public ItemStack GetSlotWithItem(Item item)
-    {
-        foreach (var slot in m_items)
-        {
-            if (slot.Item == item && slot.Amount > 0)
-                return slot;
-        }
-
-        return new ItemStack();
-    }
-
-    public int GetSlotWithItem(int startIndex, Item item)
+    private int FindFirstEmptySlotFrom(int startIndex)
     {
         for (var i = startIndex; i < m_items.Length; i++)
         {
-            if (m_items[i].Item == item && m_items[i].Amount > 0)
+            if (m_items[i].Amount == 0)
+                return i;
+        }
+
+        for (var i = 0; i < startIndex; i++)
+        {
+            if (m_items[i].Amount == 0)
                 return i;
         }
 
         return -1;
+    }
+
+    public void Swap(int indexA, int indexB)
+    {
+        if (indexA < 0 || indexA >= m_items.Length)
+            return;
+        if (indexB < 0 || indexB >= m_items.Length)
+            return;
+        if (indexA == indexB)
+            return;
+
+        var slotA = m_items[indexA];
+        var slotB = m_items[indexB];
+
+        var tempItem = slotA.Item;
+        var tempAmount = slotA.Amount;
+
+        slotA.Set(slotB.Item, slotB.Amount);
+        slotB.Set(tempItem, tempAmount);
+
+        OnSlotChanged?.Invoke(indexA);
+        OnSlotChanged?.Invoke(indexB);
+    }
+
+    public bool TryMerge(int sourceIndex, int targetIndex)
+    {
+        if (sourceIndex < 0 || sourceIndex >= m_items.Length)
+            return false;
+        if (targetIndex < 0 || targetIndex >= m_items.Length)
+            return false;
+        if (sourceIndex == targetIndex)
+            return false;
+
+        var source = m_items[sourceIndex];
+        var target = m_items[targetIndex];
+
+        if (!source.IsValid || !target.IsValid)
+            return false;
+        if (source.Item != target.Item)
+            return false;
+
+        target.Add(source);
+        OnSlotChanged?.Invoke(sourceIndex);
+        OnSlotChanged?.Invoke(targetIndex);
+
+        return source.Amount == 0;
+    }
+
+    public void ClearSlot(int index)
+    {
+        if (index < 0 || index >= m_items.Length)
+            return;
+        m_items[index].Set(null, 0);
+        OnSlotChanged?.Invoke(index);
+    }
+
+
+    public ItemStack GetSlot(int index)
+    {
+        if (index < 0 || index >= m_items.Length)
+            return null;
+        return m_items[index];
+    }
+
+    public (ItemStack slot, int index) GetSlotWithItem(Item item)
+    {
+        for (var i = 0; i < m_items.Length; i++)
+        {
+            if (m_items[i].Item == item && m_items[i].Amount > 0)
+                return (m_items[i], i);
+        }
+
+        return (null, -1);
+    }
+
+    public int CountItem(Item item)
+    {
+        var total = 0;
+        for (var i = 0; i < m_items.Length; i++)
+        {
+            if (m_items[i].Item == item)
+                total += m_items[i].Amount;
+        }
+        return total;
+    }
+
+    public int RemoveItems(Item item, int amount)
+    {
+        var remaining = amount;
+        for (var i = 0; i < m_items.Length && remaining > 0; i++)
+        {
+            if (m_items[i].Item != item)
+                continue;
+
+            var take = Mathf.Min(m_items[i].Amount, remaining);
+            m_items[i].Amount -= take;
+            remaining -= take;
+
+            if (m_items[i].Amount == 0)
+                m_items[i].Set(null, 0);
+
+            OnSlotChanged?.Invoke(i);
+        }
+        return amount - remaining;
+    }
+
+    public bool CanAccept(Item item, int amount)
+    {
+        var space = 0;
+        for (var i = 0; i < m_items.Length; i++)
+        {
+            if (m_items[i].Amount == 0)
+                space += item.MaxStack;
+            else if (m_items[i].Item == item)
+                space += item.MaxStack - m_items[i].Amount;
+
+            if (space >= amount)
+                return true;
+        }
+        return space >= amount;
     }
 
     public Vector2Int? GetFirstEmptySlot()

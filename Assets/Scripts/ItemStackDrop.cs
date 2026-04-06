@@ -74,7 +74,7 @@ public class ItemStackDrop : MonoBehaviour
 
     private void BuildVisuals()
     {
-        if (!Stack.IsValid)
+        if (Stack == null || !Stack.IsValid)
             return;
 
         var visibleAmount = Math.Clamp(Stack.Amount, 1, 3);
@@ -129,7 +129,7 @@ public class ItemStackDrop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (m_collected || !Stack.IsValid)
+        if (m_collected || Stack == null || !Stack.IsValid)
             return;
 
         var root = other.transform.root;
@@ -139,8 +139,10 @@ public class ItemStackDrop : MonoBehaviour
         if (inventory == null)
             return;
 
-        inventory.Add(Stack);
-        m_collected = true;
-        Destroy(gameObject);
+        if (inventory.CanAcceptItem(Stack.Item, Stack.Amount) && inventory.AddItem(Stack))
+        {
+            m_collected = true;
+            Destroy(gameObject);
+        }
     }
 }

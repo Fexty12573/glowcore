@@ -1,4 +1,3 @@
-using ScriptableObjects;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -24,20 +23,15 @@ namespace GlowCore.World
         // Public Methods
         public void Interact()
         {
-            ItemStack itemsInHand = m_playerInventory.ItemsInHand;
-            if (itemsInHand.Item is null)
+            SlotData itemsInHand = m_playerInventory.GetSlotData(m_playerInventory.SelectedHotbarIndex);
+            if (!itemsInHand.IsValid)
                 return;
 
-            if (itemsInHand.Item.Name == "Wood")
+            if (itemsInHand.Item.Name == "Wood" && itemsInHand.Amount >= 1)
             {
-                int woodAmount = itemsInHand.Amount;
-                if (!m_playerInventory.ConsumeItemInHand(woodAmount))
-                {
-                    Debug.LogError("Failed to consume wood to feed GlowCore.");
-                    return;
-                }
-                gameObject.TryGetComponent(out Fire fire);
-                fire?.FeedWood(woodAmount);
+                m_playerInventory.ConsumeHandItem(1);
+                gameObject.TryGetComponent<Fire>(out Fire fire);
+                fire?.FeedWood(1);
             }
         }
 
