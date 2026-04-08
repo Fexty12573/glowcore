@@ -40,12 +40,6 @@
 ))
 
 ==== What went well
-- good communication
-- it shows interesst in project
-- lueets züüg gnau ah (hihihi schiizerdüütsch)
-- review comments werden hinterfagt nicht nur blind akzeptiert
-- everything gets together (working game)
-
 - Good communication within the team
 - Strong interest and engagement in the project
 - Attention to detail
@@ -63,7 +57,7 @@
   [Send message to advisor about feedback from last review],
   [Dominik],
   [10.04.2026],
-  [Send message to adivosr about review 3, point A5. Remove A5 from checklist because we don't have external systems.],
+  [Send message to advisor about review 3, point A5. Remove A5 from checklist because we don't have external systems.],
   [Dominik],
   [10.04.2026],
 ))

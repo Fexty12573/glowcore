@@ -3,10 +3,10 @@
 // ==============================
 // 4) Sprint Planning
 // ==============================
-=== Sprint Planning / DD.MM.YYYY
+=== Sprint Planning / 03.04.2026
 #meeting_info(
   date: "03.04.2026",
-  sprint: "Sprint 3",
+  sprint: "Sprint 4",
   lead: "Cedric Cathomas",
   scribe: "Dominik Wyss",
   time: "14:00–15:30",
