@@ -30,4 +30,5 @@ public interface IInventoryService
     event Action<int> OnHotbarSelectionChanged;
     event Action<bool> OnInventoryToggled;
     event Action OnCraftingToggled;
+    event Action<bool> OnCraftingTableToggled;
 }

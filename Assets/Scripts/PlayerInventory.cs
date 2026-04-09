@@ -17,18 +17,22 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     private Inventory m_inventory;
     private int m_selectedHotbarIndex;
     private bool m_isOpen;
+    private bool m_isCraftingTableOpen;
 
     // IInventoryService — Properties
     public int SlotCount => m_inventory.Size;
     public int HotbarSlotCount => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
     public bool IsOpen => m_isOpen;
+    public bool IsCraftingTableOpen => m_isCraftingTableOpen;
 
     // IInventoryService — Events
     public event Action<SlotChangedEvent> OnSlotChanged;
     public event Action<int> OnHotbarSelectionChanged;
     public event Action<bool> OnInventoryToggled;
     public event Action OnCraftingToggled;
+    public event Action<bool> OnCraftingTableToggled;
+    public event Action OnCloseUIRequested;
 
     // Public Methods — IInventoryService Queries
     public SlotData GetSlotData(int flatIndex)
@@ -83,6 +87,12 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
         OnInventoryToggled?.Invoke(m_isOpen);
     }
 
+    public void SetCraftingTableOpen(bool open)
+    {
+        m_isCraftingTableOpen = open;
+        OnCraftingTableToggled?.Invoke(open);
+    }
+
     // Public Methods — Game Logic (not on IInventoryService)
     public void ConsumeHandItem(int amount)
     {
@@ -113,6 +123,13 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     {
         if (m_isOpen)
             OnCraftingToggled?.Invoke();
+    }
+
+    private void OnCloseUI(InputValue value)
+    {
+        if (m_isOpen)
+            SetInventoryOpen(false);
+        OnCloseUIRequested?.Invoke();
     }
 
     private void OnHotbarSlot1(InputValue value) => SelectHotbarSlot(0);

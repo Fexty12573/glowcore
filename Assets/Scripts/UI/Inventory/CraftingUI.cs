@@ -1,19 +1,23 @@
+using System;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
 {
     public class CraftingUI : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private PlayerInventory m_playerInventory;
         [SerializeField] private CanvasGroup m_panelCanvasGroup;
         [SerializeField] private Transform m_contentParent;
         [SerializeField] private GameObject m_recipeRowPrefab;
         [SerializeField] private TooltipUI m_tooltip;
 
         [Header("Recipes")]
-        [SerializeField] private Recipe[] m_recipes;
+        [SerializeField] private RecipeList m_recipeList;
+
+        [Header("Close Button")]
+        [SerializeField] private Button m_closeButton;
 
         private IInventoryService m_inventoryService;
         private ICraftingService m_craftingService;
@@ -24,8 +28,18 @@ namespace GlowCore.UI.Inventory
 
         private void Start()
         {
-            m_inventoryService = m_playerInventory;
-            m_craftingService = new CraftingSystem(m_inventoryService, m_recipes);
+            m_inventoryService = FindFirstObjectByType<PlayerInventory>();
+            if (m_inventoryService == null)
+            {
+                Debug.LogError("CraftingUI: Could not find PlayerInventory in scene.");
+                return;
+            }
+
+            if (m_closeButton != null)
+                m_closeButton.onClick.AddListener(Hide);
+
+            var handRecipes = Array.FindAll(m_recipeList.Recipes, r => !r.RequiresCraftingTable);
+            m_craftingService = new CraftingSystem(m_inventoryService, handRecipes);
 
             BuildRows();
             SetVisible(false);
@@ -36,6 +50,9 @@ namespace GlowCore.UI.Inventory
 
         private void OnDestroy()
         {
+            if (m_closeButton != null)
+                m_closeButton.onClick.RemoveListener(Hide);
+
             if (m_craftingService != null)
             {
                 m_craftingService.OnRecipesRefreshed -= OnRecipesRefreshed;

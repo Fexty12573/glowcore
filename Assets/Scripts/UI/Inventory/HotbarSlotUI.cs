@@ -15,7 +15,7 @@ namespace GlowCore.UI.Inventory
         [SerializeField] private TextMeshProUGUI m_keyLabel;
         [SerializeField] private Image m_border;
 
-        private IInventoryService m_service;
+        private IInventoryService m_inventoryService;
         private int m_hotbarIndex;
         private bool m_isSelected;
         private bool m_isHovered;
@@ -23,7 +23,7 @@ namespace GlowCore.UI.Inventory
 
         public void Initialize(IInventoryService service, int hotbarIndex)
         {
-            m_service = service;
+            m_inventoryService = service;
             m_hotbarIndex = hotbarIndex;
 
             if (m_keyLabel != null)
@@ -32,7 +32,7 @@ namespace GlowCore.UI.Inventory
                 m_keyLabel.color = UIColors.WhiteFaint;
             }
 
-            Refresh(m_service.GetSlotData(hotbarIndex));
+            Refresh(m_inventoryService.GetSlotData(hotbarIndex));
         }
 
         public void Refresh(SlotData data)
@@ -51,7 +51,7 @@ namespace GlowCore.UI.Inventory
         public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
-                m_service?.SelectHotbarSlot(m_hotbarIndex);
+                m_inventoryService?.SelectHotbarSlot(m_hotbarIndex);
         }
 
         public void OnPointerEnter(PointerEventData eventData)

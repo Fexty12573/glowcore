@@ -4,44 +4,51 @@ namespace GlowCore.UI.Inventory
 {
     public class HotbarUI : MonoBehaviour
     {
-        [SerializeField] private PlayerInventory m_playerInventory;
         [SerializeField] private Transform m_slotParent;
         [SerializeField] private GameObject m_slotPrefab;
         [SerializeField] private CanvasGroup m_canvasGroup;
 
         private const float kDimmedAlpha = 0.35f;
 
-        private IInventoryService m_service;
+        private IInventoryService m_inventoryService;
         private HotbarSlotUI[] m_slots;
 
         private void Start()
         {
-            m_service = m_playerInventory;
+            m_inventoryService = FindFirstObjectByType<PlayerInventory>();
+            if (m_inventoryService == null)
+            {
+                Debug.LogError("HotbarUI: Could not find PlayerInventory in scene.");
+                return;
+            }
+
             BuildSlots();
-            m_service.OnHotbarSelectionChanged += OnSelectionChanged;
-            m_service.OnSlotChanged += OnSlotDataChanged;
-            m_service.OnInventoryToggled += OnInventoryToggled;
+            m_inventoryService.OnHotbarSelectionChanged += OnSelectionChanged;
+            m_inventoryService.OnSlotChanged += OnSlotDataChanged;
+            m_inventoryService.OnInventoryToggled += OnInventoryToggled;
+            m_inventoryService.OnCraftingTableToggled += OnInventoryToggled;
             UpdateSelection();
         }
 
         private void OnDestroy()
         {
-            if (m_service != null)
+            if (m_inventoryService != null)
             {
-                m_service.OnHotbarSelectionChanged -= OnSelectionChanged;
-                m_service.OnSlotChanged -= OnSlotDataChanged;
-                m_service.OnInventoryToggled -= OnInventoryToggled;
+                m_inventoryService.OnHotbarSelectionChanged -= OnSelectionChanged;
+                m_inventoryService.OnSlotChanged -= OnSlotDataChanged;
+                m_inventoryService.OnInventoryToggled -= OnInventoryToggled;
+                m_inventoryService.OnCraftingTableToggled -= OnInventoryToggled;
             }
         }
 
         private void BuildSlots()
         {
-            m_slots = new HotbarSlotUI[m_service.HotbarSlotCount];
-            for (var i = 0; i < m_service.HotbarSlotCount; i++)
+            m_slots = new HotbarSlotUI[m_inventoryService.HotbarSlotCount];
+            for (var i = 0; i < m_inventoryService.HotbarSlotCount; i++)
             {
                 var go = Instantiate(m_slotPrefab, m_slotParent);
                 var slot = go.GetComponent<HotbarSlotUI>();
-                slot.Initialize(m_service, i);
+                slot.Initialize(m_inventoryService, i);
                 m_slots[i] = slot;
             }
         }
@@ -53,7 +60,7 @@ namespace GlowCore.UI.Inventory
 
         private void OnSlotDataChanged(SlotChangedEvent e)
         {
-            if (m_service.IsHotbarSlot(e.SlotIndex))
+            if (m_inventoryService.IsHotbarSlot(e.SlotIndex))
             {
                 m_slots[e.SlotIndex].Refresh(e.Data);
             }
@@ -76,7 +83,7 @@ namespace GlowCore.UI.Inventory
         private void UpdateSelection()
         {
             for (var i = 0; i < m_slots.Length; i++)
-                m_slots[i].SetSelected(i == m_service.SelectedHotbarIndex);
+                m_slots[i].SetSelected(i == m_inventoryService.SelectedHotbarIndex);
         }
 
         public void RefreshAll()
@@ -84,7 +91,7 @@ namespace GlowCore.UI.Inventory
             if (m_slots == null)
                 return;
             for (var i = 0; i < m_slots.Length; i++)
-                m_slots[i].Refresh(m_service.GetSlotData(i));
+                m_slots[i].Refresh(m_inventoryService.GetSlotData(i));
         }
     }
 }
