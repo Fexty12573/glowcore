@@ -1,13 +1,12 @@
 using GlowCore.UI.Inventory;
-using GlowCore.World;
 using UnityEngine;
 
 public class CraftingTableInteractable : MonoBehaviour, IInteractable
 {
     // Instance Fields
+    [SerializeField] private float m_closeDistance = 5f;
     private CraftingTableUI m_craftingTableUI;
     private PlayerInventory m_playerInventory;
-    private float m_closeDistance;
     private bool m_isOpen;
 
     // Public Methods
@@ -32,9 +31,6 @@ public class CraftingTableInteractable : MonoBehaviour, IInteractable
             Debug.LogError("CraftingTableInteractable: Could not find PlayerInventory in scene.");
             return;
         }
-
-        var node = GetComponent<Node>();
-        m_closeDistance = node != null ? node.GetInteractionRange() * 1f : 5f;
 
         m_playerInventory.OnInventoryToggled += OnInventoryToggled;
         m_playerInventory.OnCloseUIRequested += OnCloseUIRequested;
