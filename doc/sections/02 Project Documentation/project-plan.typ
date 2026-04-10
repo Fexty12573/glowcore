@@ -384,7 +384,7 @@ In agile project management it is common to reevaluate the Long Term Plan during
 ) <InitialMilestones>
 
 ====== Updated Milestones as of 07.04.2026
-Milestone M08 - Beta Release was updated and the combat system and the automation mechanics were removed. The reduction in scope allows the team to deliver a stable and more polished game at the end. We prioritize quality over quantity. If there is enough time at the end of the project, we can still implement the features as a bonus.
+Milestone M08 - Beta Release was updated and the combat system and the automation mechanics were removed. The reduction in scope allows the team to deliver a stable and more polished game at the end. The savestate system was moved from Alpha to Beta. We prioritize quality over quantity. If there is enough time at the end of the project, we can still implement the features as a bonus.
 #figure(
   table(
     columns: (0.3fr, 1fr, 1fr, 2fr),
@@ -446,14 +446,14 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
     [Alpha Release],
     [10.04.2026],
     [
-      MVP is done and working. Core gameplay Mechanics are implemented. Player can craft, build, expand the map and he has an inventory. The player can save his savestate.
+      MVP is done and working. Core gameplay Mechanics are implemented. Player can craft, build, expand the map and he has an inventory.
     ],
 
     [M09],
     [Beta Release],
     [15.05.2026],
     [
-      More Biomes and Materials are added. There is a title screen and a settings menu. There are more GlowCore Phases.
+      More Biomes and Materials are added. There is a title screen and a settings menu. There are more GlowCore Phases. The player can save his savestate.
     ],
 
     [M10],
