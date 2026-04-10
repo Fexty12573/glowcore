@@ -720,7 +720,7 @@ The below table shows the risk assessment of the identified risks, after mitigat
   supplement: [Table],
 )
 
-==== Actual Risk Matrix (14.04.2026) <actual-risk-matrix-14.04.2026>
+==== Assessed Risk Matrix (14.04.2026) <assessed-risk-matrix-14.04.2026>
 
 The below table shows the risk assessment of the identified risks, after mitigation strategies have been applied.
 
@@ -760,7 +760,7 @@ The below table shows the risk assessment of the identified risks, after mitigat
     risk-cell("Medium"),
     [None], table.cell(fill: cell-bg-eliminated, colspan: 3)[], table.cell(fill: cell-bg-eliminated)[R03],
   ),
-  caption: [Actual Risk Matrix (14.04.2026)],
+  caption: [Assessed Risk Matrix (14.04.2026)],
   supplement: [Table],
 )
 ==== Adjustment of Current Risk Assessment
