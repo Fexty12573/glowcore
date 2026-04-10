@@ -48,7 +48,13 @@ namespace GlowCore.UI.Inventory
             m_panelCanvasGroup?.SetVisible(visible);
 
             if (m_backdropCanvasGroup != null)
+            {
                 m_backdropCanvasGroup.alpha = visible ? 1f : 0f;
+                m_backdropCanvasGroup.blocksRaycasts = visible;
+            }
+
+            if (!visible && m_inventoryUI != null)
+                m_inventoryUI.CancelHeldItem();
 
             if (visible)
             {
@@ -139,7 +145,11 @@ namespace GlowCore.UI.Inventory
             }
         }
 
-        private void OnCloseButtonClicked() => OnCloseRequested?.Invoke();
+        private void OnCloseButtonClicked()
+        {
+            SetVisible(false);
+            OnCloseRequested?.Invoke();
+        }
 
         private void OnRecipesRefreshed()
         {

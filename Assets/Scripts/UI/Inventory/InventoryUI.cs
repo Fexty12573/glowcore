@@ -131,7 +131,10 @@ namespace GlowCore.UI.Inventory
             m_panelCanvasGroup?.SetVisible(visible);
 
             if (m_backdropCanvasGroup != null)
+            {
                 m_backdropCanvasGroup.alpha = visible ? 1f : 0f;
+                m_backdropCanvasGroup.blocksRaycasts = visible;
+            }
         }
 
         public void OnSlotPressed(int slotIndex)
@@ -230,7 +233,7 @@ namespace GlowCore.UI.Inventory
             m_inventoryService.DropItem(m_heldSlotIndex, dropPos);
         }
 
-        private void CancelHeldItem()
+        public void CancelHeldItem()
         {
             var previousHeld = m_heldSlotIndex;
 
