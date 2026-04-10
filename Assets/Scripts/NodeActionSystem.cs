@@ -57,6 +57,8 @@ public class NodeActionSystem : MonoBehaviour
     {
         if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen))
         {
+            if (m_currentNode != null)
+                OnChangeSelectedNode?.Invoke(null);
             Clear();
             return;
         }
