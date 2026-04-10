@@ -166,16 +166,16 @@ The following table provides a compact overview of all Use Cases, their persona,
     align: left,
     fill: (x, y) => if y == 0 { luma(230) },
     [*ID*], [*Name*], [*Persona*], [*Priority*], [*Verify at*], [*Status*],
-    [@UC01], [Install Game], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc01")],
-    [@UC02], [Save Game], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc02")],
+    [@UC01], [Install Game], [Casual & Dedicated Player], [High -- MVP], [M09 Beta], [#uc-status-box("uc01")],
+    [@UC02], [Save Game], [Casual & Dedicated Player], [High -- MVP], [M09 Beta], [#uc-status-box("uc02")],
     [@UC03], [Break Nodes], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc03")],
     [@UC04], [Expand Map], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc04")],
     [@UC05], [Store Items], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc05")],
     [@UC06], [Craft Items], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc06")],
     [@UC07], [Build Nodes], [Casual & Dedicated Player], [High -- MVP], [M08 Alpha], [#uc-status-box("uc07")],
     [@UC08], [Experience Story], [Casual Player], [Low], [M10 Release], [#uc-status-box("uc08")],
-    [@UC09], [Fight Enemies], [Casual & Dedicated Player], [Middle], [M09 Beta], [#uc-status-box("uc09")],
-    [@UC10], [Automate Resource Gathering], [Dedicated Player], [Middle], [M09 Beta], [#uc-status-box("uc10")],
+    [@UC09], [Fight Enemies], [Casual & Dedicated Player], [Low], [M10 Release], [#uc-status-box("uc09")],
+    [@UC10], [Automate Resource Gathering], [Dedicated Player], [Middle], [M10 Release], [#uc-status-box("uc10")],
     [@UC11], [Change Settings], [Dedicated Player], [Middle], [M09 Beta], [#uc-status-box("uc11")],
   ),
   caption: [UC Overview -- All Use Cases at a Glance],
@@ -266,7 +266,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   id: "UC09",
   name: "Fight Enemies",
   persona: "Casual Player & Dedicated Player",
-  priority: "Middle",
+  priority: "Low",
   description: "The player can engage in combat with enemies. Defeated enemies drop items that are useful for the player. When the enemy hits the player, he loses hitpoints. When the player has no hitpoints left, he loses some of his items and respawns near the center of the map.",
   result: [],
   uc_caption: "UC09 - Fight Enemies",
@@ -354,9 +354,9 @@ Each NFR is documented with a description, concrete acceptance criteria, a measu
 - *MVP Relevance*: \
   - *Required* -- must be fulfilled for the MVP.\
   - *Optional* -- planned for a later stage, not required for MVP delivery.
-- *Importance*: 
+- *Importance*:
   - *High* -- critical for the product.
-  - *Medium* -- important but not blocking. 
+  - *Medium* -- important but not blocking.
   - *Low* -- nice to have.
 
 \
@@ -404,18 +404,35 @@ The following table provides a compact overview of all non-functional requiremen
     [@NFR301], [Save File Portability], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr301")],
     [@NFR302], [Game Progress Persistence], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr302")],
     [@NFR303], [Save Data Integrity], [Reliability], [Required / High], [M08 Alpha], [#status-box("nfr303")],
-    [@NFR401], [Extensibility of Game\ Systems], [Maintainability], [Optional /\ Medium], [M09 Beta], [#status-box("nfr401")],
+    [@NFR401],
+    [Extensibility of Game\ Systems],
+    [Maintainability],
+    [Optional /\ Medium],
+    [M09 Beta],
+    [#status-box("nfr401")],
+
     [@NFR402], [Automated Test Coverage], [Maintainability], [Required /\ Medium], [M09 Beta], [#status-box("nfr402")],
     [@NFR501], [Multi-Platform Support], [Portability], [Required /\ Medium], [M09 Beta], [#status-box("nfr501")],
-    [@NFR502], [Engine and Rendering\, Pipeline], [Portability], [Optional / Low], [M10 Release], [#status-box("nfr502")],
-    [@NFR503], [Display Resolution Support], [Portability], [Optional /\ Medium], [M10 Release], [#status-box("nfr503")],
+    [@NFR502],
+    [Engine and Rendering\, Pipeline],
+    [Portability],
+    [Optional / Low],
+    [M10 Release],
+    [#status-box("nfr502")],
+
+    [@NFR503],
+    [Display Resolution Support],
+    [Portability],
+    [Optional /\ Medium],
+    [M10 Release],
+    [#status-box("nfr503")],
   ),
   caption: [NFR Overview -- All Non-Functional Requirements at a Glance],
   supplement: [Table],
 )
 
 
-Verification is tied to project milestones (see @Milestones) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
+Verification is tied to project milestones (see @UpdatedMilestones) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
 
 - *M08 -- Alpha Release (10.04.2026)*: All Required / High NFRs must pass. This is the MVP gate.
 - *M09 -- Beta Release (15.05.2026)*: Required / Medium and Optional / Medium NFRs are verified. Performance tuning and playtesting rounds.
@@ -431,24 +448,16 @@ The priority matrix visualizes the distribution of NFRs across the two priority 
     stroke: 0.5pt + gray,
     align: left,
     fill: (x, y) => {
-      if y == 0 or x == 0 { luma(230) }
-      else if x == 1 and y == 1 { prio-req-high }
-      else if x == 2 and y == 1 { prio-empty }
-      else if x == 1 and y == 2 { prio-req-med }
-      else if x == 2 and y == 2 { prio-opt-med }
-      else if x == 1 and y == 3 { prio-empty }
-      else if x == 2 and y == 3 { prio-opt-low }
+      if y == 0 or x == 0 { luma(230) } else if x == 1 and y == 1 { prio-req-high } else if x == 2 and y == 1 {
+        prio-empty
+      } else if x == 1 and y == 2 { prio-req-med } else if x == 2 and y == 2 { prio-opt-med } else if (
+        x == 1 and y == 3
+      ) { prio-empty } else if x == 2 and y == 3 { prio-opt-low }
     },
     [], [*Required (MVP)*], [*Optional (Post-MVP)*],
-    [*High*],
-    [NFR101, NFR102, NFR103 \ NFR201, NFR202, NFR203 \ NFR301, NFR302, NFR303],
-    [--],
-    [*Medium*],
-    [NFR104, NFR402, NFR501],
-    [NFR105, NFR204, NFR206 \ NFR401, NFR503],
-    [*Low*],
-    [--],
-    [NFR205, NFR502],
+    [*High*], [NFR101, NFR102, NFR103 \ NFR201, NFR202, NFR203 \ NFR301, NFR302, NFR303], [--],
+    [*Medium*], [NFR104, NFR402, NFR501], [NFR105, NFR204, NFR206 \ NFR401, NFR503],
+    [*Low*], [--], [NFR205, NFR502],
   ),
   caption: [NFR Priority Matrix -- MVP Relevance vs. Importance],
   supplement: [Table],

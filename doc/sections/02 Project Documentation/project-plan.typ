@@ -271,7 +271,7 @@ The project meetings follow mainly the Scrum standard. With weekly Scrum meeting
 === Schedule
 The project follows the OST internal SCRUM+ framework for its overall organization. SCRUM+ combines elements of Scrum with the Rational Unified Process (RUP). Long-term planning is based on the RUP approach, while short-term development is organized using Scrum with two-week iterations.
 
-At the start of each iteration, we estimate all tickets with storypoints. The story *GC-54 Make Player* is the reference story which is worth 5 story points.
+At the start of each iteration, we estimate all tickets with storypoints. The story *GC-54 Make Player* is the reference story which is worth 5 storypoints.
 
 ==== Work Items
 We work with 5 types of Work Items
@@ -297,6 +297,8 @@ The Long Term Planning is separated into two categories:
 ===== Milestones
 The milestones for the review meetings and for the releases are interleaved and independent.
 
+In agile project management it is common to reevaluate the Long Term Plan during the project. For this reason there are two Milestone Tables. The first table shows the Initial Milestones that were defined at the beginning of the project and the second table contains updated Milestones as of 07.04.2026.
+====== Initial Milestones
 #figure(
   table(
     columns: (0.3fr, 1fr, 1fr, 2fr),
@@ -377,9 +379,94 @@ The milestones for the review meetings and for the releases are interleaved and 
       The game is polished and has no mayor bugs. The game has a beginning and an ending.
     ],
   ),
-  caption: [Milestones],
+  caption: [Initial Milestones],
   supplement: [Table],
-) <Milestones>
+) <InitialMilestones>
+
+====== Updated Milestones as of 07.04.2026
+Milestone M08 - Beta Release was updated and the combat system and the automation mechanics were removed. The reduction in scope allows the team to deliver a stable and more polished game at the end. We prioritize quality over quantity. If there is enough time at the end of the project, we can still implement the features as a bonus.
+#figure(
+  table(
+    columns: (0.3fr, 1fr, 1fr, 2fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+
+    [*Nr*], [*Milestone Name*], [*Date*], [*Description*],
+
+    [M01],
+    [Review 1],
+    [10.03.2026],
+    [
+      Initial Project Setup
+    ],
+
+    [M02],
+    [Review 2],
+    [24.03.2026],
+    [
+      Requirements
+    ],
+
+    [M03],
+    [Review 3],
+    [14.04.2026],
+    [
+      End of Elaboration
+    ],
+
+    [M04],
+    [Review 4],
+    [28.04.2026 ],
+    [
+      Quality
+    ],
+
+    [M05],
+    [Review 5],
+    [12.05.2026],
+    [
+      Architecture
+    ],
+
+    [M06],
+    [Project Presentation],
+    [12.06.2026],
+    [
+      Final Presentation to SEProject-Advisors and fellow students. Completion of SEProject.
+    ],
+
+    [M07],
+    [Pre-Alpha Release],
+    [20.03.2026],
+    [
+      First playable prototype is ready. Core gameplay loops are implemented. The player can chop trees, pick up wood and expand the GlowCore.
+    ],
+
+    [M08],
+    [Alpha Release],
+    [10.04.2026],
+    [
+      MVP is done and working. Core gameplay Mechanics are implemented. Player can craft, build, expand the map and he has an inventory. The player can save his savestate.
+    ],
+
+    [M09],
+    [Beta Release],
+    [15.05.2026],
+    [
+      More Biomes and Materials are added. There is a title screen and a settings menu. There are more GlowCore Phases.
+    ],
+
+    [M10],
+    [Official Release and Final Submission],
+    [05.06.2026],
+    [
+      The game is polished and has no mayor bugs. The game has a beginning and an ending.
+    ],
+  ),
+  caption: [Updated Milestones],
+  supplement: [Table],
+) <UpdatedMilestones>
+
 
 #v(1em)
 ===== Epics
@@ -472,9 +559,18 @@ The milestones for the review meetings and for the releases are interleaved and 
 The following image shows the Timeline in Jira as of 04.03.2026.
 #figure(
   image("../../resources/02 Project Documentation/jira-epics-timeline.png"),
-  caption: [Jira Timeline],
+  caption: [Initial Jira Timeline],
   supplement: [Image],
 )
+
+#v(1em)
+The Long Term Plan was updated on 07.04.2026. The following image shows the new Timeline in Jira as of 07.04.2026.
+#figure(
+  image("../../resources/02 Project Documentation/jira-updated-epics-timeline.png"),
+  caption: [Updated Jira Timeline],
+  supplement: [Image],
+)
+
 #v(1em)
 
 ===== Initial Backlog & MVP
@@ -521,6 +617,22 @@ In this sprint the first actual work on the game was carried out in Unity. The f
 )
 
 #pagebreak()
+
+===== Sprint 3 20.03.2026 - 03.04.2026
+In Sprint 3 we focused on implementing the MVP. The planned amount of storypoints was too ambitious so we had to move some Tasks into Sprint 4. From this experience we gained a better understanding of out team's capacity.
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-3-burndown.png"),
+  caption: [Sprint 3 Burndown Chart],
+  supplement: [Image],
+)
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-3-backlog.png"),
+  caption: [Sprint 3 Backlog],
+  supplement: [Image],
+)
+
 
 === Risk Management
 
