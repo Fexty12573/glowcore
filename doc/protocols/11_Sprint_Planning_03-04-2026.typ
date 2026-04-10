@@ -3,41 +3,21 @@
 // ==============================
 // 4) Sprint Planning
 // ==============================
-=== Sprint Planning / DD.MM.YYYY
+=== Sprint Planning / 03.04.2026
 #meeting_info(
-  date: "DD.MM.YYYY",
+  date: "03.04.2026",
   sprint: "Sprint 4",
-  lead: "PO / SM",
-  scribe: "Name",
-  time: "16:00–17:00",
-  location: "Room / Online",
-  participants: "Team A, Team B",
-  links: "Backlog link",
+  lead: "Cedric Cathomas",
+  scribe: "Dominik Wyss",
+  time: "14:00–15:30",
+  location: "Online",
+  participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera, Cedric Cathomas",
+  links: "-",
 )
 
 ==== Sprint goal
-- ...
-
-==== Selected backlog (commitment)
-#table(
-  columns: (0.9fr, 2.2fr, 0.8fr, 1fr),
-  stroke: 0.5pt + gray,
-  fill: (x, y) => if y == 0 { luma(230) },
-  [*ID*], [*Item*], [*Est.*], [*Owner*],
-  [T-123], [Implement login flow], [5], [Name],
-  [T-124], [Add CI pipeline], [3], [Name],
-)
-
-==== Risks / Dependencies
-- Dependency: ...
-- Risk: ...
-
-==== Todos
-#todo_table((
-  [Prepare demo script],
-  [Name],
-  [YYYY-MM-DD],
-  [Open],
-))
+- Finish tickets from old sprint
+- Working prototype with all core mechanics
+- Focus on diagramm and documentation changes for review 3
 
 #pagebreak()

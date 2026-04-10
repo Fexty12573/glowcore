@@ -30,8 +30,8 @@
     - Showed simple prototype for tree generation on border expansion.
     - Grid represented by 2D Array.
   ],
-  [Dominik],
   [Node Interaction System],
+  [Dominik],
   [
     - Setting for Interaction Range for every Node.
     - Problem with InputSystem to track how long a button is held.
