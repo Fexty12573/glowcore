@@ -98,7 +98,8 @@ namespace GlowCore.World
         public bool CreateNodeAt(GameObject prefab, Vector2Int tile)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
-            GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.identity, m_nodesParent);
+            // GC-142: Use prefab's own rotation so placed nodes respect their saved orientation
+            GameObject nodeObject = Instantiate(prefab, spawnPosition, prefab.transform.rotation, m_nodesParent);
             if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
             {
                 Destroy(nodeObject);
@@ -183,6 +184,7 @@ namespace GlowCore.World
             Node[,] newTiles = new Node[newSize, newSize];
             Vector2Int newOrigin = new(newSize / 2, newSize / 2);
 
+            var offset = new Vector2Int(newOrigin.x - m_origin.x, newOrigin.y - m_origin.y);
             for (var x = 0; x < m_gridSize; x++)
             {
                 for (var z = 0; z < m_gridSize; z++)
@@ -190,9 +192,7 @@ namespace GlowCore.World
                     if (m_tiles[x, z] == null)
                         continue;
 
-                    var newX = x + (newOrigin.x - m_origin.x);
-                    var newZ = z + (newOrigin.y - m_origin.y);
-                    newTiles[newX, newZ] = m_tiles[x, z];
+                    newTiles[x + offset.x, z + offset.y] = m_tiles[x, z];
                 }
             }
 
@@ -200,6 +200,8 @@ namespace GlowCore.World
             m_tiles = newTiles;
             m_gridSize = newSize;
             m_origin = newOrigin;
+
+            UpdateNodeTileIndices(offset);
 
             UpdateBorders();
             RegisterPendingNodes();
@@ -409,6 +411,22 @@ namespace GlowCore.World
             {
                 var j = Random.Range(0, i + 1);
                 (list[i], list[j]) = (list[j], list[i]);
+            }
+        }
+
+        private void UpdateNodeTileIndices(Vector2Int offset)
+        {
+            HashSet<Node> updated = new();
+            for (var x = 0; x < m_gridSize; x++)
+            {
+                for (var z = 0; z < m_gridSize; z++)
+                {
+                    Node node = m_tiles[x, z];
+                    if (node == null || !updated.Add(node))
+                        continue;
+                    for (var i = 0; i < node.TilesUsed.Count; i++)
+                        node.TilesUsed[i] += offset;
+                }
             }
         }
 

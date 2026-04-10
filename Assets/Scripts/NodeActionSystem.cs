@@ -55,8 +55,10 @@ public class NodeActionSystem : MonoBehaviour
 
     private void UpdateOutlineHover()
     {
-        if (m_playerInventory != null && m_playerInventory.IsOpen)
+        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen))
         {
+            if (m_currentNode != null)
+                OnChangeSelectedNode?.Invoke(null);
             Clear();
             return;
         }
@@ -135,7 +137,7 @@ public class NodeActionSystem : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (m_playerInventory != null && m_playerInventory.IsOpen)
+        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen))
             return;
 
         m_currentNode?.Interact();

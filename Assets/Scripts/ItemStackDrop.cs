@@ -86,7 +86,8 @@ public class ItemStackDrop : MonoBehaviour
                 Random.Range(-kVisualSpread, kVisualSpread));
 
             var visual = Instantiate(Stack.Item.Prefab, transform);
-            visual.transform.SetLocalPositionAndRotation(offset, Quaternion.identity);
+            // GC-142: Use prefab's own rotation so dropped visuals respect their saved orientation
+            visual.transform.SetLocalPositionAndRotation(offset, Stack.Item.Prefab.transform.rotation);
             visual.transform.localScale *= Stack.Item.DropScale;
 
             RemoveCollisions(visual);

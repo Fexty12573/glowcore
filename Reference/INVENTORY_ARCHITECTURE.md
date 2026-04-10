@@ -1,7 +1,7 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-04-04 (Icon type changed to Sprite; ItemIconHelper simplified; ConsumeHandItem takes amount)
+> Last updated: 2026-04-09 (CraftingTableInteractable rename fix; IInventoryService extended with IsCraftingTableOpen/OnCraftingTableToggled/OnCloseUIRequested; CraftingTableUI shows all global recipes; HotbarUI dims on crafting table open; NodeActionSystem guards on IsCraftingTableOpen; Escape closes UI)
 
 ---
 
@@ -64,6 +64,7 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `HotbarSlotCount` | Property | Hotbar size (8) |
 | `SelectedHotbarIndex` | Property | Currently selected hotbar slot |
 | `IsOpen` | Property | Whether inventory panel is open |
+| `IsCraftingTableOpen` | Property | Whether the crafting table panel is open |
 | `GetSlotData(int)` | Query | Returns `SlotData` snapshot for a flat index |
 | `CountItem(Item)` | Query | Total count of an item across all slots |
 | `CanAcceptItem(Item, int)` | Query | Can inventory hold this many of item? |
@@ -74,12 +75,15 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `SelectHotbarSlot(int)` | Command | Set active hotbar slot |
 | `ToggleInventory()` | Command | Toggle panel open/close |
 | `SetInventoryOpen(bool)` | Command | Set panel state explicitly |
+| `SetCraftingTableOpen(bool)` | Command | Set crafting table open state, fires `OnCraftingTableToggled` |
 | `RemoveItems(Item, int)` | Command | Remove items across slots, returns amount removed |
 | `AddItem(Item, int)` | Command | Add items to inventory |
 | `OnSlotChanged` | Event | `Action<SlotChangedEvent>` — fires with slot index + data snapshot |
 | `OnHotbarSelectionChanged` | Event | `Action<int>` — fires with new hotbar index |
 | `OnInventoryToggled` | Event | `Action<bool>` — fires with open state |
-| `OnCraftingToggled` | Event | `Action` — fires when C key pressed while open |
+| `OnCraftingToggled` | Event | `Action` — fires when C key pressed while inventory is open |
+| `OnCraftingTableToggled` | Event | `Action<bool>` — fires when crafting table is opened/closed |
+| `OnCloseUIRequested` | Event | `Action` — fires on Escape; closes any open UI (inventory or crafting table) |
 
 ### `ICraftingService` — (`Assets/Scripts/ICraftingService.cs`)
 
@@ -157,6 +161,7 @@ Defines a crafting recipe.
 | `Ingredients` | Ingredient[] | Array of required items and amounts |
 | `ResultItem` | Item | The item produced by crafting |
 | `ResultAmount` | int | How many of the result item (min 1) |
+| `RequiresCraftingTable` | bool | If true, recipe is excluded from hand-crafting (`CraftingUI` filters it out) |
 
 **`Ingredient`** (nested serializable struct): `Item` + `Amount` (min 1).
 
@@ -185,13 +190,16 @@ Lives on the Player GameObject. Owns the `Inventory` instance and delegates to i
 
 **Input Actions (event-driven, no Update polling):**
 - `OnInventory(InputValue)` → Tab key → `ToggleInventory()`
-- `OnCrafting(InputValue)` → C key → fires `OnCraftingToggled` (only when open)
+- `OnCrafting(InputValue)` → C key → fires `OnCraftingToggled` (only when inventory is open)
+- `OnCloseUI(InputValue)` → Escape key → closes inventory if open; always fires `OnCloseUIRequested` (used by `CraftingTableInteractable` to close the bench)
 - `OnHotbarSlot1..8(InputValue)` → keys 1-8 → `SelectHotbarSlot()`
 - `OnNext(InputValue)` / `OnPrevious(InputValue)` → scroll wheel navigation
 
 **Inspector fields:** `m_playerHand` — reference to the `PlayerHand` component.
 
-**Extra public method (not on `IInventoryService`):** `ConsumeHandItem(int amount)` — removes `amount` items from the currently selected hotbar slot. Used by `BlockBehaviour` after a successful block placement.
+**Extra public methods (not on `IInventoryService`):**
+- `ConsumeHandItem(int amount)` — removes `amount` items from the currently selected hotbar slot. Used by `BlockBehaviour` after a successful block placement.
+- `SetCraftingTableOpen(bool)` — sets `m_isCraftingTableOpen` and fires `OnCraftingTableToggled`. Called by `CraftingTableInteractable`.
 
 ### `IHandItem` — Interface (`Assets/Scripts/IHandItem.cs`)
 
@@ -234,7 +242,7 @@ Represents a dropped `ItemStack` in the world. Called by `PlayerInventory.DropIt
 
 ### `CraftingSystem` — Plain C# class, implements `ICraftingService` (`Assets/Scripts/CraftingSystem.cs`)
 
-Pure logic class. No MonoBehaviour, no UI. Created by `CraftingUI` in `Start()`.
+Pure logic class. No MonoBehaviour, no UI. Created independently by both `CraftingUI` and `CraftingTableUI` in their respective `Start()` methods — each instance owns its own filtered recipe slice.
 
 | Member | Purpose |
 |---|---|
@@ -280,9 +288,23 @@ the data layer. Initialized with `Initialize(InventoryUI owner, int slotIndex, S
 
 **Crafting panel controller.** Creates a `CraftingSystem` in `Start()` and passes it to rows.
 
-- Opens via `OnCraftingToggled` event from `IInventoryService` (C key)
+- Reads recipes from the global `RecipeList` asset, **filtering to `RequiresCraftingTable == false`** (hand-craftable only)
+- Opens via `OnCraftingToggled` event from `IInventoryService` (C key, only when inventory is open)
+- Closes when inventory closes (`OnInventoryToggled`)
 - No `Update()` — fully event-driven
 - Subscribes to `ICraftingService.OnRecipesRefreshed` for auto-refresh
+
+### `CraftingTableUI` — MonoBehaviour (`CraftingTableUI.cs`)
+
+**Crafting bench panel controller.** Opens when the player interacts with a crafting table node (E key).
+Combines a recipe list (left) with a read-only inventory display (right) in a single panel.
+
+- Reads **all** recipes from the global `RecipeList` asset — **no filtering** (the global list is expected to contain all recipes; table-only recipes are naturally only accessible here)
+- Creates its own `CraftingSystem` with the full recipe list
+- Right-side inventory display: 32 `ItemSlotUI` instances with `null` owner (read-only, no drag/click)
+- Inventory display stays in sync via `OnSlotChanged` (always subscribed, cheap no-op when hidden)
+- Opened/closed by `CraftingTableInteractable` via `SetVisible(bool)` — no direct key binding
+- Also auto-closes when: player walks out of range, inventory opens (Tab), or Escape is pressed
 
 ### `RecipeRowUI` — MonoBehaviour (`RecipeRowUI.cs`)
 
@@ -293,6 +315,7 @@ and `Craft()` through the interface. No direct inventory access.
 
 **Always-visible hotbar.** Uses `IInventoryService` for data and events.
 No `Update()` — number key input is handled by `PlayerInventory` via Input Actions.
+Dims (alpha 0.35, non-interactive) when either the inventory **or the crafting table** is open — subscribes to both `OnInventoryToggled` and `OnCraftingTableToggled`.
 
 ### `HotbarSlotUI` — MonoBehaviour (`HotbarSlotUI.cs`)
 
@@ -339,6 +362,17 @@ InventoryCanvas (Canvas — Screen Space Overlay, CanvasScaler 854×480)
   │     └── HotbarGrid (HorizontalLayoutGroup)
   │           └── [8 HotbarSlotUI spawned at runtime]
   │
+  ├── CraftingBenchPanel (CraftingTableUI + CanvasGroup — starts hidden)
+  │     ├── RecipeSection (VerticalLayoutGroup, 245px wide)
+  │     │     ├── TitleLabel (TMP — "CRAFTING BENCH", Cinzel Bold 11px, AccentDim)
+  │     │     ├── SubtitleLabel (TMP — "Advanced Recipes", Nunito 9px, WhiteFaint)
+  │     │     └── RecipeScrollView → Viewport → Content
+  │     │           └── [RecipeRowUI instances spawned at runtime — bench recipes only]
+  │     └── InventorySection (VerticalLayoutGroup, 210px wide)
+  │           ├── TitleLabel (TMP — "INVENTORY", Cinzel Bold 11px, AccentDim)
+  │           └── InventoryGrid (GridLayoutGroup: 36×36 cells, 3px spacing, 4 columns)
+  │                 └── [32 ItemSlotUI spawned at runtime — read-only, null owner]
+  │
   ├── CursorIcon (RawImage — 40×40, raycast OFF)
   │
   └── Tooltip (CanvasGroup — raycast OFF, interactable OFF)
@@ -378,13 +412,38 @@ InventoryUI.OnPointerUp → DropHeldItem()
   → CancelHeldItem(): unghost, hide cursor
 ```
 
-### Crafting
+### Crafting (hand — C key)
 ```
 RecipeRowUI click → ICraftingService.Craft(recipe)
   → CraftingSystem.Craft(recipe)
     → IInventoryService.RemoveItems() per ingredient
     → IInventoryService.AddItem() for result
     → OnSlotChanged fires per affected slot → UI auto-refreshes
+```
+
+### Crafting table interaction
+```
+Player presses E near crafting table
+  → NodeActionSystem.OnInteract() [guard: IsOpen==false AND IsCraftingTableOpen==false]
+    → Node.Interact() → CraftingTableInteractable.Interact()
+      → SetCraftingTableOpen(!m_isOpen)
+        → PlayerInventory.SetCraftingTableOpen(bool) → OnCraftingTableToggled fires
+        → CraftingTableUI.SetVisible(true/false)
+        → HotbarUI dims/restores (via OnCraftingTableToggled)
+
+Tab while crafting table is open
+  → PlayerInventory.ToggleInventory() → OnInventoryToggled(true)
+    → CraftingTableInteractable.OnInventoryToggled(true)
+      → SetCraftingTableOpen(false) → bench closes, inventory opens normally
+
+Escape while crafting table is open
+  → PlayerInventory.OnCloseUI() → OnCloseUIRequested fires
+    → CraftingTableInteractable.OnCloseUIRequested()
+      → SetCraftingTableOpen(false)
+
+Player walks out of interaction range
+  → CraftingTableInteractable.Update() detects distance > m_closeDistance
+    → SetCraftingTableOpen(false)
 ```
 
 ### Opening/closing inventory
@@ -413,7 +472,8 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | Action | Key | Receiver | Callback |
 |---|---|---|---|
 | Inventory | Tab | PlayerInventory | `OnInventory` → `ToggleInventory()` |
-| Crafting | C | PlayerInventory | `OnCrafting` → fires `OnCraftingToggled` |
+| Crafting | C | PlayerInventory | `OnCrafting` → fires `OnCraftingToggled` (only while inventory open) |
+| CloseUI | Escape | PlayerInventory | `OnCloseUI` → closes inventory if open; always fires `OnCloseUIRequested` |
 | HotbarSlot1–8 | 1–8 | PlayerInventory | `OnHotbarSlot1..8` → `SelectHotbarSlot()` |
 | Next | Scroll down | PlayerInventory | `OnNext` → decrement slot |
 | Previous | Scroll up | PlayerInventory | `OnPrevious` → increment slot |
@@ -431,7 +491,8 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `SlotData.cs` | Shared | Struct | Immutable slot snapshot + event payload |
 | `ScriptableObjects/Item.cs` | Data | ScriptableObject | Item type definition |
 | `ScriptableObjects/ItemStack.cs` | Data | Serializable class | Runtime stack instance |
-| `ScriptableObjects/Recipe.cs` | Data | ScriptableObject | Crafting recipe definition |
+| `ScriptableObjects/Recipe.cs` | Data | ScriptableObject | Crafting recipe definition (`RequiresCraftingTable` flag) |
+| `ScriptableObjects/RecipeList.cs` | Data | ScriptableObject | Global recipe registry — single asset shared by all crafting UIs |
 | `Inventory.cs` | Data | Plain C# class | Slot grid logic |
 | `PlayerInventory.cs` | Data | MonoBehaviour | Implements IInventoryService, owns Inventory |
 | `IHandItem.cs` | Data | Interface | Contract for usable held items |
@@ -439,9 +500,11 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `PlayerHand.cs` | Data | MonoBehaviour | In-hand item visual, enables IHandItem, wires SetInventory |
 | `ItemStackDrop.cs` | Data | MonoBehaviour | World-dropped item |
 | `CraftingSystem.cs` | Crafting | Plain C# class | Implements ICraftingService |
+| `CraftingTableInteractable.cs` | Data | MonoBehaviour | IInteractable — opens/closes CraftingTableUI on E key; auto-closes on Tab, Escape, or walking away |
 | `BlockBehaviour.cs` | Data | MonoBehaviour | IHandItem + IPlayerInventoryAware — block placement |
 | `UI/Inventory/InventoryUI.cs` | UI | MonoBehaviour | Panel controller + drag-and-drop |
-| `UI/Inventory/CraftingUI.cs` | UI | MonoBehaviour | Crafting panel, creates CraftingSystem |
+| `UI/Inventory/CraftingUI.cs` | UI | MonoBehaviour | Hand-crafting panel (C key), reads from RecipeList |
+| `UI/Inventory/CraftingTableUI.cs` | UI | MonoBehaviour | Bench crafting panel + read-only inventory display |
 | `UI/Inventory/RecipeRowUI.cs` | UI | MonoBehaviour | Single recipe row |
 | `UI/Inventory/ItemSlotUI.cs` | UI | MonoBehaviour | Single slot (grid + hotbar row) |
 | `UI/Inventory/HotbarUI.cs` | UI | MonoBehaviour | Standalone hotbar controller |
@@ -457,7 +520,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 - **UI depends only on interfaces** (`IInventoryService`, `ICraftingService`), never on `PlayerInventory`, `Inventory`, or `CraftingSystem` directly.
 - **`SlotData` is immutable.** UI receives snapshots via events and `Refresh(SlotData)` — never holds references to live `ItemStack` objects.
 - **No `Update()` in any inventory/UI script.** All input is event-driven via Input Actions; pointer events use EventSystem handlers.
-- **`CraftingSystem` is a plain C# class**, not a MonoBehaviour. Created by `CraftingUI` and disposed in `OnDestroy()`.
+- **`CraftingSystem` is a plain C# class**, not a MonoBehaviour. Created by `CraftingUI` and `CraftingTableUI`, each owning their own instance. Both are disposed in `OnDestroy()`.
 - **`PlayerInventory` is the `IInventoryService` implementor.** It wraps `Inventory.OnSlotChanged(int)` into rich `SlotChangedEvent` payloads.
 - **Crouch is now Left Ctrl**, C is Crafting toggle.
 - **`Item.Icon` is a `Sprite`.** Import textures with Texture Type = Sprite (2D and UI). Read/Write is **not** required. The `RawImage` drag cursor accesses `sprite.texture` directly — this is intentional.
@@ -465,6 +528,10 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 - **Hand item prefabs store `IHandItem` components disabled.** `PlayerHand.UpdateHandVisual()` enables them. Do not enable them in the prefab — that breaks the lifecycle ordering.
 - **`IPlayerInventoryAware` is called automatically** by `PlayerHand.UpdateHandVisual()` — no manual wiring needed beyond prefab setup.
 - **`Add()` fills hotbar first.** `PlayerInventory.Add()` passes `emptySlotStart = HotbarStartIndex`.
+- **`NodeActionSystem` blocks interaction while crafting table is open.** It guards on both `IsOpen` and `IsCraftingTableOpen` — hovering and interacting with world nodes is disabled while any UI is open.
+- **`CraftingTableUI` reads all global recipes** (no filter). `CraftingUI` is the one that filters to `RequiresCraftingTable == false`. If a recipe should only appear at the bench, set `RequiresCraftingTable = true` — it will be excluded from `CraftingUI` automatically.
+- **`CraftingTableInteractable` owns the open/close state** of the bench. It calls `PlayerInventory.SetCraftingTableOpen(bool)` — never set `IsCraftingTableOpen` from anywhere else.
+- **Escape fires `OnCloseUIRequested` unconditionally**, even when inventory is not open. `CraftingTableInteractable` uses this to close the bench UI without needing an inventory open state check.
 
 ---
 
@@ -481,7 +548,9 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 
 ### Add a new crafting recipe
 1. Create → Scriptable Objects → Recipe, fill fields
-2. Add to `CraftingUI.m_recipes` array in the InventoryCanvas prefab
+2. Add to the global `RecipeList` asset (`Assets/ScriptableObjects/Recipes/GlobalRecipeList.asset`) — both `CraftingUI` and `CraftingTableUI` read from it automatically
+3. Set `RequiresCraftingTable = true` if the recipe should only be available at a crafting table — `CraftingUI` will exclude it; `CraftingTableUI` will still show it (it shows all recipes)
+4. Leave `RequiresCraftingTable = false` for hand-craftable recipes — they appear in both UIs
 
 ### Add right-click actions
 Add `IPointerClickHandler` to `ItemSlotUI`, check for `InputButton.Right`,
