@@ -31,12 +31,17 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
 
     private void OnEnable()
     {
+        if (NodeActionSystem.Instance == null)
+            return;
         NodeActionSystem.Instance.OnChangeSelectedTile += HandleTileChanged;
-        // Initialize
         HandleTileChanged(NodeActionSystem.Instance.CurrentTile);
     }
 
-    private void OnDisable() => NodeActionSystem.Instance.OnChangeSelectedTile -= HandleTileChanged;
+    private void OnDisable()
+    {
+        if (NodeActionSystem.Instance != null)
+            NodeActionSystem.Instance.OnChangeSelectedTile -= HandleTileChanged;
+    }
 
     private void HandleTileChanged(Vector2Int? newTile)
     {

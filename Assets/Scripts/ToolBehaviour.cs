@@ -41,13 +41,16 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
 
     private void OnEnable()
     {
+        if (NodeActionSystem.Instance == null)
+            return;
         NodeActionSystem.Instance.OnChangeSelectedNode += HandleNodeChanged;
-        // Initialize
         HandleNodeChanged(NodeActionSystem.Instance.CurrentNode);
     }
 
     private void OnDisable()
     {
+        if (NodeActionSystem.Instance == null)
+            return;
         NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
         m_selectedNode?.EndHold();
     }
