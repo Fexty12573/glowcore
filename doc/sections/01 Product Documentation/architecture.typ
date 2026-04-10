@@ -37,7 +37,7 @@ We use Unity's Component-Based Architecture, where every GameObject has Componen
 We don't have a real *Entity Component System (ECS)* because we don't separate the logic from the data. To support a real ECS we would need to use Unity's *Data-Oriented Technology Stack (DOTS)*. For our project the additional complexity of DOTS would outweigh its performance benefits.
 
 ==== Singleton
-We use the Singleton Pattern where appropriate. In our game it definitively makes sense because we have systems that only exist once. For example there is only one Player and only one World-Grid.
+We use the Singleton Pattern where appropriate. In our game it definitely makes sense because we have systems that only exist once. For example there is only one Player and only one World-Grid.
 
 ==== Dependency Injection
 Games often have tightly coupled systems. To counter this we use dependency injection wherever appropriate to decrease coupling.
