@@ -1,5 +1,55 @@
 == Architecture
 
+=== C4 Model
+To model the architecture of GlowCore we decided to use the C4 Model. The model is designed to provide stakeholders new to the project a high-level overview of GlowCore with different levels of abstraction. We decided against arc42 because it is too extensive for this project.
+
+We intentionally omitted the Code Diagram (Layer 4 of C4) in this documentation because of how much complexity it would add without providing much value. This is common in project management to omitt the Code Diagram.
+
+
+==== System Context Diagram
+
+#figure(
+  image("../../resources/01 Product Documentation/C4SystemContextDiagram.png", width: 40%),
+  caption: [C4 System Context Diagram],
+  supplement: [Image],
+)
+
+#pagebreak()
+==== Container Diagram
+
+#figure(
+  image("../../resources/01 Product Documentation/C4ContainerDiagram.png"),
+  caption: [C4 Container Diagram],
+  supplement: [Image],
+)
+
+==== Component Diagram
+The Component Diagram zooms into selected Containers to provide a deeper overview.
+
+
+===== Gameplay Logic
+A naive approach to implement features like Breaking Nodes, Building, Inventories and Crafting would be to just implement them separately, each with its own isolated input handling and execution logic. This would result in duplicated code and poorly maintanable code.
+
+Instead, we analyzed the features and abstracted them into two groups: *Use Actions* and *Interact Actions*.
+
+Use Actions are responsible for using the Item in the players hand (The item that is selected in the hotbar and visually displayed in the players hand). The player can only break Nodes when he holds a tool in his hand and he can only place Nodes if he holds a Block in his hand.
+
+Interact Actions define the behaviour of hovered over Nodes. For example the player opens a chest by hovering over it with the cursor and pressing the corresponding button. The GlowCore and all crafting stations share the same input to avoid code duplication. This approach also makes our game extensible.
+
+
+#figure(
+  image("../../resources/01 Product Documentation/C4GameplayLogic.png"),
+  caption: [C4 Component Diagram - Gameplay Logic],
+  supplement: [Image],
+)
+
+===== Presentation Layer
+#figure(
+  image("../../resources/01 Product Documentation/C4Presentation.png"),
+  caption: [C4 Component Diagram - Presentation Layer],
+  supplement: [Image],
+)
+
 
 #pagebreak()
 === Technologies
@@ -62,11 +112,5 @@ A major limit of our architecture that we are strongly tied to Unity. Switching 
 
 
 
-// TODO: Describe the architecture of your software as covered in SEP2.
-// The main goal: a new team member can start working on the product as fast as possible.
-//
-// - Use an existing template as a starting point (arc42, C4 model, ...)
-// - Focus on stable, high-level concepts rather than details
-// - Cover different views (static, dynamic, deployment, ...)
-// - Prefer diagrams over text (ideally UML)
-// - Explain the reasons behind your decisions: "Why did we build it like this?"
+
+
