@@ -5,14 +5,11 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterController m_controller;
-    [SerializeField]
-    private Transform m_cameraAnchor;
-    [SerializeField]
-    private float m_movementSpeed = 5;
-    [SerializeField]
-    private float m_rotationSpeed = 15;
+    [SerializeField] private CharacterController m_controller;
+    [SerializeField] private Transform m_cameraAnchor;
+    [SerializeField] private float m_movementSpeed = 5;
+    [SerializeField] private float m_rotationSpeed = 15;
+    [SerializeField] private Vector3 m_cameraOffset = Vector3.zero;
 
     private Vector2 m_moveInput;
 
@@ -20,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_moveInput = movement;
     }
+
     private void OnMove(InputValue inputValue) // called on press and release
     {
         HandleMove(inputValue.Get<Vector2>());
@@ -45,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateCamera()
     {
-        m_cameraAnchor.position = transform.position; // necessary since the camera is not a child of the player
+        m_cameraAnchor.position = transform.position + m_cameraOffset; // necessary since the camera is not a child of the player
     }
 
     private void UpdateRotation(Vector3 movement)

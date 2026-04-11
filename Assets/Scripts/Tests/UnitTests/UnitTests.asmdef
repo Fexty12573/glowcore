@@ -5,7 +5,8 @@
         "Gameplay",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "PostProcessing"
     ],
     "includePlatforms": [
         "Editor"
