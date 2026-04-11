@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3633210088841617339}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4410848176784786569}
   m_SourcePrefab: {fileID: 100100000, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
 --- !u!1 &6570926365179302594 stripped
 GameObject:
@@ -101,3 +104,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-4410848176784786569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570926365179302594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7c7346c5903d34bb99bf2da4fc7890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::CraftingTableInteractable
+  m_closeDistance: 5
