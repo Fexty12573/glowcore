@@ -1,16 +1,16 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-04-09 (CraftingTableInteractable rename fix; IInventoryService extended with IsCraftingTableOpen/OnCraftingTableToggled/OnCloseUIRequested; CraftingTableUI shows all global recipes; HotbarUI dims on crafting table open; NodeActionSystem guards on IsCraftingTableOpen; Escape closes UI)
+> Last updated: 2026-04-17 (IGlowCoreObject interface introduced; GlowCoreObject: dispatch-by-level, config-driven expansion via ExpandIfConfigured, Upgrade() separated from FeedMaterial, auto-close moved from UI to GlowCoreObject.Update(); Fire: VFX-only; GlowCoreLevelConfig: ExpansionItem/ExpansionCostPerTile/TileCount/InitialActiveLogs; GlowCoreUpgradeUI: targets IGlowCoreObject, upgrade button, inventory dragging enabled; FeedMaterialRowUI: IGlowCoreObject, Add All button, accumulated+pending/required label format; WorldGrid: multi-tile PlaceNodeAt overload)
 
 ---
 
 ## Overview
 
 The inventory system has three layers: a **data layer** (pure C#, no UI), a **crafting layer**
-(pure C#, no UI), and a **UI layer** (uGUI). The data and crafting layers expose interfaces
-(`IInventoryService`, `ICraftingService`) used by UI logic, while scene wiring currently uses
-serialized `PlayerInventory` references in UI controllers.
+(pure C#, no UI), and a **UI layer** (uGUI). All layers are decoupled through interfaces
+(`IInventoryService`, `ICraftingService`, `IGlowCoreObject`) — UI logic depends only on
+these interfaces, never on concrete MonoBehaviour types.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -23,9 +23,13 @@ serialized `PlayerInventory` references in UI controllers.
 │                                  IInventoryService          │
 │                                         ↓                   │
 │                                   PlayerHand (MB)           │
+│                                                             │
+│  GlowCoreLevelConfig (SO) ──► GlowCoreObject (MB)          │
+│                                   implements                │
+│                               IGlowCoreObject               │
 └───────────────────────┬─────────────────────────────────────┘
                         │
-             IInventoryService (interface)
+    IInventoryService + ICraftingService + IGlowCoreObject
                         │
 ┌───────────────────────▼─────────────────────────────────────┐
 │                     CRAFTING LAYER                           │
@@ -35,7 +39,7 @@ serialized `PlayerInventory` references in UI controllers.
 │  Receives IInventoryService in constructor                  │
 └───────────────────────┬─────────────────────────────────────┘
                         │
-         IInventoryService + ICraftingService
+     IInventoryService + ICraftingService + IGlowCoreObject
                         │
 ┌───────────────────────▼─────────────────────────────────────┐
 │                        UI LAYER                             │
@@ -44,9 +48,10 @@ serialized `PlayerInventory` references in UI controllers.
 │                  TooltipUI                                   │
 │  CraftingUI ──► RecipeRowUI (×N)    (uses ICraftingService) │
 │  HotbarUI ────► HotbarSlotUI (×8)   (uses IInventoryService)│
+│  GlowCoreUpgradeUI ──► FeedMaterialRowUI (uses IGlowCoreObject)│
 │                  ItemIconHelper (static)                     │
 │                  UIColors (static)                           │
-│                                            │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -65,6 +70,7 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `SelectedHotbarIndex` | Property | Currently selected hotbar slot |
 | `IsOpen` | Property | Whether inventory panel is open |
 | `IsCraftingTableOpen` | Property | Whether the crafting table panel is open |
+| `IsGlowCoreUIOpen` | Property | Whether the GlowCore upgrade panel is open |
 | `GetSlotData(int)` | Query | Returns `SlotData` snapshot for a flat index |
 | `CountItem(Item)` | Query | Total count of an item across all slots |
 | `CanAcceptItem(Item, int)` | Query | Can inventory hold this many of item? |
@@ -76,6 +82,7 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `ToggleInventory()` | Command | Toggle panel open/close |
 | `SetInventoryOpen(bool)` | Command | Set panel state explicitly |
 | `SetCraftingTableOpen(bool)` | Command | Set crafting table open state, fires `OnCraftingTableToggled` |
+| `SetGlowCoreUIOpen(bool)` | Command | Set GlowCore UI open state, fires `OnGlowCoreUIToggled` |
 | `RemoveItems(Item, int)` | Command | Remove items across slots, returns amount removed |
 | `AddItem(Item, int)` | Command | Add items to inventory |
 | `OnSlotChanged` | Event | `Action<SlotChangedEvent>` — fires with slot index + data snapshot |
@@ -83,7 +90,8 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `OnInventoryToggled` | Event | `Action<bool>` — fires with open state |
 | `OnCraftingToggled` | Event | `Action` — fires when C key pressed while inventory is open |
 | `OnCraftingTableToggled` | Event | `Action<bool>` — fires when crafting table is opened/closed |
-| `OnCloseUIRequested` | Event | `Action` — fires on Escape; closes any open UI (inventory or crafting table) |
+| `OnGlowCoreUIToggled` | Event | `Action<bool>` — fires when the GlowCore upgrade panel is opened/closed |
+| `OnCloseUIRequested` | Event | `Action` — fires on Escape; closes any open UI (inventory, crafting table, or GlowCore UI) |
 
 ### `ICraftingService` — (`Assets/Scripts/ICraftingService.cs`)
 
@@ -96,6 +104,24 @@ The contract between the crafting layer and the UI.
 | `GetItemCount(Item)` | Query | Convenience: count of item in inventory |
 | `Craft(Recipe)` | Command | Execute crafting (remove ingredients, add result) |
 | `OnRecipesRefreshed` | Event | `Action` — fires when craftability may have changed |
+
+### `IGlowCoreObject` — (`Assets/Scripts/IGlowCoreObject.cs`)
+
+The contract between `GlowCoreObject` (data layer) and all UI consumers. UI never depends on the concrete `GlowCoreObject` class.
+
+| Member | Kind | Purpose |
+|---|---|---|
+| `LevelConfig` | Property | Current level's `GlowCoreLevelConfig` SO |
+| `NextLevelConfig` | Property | Config of `m_nextLevelPrefab` (null if max level) |
+| `Level` | Property | Current level number |
+| `TotalProgress01` | Property | Normalized `0..1` progress across all required materials |
+| `IsReadyToUpgrade` | Property | True when all required materials are fully accumulated |
+| `HasNextLevel` | Property | True when `m_nextLevelPrefab` is not null (i.e. not max level) |
+| `AccumulatedFor(Item)` | Query | How much of an item has been fed so far |
+| `FeedMaterial(Item, int)` | Command | Clamps to available/needed; removes from inventory; fires events |
+| `Upgrade()` | Command | Fires `OnLevelUp`, calls `UpgradePhysical()` + `SpawnNextLevel()`. Only call when `IsReadyToUpgrade` |
+| `OnProgressChanged` | Event | `Action` — fires after any successful feed |
+| `OnLevelUp` | Event | `Action` — fires when `Upgrade()` is called, before the prefab is swapped |
 
 ### `SlotData` — (`Assets/Scripts/SlotData.cs`)
 
@@ -236,6 +262,74 @@ Manages the item physically held in the player's hand. Singleton (`s_instance`).
 
 Represents a dropped `ItemStack` in the world. Called by `PlayerInventory.DropItem()`.
 
+### `GlowCoreLevelConfig` — ScriptableObject (`Assets/Scripts/ScriptableObjects/GlowCoreLevelConfig.cs`)
+
+Per-level data for a `GlowCoreObject` prefab variant. Referenced by each GlowCore level prefab via a serialized field. Reuses `Recipe.Ingredient` for the required-materials list.
+
+| Field | Type | Purpose |
+|---|---|---|
+| `LevelName` | string | Display name for the level |
+| `Level` | int | Level number (1, 2, 3, ...) |
+| `LevelIcon` | Sprite | Icon shown in the upgrade UI header |
+| `RequiredMaterials` | `IReadOnlyList<Recipe.Ingredient>` | Items + amounts needed to reach the **next** level |
+| `TilesOnLevelUp` | int | Tiles the world grid expands by when this level's upgrade completes |
+| `TileCount` | int | Tiles this GlowCore occupies in the world grid (1=1×1, 4=2×2, 9=3×3, 16=4×4) |
+| `ExpansionItem` | Item | Which item triggers incremental map expansion when fed. Leave null to disable. |
+| `ExpansionCostPerTile` | int | How many of `ExpansionItem` are needed to grow the map by one tile |
+| `InitialActiveLogs` | int | Level 1 only — how many log GameObjects are active when the GlowCore first spawns |
+| `FormatPerk()` | method | Returns the perk description template with `{tiles}` substituted |
+
+### `GlowCoreObject` — MonoBehaviour, `IInteractable`, `IGlowCoreObject` (`Assets/Scripts/GlowCore.cs`)
+
+The world-placed GlowCore node. Implements `IGlowCoreObject`. Consumes materials toward a `GlowCoreLevelConfig` and spawns the next-level prefab once the player manually triggers an upgrade.
+
+**Inspector fields:**
+- `m_levelConfig` — the `GlowCoreLevelConfig` SO for this prefab's level
+- `m_nextLevelPrefab` — the next-level GlowCore prefab (null = max level)
+- `m_logs[]` — Level 1 log GameObjects activated incrementally as Wood is fed
+- `m_fire` — optional Fire component; when `Wood` is fed, `Fire.FeedWood(amount)` is called for VFX
+- `m_closeDistance` — auto-close distance in XZ (default 5f)
+
+**Runtime:** `m_playerInventory` is found via `FindFirstObjectByType<PlayerInventory>()` in `Awake()` — **not a serialized field**. This makes every GlowCore level prefab self-contained.
+
+**Key API:**
+| Member | Purpose |
+|---|---|
+| `LevelConfig` | Current level's config SO |
+| `NextLevelConfig` | Config on `m_nextLevelPrefab` (null if no next level) |
+| `Level`, `HasNextLevel`, `IsReadyToUpgrade` | Convenience properties (all on `IGlowCoreObject`) |
+| `TotalProgress01` | Normalized `0..1` progress across all required materials |
+| `AccumulatedFor(Item)` | How much of an item has been fed so far |
+| `RequiredFor(Item)` | Target amount for an item at this level |
+| `FeedMaterial(Item, int)` | Clamps to `min(amount, stillNeeded, available)`; removes from inventory; stores accumulated; calls `ExpandIfConfigured`; fires `OnProgressChanged`. Does **not** auto-upgrade. |
+| `Upgrade()` | Fires `OnLevelUp`, calls `UpgradePhysical()`, then `SpawnNextLevel()`. Only valid when `IsReadyToUpgrade`. |
+| `Interact()` | Caches `GlowCoreUpgradeUI` via `FindFirstObjectByType`; calls `m_ui.Show(this)` |
+| `ActivateLogs(int)` | Activates the next N log GameObjects (Level 1 visual) |
+| `OnProgressChanged` | Event — fires after any successful feed |
+| `OnLevelUp` | Event — fires when `Upgrade()` is called, before the prefab is swapped |
+
+**Level dispatch pattern:** `CreatePhysical(int level)` and `FeedPhysical(int level, Item, int)` switch on the level integer and delegate to private `*Level1`, `*Level2`, … helpers. Adding behavior for a new level requires only a new `case` and a new private method — no inheritance, no extra components.
+
+**Incremental expansion:** `ExpandIfConfigured(Item, int)` checks whether the fed item matches `m_levelConfig.ExpansionItem`. If so, it accumulates a running bank and calls `WorldGrid.Instance.Expand(1)` for each full `ExpansionCostPerTile` threshold crossed. Fully config-driven per level.
+
+**Level-up flow:** `Upgrade()` runs:
+1. Fires `OnLevelUp` (UI hides).
+2. `UpgradePhysical()` → `WorldGrid.Instance.Expand(m_levelConfig.TilesOnLevelUp, isLevelUp: true)`.
+3. `SpawnNextLevel()` → clears all tiles in `oldNode.TilesUsed`, instantiates `m_nextLevelPrefab` as a sibling under `transform.parent`, reads `nextConfig.TileCount`, calls `WorldGrid.Instance.PlaceNodeAt(newNode, x, z, tileCount)`, then `Destroy(gameObject)`.
+
+**Auto-close:** `Update()` runs while `m_ui.IsVisible`; if the player drifts beyond `m_closeDistance` on the XZ plane, calls `m_ui.Hide()`. This mirrors the `CraftingTableInteractable.Update()` pattern and keeps the UI clean of distance logic.
+
+### `Fire` — MonoBehaviour (`Assets/Scripts/Fire.cs`)
+
+Handles **fire VFX scaling only**. `FeedWood(int amount)` is called from `GlowCoreObject.FeedPhysicalLevel1` when `Wood` is fed — it updates `TotalWoodReceived` and scales the fire particle system. **All world expansion logic has been removed from Fire.** Incremental tile expansion is handled by `GlowCoreObject.ExpandIfConfigured`; level-up expansion is handled by `GlowCoreObject.UpgradePhysical`.
+
+### `WorldGrid` — MonoBehaviour (`Assets/Scripts/WorldGrid.cs`)
+
+Manages the world tile grid. Key method relevant to GlowCore:
+
+- `PlaceNodeAt(Node node, int x, int z, int tileCount)` — computes a centered square region of side `√tileCount` and registers all tiles to the node. Used by `SpawnNextLevel()` so multi-tile GlowCore variants (e.g. Level 2 with `TileCount = 4` occupying 2×2) are registered correctly.
+- `ClearNodeAt(Vector2Int tile)` — used by `SpawnNextLevel()` to free all tiles in `oldNode.TilesUsed` before spawning the replacement.
+
 ---
 
 ## Crafting Layer
@@ -315,7 +409,7 @@ and `Craft()` through the interface. No direct inventory access.
 
 **Always-visible hotbar.** Uses `IInventoryService` for data and events.
 No `Update()` — number key input is handled by `PlayerInventory` via Input Actions.
-Dims (alpha 0.35, non-interactive) when either the inventory **or the crafting table** is open — subscribes to both `OnInventoryToggled` and `OnCraftingTableToggled`.
+Dims (alpha 0.35, non-interactive) when the inventory, crafting table, **or GlowCore upgrade panel** is open — subscribes to `OnInventoryToggled`, `OnCraftingTableToggled`, and `OnGlowCoreUIToggled`.
 
 ### `HotbarSlotUI` — MonoBehaviour (`HotbarSlotUI.cs`)
 
@@ -334,6 +428,55 @@ Thin helper for applying item icons to uGUI `Image` components. Since `Item.Icon
 ### `UIColors` — Static class (`Assets/Scripts/UI/UIColors.cs`)
 
 All color tokens. Never hardcode colors.
+
+---
+
+## GlowCore Upgrade UI
+
+Scripts live in `Assets/Scripts/UI/GlowCore/` under the `GlowCore.UI.Upgrade` namespace. The layout mirrors `CraftingTableUI`: feed-material panel on the left, read-only inventory on the right.
+
+### `GlowCoreUpgradeUI` — MonoBehaviour (`GlowCoreUpgradeUI.cs`)
+
+Central controller. Opens via `GlowCoreObject.Interact()` → `Show(IGlowCoreObject target)`. Depends only on `IGlowCoreObject` — never on the concrete `GlowCoreObject`.
+
+**Inspector fields:** `m_panelCanvasGroup`, `m_backdropCanvasGroup`, `m_closeButton`, `m_currentLevelIcon` + `m_nextLevelIcon` + `m_levelText`, `m_progressBar` (`ProgressBarUI`), `m_perkInfo` (TMP), `m_feedRowContentParent` + `m_feedRowPrefab`, `m_feedButton` + `m_feedButtonLabel` (TMP), `m_inventoryUpperGridParent` + `m_inventoryHotbarRowParent` + `m_slotPrefab`.
+
+**No `m_closeDistance` or `m_player` field.** Auto-close lives in `GlowCoreObject.Update()`, not here. This UI has **no `Update()` method** — fully event-driven.
+
+**Lifecycle & subscriptions:**
+- `Start()` resolves `PlayerInventory` + `InventoryUI`, builds the right-side inventory (32 `ItemSlotUI` with **`m_inventoryUI` as owner** — drag is enabled, matching the behavior of the standard inventory panel), subscribes to `OnSlotChanged`, `OnInventoryToggled`, and `OnCloseUIRequested`.
+- `Show(IGlowCoreObject)` stores the target, subscribes to `target.OnProgressChanged` and `target.OnLevelUp`, spawns `FeedMaterialRowUI` rows from `target.LevelConfig.RequiredMaterials`, calls `m_inventoryService.SetGlowCoreUIOpen(true)`, shows the panel.
+- `SetVisible(false)`/`Hide()` unsubscribes from the target, clears target, cancels any held drag via `InventoryUI.CancelHeldItem()`, calls `SetGlowCoreUIOpen(false)`.
+
+**Feed/Upgrade flow:** `OnFeedButtonClicked` checks `m_target.IsReadyToUpgrade` first:
+- If `true` → calls `m_target.Upgrade()` directly (no row iteration needed).
+- If `false` → iterates rows, calls `target.FeedMaterial(row.Material, row.SelectedAmount)` for each row with a positive stepper value, then resets all steppers to 0.
+
+**Button state:** evaluated on every `OnSelectionChanged` and on `OnTargetProgressChanged`:
+- When `IsReadyToUpgrade`: button label = `"UPGRADE TO LEVEL {next.Level}"`, always `interactable = true`.
+- Otherwise: button label = `"FEED MATERIALS"`, `interactable` = any row has `SelectedAmount > 0`.
+
+**Header:** `m_nextLevelIcon.color = IsReadyToUpgrade ? Color.white : UIColors.WoodBorderLight`. Level text format: `"3 => 4"`.
+
+**Level-up:** on `target.OnLevelUp`, the UI hides. `GlowCoreObject.SpawnNextLevel` then destroys the old object and instantiates the replacement.
+
+### `FeedMaterialRowUI` — MonoBehaviour (`FeedMaterialRowUI.cs`)
+
+Single row: icon, name, count label, stepper, and an "Add All" button.
+
+- `Initialize(IInventoryService, IGlowCoreObject target, Item, int required)` — takes `IGlowCoreObject`, not the concrete class. Wires icon via `ItemIconHelper.GetSprite`, binds the stepper to `[0, min(stillNeeded, have)]`.
+- `Refresh()` — calls `SetBounds(0, GetMaxSelectable())` first, **then** reads `m_stepper.Value` as `pending` (avoids stale-read after the stepper clamps). Count label format: `"{accumulated + pending}/{required}"`. Color: `UIColors.Green` when `accumulated + pending >= required`, otherwise `UIColors.MissingMat`. Border turns green when `accumulated >= required` (fully met in the data layer, not just preview).
+- `ResetSelection()` — zeroes the stepper (called after a feed).
+- `OnAddAllClicked()` — calls `m_stepper.SetValue(GetMaxSelectable())` to pre-fill the maximum feedable amount.
+- Exposes `Material`, `SelectedAmount`, and `OnSelectionChanged` for the controller.
+
+### `AmountStepperUI` — MonoBehaviour (`AmountStepperUI.cs`)
+
+Reusable `[−] value [+]` widget. `Bind(min, max, initial)` seeds it; `SetBounds(min, max)` can be called at runtime to clamp. Disables the `−` button at min and the `+` button at max. Fires `OnValueChanged(int)` on user clicks (not on programmatic `SetValue(..., fireEvent: false)`).
+
+### `ProgressBarUI` — MonoBehaviour (`ProgressBarUI.cs`)
+
+Thin wrapper around `Image.fillAmount` + percent `TextMeshProUGUI`. Single method `SetProgress(float)` clamps to `[0,1]` and updates the label to `"{0}%"`.
 
 ---
 
@@ -371,6 +514,24 @@ InventoryCanvas (Canvas — Screen Space Overlay, CanvasScaler 854×480)
   │     └── InventorySection (VerticalLayoutGroup, 210px wide)
   │           ├── TitleLabel (TMP — "INVENTORY", Cinzel Bold 11px, AccentDim)
   │           └── InventoryGrid (GridLayoutGroup: 36×36 cells, 3px spacing, 4 columns)
+  │                 └── [32 ItemSlotUI spawned at runtime — read-only, null owner]
+  │
+  ├── GlowCoreUpgradePanel (GlowCoreUpgradeUI + CanvasGroup — starts hidden)
+  │     ├── LeftSection (VerticalLayoutGroup, ~245px wide)
+  │     │     ├── TitleLabel (TMP — "GLOWCORE", Cinzel Bold 11px, AccentDim)
+  │     │     ├── LevelHeader (HorizontalLayoutGroup)
+  │     │     │     ├── CurrentLevelIcon (Image)
+  │     │     │     ├── LevelText (TMP — e.g. "3 ⇒ 4")
+  │     │     │     └── NextLevelIcon (Image, tinted WoodBorderLight until reached)
+  │     │     ├── ProgressBar (ProgressBarUI — Image.fillAmount + % label)
+  │     │     ├── PerkInfo (TMP — e.g. "Next level expands the glow radius by +15 tiles")
+  │     │     ├── FeedMaterialsLabel (TMP — "FEED THE GLOWCORE")
+  │     │     ├── FeedScrollView → Viewport → Content (VerticalLayoutGroup)
+  │     │     │     └── [FeedMaterialRowUI instances spawned at runtime]
+  │     │     └── FeedMaterialsButton (Button + TMP label — "FEED MATERIALS" or "UPGRADE TO LEVEL N"; disabled when no stepper > 0 and not ready to upgrade)
+  │     └── RightSection (VerticalLayoutGroup, 210px wide)
+  │           ├── TitleLabel (TMP — "INVENTORY", Cinzel Bold 11px, AccentDim)
+  │           └── InventoryGrid (GridLayoutGroup)
   │                 └── [32 ItemSlotUI spawned at runtime — read-only, null owner]
   │
   ├── CursorIcon (RawImage — 40×40, raycast OFF)
@@ -446,6 +607,62 @@ Player walks out of interaction range
     → SetCraftingTableOpen(false)
 ```
 
+### GlowCore upgrade interaction
+```
+Player presses E near a GlowCore
+  → NodeActionSystem.OnInteract() [guard: !IsOpen AND !IsCraftingTableOpen AND !IsGlowCoreUIOpen]
+    → Node.Interact() → GlowCoreObject.Interact()
+      → GlowCoreUpgradeUI.Show(this)  [target typed as IGlowCoreObject]
+        → subscribes to target.OnProgressChanged + target.OnLevelUp
+        → builds FeedMaterialRowUI rows from target.LevelConfig.RequiredMaterials
+        → PlayerInventory.SetGlowCoreUIOpen(true) → OnGlowCoreUIToggled(true)
+          → HotbarUI dims
+
+Player adjusts a stepper on a row
+  → AmountStepperUI.OnValueChanged(newValue)
+    → FeedMaterialRowUI.Refresh()
+        → SetBounds(0, GetMaxSelectable()) [clamps stepper first]
+        → reads pending = m_stepper.Value [after clamping — avoids stale read]
+        → repaints count label: "{accumulated + pending}/{required}"
+    → FeedMaterialRowUI.OnSelectionChanged fires
+      → GlowCoreUpgradeUI.RefreshFeedButton() re-evaluates button interactable + label
+
+Player clicks FEED MATERIALS [button label = "FEED MATERIALS", not yet ready to upgrade]
+  → GlowCoreUpgradeUI.OnFeedButtonClicked
+    → for each row with SelectedAmount > 0: target.FeedMaterial(item, amount)
+      → GlowCoreObject.FeedMaterial:
+          → m_playerInventory.RemoveItems(item, consume)
+          → m_accumulated[item] += consume
+          → if item is Wood: Fire.FeedWood(consume) — fire VFX only (no expansion)
+          → ExpandIfConfigured(item, consume):
+              if item == ExpansionItem: bank amount, Expand(1) per ExpansionCostPerTile threshold
+          → OnProgressChanged fires
+            → UI refreshes header + progress bar + rows + button
+    → all steppers reset to 0
+
+All materials met: IsReadyToUpgrade = true
+  → button label changes to "UPGRADE TO LEVEL N", button always enabled
+  → NextLevelIcon switches to Color.white (was WoodBorderLight)
+
+Player clicks UPGRADE TO LEVEL N
+  → GlowCoreUpgradeUI.OnFeedButtonClicked
+    → m_target.IsReadyToUpgrade == true → calls m_target.Upgrade()
+      → GlowCoreObject.Upgrade():
+          → OnLevelUp fires → GlowCoreUpgradeUI.Hide()
+          → UpgradePhysical(): WorldGrid.Expand(m_levelConfig.TilesOnLevelUp, isLevelUp: true)
+          → SpawnNextLevel():
+              → clears all tiles in oldNode.TilesUsed
+              → Instantiates m_nextLevelPrefab at same position, under transform.parent
+              → reads nextConfig.TileCount, calls WorldGrid.PlaceNodeAt(newNode, x, z, tileCount)
+              → Destroy(gameObject)
+
+Player walks > m_closeDistance away [GlowCoreObject.Update()]
+  → GlowCoreObject detects distance > m_closeDistance → m_ui.Hide()
+
+Tab / Escape / close button
+  → UI hides → PlayerInventory.SetGlowCoreUIOpen(false) → HotbarUI restores
+```
+
 ### Opening/closing inventory
 ```
 PlayerInventory.OnInventory(InputValue) → ToggleInventory()
@@ -488,6 +705,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 |---|---|---|---|
 | `IInventoryService.cs` | Interface | Interface | Data layer facade |
 | `ICraftingService.cs` | Interface | Interface | Crafting layer facade |
+| `IGlowCoreObject.cs` | Interface | Interface | GlowCore data layer facade — used by all GlowCore UI |
 | `SlotData.cs` | Shared | Struct | Immutable slot snapshot + event payload |
 | `ScriptableObjects/Item.cs` | Data | ScriptableObject | Item type definition |
 | `ScriptableObjects/ItemStack.cs` | Data | Serializable class | Runtime stack instance |
@@ -512,14 +730,21 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `UI/Inventory/TooltipUI.cs` | UI | MonoBehaviour | Mouse-following tooltip |
 | `UI/Inventory/ItemIconHelper.cs` | UI | Static utility | Applies Sprite icons to Image components |
 | `UI/UIColors.cs` | UI | Static constants | Color tokens |
+| `ScriptableObjects/GlowCoreLevelConfig.cs` | Data | ScriptableObject | Per-level GlowCore materials, tile expansion, ExpansionItem, TileCount |
+| `GlowCore.cs` | Data | MonoBehaviour | `GlowCoreObject` — IInteractable + IGlowCoreObject; dispatch-by-level; FeedMaterial + Upgrade |
+| `Fire.cs` | Data | MonoBehaviour | Fire VFX scaling only — no world expansion logic |
+| `UI/GlowCore/GlowCoreUpgradeUI.cs` | UI | MonoBehaviour | GlowCore upgrade panel controller (left) + read-only inventory (right) |
+| `UI/GlowCore/FeedMaterialRowUI.cs` | UI | MonoBehaviour | Single feed-material row with stepper |
+| `UI/GlowCore/AmountStepperUI.cs` | UI | MonoBehaviour | Reusable −/+ numeric stepper |
+| `UI/GlowCore/ProgressBarUI.cs` | UI | MonoBehaviour | Reusable progress bar (Image.fillAmount + % label) |
 
 ---
 
 ## Key Dependencies & Must-Knows
 
-- **UI depends only on interfaces** (`IInventoryService`, `ICraftingService`), never on `PlayerInventory`, `Inventory`, or `CraftingSystem` directly.
+- **UI depends only on interfaces** (`IInventoryService`, `ICraftingService`, `IGlowCoreObject`), never on `PlayerInventory`, `Inventory`, `CraftingSystem`, or `GlowCoreObject` directly.
 - **`SlotData` is immutable.** UI receives snapshots via events and `Refresh(SlotData)` — never holds references to live `ItemStack` objects.
-- **No `Update()` in any inventory/UI script.** All input is event-driven via Input Actions; pointer events use EventSystem handlers.
+- **No `Update()` in any UI script.** All input is event-driven via Input Actions; pointer events use EventSystem handlers. The one `Update()` in the GlowCore layer lives on `GlowCoreObject` (distance auto-close), not on the UI panel.
 - **`CraftingSystem` is a plain C# class**, not a MonoBehaviour. Created by `CraftingUI` and `CraftingTableUI`, each owning their own instance. Both are disposed in `OnDestroy()`.
 - **`PlayerInventory` is the `IInventoryService` implementor.** It wraps `Inventory.OnSlotChanged(int)` into rich `SlotChangedEvent` payloads.
 - **Crouch is now Left Ctrl**, C is Crafting toggle.
@@ -528,10 +753,16 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 - **Hand item prefabs store `IHandItem` components disabled.** `PlayerHand.UpdateHandVisual()` enables them. Do not enable them in the prefab — that breaks the lifecycle ordering.
 - **`IPlayerInventoryAware` is called automatically** by `PlayerHand.UpdateHandVisual()` — no manual wiring needed beyond prefab setup.
 - **`Add()` fills hotbar first.** `PlayerInventory.Add()` passes `emptySlotStart = HotbarStartIndex`.
-- **`NodeActionSystem` blocks interaction while crafting table is open.** It guards on both `IsOpen` and `IsCraftingTableOpen` — hovering and interacting with world nodes is disabled while any UI is open.
+- **`NodeActionSystem` blocks interaction while any UI is open.** It guards on `IsOpen`, `IsCraftingTableOpen`, **and `IsGlowCoreUIOpen`** — hovering and interacting with world nodes is disabled while any UI is open.
 - **`CraftingTableUI` reads all global recipes** (no filter). `CraftingUI` is the one that filters to `RequiresCraftingTable == false`. If a recipe should only appear at the bench, set `RequiresCraftingTable = true` — it will be excluded from `CraftingUI` automatically.
 - **`CraftingTableInteractable` owns the open/close state** of the bench. It calls `PlayerInventory.SetCraftingTableOpen(bool)` — never set `IsCraftingTableOpen` from anywhere else.
 - **Escape fires `OnCloseUIRequested` unconditionally**, even when inventory is not open. `CraftingTableInteractable` uses this to close the bench UI without needing an inventory open state check.
+- **`GlowCoreObject.FeedMaterial` is the only way to feed the GlowCore.** The old wood-only `Interact()` path is gone. `FeedMaterial` does **not** auto-upgrade — the player must explicitly click the upgrade button, which calls `GlowCoreObject.Upgrade()`.
+- **`Fire.FeedWood` is VFX-only.** It is called from `FeedPhysicalLevel1` when Wood is fed. It no longer drives world expansion. Incremental expansion is config-driven via `ExpandIfConfigured`; level-up expansion lives in `UpgradePhysical`.
+- **Each GlowCore level is a separate prefab** referenced through `m_nextLevelPrefab`. The per-level cost, icon, perk, `TileCount`, and `ExpansionItem` live on a `GlowCoreLevelConfig` SO assigned to each prefab via `m_levelConfig`. `NextLevelConfig` reads the next prefab's config without instantiating it.
+- **`m_playerInventory` in `GlowCoreObject` is found at runtime** via `FindFirstObjectByType<PlayerInventory>()` in `Awake()`. This is intentional — it keeps every GlowCore level prefab self-contained with no manual Inspector wiring for the inventory reference.
+- **Auto-close distance check lives in `GlowCoreObject.Update()`**, not in `GlowCoreUpgradeUI`. This mirrors the `CraftingTableInteractable` pattern. `GlowCoreUpgradeUI` has no `Update()`.
+- **Multi-tile GlowCore levels** use `TileCount` on the SO. `SpawnNextLevel()` clears all tiles tracked in `oldNode.TilesUsed` before registering the new node with `WorldGrid.PlaceNodeAt(node, x, z, tileCount)`, which computes a centered square of side `√tileCount`.
 
 ---
 
