@@ -27,6 +27,7 @@ namespace GlowCore.UI.Inventory
             m_inventoryService.OnSlotChanged += OnSlotDataChanged;
             m_inventoryService.OnInventoryToggled += OnInventoryToggled;
             m_inventoryService.OnCraftingTableToggled += OnInventoryToggled;
+            m_inventoryService.OnGlowCoreUIToggled += OnInventoryToggled;
             UpdateSelection();
         }
 
@@ -38,6 +39,7 @@ namespace GlowCore.UI.Inventory
                 m_inventoryService.OnSlotChanged -= OnSlotDataChanged;
                 m_inventoryService.OnInventoryToggled -= OnInventoryToggled;
                 m_inventoryService.OnCraftingTableToggled -= OnInventoryToggled;
+                m_inventoryService.OnGlowCoreUIToggled -= OnInventoryToggled;
             }
         }
 
