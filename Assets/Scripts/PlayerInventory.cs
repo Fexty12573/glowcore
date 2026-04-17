@@ -18,6 +18,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     private int m_selectedHotbarIndex;
     private bool m_isOpen;
     private bool m_isCraftingTableOpen;
+    private bool m_isGlowCoreUIOpen;
 
     // IInventoryService — Properties
     public int SlotCount => m_inventory.Size;
@@ -25,6 +26,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
     public bool IsOpen => m_isOpen;
     public bool IsCraftingTableOpen => m_isCraftingTableOpen;
+    public bool IsGlowCoreUIOpen => m_isGlowCoreUIOpen;
 
     // IInventoryService — Events
     public event Action<SlotChangedEvent> OnSlotChanged;
@@ -32,6 +34,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     public event Action<bool> OnInventoryToggled;
     public event Action OnCraftingToggled;
     public event Action<bool> OnCraftingTableToggled;
+    public event Action<bool> OnGlowCoreUIToggled;
     public event Action OnCloseUIRequested;
 
     // Public Methods — IInventoryService Queries
@@ -91,6 +94,12 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     {
         m_isCraftingTableOpen = open;
         OnCraftingTableToggled?.Invoke(open);
+    }
+
+    public void SetGlowCoreUIOpen(bool open)
+    {
+        m_isGlowCoreUIOpen = open;
+        OnGlowCoreUIToggled?.Invoke(open);
     }
 
     // Public Methods — Game Logic (not on IInventoryService)

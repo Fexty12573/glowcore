@@ -7,16 +7,11 @@ namespace GlowCore.World
     public class Fire : MonoBehaviour
     {
         // Instance Fields
-        [SerializeField] private GlowCoreObject m_glowCore;
-        [SerializeField][Min(1)] private int m_woodPerExpansion = 1;
-        [SerializeField][Min(1)] private int m_regularExpansionSize = 1;
-        [SerializeField][Min(1)] private int m_levelUpExpansionSize = 5;
         [Header("Fire VFX")]
         [SerializeField] private ParticleSystem m_fireParticles;
         [SerializeField] private float m_minFireScale = 0.5f;
         [SerializeField] private float m_maxFireScale = 3f;
         [SerializeField] private int m_woodForMaxFire = 50;
-        private int m_woodAccumulatedForExpansion;
 
         // Properties
         public int TotalWoodReceived { get; private set; }
@@ -28,18 +23,6 @@ namespace GlowCore.World
                 return;
 
             TotalWoodReceived += amount;
-            m_woodAccumulatedForExpansion += amount;
-
-            while (m_woodAccumulatedForExpansion >= m_woodPerExpansion)
-            {
-                m_woodAccumulatedForExpansion -= m_woodPerExpansion;
-                WorldGrid.Instance.Expand(m_regularExpansionSize);
-
-            }
-
-            if (m_glowCore != null && m_glowCore.FeedWood(amount))
-                WorldGrid.Instance.Expand(m_levelUpExpansionSize, isLevelUp: true);
-
             UpdateFireScale();
         }
 
