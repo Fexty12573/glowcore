@@ -40,18 +40,20 @@ public class Inventory
             }
         }
 
-        if (stack.Amount == 0)
-            return true;
-
-        var emptyIndex = FindFirstEmptySlotFrom(emptySlotStart);
-        if (emptyIndex >= 0)
+        while (stack.Amount > 0)
         {
-            m_items[emptyIndex].Set(stack);
+            var emptyIndex = FindFirstEmptySlotFrom(emptySlotStart);
+            if (emptyIndex < 0)
+                return false;
+
+            m_items[emptyIndex].Item = stack.Item;
+            var take = Math.Min(stack.Amount, stack.Item.MaxStack);
+            m_items[emptyIndex].Amount = take;
+            stack.Amount -= take;
             OnSlotChanged?.Invoke(emptyIndex);
-            return true;
         }
 
-        return false;
+        return true;
     }
 
     private int FindFirstEmptySlotFrom(int startIndex)
