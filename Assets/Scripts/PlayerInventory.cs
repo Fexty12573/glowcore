@@ -5,6 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour, IInventoryService
 {
+    [Serializable]
+    private struct StartingItem
+    {
+        public Item Item;
+        public int Amount;
+    }
+
     // Constants
     private const int kColumns = 8;
     private const int kRows = 4;
@@ -13,6 +20,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
 
     // Instance Fields
     [SerializeField] private PlayerHand m_playerHand;
+    [SerializeField] private StartingItem[] m_startingItems;
 
     private Inventory m_inventory;
     private int m_selectedHotbarIndex;
@@ -117,6 +125,15 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     {
         m_inventory = new Inventory(kColumns, kRows);
         m_inventory.OnSlotChanged += OnInventorySlotChanged;
+
+        if (m_startingItems != null)
+        {
+            foreach (StartingItem entry in m_startingItems)
+            {
+                if (entry.Item != null && entry.Amount > 0)
+                    m_inventory.AddItems(new ItemStack(entry.Item, entry.Amount), kHotbarStartIndex);
+            }
+        }
     }
 
     private void OnDestroy()
