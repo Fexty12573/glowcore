@@ -633,7 +633,24 @@ In Sprint 3 we focused on implementing the MVP. The planned amount of storypoint
   supplement: [Image],
 )
 
+#pagebreak();
 
+===== Sprint 4 03.04.2026 - 17.04.2026
+Because in the week of 06.04.2026 to 12.04.2026 was the spring break we had a sprint with reduced work.
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-4-burndown.png"),
+  caption: [Sprint 4 Burndown Chart],
+  supplement: [Image],
+)
+
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-4-backlog.png"),
+  caption: [Sprint 4 Backlog],
+  supplement: [Image],
+)
+
+#pagebreak();
 === Risk Management
 
 This chapter describes potential risks to the project and how we plan to mitigate them. We identified 8 risks, which are listed in the table below. Additionally, these risks are visualized in two risk matrices, one showing the initial risk assessment and the other showing the risk assessment after mitigation strategies are applied.
