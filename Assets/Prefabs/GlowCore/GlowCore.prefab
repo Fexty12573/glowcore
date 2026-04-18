@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Node
   m_nodeData: {fileID: 11400000, guid: 0ec27346c1b65bb4b984993f4e28e296, type: 2}
+  TilesUsed: []
   Outline: {fileID: 4388617312551717215}
 --- !u!114 &1491751217520439912
 MonoBehaviour:
@@ -347,14 +348,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f4bddb0f72c4045a1954e15cdd4e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Fire
-  m_glowCore: {fileID: 2562424217584133505}
-  m_woodPerExpansion: 1
-  m_regularExpansionSize: 1
-  m_levelUpExpansionSize: 5
   m_fireParticles: {fileID: 6653769928450860939}
   m_minFireScale: 0.5
   m_maxFireScale: 3
-  m_woodForMaxFire: 50
+  m_woodForMaxFire: 20
   m_debugWoodAmount: 1
 --- !u!114 &2562424217584133505
 MonoBehaviour:
@@ -368,6 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8fbb66452f24e4b8404e220dada2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.GlowCoreObject
+  m_levelConfig: {fileID: 11400000, guid: 9376cabd5f4aa31419aabc0b44bbaca7, type: 2}
+  m_nextLevelPrefab: {fileID: 6659528183695809230, guid: 308351e9aaef58b488a3b986e7f35ed4, type: 3}
   m_logs:
   - {fileID: 3037757493355201313}
   - {fileID: 4227271854730536502}
@@ -386,10 +385,8 @@ MonoBehaviour:
   - {fileID: 1345484427660632876}
   - {fileID: 936808861686304320}
   - {fileID: 5397704701215248422}
-  m_nextLevelPrefab: {fileID: 0}
-  m_initialActiveLogs: 3
-  m_startingLevel: 1
-  m_woodToLevelUp: 17
+  m_fire: {fileID: 1491751217520439912}
+  m_closeDistance: 3
 --- !u!114 &4388617312551717215
 MonoBehaviour:
   m_ObjectHideFlags: 0

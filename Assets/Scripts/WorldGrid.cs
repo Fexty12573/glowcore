@@ -93,6 +93,22 @@ namespace GlowCore.World
             return PlaceNodeAtTile(index, node);
         }
 
+        public void PlaceNodeAt(Node node, int x, int z, int tileCount)
+        {
+            var side = Mathf.RoundToInt(Mathf.Sqrt(tileCount));
+            var start = -(side / 2);
+            var end = start + side;
+            for (var dx = start; dx < end; dx++)
+            {
+                for (var dz = start; dz < end; dz++)
+                {
+                    Vector2Int tile = WorldToGrid(x + dx, z + dz);
+                    if (IsInBounds(tile) && !IsOccupied(tile))
+                        PlaceNodeAtTile(tile, node);
+                }
+            }
+        }
+
         public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
 
         public bool CreateNodeAt(GameObject prefab, Vector2Int tile)
