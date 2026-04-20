@@ -58,7 +58,7 @@ GlowCore's container boundaries are expressed through either a C\# interface or 
 ==== Overview Diagram
 
 #figure(
-  image("../../resources/01 Product Documentation/C4InterfaceOverview.svg", width: 100%),
+  image("../../resources/01 Product Documentation/C4InterfaceOverview.png", width: 100%),
   caption: [Interface Overview Diagram],
   supplement: [Image],
 )
@@ -75,64 +75,64 @@ GlowCore's container boundaries are expressed through either a C\# interface or 
       // Separator rows (y=1, y=7) use a neutral divider colour; data rows use
       // one accent colour per container boundary; right column gets a 55% tint.
       let colors = (
-        rgb("C0C0C0"),  // y=0  header
-        rgb("D4D4D4"),  // y=1  separator: Container Boundaries
-        rgb("BDD7EE"),  // y=2  Input Handler → Gameplay Logic   (blue)
-        rgb("C6EFCE"),  // y=3  Gameplay Logic → GlowCore World   (green)
-        rgb("D9E1F2"),  // y=4  Gameplay Logic → Presentation     (lavender)
-        rgb("D9E1F2"),  // y=5  Gameplay Logic → Presentation     (lavender)
-        rgb("FFF2CC"),  // y=6  Data Layer → Gameplay Logic       (amber)
-        rgb("D4D4D4"),  // y=7  separator: GL Internal Boundaries
-        rgb("D6DCE4"),  // y=8  GL internal → Item Prefabs        (steel)
-        rgb("D6DCE4"),  // y=9  GL internal → Item Prefabs        (steel)
+        rgb("C0C0C0"), // y=0  header
+        rgb("D4D4D4"), // y=1  separator: Container Boundaries
+        rgb("BDD7EE"), // y=2  Input Handler → Gameplay Logic   (blue)
+        rgb("C6EFCE"), // y=3  Gameplay Logic → GlowCore World   (green)
+        rgb("D9E1F2"), // y=4  Gameplay Logic → Presentation     (lavender)
+        rgb("D9E1F2"), // y=5  Gameplay Logic → Presentation     (lavender)
+        rgb("FFF2CC"), // y=6  Data Layer → Gameplay Logic       (amber)
+        rgb("D4D4D4"), // y=7  separator: GL Internal Boundaries
+        rgb("D6DCE4"), // y=8  GL internal → Item Prefabs        (steel)
+        rgb("D6DCE4"), // y=9  GL internal → Item Prefabs        (steel)
       )
       let c = colors.at(y, default: white)
       if x == 0 or y == 0 or y == 1 or y == 7 { c } else { c.lighten(55%) }
     },
     // ── header ──────────────────────────────────────────────────────────────
     [*Interface*\
-     #text(size: 8pt, fill: rgb("444444"))[_Boundary_]\
-     #text(size: 8pt, fill: rgb("444444"))[_Mechanism_]],
+      #text(size: 8pt, fill: rgb("444444"))[_Boundary_]\
+      #text(size: 8pt, fill: rgb("444444"))[_Mechanism_]],
     [*Purpose*],
     // ── y=1  separator ───────────────────────────────────────────────────────
     table.cell(colspan: 2)[#text(weight: "bold", size: 9pt)[Container Boundaries]],
     // ── y=2  Input Handler → Gameplay Logic ─────────────────────────────────
     [*Unity Input callbacks*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_Input Handler → Gameplay Logic_]\
-     #text(size: 8pt,   fill: rgb("666666"))[Unity Input System (no C\# interface)]],
-      [Unity calls methods like `OnUse`, `OnInteract` and `OnMove` directly on MonoBehaviour components such as `PlayerHand` and `NodeActionSystem`. There is no C\# interface at this boundary. Unity's own message dispatch handles the connection.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_Input Handler → Gameplay Logic_]\
+      #text(size: 8pt, fill: rgb("666666"))[Unity Input System (no C\# interface)]],
+    [Unity calls methods like `OnUse`, `OnInteract` and `OnMove` directly on MonoBehaviour components such as `PlayerHand` and `NodeActionSystem`. There is no C\# interface at this boundary. Unity's own message dispatch handles the connection.],
     // ── y=3  Gameplay Logic → GlowCore World ────────────────────────────────
     [*`IInteractable`*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_Gameplay Logic → GlowCore World_]\
-     #text(size: 8pt,   fill: rgb("666666"))[C\# interface]],
-      [Nodes that do something when the player interacts with them implement this interface. A `Chest` opens its inventory, a `CraftingTableInteractable` shows the crafting UI, and `GlowCoreObject` runs its own logic, all through the same single-method contract.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_Gameplay Logic → GlowCore World_]\
+      #text(size: 8pt, fill: rgb("666666"))[C\# interface]],
+    [Nodes that do something when the player interacts with them implement this interface. A `Chest` opens its inventory, a `CraftingTableInteractable` shows the crafting UI, and `GlowCoreObject` runs its own logic, all through the same single-method contract.],
     // ── y=4  Gameplay Logic → Presentation Layer ────────────────────────────
     [*`IInventoryService`*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_Gameplay Logic → Presentation Layer_]\
-     #text(size: 8pt,   fill: rgb("666666"))[C\# interface + events (`Action<T>`)]],
-      [The main contract between the inventory system and the UI. Components like `InventoryUI` and `HotbarUI` subscribe to events such as `OnSlotChanged` and `OnHotbarSelectionChanged` to stay in sync with the game state, without ever referencing `PlayerInventory` directly.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_Gameplay Logic → Presentation Layer_]\
+      #text(size: 8pt, fill: rgb("666666"))[C\# interface + events (`Action<T>`)]],
+    [The main contract between the inventory system and the UI. Components like `InventoryUI` and `HotbarUI` subscribe to events such as `OnSlotChanged` and `OnHotbarSelectionChanged` to stay in sync with the game state, without ever referencing `PlayerInventory` directly.],
     // ── y=5  Gameplay Logic → Presentation Layer ────────────────────────────
     [*`ICraftingService`*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_Gameplay Logic → Presentation Layer_]\
-     #text(size: 8pt,   fill: rgb("666666"))[C\# interface + event (`Action`)]],
-      [Gives the crafting UI everything it needs: the current recipe list, availability checks, the `Craft()` command to actually execute a recipe, and the `OnRecipesRefreshed` event that triggers a refresh whenever the player's inventory changes.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_Gameplay Logic → Presentation Layer_]\
+      #text(size: 8pt, fill: rgb("666666"))[C\# interface + event (`Action`)]],
+    [Gives the crafting UI everything it needs: the current recipe list, availability checks, the `Craft()` command to actually execute a recipe, and the `OnRecipesRefreshed` event that triggers a refresh whenever the player's inventory changes.],
     // ── y=6  Data Layer → Gameplay Logic ────────────────────────────────────
     [*ScriptableObject asset refs*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_Data Layer → Gameplay Logic_]\
-     #text(size: 8pt,   fill: rgb("666666"))[Unity serialised reference (`[SerializeField]`)]],
-      [`Item`, `NodeData` and `Recipe` assets are set up in the Unity Inspector and read at runtime by the components that need them. There is no code dependency; the connection is entirely through serialised Unity references.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_Data Layer → Gameplay Logic_]\
+      #text(size: 8pt, fill: rgb("666666"))[Unity serialised reference (`[SerializeField]`)]],
+    [`Item`, `NodeData` and `Recipe` assets are set up in the Unity Inspector and read at runtime by the components that need them. There is no code dependency; the connection is entirely through serialised Unity references.],
     // ── y=7  separator ───────────────────────────────────────────────────────
     table.cell(colspan: 2)[#text(weight: "bold", size: 9pt)[Gameplay Logic - Internal Component Boundaries]],
     // ── y=8  GL internal → Item Prefabs ─────────────────────────────────────
     [*`IHandItem`*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_PlayerHand → Item Prefab (GL internal)_]\
-     #text(size: 8pt,   fill: rgb("666666"))[C\# interface]],
-      [Any item that can be used while held in the player's hand implements this interface. When the player presses the use button, `PlayerHand` calls `Use()` on whichever component is currently active, without caring whether it is a `ToolBehaviour`, a `BlockBehaviour`, or anything else.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_PlayerHand → Item Prefab (GL internal)_]\
+      #text(size: 8pt, fill: rgb("666666"))[C\# interface]],
+    [Any item that can be used while held in the player's hand implements this interface. When the player presses the use button, `PlayerHand` calls `Use()` on whichever component is currently active, without caring whether it is a `ToolBehaviour`, a `BlockBehaviour`, or anything else.],
     // ── y=9  GL internal → Item Prefabs ─────────────────────────────────────
     [*`IPlayerInventoryAware`*\
-     #text(size: 8.5pt, fill: rgb("444444"))[_PlayerHand → Item Prefab (GL internal)_]\
-     #text(size: 8pt,   fill: rgb("666666"))[C\# interface]],
-      [Some item prefab components need access to the player's inventory to function correctly. This interface lets `PlayerHand` pass them a reference when the item is equipped, avoiding any need for a singleton lookup.],
+      #text(size: 8.5pt, fill: rgb("444444"))[_PlayerHand → Item Prefab (GL internal)_]\
+      #text(size: 8pt, fill: rgb("666666"))[C\# interface]],
+    [Some item prefab components need access to the player's inventory to function correctly. This interface lets `PlayerHand` pass them a reference when the item is equipped, avoiding any need for a singleton lookup.],
   ),
   caption: [Interface Contracts],
   supplement: [Table],
