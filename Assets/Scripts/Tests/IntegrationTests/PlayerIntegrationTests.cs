@@ -29,6 +29,9 @@ public class PlayerIntegrationTests : InputTestFixture
     public void Teardown()
     {
         GameObject.DestroyImmediate(m_playerInstance);
+        var field = typeof(NodeActionSystem).GetField("s_instance",
+            System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+        field.SetValue(null, null);
     }
 
     [UnityTest]
@@ -61,7 +64,8 @@ public class PlayerIntegrationTests : InputTestFixture
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = lookInput, buttons = 1 << (int)MouseButton.Right });
+        InputSystem.QueueStateEvent(Mouse.current,
+            new MouseState { delta = lookInput, buttons = 1 << (int)MouseButton.Right });
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
@@ -73,7 +77,8 @@ public class PlayerIntegrationTests : InputTestFixture
     {
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = Vector2.zero, buttons = 1 << (int)MouseButton.Right });
+        InputSystem.QueueStateEvent(Mouse.current,
+            new MouseState { delta = Vector2.zero, buttons = 1 << (int)MouseButton.Right });
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;

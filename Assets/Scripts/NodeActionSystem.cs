@@ -45,6 +45,7 @@ public class NodeActionSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         s_instance = this;
     }
 
@@ -55,7 +56,8 @@ public class NodeActionSystem : MonoBehaviour
 
     private void UpdateOutlineHover()
     {
-        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen || m_playerInventory.IsGlowCoreUIOpen))
+        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen ||
+                                          m_playerInventory.IsGlowCoreUIOpen))
         {
             if (m_currentNode != null)
                 OnChangeSelectedNode?.Invoke(null);
@@ -87,6 +89,7 @@ public class NodeActionSystem : MonoBehaviour
                 OnChangeSelectedNode?.Invoke(null);
                 Clear();
             }
+
             return;
         }
 
@@ -128,6 +131,7 @@ public class NodeActionSystem : MonoBehaviour
         {
             newTile = WorldGrid.Instance.WorldToGrid(hit.point);
         }
+
         if (newTile != m_currentTile)
         {
             m_currentTile = newTile;
@@ -137,7 +141,8 @@ public class NodeActionSystem : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen || m_playerInventory.IsGlowCoreUIOpen))
+        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen ||
+                                          m_playerInventory.IsGlowCoreUIOpen))
             return;
 
         m_currentNode?.Interact();
