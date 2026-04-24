@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 087e992aa4245d84684ab1478c8d3014, type: 3}
-  m_Name: Pickaxe
+  m_Name: StonePickaxe
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
-  Name: Pickaxe
+  Name: StonePickaxe
   Description: Pickaxe
   Prefab: {fileID: 380041252782059481, guid: b11b6e8ad91eafa48855c8b047160c8b, type: 3}
   Icon: {fileID: 21300000, guid: 3cec791bb138cc74a89237ebb278e559, type: 3}

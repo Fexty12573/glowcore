@@ -23,6 +23,8 @@ namespace GlowCore.World
         public static event Action<Node> OnCancelBreaking;
         public static event Action<Node> OnNodeBroken;
 
+        public bool MarkedForDeletion => m_markedForDeletion;
+
         public float GetInteractionRange()
         {
             return m_nodeData.InteractionRange;
@@ -60,6 +62,13 @@ namespace GlowCore.World
                 Break();
                 m_isHolding = false;
             }
+        }
+
+        public float GetBreakProgress()
+        {
+            if (m_effectiveBreakTime <= 0)
+                return 1;
+            return m_holdTimer / m_effectiveBreakTime;
         }
 
         private void Awake()

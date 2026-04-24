@@ -38,6 +38,6 @@ namespace ScriptableObjects
     public class UsableTool
     {
         public Tool Tool;
-        public float BreakMultiplier;
+        public float BreakMultiplier; // 0 means that it can be broken instantly
     }
 }

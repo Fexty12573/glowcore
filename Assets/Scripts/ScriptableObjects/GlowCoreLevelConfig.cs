@@ -11,7 +11,7 @@ namespace ScriptableObjects
         [SerializeField] private Sprite m_levelIcon;
         [SerializeField] private Recipe.Ingredient[] m_requiredMaterials = System.Array.Empty<Recipe.Ingredient>();
         [SerializeField][Min(0)] private int m_tilesOnLevelUp = 5;
-        [Tooltip("Tiles occupied in the world grid (1=1×1, 4=2×2, 9=3×3, 16=4×4).")]
+        [Tooltip("Tiles occupied by the GlowCore in the world grid (1=1×1, 4=2×2, 9=3×3, 16=4×4).")]
         [SerializeField][Min(1)] private int m_size = 1;
         [SerializeField]
         [TextArea]

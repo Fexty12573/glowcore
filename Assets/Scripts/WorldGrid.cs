@@ -157,7 +157,6 @@ namespace GlowCore.World
             return node;
         }
 
-
         public bool IsInBounds(Vector2Int tile)
         {
             return tile.x >= 0 && tile.x < m_gridSize
@@ -172,6 +171,12 @@ namespace GlowCore.World
         public bool IsPlayerObstructing(Vector3 worldPosition)
         {
             return Vector3.Distance(worldPosition, m_player.position) <= 0.9f;
+        }
+
+        public bool IsNodeInBounds(Node node)
+        {
+            Vector2Int tile = WorldToGrid(node.transform.position);
+            return IsInBounds(tile);
         }
 
         public Vector2Int WorldToGrid(int worldX, int worldZ)

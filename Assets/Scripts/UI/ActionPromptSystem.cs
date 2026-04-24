@@ -1,20 +1,32 @@
 using GlowCore.World;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionPromptSystem : MonoBehaviour
 {
+    [Header("ActionPrompt")]
     [SerializeField] private Vector3 m_promptOffset;
     [SerializeField] private GameObject m_promptUI; // An Action Prompt is a visual UI Element that pops up when the player hovers over a Node and says e.g. "Break with Leftclick".
     [SerializeField] private TextMeshProUGUI m_promptText;
     [SerializeField] private GameObject m_leftClickIcon;
     [SerializeField] private GameObject m_eButtonIcon;
-    [SerializeField] private TextMeshProUGUI m_nodeBreakProgressBar;
+    
+    [Header("ProgressBar")]
+    [SerializeField] private Vector3 m_progressBarOffset;
+    [SerializeField] private Slider m_nodeBreakProgressBar;
     private Node m_currentNode;
     private bool m_isInteractableNode;
     private bool m_showBreakNodePrompt; // Only shown on the first Node that the player breaks.
+    private bool m_isBreaking;
+
     private void Update()
     {
+        if (m_isBreaking)
+        {
+            UpdateNodeBreakProgress();
+            return;
+        }
         if (m_currentNode is not null)
             UpdatePromptPosition();
     }
@@ -61,7 +73,7 @@ public class ActionPromptSystem : MonoBehaviour
         {
             m_promptText.text = interactable.GetActionPromptText();
             m_leftClickIcon.SetActive(false);
-            m_eButtonIcon.SetActive(true);
+            m_eButtonIcon.SetActive(interactable is not Sign);
         }
         else
         {
@@ -71,7 +83,7 @@ public class ActionPromptSystem : MonoBehaviour
         }
         UpdatePromptPosition();
     }
-    
+
     private void DisablePrompt()
     {
         m_currentNode = null;
@@ -84,21 +96,32 @@ public class ActionPromptSystem : MonoBehaviour
         m_promptUI.transform.position = Camera.main.WorldToScreenPoint(promptPosition);
     }
 
+    private void UpdateNodeBreakProgress()
+    {
+        Vector3 progressBarPosition = m_currentNode.transform.position + m_progressBarOffset;
+        m_nodeBreakProgressBar.transform.position = Camera.main.WorldToScreenPoint(progressBarPosition);
+        m_nodeBreakProgressBar.value = m_currentNode.GetBreakProgress();
+    }
+
     private void HandleNodeStartBreaking(Node node)
     {
-        Debug.Log("starts");
-        m_nodeBreakProgressBar.text = "starts breaking";
+        m_isBreaking = true;
+        m_nodeBreakProgressBar.gameObject.SetActive(true);
+        m_promptUI.SetActive(false);
+        UpdateNodeBreakProgress();
     }
 
     private void HandleNodeCancelBreaking(Node node)
     {
-        Debug.Log("stops");
-        m_nodeBreakProgressBar.text = "stops breaking";
+        m_isBreaking = false;
+        m_nodeBreakProgressBar.gameObject.SetActive(false);
+        if (!node.MarkedForDeletion)
+            m_promptUI.SetActive(true);
     }
 
     private void HandleNodeBroken(Node node)
     {
-        Debug.Log("broken");
-        m_nodeBreakProgressBar.text = "broken (off)";
+        m_isBreaking = false;
+        m_nodeBreakProgressBar.gameObject.SetActive(false);
     }
 }

@@ -52,14 +52,14 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
         if (NodeActionSystem.Instance == null)
             return;
         NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
-        m_selectedNode?.EndHold();
+        // m_selectedNode?.EndHold();
     }
 
     private void HandleNodeChanged(Node newNode)
     {
-        if (m_selectedNode != newNode)
+        if (m_selectedNode != newNode && m_isHolding)
         {
-            // m_selectedNode?.EndHold();
+            m_selectedNode?.EndHold();
             m_isHolding = false;
         }
         m_selectedNode = newNode;

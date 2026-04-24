@@ -107,7 +107,7 @@ public class NodeActionSystem : MonoBehaviour
         Node node = child.Root;
         Outline outline = node.Outline;
 
-        if (distance > node.GetInteractionRange())
+        if (distance > node.GetInteractionRange() || !WorldGrid.Instance.IsNodeInBounds(node))
         {
             OnChangeSelectedNode?.Invoke(null);
             Clear();

@@ -121,6 +121,11 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     }
 
     // Private Methods — Lifecycle
+    private void Start()
+    {
+        UpdatePlayerHand();
+    }
+
     private void Awake()
     {
         m_inventory = new Inventory(kColumns, kRows);
