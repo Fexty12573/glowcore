@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using ScriptableObjects;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GlowCore.World
 {
@@ -10,11 +12,16 @@ namespace GlowCore.World
         private float m_holdTimer;
         private float m_effectiveBreakTime;
         private bool m_isHolding;
+        private bool m_markedForDeletion;
         private IInteractable m_interactable;
 
         public List<Vector2Int> TilesUsed = new();
         public Outline Outline;
         public NodeData NodeData => m_nodeData;
+
+        public static event Action<Node> OnStartBreaking;
+        public static event Action<Node> OnCancelBreaking;
+        public static event Action<Node> OnNodeBroken;
 
         public float GetInteractionRange()
         {
@@ -31,6 +38,7 @@ namespace GlowCore.World
             m_effectiveBreakTime = m_nodeData.GetEffectiveBreakTime(tool);
             m_isHolding = true;
             m_holdTimer = 0f;
+            OnStartBreaking?.Invoke(this);
         }
 
         public void EndHold()
@@ -38,6 +46,7 @@ namespace GlowCore.World
             m_effectiveBreakTime = m_nodeData.BaseBreakTime;
             m_isHolding = false;
             m_holdTimer = 0f;
+            OnCancelBreaking?.Invoke(this);
         }
 
         public void UpdateHold(float deltaTime)
@@ -91,6 +100,8 @@ namespace GlowCore.World
             {
                 WorldGrid.Instance.ClearNodeAt(tile);
             }
+            m_markedForDeletion = true;
+            OnNodeBroken?.Invoke(this);
             Destroy(gameObject);
         }
     }

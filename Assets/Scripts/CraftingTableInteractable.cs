@@ -15,6 +15,8 @@ public class CraftingTableInteractable : MonoBehaviour, IInteractable
         SetCraftingTableOpen(!m_isOpen);
     }
 
+    public string GetActionPromptText() => "Craft";
+
     // Private Methods
     private void Start()
     {

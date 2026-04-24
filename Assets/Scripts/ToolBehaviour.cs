@@ -59,7 +59,7 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
     {
         if (m_selectedNode != newNode)
         {
-            m_selectedNode?.EndHold();
+            // m_selectedNode?.EndHold();
             m_isHolding = false;
         }
         m_selectedNode = newNode;

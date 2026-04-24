@@ -105,6 +105,8 @@ namespace GlowCore.World
             m_ui.Show(this);
         }
 
+        public string GetActionPromptText() => "Feed GlowCore";
+
         public void FeedMaterial(Item item, int amount)
         {
             if (item == null || amount <= 0 || m_levelConfig == null)

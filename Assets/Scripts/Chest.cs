@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -12,4 +11,6 @@ public class Chest : MonoBehaviour, IInteractable
             ItemStackDrop.Spawn(new ItemStack(item, 1), transform.position + Vector3.right);
         }
     }
+
+    public string GetActionPromptText() => "Open Chest";
 }
