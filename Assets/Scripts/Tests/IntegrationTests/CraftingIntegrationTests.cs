@@ -3,9 +3,8 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using ScriptableObjects;
-using UnityEngine.InputSystem;
 
-public class CraftingIntegrationTests : InputTestFixture
+public class CraftingIntegrationTests
 {
     private GameObject m_playerInstance;
     private PlayerInventory m_inventory;
@@ -68,20 +67,20 @@ public class CraftingIntegrationTests : InputTestFixture
     public IEnumerator Crafting_RemovesIngredients_And_AddsResult()
     {
         m_inventory.AddItem(m_wood, 2);
-    
+
         yield return new WaitForFixedUpdate();
-    
+
         Assert.AreEqual(2, m_inventory.CountItem(m_wood));
         Assert.AreEqual(0, m_inventory.CountItem(m_stick));
-    
+
         bool canCraft = m_crafting.CanCraft(m_recipe);
         bool crafted = m_crafting.Craft(m_recipe);
-    
+
         yield return new WaitForFixedUpdate();
-    
+
         Assert.IsTrue(canCraft, "Should be able to craft");
         Assert.IsTrue(crafted, "Craft succeed");
-    
+
         Assert.AreEqual(0, m_inventory.CountItem(m_wood), "Wood consumed");
         Assert.AreEqual(1, m_inventory.CountItem(m_stick), "Stick added");
     }

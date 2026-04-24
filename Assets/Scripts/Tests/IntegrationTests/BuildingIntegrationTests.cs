@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using GlowCore.World;
 using ScriptableObjects;
-using UnityEngine.InputSystem;
 
-public class BuildingIntegrationTests : InputTestFixture
+public class BuildingIntegrationTests
 {
     private WorldGrid m_world;
     private BlockBehaviour m_blockBehaviour;
