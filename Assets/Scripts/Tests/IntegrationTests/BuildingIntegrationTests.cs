@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
+using GlowCore.World;
 using NUnit.Framework;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.TestTools;
-using GlowCore.World;
-using ScriptableObjects;
 
 public class BuildingIntegrationTests
 {
@@ -64,7 +64,8 @@ public class BuildingIntegrationTests
     {
         var method = target.GetType().GetMethod(methodName,
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        if (method == null) Assert.Fail($"Methode {methodName} wurde nicht gefunden");
+        if (method == null)
+            Assert.Fail($"Methode {methodName} wurde nicht gefunden");
         method.Invoke(target, args);
     }
 
@@ -82,7 +83,7 @@ public class BuildingIntegrationTests
 
         yield return new WaitForFixedUpdate();
 
-        bool isOccupied = WorldGrid.Instance.IsOccupied(targetTile);
+        var isOccupied = WorldGrid.Instance.IsOccupied(targetTile);
         Assert.IsTrue(isOccupied, "Das WorldGrid sollte an der Stelle (3,3) besetzt sein");
 
         Assert.AreEqual(4, m_inventory.CountItem(m_chestItem));

@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using NUnit.Framework;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.TestTools;
-using ScriptableObjects;
 
 public class CraftingIntegrationTests
 {
@@ -73,8 +73,8 @@ public class CraftingIntegrationTests
         Assert.AreEqual(2, m_inventory.CountItem(m_wood));
         Assert.AreEqual(0, m_inventory.CountItem(m_stick));
 
-        bool canCraft = m_crafting.CanCraft(m_recipe);
-        bool crafted = m_crafting.Craft(m_recipe);
+        var canCraft = m_crafting.CanCraft(m_recipe);
+        var crafted = m_crafting.Craft(m_recipe);
 
         yield return new WaitForFixedUpdate();
 
@@ -92,8 +92,8 @@ public class CraftingIntegrationTests
 
         yield return new WaitForFixedUpdate();
 
-        bool canCraft = m_crafting.CanCraft(m_recipe);
-        bool crafted = m_crafting.Craft(m_recipe);
+        var canCraft = m_crafting.CanCraft(m_recipe);
+        var crafted = m_crafting.Craft(m_recipe);
 
         yield return new WaitForFixedUpdate();
 
