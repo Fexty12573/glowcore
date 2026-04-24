@@ -5,41 +5,42 @@
   date: "24.04.2026",
   sprint: "Sprint 5",
   lead: "Dominik Wyss",
-  scribe: "Nathanael Fässler",
-  time: "14:00–14:45",
+  scribe: "Cedric Cathomas",
+  time: "11:00–11:30",
   location: "Online",
   participants: "Cedric Cathomas, Nathanael Fässler, Dominik Wyss, Yoris Kucera",
   excused: "-",
   links: "-",
 )
 
-// ==== Agenda
-// #agenda_table((
-//   [New Nodes and Items created with new 3D Models],
-//   [Dominik Wyss],
-//   [- Scriptable Object Architecture works],
-//   [Pixelate Shader],
-//   [Yoris Kucera],
-//   [
-//     - Team thinks it looks good
-//     - Showcased parameters of the shader
-//     - Camera angle and zoom needs refining
-//   ],
-//   [Inventory UI],
-//   [Cedric Cathomas],
-//   [- Prototype is working],
-//   [Node and Tile hovering Architecture],
-//   [Nathanael Fässler],
-//   [- Will be implemented with events],
-// ))
+==== Agenda
+#agenda_table((
+  [NFR and UC current Testing state],
+  [Cedric Cathomas],
+  [
+  - partially implemented for certain UC's and NFR's is fine
+  - Need to synchronize deadlines
+  - new color code N/A is needed],
+  [Integration Tests],
+  [Nathanael Fässler],
+  [
+    - Not all wished integration tests will be possible to write.
+  ],
+  [New Tasks in Backlog due to discussion with Advisor],
+  [Dominik Wyss],
+  [- Dominik explained wished changes of the advisor
+   - 4 new tasks got created in jira
+   - further descriptions of the tasks can be found on the corresponding ticket or we can ask dominik.
+    ],
+))
 
 
 
-// ==== Todos
-// #todo_table((
-//   [Explicitly address review feedback in Teams],
-//   [Dominik Wyss],
-//   [03.04.2026],
-// ))
+==== Todos
+#todo_table((
+  [Create new color code for the verification of UC's and NFR's],
+  [Cedric Cathomas],
+  [01.05.2026],
+))
 
 #pagebreak()

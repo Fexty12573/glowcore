@@ -40,3 +40,6 @@
 #include "13_Sprint_Retrospective_18-04-2026.typ"
 #include "14_Sprint_Planning_18-04-2026.typ"
 #include "15_Weekly_Scrum_24-04-2026.typ"
+#include "16_Sprint_Retrospective_01-05-2026.typ"
+#include "17_Sprint_Planning_01-05-2026.typ"
+#include "18_Sprint_Review_(Advisor)_05-05-2026.typ"
