@@ -56,7 +56,7 @@
 ==== Next dates
 #next_dates((
   [Review 4 - Quality],
-  [28.04.2026 15:00],
+  [05.05.2026 15:00],
 ))
 
 #pagebreak()
