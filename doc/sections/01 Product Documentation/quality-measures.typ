@@ -47,6 +47,18 @@ We cover NFR testing through a mix of automated benchmarks and manual playtestin
 
 By combining the automated safety net of our UTF pipeline with heavy manual playtesting and strict NFR benchmarking, we believe this concept will keep the game stable while still allowing us to iterate quickly on the gameplay.
 
+#show ref: it => {
+  if it.element != none and it.element.func() == figure {
+    link(it.target, str(it.target))
+  } else {
+    it
+  }
+}
+
+==== Coverage Summary
+
+At the current stage of the project, 4 out of 11 Use Cases are fully verified (@UC01, @UC03, @UC04, @UC07), 2 are only partially implemented (@UC05, @UC06), and the remaining 5 have not been tested yet since they are planned for later milestones. For the NFRs, 3 requirements passed (@NFR103, @NFR202, @NFR501), 3 are partially met (@NFR101, @NFR201, @NFR401), and 6 failed, mostly because the save system is not yet implemented (@NFR104, @NFR301, @NFR302, @NFR303) and some features are still missing (@NFR203, @NFR402). Another 7 NFRs have not been tested yet as they are scheduled for M09 or M10. Regarding code coverage, it has not been measured yet since the Unity Code Coverage package is not set up. This is planned for Sprint 5.
+
 // TODO: Describe the test strategy as discussed in SEP1.
 // - How each functional and non-functional requirement is verified
 // - At what level (Unit, Integration, System)
