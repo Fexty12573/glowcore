@@ -2,13 +2,34 @@
 
 === Working Environment
 
-// TODO: Describe the quality measures applied in your project (SEP1 & SEP2).
-// Things to include:
-// - Organizational means (Merge Requests, Definition of Done, etc.)
-// - Guidelines for code, documentation, version control, etc.
-// - Tools used to assess quality (linter, metrics, ...)
-// - Tools used to build and deploy (CI/CD)
-// Tip: Avoid duplication with other chapters — use cross-references when appropriate.
+#v(23cm)
+==== Definition of Ready and Definition of Done
+
+Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and conditionally -> UI consistency and documentation updates.
+
+#figure(
+  image("../../resources/01 Product Documentation/dor_dod_flowchart.drawio.png", width: 100%),
+  caption: [Definition of Ready and Definition of Done - ticket lifecycle flowchart],
+  supplement: [Image],
+  placement: auto,
+)
+
+===== DoR Example
+
+The following example shows a real ticket (GC-186) that satisfies all DoR criteria and is ready to be worked on.
+
+#figure(
+  image("../../resources/01 Product Documentation/DoR_Example.png", width: 100%),
+  caption: [GC-186 - Example of a ticket satisfying all Definition of Ready criteria],
+  supplement: [Image],
+  placement: auto,
+)
+
+===== DoD Example
+
+Once completed, the same ticket with all acceptance criteria checked and status set to "Done" serves as the DoD example.
+
+// TODO: Add DoD example screenshot once GC-186 is completed (all ACs checked, status Done).
 
 === Testing
 
