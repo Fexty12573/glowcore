@@ -32,7 +32,7 @@ foreach ($line in $lines) {
     }
 }
 
-"File,Blank,Comment,Code" | Out-File $outputFile
-$results | Out-File $outputFile -Append
+"File,Blank,Comment,Code" | Out-File $outputFile -Encoding utf8
+$results | Out-File $outputFile -Append -Encoding utf8
 
 Write-Host "CSV erstellt: $outputFile"
