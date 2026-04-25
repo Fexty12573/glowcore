@@ -48,9 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5182247106089730537, guid: 77585473e77a6624aa46a7aa555f98a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 77585473e77a6624aa46a7aa555f98a9, type: 3}
       propertyPath: m_Name
-      value: GlowCorePhase2
+      value: GlowCoreLevel14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033807427904629675, guid: 77585473e77a6624aa46a7aa555f98a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359927303451655740, guid: 77585473e77a6624aa46a7aa555f98a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610449910977613336, guid: 77585473e77a6624aa46a7aa555f98a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386063304155077911, guid: 77585473e77a6624aa46a7aa555f98a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -161,10 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8fbb66452f24e4b8404e220dada2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.GlowCoreObject
-  m_levelConfig: {fileID: 11400000, guid: d683a960254f03c4b8827a6881791522, type: 2}
-  m_nextLevelPrefab: {fileID: 0}
+  m_levelConfig: {fileID: 11400000, guid: 43b351086c900254caccc7121a0f71cd, type: 2}
+  m_nextLevelPrefab: {fileID: 6659528183695809230, guid: 7f3e1393229031e4a9f769ddacbc0c90, type: 3}
   m_logs: []
-  m_initialActiveLogs: 3
-  m_woodCostPerMapTile: 5
-  m_playerInventory: {fileID: 0}
   m_fire: {fileID: 960423019795606573}
+  m_closeDistance: 5

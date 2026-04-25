@@ -22,13 +22,15 @@ public class ActionPromptSystem : MonoBehaviour
 
     private void Update()
     {
+        if (m_currentNode == null || m_currentNode.MarkedForDeletion)
+            return;
+
         if (m_isBreaking)
         {
             UpdateNodeBreakProgress();
             return;
         }
-        if (m_currentNode is not null)
-            UpdatePromptPosition();
+        UpdatePromptPosition();
     }
 
     private void Start()

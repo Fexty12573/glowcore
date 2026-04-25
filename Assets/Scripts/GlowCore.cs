@@ -185,12 +185,8 @@ namespace GlowCore.World
 
         private void CreatePhysical(int level)
         {
-            switch (level)
-            {
-                case 1:
-                    CreatePhysicalLevel1();
-                    break;
-            }
+            if (level <= 11)
+                CreatePhysicalLevel1();
         }
 
         private void FeedPhysical(int level, Item item, int amount)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: StoneAxe
   Description: 
-  Prefab: {fileID: 5056978600972422149, guid: d5c34e1fef54e8443aef867101228340, type: 3}
+  Prefab: {fileID: 5039812703248510535, guid: 80fd6d263512acd49aaada9f8d3fb500, type: 3}
   Icon: {fileID: 21300000, guid: af4690f0362a0be4cb5d873acb379375, type: 3}
   DropScale: 1
   InHandScale: 1
