@@ -20,10 +20,10 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 10
+  BaseBreakTime: 15
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}
     BreakMultiplier: 1
   - Tool: {fileID: 11400000, guid: ae7388be54fb6ce458ac89a0768a1c3e, type: 2}
-    BreakMultiplier: 0.2
+    BreakMultiplier: 0.15

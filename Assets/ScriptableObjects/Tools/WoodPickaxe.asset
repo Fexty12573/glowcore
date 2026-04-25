@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: Wood Pickaxe
   Description: 
-  Prefab: {fileID: 380041252782059481, guid: b11b6e8ad91eafa48855c8b047160c8b, type: 3}
+  Prefab: {fileID: 1120321545808541956, guid: a469530c339ad8b428025436562c7204, type: 3}
   Icon: {fileID: 21300000, guid: 9834d50122cdbac41a329f5fb2ba4ba9, type: 3}
   DropScale: 1
   InHandScale: 1

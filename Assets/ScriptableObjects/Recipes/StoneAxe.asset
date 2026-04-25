@@ -15,7 +15,9 @@ MonoBehaviour:
   Name: Stone Axe
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 3
+    Amount: 10
+  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
+    Amount: 5
   ResultItem: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
   ResultAmount: 1
   m_requiresCraftingTable: 1
