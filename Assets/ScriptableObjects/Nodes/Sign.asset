@@ -23,4 +23,4 @@ MonoBehaviour:
   - Tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
     BreakMultiplier: 1
   - Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
-    BreakMultiplier: 1
+    BreakMultiplier: 0.3

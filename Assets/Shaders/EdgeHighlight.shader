@@ -103,7 +103,8 @@ Shader "Custom/Edge Highlight"
 				float normalEdge = saturate(normalEdgeTotal / 4.0) * g_normalStrength;
 
 				float edge = saturate(max(depthEdge, normalEdge));
-				float3 outColor = lerp(baseColor.rgb, g_highlightColor.rgb, edge * g_blendStrength);
+			    float edgeHard = step(0.5, edge * g_blendStrength);
+			    float3 outColor = lerp(baseColor.rgb, g_highlightColor.rgb, edgeHard);
 
 				return half4(outColor, baseColor.a);
 			}

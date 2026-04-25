@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 m_moveInput;
 
+    public void MultiplyMovementSpeed(float factor) => m_movementSpeed *= factor;
+
     public void HandleMove(Vector2 movement)
     {
         m_moveInput = movement;

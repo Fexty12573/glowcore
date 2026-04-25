@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
   m_Name: StoneAxe
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Axe
+  Name: Stone Axe
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Amount: 3
   ResultItem: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
   ResultAmount: 1
-  m_requiresCraftingTable: 0
+  m_requiresCraftingTable: 1

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
-  m_Name: CraftingTable
+  m_Name: ChestBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
-  Name: Crafting Table
-  Description: Craft advanced Items
-  Prefab: {fileID: 6570926365179302594, guid: 8a11e8e40d11a814fb035a548d47a9c6, type: 3}
-  Icon: {fileID: 21300000, guid: e093c027dae79af4e9a90e59411b7a01, type: 3}
+  Name: Chest
+  Description: 
+  Prefab: {fileID: 7208416411730412183, guid: d9e0ca1360705e8489a7ac4647ca1566, type: 3}
+  Icon: {fileID: 21300000, guid: c5d3ad014e696ee49ae80499e39f037b, type: 3}
   DropScale: 0.5
   InHandScale: 0.5
   MaxStack: 99
-  NodeToBuild: {fileID: 1812523118880574166, guid: a6f2af7ea61c9e348a829bdd532466ba, type: 3}
+  NodeToBuild: {fileID: 6348191760633195365, guid: e88a89ab48c141b47970093c6a02adf0, type: 3}
   BuildRadius: 4

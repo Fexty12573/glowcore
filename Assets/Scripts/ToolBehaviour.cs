@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class ToolBehaviour : MonoBehaviour, IHandItem
 {
-    bool m_isHolding;
+    private bool m_isHolding;
     [SerializeField][ReadOnly(true)] private Node m_selectedNode;
     [SerializeField] private Tool m_tool;
 

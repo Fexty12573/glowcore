@@ -25,12 +25,12 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - g_blendStrength: 0.2
+    - g_blendStrength: 110
     - g_depthStrength: 100
-    - g_depthThreshold: 0.002
-    - g_normalStrength: 0.3
-    - g_normalThreshold: 0.2
+    - g_depthThreshold: 0.0001
+    - g_normalStrength: 0
+    - g_normalThreshold: 100
     m_Colors:
-    - g_highlightColor: {r: 0.8006408, g: 0.9723905, b: 0.9811321, a: 1}
+    - g_highlightColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
