@@ -50,3 +50,36 @@ By combining the automated safety net of our UTF pipeline with heavy manual play
 // TODO: Describe the test strategy as discussed in SEP1.
 // - How each functional and non-functional requirement is verified
 // - At what level (Unit, Integration, System)
+
+
+=== Code metrics
+==== Lines of Code
+#figure(
+  image("../../resources/01 Product Documentation/loc-diagramm.png", width: 100%),
+  caption: [Interface Overview Diagram],
+  supplement: [Image],
+)
+#{
+  let data = csv("../../resources/01 Product Documentation/loc_files_final.csv")
+    .flatten()
+    .slice(4)
+    .map(item => {
+      if item.len() > 20 { item.slice(0, 13) + "..." } else { item }
+    })
+
+  grid(
+    columns: 2,
+    gutter: 0.5cm,
+    table(
+      columns: 4,
+      table.header([File], [Blank], [Comment], [Code]),
+      ..data.slice(0, calc.floor(data.len() / 2)),
+    ),
+    table(
+      columns: 4,
+      table.header([File], [Blank], [Comment], [Code]),
+      ..data.slice(calc.floor(data.len() / 2)),
+    ),
+  )
+}
+==== Test Coverage

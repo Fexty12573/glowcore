@@ -1,0 +1,57 @@
+github.com/AlDanial/cloc v 2.08  T=0.85 s (58.7 files/s, 5148.3 lines/s)
+---------------------------------------------------------------------------------------------------------------------
+File                                                                              blank        comment           code
+---------------------------------------------------------------------------------------------------------------------
+..\Assets\Scripts\WorldGrid.cs                                                       87             42            371
+..\Assets\Scripts\UI\Inventory\InventoryUI.cs                                        54              0            227
+..\Assets\Scripts\ThirdParty\Outline.cs                                              81             44            217
+..\Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs                                46              1            195
+..\Assets\Scripts\Inventory.cs                                                       38              0            171
+..\Assets\Scripts\UI\Inventory\CraftingTableUI.cs                                    32              5            146
+..\Assets\Scripts\UI\Inventory\RecipeRowUI.cs                                        32              0            143
+..\Assets\Scripts\NodeActionSystem.cs                                                27              1            133
+..\Assets\Scripts\PlayerInventory.cs                                                 32             10            124
+..\Assets\Scripts\ItemStackDrop.cs                                                   29              1            119
+..\Assets\Scripts\UI\Inventory\ItemSlotUI.cs                                         24              1            114
+..\Assets\Scripts\GlowCore.cs                                                        23              4            100
+..\Assets\Scripts\UI\Inventory\CraftingUI.cs                                         22              0             91
+..\Assets\Scripts\Tests\IntegrationTests\PlayerIntegrationTests.cs                   21              0             85
+..\Assets\Scripts\Node.cs                                                            13              0             84
+..\Assets\Scripts\UI\Inventory\HotbarUI.cs                                           13              0             84
+..\Assets\Scripts\Tests\UnitTests\InventoryTests.cs                                  20              0             83
+..\Assets\Scripts\BlockBehaviour.cs                                                  18              0             77
+..\Assets\Scripts\CraftingTableInteractable.cs                                       14              3             73
+..\Assets\Scripts\UI\Inventory\HotbarSlotUI.cs                                       12              0             71
+..\Assets\Scripts\UI\Inventory\TooltipUI.cs                                          16              4             70
+..\Assets\Scripts\ToolBehaviour.cs                                                    9              1             57
+..\Assets\Scripts\Fire.cs                                                            12              4             50
+..\Assets\Scripts\PlayerHand.cs                                                       8              0             50
+..\Assets\Scripts\ItemStack.cs                                                       13              0             48
+..\Assets\Scripts\PlayerMovement.cs                                                   8              0             46
+..\Assets\Scripts\CraftingSystem.cs                                                  14              0             45
+..\Assets\Scripts\SlotData.cs                                                         6              0             44
+..\Assets\Scripts\ScriptableObjects\NodeData.cs                                       6              0             37
+..\Assets\Scripts\PostProcessing\LowResViewport.cs                                    7              0             32
+..\Assets\Scripts\Tests\UnitTests\ExampleDamageCalculatorTests.cs                     7              0             31
+..\Assets\Scripts\UI\UIColors.cs                                                      7              6             29
+..\Assets\Scripts\IInventoryService.cs                                                4              3             27
+..\Assets\Scripts\UI\Inventory\ItemIconHelper.cs                                      4              0             27
+..\Assets\Scripts\PlayerCamera.cs                                                     5              0             23
+..\Assets\Scripts\ScriptableObjects\Recipe.cs                                         3              0             21
+..\Assets\Scripts\ScriptableObjects\Item.cs                                           2              0             15
+..\Assets\Scripts\Chest.cs                                                            1              0             14
+..\Assets\TutorialInfo\Scripts\Readme.cs                                              2              0             14
+..\Assets\Scripts\ICraftingService.cs                                                 3              3             11
+..\Assets\Scripts\TestingExample\DamageCalculator.cs                                  2              0             11
+..\Assets\Scripts\ScriptableObjects\Block.cs                                          1              0             10
+..\Assets\Scripts\ScriptableObjects\RecipeList.cs                                     2              0             10
+..\Assets\Scripts\TreeNode.cs                                                         1              0              7
+..\Assets\Scripts\NodeActionChild.cs                                                  1              0              6
+..\Assets\Scripts\ScriptableObjects\Tool.cs                                           1              0              6
+..\Assets\Scripts\IHandItem.cs                                                        1              0              5
+..\Assets\Scripts\TestingExample\IWeapon.cs                                           0              0              5
+..\Assets\Scripts\Tests\Mocks\MockWeapon.cs                                           0              0              5
+..\Assets\Scripts\IPlayerInventoryAware.cs                                            0              0              4
+---------------------------------------------------------------------------------------------------------------------
+SUM:                                                                                784            133           3468
+---------------------------------------------------------------------------------------------------------------------
