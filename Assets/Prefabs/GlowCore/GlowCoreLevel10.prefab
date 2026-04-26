@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4807283006828550155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,7 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.9150943, g: 0.47407287, b: 0.13381095, a: 1}
-  m_Intensity: 5
+  m_Intensity: 10
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Fire 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7531185571972932703, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7800046302039599656, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -161,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7800046302039599656, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7800046302039599656, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -480,8 +484,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Fire
   m_fireParticles: {fileID: 6653769928450860939}
   m_minFireScale: 0.5
-  m_maxFireScale: 3
-  m_woodForMaxFire: 20
+  m_maxFireScale: 2
+  m_woodForMaxFire: 100
   m_debugWoodAmount: 1
 --- !u!114 &2562424217584133505
 MonoBehaviour:

@@ -132,4 +132,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e0345a8d7b2c54b9c034a9a89a0157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Sign
-  m_signText: Hold Right Mousebutton to move camera
+  m_signText: 
+  m_showRandomText: 0

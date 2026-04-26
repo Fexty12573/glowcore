@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
   Name: Speed Potion
   Description: 
-  Prefab: {fileID: 5858608440371649498, guid: 115ecbeb156598b40934925062be7bf3, type: 3}
-  Icon: {fileID: 0}
-  DropScale: 1
-  InHandScale: 1
+  Prefab: {fileID: 6219311510220357730, guid: 4cbff72d0e77ab34ab2bf38212af5a78, type: 3}
+  Icon: {fileID: 21300000, guid: f514ddecbf29f5e43811ef3adfdf98ec, type: 3}
+  DropScale: 0.7
+  InHandScale: 0.7
   MaxStack: 1

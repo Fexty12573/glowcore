@@ -167,6 +167,8 @@ namespace GlowCore.World
         {
             m_playerInventory = FindFirstObjectByType<PlayerInventory>();
             CreatePhysical(Level);
+
+            RenderSettings.sun.intensity += 0.02f;
         }
 
         private void Update()
@@ -185,18 +187,14 @@ namespace GlowCore.World
 
         private void CreatePhysical(int level)
         {
-            if (level <= 11)
-                CreatePhysicalLevel1();
+            CreatePhysicalLevel1();
+
+            
         }
 
         private void FeedPhysical(int level, Item item, int amount)
         {
-            switch (level)
-            {
-                case 1:
-                    FeedPhysicalLevel1(item, amount);
-                    break;
-            }
+            FeedPhysicalLevel1(item, amount);
         }
 
         private void UpgradePhysical()

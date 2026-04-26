@@ -44,7 +44,7 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.9150943, g: 0.47407287, b: 0.13381095, a: 1}
-  m_Intensity: 5
+  m_Intensity: 10
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_fireParticles: {fileID: 6653769928450860939}
   m_minFireScale: 0.5
   m_maxFireScale: 3
-  m_woodForMaxFire: 20
+  m_woodForMaxFire: 100
   m_debugWoodAmount: 1
 --- !u!114 &2562424217584133505
 MonoBehaviour:
