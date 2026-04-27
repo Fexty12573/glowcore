@@ -54,11 +54,17 @@ public class BuildingIntegrationTests
         m_blockBehaviour = chestPrefab.GetComponent<BlockBehaviour>();
         SetPrivateField(m_blockBehaviour, "m_inventory", m_inventory);
         m_chestItem =
-            UnityEditor.AssetDatabase.LoadAssetAtPath<Block>("Assets/ScriptableObjects/Blocks/Chest.asset");
+            UnityEditor.AssetDatabase.LoadAssetAtPath<Block>("Assets/ScriptableObjects/Blocks/ChestBlock.asset");
         ItemStack chestStack = new ItemStack(m_chestItem, 5);
         yield return null;
 
         m_inventory.AddItem(chestStack);
+        var inventoryInstance = m_inventory.GetType().GetField("m_inventory",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(m_inventory);
+        var itemsField = inventoryInstance.GetType().GetField("m_items",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        ItemStack[] items = (ItemStack[])itemsField.GetValue(inventoryInstance);
+        (items[0], items[1]) = (items[1], items[0]);
 
         yield return null;
     }
