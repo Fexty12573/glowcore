@@ -135,7 +135,6 @@ namespace GlowCore.World
             GameObject prefab = PickRandomNodePrefab();
             if (prefab == null)
             {
-                Debug.LogError("WorldGrid: No spawnable nodes assigned.");
                 return null;
             }
 
