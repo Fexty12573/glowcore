@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public interface IInteractable
 {
     void Interact();
+    string GetActionPromptText();
 }
 
 public class NodeActionSystem : MonoBehaviour
@@ -20,7 +21,6 @@ public class NodeActionSystem : MonoBehaviour
     private Outline m_currentOutline;
     private Vector2Int? m_currentTile;
     private Vector2 m_mousePos;
-    private bool m_mouseMoved;
 
     public static NodeActionSystem Instance => s_instance;
 
@@ -54,6 +54,16 @@ public class NodeActionSystem : MonoBehaviour
         UpdateOutlineHover();
     }
 
+    private void OnEnable()
+    {
+        Node.OnNodeBroken += HandleNodeBroken;
+    }
+
+    private void OnDisable()
+    {
+        Node.OnNodeBroken -= HandleNodeBroken;
+    }
+
     private void UpdateOutlineHover()
     {
         if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen ||
@@ -64,10 +74,6 @@ public class NodeActionSystem : MonoBehaviour
             Clear();
             return;
         }
-
-        if (!m_mouseMoved)
-            return;
-        m_mouseMoved = false;
         Ray ray = m_camera.ScreenPointToRay(m_mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit, m_raycastRange))
         {
@@ -104,13 +110,16 @@ public class NodeActionSystem : MonoBehaviour
         Node node = child.Root;
         Outline outline = node.Outline;
 
-        if (distance > node.GetInteractionRange())
+        if (distance > node.GetInteractionRange() || !WorldGrid.Instance.IsNodeInBounds(node))
         {
+            if (m_currentNode != null)
+                OnChangeSelectedNode?.Invoke(null);
+
             Clear();
             return;
         }
 
-        if (node != m_currentNode || outline != m_currentOutline)
+        if (node != m_currentNode)
         {
             Clear();
 
@@ -139,6 +148,15 @@ public class NodeActionSystem : MonoBehaviour
         }
     }
 
+    private void HandleNodeBroken(Node brokenNode)
+    {
+        if (brokenNode == m_currentNode)
+        {
+            OnChangeSelectedNode?.Invoke(null);
+            Clear();
+        }
+    }
+
     private void OnInteract(InputValue value)
     {
         if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingTableOpen ||
@@ -161,6 +179,5 @@ public class NodeActionSystem : MonoBehaviour
     private void OnPoint(InputValue value)
     {
         m_mousePos = value.Get<Vector2>();
-        m_mouseMoved = true;
     }
 }

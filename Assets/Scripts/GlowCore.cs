@@ -105,6 +105,8 @@ namespace GlowCore.World
             m_ui.Show(this);
         }
 
+        public string GetActionPromptText() => "Feed GlowCore";
+
         public void FeedMaterial(Item item, int amount)
         {
             if (item == null || amount <= 0 || m_levelConfig == null)
@@ -165,6 +167,8 @@ namespace GlowCore.World
         {
             m_playerInventory = FindFirstObjectByType<PlayerInventory>();
             CreatePhysical(Level);
+
+            RenderSettings.sun.intensity += 0.02f;
         }
 
         private void Update()
@@ -183,22 +187,12 @@ namespace GlowCore.World
 
         private void CreatePhysical(int level)
         {
-            switch (level)
-            {
-                case 1:
-                    CreatePhysicalLevel1();
-                    break;
-            }
+            CreatePhysicalLevel1();
         }
 
         private void FeedPhysical(int level, Item item, int amount)
         {
-            switch (level)
-            {
-                case 1:
-                    FeedPhysicalLevel1(item, amount);
-                    break;
-            }
+            FeedPhysicalLevel1(item, amount);
         }
 
         private void UpgradePhysical()

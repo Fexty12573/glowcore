@@ -235,6 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::PlayerInventory
   m_playerHand: {fileID: 6665130063918306497}
+  m_startingItems:
+  - Item: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
+    Amount: 1
 --- !u!1 &3634898018015719376
 GameObject:
   m_ObjectHideFlags: 0

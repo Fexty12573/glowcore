@@ -124,6 +124,8 @@ namespace GlowCore.UI.Inventory
                 if (m_craftingUI != null)
                     m_craftingUI.Hide();
             }
+            else
+                m_craftingUI.Show(); // Makes that the Crafting UI is opened by default
         }
 
         private void SetPanelVisible(bool visible)

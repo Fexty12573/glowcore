@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjectScripts.NodeData
   InteractionRange: 3
   ItemDrops: []
-  BreakTime: 0
+  BaseBreakTime: 0
   IsIndestructible: 1
   UsableTools: []

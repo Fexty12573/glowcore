@@ -302,6 +302,7 @@ namespace GlowCore.UI.Upgrade
                 return;
             }
 
+            Debug.Log(m_feedButtonLabel.text);
             if (m_feedButtonLabel != null)
                 m_feedButtonLabel.text = "FEED MATERIALS";
 

@@ -121,6 +121,11 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     }
 
     // Private Methods — Lifecycle
+    private void Start()
+    {
+        UpdatePlayerHand();
+    }
+
     private void Awake()
     {
         m_inventory = new Inventory(kColumns, kRows);
@@ -176,7 +181,8 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     // Private Methods — Internal
     private void OnInventorySlotChanged(int flatIndex)
     {
-        UpdatePlayerHand();
+        if (flatIndex == m_selectedHotbarIndex)
+            UpdatePlayerHand();
 
         var data = new SlotData(m_inventory.GetSlot(flatIndex));
         OnSlotChanged?.Invoke(new SlotChangedEvent(flatIndex, data));
