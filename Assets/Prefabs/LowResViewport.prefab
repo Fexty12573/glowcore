@@ -119,8 +119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::LowResViewport
   m_sourceCamera: {fileID: 0}
   m_outputImage: {fileID: 6938914593144621697}
-  m_outputWidth: 640
-  m_outputHeight: 360
+  m_outputWidth: 480
+  m_outputHeight: 270
 --- !u!1 &7035016628762682942
 GameObject:
   m_ObjectHideFlags: 0

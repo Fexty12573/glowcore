@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2000, y: 1500}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1a03a8cc40a8746aad70bcb88c1b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::ActionPromptSystem
+  m_camera: {fileID: 0}
   m_promptOffset: {x: 0, y: 0.4, z: 0}
   m_promptUI: {fileID: 4597283643695780159}
   m_promptText: {fileID: 2136804915772962508}
@@ -327,7 +328,7 @@ RectTransform:
   m_Father: {fileID: 4621664914211249184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.608, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -398,7 +399,7 @@ RectTransform:
   m_GameObject: {fileID: 4597283643695780159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9167986689089877034}
@@ -409,7 +410,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 304.42435, y: 150}
+  m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &969298522006462950
 CanvasRenderer:
@@ -617,10 +618,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6736509287252553831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 147.21217, y: -75}
-  m_SizeDelta: {x: 143.69, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6579255084854284211
 CanvasRenderer:
@@ -650,7 +651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Break
+  m_text: Feed GlowCore
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4318eaa0239dd864b9ba68af217b027e, type: 2}
   m_sharedMaterial: {fileID: -4301899889276881317, guid: 4318eaa0239dd864b9ba68af217b027e, type: 2}

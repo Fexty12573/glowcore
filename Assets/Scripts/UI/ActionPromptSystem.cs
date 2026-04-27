@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class ActionPromptSystem : MonoBehaviour
 {
+    [SerializeField] private Camera m_camera;    
+
     [Header("ActionPrompt")]
     [SerializeField] private Vector3 m_promptOffset;
     [SerializeField] private GameObject m_promptUI; // An Action Prompt is a visual UI Element that pops up when the player hovers over a Node and says e.g. "Break with Leftclick".
     [SerializeField] private TextMeshProUGUI m_promptText;
     [SerializeField] private GameObject m_leftClickIcon;
     [SerializeField] private GameObject m_eButtonIcon;
-    
+
     [Header("ProgressBar")]
     [SerializeField] private Vector3 m_progressBarOffset;
     [SerializeField] private Slider m_nodeBreakProgressBar;
@@ -95,13 +97,13 @@ public class ActionPromptSystem : MonoBehaviour
     private void UpdatePromptPosition()
     {
         Vector3 promptPosition = m_currentNode.transform.position + m_promptOffset;
-        m_promptUI.transform.position = Camera.main.WorldToScreenPoint(promptPosition);
+        m_promptUI.transform.position = m_camera.WorldToScreenPoint(promptPosition);
     }
 
     private void UpdateNodeBreakProgress()
     {
         Vector3 progressBarPosition = m_currentNode.transform.position + m_progressBarOffset;
-        m_nodeBreakProgressBar.transform.position = Camera.main.WorldToScreenPoint(progressBarPosition);
+        m_nodeBreakProgressBar.transform.position = m_camera.WorldToScreenPoint(progressBarPosition);
         m_nodeBreakProgressBar.value = m_currentNode.GetBreakProgress();
     }
 

@@ -188,8 +188,6 @@ namespace GlowCore.World
         private void CreatePhysical(int level)
         {
             CreatePhysicalLevel1();
-
-            
         }
 
         private void FeedPhysical(int level, Item item, int amount)

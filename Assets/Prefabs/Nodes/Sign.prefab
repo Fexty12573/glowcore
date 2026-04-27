@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::Outline
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 8
+  outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -133,4 +133,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Sign
   m_signText: 
-  m_showRandomText: 0
+  m_showFixedText: 0

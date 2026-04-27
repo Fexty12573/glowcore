@@ -9,7 +9,8 @@ public class Sign : MonoBehaviour, IInteractable
         "Hi!",
         "I'm a sign!",
         "Please don't chop down my trees :(",
-        "AD: Wishlist GlowCore on Steam!"
+        "AD: Wishlist GlowCore on Steam!",
+        "My name is Schildfried"
     }; // When the player places a Sign, one of those texts will be displayed 
     
     public void Interact() {}

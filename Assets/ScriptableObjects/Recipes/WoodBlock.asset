@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
-  m_Name: StoneAxe
+  m_Name: WoodBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Stone Axe
+  Name: Wood Block
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 10
-  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
-    Amount: 5
-  ResultItem: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+    Amount: 1
+  ResultItem: {fileID: 11400000, guid: 550dfcca5eedc7f48a12f63907782a6e, type: 2}
   ResultAmount: 1
   m_requiresCraftingTable: 1

@@ -21,7 +21,7 @@ namespace ScriptableObjects
             var usableTool = UsableTools.SingleOrDefault(tool => tool.Tool == usedTool);
             if (usableTool is not null)
                 return BaseBreakTime * usableTool.BreakMultiplier;
-            
+
             return BaseBreakTime;
         }
     }
