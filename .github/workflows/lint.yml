@@ -69,6 +69,8 @@ jobs:
             -p:RunAnalyzersDuringBuild=true \
             -p:EnableNETAnalyzers=true \
             -p:AnalysisLevel=latest \
+            -p:NoWarn=MSB3277 \
+            -p:WarningLevel=2 \
             -warnaserror \
             --no-incremental
 
