@@ -207,7 +207,7 @@ We save our 3D Models separate from the ScriptableObjects in the .fbx format to 
 
 A major limit of our architecture that we are strongly tied to Unity. Switching to another game engine would require a significant effort due to how our systems are relying on Unity's systems.
 
+=== External Dependencies
+Our game is distributed via Steam, which is our only external dependency. Steam is responsible for installing, launching and updating the game on the end-user side. We also use Steam for marketing.
 
-
-
-
+We create the store page for our game on Steamworks, where we can configure the description, upload marketing material etc. The executable is uploaded using Steamworks SteamPipe, which handles distribution and versioning.
