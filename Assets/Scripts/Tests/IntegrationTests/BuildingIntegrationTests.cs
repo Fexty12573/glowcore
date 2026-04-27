@@ -29,6 +29,7 @@ public class BuildingIntegrationTests
 
         m_nodeActionSystem = m_player.transform.Find("CameraAnchor/MainCamera").GetComponent<NodeActionSystem>();
         m_inventory = m_player.transform.Find("PlayerController/Inventory").GetComponent<PlayerInventory>();
+        yield return null;
 
         GameObject grid = new GameObject("WorldGrid");
         grid.SetActive(false);
@@ -55,9 +56,11 @@ public class BuildingIntegrationTests
         m_chestItem =
             UnityEditor.AssetDatabase.LoadAssetAtPath<Block>("Assets/ScriptableObjects/Blocks/Chest.asset");
         ItemStack chestStack = new ItemStack(m_chestItem, 5);
+        yield return null;
+
         m_inventory.AddItem(chestStack);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
     }
 
     private void InvokePrivateMethod(object target, string methodName, params object[] args)
@@ -78,10 +81,10 @@ public class BuildingIntegrationTests
 
         InvokePrivateMethod(m_blockBehaviour, "HandleTileChanged", targetTile);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
         InvokePrivateMethod(m_blockBehaviour, "TryToBuild");
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
 
         var isOccupied = WorldGrid.Instance.IsOccupied(targetTile);
         Assert.IsTrue(isOccupied, "Das WorldGrid sollte an der Stelle (3,3) besetzt sein");
@@ -105,6 +108,6 @@ public class BuildingIntegrationTests
             System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
         field.SetValue(null, null);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
     }
 }

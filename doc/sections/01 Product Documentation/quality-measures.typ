@@ -70,12 +70,17 @@ By combining the automated safety net of our UTF pipeline with heavy manual play
   grid(
     columns: 2,
     gutter: 0.5cm,
+    align: left,
     table(
+      fill: (x, y) => if y == 0 { luma(230) },
+      stroke: 0.5pt + gray,
       columns: 4,
       table.header([File], [Blank], [Comment], [Code]),
       ..data.slice(0, calc.floor(data.len() / 2)),
     ),
     table(
+      fill: (x, y) => if y == 0 { luma(230) },
+      stroke: 0.5pt + gray,
       columns: 4,
       table.header([File], [Blank], [Comment], [Code]),
       ..data.slice(calc.floor(data.len() / 2)),

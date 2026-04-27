@@ -21,7 +21,7 @@ public class CraftingIntegrationTests
             "Assets/Prefabs/Player.prefab");
         Assert.NotNull(playerPrefab, "Player prefab not found");
         m_playerInstance = GameObject.Instantiate(playerPrefab);
-        yield return new WaitForFixedUpdate();
+        yield return null;
         m_inventory = m_playerInstance.GetComponentInChildren<PlayerInventory>();
         Assert.NotNull(m_inventory, "PlayerInventory not found");
         var dummyPrefab = new GameObject("DummyPrefab");
@@ -43,7 +43,7 @@ public class CraftingIntegrationTests
 
         m_crafting = new CraftingSystem(m_inventory, new[] { m_recipe });
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
     }
 
     [UnityTearDown]
@@ -60,7 +60,7 @@ public class CraftingIntegrationTests
             System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
         field.SetValue(null, null);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
     }
 
     [UnityTest]
@@ -68,7 +68,7 @@ public class CraftingIntegrationTests
     {
         m_inventory.AddItem(m_wood, 2);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
 
         Assert.AreEqual(2, m_inventory.CountItem(m_wood));
         Assert.AreEqual(0, m_inventory.CountItem(m_stick));
@@ -76,7 +76,7 @@ public class CraftingIntegrationTests
         var canCraft = m_crafting.CanCraft(m_recipe);
         var crafted = m_crafting.Craft(m_recipe);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
 
         Assert.IsTrue(canCraft, "Should be able to craft");
         Assert.IsTrue(crafted, "Craft succeed");
@@ -90,12 +90,12 @@ public class CraftingIntegrationTests
     {
         m_inventory.AddItem(m_wood, 1);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
 
         var canCraft = m_crafting.CanCraft(m_recipe);
         var crafted = m_crafting.Craft(m_recipe);
 
-        yield return new WaitForFixedUpdate();
+        yield return null;
 
         Assert.IsFalse(canCraft, "Should NOT be able to craft");
         Assert.IsFalse(crafted, "Craft fail");
