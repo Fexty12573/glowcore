@@ -117,7 +117,7 @@ public class ActionPromptSystem : MonoBehaviour
     {
         m_isBreaking = false;
         m_nodeBreakProgressBar.gameObject.SetActive(false);
-        if (!node.MarkedForDeletion)
+        if (!node.MarkedForDeletion && m_currentNode == node) 
             m_promptUI.SetActive(true);
     }
 

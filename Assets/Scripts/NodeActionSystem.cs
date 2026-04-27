@@ -109,12 +109,14 @@ public class NodeActionSystem : MonoBehaviour
 
         if (distance > node.GetInteractionRange() || !WorldGrid.Instance.IsNodeInBounds(node))
         {
-            OnChangeSelectedNode?.Invoke(null);
+            if (m_currentNode != null)
+                OnChangeSelectedNode?.Invoke(null);
+
             Clear();
             return;
         }
 
-        if (node != m_currentNode || outline != m_currentOutline)
+        if (node != m_currentNode)
         {
             Clear();
 
