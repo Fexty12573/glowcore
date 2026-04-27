@@ -10,8 +10,6 @@
 // - Tools used to build and deploy (CI/CD)
 // Tip: Avoid duplication with other chapters — use cross-references when appropriate.
 
-=== Testing
-
 === Test Concept
 Our testing strategy for GlowCore is fundamentally shaped by the nature of the project. Since GlowCore is a standalone Unity game built for Windows, Linux, and WebGL, we don't have any server connections, huge amount of data in a database or a frontend beyond simple game-menus. This allows us to focus our entire testing effort directly on the client-side application, ensuring gameplay mechanics, performance, and user experience are as solid as possible.
 
@@ -104,3 +102,54 @@ For the NFRs, 7 requirements have fully passed (@NFR103, @NFR105, @NFR201, @NFR2
 }
 ==== Test Coverage
 #image("/resources/01 Product Documentation/test-coverage-chart.png")
+
+=== User Testing
+In game development, the most important aspect of the product is that it is entertaining. As developers, we are not representative users for playtesting, since we have spent many hours developing the features and already know how everything works. A first-time player may not immediately understand game rules that are obvious to us. This strongly relates to our usability NFRs, which require the game to be intuitive which is a prerequisite for it to be enjoyable. This is the main purpose of the user tests of GlowCore.
+
+During testing, the participant is given the game on a device with a keyboard and mouse, where he is given no further instruction, beyond what is provided in the actual game. They are then asked to play the game while commenting on what they are currently doing. At the end, the participant answers a set of questions to evaluate the corresponding NFRs. The results of the NFRs are documented in their chapter.
+
+#pagebreak()
+==== User Test 1 (UT01)
+- *Participant*: Geo
+- *Gaming Experience / Played Similar Games*: Beginner / Intermediate / Advanced / Expert (f.e. : Factorio Veteran)
+- *Date*: 28.04.2026
+
+#figure(
+  table(
+    columns: (1fr, 1.5fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Field*], [*Result*],
+    [NFR201 Player Restriction Visibility. Did you understand the visual clues?], [],
+    [NFR202 Light Upgrade Progress Indication. Did you understand what causes the map to expand?], [],
+    [NFR203 New Player Learnability. How long did it take for the first upgrade?], [],
+    [What was confusing?], [],
+    [Did you have fun? What did you like?], [],
+    [Was the pacing good, too slow or too fast?], [Did you feel motivated to continue playing?],
+  ),
+  caption: [UT01],
+  supplement: [Table],
+)
+
+===== Additional Feedback
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Topic*], [*Explanation*],
+    [Bugs], [Geo],
+    [Unclear UI], [],
+    [What did he struggle at the end], [],
+    [], [],
+    [], [],
+    [], [],
+    [], [],
+    [], [],
+    [], [],
+  ),
+  caption: [UT01 - Additional Feedback],
+  supplement: [Table],
+)
+
+
