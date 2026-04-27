@@ -88,3 +88,4 @@ By combining the automated safety net of our UTF pipeline with heavy manual play
   )
 }
 ==== Test Coverage
+#image("/resources/01 Product Documentation/test-coverage-chart.png")
