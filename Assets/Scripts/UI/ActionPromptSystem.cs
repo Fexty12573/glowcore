@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ActionPromptSystem : MonoBehaviour
 {
-    [SerializeField] private Camera m_camera;    
+    [SerializeField] private Camera m_camera;
 
     [Header("ActionPrompt")]
     [SerializeField] private Vector3 m_promptOffset;
@@ -51,7 +51,7 @@ public class ActionPromptSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (NodeActionSystem.Instance == null) 
+        if (NodeActionSystem.Instance == null)
             return;
         NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
         Node.OnStartBreaking -= HandleNodeStartBreaking;
@@ -119,7 +119,7 @@ public class ActionPromptSystem : MonoBehaviour
     {
         m_isBreaking = false;
         m_nodeBreakProgressBar.gameObject.SetActive(false);
-        if (!node.MarkedForDeletion && m_currentNode == node) 
+        if (!node.MarkedForDeletion && m_currentNode == node)
             m_promptUI.SetActive(true);
     }
 
