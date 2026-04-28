@@ -110,22 +110,28 @@ During testing, the participant is given the game on a device with a keyboard an
 
 #pagebreak()
 ==== User Test 1 (UT01)
-- *Participant*: Geo
-- *Gaming Experience / Played Similar Games*: Beginner / Intermediate / Advanced / Expert (f.e. : Factorio Veteran)
+- *Participant*: omega-800
+- *Gaming Experience / Similar Games*: Has played Factorio
 - *Date*: 28.04.2026
+- *Tested release:*: v0.2.0
 
 #figure(
   table(
-    columns: (1fr, 1.5fr),
+    columns: (1fr, 1fr),
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     [*Field*], [*Result*],
-    [NFR201 Player Restriction Visibility. Did you understand the visual clues?], [],
-    [NFR202 Light Upgrade Progress Indication. Did you understand what causes the map to expand?], [],
-    [NFR203 New Player Learnability. How long did it take for the first upgrade?], [],
-    [What was confusing?], [],
-    [Did you have fun? What did you like?], [],
-    [Was the pacing good, too slow or too fast?], [Did you feel motivated to continue playing?],
+    [*NFR201* Player Restriction Visibility. Did you understand the visual clues?],
+    [Yes, I especially liked the red and green clues when building.],
+
+    [*NFR202* Light Upgrade Progress Indication. Did you understand what causes the map to expand?],
+    [Yes, when I feed wood into the fire it grows, and the darkness goes away.],
+
+    [*NFR203* New Player Learnability. How long did it take for the first upgrade?], [2 Minutes.],
+    [What was confusing?], [I couldn't move the camera vertically.],
+    [Did you have fun? What did you like?], [Yes, I enjoyed playing it. I liked the visual artstyle with the outlines.],
+    [Was the pacing good, too slow or too fast?],
+    [The pacing was good. I had fun and felt motivated to progress. I got bored at level 11 because there were no better tools to craft, nothing to aim for.],
   ),
   caption: [UT01],
   supplement: [Table],
@@ -138,18 +144,23 @@ During testing, the participant is given the game on a device with a keyboard an
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     [*Topic*], [*Explanation*],
-    [Bugs], [Geo],
-    [Unclear UI], [],
-    [What did he struggle at the end], [],
-    [], [],
-    [], [],
-    [], [],
-    [], [],
-    [], [],
-    [], [],
+    [GlowCore UI],
+    [He didn't notice that he had to click "Upgrade To Level 2" to progress. At level 14 it was not obvious that he had to scroll down to add coal.],
+
+    [Signs], [At first he did not read second sign, assuming that all signs display the same text],
+    [Node hovering],
+    [It should be possible to select a Node located behind the player (the raycast should go through the player).],
+
+    [Hotbar], [He suggested allowing to scroll through the hotbar using the mouse wheel.],
+    [Building],
+    [He stopped the main task of progressing to build something. This is considered positive, because the game is intended to be open-world to a certain degree.],
   ),
   caption: [UT01 - Additional Feedback],
   supplement: [Table],
 )
 
+===== Conclusion
+The participant was mainly motivated to progress because he wanted to craft better tools in order to break things faster to progress faster and so on. This loop is called the game loop of a game and this is exactly what we wanted to accomplish and what makes the game entertaining ultimately. This user test confirmed that the core game loop is engaging.
+
+Based on the feedback we will make improvements to the UI, in particular we will change the GlowCore upgrade UI to be more intuitive.
 
