@@ -1,0 +1,17 @@
+git ls-files "Scripts" "ScriptableObjects" "Prefabs" ":(exclude)Prefabs/UI" ":(exclude)Prefabs/GlowCore" ":(exclude)Settings"| xargs -n1 git blame --line-porcelain | grep "^author " | sort | uniq -c | sort -nr
+
+
+4987 author Nath-random
+2482 author Cedric Cathomas
+1854 author Cedric
+951 author Dominik Wyss
+744 author wyssd
+464 author Fexty12573
+356 author Fexty
+65 author Yoris Kucera
+
+
+Nathanael -> 4987
+Dominik -> 1695
+Cedric -> 4336
+Yoris -> 885
