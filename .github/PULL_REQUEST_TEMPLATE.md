@@ -1,4 +1,4 @@
-### Related Jira issue: [GC-1234](https://ost-team-eos9sg4l.atlassian.net/browse/GC-91234)
+### Related Jira issue: [GC-1234](https://ost-team-eos9sg4l.atlassian.net/browse/GC-1234)
 
 ## Description
 

@@ -3,6 +3,6 @@
 #let main_doc = [
   == Meeting Minutes
 
-  #include "../../protocols/Protokolle.typ"
-] 
+  #include "../../protocols/Protocols.typ"
+]
 

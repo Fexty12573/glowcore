@@ -3,15 +3,16 @@
 // ==============================
 // 4) Sprint Planning
 // ==============================
-=== Sprint Planning / YYYY-MM-DD
+=== Sprint Planning / DD.MM.YYYY
 #meeting_info(
+  date: "DD.MM.YYYY",
   sprint: "Sprint 4",
   lead: "PO / SM",
   scribe: "Name",
   time: "16:00–17:00",
   location: "Room / Online",
   participants: "Team A, Team B",
-  links: "Backlog link"
+  links: "Backlog link",
 )
 
 ==== Sprint goal
@@ -33,7 +34,10 @@
 
 ==== Todos
 #todo_table((
-  [Prepare demo script], [Name], [YYYY-MM-DD], [Open],
+  [Prepare demo script],
+  [Name],
+  [YYYY-MM-DD],
+  [Open],
 ))
 
 #pagebreak()

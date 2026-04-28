@@ -3,15 +3,16 @@
 // ==============================
 // 3) Sprint Retrospective
 // ==============================
-=== Sprint Retrospective / YYYY-MM-DD
+=== Weekly Scrum and Sprint Retrospective / DD.MM.YYYY
 #meeting_info(
+  date: "DD.MM.YYYY",
   sprint: "Sprint 3",
   lead: "Scrum Master",
   scribe: "Name",
   time: "15:00–16:00",
   location: "Room / Online",
   participants: "Team A, Team B",
-  links: "Retro board link"
+  links: "Retro board link",
 )
 
 ==== What went well
@@ -20,10 +21,17 @@
 ==== What didn’t
 - ...
 
-==== Improvements (Actions)
+==== Todos
 #todo_table((
-  [Introduce PR review rule: 1 reviewer min], [Name], [YYYY-MM-DD], [Open],
-  [Add DoD checklist to every ticket], [Name], [YYYY-MM-DD], [Open],
+  [Introduce PR review rule: 1 reviewer min],
+  [Name],
+  [DD.MM.YYYY],
+  [Add DoD checklist to every ticket],
+  [Name],
+  [DD.MM.YYYY],
+  [Open],
+  [Name],
+  [DD.MM.YYYY],
 ))
 
 ==== Retro decisions

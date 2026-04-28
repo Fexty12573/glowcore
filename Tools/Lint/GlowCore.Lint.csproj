@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Nullable>enable</Nullable>
+
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\..\Assets\Scripts\**\*.cs"
+            Exclude="..\..\Assets\Scripts\ThirdParty\**\*.cs;..\..\Assets\TutorialInfo\**\*.cs" />
+    </ItemGroup>
+</Project>

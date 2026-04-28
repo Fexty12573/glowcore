@@ -6,26 +6,23 @@ Every member tracks time on Jira on the corresponding task/story. Time spent in 
 The time is grouped by member and by sprint. Per sprint and person the time is rounded to the nearest hour.
 #figure(
   table(
-    columns: (0.6fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    columns: (0.6fr, 1fr, 1fr, 1fr, 1fr, 0.6fr),
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     align: left,
 
-    [*Sprint*], [*Cedric Cathomas*], [*Nathanael Fässler*], [*Yoris Kucera*], [*Dominik Wyss*], [*Total*],
-    [1], [1h], [1h], [1h], [1h], [1h],
-    [2], [], [], [], [], [],
-    [3], [], [], [], [], [],
-    [4], [], [], [], [], [],
+    [*Sprint*], [*Cedric\ Cathomas*], [*Nathanael Fässler*], [*Yoris Kucera*], [*Dominik Wyss*], [*Total*],
+    [1], [23h], [29h], [21h], [24h], [97h],
+    [2], [22h], [20h], [19h], [23h], [84h],
+    [3], [18h], [13h], [19h], [15h], [65h],
+    [4], [25h], [13h], [15h], [17h], [70h],
     [5], [], [], [], [], [],
     [6], [], [], [], [], [],
     [7], [], [], [], [], [],
-    [Total], [], [], [], [], [],
-
-
-
+    [Total], [88h], [75h], [74h], [79h], [316h],
   ),
   caption: [Time Statistics Sprint 1],
-  supplement: [Table]
+  supplement: [Table],
 )
 // TODO: The goal is to show stakeholders that the project is on track.
 // Cover two topics:

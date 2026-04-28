@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
+  Name: Wood
+  Description: 
+  Prefab: {fileID: 1694080080886985426, guid: 19790610027d32d42bcc066fa90ea64f, type: 3}
+  Icon: {fileID: 21300000, guid: a8707288176e6374b8376abee4e3583a, type: 3}
+  DropScale: 0.7
+  InHandScale: 1
+  MaxStack: 99

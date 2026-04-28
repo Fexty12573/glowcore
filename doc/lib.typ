@@ -17,7 +17,7 @@
 #let title_top_edge = 3mm
 #let title_bottom_edge = -3mm
 
-#let main_color_table = rgb("#ffe4ee")
+#let main_color_table = luma(93.31%)
 #let main_color_link_background = rgb("#fff7fa")
 #let main_color_link_underline = rgb("#d62863")
 
@@ -36,15 +36,15 @@
 
 // Template based on LaTeX Article Class
 #let article(
-  lang:"en",
-  eq-numbering:none,
-  text-size:text_size,
+  lang: "en",
+  eq-numbering: none,
+  text-size: text_size,
   page-numbering: none,
   page-numbering-align: center,
   heading-numbering: "1.1  ",
   top-right-logo: none,
-  body) = {
-  
+  body,
+) = {
   // Document's basic properties
   set page(
     margin: (left: 20mm, right: 15mm, top: 25mm, bottom: 15mm),
@@ -55,11 +55,11 @@
         top + right,
         dx: -15mm,
         dy: 6mm,
-        top-right-logo
+        top-right-logo,
       )
     ],
   )
-  set text(font: ("Calibri", "Libertinus Serif"), lang:lang, size: text_size)
+  set text(font: ("Calibri", "Libertinus Serif"), lang: lang, size: text_size)
 
   set math.equation(numbering: eq-numbering)
   show math.equation: set text(weight: 400)
@@ -80,45 +80,45 @@
 
     // Continue level 2 counter in new main chapter
     let level2_selector = selector(heading.where(level: 2)).before(here())
-    let level2_counter =  counter(level2_selector)
+    let level2_counter = counter(level2_selector)
     let current_outline_num = level2_counter.final()
     current_outline_num.at(0) = level1_counter.final()
     counter(heading).update(current_outline_num.flatten())
 
     text(
-      titel_size_depth_1_fist, 
-      weight: title_weight, 
-      bottom-edge: -10mm, 
-      it.body
+      titel_size_depth_1_fist,
+      weight: title_weight,
+      bottom-edge: -10mm,
+      it.body,
     )
   }
   show heading.where(level: 2): set text(
-    titel_size_depth_2, 
-    weight: title_weight, 
+    titel_size_depth_2,
+    weight: title_weight,
     top-edge: title_top_edge,
-    bottom-edge: title_bottom_edge
+    bottom-edge: title_bottom_edge,
   )
   show heading.where(level: 3): set text(
-    titel_size_depth_3, 
-    weight: title_weight, 
+    titel_size_depth_3,
+    weight: title_weight,
     top-edge: title_top_edge,
-    bottom-edge: title_bottom_edge
+    bottom-edge: title_bottom_edge,
   )
   show heading.where(level: 4): set text(
-    titel_size_depth_4, 
-    weight: title_weight, 
+    titel_size_depth_4,
+    weight: title_weight,
     top-edge: title_top_edge,
-    bottom-edge: title_bottom_edge
+    bottom-edge: title_bottom_edge,
   )
   show heading.where(level: 5): set text(
-    titel_size_depth_5, 
-    weight: title_weight, 
+    titel_size_depth_5,
+    weight: title_weight,
     top-edge: title_top_edge,
-    bottom-edge: 0mm
+    bottom-edge: 0mm,
   )
 
   set outline(
-    indent: auto
+    indent: auto,
   )
   show outline.entry.where(level: 1): it => {
     v(20pt, weak: true)
@@ -126,20 +126,20 @@
   }
 
   // Referencing Figures
-  show figure.where(kind: table): set figure(supplement:[Tab.], numbering: "1") if lang == "en" 
-  show figure.where(kind: image): set figure(supplement:[Abb.], numbering: "1",) if lang == "en"
-  show figure.where(kind: raw): set figure(supplement:[Listing], numbering: "1",) if lang == "en"
+  show figure.where(kind: table): set figure(supplement: [Tab.], numbering: "1") if lang == "en"
+  show figure.where(kind: image): set figure(supplement: [Abb.], numbering: "1") if lang == "en"
+  show figure.where(kind: raw): set figure(supplement: [Listing], numbering: "1") if lang == "en"
 
-  show figure.where(kind: table): set figure(supplement:[Tab.], numbering: "1") if lang == "en"
-  show figure.where(kind: image): set figure(supplement:[Figure.], numbering: "1",) if lang == "en"
-  show figure.where(kind: raw): set figure(supplement:[Listing], numbering: "1",) if lang == "en"
+  show figure.where(kind: table): set figure(supplement: [Tab.], numbering: "1") if lang == "en"
+  show figure.where(kind: image): set figure(supplement: [Figure.], numbering: "1") if lang == "en"
+  show figure.where(kind: raw): set figure(supplement: [Listing], numbering: "1") if lang == "en"
 
   // Table style
   set table(
     stroke: black,
     gutter: auto,
     fill: none,
-    inset: (right: 1.5em)
+    inset: (right: 1.5em),
   )
 
   // Configure figures (tables)
@@ -190,10 +190,10 @@
       stroke: luma(230),
       inset: (
         x: 1em,
-        y: 1em
+        y: 1em,
       ),
-      it.body
-    )    
+      it.body,
+    )
     if it.has("caption") {
       v(if it.has("gap") { it.gap } else { 16pt }, weak: true)
       strong(it.supplement)
@@ -208,20 +208,22 @@
   }
 
   show link: it => {
-    highlight([
+    highlight(
+      [
         #set text(weight: 500)
         #underline(offset: 0.7mm, stroke: main_color_link_underline, it)
-      ], 
-      fill: main_color_link_background
+      ],
+      fill: main_color_link_background,
     )
   }
 
   show ref: it => {
-    highlight([
+    highlight(
+      [
         #set text(weight: 500)
         #underline(offset: 0.7mm, stroke: main_color_link_underline, it)
-      ], 
-      fill: main_color_link_background
+      ],
+      fill: main_color_link_background,
     )
   }
 
@@ -231,42 +233,39 @@
 }
 
 #let maketitle(
-  title: "", 
+  title: "",
   sub-title: "",
-  version: "", 
+  version: "",
   gitVersion: "",
-  date: none, 
+  date: none,
   authors: (),
   advisor: "",
   background: none,
-  overlay: none
+  overlay: none,
 ) = {
   set document(author: authors, title: title)
-  let authors-text = {authors.join("\n"+[#h(7em)])}
+  let authors-text = { authors.join("\n" + [#h(7em)]) }
   place(top + left, dx: -35mm, dy: 5mm, background)
   place(top + left, dx: -20mm, dy: -40mm, overlay)
 
-  place(bottom + right, dy: 0mm,
-    table(
-      stroke: none,
-      align: left,
-      columns: 50%,
-      text(weight: title_weight, titel_size_depth_1_fist, title),
-      text(titel_size_depth_3, sub-title),
-      v(0.5em),
+  place(bottom + right, dy: 0mm, table(
+    stroke: none,
+    align: left,
+    columns: 50%,
+    text(weight: title_weight, titel_size_depth_1_fist, title),
+    text(titel_size_depth_3, sub-title),
+    v(0.5em),
 
-      text("Version: " + version ),
-      text("Date: " + date ),
-      text("Git Version: " + gitVersion),
-      v(0.5em),
-      text([*Project Team:* #h(1em)] + authors-text),
-      v(0.5em),
-      text([*Project Advisor:*#h(0.4em)] + advisor),
-      v(0.5em),
-      align(left)[School of Computer Science \ OST Eastern Switzerland University of Applied Sciences]
-
-    )
-  )
+    text("Version: " + version),
+    text("Date: " + date),
+    text("Git Version: " + gitVersion),
+    v(0.5em),
+    text([*Project Team:* #h(1em)] + authors-text),
+    v(0.5em),
+    text([*Project Advisor:*#h(0.4em)] + advisor),
+    v(0.5em),
+    align(left)[School of Computer Science \ OST Eastern Switzerland University of Applied Sciences]
+  ))
 }
 
 // Textbox to highlight Text
@@ -280,40 +279,38 @@
 ]
 
 // Code Styling
-#let sourcecode = sourcecode.with(frame: (code) => block(
-  radius: 4pt,
-  fill: luma(255),
-  stroke: luma(230),
-  inset: (
-    x: 0.5em,
-    y: 0.25em
+#let sourcecode = sourcecode.with(
+  frame: code => block(
+    radius: 4pt,
+    fill: luma(255),
+    stroke: luma(230),
+    inset: (
+      x: 0.5em,
+      y: 0.25em,
+    ),
+    text(size: 5.5pt, code),
   ),
-  text(size: 5.5pt, code)
-  ),
-  gutter: 4pt
+  gutter: 4pt,
 )
 
 #let title_without_numbering(
   title: "",
   depth: 1,
   top_edge: title_top_edge,
-  bottom_edge: title_bottom_edge
+  bottom_edge: title_bottom_edge,
 ) = {
   text(
     title,
     weight: title_weight,
     top-edge: top_edge,
     bottom-edge: (
-      if (depth == 5 ) { -1mm 
-      } else { title_bottom_edge }
+      if (depth == 5) { -1mm } else { title_bottom_edge }
     ),
     size: (
-      if depth == 1 { titel_size_depth_1_fist 
-      } else if depth == 2 { titel_size_depth_2 
-      } else if depth == 3 { titel_size_depth_3 
-      } else if depth == 4 { titel_size_depth_4 
-      } else if depth == 5 { titel_size_depth_5 }
-    )
+      if depth == 1 { titel_size_depth_1_fist } else if depth == 2 { titel_size_depth_2 } else if depth == 3 {
+        titel_size_depth_3
+      } else if depth == 4 { titel_size_depth_4 } else if depth == 5 { titel_size_depth_5 }
+    ),
   )
 }
 
@@ -321,97 +318,87 @@
   id: [],
   name: [],
   beschreibung: [],
-  fr_caption: []
+  fr_caption: [],
 ) = {
   set table(
     align: start,
     columns: (auto, 1fr),
-    fill: (x, _) =>
-      if calc.even(x) { main_color_table }
-      else { none 
-    }
+    fill: (x, _) => if calc.even(x) { main_color_table } else { none },
   )
   figure(
     table(
-      [#strong("ID")], strong(id), 
-      [#strong("Name")], name, 
-      [#strong("Beschreibung")], beschreibung,
-    ), 
-    caption: fr_caption
+      [#strong("ID")],
+      strong(id),
+      [#strong("Name")],
+      name,
+      [#strong("Beschreibung")],
+      beschreibung,
+    ),
+    caption: fr_caption,
   )
 }
 
 #let use_case(
   id: [],
   name: [],
-  akteur: [],
-  beschreibung: [],
-  voraussetzung: [],
-  standard_verlauf: [],
-  alternativ_verlauf: none,
-  nachbedingung: [],
-  priorität: [],
-  resultat: [],
+  persona: [],
+  priority: [],
+  description: [],
+  result: [],
   uc_caption: [],
-  status_color: green
-) = {
-  set table(
-    align: start,
-    columns: (1fr, 4fr, 0.2fr),
-    fill: (x, _) =>
-      if calc.even(x) { main_color_table }
-      else { none 
-    }
-  )
-  figure(
+  status_color: blue,
+) = figure(
+  {
+    set table(
+      align: start,
+      columns: (1fr, 4fr, 0.2fr),
+      fill: (x, _) => if calc.even(x) { main_color_table } else { none },
+    )
     table(
-      [#strong("ID")], strong(id),  table.cell(fill: status_color, []),
-      [#strong("Name")], table.cell(colspan: 2, name), 
-      [#strong("Akteur")], table.cell(colspan: 2, akteur), 
-      [#strong("Beschreibung")], table.cell(colspan: 2, beschreibung), 
-      [#strong("Voraussetzung")], table.cell(colspan: 2, voraussetzung), 
-      [#strong("Standard-Verlauf")], table.cell(colspan: 2, standard_verlauf), 
-      [#strong("Alternativ-Verlauf")], table.cell(colspan: 2, alternativ_verlauf), 
-      [#strong("Nachbedingung")], table.cell(colspan: 2, nachbedingung), 
-      [#strong("Priorität")], table.cell(colspan: 2, priorität), 
-      [#strong("Resultat")], table.cell(colspan: 2, resultat), 
-    ), 
-    caption: uc_caption
-  )
-}
+      [#strong("ID")], strong(id), table.cell(fill: status_color, []),
+      [#strong("Name")], table.cell(colspan: 2, name),
+      [#strong("Persona")], table.cell(colspan: 2, persona),
+      [#strong("Priority")], table.cell(colspan: 2, priority),
+      [#strong("Description")], table.cell(colspan: 2, description),
+      [#strong("Result")], table.cell(colspan: 2, result),
+    )
+  },
+  caption: uc_caption,
+  supplement: [Table],
+)
 
 #let nfr_table(
   id: [],
-  beschreibung: [],
-  anforderungen: [],
-  priorität: [],
-  messung: [],
-  testen: [],
-  resultat: [],
+  description: [],
+  requirements: [],
+  priority: [],
+  measurement: [],
+  verification: [],
+  result: [],
   nfr_caption: [],
   status_color: blue,
-) = {
-  set table(
-    align: start,
-    columns: (1fr, 4.1fr, 0.2fr),
-    fill: (x, _) =>
-      if calc.even(x) { main_color_table }
-      else { none 
-    }
-  )
-  figure(
+) = figure(
+  {
+    set table(
+      align: start,
+      columns: (1fr, 4.1fr, 0.2fr),
+      fill: (x, _) =>
+        if calc.even(x) { main_color_table }
+        else { none }
+    )
     table(
-      [#strong("ID")], strong(id), table.cell(fill: status_color, []), 
-      [#strong("Beschreibung")], table.cell(colspan: 2, beschreibung), 
-      [#strong("Anforderungen")], table.cell(colspan: 2, anforderungen), 
-      [#strong("Priorität")], table.cell(colspan: 2, priorität), 
-      [#strong("Messung")], table.cell(colspan: 2, messung), 
-      [#strong("Testen")], table.cell(colspan: 2, testen), 
-      [#strong("Resultat")], table.cell(colspan: 2, resultat), 
-    ), 
-    caption: nfr_caption
-  )
-}
+      [#strong("ID")], strong(id), table.cell(fill: status_color, []),
+      [#strong("Description")], table.cell(colspan: 2, description),
+      [#strong("Acceptance \nCriteria")], table.cell(colspan: 2, requirements),
+      [#strong("Priority")], table.cell(colspan: 2, priority),
+      [#strong("Measurement")], table.cell(colspan: 2, measurement),
+      [#strong("Verification")], table.cell(colspan: 2, verification),
+      [#strong("Result")], table.cell(colspan: 2, result),
+    )
+  },
+  caption: nfr_caption,
+  supplement: [Table],
+)
 
 #let testAblauf_table(
   id: [],
@@ -426,22 +413,26 @@
   set table(
     align: start,
     columns: (1fr, 4.1fr),
-    fill: (x, _) =>
-      if calc.even(x) { main_color_table }
-      else { none 
-    }
+    fill: (x, _) => if calc.even(x) { main_color_table } else { none },
   )
   figure(
     table(
-      [#strong("ID")], strong(id), 
-      [#strong("Name")], name, 
-      [#strong("Beschreibung")], beschreibung, 
-      [#strong("Methode")], methode, 
-      [#strong("Relevant für")], relevanz, 
-      [#strong("Testumgebung")], testumgebung, 
-      [#strong("Intervall")], intervall, 
-    ), 
-    caption: testAblauf_caption
+      [#strong("ID")],
+      strong(id),
+      [#strong("Name")],
+      name,
+      [#strong("Beschreibung")],
+      beschreibung,
+      [#strong("Methode")],
+      methode,
+      [#strong("Relevant für")],
+      relevanz,
+      [#strong("Testumgebung")],
+      testumgebung,
+      [#strong("Intervall")],
+      intervall,
+    ),
+    caption: testAblauf_caption,
   )
 }
 
@@ -456,20 +447,22 @@
   set table(
     align: start,
     columns: (1fr, 4.1fr),
-    fill: (x, _) =>
-      if calc.even(x) { main_color_table }
-      else { none 
-    }
+    fill: (x, _) => if calc.even(x) { main_color_table } else { none },
   )
   figure(
     table(
-      [#strong("ID")], strong(id), 
-      [#strong("Datum")], date, 
-      [#strong("Input")], input, 
-      [#strong("Erwartetes Resultat")], expectedOutput, 
-      [#strong("Tatsächliches Resultat")], actualOutput, 
-    ), 
-    caption: testReport_caption
+      [#strong("ID")],
+      strong(id),
+      [#strong("Datum")],
+      date,
+      [#strong("Input")],
+      input,
+      [#strong("Erwartetes Resultat")],
+      expectedOutput,
+      [#strong("Tatsächliches Resultat")],
+      actualOutput,
+    ),
+    caption: testReport_caption,
   )
 }
 
@@ -500,7 +493,7 @@
   absent: "-",
   lead: "Name",
   scribe: "Name",
-  links: "-"
+  links: "-",
 ) = [
   #table(
     columns: (1.2fr, 2.8fr),
@@ -526,7 +519,7 @@
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     [*Agenda item*], [*Owner*], [*Result / Decision*],
-    ..rows
+    ..rows,
   )
 ]
 
@@ -536,7 +529,7 @@
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     [*Todo*], [*Owner*], [*Due*],
-    ..rows
+    ..rows,
   )
 ]
 
@@ -546,7 +539,7 @@
     stroke: 0.5pt + gray,
     fill: (x, y) => if y == 0 { luma(230) },
     [*Next date*], [*When*],
-    ..rows
+    ..rows,
   )
 ]
 

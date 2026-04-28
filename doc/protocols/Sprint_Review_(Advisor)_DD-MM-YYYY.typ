@@ -1,26 +1,34 @@
-#import "../lib.typ": meeting_info, todo_table, agenda_table, next_dates
+#import "../lib.typ": agenda_table, meeting_info, next_dates, todo_table
 
 // ==============================
 // 1) Sprint Review (Advisor)
 // ==============================
-=== Sprint Review (Advisor) / YYYY-MM-DD
+=== Sprint Review (Advisor) / DD.MM.YYYY
 #meeting_info(
-
+  date: "DD.MM.YYYY",
   sprint: "Sprint 3",
-  lead: "Name",
-  scribe: "Name",
+  lead: "Yoris Kucera",
+  scribe: "Nathanael Fässler",
   time: "15:00–17:00",
-  location: "Online (Teams)",
-  participants: "Team A, Team B, Advisor",
-  links: "Repo / Jira / Doc link"
+  location: "Building 8",
+  participants: "Thomas Bocek, Dominik Wyss,  Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
+  links: "Repo / Jira / Doc link",
 )
 
 ==== Agenda
 #agenda_table((
-  [Approval last minutes], [Lead], [Approved / changes: ...],
-  [Demo], [Dev], [OK / open issues: ...],
-  [Feedback], [Advisor], [Notes: ...],
-  [Decisions], [Lead], [Recorded decisions: ...],
+  [Approval last minutes],
+  [Lead],
+  [Approved / changes: ...],
+  [Demo],
+  [Dev],
+  [OK / open issues: ...],
+  [Feedback],
+  [Advisor],
+  [Notes: ...],
+  [Decisions],
+  [Lead],
+  [Recorded decisions: ...],
 ))
 
 ==== Demo / Increment
@@ -37,13 +45,20 @@
 
 ==== Todos
 #todo_table((
-  [Update architecture doc section X], [Name], [YYYY-MM-DD], [Open],
-  [Fix bug #123], [Name], [YYYY-MM-DD], [Open],
+  [Update architecture doc section X],
+  [Name],
+  [DD.MM.YYYY],
+  [Open],
+  [Fix bug #123],
+  [Name],
+  [DD.MM.YYYY],
+  [Open],
 ))
 
 ==== Next dates
 #next_dates((
-  [Next advisor review], [YYYY-MM-DD HH:MM],
+  [Next advisor review],
+  [DD.MM.YYYY HH:MM],
 ))
 
 #pagebreak()
