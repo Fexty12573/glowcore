@@ -61,7 +61,7 @@ public class BuildingIntegrationTests
         m_inventory.AddItem(chestStack);
         var inventoryInstance = m_inventory.GetType().GetField("m_inventory",
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(m_inventory);
-        var itemsField = inventoryInstance.GetType().GetField("m_items",
+        var itemsField = inventoryInstance.GetType().GetField("Items",
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         ItemStack[] items = (ItemStack[])itemsField.GetValue(inventoryInstance);
         (items[0], items[1]) = (items[1], items[0]);

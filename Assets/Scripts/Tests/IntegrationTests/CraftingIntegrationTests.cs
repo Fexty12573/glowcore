@@ -23,7 +23,7 @@ public class CraftingIntegrationTests
         m_playerInstance = GameObject.Instantiate(playerPrefab);
         yield return null;
         m_inventory = m_playerInstance.GetComponentInChildren<PlayerInventory>();
-        Assert.NotNull(m_inventory, "PlayerInventory not found");
+        Assert.NotNull(m_inventory, "Inventory not found");
         var dummyPrefab = new GameObject("DummyPrefab");
 
         m_wood = ScriptableObject.CreateInstance<Item>();
