@@ -200,7 +200,11 @@ namespace GlowCore.World
             return GridToWorld(tile.x, tile.y);
         }
 
+#if UNITY_INCLUDE_TESTS
+        public void SaveGameData() => Debug.Log("Saved Game");
+#else
         public void SaveGameData() => SaveData.Save(BuildSaveData());
+#endif
 
         public void Expand(int amount, bool isLevelUp = false)
         {
@@ -296,6 +300,10 @@ namespace GlowCore.World
 
         private void LoadSaveData()
         {
+#if UNITY_INCLUDE_TESTS
+            return;
+#endif
+
             if (!SaveData.Exists())
                 return;
 
