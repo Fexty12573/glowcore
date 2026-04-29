@@ -23,6 +23,8 @@ public class SaveData
         return Path.Combine(saveDataDir, kFileName);
     }
 
+    public static bool Exists() => File.Exists(GetPath());
+
     public static SaveData Load()
     {
         var saveData = Default();
@@ -50,7 +52,18 @@ public class SaveData
         return saveData;
     }
 
-    private static SaveData Default()
+    public static void Save(SaveData saveData)
+    {
+        var path = GetPath();
+        var writer = new BinaryWriter(File.OpenWrite(path));
+
+        writer.Write(kMagic);
+        writer.Write(kVersion);
+
+        saveData.Save(writer);
+    }
+
+    public static SaveData Default()
     {
         var saveData = new SaveData
         {
@@ -97,6 +110,45 @@ public class SaveData
             World.TileDeltas[i] = LoadTileDelta(reader);
     }
 
+    private void Save(BinaryWriter writer)
+    {
+        writer.Write(0); // Player Data Offset
+        writer.Write(0); // World Data Offset
+
+        var playerOffset = writer.BaseStream.Position;
+
+        writer.Write(Encoding.UTF8.GetBytes(Player.Name));
+        writer.Write(Player.GlowCoreLevel);
+        writer.Write(Player.PosX);
+        writer.Write(Player.PosZ);
+        SaveInventory(Player.GlowCoreInventory, writer);
+        SaveInventory(Player.Inventory, writer);
+
+        AlignTo(writer, 16);
+
+        var worldOffset = writer.BaseStream.Position;
+
+        writer.Write(World.TileDeltas.Length);
+        writer.Write(0);
+
+        AlignTo(writer, 16);
+
+        var firstTileOffset = writer.BaseStream.Position;
+
+        foreach (var delta in World.TileDeltas)
+        {
+            SaveTileDelta(writer, delta);
+        }
+
+        // Write offsets
+        writer.BaseStream.Seek(4, SeekOrigin.Begin);
+        writer.Write((uint)playerOffset);
+        writer.Write((uint)worldOffset);
+
+        writer.BaseStream.Seek(worldOffset + 4, SeekOrigin.Begin);
+        writer.Write((uint)firstTileOffset);
+    }
+
     private TileDelta LoadTileDelta(BinaryReader reader)
     {
         var type = (DeltaType)reader.ReadByte();
@@ -132,6 +184,21 @@ public class SaveData
         return delta;
     }
 
+    private static void SaveTileDelta(BinaryWriter writer, TileDelta delta)
+    {
+        writer.Write((byte)delta.Type);
+        writer.Write(delta.X);
+        writer.Write(delta.Z);
+
+        if (delta.Type == DeltaType.Build)
+        {
+            writer.Write(delta.BuildData.Block.Id.ToByteArray());
+
+            if (delta.BuildData.Inventory != null)
+                SaveInventory(delta.BuildData.Inventory, writer);
+        }
+    }
+
     private static Inventory LoadInventory(BinaryReader reader)
     {
         var width = (int)reader.ReadUInt16();
@@ -161,6 +228,36 @@ public class SaveData
         }
 
         return inventory;
+    }
+
+    private static void SaveInventory(Inventory inventory, BinaryWriter writer)
+    {
+        writer.Write((ushort)inventory.Width);
+        writer.Write((ushort)inventory.Height);
+
+        for (var y = 0; y < inventory.Height; y++)
+        {
+            for (var x = 0; x < inventory.Width; x++)
+            {
+                ref var stack = ref inventory[x, y];
+                if (stack.IsValid)
+                {
+                    writer.Write(stack.Item.Id.ToByteArray());
+                    writer.Write(stack.Amount);
+                }
+                else
+                {
+                    writer.Write(Guid.Empty.ToByteArray());
+                    writer.Write(0);
+                }
+            }
+        }
+    }
+
+    private static void AlignTo(BinaryWriter writer, long bytes)
+    {
+        while (writer.BaseStream.Position % bytes != 0)
+            writer.Write((byte)0);
     }
 }
 
