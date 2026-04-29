@@ -300,10 +300,7 @@ namespace GlowCore.World
 
         private void LoadSaveData()
         {
-#if UNITY_INCLUDE_TESTS
-            return;
-#endif
-
+#if !UNITY_INCLUDE_TESTS
             if (!SaveData.Exists())
                 return;
 
@@ -376,6 +373,7 @@ namespace GlowCore.World
             }
 
             m_player.position = new Vector3(saveData.Player.PosX, m_player.position.y, saveData.Player.PosZ);
+#endif
         }
 
         private HashSet<Vector2Int> BuildSnapshotPositions()
