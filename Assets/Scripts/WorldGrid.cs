@@ -16,6 +16,7 @@ namespace GlowCore.World
         private const float kBorderHeight = 100f;
         private const float kBorderFogDepth = 100f;
 
+
         [System.Serializable]
         private struct SpawnableNode
         {
@@ -54,6 +55,7 @@ namespace GlowCore.World
         private Vector2Int m_origin;
         private int m_totalNodeCount;
         private readonly List<Node> m_pendingNodes = new();
+        private HashSet<Vector2Int> m_snapshotPositions;
 
         // Properties
         public static WorldGrid Instance => s_instance;
@@ -111,7 +113,7 @@ namespace GlowCore.World
 
         public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
 
-        public bool CreateNodeAt(GameObject prefab, Vector2Int tile)
+        public Node CreateNodeAt(GameObject prefab, Vector2Int tile)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
             // GC-142: Use prefab's own rotation so placed nodes respect their saved orientation
@@ -119,9 +121,9 @@ namespace GlowCore.World
             if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
             {
                 Destroy(nodeObject);
-                return false;
+                return null;
             }
-            return true;
+            return node;
         }
 
         public Vector3 GetSpawnPosition(Vector2Int tile)
@@ -197,6 +199,8 @@ namespace GlowCore.World
         {
             return GridToWorld(tile.x, tile.y);
         }
+
+        public void SaveGameData() => SaveData.Save(BuildSaveData());
 
         public void Expand(int amount, bool isLevelUp = false)
         {
@@ -285,6 +289,165 @@ namespace GlowCore.World
         private void InitializeDesignedWorld()
         {
             RegisterExistingNodes();
+            m_snapshotPositions = BuildSnapshotPositions();
+        }
+
+        private void Start() => LoadSaveData();
+
+        private void LoadSaveData()
+        {
+            if (!SaveData.Exists())
+                return;
+
+            var saveData = SaveData.Load();
+            var glowCore = FindFirstObjectByType<GlowCoreObject>();
+
+            // Advance GlowCore to the saved level
+            if (glowCore != null)
+            {
+                var targetLevel = (int)saveData.Player.GlowCoreLevel;
+                while (glowCore != null && glowCore.Level < targetLevel)
+                    glowCore = glowCore.ForceUpgrade();
+            }
+
+            // Apply saved world changes
+            foreach (var delta in saveData.World.TileDeltas)
+            {
+                switch (delta.Type)
+                {
+                    case DeltaType.Build:
+                        {
+                            if (delta.BuildData == null || delta.BuildData.Block == null || delta.BuildData.Block.NodeToBuild == null)
+                                break;
+
+                            Vector2Int tile = WorldToGrid(delta.X, delta.Z);
+
+                            // Clear any node occupying this tile before placing
+                            if (IsInBounds(tile) && IsOccupied(tile))
+                            {
+                                Node existing = m_tiles[tile.x, tile.y];
+                                if (existing != null)
+                                {
+                                    foreach (var usedTile in existing.TilesUsed)
+                                        ClearNodeAt(usedTile);
+                                    Destroy(existing.gameObject);
+                                }
+                            }
+
+                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile);
+                            node.SourceBlock = delta.BuildData.Block;
+                            break;
+                        }
+                    case DeltaType.Break:
+                        {
+                            Node node = GetNodeAt(delta.X, delta.Z);
+                            if (node == null)
+                                break;
+
+                            foreach (var usedTile in node.TilesUsed)
+                                ClearNodeAt(usedTile);
+                            Destroy(node.gameObject);
+                            break;
+                        }
+                }
+            }
+
+            var playerInventory = FindFirstObjectByType<PlayerInventory>();
+            if (playerInventory != null && saveData.Player.Inventory != null)
+            {
+                var inventory = playerInventory.GetInventory();
+                for (var x = 0; x < inventory.Width; x++)
+                {
+                    for (var y = 0; y < inventory.Height; y++)
+                    {
+                        ref var stack = ref inventory[x, y];
+                        if (stack.IsValid)
+                            stack = saveData.Player.Inventory[x, y];
+                    }
+                }
+            }
+
+            m_player.position = new Vector3(saveData.Player.PosX, m_player.position.y, saveData.Player.PosZ);
+        }
+
+        private HashSet<Vector2Int> BuildSnapshotPositions()
+        {
+            Node[] nodes = FindObjectsByType<Node>(FindObjectsSortMode.None);
+            var positions = new HashSet<Vector2Int>();
+
+            foreach (Node node in nodes)
+            {
+                var worldX = Mathf.RoundToInt(node.transform.position.x);
+                var worldZ = Mathf.RoundToInt(node.transform.position.z);
+                positions.Add(new Vector2Int(worldX, worldZ));
+            }
+
+            return positions;
+        }
+
+        private SaveData BuildSaveData()
+        {
+            var saveData = SaveData.Default();
+            var glowCore = FindFirstObjectByType<GlowCoreObject>();
+            var playerInventory = FindFirstObjectByType<PlayerInventory>();
+
+            if (glowCore != null)
+                saveData.Player.GlowCoreLevel = (ushort)glowCore.Level;
+
+            saveData.Player.PosX = m_player.position.x;
+            saveData.Player.PosZ = m_player.position.z;
+
+            if (playerInventory != null)
+                saveData.Player.Inventory = playerInventory.GetInventory();
+
+            saveData.World.TileDeltas = ComputeTileDeltas();
+
+            return saveData;
+        }
+
+        private TileDelta[] ComputeTileDeltas()
+        {
+            var deltas = new List<TileDelta>();
+
+            // Break deltas
+            if (m_snapshotPositions != null)
+            {
+                foreach (var worldPos in m_snapshotPositions)
+                {
+                    Vector2Int tile = WorldToGrid(worldPos.x, worldPos.y);
+                    if (!IsInBounds(tile))
+                        continue;
+
+                    Node current = m_tiles[tile.x, tile.y];
+                    if (current != null && current.SourceBlock == null)
+                        continue;
+
+                    deltas.Add(new TileDelta { Type = DeltaType.Break, X = worldPos.x, Z = worldPos.y });
+                }
+            }
+
+            // Build deltas
+            HashSet<Node> seen = new();
+            for (var x = 0; x < m_gridSize; x++)
+            {
+                for (var z = 0; z < m_gridSize; z++)
+                {
+                    Node node = m_tiles[x, z];
+                    if (node == null || !seen.Add(node) || node.SourceBlock == null)
+                        continue;
+
+                    Vector2Int worldPos = GridToWorld(x, z);
+                    deltas.Add(new TileDelta
+                    {
+                        Type = DeltaType.Build,
+                        X = worldPos.x,
+                        Z = worldPos.y,
+                        BuildData = new BuildData { Block = node.SourceBlock },
+                    });
+                }
+            }
+
+            return deltas.ToArray();
         }
 
         private void UpdateBorders()

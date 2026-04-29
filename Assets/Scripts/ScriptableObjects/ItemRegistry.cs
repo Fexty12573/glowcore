@@ -9,8 +9,7 @@ namespace ScriptableObjects
     public class ItemRegistry : ScriptableObject
     {
         [SerializeField] private List<Item> m_items = new();
-        private Dictionary<Guid, Item> m_itemDict;
-        private Dictionary<Item, Guid> m_reverseItemDict;
+        private Dictionary<Guid, Item> m_itemDict = new();
 
         public IReadOnlyList<Item> Items => m_items;
 
@@ -36,13 +35,9 @@ namespace ScriptableObjects
         private void RebuildLookup()
         {
             m_itemDict.Clear();
-            m_reverseItemDict.Clear();
 
             foreach (var item in m_items)
-            {
                 m_itemDict[item.Id] = item;
-                m_reverseItemDict[item] = item.Id;
-            }
         }
 
 #if UNITY_EDITOR
@@ -68,6 +63,5 @@ namespace ScriptableObjects
 #endif
 
         public Item Lookup(Guid id) => m_itemDict.GetValueOrDefault(id);
-        public Guid Lookup(Item item) => m_reverseItemDict.GetValueOrDefault(item);
     }
 }

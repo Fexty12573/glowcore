@@ -18,6 +18,7 @@ namespace GlowCore.World
         public List<Vector2Int> TilesUsed = new();
         public Outline Outline;
         public NodeData NodeData => m_nodeData;
+        public Block SourceBlock { get; set; }
 
         public static event Action<Node> OnStartBreaking;
         public static event Action<Node> OnCancelBreaking;

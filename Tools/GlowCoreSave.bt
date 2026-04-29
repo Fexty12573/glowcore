@@ -1,0 +1,133 @@
+//------------------------------------------------
+// File:        GlowCoreSave.bt
+// Description: 010 Editor Binary Template for GlowCore save files (glowcore.bin)
+//              Matches the format read by SaveData.cs (version 1).
+//------------------------------------------------
+
+LittleEndian();
+
+typedef struct
+{
+    ubyte b[16];
+} GUID <read=ReadGUID>;
+
+string ReadGUID(GUID& g)
+{
+    local string s;
+    SPrintf(s, "{%02X%02X%02X%02X-%02X%02X-%02X%02X-%02X%02X-%02X%02X%02X%02X%02X%02X}",
+        g.b[3], g.b[2], g.b[1], g.b[0],
+        g.b[5], g.b[4],
+        g.b[7], g.b[6],
+        g.b[8],  g.b[9],
+        g.b[10], g.b[11], g.b[12], g.b[13], g.b[14], g.b[15]);
+    return s;
+}
+
+int IsEmptyGUID(GUID& g)
+{
+    local int i;
+    for (i = 0; i < 16; i++)
+    {
+        if (g.b[i] != 0)
+            return 0;
+    }
+    return 1;
+}
+
+typedef struct
+{
+    GUID  itemId;
+    int32 quantity;
+} ItemStack <read=ReadItemStack>;
+
+string ReadItemStack(ItemStack& s)
+{
+    if (IsEmptyGUID(s.itemId))
+        return "(empty)";
+    local string out;
+    SPrintf(out, "qty=%d  %s", s.quantity, ReadGUID(s.itemId));
+    return out;
+}
+
+typedef struct
+{
+    uint16    width;
+    uint16    height;
+    ItemStack items[width * height];
+} Inventory <read=ReadInventory>;
+
+string ReadInventory(Inventory& inv)
+{
+    local string s;
+    SPrintf(s, "%dx%d (%d slots)", inv.width, inv.height, inv.width * inv.height);
+    return s;
+}
+
+typedef struct
+{
+    char   name[32] <comment="UTF-8, null-padded to 32 bytes">;
+    uint16 glowCoreLevel;
+    float  posX;
+    float  posZ;
+    Inventory glowCoreInventory <comment="GlowCore input slot (1x1)">;
+    Inventory inventory         <comment="Player backpack (8x4)">;
+} PlayerData;
+
+typedef enum <ubyte>
+{
+    Break = 0,
+    Build = 1
+} DeltaType;
+
+typedef struct
+{
+    DeltaType type;
+    int32     x;
+    int32     z;
+    if (type == Build)
+    {
+        GUID blockId <comment="Item GUID of the placed Block SO">;
+        // If this block is a Chest, an Inventory follows here.
+    }
+} TileDelta <read=ReadTileDelta>;
+
+string ReadTileDelta(TileDelta& d)
+{
+    local string s;
+    if (d.type == Break)
+    {
+        SPrintf(s, "Break (%d, %d)", d.x, d.z);
+    }
+    else
+    {
+        SPrintf(s, "Build (%d, %d)  block=%s", d.x, d.z, ReadGUID(d.blockId));
+    }
+    return s;
+}
+
+typedef struct
+{
+    int32  tileDeltaCount;
+    uint32 firstTileDeltaOffset <comment="Absolute file offset to first TileDelta">;
+
+    local uint64 savedPos = FTell();
+    FSeek(firstTileDeltaOffset);
+    TileDelta deltas[tileDeltaCount] <optimize=false>;
+    FSeek(savedPos);
+} WorldData;
+
+uint32 magic   <format=hex, comment="Expected: 0x56534347 ('GCSV' LE)">;
+int32  version <comment="Expected: 1">;
+uint32 playerDataOffset <comment="Absolute offset to PlayerData">;
+uint32 worldDataOffset  <comment="Absolute offset to WorldData">;
+
+if (magic != 0x56534347)
+    Warning("Bad magic — not a GlowCore save file (got 0x%08X, want 0x56534347).", magic);
+if (version != 1)
+    Warning("Unsupported save version %d.", version);
+
+FSeek(playerDataOffset);
+PlayerData player;
+
+FSeek(worldDataOffset);
+WorldData world;

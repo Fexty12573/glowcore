@@ -29,7 +29,7 @@ public class SaveData
     {
         var saveData = Default();
         var path = GetPath();
-        var reader = new BinaryReader(File.OpenRead(path));
+        using var reader = new BinaryReader(File.OpenRead(path));
 
         var magic = reader.ReadUInt32();
         if (magic != kMagic)
@@ -55,7 +55,7 @@ public class SaveData
     public static void Save(SaveData saveData)
     {
         var path = GetPath();
-        var writer = new BinaryWriter(File.OpenWrite(path));
+        using var writer = new BinaryWriter(File.OpenWrite(path));
 
         writer.Write(kMagic);
         writer.Write(kVersion);
@@ -117,7 +117,11 @@ public class SaveData
 
         var playerOffset = writer.BaseStream.Position;
 
-        writer.Write(Encoding.UTF8.GetBytes(Player.Name));
+        var nameBytes = Encoding.UTF8.GetBytes(Player.Name);
+        if (nameBytes.Length != 32)
+            Array.Resize(ref nameBytes, 32);
+
+        writer.Write(nameBytes);
         writer.Write(Player.GlowCoreLevel);
         writer.Write(Player.PosX);
         writer.Write(Player.PosZ);
@@ -141,7 +145,7 @@ public class SaveData
         }
 
         // Write offsets
-        writer.BaseStream.Seek(4, SeekOrigin.Begin);
+        writer.BaseStream.Seek(8, SeekOrigin.Begin);
         writer.Write((uint)playerOffset);
         writer.Write((uint)worldOffset);
 
