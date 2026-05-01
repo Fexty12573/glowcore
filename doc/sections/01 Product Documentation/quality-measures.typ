@@ -61,7 +61,7 @@ By combining the automated safety net of our UTF pipeline with heavy manual play
 
 At the current stage of the project (approaching M09 Beta), 4 out of 11 Use Cases are fully verified (@UC01, @UC03, @UC04, @UC07), 3 are partially implemented (@UC02, @UC05, @UC06), and 4 have not been tested yet as they are planned for M10 (@UC08, @UC09, @UC10, @UC11).
 
-For the NFRs, 6 requirements have fully passed (@NFR103, @NFR105, @NFR201, @NFR202, @NFR206, @NFR501), 8 are partially met (@NFR101, @NFR104, @NFR204, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402), and 4 have not been tested yet as they are scheduled for M10 (@NFR203, @NFR205, @NFR502, @NFR503). @NFR102 is not applicable since in-game scene transitions were removed from scope. The partially met NFRs are mostly related to the save system and input support, which still have known issues to be resolved before the final release.
+For the NFRs, 7 requirements have fully passed (@NFR103, @NFR105, @NFR201, @NFR202, @NFR206, @NFR401, @NFR501), 7 are partially met (@NFR101, @NFR104, @NFR204, @NFR301, @NFR302, @NFR303, @NFR402), and 4 have not been tested yet as they are scheduled for M10 (@NFR203, @NFR205, @NFR502, @NFR503). @NFR102 is not applicable since in-game scene transitions were removed from scope. The partially met NFRs are mostly related to the save system and input support, which still have known issues to be resolved before the final release.
 // TODO: Describe the test strategy as discussed in SEP1.
 // - How each functional and non-functional requirement is verified
 // - At what level (Unit, Integration, System)
