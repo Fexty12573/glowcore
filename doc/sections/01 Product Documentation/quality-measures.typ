@@ -10,8 +10,6 @@
 // - Tools used to build and deploy (CI/CD)
 // Tip: Avoid duplication with other chapters — use cross-references when appropriate.
 
-=== Testing
-
 === Test Concept
 Our testing strategy for GlowCore is fundamentally shaped by the nature of the project. Since GlowCore is a standalone Unity game built for Windows, Linux, and WebGL, we don't have any server connections, huge amount of data in a database or a frontend beyond simple game-menus. This allows us to focus our entire testing effort directly on the client-side application, ensuring gameplay mechanics, performance, and user experience are as solid as possible.
 
@@ -103,4 +101,118 @@ For the NFRs, 7 requirements have fully passed (@NFR103, @NFR105, @NFR201, @NFR2
   )
 }
 ==== Test Coverage
-#image("/resources/01 Product Documentation/test-coverage-chart.png")
+#image("../../resources/01 Product Documentation/test-coverage-chart.png")
+
+=== User Testing
+In game development, the most important aspect of the product is that it is entertaining. As developers, we are not representative users for playtesting, since we have spent many hours developing the features and already know how everything works. A first-time player may not immediately understand game rules that are obvious to us. This strongly relates to our usability NFRs, which require the game to be intuitive which is a prerequisite for it to be enjoyable. This is the main purpose of the user tests of GlowCore.
+
+During testing, the participant is given the game on a device with a keyboard and mouse, where no further instructions are given beyond what is provided in the actual game. They are then asked to play the game while commenting on what they are currently doing. At the end, the participant answers a set of questions to evaluate the corresponding NFRs. The results of the NFRs are documented in their chapter.
+
+#pagebreak()
+==== User Test 1 (UT01)
+- *Participant*: omega-800
+- *Gaming Experience / Similar Games*: Has played Factorio
+- *Date*: 28.04.2026
+- *Tested release*: v0.2.0
+
+#figure(
+  table(
+    columns: (1fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Field*], [*Result*],
+    [*NFR201* Player Restriction Visibility. Did you understand the visual clues?],
+    [Yes, I especially liked the red and green clues when building.],
+
+    [*NFR202* Light Upgrade Progress Indication. Did you understand what causes the map to expand?],
+    [Yes, when I feed wood into the fire it grows, and the darkness goes away.],
+
+    [*NFR203* New Player Learnability. How long did it take for the first upgrade?], [2 minutes.],
+    [What was confusing?], [I couldn't move the camera vertically.],
+    [Did you have fun? What did you like?],
+    [Yes, I enjoyed playing it. I liked the visual art style with the outlines.],
+
+    [Was the pacing good, too slow or too fast?],
+    [The pacing was good. I had fun and felt motivated to progress. I got bored at level 11 because there were no better tools to craft, nothing to aim for.],
+  ),
+  caption: [UT01],
+  supplement: [Table],
+)
+
+===== Additional Feedback
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Topic*], [*Explanation*],
+    [GlowCore UI],
+    [He didn't notice that he had to click "Upgrade To Level 2" to progress. At level 14 it was not obvious that he had to scroll down to add coal.],
+
+    [Signs], [At first he did not read second sign, assuming that all signs display the same text.],
+    [Node hovering],
+    [It should be possible to select a Node located behind the player (the raycast should go through the player).],
+
+    [Hotbar], [He suggested allowing the player to scroll through the hotbar using the mouse wheel.],
+    [Building],
+    [He stopped the main task of progressing to build something. This is considered positive, because the game is intended to be open-world to a certain degree.],
+  ),
+  caption: [UT01 - Additional Feedback],
+  supplement: [Table],
+)
+
+===== Conclusion
+The participant was mainly motivated to progress because he wanted to craft better tools in order to break things faster to progress faster creating a continous progression loop. This loop is called the core game loop of a game and this is exactly what we wanted to accomplish and what makes the game entertaining ultimately. This user test confirms that the core game loop is engaging.
+
+Based on the feedback we will make improvements to the UI, in particular we will change the GlowCore upgrade UI to be more intuitive.
+
+
+#pagebreak()
+==== User Test 2 (UT02)
+- *Participant*: Anonymous
+- *Gaming Experience / Similar Games*: Has played various game genres including automation games.
+- *Date*: 30.04.2026
+- *Tested release*: v0.2.0
+
+#figure(
+  table(
+    columns: (1fr, 1fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Field*], [*Result*],
+    [*NFR201* Player Restriction Visibility. Did you understand the visual clues?], [Yes, the outlines were obvious.],
+
+    [*NFR202* Light Upgrade Progress Indication. Did you understand what causes the map to expand?],
+    [Yes, when I upgrade the fire.],
+
+    [*NFR203* New Player Learnability. How long did it take for the first upgrade?], [3 minutes.],
+    [What was confusing?], [The border visual is strange.],
+    [Did you have fun? What did you like?],
+    [It got boring fast, because it's very repetitive. I liked how the crafting table looked. The proportions of the stone-fire and the player were a bit off.],
+
+    [Was the pacing good, too slow or too fast?],
+    [The pacing was okay, but I think you should get more wood out of trees.],
+  ),
+  caption: [UT02],
+  supplement: [Table],
+)
+
+===== Additional Feedback
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    stroke: 0.5pt + gray,
+    fill: (x, y) => if y == 0 { luma(230) },
+    [*Topic*], [*Explanation*],
+    [Gameplay], [The game has potential but there are not enough things to do, not enough content.],
+
+    [Node break prompt], [The break prompt should only be displayed for the first few Nodes that the player breaks.],
+    [Camera], [He suggested that you should be able to zoom in and out a bit with the mouse wheel.],
+    [Building bug], [When you hold a building block and click somewhere in the UI it still builds.],
+  ),
+  caption: [UT02 - Additional Feedback],
+  supplement: [Table],
+)
+
+===== Conclusion
+This user test provided valuable feedback on what the gameplay is missing and what it is already doing right. In Sprint 6 we will refine the UI and controls accordingly. We will also add more Items, Nodes and Crafting Recipes. Thanks to our extensible architecture which follows the Open-Closed Principle (OCP), new content can be added without modifying existing code.
