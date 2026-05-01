@@ -315,3 +315,44 @@ These rules are enforced by `.editorconfig` and verified by `dotnet format` in C
 
 *Null checks:* Prefer null-coalescing (`??`) and null-conditional (`?.`) operators over explicit null comparisons where possible.
 
+=== Version Control Workflow
+
+The project uses Git with a two-tier branching model:
+
+- *`main`*: stable production branch. Only receives merges from `dev` after a release is considered stable.
+- *`dev`*: integration branch. All feature work is merged here first and must pass CI before it is promoted to `main`.
+
+===== Branch Naming
+
+Every branch must be linked to a Jira issue. Branch names follow the pattern:
+
+#align(center)[`<type>/gc-<issue-id>-short-description`]
+
+Where `<type>` is one of:
+
+#table(
+  columns: (auto, 1fr),
+  fill: (x, y) => if y == 0 { luma(230) },
+  stroke: 0.5pt + gray,
+  table.header([*Type*], [*When to use*]),
+  [`feature`], [New features or significant enhancements],
+  [`bug`], [Bug fixes],
+  [`docs`], [Documentation updates],
+  [`task`], [General tasks that do not fit the above categories],
+)
+
+===== Rebasing Workflow
+
+We follow a *rebasing workflow*: before opening a pull request, the feature branch is rebased onto the current tip of `dev`. This keeps the project history linear and avoids unnecessary merge commits.
+
+If a branch accumulates many small or intermediate commits that do not add meaningful history (e.g. "fix typo", "WIP"), the branch is squashed before or during merge to keep the log clean.
+
+===== Pull Requests
+
+Pull requests always target `dev`. Each PR must:
+
+- Reference the corresponding Jira issue in its description.
+- Receive *at least one approving review* from a team member before it can be merged.
+- Pass all CI checks (linting, formatting, automated tests, and build).
+
+No direct pushes to `dev` or `main` are permitted.
