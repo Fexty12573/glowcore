@@ -525,7 +525,10 @@ Performance Efficiency addresses the amount of resources used under stated condi
 #nfr_table(
   id: [NFR105],
   description: [Minimal Hardware Requirements],
-  requirements: [The game must run on minimal hardware, targeting low-end systems to maximize accessibility.],
+  requirements: [The game must run on minimal hardware with the following specifications:
+  - 2 GHz CPU
+  - 8 GB RAM
+  - NVIDIA GeForce GTX 1660],
   priority: [Optional / Medium],
   measurement: [Test the game on a defined minimum hardware baseline and verify all performance NFRs (FPS, load times) are met.],
   verification: [Execute a full gameplay session on minimum-spec hardware. Record FPS, load times, and memory usage to confirm compliance.],
