@@ -493,7 +493,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   priority: [Required / High],
   measurement: [Measure elapsed time from triggering the transition until the new scene is fully loaded and interactive.],
   verification: [Trigger each scene transition during playtesting and record the load time. Automated scene-transition benchmark covering all transition points.],
-  result: "Not applicable. Due to the lack of time The team decided not to implement cave areas or any scene transitions during the project. This requirement no longer applies to the current scope of GlowCore.",
+  result: "Not applicable. Due to the lack of time the team decided not to implement cave areas or any scene transitions during the project. This requirement no longer applies to the current scope of GlowCore.",
   nfr_caption: [NFR102 -- In-Game Transition Time],
   status_color: nfr-status.at("nfr102"),
 ) <NFR102>
