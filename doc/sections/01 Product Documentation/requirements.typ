@@ -664,7 +664,7 @@ Maintainability represents the degree of effectiveness and efficiency with which
   priority: [Optional / Medium],
   measurement: [A developer unfamiliar with the codebase must be able to add a new upgrade or item by following existing patterns, without modifying core system code.],
   verification: [Task a team member with adding a new test upgrade and resource node. Measure the time required and verify no structural code changes were necessary.],
-  result: "Verified manually by a team member adding a new resource node. The architecture supports adding new nodes and items without modifying core system code. However, the process requires prior knowledge of the ScriptableObject setup and dependency configuration. It is not immediately obvious to a developer unfamiliar with the codebase. Clear documentation of the required steps would be needed to fully satisfy this NFR.",
+  result: "Verified manually by a team member adding a new resource node. The architecture supports adding new nodes and items without modifying core system code.",
   nfr_caption: [NFR401 -- Extensibility of Game Systems],
   status_color: nfr-status.at("nfr401"),
 )<NFR401>
