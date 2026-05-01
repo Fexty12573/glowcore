@@ -242,3 +242,76 @@ Based on the feedback we will make improvements to the UI, in particular we will
 
 ===== Conclusion
 This user test provided valuable feedback on what the gameplay is missing and what it is already doing right. In Sprint 6 we will refine the UI and controls accordingly. We will also add more Items, Nodes and Crafting Recipes. Thanks to our extensible architecture which follows the Open-Closed Principle (OCP), new content can be added without modifying existing code.
+
+=== Coding Guidelines
+
+Our coding guidelines are based on the Unity C\# scripting conventions and are enforced through Roslyn analyzers and EditorConfig rules. Every C\# file must conform to these rules, which are checked automatically on every push to `main` or `dev` via the CI pipeline.
+
+==== Naming Conventions
+
+#table(
+  columns: (auto, auto, auto),
+  fill: (x, y) => if y == 0 { luma(230) },
+  stroke: 0.5pt + gray,
+  table.header([*Element*], [*Convention*], [*Example*]),
+  [Classes / Interfaces], [PascalCase; interfaces prefixed with `I`], [`PlayerController`, `ICollectible`],
+  [Methods], [PascalCase], [`MovePlayer()`, `TakeDamage()`],
+  [Bool methods], [Question-word prefix], [`IsAlive()`, `CanCollect()`],
+  [Parameters / Local variables], [camelCase], [`playerSpeed`, `itemCount`],
+  [Constants (`const`)], [`k` prefix + PascalCase], [`kMaxHealth`, `kGravity`],
+  [Private fields], [`m_` prefix + camelCase], [`m_playerHealth`, `m_enemyCount`],
+  [Public fields], [PascalCase (avoid in classes)], [`PlayerHealth`],
+  [Properties], [PascalCase], [`Health`, `Score`],
+  [Static fields], [`s_` prefix + camelCase], [`s_instanceCount`],
+  [Events], [`On` prefix + PascalCase], [`OnPlayerDeath`, `OnItemCollected`],
+  [Enums / Values], [PascalCase], [`PlayerState.Idle`],
+  [Namespaces], [PascalCase, project-based], [`GlowCore.Player`],
+  [Generic type parameters], [`T` prefix + PascalCase], [`TItem`, `TState`],
+)
+
+==== Class Member Ordering
+
+Members within a class must appear in the following order:
+
++ Constants
++ Static fields
++ Instance fields
++ Constructors
++ Properties
++ Public methods
++ Private methods
+
+==== General Guidelines
+
+*Properties:* For get-only properties, prefer expression-bodied members (e.g. `public int Health => m_health;`). Simple get/set properties may also use expression bodies when the logic fits on one line.
+
+*Method parameters:* Avoid `in` parameters. The compiler may silently create defensive copies, which is a hidden performance cost.
+
+*Access modifiers:* Always declare access modifiers explicitly; never rely on C\# defaults.
+
+*Public fields:* Avoid `public` fields in classes, use properties instead. Public fields in structs are acceptable.
+
+==== Formatting Rules
+
+These rules are enforced by `.editorconfig` and verified by `dotnet format` in CI. A build with formatting violations is treated as a failure.
+
+*Line endings:* LF (`\n`) only. CRLF is not permitted in any file.
+
+*Indentation:* 4 spaces for C\# files; 2 spaces for XML/JSON/config files. Tabs are never used.
+
+*Brace style (Allman):* Opening braces always appear on their own line for all constructs (`if`, `for`, method bodies, class bodies, etc.).
+
+*Single-line bodies:* `if`, `for`, `while`, and similar statements with a single-line body omit braces; the body is placed on the next indented line.
+
+*`this.` qualifier:* Do not qualify field or member access with `this.` unless it is required to resolve an ambiguity.
+
+*Language keywords over BCL types:* Use `int`, `string`, `bool`, etc. instead of `Int32`, `String`, `Boolean`.
+
+*`var` keyword:* Use `var` for built-in types and whenever the type is apparent from the right-hand side of an assignment.
+
+*`using` directives:* Placed outside the namespace declaration. `System.*` namespaces are sorted first.
+
+*Modifier order:* `public` / `private` / `protected` / `internal` > `static` > `extern` / `new` / `virtual` / `abstract` / `sealed` / `override` > `readonly` > `unsafe` / `volatile` / `async`.
+
+*Null checks:* Prefer null-coalescing (`??`) and null-conditional (`?.`) operators over explicit null comparisons where possible.
+
