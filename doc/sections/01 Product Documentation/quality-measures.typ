@@ -2,6 +2,26 @@
 
 === Working Environment
 
+==== CI/CD Pipeline
+
+The project uses GitHub Actions for all build, test, and deployment automation. Five pipelines are defined, each with a distinct responsibility:
+
+#figure(
+  image("../../resources/01 Product Documentation/deployment-diagram.png", width: 100%),
+  caption: [CI/CD Pipeline Overview],
+  supplement: [Image],
+)
+
+- *MAIN*: runs on every push to `main` or `dev` (excluding `doc/**` changes) and on version tags (`v*`). Builds and deploys the WebGL build for pushes to the two main branches. On a version tag it additionally compiles Windows and Linux standalone builds and creates a GitHub Release.
+
+- *TEST*: runs on push to `main` or `dev` and on pull requests targeting either branch (both excluding `doc/**`). Executes the Unity Test Framework suite in both Edit Mode and Play Mode and generates a report on both results and coverage.
+
+- *DOC*: triggered only when `doc/**` files are modified: on push to `main` or `dev`, on doc tags (`d*.*`), and on pull requests that touch the documentation. Builds the Typst documentation and deploys it to GitHub Pages.
+
+- *LINTER*: runs on the same push and pull-request triggers as TEST (excluding `doc/**`). Runs the Roslyn code-analysis and `dotnet format` checks described in the Coding Guidelines section. A failed lint check blocks the merge.
+
+- *LABELER*: fires on pull-request targets to `main` or `dev` (skipped for `dev` → `main` promotion PRs). Automatically applies labels to each PR based on branch prefix and changed paths (`feature/*` → _feature_, `bug/*` → _bug_, `docs/*` or changes under `doc/**/*` → _doc_).
+
 #v(23cm)
 ==== Definition of Ready and Definition of Done
 
