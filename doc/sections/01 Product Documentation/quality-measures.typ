@@ -27,9 +27,14 @@ The following example shows a real ticket (GC-186) that satisfies all DoR criter
 
 ===== DoD Example
 
-Once completed, the same ticket with all acceptance criteria checked and status set to "Done" serves as the DoD example.
+The following example shows the same ticket (GC-186) with all acceptance criteria checked and status set to Done.
 
-// TODO: Add DoD example screenshot once GC-186 is completed (all ACs checked, status Done).
+#figure(
+  image("../../resources/01 Product Documentation/DoD_Example.png", width: 100%),
+  caption: [GC-186 - Example of a ticket satisfying all Definition of Done criteria],
+  supplement: [Image],
+  placement: auto,
+)
 
 === Testing
 
