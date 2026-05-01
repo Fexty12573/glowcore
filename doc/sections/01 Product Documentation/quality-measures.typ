@@ -101,7 +101,7 @@ For the NFRs, 7 requirements have fully passed (@NFR103, @NFR105, @NFR201, @NFR2
   )
 }
 ==== Test Coverage
-#image("/resources/01 Product Documentation/test-coverage-chart.png")
+#image("../../resources/01 Product Documentation/test-coverage-chart.png")
 
 === User Testing
 In game development, the most important aspect of the product is that it is entertaining. As developers, we are not representative users for playtesting, since we have spent many hours developing the features and already know how everything works. A first-time player may not immediately understand game rules that are obvious to us. This strongly relates to our usability NFRs, which require the game to be intuitive which is a prerequisite for it to be enjoyable. This is the main purpose of the user tests of GlowCore.
