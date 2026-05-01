@@ -17,9 +17,9 @@
 )
 
 ==== Sprint goal
-- Extend game content with phased progression (~20 levels, 4 phases)
-- Add new resources and mechanics (iron smelting, crystal, sun ore, GlowBomb)
+- Extend game content with phased progression 
+- Add new resources and mechanics 
 - Improve game playability and tutorial pacing
-- Refine GlowCore UI and crafting system
+- Implement main menu, refine GlowCore UI and crafting system
 
 #pagebreak()
