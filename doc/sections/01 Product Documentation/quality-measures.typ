@@ -93,6 +93,26 @@ We cover NFR testing through a mix of automated benchmarks and manual playtestin
 
 By combining the automated safety net of our UTF pipeline with heavy manual playtesting and strict NFR benchmarking, we believe this concept will keep the game stable while still allowing us to iterate quickly on the gameplay.
 
+=== Unity Testing
+Testing a game is a bit different from testing a "standard" software project, like a web-based accounting tool or a simple CRUD application. In a typical software project, you are mostly concerned with whether a specific input leads to a specific output in a database or a UI. You can easily mock external dependencies and call functions in isolation.
+
+In Unity, however, our code doesn't just sit there. It lives inside an engine that is constantly ticking. We have to deal with the "Game Loop," physics calculations, and the complex lifecycle of MonoBehaviours. To test a full cycle in the Unity engine, we are able to use Edit Mode and Play Mode.
+
+==== Edit Mode Tests
+Edit Mode tests are the closest thing we have to "traditional" unit tests. They run entirely within the Unity Editor and do not require the game to actually start. Since they don't have to load scenes or wait for the physics engine to initialize, they are fast.
+
+Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it in during our CI/CD run without us ever having to open a game window.
+
+==== Play Mode Tests
+Play Mode tests are where we handle the Unity Engine of the project. Unlike Edit Mode, these tests actually trigger the full game engine. They can load specific test scenes, instantiate Prefabs, and, most importantly, they can run over multiple frames.
+
+This is essential for Games because many mechanics are time dependent. For example, if we want to test if the player really moves on input, we need the game clock to actually run. In Play Mode, we can use yield return new WaitForSeconds(1); to let the game simulate for a moment before checking the results. Play Mode tests can be used for:
+
+- Physics interactions
+- Component Lifecycle
+- Player Input
+
+The downside is that Play Mode tests are significantly slower because they have to "play" the game. However, they give us the confidence that our code isn't just working on paper, but actually performing correctly within the simulated world of the engine.
 #show ref: it => {
   if it.element != none and it.element.func() == figure {
     link(it.target, str(it.target))
