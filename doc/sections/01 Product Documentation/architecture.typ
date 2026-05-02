@@ -197,12 +197,6 @@ Scriptable Objects solve this problem. Scriptable Objects are objects that are n
 ==== Prefabs
 We use Prefabs to save specific GameObjects as *.prefab* files. This enables us to dynamically Instantiate Prefabs as GameObjects during runtime, which is necessary for e.g. Building.
 
-=== CI/CD-Architektur
-This section provides a quick overview of our CI/CD setup on GitHub. As shown in the picture, we use five specific workflows to automate our development process.
-
-Each workflow is designed to handle a different part of the pipeline, ranging from code quality checks and automated testing to the final deployment and documentation updates. Having these automated steps helps us maintain a clean codebase and ensures that we can focus more on developing new features.
-#image("/resources/01 Product Documentation/cicd-workflow.png")
-
 #pagebreak()
 === Extensibility
 Our game is designed to be extensible and exchangeable wherever feasible. Thanks to our ScriptableObject Architecture we can easily add new Items/Nodes just by creating a new Instance of the corresponding ScriptableObject and setting the parameters and referencing the 3D Model and Icon.
