@@ -47,6 +47,7 @@ public class BuildingIntegrationTests
         SetPrivateField(worldGrid, "m_nodesParent", new GameObject("Nodes").transform);
         SetPrivateField(worldGrid, "m_worldMode", WorldMode.DesignedWorld);
 
+        worldGrid.SetSaveService(new MockSaveService());
         grid.SetActive(true);
 
         GameObject chestPrefab =

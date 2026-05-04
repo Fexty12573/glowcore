@@ -135,6 +135,14 @@ public class Inventory
         return m_items[index];
     }
 
+    public void SetSlot(int index, ItemStack stack)
+    {
+        if (index < 0 || index >= m_items.Length)
+            return;
+        m_items[index].Set(stack);
+        OnSlotChanged?.Invoke(index);
+    }
+
     public (ItemStack slot, int index) GetSlotWithItem(Item item)
     {
         for (var i = 0; i < m_items.Length; i++)
@@ -207,5 +215,9 @@ public class Inventory
         return null;
     }
 
-    public ref ItemStack this[int x, int y] => ref m_items[(y * m_width) + x];
+    public ItemStack this[int x, int y]
+    {
+        get => m_items[(y * m_width) + x];
+        set => m_items[(y * m_width) + x] = value;
+    }
 }

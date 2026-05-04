@@ -107,7 +107,7 @@ namespace GlowCore.UI.Upgrade
             m_inventoryService = FindFirstObjectByType<PlayerInventory>();
             if (m_inventoryService == null)
             {
-                Debug.LogError("GlowCoreUpgradeUI: Could not find PlayerInventory in scene.");
+                Debug.LogError("GlowCoreUpgradeUI: Could not find Inventory in scene.");
                 return;
             }
 

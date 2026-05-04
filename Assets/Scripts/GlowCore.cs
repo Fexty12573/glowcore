@@ -144,6 +144,15 @@ namespace GlowCore.World
             SpawnNextLevel();
         }
 
+        public GlowCoreObject ForceUpgrade()
+        {
+            if (!HasNextLevel)
+                return null;
+
+            UpgradePhysical();
+            return SpawnNextLevel();
+        }
+
         public void ActivateLogs(int amount)
         {
             if (m_logs == null || m_activeLogs >= m_logs.Length)
@@ -259,12 +268,12 @@ namespace GlowCore.World
             return true;
         }
 
-        private void SpawnNextLevel()
+        private GlowCoreObject SpawnNextLevel()
         {
             if (m_nextLevelPrefab == null)
             {
                 Debug.Log("GlowCore: Max level reached, no upgrade available.");
-                return;
+                return null;
             }
 
             Vector3 position = transform.position;
@@ -277,11 +286,12 @@ namespace GlowCore.World
                     WorldGrid.Instance.ClearNodeAt(oldNode.TilesUsed[i]);
             }
 
-            GameObject newGlowCore = Instantiate(m_nextLevelPrefab, position, Quaternion.identity, transform.parent);
+            GameObject newGlowCoreObj = Instantiate(m_nextLevelPrefab, position, Quaternion.identity, transform.parent);
+            var newGlowCore = newGlowCoreObj.GetComponent<GlowCoreObject>();
 
-            if (newGlowCore.TryGetComponent(out Node newNode))
+            if (newGlowCoreObj.TryGetComponent(out Node newNode))
             {
-                var nextConfig = newGlowCore.GetComponent<GlowCoreObject>()?.LevelConfig;
+                var nextConfig = newGlowCore != null ? newGlowCore.LevelConfig : null;
                 var tileCount = nextConfig != null ? nextConfig.TileCount : 1;
                 WorldGrid.Instance.PlaceNodeAt(newNode, worldX, worldZ, tileCount);
             }
@@ -291,6 +301,7 @@ namespace GlowCore.World
             }
 
             Destroy(gameObject);
+            return newGlowCore;
         }
 
         private void RegisterInteractableChildren(GameObject target)

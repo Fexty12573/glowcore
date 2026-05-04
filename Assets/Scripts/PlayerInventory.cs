@@ -110,7 +110,9 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
         OnGlowCoreUIToggled?.Invoke(open);
     }
 
-    // Public Methods — Game Logic (not on IInventoryService)
+    // Public Methods — Game Logic
+    public Inventory GetInventory() => m_inventory;
+
     public void ConsumeHandItem(int amount)
     {
         var slot = m_inventory.GetSlot(m_selectedHotbarIndex);

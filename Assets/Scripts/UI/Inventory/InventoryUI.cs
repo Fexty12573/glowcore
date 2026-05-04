@@ -55,7 +55,7 @@ namespace GlowCore.UI.Inventory
             m_inventoryService = FindFirstObjectByType<PlayerInventory>();
             if (m_inventoryService == null)
             {
-                Debug.LogError("InventoryUI: Could not find PlayerInventory in scene.");
+                Debug.LogError("InventoryUI: Could not find Inventory in scene.");
                 return;
             }
 

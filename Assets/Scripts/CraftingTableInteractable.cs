@@ -30,7 +30,7 @@ public class CraftingTableInteractable : MonoBehaviour, IInteractable
         m_playerInventory = FindFirstObjectByType<PlayerInventory>();
         if (m_playerInventory == null)
         {
-            Debug.LogError("CraftingTableInteractable: Could not find PlayerInventory in scene.");
+            Debug.LogError("CraftingTableInteractable: Could not find Inventory in scene.");
             return;
         }
 
