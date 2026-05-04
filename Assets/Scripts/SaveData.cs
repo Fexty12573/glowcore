@@ -253,7 +253,7 @@ public class SaveData
         {
             for (var x = 0; x < inventory.Width; x++)
             {
-                ref var stack = ref inventory[x, y];
+                var stack = inventory[x, y];
                 if (stack.IsValid)
                 {
                     writer.Write(stack.Item.Id.ToByteArray());

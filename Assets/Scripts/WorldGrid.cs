@@ -379,7 +379,10 @@ namespace GlowCore.World
                 {
                     for (var y = 0; y < inventory.Height; y++)
                     {
-                        ref var stack = ref saveData.Player.Inventory[x, y];
+                        if (inventory[x, y].IsValid)
+                            inventory.ClearSlot((y * inventory.Width) + x);
+
+                        var stack = saveData.Player.Inventory[x, y];
                         if (stack.IsValid)
                             inventory[x, y] = stack;
                     }
