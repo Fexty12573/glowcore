@@ -85,7 +85,6 @@ namespace GlowCore.UI.Inventory
             RebuildUI();
         }
 
-
         public void Show() => SetVisible(true);
 
         public void Hide() => SetVisible(false);
@@ -103,8 +102,9 @@ namespace GlowCore.UI.Inventory
             m_inventoryUI = FindFirstObjectByType<InventoryUI>();
 
             if (m_closeButton != null)
+            {
                 m_closeButton.onClick.AddListener(OnCloseButtonClicked);
-
+            }
             BuildInventoryDisplay();
             SetVisible(false);
 
