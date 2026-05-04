@@ -31,6 +31,8 @@ jobs:
       - name: Generate Project Files
         run: |
           "${{ env.UNITY_EDITOR_PATH }}" -batchmode -nographics -quit \
+            -username "${{ secrets.UNITY_EMAIL }}" \
+            -password "${{ secrets.UNITY_PASSWORD }}" \
             -projectPath "${{ github.workspace }}" \
             -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution \
             -logFile -
