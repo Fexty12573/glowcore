@@ -43,7 +43,7 @@ jobs:
             -testResults "${{ github.workspace }}/test-results/editmode-results.xml" \
             -enableCodeCoverage \
             -coverageResultsPath "${{ github.workspace }}/CodeCoverage" \
-            -coverageOptions "generateAdditionalMetrics;generateHtmlReport;generateBadgeReport" \
+            -coverageOptions "generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;useProjectSettings" \
             -logFile -
           EXIT=$?; [ $EXIT -eq 0 ] || [ $EXIT -eq 2 ] || exit $EXIT
 
