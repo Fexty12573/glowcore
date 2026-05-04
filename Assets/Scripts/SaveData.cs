@@ -25,14 +25,22 @@ public class SaveData
 
     public static bool Exists() => File.Exists(GetPath());
 
-    public static SaveData Load() => LoadFrom(File.OpenRead(GetPath()));
+    public static SaveData Load()
+    {
+        using var stream = File.OpenRead(GetPath());
+        return LoadFrom(stream);
+    }
 
-    public static void Save(SaveData saveData) => SaveTo(File.OpenWrite(GetPath()), saveData);
+    public static void Save(SaveData saveData)
+    {
+        using var stream = File.OpenWrite(GetPath());
+        SaveTo(stream, saveData);
+    }
 
     public static SaveData LoadFrom(Stream stream)
     {
         var saveData = Default();
-        using var reader = new BinaryReader(stream);
+        var reader = new BinaryReader(stream);
 
         var magic = reader.ReadUInt32();
         if (magic != kMagic)
@@ -57,7 +65,7 @@ public class SaveData
 
     public static void SaveTo(Stream stream, SaveData saveData)
     {
-        using var writer = new BinaryWriter(stream);
+        var writer = new BinaryWriter(stream);
 
         writer.Write(kMagic);
         writer.Write(kVersion);
@@ -92,7 +100,7 @@ public class SaveData
         // Load Player Data
         reader.BaseStream.Seek(playerDataOffset, SeekOrigin.Begin);
 
-        Player.Name = Encoding.UTF8.GetString(reader.ReadBytes(32));
+        Player.Name = Encoding.UTF8.GetString(reader.ReadBytes(32)).TrimEnd('\0');
         Player.GlowCoreLevel = reader.ReadUInt16();
         Player.PosX = reader.ReadSingle();
         Player.PosZ = reader.ReadSingle();

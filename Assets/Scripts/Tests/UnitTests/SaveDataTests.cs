@@ -1,5 +1,7 @@
 using System.IO;
 using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.TestTools;
 
 public class SaveDataTests
 {
@@ -61,6 +63,7 @@ public class SaveDataTests
         // Assert
         Assert.NotNull(loaded);
         Assert.AreEqual("Player", loaded.Player.Name); // default name
+        LogAssert.Expect(LogType.Error, "Invalid save file. Magic is 12345678, should be 56534347");
     }
 
     [Test]
@@ -79,5 +82,6 @@ public class SaveDataTests
         // Assert
         Assert.NotNull(loaded);
         Assert.AreEqual("Player", loaded.Player.Name); // default name
+        LogAssert.Expect(LogType.Error, "Unsupported save version: 999");
     }
 }
