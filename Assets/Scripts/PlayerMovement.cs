@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands.Import;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
@@ -10,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_movementSpeed = 5;
     [SerializeField] private float m_rotationSpeed = 15;
     [SerializeField] private Vector3 m_cameraOffset = Vector3.zero;
+    [SerializeField] private Animator m_animator;
 
+    private string m_currentState;
     private Vector2 m_moveInput;
 
     public void MultiplyMovementSpeed(float factor) => m_movementSpeed *= factor;
@@ -34,7 +37,20 @@ public class PlayerMovement : MonoBehaviour
             UpdateMovement(relativeMovement);
             UpdateCamera();
             UpdateRotation(relativeMovement);
+            ChangeAnimatorState("walk");
         }
+        else
+            ChangeAnimatorState("idle");
+
+    }
+
+    private void ChangeAnimatorState(string state)
+    {
+        if (state == m_currentState)
+            return;
+
+        m_animator.CrossFade(state, 0.1f);
+        m_currentState = state;
     }
 
     private void UpdateMovement(Vector3 movement)
