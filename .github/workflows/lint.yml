@@ -27,12 +27,17 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+      
+      - name: Activate Unity License
+        uses: buildalon/activate-unity-license@v2
+        with:
+          license: 'Personal'
+          username: ${{ secrets.UNITY_EMAIL }}
+          password: ${{ secrets.UNITY_PASSWORD }}
 
       - name: Generate Project Files
         run: |
           "${{ env.UNITY_EDITOR_PATH }}" -batchmode -nographics -quit \
-            -username "${{ secrets.UNITY_EMAIL }}" \
-            -password "${{ secrets.UNITY_PASSWORD }}" \
             -projectPath "${{ github.workspace }}" \
             -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution \
             -logFile -
