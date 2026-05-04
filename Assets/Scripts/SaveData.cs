@@ -25,16 +25,19 @@ public class SaveData
 
     public static bool Exists() => File.Exists(GetPath());
 
-    public static SaveData Load()
+    public static SaveData Load() => LoadFrom(File.OpenRead(GetPath()));
+
+    public static void Save(SaveData saveData) => SaveTo(File.OpenWrite(GetPath()), saveData);
+
+    public static SaveData LoadFrom(Stream stream)
     {
         var saveData = Default();
-        var path = GetPath();
-        using var reader = new BinaryReader(File.OpenRead(path));
+        using var reader = new BinaryReader(stream);
 
         var magic = reader.ReadUInt32();
         if (magic != kMagic)
         {
-            Debug.LogError($"Invalid save file: {path}");
+            Debug.LogError($"Invalid save file. Magic is {magic:X8}, should be {kMagic:X8}");
             return saveData;
         }
 
@@ -52,10 +55,9 @@ public class SaveData
         return saveData;
     }
 
-    public static void Save(SaveData saveData)
+    public static void SaveTo(Stream stream, SaveData saveData)
     {
-        var path = GetPath();
-        using var writer = new BinaryWriter(File.OpenWrite(path));
+        using var writer = new BinaryWriter(stream);
 
         writer.Write(kMagic);
         writer.Write(kVersion);
