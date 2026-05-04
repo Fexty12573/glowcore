@@ -3,7 +3,7 @@
 // ==============================
 // 4) Sprint Planning
 // ==============================
-=== Sprint Planning / 18.04.2026
+=== Sprint Planning / 01.05.2026
 #meeting_info(
   date: "01.05.2026",
   sprint: "Sprint 6",
@@ -17,8 +17,8 @@
 )
 
 ==== Sprint goal
-- Extend game content with phased progression 
-- Add new resources and mechanics 
+- Extend game content with phased progression
+- Add new resources and mechanics
 - Improve game playability and tutorial pacing
 - Implement main menu, refine GlowCore UI and crafting system
 
