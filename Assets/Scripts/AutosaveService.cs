@@ -1,27 +1,44 @@
+using System;
 using System.Collections;
-using GlowCore.World;
 using UnityEngine;
 
 public class AutosaveService : MonoBehaviour
 {
-    [SerializeField] private float m_saveIntervalMinutes = 5f;
-
+    private ISaveService m_saveService;
+    private TimeSpan m_saveInterval;
     private Coroutine m_autosaveCoroutine;
 
-    private void OnEnable() => m_autosaveCoroutine = StartCoroutine(AutosaveLoop());
+    public void Initialize(ISaveService saveService, TimeSpan saveInterval)
+    {
+        m_saveService = saveService;
+        m_saveInterval = saveInterval;
+        if (enabled && m_autosaveCoroutine == null)
+            m_autosaveCoroutine = StartCoroutine(AutosaveLoop());
+    }
 
-    private void OnDisable() => StopCoroutine(m_autosaveCoroutine);
+    private void OnEnable()
+    {
+        if (m_saveService != null)
+            m_autosaveCoroutine = StartCoroutine(AutosaveLoop());
+    }
+
+    private void OnDisable()
+    {
+        if (m_autosaveCoroutine != null)
+        {
+            StopCoroutine(m_autosaveCoroutine);
+            m_autosaveCoroutine = null;
+        }
+    }
 
     private IEnumerator AutosaveLoop()
     {
-        var wait = new WaitForSeconds(m_saveIntervalMinutes * 60f);
+        var wait = new WaitForSeconds((float)m_saveInterval.TotalSeconds);
 
         while (true)
         {
             yield return wait;
-
-            Debug.Log("Saving Game...");
-            WorldGrid.Instance.SaveGameData();
+            m_saveService.Save();
         }
     }
 }

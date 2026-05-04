@@ -9,6 +9,7 @@ namespace GlowCore.World
         DesignedWorld
     }
 
+    [RequireComponent(typeof(AutosaveService))]
     public class WorldGrid : MonoBehaviour
     {
         // Constants
@@ -46,6 +47,9 @@ namespace GlowCore.World
         [SerializeField] private SpawnableNode[] m_spawnableNodes;
         [SerializeField] private Transform m_nodesParent;
 
+        [Header("Autosave")]
+        [SerializeField][Min(1)] private float m_autosaveIntervalSeconds = 300f;
+
         [Header("Node Expansion (ProceduralGeneration only)")]
         [SerializeField][Min(0)] private int m_initialNodeCount = 10;
         [SerializeField][Min(0)] private int m_nodesPerRegularExpansion = 5;
@@ -56,6 +60,7 @@ namespace GlowCore.World
         private int m_totalNodeCount;
         private readonly List<Node> m_pendingNodes = new();
         private HashSet<Vector2Int> m_snapshotPositions;
+        private ISaveService m_saveService;
 
         // Properties
         public static WorldGrid Instance => s_instance;
@@ -200,11 +205,9 @@ namespace GlowCore.World
             return GridToWorld(tile.x, tile.y);
         }
 
-#if UNITY_INCLUDE_TESTS
-        public void SaveGameData() => Debug.Log("Saved Game");
-#else
         public void SaveGameData() => SaveData.Save(BuildSaveData());
-#endif
+
+        public void SetSaveService(ISaveService saveService) => m_saveService = saveService;
 
         public void Expand(int amount, bool isLevelUp = false)
         {
@@ -296,11 +299,22 @@ namespace GlowCore.World
             m_snapshotPositions = BuildSnapshotPositions();
         }
 
-        private void Start() => LoadSaveData();
-
-        private void LoadSaveData()
+        private void Start()
         {
-#if !UNITY_INCLUDE_TESTS
+            m_saveService ??= new SaveService();
+            m_saveService.Load();
+            SetupAutosave();
+        }
+
+        private void SetupAutosave()
+        {
+            var autosave = GetComponent<AutosaveService>();
+            if (autosave != null)
+                autosave.Initialize(m_saveService, System.TimeSpan.FromSeconds(m_autosaveIntervalSeconds));
+        }
+
+        internal void LoadSaveData()
+        {
             if (!SaveData.Exists())
                 return;
 
@@ -365,15 +379,14 @@ namespace GlowCore.World
                 {
                     for (var y = 0; y < inventory.Height; y++)
                     {
-                        ref var stack = ref inventory[x, y];
+                        ref var stack = ref saveData.Player.Inventory[x, y];
                         if (stack.IsValid)
-                            stack = saveData.Player.Inventory[x, y];
+                            inventory[x, y] = stack;
                     }
                 }
             }
 
             m_player.position = new Vector3(saveData.Player.PosX, m_player.position.y, saveData.Player.PosZ);
-#endif
         }
 
         private HashSet<Vector2Int> BuildSnapshotPositions()
