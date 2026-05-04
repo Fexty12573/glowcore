@@ -17,7 +17,7 @@ permissions:
 env:
   SOLUTION_FILE: glowcore.sln
   LINT_PROJECT_FILE: Tools/Lint/GlowCore.Lint.csproj
-  UNITY_EDITOR_PATH: ~/Unity/Hub/Editor/6000.3.9f1/Editor/Unity
+  UNITY_EDITOR_PATH: /home/yoris/Unity/Hub/Editor/6000.3.9f1/Editor/Unity
 
 jobs:
   lint:
