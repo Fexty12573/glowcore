@@ -18,7 +18,7 @@ namespace ScriptableObjects
         public Item ResultItem;
         [Min(1)] public int ResultAmount = 1;
 
-        [SerializeField] private bool m_requiresCraftingTable;
-        public bool RequiresCraftingTable => m_requiresCraftingTable;
+        [SerializeField] private bool m_craftableInInventory;
+        public bool CraftableInInventory => m_craftableInInventory;
     }
 }
