@@ -25,7 +25,7 @@ env:
 jobs:
   buildWebGL:
     name: Build WebGL
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+    # if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     runs-on: [self-hosted, Linux, X64]
     steps:
       - name: Checkout Repository
