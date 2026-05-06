@@ -1,11 +1,12 @@
 using System;
 using ScriptableObjects;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
 {
-    public class CraftingTableUI : MonoBehaviour
+    public class CraftingStationUI : MonoBehaviour
     {
         // Instance Fields
         [Header("References")]
@@ -16,20 +17,22 @@ namespace GlowCore.UI.Inventory
         [SerializeField] private Button m_closeButton;
 
         [Header("Recipe Section")]
+        [SerializeField] private TextMeshProUGUI m_craftingTitleText;
+        [SerializeField] private TextMeshProUGUI m_craftingDescriptionText;
+        [SerializeField] private Image m_craftingBackground;
         [SerializeField] private Transform m_recipeContentParent;
         [SerializeField] private GameObject m_recipeRowPrefab;
         [SerializeField] private TooltipUI m_tooltip;
-
-        [Header("Recipes")]
-        [SerializeField] private RecipeList m_recipeList;
 
         [Header("Inventory Display")]
         [SerializeField] private Transform m_inventoryUpperGridParent;
         [SerializeField] private Transform m_inventoryHotbarRowParent;
         [SerializeField] private GameObject m_slotPrefab;
+        [SerializeField] private Image m_inventoryBackground;
 
         private IInventoryService m_inventoryService;
         private InventoryUI m_inventoryUI;
+        private CraftingStation m_craftingStation;
         private ICraftingService m_craftingService;
         private RecipeRowUI[] m_rows;
         private ItemSlotUI[] m_inventorySlots;
@@ -63,6 +66,25 @@ namespace GlowCore.UI.Inventory
             }
         }
 
+        public void SetCraftingStation(CraftingStation craftingStation)
+        {
+            if (m_craftingStation == craftingStation)
+                return;
+
+            if (m_craftingService is not null)
+            {
+                m_craftingService.OnRecipesRefreshed -= OnRecipesRefreshed; //unsubscribe from old CraftingSystem
+                m_craftingService.Dispose();
+            }
+            m_craftingStation = craftingStation;
+
+            var stationRecipes = m_craftingStation.RecipeList.Recipes;
+            m_craftingService = new CraftingSystem(m_inventoryService, stationRecipes);
+            m_craftingService.OnRecipesRefreshed += OnRecipesRefreshed;
+
+            RebuildUI();
+        }
+
         public void Show() => SetVisible(true);
 
         public void Hide() => SetVisible(false);
@@ -73,23 +95,19 @@ namespace GlowCore.UI.Inventory
             m_inventoryService = FindFirstObjectByType<PlayerInventory>();
             if (m_inventoryService == null)
             {
-                Debug.LogError("CraftingTableUI: Could not find Inventory in scene.");
+                Debug.LogError("CraftingStationUI: Could not find Inventory in scene.");
                 return;
             }
 
             m_inventoryUI = FindFirstObjectByType<InventoryUI>();
 
             if (m_closeButton != null)
+            {
                 m_closeButton.onClick.AddListener(OnCloseButtonClicked);
-
-            var tableRecipes = m_recipeList.Recipes;
-            m_craftingService = new CraftingSystem(m_inventoryService, tableRecipes);
-
-            BuildRows();
+            }
             BuildInventoryDisplay();
             SetVisible(false);
 
-            m_craftingService.OnRecipesRefreshed += OnRecipesRefreshed;
             m_inventoryService.OnSlotChanged += OnSlotChanged;
         }
 
@@ -106,6 +124,32 @@ namespace GlowCore.UI.Inventory
 
             if (m_inventoryService != null)
                 m_inventoryService.OnSlotChanged -= OnSlotChanged;
+        }
+
+        private void RebuildUI()
+        {
+            m_inventoryBackground.color = m_craftingStation.BackgroundColor;
+            m_craftingBackground.color = m_craftingStation.BackgroundColor;
+            m_craftingTitleText.text = m_craftingStation.Name;
+            m_craftingDescriptionText.text = m_craftingStation.Description;
+
+            ClearRows();
+            BuildRows();
+        }
+
+        private void ClearRows()
+        {
+            if (m_rows == null)
+                return;
+
+            for (var i = 0; i < m_rows.Length; i++)
+            {
+                if (m_rows[i] != null)
+                    Destroy(m_rows[i].gameObject);
+
+            }
+
+            m_rows = null;
         }
 
         private void BuildRows()

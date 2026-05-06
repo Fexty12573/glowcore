@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95f522c16b3dbe4ab2d541d38975c6a, type: 3}
+  m_Name: CraftingTable
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.CraftingStation
+  Name: Crafting Table
+  Description: Advanced Recipes
+  RecipeList: {fileID: 11400000, guid: 20d39fcee632b0c4782ef6cba2942932, type: 2}
+  BackgroundColor: {r: 0.2688679, g: 0.15599413, b: 0.043120332, a: 1}

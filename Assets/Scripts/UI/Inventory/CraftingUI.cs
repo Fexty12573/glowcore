@@ -38,7 +38,7 @@ namespace GlowCore.UI.Inventory
             if (m_closeButton != null)
                 m_closeButton.onClick.AddListener(Hide);
 
-            var handRecipes = Array.FindAll(m_recipeList.Recipes, r => !r.RequiresCraftingTable);
+            var handRecipes = Array.FindAll(m_recipeList.Recipes, r => r.CraftableInInventory);
             m_craftingService = new CraftingSystem(m_inventoryService, handRecipes);
 
             BuildRows();

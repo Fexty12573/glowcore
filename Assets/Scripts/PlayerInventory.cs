@@ -25,7 +25,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     private Inventory m_inventory;
     private int m_selectedHotbarIndex;
     private bool m_isOpen;
-    private bool m_isCraftingTableOpen;
+    private bool m_isCraftingStationOpen;
     private bool m_isGlowCoreUIOpen;
 
     // IInventoryService — Properties
@@ -33,7 +33,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     public int HotbarSlotCount => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
     public bool IsOpen => m_isOpen;
-    public bool IsCraftingTableOpen => m_isCraftingTableOpen;
+    public bool IsCraftingStationOpen => m_isCraftingStationOpen;
     public bool IsGlowCoreUIOpen => m_isGlowCoreUIOpen;
 
     // IInventoryService — Events
@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     public event Action<int> OnHotbarSelectionChanged;
     public event Action<bool> OnInventoryToggled;
     public event Action OnCraftingToggled;
-    public event Action<bool> OnCraftingTableToggled;
+    public event Action<bool> OnCraftingStationToggled;
     public event Action<bool> OnGlowCoreUIToggled;
     public event Action OnCloseUIRequested;
 
@@ -98,10 +98,10 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
         OnInventoryToggled?.Invoke(m_isOpen);
     }
 
-    public void SetCraftingTableOpen(bool open)
+    public void SetCraftingStationOpen(bool open)
     {
-        m_isCraftingTableOpen = open;
-        OnCraftingTableToggled?.Invoke(open);
+        m_isCraftingStationOpen = open;
+        OnCraftingStationToggled?.Invoke(open);
     }
 
     public void SetGlowCoreUIOpen(bool open)

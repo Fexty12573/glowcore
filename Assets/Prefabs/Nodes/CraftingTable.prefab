@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::CraftingBenchInteractable
   m_closeDistance: 3
+  m_craftingStation: {fileID: 11400000, guid: 670743cbc2ab6ea49bdf88ee674577fb, type: 2}
 --- !u!64 &483272993112059279
 MeshCollider:
   m_ObjectHideFlags: 0
