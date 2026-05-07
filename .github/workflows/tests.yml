@@ -16,51 +16,59 @@ permissions:
   checks: write
   pull-requests: write
 
+env:
+  UNITY_EDITOR_PATH: /home/yoris/Unity/Hub/Editor/6000.3.9f1/Editor/Unity
+
 jobs:
   test:
     name: Run Tests
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64]
 
     steps:
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-          dotnet: false
-
       - name: Checkout Repository
         uses: actions/checkout@v6
 
-      - name: Cache Unity Library
-        uses: actions/cache@v5
+      - name: Activate Unity License
+        uses: buildalon/activate-unity-license@v2
         with:
-          path: Library
-          key: ${{ runner.os }}-unity-library-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/packages-lock.json', 'Packages/manifest.json') }}
-          restore-keys: |
-            ${{ runner.os }}-unity-library-
-      
-      - name: Run Tests
-        id: run-tests
-        uses: game-ci/unity-test-runner@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: .
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
-      
+          license: 'Personal'
+          username: ${{ secrets.UNITY_EMAIL }}
+          password: ${{ secrets.UNITY_PASSWORD }}
+
+      - name: Run EditMode Tests
+        run: |
+          "${{ env.UNITY_EDITOR_PATH }}" -batchmode -nographics \
+            -runTests -testPlatform EditMode \
+            -projectPath "${{ github.workspace }}" \
+            -testResults "${{ github.workspace }}/test-results/editmode-results.xml" \
+            -enableCodeCoverage \
+            -coverageResultsPath "${{ github.workspace }}/CodeCoverage" \
+            -coverageOptions "generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;useProjectSettings" \
+            -logFile -
+          EXIT=$?; [ $EXIT -eq 0 ] || [ $EXIT -eq 2 ] || exit $EXIT
+
+      - name: Run PlayMode Tests
+        run: |
+          "${{ env.UNITY_EDITOR_PATH }}" -batchmode -nographics \
+            -runTests -testPlatform PlayMode \
+            -projectPath "${{ github.workspace }}" \
+            -testResults "${{ github.workspace }}/test-results/playmode-results.xml" \
+            -enableCodeCoverage \
+            -coverageResultsPath "${{ github.workspace }}/CodeCoverage" \
+            -coverageOptions "generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;useProjectSettings" \
+            -logFile -
+          EXIT=$?; [ $EXIT -eq 0 ] || [ $EXIT -eq 2 ] || exit $EXIT
+
       - name: Upload Test Results
         uses: actions/upload-artifact@v7
         if: always()
         with:
           name: Test-Results
-          path: ${{ steps.run-tests.outputs.artifactsPath }}
-      
+          path: ${{ github.workspace }}/test-results/
+
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v7
         if: always()
         with:
           name: Coverage-Report
-          path: ${{ steps.run-tests.outputs.coveragePath }}
+          path: ${{ github.workspace }}/CodeCoverage/
