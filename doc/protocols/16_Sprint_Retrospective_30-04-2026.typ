@@ -29,7 +29,5 @@
 - Random features in one PR that were not planned
 - BIG PRs
 
-==== Todos
-#todo_table(())
 
 #pagebreak()
