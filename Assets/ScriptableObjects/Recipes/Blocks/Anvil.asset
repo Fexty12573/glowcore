@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
-  m_Name: Glass
+  m_Name: Anvil
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Glass
+  Name: Anvil
   Ingredients:
-  - Item: {fileID: 11400000, guid: 949a068454758cf43af1a75618e33896, type: 2}
-    Amount: 3
-  ResultItem: {fileID: 11400000, guid: 4bad5259d43b0df419702c5f2184c80b, type: 2}
+  - Item: {fileID: 11400000, guid: 79401a3b7caaf6344aa8b8bdc364355f, type: 2}
+    Amount: 10
+  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
+    Amount: 5
+  ResultItem: {fileID: 11400000, guid: e6e017e5378c46c4cbffaff4838aed3c, type: 2}
   ResultAmount: 1
   m_craftableInInventory: 0

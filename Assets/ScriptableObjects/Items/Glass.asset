@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
   m_Name: Glass
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: 
+  Name: Glass
   Description: 
   Prefab: {fileID: 0}
   Icon: {fileID: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
-  m_idBytes: 00000000000000000000000000000000
+  m_idBytes: 436969d21e5f6a48b7fb9468182f4066

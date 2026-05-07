@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
   m_Name: SandItem
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: 
+  Name: Sand Item
   Description: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 901924262741006269, guid: 8aaa0a0b2cad90f41b6b13b4999326e5, type: 3}
   Icon: {fileID: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
-  m_idBytes: 00000000000000000000000000000000
+  m_idBytes: 7d94f10ee8a88e45899e177cc8cd0bcc

@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
-  m_Name: SandNode
+  m_Name: AnvilNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
-  InteractionRange: 3
-  ItemDrops: []
+  InteractionRange: 0
+  ItemDrops:
+  - Item: {fileID: 11400000, guid: e6e017e5378c46c4cbffaff4838aed3c, type: 2}
+    Min: 1
+    Max: 1
   BaseBreakTime: 0
   IsIndestructible: 0
   UsableTools: []
