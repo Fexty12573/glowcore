@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GlowCore.UI.Menus;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -65,6 +66,8 @@ namespace GlowCore.World
         private readonly List<Node> m_pendingNodes = new();
         private HashSet<Vector2Int> m_snapshotPositions;
         private ISaveService m_saveService;
+        private IGameLaunchContext m_launchContext;
+        private string m_currentPlayerName = "Player";
 
         // Properties
         public static WorldGrid Instance => s_instance;
@@ -213,6 +216,8 @@ namespace GlowCore.World
 
         public void SetSaveService(ISaveService saveService) => m_saveService = saveService;
 
+        public void SetLaunchContext(IGameLaunchContext launchContext) => m_launchContext = launchContext;
+
         public void Expand(int amount, bool isLevelUp = false)
         {
             var newSize = m_gridSize + amount * 2;
@@ -291,7 +296,21 @@ namespace GlowCore.World
         private void Start()
         {
             m_saveService ??= new SaveService();
-            m_saveService.Load();
+            m_launchContext ??= GameLaunchContext.Instance;
+
+            if (m_launchContext != null && m_launchContext.Mode == GameLaunchMode.NewGame)
+            {
+                // New-game flow: NewGameService already deleted the save before this scene loaded.
+                // Seed the world name into the next save and switch the context back to Continue
+                // so reloads behave normally.
+                m_currentPlayerName = m_launchContext.WorldName;
+                m_launchContext.SetContinue();
+            }
+            else
+            {
+                m_saveService.Load();
+            }
+
             SetupAutosave();
         }
 
@@ -308,6 +327,7 @@ namespace GlowCore.World
                 return;
 
             var saveData = SaveData.Load();
+            m_currentPlayerName = saveData.Player.Name;
             var glowCore = FindFirstObjectByType<GlowCoreObject>();
 
             // Advance GlowCore to the saved level
@@ -414,6 +434,7 @@ namespace GlowCore.World
         private SaveData BuildSaveData()
         {
             var saveData = SaveData.Default();
+            saveData.Player.Name = m_currentPlayerName;
             var glowCore = FindFirstObjectByType<GlowCoreObject>();
             var playerInventory = FindFirstObjectByType<PlayerInventory>();
 
