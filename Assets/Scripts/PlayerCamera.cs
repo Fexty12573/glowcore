@@ -21,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private Transform m_cameraAnchor;
     [SerializeField] private float m_horizontalCameraSpeed = 50;
     [SerializeField] private float m_verticalCameraSpeed = 40;
-    [SerializeField] private float m_minPitch = 7f; // Pitch is the angle when looking up and down
+    [SerializeField] private float m_minPitch = 10f; // Pitch is the angle when looking up and down
     [SerializeField] private float m_maxPitch = 89f;
 
     private Vector2 m_lookInput;

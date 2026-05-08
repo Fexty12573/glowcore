@@ -502,9 +502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
   m_cameraAnchor: {fileID: 6192860682458780908}
-  m_horizontalCameraSpeed: 50
-  m_verticalCameraSpeed: 40
-  m_minPitch: 7
+  m_horizontalCameraSpeed: 60
+  m_verticalCameraSpeed: 60
+  m_minPitch: 10
   m_maxPitch: 89
 --- !u!114 &320889612761066827
 MonoBehaviour:
