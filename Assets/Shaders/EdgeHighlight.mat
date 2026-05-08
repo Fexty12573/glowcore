@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - g_blendStrength: 110
+    - g_blendStrength: 0.6
     - g_depthStrength: 100
     - g_depthThreshold: 0.0001
     - g_normalStrength: 0

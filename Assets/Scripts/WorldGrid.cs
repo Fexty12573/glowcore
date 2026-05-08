@@ -42,6 +42,10 @@ namespace GlowCore.World
         [SerializeField] private Transform m_borderSouth;
         [SerializeField] private Transform m_borderEast;
         [SerializeField] private Transform m_borderWest;
+        [SerializeField] private Transform m_visualBorderNorth;
+        [SerializeField] private Transform m_visualBorderSouth;
+        [SerializeField] private Transform m_visualBorderEast;
+        [SerializeField] private Transform m_visualBorderWest;
 
         [Header("Nodes")]
         [SerializeField] private SpawnableNode[] m_spawnableNodes;
@@ -243,21 +247,6 @@ namespace GlowCore.World
                 SpawnNodesOnNewRing(oldSize, count);
             }
         }
-
-
-        // public void ClearAllTrees()
-        // {
-        //     ClearTreesInGrid();
-        //
-        //     // Also destroy any TreeNode children of the nodes parent that slipped through
-        //     // (e.g. pending nodes outside the grid bounds, or designer-placed trees)
-        //     Transform root = m_nodesParent != null ? m_nodesParent : transform;
-        //     foreach (TreeNode tree in root.GetComponentsInChildren<TreeNode>())
-        //         Destroy(tree.gameObject);
-        //
-        //     // Remove destroyed entries from the pending list
-        //     m_pendingNodes.RemoveAll(n => n == null || n.TryGetComponent(out TreeNode _));
-        // }
 
         // Private Methods
         private void Awake()
@@ -475,6 +464,7 @@ namespace GlowCore.World
         private void UpdateBorders()
         {
             var halfSize = m_gridSize / 2f;
+            Debug.Log("GridSize: " + m_gridSize);
             var center = halfSize + kBorderFogDepth / 2f;
             var fullWidth = 55f;
 
@@ -495,6 +485,16 @@ namespace GlowCore.World
             m_borderWest.position = new Vector3(-center, kBorderHeight / 2f, 0f);
             m_borderWest.localScale = borderScaleEW;
 
+            // Update visual Border
+            m_visualBorderNorth.localScale = new Vector3(m_gridSize, m_visualBorderNorth.localScale.y, m_visualBorderNorth.localScale.z);
+            m_visualBorderSouth.localScale = new Vector3(m_gridSize, m_visualBorderSouth.localScale.y, m_visualBorderSouth.localScale.z);
+            m_visualBorderEast.localScale = new Vector3(m_gridSize, m_visualBorderEast.localScale.y, m_visualBorderEast.localScale.z);
+            m_visualBorderWest.localScale = new Vector3(m_gridSize, m_visualBorderWest.localScale.y, m_visualBorderWest.localScale.z);
+
+            m_visualBorderNorth.position = new Vector3(0, m_visualBorderNorth.position.y, halfSize);
+            m_visualBorderSouth.position = new Vector3(0, m_visualBorderSouth.position.y, -halfSize);
+            m_visualBorderEast.position = new Vector3(halfSize, m_visualBorderSouth.position.y, 0);
+            m_visualBorderWest.position = new Vector3(-halfSize, m_visualBorderSouth.position.y, 0);
         }
 
         private void LogGrid()
