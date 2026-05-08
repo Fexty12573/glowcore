@@ -115,7 +115,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CloseUI",
+                    "name": "PauseEscape",
                     "type": "Button",
                     "id": "a1b2c3d4-0003-4000-8000-000000000003",
                     "expectedControlType": "Button",
@@ -612,6 +612,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crafting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1b2c3d4-0003-4000-8000-000000000003",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PauseEscape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

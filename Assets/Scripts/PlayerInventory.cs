@@ -186,8 +186,6 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
             OnCraftingToggled?.Invoke();
     }
 
-    private void OnCloseUI(InputValue value) => RequestCloseUI();
-
     private void OnHotbarSlot1(InputValue value) => SelectHotbarSlot(0);
     private void OnHotbarSlot2(InputValue value) => SelectHotbarSlot(1);
     private void OnHotbarSlot3(InputValue value) => SelectHotbarSlot(2);

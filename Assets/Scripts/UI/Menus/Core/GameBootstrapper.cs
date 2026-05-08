@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GlowCore.World;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GlowCore.UI.Menus
 {
@@ -26,6 +27,10 @@ namespace GlowCore.UI.Menus
         [SerializeField] private WorldGrid m_worldGrid;
         [SerializeField] private PlayerCamera m_playerCamera;
         [SerializeField] private PlayerInventory m_playerInventory;
+
+        [Header("Input")]
+        [SerializeField] private InputActionAsset m_inputActions;
+        [SerializeField] private string m_pauseActionName = "PauseEscape";
 
         private MenuManager m_menuManager;
         private GameStateController m_gameState;
@@ -86,8 +91,12 @@ namespace GlowCore.UI.Menus
                 router.Register(new InventoryEscapeConsumer(inventory));
             router.Register(new PauseEscapeConsumer(m_menuManager, m_gameState));
 
+            InputAction pauseAction = m_inputActions != null ? m_inputActions.FindAction(m_pauseActionName) : null;
+            if (pauseAction == null)
+                Debug.LogWarning($"[GameBootstrapper] InputAction '{m_pauseActionName}' not found on the configured InputActionAsset; Esc will not trigger pause.");
+
             m_inputHandler = gameObject.AddComponent<PauseInputHandler>();
-            m_inputHandler.Initialize(router);
+            m_inputHandler.Initialize(router, pauseAction);
 
             m_worldGrid?.SetLaunchContext(launchContext);
             m_playerCamera?.Initialize(displayService);
