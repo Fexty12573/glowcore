@@ -13,45 +13,77 @@ The menu system has three layers, mirroring the inventory architecture: a **serv
 MonoBehaviours), and a **persistence layer** (PlayerPrefs, SaveData, AudioMixer, UnityEngine.Screen).
 Presentation depends only on interfaces — concrete services are wired by per-scene bootstrappers.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│   PRESENTATION LAYER (MonoBehaviours, GlowCore.UI.Menus)    │
-│                                                             │
-│   TitleScreen / NewGameScreen / ConfirmDialogScreen         │
-│   PauseScreen / PauseButton / PauseInputHandler             │
-│   SettingsScreen + ISettingControl impls                    │
-│   SceneTransitionOverlay (DontDestroyOnLoad)                │
-└──────────────┬──────────────────────────────────────────────┘
-               │ IMenuManager · IMenuScreen ·
-               │ ISceneTransition · IGameStateController ·
-               │ INewGameService · IGameLaunchContext ·
-               │ ISettingsRepository · IAudioBridge ·
-               │ IDisplayService · ISettingsCategory ·
-               │ ISettingControl · IEscapeConsumer
-┌──────────────▼──────────────────────────────────────────────┐
-│   SERVICE LAYER (plain C# unless engine API needed)         │
-│                                                             │
-│   MenuManager + MenuScreenLocator                           │
-│   SceneTransitionService · GameStateController              │
-│   NewGameService · GameLaunchContext (DontDestroyOnLoad MB) │
-│   PlayerPrefsSettingsRepository (over IPlayerPrefsBackend)  │
-│   AudioBridge · AudioMixerVolumeApplier (MB)                │
-│   DisplayService · SettingsRowFactory                       │
-│   AudioSettingsCategory · DisplaySettingsCategory           │
-│   EscapeRouter + InventoryEscapeConsumer +                  │
-│   PauseEscapeConsumer                                       │
-│   SaveDataGateway (wraps static SaveData calls)             │
-└──────────────┬──────────────────────────────────────────────┘
-               │
-┌──────────────▼──────────────────────────────────────────────┐
-│   PERSISTENCE / ENGINE                                      │
-│   PlayerPrefs · SaveData · UnityEngine.Screen · AudioMixer  │
-└─────────────────────────────────────────────────────────────┘
-```
+[![Layered overview](diagrams/01_overview.png)](diagrams/01_overview.png)
+
+> Click the image to open at full resolution.
+> Source: [`diagrams/01_overview.svg`](diagrams/01_overview.svg) — editable in draw.io
+> (File → Open) or any SVG editor.
+> [`diagrams/01_overview.png`](diagrams/01_overview.png) is a 1500-px raster export for any
+> markdown viewer that doesn't render SVG inline.
 
 The bootstrappers (`MenuBootstrapper` on `TitleScene`, `GameBootstrapper` on `MainWorldScene`)
-compose the service graph in `Awake()` and inject services into screens via `Initialize(...)`.
-This mirrors the existing `AutosaveService.Initialize(...)` pattern.
+compose the service graph in `Awake()` and inject services into screens via `Initialize(...)`,
+mirroring the existing `AutosaveService.Initialize(...)` pattern. **No screen ever resolves a
+service itself** — every dependency is passed in by the bootstrapper, so the dependency graph is
+defined exactly twice (one per scene) and nowhere else.
+
+### Per-class dependency one-liners
+
+| Class | Depends on | Why |
+|---|---|---|
+| `TitleScreen` | `IMenuManager`, `INewGameService`, `IGameLaunchContext`, `ISceneTransition` | NEW GAME → manager.Open(NewGame). CONTINUE → context.SetContinue + sceneTransition.LoadMainWorldScene. EXIT → sceneTransition.QuitApplication. |
+| `NewGameScreen` | `IMenuManager`, `INewGameService` | START → service.SaveExists check + service.StartNewGame. BACK → manager.Back. |
+| `ConfirmDialogScreen` | `IMenuManager` | OnConfirm runs the args-supplied callback, then manager.Back. CANCEL → manager.Back. |
+| `PauseScreen` | `IMenuManager`, `IGameStateController` | RESUME → state.Resume + manager.CloseAll. SAVE → state.SaveNow + label flash. SETTINGS → manager.Open. MAIN MENU → confirm dialog → state.ReturnToMainMenu. |
+| `PauseButton` | `IMenuManager`, `IGameStateController` | Click triggers the same Pause path as the Esc input. |
+| `PauseInputHandler` | `EscapeRouter`, `InputAction` | Single subscriber to `PauseEscape.performed`. Calls `router.Dispatch()`. No `Update` loop. |
+| `SettingsScreen` | `IMenuManager`, `ISettingsRepository`, `SettingsRowFactory`, `IReadOnlyList<ISettingsCategory>` | Iterates categories the bootstrapper provides; for each descriptor, asks the factory to instantiate a control prefab. BACK reverts via snapshot, SAVE commits. |
+| `SettingsRowFactory` | `Func<Transform, ISettingControl>` per `SettingControlKind` | Bootstrapper registers builders. Adding a new control kind = one register call, no factory edit. |
+| `MenuManager` | `IMenuScreenLocator` | Looks up screens by id; manages history stack; raises `OnScreenChanged`. |
+| `SceneTransitionService` | `SceneTransitionOverlay` (singleton) | Routes `LoadTitleScene` / `LoadMainWorldScene` through the overlay. Quits the app in builds, stops play in editor. |
+| `GameStateController` | `ISaveService`, `ISceneTransition` | Pause/Resume flip `Time.timeScale`. SaveNow → save service. ReturnToMainMenu → save + load title scene. |
+| `NewGameService` | `ISaveDataGateway`, `IGameLaunchContext`, `ISceneTransition` | StartNewGame deletes save → seeds context with world name → loads main world. |
+| `GameLaunchContext` | (none — singleton MB) | Carries world name + mode across the scene change. WorldGrid reads it on Start. |
+| `SaveDataGateway` | `SaveData` (existing static) | Thin `Exists()` / `Delete()` wrapper so `NewGameService` is testable with a fake. |
+| `PlayerPrefsSettingsRepository` | `IPlayerPrefsBackend` | All `PlayerPrefs` calls go through the backend interface so tests use a `Dictionary` fake. |
+| `AudioBridge` | (none — pure events) | `Raise*` fans out to subscribers. `AudioMixerVolumeApplier` is the production listener; tests subscribe directly. |
+| `AudioMixerVolumeApplier` | `IAudioBridge`, `AudioMixer` | Subscribes to bridge events, writes `LinearToDb(v)` into the mixer's exposed parameters. |
+| `DisplayService` | `UnityEngine.Screen` | Owns deduped resolution list, fullscreen, and mouse-sensitivity (slider 0..1 → multiplier 0.1..3.0). Raises `OnMouseSensitivityChanged`. |
+| `AudioSettingsCategory` | `ISettingsRepository`, `IAudioBridge` | Builds three slider descriptors (master/music/sfx). `Write` closure does `repo.SetFloat` + `bridge.Raise`. |
+| `DisplaySettingsCategory` | `ISettingsRepository`, `IDisplayService` | Builds toggle (fullscreen) + dropdown (resolution) + slider (mouse sens) descriptors. |
+| `EscapeRouter` | `IEscapeConsumer[]` (priority-sorted) | Dispatches Esc to consumers in priority order; stops on the first that returns `true`. |
+| `InventoryEscapeConsumer` | `IInventoryService` | Priority 100. Calls `RequestCloseUI()` if anything is open. |
+| `PauseEscapeConsumer` | `IMenuManager`, `IGameStateController` | Priority 0. Toggles pause / runs `Back()` / swallows on ConfirmDialog. |
+| `SceneTransitionOverlay` | `SceneManager` (Unity) | DontDestroyOnLoad. Async load + ≥1 s minimum hold + fade in/out + pulsing wordmark. |
+| `MenuBootstrapper` | All of the above | Composes the title-scene graph and opens `Title` in `Start()`. |
+| `GameBootstrapper` | All of the above + `WorldGrid`, `PlayerCamera`, `PlayerInventory`, `InputActionAsset` | Same as MenuBootstrapper plus `worldGrid.SetLaunchContext` + `playerCamera.Initialize(displayService)` + resolves `PauseEscape` action and hands it to `PauseInputHandler`. |
+
+---
+
+## Flow diagrams
+
+### New game
+
+How the world name + save deletion travels from a title-screen click to the loaded game world.
+
+[![New game flow](diagrams/02_new_game_flow.png)](diagrams/02_new_game_flow.png)
+
+### Escape router (OCP pipeline)
+
+`PauseInputHandler` is the *only* listener for the `PauseEscape` `InputAction`. It hands the event
+to the router, which dispatches consumers in priority order until one returns `true`. New screens
+that should swallow Esc just implement `IEscapeConsumer` and register on the router — no edits to
+`PauseInputHandler` or existing consumers.
+
+[![Escape router pipeline](diagrams/03_escape_router.png)](diagrams/03_escape_router.png)
+
+### Settings descriptor data flow
+
+A single descriptor's `Read` / `Write` closures are the only thing that knows about specific
+keys, repositories, or side effects. `SettingsScreen` iterates whatever descriptors a category
+hands it.
+
+[![Settings descriptor data flow](diagrams/04_settings_descriptor.png)](diagrams/04_settings_descriptor.png)
 
 ---
 

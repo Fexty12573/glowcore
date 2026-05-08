@@ -1,0 +1,16 @@
+flowchart LR
+    U((User)) -->|click NEW GAME| TS[TitleScreen]
+    TS -->|Open NewGame| MM[MenuManager]
+    MM --> NGS[NewGameScreen]
+    U -->|fill name + START| NGS
+    NGS --> NGSv[NewGameService.StartNewGame]
+    NGSv -->|SaveExists?| Branch{Existing<br/>save?}
+    Branch -->|yes| Confirm["MenuManager.OpenWithArgs<br/>ConfirmDialog"]
+    Confirm -->|user confirms| Run
+    Branch -->|no| Run
+    Run["1. SaveDataGateway.Delete<br/>2. GameLaunchContext.SetNewGame name<br/>3. SceneTransitionService.LoadMainWorldScene"]
+    Run --> STO[SceneTransitionOverlay]
+    STO -->|fade in + LoadSceneAsync| SM[(SceneManager)]
+    SM --> WG["WorldGrid.Start<br/>(MainWorldScene)"]
+    WG -->|reads| GLC[GameLaunchContext]
+    WG -->|seeds Player.Name<br/>resets context to Continue| Done[Next save uses world name]

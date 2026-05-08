@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1100" font-family="Inter, system-ui, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth"
+            markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="arrowDashed" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth"
+            markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="750" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#222">
+    GlowCore Menu System &#8212; Architecture overview
+  </text>
+  <text x="750" y="66" text-anchor="middle" font-size="13" fill="#666">
+    GC-76. Five layers, top-down dependencies. Per-class one-liners are in the table below.
+  </text>
+
+  <!-- EXISTING -->
+  <rect x="280" y="100" width="940" height="78" rx="10" ry="10"
+        fill="#F0F0F0" stroke="#888" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="750" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#333">
+    EXISTING GAMEPLAY (additive touches only)
+  </text>
+  <text x="750" y="156" text-anchor="middle" font-size="13" fill="#444">
+    PlayerInventory  &#183;  WorldGrid  &#183;  PlayerCamera  &#183;  NodeActionSystem  &#183;  SaveData (added Delete)
+  </text>
+
+  <line x1="750" y1="178" x2="750" y2="218" stroke="#888" stroke-width="2"
+        stroke-dasharray="5 4" marker-end="url(#arrowDashed)"/>
+  <text x="760" y="202" font-size="12" fill="#666" font-style="italic">subscribes / reads</text>
+
+  <!-- PRESENTATION -->
+  <rect x="280" y="220" width="940" height="180" rx="10" ry="10"
+        fill="#E2EBFF" stroke="#3771C8" stroke-width="2"/>
+  <text x="750" y="246" text-anchor="middle" font-size="15" font-weight="700" fill="#1a3a73">
+    PRESENTATION  (MonoBehaviours &#183; GlowCore.UI.Menus)
+  </text>
+
+  <rect x="300" y="262" width="290" height="120" rx="6" ry="6" fill="#FFFFFF" stroke="#3771C8" stroke-width="1.5"/>
+  <text x="445" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#1a3a73">TitleScene UI</text>
+  <text x="445" y="307" text-anchor="middle" font-size="12" fill="#222">TitleScreen</text>
+  <text x="445" y="324" text-anchor="middle" font-size="12" fill="#222">NewGameScreen</text>
+  <text x="445" y="341" text-anchor="middle" font-size="12" fill="#222">ConfirmDialogScreen</text>
+  <text x="445" y="358" text-anchor="middle" font-size="12" fill="#222">SettingsScreen</text>
+
+  <rect x="610" y="262" width="290" height="120" rx="6" ry="6" fill="#FFFFFF" stroke="#3771C8" stroke-width="1.5"/>
+  <text x="755" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#1a3a73">MainWorldScene UI</text>
+  <text x="755" y="307" text-anchor="middle" font-size="12" fill="#222">PauseScreen &#183; PauseButton</text>
+  <text x="755" y="324" text-anchor="middle" font-size="12" fill="#222">PauseInputHandler</text>
+  <text x="755" y="341" text-anchor="middle" font-size="12" fill="#222">SettingsScreen</text>
+  <text x="755" y="358" text-anchor="middle" font-size="12" fill="#222">ConfirmDialogScreen</text>
+
+  <rect x="920" y="262" width="280" height="120" rx="6" ry="6" fill="#FFFFFF" stroke="#3771C8" stroke-width="1.5"/>
+  <text x="1060" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#1a3a73">SceneTransitionOverlay</text>
+  <text x="1060" y="307" text-anchor="middle" font-size="12" fill="#222">(DontDestroyOnLoad)</text>
+  <text x="1060" y="335" text-anchor="middle" font-size="11" fill="#555">Fade &#183; pulsing GLOWCORE</text>
+  <text x="1060" y="352" text-anchor="middle" font-size="11" fill="#555">+ ember dots &#183; ~1s</text>
+
+  <line x1="750" y1="400" x2="750" y2="440" stroke="#444" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="760" y="424" font-size="12" fill="#444" font-style="italic">depends on interfaces</text>
+
+  <!-- BOOTSTRAPPERS -->
+  <rect x="40" y="220" width="220" height="490" rx="10" ry="10"
+        fill="#FFE8C2" stroke="#C0792F" stroke-width="2"/>
+  <text x="150" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#5a3a0a">
+    BOOTSTRAPPERS
+  </text>
+  <text x="150" y="266" text-anchor="middle" font-size="11" fill="#5a3a0a">
+    (composition roots)
+  </text>
+  <text x="150" y="298" text-anchor="middle" font-size="12" fill="#222" font-weight="600">MenuBootstrapper</text>
+  <text x="150" y="316" text-anchor="middle" font-size="11" fill="#555">on TitleScene</text>
+  <text x="150" y="350" text-anchor="middle" font-size="12" fill="#222" font-weight="600">GameBootstrapper</text>
+  <text x="150" y="368" text-anchor="middle" font-size="11" fill="#555">on MainWorldScene</text>
+
+  <line x1="60" y1="400" x2="240" y2="400" stroke="#C0792F" stroke-width="1"/>
+
+  <text x="150" y="428" text-anchor="middle" font-size="11" fill="#5a3a0a" font-weight="600">Awake() does:</text>
+  <text x="150" y="450" text-anchor="middle" font-size="11" fill="#222">1. compose services</text>
+  <text x="150" y="468" text-anchor="middle" font-size="11" fill="#222">2. inject into screens</text>
+  <text x="150" y="486" text-anchor="middle" font-size="11" fill="#222">via Initialize(...)</text>
+  <text x="150" y="510" text-anchor="middle" font-size="11" fill="#555">(mirrors AutosaveService.</text>
+  <text x="150" y="526" text-anchor="middle" font-size="11" fill="#555">Initialize pattern)</text>
+
+  <line x1="60" y1="552" x2="240" y2="552" stroke="#C0792F" stroke-width="1"/>
+
+  <text x="150" y="582" text-anchor="middle" font-size="11" fill="#5a3a0a" font-weight="600">No new screen edits</text>
+  <text x="150" y="598" text-anchor="middle" font-size="11" fill="#5a3a0a" font-weight="600">existing files. Only</text>
+  <text x="150" y="614" text-anchor="middle" font-size="11" fill="#5a3a0a" font-weight="600">these two roots wire</text>
+  <text x="150" y="630" text-anchor="middle" font-size="11" fill="#5a3a0a" font-weight="600">the dependency graph.</text>
+
+  <text x="150" y="668" text-anchor="middle" font-size="11" fill="#555">Adding a new screen =</text>
+  <text x="150" y="684" text-anchor="middle" font-size="11" fill="#555">register here, no other</text>
+  <text x="150" y="700" text-anchor="middle" font-size="11" fill="#555">edits.</text>
+
+  <!-- Boot -> Presentation arrow -->
+  <path d="M 260 318 L 282 318" stroke="#C0792F" stroke-width="2"
+        stroke-dasharray="5 4" fill="none" marker-end="url(#arrowDashed)"/>
+  <text x="262" y="312" font-size="11" font-style="italic" fill="#5a3a0a">composes</text>
+
+  <!-- Boot -> Service arrow -->
+  <path d="M 260 540 L 282 540" stroke="#C0792F" stroke-width="2"
+        stroke-dasharray="5 4" fill="none" marker-end="url(#arrowDashed)"/>
+  <text x="262" y="534" font-size="11" font-style="italic" fill="#5a3a0a">composes</text>
+
+  <!-- SERVICE -->
+  <rect x="280" y="440" width="940" height="320" rx="10" ry="10"
+        fill="#DEF1E2" stroke="#5BA85B" stroke-width="2"/>
+  <text x="750" y="466" text-anchor="middle" font-size="15" font-weight="700" fill="#1F4D1F">
+    SERVICE LAYER  (plain C# unless engine API needed)
+  </text>
+
+  <rect x="300" y="482" width="220" height="80" rx="6" ry="6" fill="#FFFFFF" stroke="#5BA85B" stroke-width="1.5"/>
+  <text x="410" y="502" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4D1F">Menu navigation</text>
+  <text x="410" y="522" text-anchor="middle" font-size="11" fill="#222">MenuManager</text>
+  <text x="410" y="540" text-anchor="middle" font-size="11" fill="#222">MenuScreenLocator</text>
+  <text x="410" y="556" text-anchor="middle" font-size="11" fill="#555">IMenuArgsReceiver</text>
+
+  <rect x="540" y="482" width="220" height="120" rx="6" ry="6" fill="#FFFFFF" stroke="#5BA85B" stroke-width="1.5"/>
+  <text x="650" y="502" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4D1F">Scene &#183; game state &#183; save</text>
+  <text x="650" y="522" text-anchor="middle" font-size="11" fill="#222">SceneTransitionService</text>
+  <text x="650" y="540" text-anchor="middle" font-size="11" fill="#222">GameStateController</text>
+  <text x="650" y="558" text-anchor="middle" font-size="11" fill="#222">NewGameService</text>
+  <text x="650" y="576" text-anchor="middle" font-size="11" fill="#222">SaveDataGateway</text>
+  <text x="650" y="594" text-anchor="middle" font-size="11" fill="#222">GameLaunchContext</text>
+
+  <rect x="780" y="482" width="220" height="180" rx="6" ry="6" fill="#FFFFFF" stroke="#5BA85B" stroke-width="1.5"/>
+  <text x="890" y="502" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4D1F">Settings</text>
+  <text x="890" y="524" text-anchor="middle" font-size="11" fill="#222">PlayerPrefsSettingsRepository</text>
+  <text x="890" y="541" text-anchor="middle" font-size="11" fill="#222">+ IPlayerPrefsBackend</text>
+  <text x="890" y="563" text-anchor="middle" font-size="11" fill="#222">AudioSettingsCategory</text>
+  <text x="890" y="580" text-anchor="middle" font-size="11" fill="#222">DisplaySettingsCategory</text>
+  <text x="890" y="602" text-anchor="middle" font-size="11" fill="#222">SettingDescriptor</text>
+  <text x="890" y="619" text-anchor="middle" font-size="11" fill="#222">SettingsRowFactory</text>
+  <text x="890" y="636" text-anchor="middle" font-size="11" fill="#555">ISettingControl impls</text>
+  <text x="890" y="652" text-anchor="middle" font-size="10" fill="#555">(Slider / Toggle / Dropdown)</text>
+
+  <rect x="1020" y="482" width="180" height="120" rx="6" ry="6" fill="#FFFFFF" stroke="#5BA85B" stroke-width="1.5"/>
+  <text x="1110" y="502" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4D1F">Audio &#183; Display</text>
+  <text x="1110" y="524" text-anchor="middle" font-size="11" fill="#222">AudioBridge</text>
+  <text x="1110" y="541" text-anchor="middle" font-size="11" fill="#222">AudioMixerVolumeApplier</text>
+  <text x="1110" y="563" text-anchor="middle" font-size="11" fill="#222">DisplayService</text>
+  <text x="1110" y="580" text-anchor="middle" font-size="10" fill="#555">(mouse-sens. event,</text>
+  <text x="1110" y="594" text-anchor="middle" font-size="10" fill="#555">fullscreen, resolution)</text>
+
+  <rect x="540" y="620" width="220" height="100" rx="6" ry="6" fill="#FFFFFF" stroke="#5BA85B" stroke-width="1.5"/>
+  <text x="650" y="640" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4D1F">Escape pipeline (OCP)</text>
+  <text x="650" y="660" text-anchor="middle" font-size="11" fill="#222">EscapeRouter</text>
+  <text x="650" y="678" text-anchor="middle" font-size="11" fill="#222">InventoryEscapeConsumer</text>
+  <text x="650" y="696" text-anchor="middle" font-size="11" fill="#222">PauseEscapeConsumer</text>
+  <text x="650" y="712" text-anchor="middle" font-size="10" fill="#555">priority-ordered dispatch</text>
+
+  <line x1="1000" y1="540" x2="1020" y2="540" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="1010" y="535" font-size="9" fill="#444" font-style="italic" text-anchor="middle">side fx</text>
+
+  <line x1="410" y1="562" x2="410" y2="668" stroke="#444" stroke-width="1.5"/>
+  <line x1="410" y1="668" x2="538" y2="668" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="475" y="662" font-size="10" fill="#444" font-style="italic" text-anchor="middle">router opens / Back</text>
+
+  <line x1="750" y1="760" x2="750" y2="797" stroke="#444" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="760" y="780" font-size="12" fill="#444" font-style="italic">engine APIs</text>
+
+  <!-- ENGINE -->
+  <rect x="280" y="800" width="940" height="100" rx="10" ry="10"
+        fill="#F4F4D8" stroke="#A8A858" stroke-width="2"/>
+  <text x="750" y="826" text-anchor="middle" font-size="15" font-weight="700" fill="#404020">
+    ENGINE / PERSISTENCE
+  </text>
+  <text x="750" y="852" text-anchor="middle" font-size="13" fill="#222">
+    PlayerPrefs   &#183;   SaveData (.bin)   &#183;   AudioMixer
+  </text>
+  <text x="750" y="876" text-anchor="middle" font-size="13" fill="#222">
+    UnityEngine.Screen   &#183;   SceneManager   &#183;   InputAction
+  </text>
+
+  <!-- LEGEND -->
+  <text x="60" y="950" font-size="13" font-weight="700" fill="#222">Legend</text>
+  <rect x="60" y="965" width="20" height="14" fill="#F0F0F0" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="86" y="977" font-size="12" fill="#222">existing gameplay (touched, not owned)</text>
+
+  <rect x="320" y="965" width="20" height="14" fill="#E2EBFF" stroke="#3771C8" stroke-width="1.5"/>
+  <text x="346" y="977" font-size="12" fill="#222">presentation</text>
+
+  <rect x="450" y="965" width="20" height="14" fill="#FFE8C2" stroke="#C0792F" stroke-width="1.5"/>
+  <text x="476" y="977" font-size="12" fill="#222">composition root</text>
+
+  <rect x="610" y="965" width="20" height="14" fill="#DEF1E2" stroke="#5BA85B" stroke-width="1.5"/>
+  <text x="636" y="977" font-size="12" fill="#222">service</text>
+
+  <rect x="710" y="965" width="20" height="14" fill="#F4F4D8" stroke="#A8A858" stroke-width="1.5"/>
+  <text x="736" y="977" font-size="12" fill="#222">engine / persistence</text>
+
+  <line x1="870" y1="972" x2="900" y2="972" stroke="#444" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="906" y="977" font-size="12" fill="#222">depends on / calls</text>
+
+  <line x1="1080" y1="972" x2="1110" y2="972" stroke="#888" stroke-width="2"
+        stroke-dasharray="5 4" marker-end="url(#arrowDashed)"/>
+  <text x="1116" y="977" font-size="12" fill="#222">subscribes / event / cross-system</text>
+
+  <text x="60" y="1020" font-size="11" fill="#555" font-style="italic">
+    Source: Reference/diagrams/01_overview.svg &#8212; editable in draw.io (File &#8594; Open) or any SVG editor.
+  </text>
+  <text x="60" y="1038" font-size="11" fill="#555" font-style="italic">
+    Per-class dependency one-liners are in the table directly below this diagram in MENUS_ARCHITECTURE.md.
+  </text>
+</svg>
