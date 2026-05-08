@@ -1,26 +1,23 @@
 using GlowCore.UI.Menus;
 
-namespace Tests.Mocks.Menus
+public class FakeGameLaunchContext : IGameLaunchContext
 {
-    public class FakeGameLaunchContext : IGameLaunchContext
+    public GameLaunchMode Mode { get; private set; } = GameLaunchMode.Continue;
+    public string WorldName { get; private set; } = "Player";
+
+    public int SetNewGameCallCount { get; private set; }
+    public int SetContinueCallCount { get; private set; }
+
+    public void SetNewGame(string worldName)
     {
-        public GameLaunchMode Mode { get; private set; } = GameLaunchMode.Continue;
-        public string WorldName { get; private set; } = "Player";
+        SetNewGameCallCount++;
+        Mode = GameLaunchMode.NewGame;
+        WorldName = worldName;
+    }
 
-        public int SetNewGameCallCount { get; private set; }
-        public int SetContinueCallCount { get; private set; }
-
-        public void SetNewGame(string worldName)
-        {
-            SetNewGameCallCount++;
-            Mode = GameLaunchMode.NewGame;
-            WorldName = worldName;
-        }
-
-        public void SetContinue()
-        {
-            SetContinueCallCount++;
-            Mode = GameLaunchMode.Continue;
-        }
+    public void SetContinue()
+    {
+        SetContinueCallCount++;
+        Mode = GameLaunchMode.Continue;
     }
 }
