@@ -27,6 +27,7 @@ public interface IInventoryService
     void SetCraftingStationOpen(bool open);
     void SetGlowCoreUIOpen(bool open);
     void SetChestOpen(bool open);
+    void RequestCloseUI();
     int RemoveItems(Item item, int amount);
     bool AddItem(Item item, int amount);
     bool AddItem(ItemStack stack);

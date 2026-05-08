@@ -617,17 +617,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b1b2c3d4-0003-4000-8000-000000000003",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "CloseUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b1b2c3d4-0011-4000-8000-000000000011",
                     "path": "<Keyboard>/1",
                     "interactions": "",

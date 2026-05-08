@@ -11,13 +11,13 @@ namespace GlowCore.UI.Menus
         public void LoadTitleScene()
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene(kTitleSceneName);
+            SceneTransitionOverlay.Instance.LoadScene(kTitleSceneName, "Returning home...");
         }
 
         public void LoadMainWorldScene()
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene(kMainWorldSceneName);
+            SceneTransitionOverlay.Instance.LoadScene(kMainWorldSceneName, "Awakening...");
         }
 
         public void QuitApplication()

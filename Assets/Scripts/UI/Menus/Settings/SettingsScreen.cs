@@ -80,7 +80,8 @@ namespace GlowCore.UI.Menus
             {
                 var index = i;
                 Button btn = Instantiate(m_tabButtonPrefab, m_tabButtonContainer);
-                var label = btn.GetComponentInChildren<TextMeshProUGUI>();
+                btn.gameObject.SetActive(true);
+                var label = btn.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
                 if (label != null)
                     label.text = m_categories[i].DisplayName;
                 btn.onClick.AddListener(() => ActivateCategory(index));
@@ -106,9 +107,20 @@ namespace GlowCore.UI.Menus
 
             for (var i = 0; i < m_tabButtons.Count; i++)
             {
-                var label = m_tabButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                var isActive = i == index;
+                Button tab = m_tabButtons[i];
+
+                var label = tab.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
                 if (label != null)
-                    label.color = (i == index) ? (Color)UIColors.Accent : (Color)UIColors.AccentDim;
+                    label.color = isActive ? (Color)UIColors.Accent : (Color)UIColors.WhiteDim;
+
+                Image img = tab.GetComponent<Image>();
+                if (img != null)
+                {
+                    Color c = img.color;
+                    c.a = isActive ? 1f : 0.35f;
+                    img.color = c;
+                }
             }
         }
 

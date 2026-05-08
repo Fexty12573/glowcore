@@ -1,3 +1,4 @@
+using GlowCore.UI.Menus;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,10 +26,38 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float m_maxPitch = 89f;
 
     private Vector2 m_lookInput;
+    private float m_sensitivityMultiplier = 1f;
+    private IDisplayService m_displayService;
+
+    public void Initialize(IDisplayService displayService)
+    {
+        UnsubscribeFrom(m_displayService);
+
+        m_displayService = displayService;
+
+        if (m_displayService != null)
+        {
+            m_displayService.OnMouseSensitivityChanged += OnMouseSensitivityChanged;
+            m_sensitivityMultiplier = DisplayService.SliderToMultiplier(m_displayService.MouseSensitivity);
+        }
+    }
 
     public void HandleLook(Vector2 lookInput)
     {
         m_lookInput = lookInput;
+    }
+
+    private void OnDestroy() => UnsubscribeFrom(m_displayService);
+
+    private void UnsubscribeFrom(IDisplayService service)
+    {
+        if (service != null)
+            service.OnMouseSensitivityChanged -= OnMouseSensitivityChanged;
+    }
+
+    private void OnMouseSensitivityChanged(float slider)
+    {
+        m_sensitivityMultiplier = DisplayService.SliderToMultiplier(slider);
     }
 
     private void OnLook(InputValue inputValue)
@@ -38,8 +67,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var yaw = m_lookInput.x * Time.fixedDeltaTime * m_horizontalCameraSpeed;
-        var pitch = -m_lookInput.y * Time.fixedDeltaTime * m_verticalCameraSpeed;
+        var yaw = m_lookInput.x * Time.fixedDeltaTime * m_horizontalCameraSpeed * m_sensitivityMultiplier;
+        var pitch = -m_lookInput.y * Time.fixedDeltaTime * m_verticalCameraSpeed * m_sensitivityMultiplier;
 
         var yawDegrees = yaw + m_cameraAnchor.localEulerAngles.y;
         var pitchDegrees = Mathf.Clamp(pitch + m_cameraAnchor.localEulerAngles.x, m_minPitch, m_maxPitch);
