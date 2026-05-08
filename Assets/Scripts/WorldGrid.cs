@@ -14,8 +14,8 @@ namespace GlowCore.World
     {
         // Constants
         private const int kInitialSize = 5;
-        private const float kBorderHeight = 100f;
-        private const float kBorderFogDepth = 100f;
+        private const float kBorderHeight = 1.75f;
+        private const float kBorderFogDepth = 22f;
 
 
         [System.Serializable]
@@ -476,7 +476,7 @@ namespace GlowCore.World
         {
             var halfSize = m_gridSize / 2f;
             var center = halfSize + kBorderFogDepth / 2f;
-            var fullWidth = m_gridSize + kBorderFogDepth * 2f;
+            var fullWidth = 55f;
 
             // North/South: inner face sits exactly at the grid edge, extends outward by kBorderFogDepth.
             // Width is padded by kBorderFogDepth on each side to cover the corners.
@@ -488,7 +488,7 @@ namespace GlowCore.World
             m_borderSouth.localScale = borderScaleNS;
 
             // East/West: same principle on the X axis.
-            Vector3 borderScaleEW = new(kBorderFogDepth, kBorderHeight, fullWidth);
+            Vector3 borderScaleEW = new(fullWidth, kBorderHeight, kBorderFogDepth);
             m_borderEast.position = new Vector3(center, kBorderHeight / 2f, 0f);
             m_borderEast.localScale = borderScaleEW;
 
