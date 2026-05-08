@@ -31,14 +31,14 @@ public class ChestInteractable : MonoBehaviour, IInteractable
         m_chestUI = FindFirstObjectByType<ChestUI>(FindObjectsInactive.Include);
         if (m_chestUI == null)
         {
-            Debug.LogError("ChestInteractable: Could not find ChestUI in scene.");
+            Debug.LogWarning("ChestInteractable: Could not find ChestUI in scene.");
             return;
         }
 
         m_playerInventory = FindFirstObjectByType<PlayerInventory>();
         if (m_playerInventory == null)
         {
-            Debug.LogError("ChestInteractable: Could not find PlayerInventory in scene.");
+            Debug.LogWarning("ChestInteractable: Could not find PlayerInventory in scene.");
             return;
         }
 
