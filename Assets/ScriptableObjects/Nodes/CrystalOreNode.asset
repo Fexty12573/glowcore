@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: CrystalOreNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
   InteractionRange: 3
-  ItemDrops: []
-  BaseBreakTime: 0
+  ItemDrops:
+  - Item: {fileID: 11400000, guid: e796d2dce7cb1004b833f5f5ef2c04f3, type: 2}
+    Min: 1
+    Max: 1
+  BaseBreakTime: 1
   IsIndestructible: 0
   UsableTools: []

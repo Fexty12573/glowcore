@@ -58,10 +58,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7198663000940523609}
+      addedObject: {fileID: 8663476463882978162}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8663476463882978162}
+      addedObject: {fileID: 7198663000940523609}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4316476973867050644}
@@ -74,6 +74,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c1e7f4bf1056abe488df17c8912d3479, type: 3}
   m_PrefabInstance: {fileID: 1577959704020285319}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8663476463882978162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812523118880574166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
+  m_nodeData: {fileID: 11400000, guid: 9da358ff6c593d748af9d3420f06ee3c, type: 2}
+  TilesUsed: []
+  Outline: {fileID: 7198663000940523609}
 --- !u!114 &7198663000940523609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,21 +107,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &8663476463882978162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812523118880574166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
-  m_nodeData: {fileID: 11400000, guid: 9da358ff6c593d748af9d3420f06ee3c, type: 2}
-  TilesUsed: []
-  Outline: {fileID: 7198663000940523609}
 --- !u!114 &-4316476973867050644
 MonoBehaviour:
   m_ObjectHideFlags: 0

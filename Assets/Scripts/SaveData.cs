@@ -194,7 +194,7 @@ public class SaveData
         {
             Debug.LogWarning($"Non-block item `{item.Name}` found as build delta, ignoring");
         }
-
+    
         return delta;
     }
 

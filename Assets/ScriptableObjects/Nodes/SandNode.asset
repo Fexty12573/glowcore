@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: SandNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
   InteractionRange: 3
-  ItemDrops: []
-  BaseBreakTime: 0
+  ItemDrops:
+  - Item: {fileID: 11400000, guid: 949a068454758cf43af1a75618e33896, type: 2}
+    Min: 1
+    Max: 1
+  BaseBreakTime: 1
   IsIndestructible: 0
   UsableTools: []

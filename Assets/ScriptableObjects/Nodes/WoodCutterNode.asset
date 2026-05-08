@@ -17,6 +17,6 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 2998b16eeeab71c4cb54d631a0a50dfb, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 0
+  BaseBreakTime: 1
   IsIndestructible: 0
   UsableTools: []

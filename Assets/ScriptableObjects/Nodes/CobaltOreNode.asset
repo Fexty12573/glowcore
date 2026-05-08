@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: CobaltOreNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
   InteractionRange: 3
-  ItemDrops: []
-  BaseBreakTime: 0
+  ItemDrops:
+  - Item: {fileID: 11400000, guid: e31fe2164262dee4ead6e0ae757c42fb, type: 2}
+    Min: 1
+    Max: 1
+  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
+    Min: 1
+    Max: 1
+  BaseBreakTime: 1
   IsIndestructible: 0
   UsableTools: []
