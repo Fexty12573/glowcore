@@ -143,6 +143,26 @@ public class Inventory
         OnSlotChanged?.Invoke(index);
     }
 
+    public void SetSlot(int index, Item item, int amount)
+    {
+        if (index < 0 || index >= m_items.Length)
+            return;
+
+        var clear = item == null || amount <= 0;
+        m_items[index].Set(clear ? null : item, clear ? 0 : amount);
+        OnSlotChanged?.Invoke(index);
+    }
+
+    public int AddStack(Item item, int amount, int emptySlotStart = 0)
+    {
+        if (item == null || amount <= 0)
+            return 0;
+
+        var stack = new ItemStack(item, amount);
+        AddItems(stack, emptySlotStart);
+        return amount - stack.Amount;
+    }
+
     public (ItemStack slot, int index) GetSlotWithItem(Item item)
     {
         for (var i = 0; i < m_items.Length; i++)

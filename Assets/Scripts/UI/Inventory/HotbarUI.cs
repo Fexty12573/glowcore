@@ -28,6 +28,7 @@ namespace GlowCore.UI.Inventory
             m_inventoryService.OnInventoryToggled += OnInventoryToggled;
             m_inventoryService.OnCraftingStationToggled += OnInventoryToggled;
             m_inventoryService.OnGlowCoreUIToggled += OnInventoryToggled;
+            m_inventoryService.OnChestToggled += OnInventoryToggled;
             UpdateSelection();
         }
 
@@ -40,6 +41,7 @@ namespace GlowCore.UI.Inventory
                 m_inventoryService.OnInventoryToggled -= OnInventoryToggled;
                 m_inventoryService.OnCraftingStationToggled -= OnInventoryToggled;
                 m_inventoryService.OnGlowCoreUIToggled -= OnInventoryToggled;
+                m_inventoryService.OnChestToggled -= OnInventoryToggled;
             }
         }
 

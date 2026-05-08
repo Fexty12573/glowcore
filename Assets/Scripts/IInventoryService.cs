@@ -10,6 +10,7 @@ public interface IInventoryService
     bool IsOpen { get; }
     bool IsCraftingStationOpen { get; }
     bool IsGlowCoreUIOpen { get; }
+    bool IsChestOpen { get; }
 
     SlotData GetSlotData(int flatIndex);
     int CountItem(Item item);
@@ -25,6 +26,7 @@ public interface IInventoryService
     void SetInventoryOpen(bool open);
     void SetCraftingStationOpen(bool open);
     void SetGlowCoreUIOpen(bool open);
+    void SetChestOpen(bool open);
     int RemoveItems(Item item, int amount);
     bool AddItem(Item item, int amount);
     bool AddItem(ItemStack stack);
@@ -36,5 +38,6 @@ public interface IInventoryService
     event Action OnCraftingToggled;
     event Action<bool> OnCraftingStationToggled;
     event Action<bool> OnGlowCoreUIToggled;
+    event Action<bool> OnChestToggled;
     event Action OnCloseUIRequested;
 }

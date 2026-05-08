@@ -3,7 +3,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInventory : MonoBehaviour, IInventoryService
+public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
 {
     [Serializable]
     private struct StartingItem
@@ -27,6 +27,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     private bool m_isOpen;
     private bool m_isCraftingStationOpen;
     private bool m_isGlowCoreUIOpen;
+    private bool m_isChestOpen;
 
     // IInventoryService — Properties
     public int SlotCount => m_inventory.Size;
@@ -35,6 +36,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     public bool IsOpen => m_isOpen;
     public bool IsCraftingStationOpen => m_isCraftingStationOpen;
     public bool IsGlowCoreUIOpen => m_isGlowCoreUIOpen;
+    public bool IsChestOpen => m_isChestOpen;
 
     // IInventoryService — Events
     public event Action<SlotChangedEvent> OnSlotChanged;
@@ -43,6 +45,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     public event Action OnCraftingToggled;
     public event Action<bool> OnCraftingStationToggled;
     public event Action<bool> OnGlowCoreUIToggled;
+    public event Action<bool> OnChestToggled;
     public event Action OnCloseUIRequested;
 
     // Public Methods — IInventoryService Queries
@@ -109,6 +112,17 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
         m_isGlowCoreUIOpen = open;
         OnGlowCoreUIToggled?.Invoke(open);
     }
+
+    public void SetChestOpen(bool open)
+    {
+        m_isChestOpen = open;
+        OnChestToggled?.Invoke(open);
+    }
+
+    // IItemContainer — Commands not already on IInventoryService
+    public void SetSlot(int flatIndex, Item item, int amount) => m_inventory.SetSlot(flatIndex, item, amount);
+
+    public int AddStack(Item item, int amount) => m_inventory.AddStack(item, amount, kHotbarStartIndex);
 
     // Public Methods — Game Logic
     public Inventory GetInventory() => m_inventory;

@@ -169,13 +169,14 @@ namespace GlowCore.UI.Inventory
         {
             var totalSlots = m_inventoryService.SlotCount;
             var hotbarSlots = m_inventoryService.HotbarSlotCount;
+            var container = (IItemContainer)m_inventoryService;
             m_inventorySlots = new ItemSlotUI[totalSlots];
 
             for (var i = 0; i < hotbarSlots; i++)
             {
                 var go = Instantiate(m_slotPrefab, m_inventoryHotbarRowParent);
                 var slot = go.GetComponent<ItemSlotUI>();
-                slot.Initialize(m_inventoryUI, i, m_inventoryService.GetSlotData(i));
+                slot.Initialize(m_inventoryUI, container, i, m_inventoryService.GetSlotData(i));
                 slot.SetHotbarStyle(i + 1);
                 m_inventorySlots[i] = slot;
             }
@@ -184,7 +185,7 @@ namespace GlowCore.UI.Inventory
             {
                 var go = Instantiate(m_slotPrefab, m_inventoryUpperGridParent);
                 var slot = go.GetComponent<ItemSlotUI>();
-                slot.Initialize(m_inventoryUI, i, m_inventoryService.GetSlotData(i));
+                slot.Initialize(m_inventoryUI, container, i, m_inventoryService.GetSlotData(i));
                 m_inventorySlots[i] = slot;
             }
         }
