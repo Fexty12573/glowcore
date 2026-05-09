@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 068f9d61f1e00134c85d129612bc69e6
+guid: 02e12571ceb9dfc44b9f9de1992942b4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cork
-    second: {fileID: 2100000, guid: 9246965d2f0f29f40b76c39c956c47a4, type: 2}
+      name: Leafs
+    second: {fileID: 2100000, guid: 0b74cc76d789d184bbc0837fffd0ac1e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: 2232c405d43779240add40a48d8679e6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Liquid
-    second: {fileID: 2100000, guid: ba28b819b4e34dc43be45fcefffa2298, type: 2}
+      name: Trunk
+    second: {fileID: 2100000, guid: b96edd2c02d995440989258f998755de, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,12 +40,12 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
