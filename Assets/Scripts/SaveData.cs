@@ -190,11 +190,15 @@ public class SaveData
             if (block.Name == "Chest")
                 delta.BuildData.Inventory = LoadInventory(reader);
         }
+        else if (item is null)
+        {
+            Debug.LogWarning($"Item with id `{id}` not found in ItemRegistry");
+        }
         else
         {
             Debug.LogWarning($"Non-block item `{item.Name}` found as build delta, ignoring");
         }
-    
+
         return delta;
     }
 

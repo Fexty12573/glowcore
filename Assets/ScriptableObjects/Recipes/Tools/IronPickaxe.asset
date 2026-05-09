@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
   m_Name: IronPickaxe
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Wood Pickaxe
+  Name: Iron Pickaxe
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Amount: 3
