@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4013504981557715932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910168189184654880, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823591359610114345, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158097078538321268, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_Intensity
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595463629356231892, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_Name
+      value: GlowCoreLevel9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6526366172803264085, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001380555420581902, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501187537338645737, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_fireScale
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501187537338645737, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_particleAmount
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913967161008306576, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938615382724759627, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_levelConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: fc9a9669baba5204cac2f490fd77b15c, type: 2}
+    - target: {fileID: 7938615382724759627, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}
+      propertyPath: m_nextLevelPrefab
+      value: 
+      objectReference: {fileID: 8797149663475486472, guid: ba7dfc6e0b2feaa4e9ce89e197af62c1, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4fe08da4304fa50499bf7b1a18ce4d51, type: 3}

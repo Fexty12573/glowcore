@@ -23,11 +23,7 @@ namespace ScriptableObjects
         [SerializeField] private Item m_expansionItem;
         [Tooltip("How many of the expansion item are needed to grow the map by one tile.")]
         [SerializeField][Min(1)] private int m_expansionCostPerTile = 5;
-
-        [Header("Level 1 Physics")]
-        [Tooltip("How many logs are active when the GlowCore first spawns (Level 1 only).")]
-        [SerializeField][Min(0)] private int m_initialActiveLogs = 3;
-
+        
         public string LevelName => m_levelName;
         public int Level => m_level;
         public Sprite LevelIcon => m_levelIcon;
@@ -36,7 +32,6 @@ namespace ScriptableObjects
         public int TileCount => m_size;
         public Item ExpansionItem => m_expansionItem;
         public int ExpansionCostPerTile => m_expansionCostPerTile;
-        public int InitialActiveLogs => m_initialActiveLogs;
 
         public string FormatPerk() =>
             m_nextLevelPerkTemplate.Replace("{tiles}", m_tilesOnLevelUp.ToString());
