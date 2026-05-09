@@ -18,20 +18,12 @@ namespace ScriptableObjects
         private string m_nextLevelPerkTemplate =
             "Next level expands the glow radius by +{tiles} tiles";
 
-        [Header("Map Expansion")]
-        [Tooltip("Which item triggers incremental map expansion when fed. Leave empty for no expansion on feed.")]
-        [SerializeField] private Item m_expansionItem;
-        [Tooltip("How many of the expansion item are needed to grow the map by one tile.")]
-        [SerializeField][Min(1)] private int m_expansionCostPerTile = 5;
-        
         public string LevelName => m_levelName;
         public int Level => m_level;
         public Sprite LevelIcon => m_levelIcon;
         public IReadOnlyList<Recipe.Ingredient> RequiredMaterials => m_requiredMaterials;
         public int TilesOnLevelUp => m_tilesOnLevelUp;
         public int TileCount => m_size;
-        public Item ExpansionItem => m_expansionItem;
-        public int ExpansionCostPerTile => m_expansionCostPerTile;
 
         public string FormatPerk() =>
             m_nextLevelPerkTemplate.Replace("{tiles}", m_tilesOnLevelUp.ToString());

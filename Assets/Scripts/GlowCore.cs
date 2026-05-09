@@ -124,7 +124,6 @@ namespace GlowCore.World
             m_playerInventory.RemoveItems(item, consume);
             m_accumulated[item] = accumulated + consume;
 
-            ExpandIfConfigured(item, consume);
             OnProgressChanged?.Invoke();
         }
 
@@ -174,23 +173,6 @@ namespace GlowCore.World
             if (WorldGrid.Instance != null && m_levelConfig != null)
                 WorldGrid.Instance.Expand(m_levelConfig.TilesOnLevelUp, isLevelUp: true);
         }
-
-        private void ExpandIfConfigured(Item item, int amount)
-        {
-            if (WorldGrid.Instance == null || m_levelConfig == null)
-                return;
-            if (m_levelConfig.ExpansionItem == null || m_levelConfig.ExpansionItem != item)
-                return;
-
-            m_bankedForExpansion += amount;
-            var cost = m_levelConfig.ExpansionCostPerTile;
-            while (m_bankedForExpansion >= cost)
-            {
-                m_bankedForExpansion -= cost;
-                WorldGrid.Instance.Expand(1);
-            }
-        }
-
 
         private bool AreAllMaterialsMet()
         {
