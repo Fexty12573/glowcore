@@ -1,7 +1,7 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-04-17 (IGlowCoreObject interface introduced; GlowCoreObject: dispatch-by-level, config-driven expansion via ExpandIfConfigured, Upgrade() separated from FeedMaterial, auto-close moved from UI to GlowCoreObject.Update(); Fire: VFX-only; GlowCoreLevelConfig: ExpansionItem/ExpansionCostPerTile/TileCount/InitialActiveLogs; GlowCoreUpgradeUI: targets IGlowCoreObject, upgrade button, inventory dragging enabled; FeedMaterialRowUI: IGlowCoreObject, Add All button, accumulated+pending/required label format; WorldGrid: multi-tile PlaceNodeAt overload)
+> Last updated: 2026-05-08 (GC-143: Chest UI added; new `IItemContainer` interface for any slot-based container; `ItemSlotUI` is now container-aware; `InventoryUI` handles cross-container drag/drop via `ContainerOps.MoveStack`; `PlayerInventory` implements `IItemContainer` in addition to `IInventoryService`; `Chest`/`ChestInteractable` mirror the CraftingStation split; `IInventoryService` gained `IsChestOpen`, `SetChestOpen`, `OnChestToggled`; `NodeActionSystem` and `HotbarUI` guard/dim on chest open. CraftingTable* references corrected to CraftingStation* throughout the doc. `Chest.m_slotCount` is a `[SerializeField, Min(1)]` field so each chest can declare its own size.)
 
 ---
 
@@ -9,8 +9,12 @@
 
 The inventory system has three layers: a **data layer** (pure C#, no UI), a **crafting layer**
 (pure C#, no UI), and a **UI layer** (uGUI). All layers are decoupled through interfaces
-(`IInventoryService`, `ICraftingService`, `IGlowCoreObject`) — UI logic depends only on
+(`IInventoryService`, `ICraftingService`, `IGlowCoreObject`, `IItemContainer`) — UI logic depends only on
 these interfaces, never on concrete MonoBehaviour types.
+
+`IItemContainer` is the **smallest** of the inventory contracts: any slot-based container
+(player inventory, chest, future barrel, etc.) implements it. The drag-and-drop UI is
+container-agnostic — it operates on `IItemContainer` and works seamlessly across panels.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -59,6 +63,24 @@ these interfaces, never on concrete MonoBehaviour types.
 
 ## Interfaces
 
+### `IItemContainer` — (`Assets/Scripts/IItemContainer.cs`)
+
+The minimal contract for any slot-based container. Implemented by `PlayerInventory` and
+`Chest`. Used by `ItemSlotUI`, `InventoryUI` (drag/drop), and `ContainerOps` (bulk moves).
+
+| Member | Kind | Purpose |
+|---|---|---|
+| `SlotCount` | Property | Total slots |
+| `GetSlotData(int)` | Query | `SlotData` snapshot for a flat index |
+| `CountItem(Item)` | Query | Total of an item across all slots |
+| `CanAcceptItem(Item, int)` | Query | Is there room? |
+| `Swap(int, int)` | Command | Swap two slots within this container |
+| `TryMerge(int, int)` | Command | Merge two slots if same item |
+| `SetSlot(int, Item, int)` | Command | Direct slot write (used for cross-container moves) |
+| `AddStack(Item, int)` | Command | Bulk-add; returns amount actually added |
+| `RemoveItems(Item, int)` | Command | Bulk-remove; returns amount actually removed |
+| `OnSlotChanged` | Event | `Action<SlotChangedEvent>` |
+
 ### `IInventoryService` — (`Assets/Scripts/IInventoryService.cs`)
 
 The single contract between the data layer and all consumers (UI, crafting, etc.).
@@ -69,8 +91,9 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `HotbarSlotCount` | Property | Hotbar size (8) |
 | `SelectedHotbarIndex` | Property | Currently selected hotbar slot |
 | `IsOpen` | Property | Whether inventory panel is open |
-| `IsCraftingTableOpen` | Property | Whether the crafting table panel is open |
+| `IsCraftingStationOpen` | Property | Whether the crafting table panel is open |
 | `IsGlowCoreUIOpen` | Property | Whether the GlowCore upgrade panel is open |
+| `IsChestOpen` | Property | Whether a chest panel is open |
 | `GetSlotData(int)` | Query | Returns `SlotData` snapshot for a flat index |
 | `CountItem(Item)` | Query | Total count of an item across all slots |
 | `CanAcceptItem(Item, int)` | Query | Can inventory hold this many of item? |
@@ -81,16 +104,18 @@ The single contract between the data layer and all consumers (UI, crafting, etc.
 | `SelectHotbarSlot(int)` | Command | Set active hotbar slot |
 | `ToggleInventory()` | Command | Toggle panel open/close |
 | `SetInventoryOpen(bool)` | Command | Set panel state explicitly |
-| `SetCraftingTableOpen(bool)` | Command | Set crafting table open state, fires `OnCraftingTableToggled` |
+| `SetCraftingStationOpen(bool)` | Command | Set crafting table open state, fires `OnCraftingStationToggled` |
 | `SetGlowCoreUIOpen(bool)` | Command | Set GlowCore UI open state, fires `OnGlowCoreUIToggled` |
+| `SetChestOpen(bool)` | Command | Set chest open state, fires `OnChestToggled` |
 | `RemoveItems(Item, int)` | Command | Remove items across slots, returns amount removed |
 | `AddItem(Item, int)` | Command | Add items to inventory |
 | `OnSlotChanged` | Event | `Action<SlotChangedEvent>` — fires with slot index + data snapshot |
 | `OnHotbarSelectionChanged` | Event | `Action<int>` — fires with new hotbar index |
 | `OnInventoryToggled` | Event | `Action<bool>` — fires with open state |
 | `OnCraftingToggled` | Event | `Action` — fires when C key pressed while inventory is open |
-| `OnCraftingTableToggled` | Event | `Action<bool>` — fires when crafting table is opened/closed |
+| `OnCraftingStationToggled` | Event | `Action<bool>` — fires when crafting table is opened/closed |
 | `OnGlowCoreUIToggled` | Event | `Action<bool>` — fires when the GlowCore upgrade panel is opened/closed |
+| `OnChestToggled` | Event | `Action<bool>` — fires when a chest panel is opened/closed |
 | `OnCloseUIRequested` | Event | `Action` — fires on Escape; closes any open UI (inventory, crafting table, or GlowCore UI) |
 
 ### `ICraftingService` — (`Assets/Scripts/ICraftingService.cs`)
@@ -217,7 +242,7 @@ Lives on the Player GameObject. Owns the `Inventory` instance and delegates to i
 **Input Actions (event-driven, no Update polling):**
 - `OnInventory(InputValue)` → Tab key → `ToggleInventory()`
 - `OnCrafting(InputValue)` → C key → fires `OnCraftingToggled` (only when inventory is open)
-- `OnCloseUI(InputValue)` → Escape key → closes inventory if open; always fires `OnCloseUIRequested` (used by `CraftingTableInteractable` to close the bench)
+- `OnCloseUI(InputValue)` → Escape key → closes inventory if open; always fires `OnCloseUIRequested` (used by `CraftingStationInteractable` to close the bench)
 - `OnHotbarSlot1..8(InputValue)` → keys 1-8 → `SelectHotbarSlot()`
 - `OnNext(InputValue)` / `OnPrevious(InputValue)` → scroll wheel navigation
 
@@ -225,7 +250,7 @@ Lives on the Player GameObject. Owns the `Inventory` instance and delegates to i
 
 **Extra public methods (not on `IInventoryService`):**
 - `ConsumeHandItem(int amount)` — removes `amount` items from the currently selected hotbar slot. Used by `BlockBehaviour` after a successful block placement.
-- `SetCraftingTableOpen(bool)` — sets `m_isCraftingTableOpen` and fires `OnCraftingTableToggled`. Called by `CraftingTableInteractable`.
+- `SetCraftingStationOpen(bool)` — sets `m_isCraftingTableOpen` and fires `OnCraftingStationToggled`. Called by `CraftingStationInteractable`.
 
 ### `IHandItem` — Interface (`Assets/Scripts/IHandItem.cs`)
 
@@ -317,7 +342,33 @@ The world-placed GlowCore node. Implements `IGlowCoreObject`. Consumes materials
 2. `UpgradePhysical()` → `WorldGrid.Instance.Expand(m_levelConfig.TilesOnLevelUp, isLevelUp: true)`.
 3. `SpawnNextLevel()` → clears all tiles in `oldNode.TilesUsed`, instantiates `m_nextLevelPrefab` as a sibling under `transform.parent`, reads `nextConfig.TileCount`, calls `WorldGrid.Instance.PlaceNodeAt(newNode, x, z, tileCount)`, then `Destroy(gameObject)`.
 
-**Auto-close:** `Update()` runs while `m_ui.IsVisible`; if the player drifts beyond `m_closeDistance` on the XZ plane, calls `m_ui.Hide()`. This mirrors the `CraftingTableInteractable.Update()` pattern and keeps the UI clean of distance logic.
+**Auto-close:** `Update()` runs while `m_ui.IsVisible`; if the player drifts beyond `m_closeDistance` on the XZ plane, calls `m_ui.Hide()`. This mirrors the `CraftingStationInteractable.Update()` pattern and keeps the UI clean of distance logic.
+
+### `Chest` — MonoBehaviour, `IItemContainer` (`Assets/Scripts/Chest.cs`)
+
+The world-placed chest's data layer. Owns its own `Inventory(m_width, m_height)` — `m_width` and `m_height` are `[SerializeField, Min(1)]` fields (defaults `8` × `2`, i.e. 16 slots) so each chest prefab/instance can declare its own 2D size in the Inspector. Implements `IItemContainer` by delegating to that inventory, and translates the inventory's `Action<int>` slot-changed event into the rich `Action<SlotChangedEvent>` payload that the UI consumes.
+
+`Chest` carries no UI logic and no interaction logic — all of that lives in `ChestInteractable`.
+
+**Note:** `ChestUI` builds slots dynamically from `chest.SlotCount`. The visual column wrap is controlled by the `GridLayoutGroup` constraint on the chest panel prefab (currently fixed at 8 columns) — change that constraint if you need a different wrap.
+
+### `ChestInteractable` — MonoBehaviour, `IInteractable` (`Assets/Scripts/ChestInteractable.cs`)
+
+`[RequireComponent(typeof(Chest))]`. Mirrors `CraftingStationInteractable`. On `Interact()` it flips its open state and:
+
+- Calls `PlayerInventory.SetChestOpen(open)` — fires `OnChestToggled`.
+- Calls `ChestUI.Show(chest)` / `ChestUI.Hide()`.
+
+Auto-closes on Tab (inventory open), Escape (`OnCloseUIRequested`), or walking beyond `m_closeDistance` (default 5f, checked in `Update`).
+
+### `ContainerOps` — Static helper (`Assets/Scripts/ContainerOps.cs`)
+
+Container-agnostic bulk operations. Used by `ChestUI` for TAKE ALL / INSERT ALL and by `InventoryUI` for cross-container drag releases.
+
+| Member | Purpose |
+|---|---|
+| `TransferAll(IItemContainer source, IItemContainer destination)` | Iterates source slots, calls `destination.AddStack` then `source.SetSlot(..., null, 0)` for the consumed amount. |
+| `MoveStack(IItemContainer src, int srcIdx, SlotData srcData, IItemContainer dst, int dstIdx, SlotData dstData)` | Single-slot cross-container move: empty target → full move; same item → merge up to MaxStack; different item → swap. Pure `SetSlot` operations under the hood. |
 
 ### `Fire` — MonoBehaviour (`Assets/Scripts/Fire.cs`)
 
@@ -336,7 +387,7 @@ Manages the world tile grid. Key method relevant to GlowCore:
 
 ### `CraftingSystem` — Plain C# class, implements `ICraftingService` (`Assets/Scripts/CraftingSystem.cs`)
 
-Pure logic class. No MonoBehaviour, no UI. Created independently by both `CraftingUI` and `CraftingTableUI` in their respective `Start()` methods — each instance owns its own filtered recipe slice.
+Pure logic class. No MonoBehaviour, no UI. Created independently by both `CraftingUI` and `CraftingStationUI` in their respective `Start()` methods — each instance owns its own filtered recipe slice.
 
 | Member | Purpose |
 |---|---|
@@ -363,20 +414,27 @@ Never accesses `Inventory` or `PlayerInventory` directly for data operations.
 
 **Pointer flow:**
 - `ItemSlotUI` owns drag lifecycle (`OnBeginDrag`, `OnDrag`, `OnEndDrag`)
-- `InventoryUI` receives forwarded calls (`OnDragUpdate`, `OnSlotReleased`)
+- `InventoryUI` receives forwarded calls — they all pass `ItemSlotUI` (the slot itself), not just an index, so the controller can read the slot's owning `IItemContainer`.
+
+**Held-item state — container-aware:**
+`InventoryUI` tracks the held item with three fields: `m_heldSlot` (the source `ItemSlotUI`), `m_heldContainer` (`IItemContainer` it came from), and `m_heldSlotIndex`. This lets a single drag controller handle drops on slots in *any* panel.
 
 **Drag-and-drop flow:**
-1. `OnSlotPressed(index)` → called by ItemSlotUI on pointer down
-2. `PickUpItem(index, SlotData)` → ghosts source slot, shows cursor icon
+1. `OnSlotPressed(ItemSlotUI slot)` → reads `slot.Container`, `slot.SlotIndex`, calls `PickUpItem(slot, data)`
+2. `PickUpItem(slot, data)` → ghosts source slot, shows cursor icon, stores held container + index
 3. `ItemSlotUI.OnDrag` → `InventoryUI.OnDragUpdate` updates cursor and tooltip position
 4. `ItemSlotUI.OnEndDrag` → `InventoryUI.OnSlotReleased` → `DropHeldItem()`
-5. Merge/Swap/Drop via `m_service.TryMerge()`, `m_service.Swap()`, `m_service.DropItem()`
+5. **Drop logic** (in `DropHeldItem`):
+   - Same container as source: existing `Swap`/`TryMerge` on the container
+   - **Different container:** `ContainerOps.MoveStack(heldContainer, heldIdx, heldData, hoveredContainer, hoveredIdx, hoveredData)`
+   - Released outside any slot: world-drop, but **only if held came from `PlayerInventory`** (chest items don't drop to world)
 6. `CancelHeldItem()` → cleanup
 
 ### `ItemSlotUI` — MonoBehaviour (`ItemSlotUI.cs`)
 
-**Reusable slot component.** Receives `SlotData` via `Refresh(SlotData)` — never queries
-the data layer. Initialized with `Initialize(InventoryUI owner, int slotIndex, SlotData)`.
+**Reusable slot component, container-aware.** Receives `SlotData` via `Refresh(SlotData)` — never queries the data layer. Initialized with `Initialize(InventoryUI owner, IItemContainer container, int slotIndex, SlotData)`.
+
+The slot exposes `Container`, `SlotIndex`, and `CurrentData` properties so the owner (`InventoryUI`) can route drag operations to the correct container without caring whether the slot belongs to the player inventory, a chest, or a future container type.
 
 ### `CraftingUI` — MonoBehaviour (`CraftingUI.cs`)
 
@@ -388,7 +446,7 @@ the data layer. Initialized with `Initialize(InventoryUI owner, int slotIndex, S
 - No `Update()` — fully event-driven
 - Subscribes to `ICraftingService.OnRecipesRefreshed` for auto-refresh
 
-### `CraftingTableUI` — MonoBehaviour (`CraftingTableUI.cs`)
+### `CraftingStationUI` — MonoBehaviour (`CraftingStationUI.cs`)
 
 **Crafting bench panel controller.** Opens when the player interacts with a crafting table node (E key).
 Combines a recipe list (left) with a read-only inventory display (right) in a single panel.
@@ -397,7 +455,7 @@ Combines a recipe list (left) with a read-only inventory display (right) in a si
 - Creates its own `CraftingSystem` with the full recipe list
 - Right-side inventory display: 32 `ItemSlotUI` instances with `null` owner (read-only, no drag/click)
 - Inventory display stays in sync via `OnSlotChanged` (always subscribed, cheap no-op when hidden)
-- Opened/closed by `CraftingTableInteractable` via `SetVisible(bool)` — no direct key binding
+- Opened/closed by `CraftingStationInteractable` via `SetVisible(bool)` — no direct key binding
 - Also auto-closes when: player walks out of range, inventory opens (Tab), or Escape is pressed
 
 ### `RecipeRowUI` — MonoBehaviour (`RecipeRowUI.cs`)
@@ -405,11 +463,29 @@ Combines a recipe list (left) with a read-only inventory display (right) in a si
 **Single recipe row.** Initialized with `ICraftingService` — calls `CanCraft()`, `GetItemCount()`,
 and `Craft()` through the interface. No direct inventory access.
 
+### `ChestUI` — MonoBehaviour (`ChestUI.cs`)
+
+**Two-panel chest controller.** Mirrors `CraftingStationUI` structure:
+
+- Left: chest grid (slot count from `Chest.m_width × Chest.m_height`, default 8 × 2 = 16; visual wrap from the panel's `GridLayoutGroup`, currently 8 columns)
+- Center: TAKE ALL / INSERT ALL buttons
+- Right: read/write player inventory display (32 slots, full drag)
+
+Subscribes to both the chest's `OnSlotChanged` (via `BindChest`) and the player's `OnSlotChanged` (in `Start`). Slots on **both** sides are owned by `InventoryUI` so cross-panel drag works through the shared cursor and held-item state.
+
+**Lifecycle:**
+- `Start()` calls `EnsureInitialized()` then `SetVisible(false)`.
+- `EnsureInitialized()` is idempotent: finds `PlayerInventory` and `InventoryUI`, wires button listeners, and calls `BuildInventoryDisplay()` (which clears existing children first to avoid double-population). Subscribes to `OnSlotChanged`.
+- `Show(Chest)` calls `EnsureInitialized()`, `BindChest(chest)`, `SetVisible(true)`. Lazy-init makes `Show` safe to call before the first frame.
+- `Hide()` / `SetVisible(false)` cancels any held drag (`InventoryUI.CancelHeldItem`) and unbinds the chest.
+
+Buttons → `ContainerOps.TransferAll(chest, player)` and `ContainerOps.TransferAll(player, chest)`.
+
 ### `HotbarUI` — MonoBehaviour (`HotbarUI.cs`)
 
 **Always-visible hotbar.** Uses `IInventoryService` for data and events.
 No `Update()` — number key input is handled by `PlayerInventory` via Input Actions.
-Dims (alpha 0.35, non-interactive) when the inventory, crafting table, **or GlowCore upgrade panel** is open — subscribes to `OnInventoryToggled`, `OnCraftingTableToggled`, and `OnGlowCoreUIToggled`.
+Dims (alpha 0.35, non-interactive) when the inventory, crafting table, **or GlowCore upgrade panel** is open — subscribes to `OnInventoryToggled`, `OnCraftingStationToggled`, and `OnGlowCoreUIToggled`.
 
 ### `HotbarSlotUI` — MonoBehaviour (`HotbarSlotUI.cs`)
 
@@ -433,7 +509,7 @@ All color tokens. Never hardcode colors.
 
 ## GlowCore Upgrade UI
 
-Scripts live in `Assets/Scripts/UI/GlowCore/` under the `GlowCore.UI.Upgrade` namespace. The layout mirrors `CraftingTableUI`: feed-material panel on the left, read-only inventory on the right.
+Scripts live in `Assets/Scripts/UI/GlowCore/` under the `GlowCore.UI.Upgrade` namespace. The layout mirrors `CraftingStationUI`: feed-material panel on the left, read-only inventory on the right.
 
 ### `GlowCoreUpgradeUI` — MonoBehaviour (`GlowCoreUpgradeUI.cs`)
 
@@ -505,7 +581,7 @@ InventoryCanvas (Canvas — Screen Space Overlay, CanvasScaler 854×480)
   │     └── HotbarGrid (HorizontalLayoutGroup)
   │           └── [8 HotbarSlotUI spawned at runtime]
   │
-  ├── CraftingBenchPanel (CraftingTableUI + CanvasGroup — starts hidden)
+  ├── CraftingBenchPanel (CraftingStationUI + CanvasGroup — starts hidden)
   │     ├── RecipeSection (VerticalLayoutGroup, 245px wide)
   │     │     ├── TitleLabel (TMP — "CRAFTING BENCH", Cinzel Bold 11px, AccentDim)
   │     │     ├── SubtitleLabel (TMP — "Advanced Recipes", Nunito 9px, WhiteFaint)
@@ -515,6 +591,23 @@ InventoryCanvas (Canvas — Screen Space Overlay, CanvasScaler 854×480)
   │           ├── TitleLabel (TMP — "INVENTORY", Cinzel Bold 11px, AccentDim)
   │           └── InventoryGrid (GridLayoutGroup: 36×36 cells, 3px spacing, 4 columns)
   │                 └── [32 ItemSlotUI spawned at runtime — read-only, null owner]
+  │
+  ├── ChestPanel (ChestUI + CanvasGroup — starts hidden, panel 780×240)
+  │     └── ChestInventoryArea (HorizontalLayoutGroup)
+  │           ├── ChestSection (~380px wide)
+  │           │     ├── TitleLabel (TMP — "CHEST", Cinzel Bold 11px, AccentDim)
+  │           │     └── ChestGrid (GridLayoutGroup: 40×40 cells, 4px spacing, 8 columns)
+  │           │           └── [16 ItemSlotUI spawned at runtime — owner = InventoryUI, container = Chest]
+  │           ├── Border (separator)
+  │           ├── TransferButtons (VerticalLayoutGroup, 70px wide)
+  │           │     ├── TakeAllButton (Button — chest → player via ContainerOps.TransferAll)
+  │           │     └── InsertAllButton (Button — player → chest via ContainerOps.TransferAll)
+  │           └── InventorySection (~280px wide)
+  │                 ├── Title (TMP — "INVENTORY", Cinzel Bold 11px, AccentDim)
+  │                 ├── UpperGrid (GridLayoutGroup)
+  │                 │     └── [24 ItemSlotUI spawned at runtime — owner = InventoryUI, container = PlayerInventory]
+  │                 └── HotbarRow (HorizontalLayoutGroup)
+  │                       └── [8 ItemSlotUI spawned at runtime, hotbar-styled — slots 0–7]
   │
   ├── GlowCoreUpgradePanel (GlowCoreUpgradeUI + CanvasGroup — starts hidden)
   │     ├── LeftSection (VerticalLayoutGroup, ~245px wide)
@@ -585,32 +678,32 @@ RecipeRowUI click → ICraftingService.Craft(recipe)
 ### Crafting table interaction
 ```
 Player presses E near crafting table
-  → NodeActionSystem.OnInteract() [guard: IsOpen==false AND IsCraftingTableOpen==false]
-    → Node.Interact() → CraftingTableInteractable.Interact()
-      → SetCraftingTableOpen(!m_isOpen)
-        → PlayerInventory.SetCraftingTableOpen(bool) → OnCraftingTableToggled fires
-        → CraftingTableUI.SetVisible(true/false)
-        → HotbarUI dims/restores (via OnCraftingTableToggled)
+  → NodeActionSystem.OnInteract() [guard: IsOpen==false AND IsCraftingStationOpen==false]
+    → Node.Interact() → CraftingStationInteractable.Interact()
+      → SetCraftingStationOpen(!m_isOpen)
+        → PlayerInventory.SetCraftingStationOpen(bool) → OnCraftingStationToggled fires
+        → CraftingStationUI.SetVisible(true/false)
+        → HotbarUI dims/restores (via OnCraftingStationToggled)
 
 Tab while crafting table is open
   → PlayerInventory.ToggleInventory() → OnInventoryToggled(true)
-    → CraftingTableInteractable.OnInventoryToggled(true)
-      → SetCraftingTableOpen(false) → bench closes, inventory opens normally
+    → CraftingStationInteractable.OnInventoryToggled(true)
+      → SetCraftingStationOpen(false) → bench closes, inventory opens normally
 
 Escape while crafting table is open
   → PlayerInventory.OnCloseUI() → OnCloseUIRequested fires
-    → CraftingTableInteractable.OnCloseUIRequested()
-      → SetCraftingTableOpen(false)
+    → CraftingStationInteractable.OnCloseUIRequested()
+      → SetCraftingStationOpen(false)
 
 Player walks out of interaction range
-  → CraftingTableInteractable.Update() detects distance > m_closeDistance
-    → SetCraftingTableOpen(false)
+  → CraftingStationInteractable.Update() detects distance > m_closeDistance
+    → SetCraftingStationOpen(false)
 ```
 
 ### GlowCore upgrade interaction
 ```
 Player presses E near a GlowCore
-  → NodeActionSystem.OnInteract() [guard: !IsOpen AND !IsCraftingTableOpen AND !IsGlowCoreUIOpen]
+  → NodeActionSystem.OnInteract() [guard: !IsOpen AND !IsCraftingStationOpen AND !IsGlowCoreUIOpen]
     → Node.Interact() → GlowCoreObject.Interact()
       → GlowCoreUpgradeUI.Show(this)  [target typed as IGlowCoreObject]
         → subscribes to target.OnProgressChanged + target.OnLevelUp
@@ -703,7 +796,8 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 
 | File | Layer | Type | Purpose |
 |---|---|---|---|
-| `IInventoryService.cs` | Interface | Interface | Data layer facade |
+| `IInventoryService.cs` | Interface | Interface | Data layer facade (player inventory + UI panel state) |
+| `IItemContainer.cs` | Interface | Interface | Minimal slot-container facade (player, chest, future containers) |
 | `ICraftingService.cs` | Interface | Interface | Crafting layer facade |
 | `IGlowCoreObject.cs` | Interface | Interface | GlowCore data layer facade — used by all GlowCore UI |
 | `SlotData.cs` | Shared | Struct | Immutable slot snapshot + event payload |
@@ -711,18 +805,22 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `ScriptableObjects/ItemStack.cs` | Data | Serializable class | Runtime stack instance |
 | `ScriptableObjects/Recipe.cs` | Data | ScriptableObject | Crafting recipe definition (`RequiresCraftingTable` flag) |
 | `ScriptableObjects/RecipeList.cs` | Data | ScriptableObject | Global recipe registry — single asset shared by all crafting UIs |
-| `Inventory.cs` | Data | Plain C# class | Slot grid logic |
-| `PlayerInventory.cs` | Data | MonoBehaviour | Implements IInventoryService, owns Inventory |
+| `Inventory.cs` | Data | Plain C# class | Slot grid logic; `SetSlot(int, Item, int)` overload + `AddStack` for cross-container ops |
+| `PlayerInventory.cs` | Data | MonoBehaviour | Implements IInventoryService **and IItemContainer**, owns Inventory |
+| `Chest.cs` | Data | MonoBehaviour | Implements IItemContainer; owns its own Inventory sized by serialized `m_width × m_height` (default 8 × 2 = 16) |
+| `ChestInteractable.cs` | Data | MonoBehaviour | IInteractable on chest GameObject; opens/closes ChestUI |
+| `ContainerOps.cs` | Data | Static helper | `TransferAll` + `MoveStack` between any two `IItemContainer`s |
 | `IHandItem.cs` | Data | Interface | Contract for usable held items |
 | `IPlayerInventoryAware.cs` | Data | Interface | Contract for held items needing inventory access |
 | `PlayerHand.cs` | Data | MonoBehaviour | In-hand item visual, enables IHandItem, wires SetInventory |
 | `ItemStackDrop.cs` | Data | MonoBehaviour | World-dropped item |
 | `CraftingSystem.cs` | Crafting | Plain C# class | Implements ICraftingService |
-| `CraftingTableInteractable.cs` | Data | MonoBehaviour | IInteractable — opens/closes CraftingTableUI on E key; auto-closes on Tab, Escape, or walking away |
+| `CraftingStationInteractable.cs` | Data | MonoBehaviour | IInteractable — opens/closes CraftingStationUI on E key; auto-closes on Tab, Escape, or walking away |
 | `BlockBehaviour.cs` | Data | MonoBehaviour | IHandItem + IPlayerInventoryAware — block placement |
 | `UI/Inventory/InventoryUI.cs` | UI | MonoBehaviour | Panel controller + drag-and-drop |
 | `UI/Inventory/CraftingUI.cs` | UI | MonoBehaviour | Hand-crafting panel (C key), reads from RecipeList |
-| `UI/Inventory/CraftingTableUI.cs` | UI | MonoBehaviour | Bench crafting panel + read-only inventory display |
+| `UI/Inventory/CraftingStationUI.cs` | UI | MonoBehaviour | Bench crafting panel + read-only inventory display |
+| `UI/Inventory/ChestUI.cs` | UI | MonoBehaviour | Chest panel (left grid) + player inventory (right) + TAKE ALL/INSERT ALL |
 | `UI/Inventory/RecipeRowUI.cs` | UI | MonoBehaviour | Single recipe row |
 | `UI/Inventory/ItemSlotUI.cs` | UI | MonoBehaviour | Single slot (grid + hotbar row) |
 | `UI/Inventory/HotbarUI.cs` | UI | MonoBehaviour | Standalone hotbar controller |
@@ -742,10 +840,12 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 
 ## Key Dependencies & Must-Knows
 
-- **UI depends only on interfaces** (`IInventoryService`, `ICraftingService`, `IGlowCoreObject`), never on `PlayerInventory`, `Inventory`, `CraftingSystem`, or `GlowCoreObject` directly.
+- **UI depends only on interfaces** (`IInventoryService`, `ICraftingService`, `IGlowCoreObject`, `IItemContainer`), never on `PlayerInventory`, `Inventory`, `CraftingSystem`, `GlowCoreObject`, or `Chest` directly.
+- **`IItemContainer` is the OCP seam.** Drag-and-drop, TAKE ALL / INSERT ALL, and `ItemSlotUI` all operate on `IItemContainer`. Adding a new container type (barrel, fridge, lockbox) means: implement `IItemContainer`, give it a UI panel like `ChestUI`, and the existing drag system Just Works across panels.
+- **`InventoryUI` is the single drag controller.** Even when chest slots are visible, they are still owned by `InventoryUI` — that is what enables cross-panel drag with one cursor and one held-item state. `ChestUI` only manages panel visibility and the chest-side slot list.
 - **`SlotData` is immutable.** UI receives snapshots via events and `Refresh(SlotData)` — never holds references to live `ItemStack` objects.
 - **No `Update()` in any UI script.** All input is event-driven via Input Actions; pointer events use EventSystem handlers. The one `Update()` in the GlowCore layer lives on `GlowCoreObject` (distance auto-close), not on the UI panel.
-- **`CraftingSystem` is a plain C# class**, not a MonoBehaviour. Created by `CraftingUI` and `CraftingTableUI`, each owning their own instance. Both are disposed in `OnDestroy()`.
+- **`CraftingSystem` is a plain C# class**, not a MonoBehaviour. Created by `CraftingUI` and `CraftingStationUI`, each owning their own instance. Both are disposed in `OnDestroy()`.
 - **`PlayerInventory` is the `IInventoryService` implementor.** It wraps `Inventory.OnSlotChanged(int)` into rich `SlotChangedEvent` payloads.
 - **Crouch is now Left Ctrl**, C is Crafting toggle.
 - **`Item.Icon` is a `Sprite`.** Import textures with Texture Type = Sprite (2D and UI). Read/Write is **not** required. The `RawImage` drag cursor accesses `sprite.texture` directly — this is intentional.
@@ -753,22 +853,28 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 - **Hand item prefabs store `IHandItem` components disabled.** `PlayerHand.UpdateHandVisual()` enables them. Do not enable them in the prefab — that breaks the lifecycle ordering.
 - **`IPlayerInventoryAware` is called automatically** by `PlayerHand.UpdateHandVisual()` — no manual wiring needed beyond prefab setup.
 - **`Add()` fills hotbar first.** `PlayerInventory.Add()` passes `emptySlotStart = HotbarStartIndex`.
-- **`NodeActionSystem` blocks interaction while any UI is open.** It guards on `IsOpen`, `IsCraftingTableOpen`, **and `IsGlowCoreUIOpen`** — hovering and interacting with world nodes is disabled while any UI is open.
-- **`CraftingTableUI` reads all global recipes** (no filter). `CraftingUI` is the one that filters to `RequiresCraftingTable == false`. If a recipe should only appear at the bench, set `RequiresCraftingTable = true` — it will be excluded from `CraftingUI` automatically.
-- **`CraftingTableInteractable` owns the open/close state** of the bench. It calls `PlayerInventory.SetCraftingTableOpen(bool)` — never set `IsCraftingTableOpen` from anywhere else.
-- **Escape fires `OnCloseUIRequested` unconditionally**, even when inventory is not open. `CraftingTableInteractable` uses this to close the bench UI without needing an inventory open state check.
+- **`NodeActionSystem` blocks interaction while any UI is open.** It guards on `IsOpen`, `IsCraftingStationOpen`, **and `IsGlowCoreUIOpen`** — hovering and interacting with world nodes is disabled while any UI is open.
+- **`CraftingStationUI` reads all global recipes** (no filter). `CraftingUI` is the one that filters to `RequiresCraftingTable == false`. If a recipe should only appear at the bench, set `RequiresCraftingTable = true` — it will be excluded from `CraftingUI` automatically.
+- **`CraftingStationInteractable` owns the open/close state** of the bench. It calls `PlayerInventory.SetCraftingStationOpen(bool)` — never set `IsCraftingStationOpen` from anywhere else.
+- **Escape fires `OnCloseUIRequested` unconditionally**, even when inventory is not open. `CraftingStationInteractable` uses this to close the bench UI without needing an inventory open state check.
 - **`GlowCoreObject.FeedMaterial` is the only way to feed the GlowCore.** The old wood-only `Interact()` path is gone. `FeedMaterial` does **not** auto-upgrade — the player must explicitly click the upgrade button, which calls `GlowCoreObject.Upgrade()`.
 - **`Fire.FeedWood` is VFX-only.** It is called from `FeedPhysicalLevel1` when Wood is fed. It no longer drives world expansion. Incremental expansion is config-driven via `ExpandIfConfigured`; level-up expansion lives in `UpgradePhysical`.
 - **Each GlowCore level is a separate prefab** referenced through `m_nextLevelPrefab`. The per-level cost, icon, perk, `TileCount`, and `ExpansionItem` live on a `GlowCoreLevelConfig` SO assigned to each prefab via `m_levelConfig`. `NextLevelConfig` reads the next prefab's config without instantiating it.
 - **`m_playerInventory` in `GlowCoreObject` is found at runtime** via `FindFirstObjectByType<PlayerInventory>()` in `Awake()`. This is intentional — it keeps every GlowCore level prefab self-contained with no manual Inspector wiring for the inventory reference.
-- **Auto-close distance check lives in `GlowCoreObject.Update()`**, not in `GlowCoreUpgradeUI`. This mirrors the `CraftingTableInteractable` pattern. `GlowCoreUpgradeUI` has no `Update()`.
+- **Auto-close distance check lives in `GlowCoreObject.Update()`**, not in `GlowCoreUpgradeUI`. This mirrors the `CraftingStationInteractable` pattern. `GlowCoreUpgradeUI` has no `Update()`.
 - **Multi-tile GlowCore levels** use `TileCount` on the SO. `SpawnNextLevel()` clears all tiles tracked in `oldNode.TilesUsed` before registering the new node with `WorldGrid.PlaceNodeAt(node, x, z, tileCount)`, which computes a centered square of side `√tileCount`.
 
 ---
 
 ## How to Extend
 
-### Add a new UI panel (equipment, chest, shop)
+### Add a new container type (barrel, fridge, lockbox)
+1. Implement `IItemContainer` on a MonoBehaviour. Easiest path is to wrap your own `Inventory(width, height)` (see `Chest.cs` for the template).
+2. Add a sibling MonoBehaviour that implements `IInteractable` to open/close the panel — see `ChestInteractable.cs`.
+3. Add an `IsXxxOpen` / `SetXxxOpen` / `OnXxxToggled` triple to `IInventoryService` and `PlayerInventory`. Update the `NodeActionSystem` interaction guard and the `HotbarUI` dim-trigger.
+4. Build a UI panel similar to `ChestUI`: bind `m_inventoryUI` as the slot owner so cross-panel drag works for free; wire any TAKE ALL / INSERT ALL buttons through `ContainerOps.TransferAll`.
+
+### Add a new general UI panel (equipment, shop, ...)
 1. Create a new MonoBehaviour that takes `IInventoryService` (via `[SerializeField] PlayerInventory`)
 2. Subscribe to `OnSlotChanged` for reactive updates
 3. Call service commands (`Swap`, `TryMerge`, etc.) — never access `Inventory` directly
@@ -779,8 +885,8 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 
 ### Add a new crafting recipe
 1. Create → Scriptable Objects → Recipe, fill fields
-2. Add to the global `RecipeList` asset (`Assets/ScriptableObjects/Recipes/GlobalRecipeList.asset`) — both `CraftingUI` and `CraftingTableUI` read from it automatically
-3. Set `RequiresCraftingTable = true` if the recipe should only be available at a crafting table — `CraftingUI` will exclude it; `CraftingTableUI` will still show it (it shows all recipes)
+2. Add to the global `RecipeList` asset (`Assets/ScriptableObjects/Recipes/GlobalRecipeList.asset`) — both `CraftingUI` and `CraftingStationUI` read from it automatically
+3. Set `RequiresCraftingTable = true` if the recipe should only be available at a crafting table — `CraftingUI` will exclude it; `CraftingStationUI` will still show it (it shows all recipes)
 4. Leave `RequiresCraftingTable = false` for hand-craftable recipes — they appear in both UIs
 
 ### Add right-click actions
