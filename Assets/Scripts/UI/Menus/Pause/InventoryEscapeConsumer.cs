@@ -20,7 +20,8 @@ namespace GlowCore.UI.Menus
 
             var anyOpen = m_inventory.IsOpen
                           || m_inventory.IsCraftingStationOpen
-                          || m_inventory.IsGlowCoreUIOpen;
+                          || m_inventory.IsGlowCoreUIOpen
+                          || m_inventory.IsChestOpen;
             if (!anyOpen)
                 return false;
 
