@@ -344,6 +344,21 @@ namespace GlowCore.World
 
                             var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile);
                             node.SourceBlock = delta.BuildData.Block;
+
+                            if (delta.BuildData.Inventory != null && node.TryGetComponent(out Chest chest))
+                            {
+                                var savedInventory = delta.BuildData.Inventory;
+                                var chestInventory = chest.GetInventory();
+                                var slotCount = Mathf.Min(savedInventory.Size, chestInventory.Size);
+                                for (var i = 0; i < slotCount; i++)
+                                {
+                                    var savedX = i % savedInventory.Width;
+                                    var savedY = i / savedInventory.Width;
+                                    var stack = savedInventory[savedX, savedY];
+                                    if (stack.IsValid)
+                                        chest.SetSlot(i, stack.Item, stack.Amount);
+                                }
+                            }
                             break;
                         }
                     case DeltaType.Break:
@@ -368,12 +383,12 @@ namespace GlowCore.World
                 {
                     for (var y = 0; y < inventory.Height; y++)
                     {
-                        if (inventory[x, y].IsValid)
-                            inventory.ClearSlot((y * inventory.Width) + x);
-
+                        var index = (y * inventory.Width) + x;
                         var stack = saveData.Player.Inventory[x, y];
                         if (stack.IsValid)
-                            inventory[x, y] = stack;
+                            inventory.SetSlot(index, stack.Item, stack.Amount);
+                        else
+                            inventory.ClearSlot(index);
                     }
                 }
             }
@@ -448,12 +463,17 @@ namespace GlowCore.World
                         continue;
 
                     Vector2Int worldPos = GridToWorld(x, z);
+                    var buildData = new BuildData { Block = node.SourceBlock };
+
+                    if (node.TryGetComponent(out Chest chest))
+                        buildData.Inventory = chest.GetInventory();
+
                     deltas.Add(new TileDelta
                     {
                         Type = DeltaType.Build,
                         X = worldPos.x,
                         Z = worldPos.y,
-                        BuildData = new BuildData { Block = node.SourceBlock },
+                        BuildData = buildData,
                     });
                 }
             }

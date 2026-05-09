@@ -119,7 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5966d91db41848359d3a8f4f90f9dea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Chest
-  m_slotCount: 16
+  m_width: 8
+  m_height: 2
+  m_block: {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
 --- !u!114 &8713903101887034799
 MonoBehaviour:
   m_ObjectHideFlags: 0

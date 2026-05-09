@@ -40185,7 +40185,7 @@ PrefabInstance:
       objectReference: {fileID: 4380614267860558231}
     - target: {fileID: 8724543921162694320, guid: d6f87f6594b2e2946b5aee59aaf7527c, type: 3}
       propertyPath: m_autosaveIntervalSeconds
-      value: 300
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9055653966018551709, guid: d6f87f6594b2e2946b5aee59aaf7527c, type: 3}
       propertyPath: m_Name

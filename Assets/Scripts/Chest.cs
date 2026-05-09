@@ -6,12 +6,20 @@ using UnityEngine;
 public class Chest : MonoBehaviour, IItemContainer
 {
     // Instance Fields
-    [SerializeField, Min(1)] private int m_slotCount = 16;
+    [SerializeField, Min(1)] private int m_width = 8;
+    [SerializeField, Min(1)] private int m_height = 2;
+
+    // Block this chest represents. Used by the save system so pre-placed scene
+    // chests get persisted the same way as player-built ones.
+    [SerializeField] private Block m_block;
 
     private Inventory m_inventory;
 
     // IItemContainer — Properties
     public int SlotCount => m_inventory.Size;
+
+    // Save/Load access — used by WorldGrid to persist chest contents.
+    public Inventory GetInventory() => m_inventory;
 
     // IItemContainer — Events
     public event Action<SlotChangedEvent> OnSlotChanged;
@@ -41,8 +49,11 @@ public class Chest : MonoBehaviour, IItemContainer
     // Private Methods — Lifecycle
     private void Awake()
     {
-        m_inventory = new Inventory(m_slotCount, 1);
+        m_inventory = new Inventory(m_width, m_height);
         m_inventory.OnSlotChanged += OnInventorySlotChanged;
+
+        if (m_block != null && TryGetComponent(out Node node) && node.SourceBlock == null)
+            node.SourceBlock = m_block;
     }
 
     private void OnDestroy()

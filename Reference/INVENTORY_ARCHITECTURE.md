@@ -346,7 +346,7 @@ The world-placed GlowCore node. Implements `IGlowCoreObject`. Consumes materials
 
 ### `Chest` — MonoBehaviour, `IItemContainer` (`Assets/Scripts/Chest.cs`)
 
-The world-placed chest's data layer. Owns its own `Inventory(m_slotCount, 1)` — `m_slotCount` is a `[SerializeField, Min(1)]` field (default `16`) so each chest prefab/instance can declare its own size in the Inspector. Implements `IItemContainer` by delegating to that inventory, and translates the inventory's `Action<int>` slot-changed event into the rich `Action<SlotChangedEvent>` payload that the UI consumes.
+The world-placed chest's data layer. Owns its own `Inventory(m_width, m_height)` — `m_width` and `m_height` are `[SerializeField, Min(1)]` fields (defaults `8` × `2`, i.e. 16 slots) so each chest prefab/instance can declare its own 2D size in the Inspector. Implements `IItemContainer` by delegating to that inventory, and translates the inventory's `Action<int>` slot-changed event into the rich `Action<SlotChangedEvent>` payload that the UI consumes.
 
 `Chest` carries no UI logic and no interaction logic — all of that lives in `ChestInteractable`.
 
@@ -467,7 +467,7 @@ and `Craft()` through the interface. No direct inventory access.
 
 **Two-panel chest controller.** Mirrors `CraftingStationUI` structure:
 
-- Left: chest grid (slot count from `Chest.m_slotCount`, default 16; visual wrap from the panel's `GridLayoutGroup`, currently 8 columns)
+- Left: chest grid (slot count from `Chest.m_width × Chest.m_height`, default 8 × 2 = 16; visual wrap from the panel's `GridLayoutGroup`, currently 8 columns)
 - Center: TAKE ALL / INSERT ALL buttons
 - Right: read/write player inventory display (32 slots, full drag)
 
@@ -807,7 +807,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `ScriptableObjects/RecipeList.cs` | Data | ScriptableObject | Global recipe registry — single asset shared by all crafting UIs |
 | `Inventory.cs` | Data | Plain C# class | Slot grid logic; `SetSlot(int, Item, int)` overload + `AddStack` for cross-container ops |
 | `PlayerInventory.cs` | Data | MonoBehaviour | Implements IInventoryService **and IItemContainer**, owns Inventory |
-| `Chest.cs` | Data | MonoBehaviour | Implements IItemContainer; owns its own Inventory sized by serialized `m_slotCount` (default 16) |
+| `Chest.cs` | Data | MonoBehaviour | Implements IItemContainer; owns its own Inventory sized by serialized `m_width × m_height` (default 8 × 2 = 16) |
 | `ChestInteractable.cs` | Data | MonoBehaviour | IInteractable on chest GameObject; opens/closes ChestUI |
 | `ContainerOps.cs` | Data | Static helper | `TransferAll` + `MoveStack` between any two `IItemContainer`s |
 | `IHandItem.cs` | Data | Interface | Contract for usable held items |
