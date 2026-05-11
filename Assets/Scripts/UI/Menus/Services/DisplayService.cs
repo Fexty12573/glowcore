@@ -11,6 +11,7 @@ namespace GlowCore.UI.Menus
         public const float kSensitivityDefaultSlider = 0.31f;
 
         private readonly List<Resolution> m_resolutions;
+        private readonly Resolution m_nativeResolution;
         private float m_mouseSensitivity = kSensitivityDefaultSlider;
 
         public event Action<float> OnMouseSensitivityChanged;
@@ -18,9 +19,12 @@ namespace GlowCore.UI.Menus
         public DisplayService()
         {
             m_resolutions = BuildResolutionList();
+            m_nativeResolution = QueryNativeResolution();
         }
 
         public IReadOnlyList<Resolution> AvailableResolutions => m_resolutions;
+
+        public Resolution NativeResolution => m_nativeResolution;
 
         public float MouseSensitivity => m_mouseSensitivity;
 
@@ -47,6 +51,19 @@ namespace GlowCore.UI.Menus
         public static float SliderToMultiplier(float slider)
         {
             return Mathf.Lerp(kSensitivityMin, kSensitivityMax, Mathf.Clamp01(slider));
+        }
+
+        private static Resolution QueryNativeResolution()
+        {
+            // Display.main reports the OS desktop resolution, which is stable even when the player
+            // has selected a non-native windowed size. Refresh rate isn't on Display, so fall back
+            // to the current screen's reported rate.
+            return new Resolution
+            {
+                width = Display.main.systemWidth,
+                height = Display.main.systemHeight,
+                refreshRateRatio = Screen.currentResolution.refreshRateRatio,
+            };
         }
 
         private static List<Resolution> BuildResolutionList()

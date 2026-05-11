@@ -7,6 +7,7 @@ namespace GlowCore.UI.Menus
     public interface IDisplayService
     {
         IReadOnlyList<Resolution> AvailableResolutions { get; }
+        Resolution NativeResolution { get; }
         float MouseSensitivity { get; }
         void SetFullscreen(bool on);
         void SetResolution(int index);

@@ -8,12 +8,13 @@ namespace GlowCore.UI.Menus
         public const string kKeyFullscreen = "menu.display.fullscreen";
         public const string kKeyResolution = "menu.display.resolution";
         public const string kKeyMouseSensitivity = "menu.display.mouseSensitivity";
+        public const string kRecommendedSuffix = " (Recommended)";
 
         private readonly List<SettingDescriptor> m_descriptors;
 
         public DisplaySettingsCategory(ISettingsRepository repository, IDisplayService displayService)
         {
-            var resolutionLabels = BuildResolutionLabels(displayService.AvailableResolutions);
+            var resolutionLabels = BuildResolutionLabels(displayService.AvailableResolutions, displayService.NativeResolution);
 
             m_descriptors = new List<SettingDescriptor>
             {
@@ -34,11 +35,16 @@ namespace GlowCore.UI.Menus
         public string DisplayName => "DISPLAY";
         public IReadOnlyList<SettingDescriptor> Descriptors => m_descriptors;
 
-        private static IReadOnlyList<string> BuildResolutionLabels(IReadOnlyList<Resolution> resolutions)
+        private static IReadOnlyList<string> BuildResolutionLabels(IReadOnlyList<Resolution> resolutions, Resolution native)
         {
             var labels = new List<string>(resolutions.Count);
             foreach (Resolution r in resolutions)
-                labels.Add($"{r.width} x {r.height}");
+            {
+                var label = $"{r.width} x {r.height}";
+                if (r.width == native.width && r.height == native.height)
+                    label += kRecommendedSuffix;
+                labels.Add(label);
+            }
             return labels;
         }
 
