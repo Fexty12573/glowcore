@@ -40492,6 +40492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3179111442980562076, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3293117701010982215, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -40625,7 +40629,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4748218145021959287, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
+    - {fileID: 8194960536491602289, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
