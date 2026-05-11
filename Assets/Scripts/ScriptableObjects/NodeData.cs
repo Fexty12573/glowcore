@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace ScriptableObjects
 {
-    [CreateAssetMenu(menuName = "Nodes/NodeData")]
+    [CreateAssetMenu(menuName = "Scriptable Objects/NodeData")]
     public class NodeData : ScriptableObject
     {
-        public float InteractionRange;
+        public float InteractionRange = 3;
         public ItemDrop[] ItemDrops;
-        public float BaseBreakTime;
+        public float BaseBreakTime = 1;
         public bool IsIndestructible;
         public UsableTool[] UsableTools;
 

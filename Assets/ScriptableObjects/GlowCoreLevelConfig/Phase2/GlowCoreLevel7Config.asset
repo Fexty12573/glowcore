@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3234de94a168274194c4cf274b3d85c, type: 3}
+  m_Name: GlowCoreLevel7Config
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.GlowCoreLevelConfig
+  m_levelName: GlowCore
+  m_level: 7
+  m_levelIcon: {fileID: 21300000, guid: 41292337a6ca7844a8ed437de010f716, type: 3}
+  m_requiredMaterials:
+  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
+    Amount: 1
+  m_tilesOnLevelUp: 2
+  m_size: 16
+  m_nextLevelPerkTemplate: Next level expands the glow radius by +{tiles} tiles
+  m_expansionItem: {fileID: 0}
+  m_expansionCostPerTile: 5

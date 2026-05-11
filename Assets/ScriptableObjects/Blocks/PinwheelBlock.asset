@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: PinwheelBlock
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Pinwheel
+  Description: 
+  Prefab: {fileID: 7886290519329012032, guid: 6a999862f17592d4fa51c79f34a00302, type: 3}
+  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  DropScale: 1
+  InHandScale: 1
+  MaxStack: 5
+  m_idBytes: eaa6328f7e711441a4f81d8e29c251f5
+  NodeToBuild: {fileID: 5819595144877183926, guid: 874add157640a404987f63c064068e98, type: 3}
+  BuildRadius: 4
