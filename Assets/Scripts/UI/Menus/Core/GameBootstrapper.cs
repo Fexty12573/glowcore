@@ -11,6 +11,7 @@ namespace GlowCore.UI.Menus
         [SerializeField] private PauseScreen m_pauseScreen;
         [SerializeField] private SettingsScreen m_settingsScreen;
         [SerializeField] private ConfirmDialogScreen m_confirmDialogScreen;
+        [SerializeField] private UnsavedChangesDialogScreen m_unsavedChangesScreen;
 
         [Header("HUD")]
         [SerializeField] private PauseButton m_pauseButton;
@@ -82,6 +83,12 @@ namespace GlowCore.UI.Menus
                 locator.Register(m_confirmDialogScreen);
             }
 
+            if (m_unsavedChangesScreen != null)
+            {
+                m_unsavedChangesScreen.Initialize(m_menuManager);
+                locator.Register(m_unsavedChangesScreen);
+            }
+
             if (m_settingsScreen != null)
             {
                 SettingsRowFactory rowFactory = BuildRowFactory();
@@ -103,6 +110,8 @@ namespace GlowCore.UI.Menus
             PlayerInventory inventory = m_playerInventory != null ? m_playerInventory : FindFirstObjectByType<PlayerInventory>();
             if (inventory != null)
                 router.Register(new InventoryEscapeConsumer(inventory));
+            if (m_settingsScreen != null)
+                router.Register(new SettingsEscapeConsumer(m_menuManager, m_settingsScreen));
             router.Register(new PauseEscapeConsumer(m_menuManager, m_gameState));
 
             InputAction pauseAction = m_inputActions != null ? m_inputActions.FindAction(m_pauseActionName) : null;

@@ -20997,6 +20997,7 @@ MonoBehaviour:
   m_pauseScreen: {fileID: 62804838}
   m_settingsScreen: {fileID: 502775529}
   m_confirmDialogScreen: {fileID: 907124309}
+  m_unsavedChangesScreen: {fileID: 1593662840328382588}
   m_pauseButton: {fileID: 1683167962}
   m_sliderRowPrefab: {fileID: 8426088777401179993, guid: 850cb044da9c9be43a17e4092e1e4796, type: 3}
   m_toggleRowPrefab: {fileID: 7635243520397017747, guid: c2a979aa948fdd5448a5e7e2268e8f9c, type: 3}
@@ -40494,7 +40495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179111442980562076, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3293117701010982215, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
       propertyPath: m_AnchorMax.y
@@ -40635,6 +40636,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
+--- !u!114 &1593662840328382588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1187847882071484224, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
+  m_PrefabInstance: {fileID: 1593662840328382587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834f96491a463b242a3e4aba578536e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.UI.Menus.UnsavedChangesDialogScreen
 --- !u!1001 &1673711564395411730
 PrefabInstance:
   m_ObjectHideFlags: 0

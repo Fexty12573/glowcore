@@ -41,7 +41,7 @@ namespace GlowCore.UI.Menus
             BuildTabButtons();
 
             if (m_backButton != null)
-                m_backButton.onClick.AddListener(OnBack);
+                m_backButton.onClick.AddListener(TryLeave);
             if (m_saveButton != null)
                 m_saveButton.onClick.AddListener(OnSave);
 
@@ -50,7 +50,11 @@ namespace GlowCore.UI.Menus
 
         public void Show()
         {
-            SnapshotAll();
+            // Snapshot lazily — only on first open of a Settings session. Dialog round-trips
+            // call Show() again to re-display the screen, and re-snapshotting there would
+            // capture the dirty values and break the Discard/Cancel paths.
+            if (m_snapshot.Count == 0)
+                SnapshotAll();
 
             var index = m_activeCategoryIndex >= 0 ? m_activeCategoryIndex : 0;
             if (m_categories != null && m_categories.Count > 0)
@@ -61,10 +65,39 @@ namespace GlowCore.UI.Menus
 
         public void Hide() => m_canvasGroup?.SetVisible(false);
 
+        public bool IsDirty()
+        {
+            foreach (var pair in m_snapshot)
+            {
+                object current = pair.Key.Read();
+                if (!Equals(current, pair.Value))
+                    return true;
+            }
+            return false;
+        }
+
+        public void TryLeave()
+        {
+            if (!IsDirty())
+            {
+                m_snapshot.Clear();
+                m_menuManager?.Back();
+                return;
+            }
+
+            var args = new UnsavedChangesDialogArgs
+            {
+                Message = "You have unsaved changes. Apply them?",
+                OnApply = ApplyAndLeave,
+                OnDiscard = DiscardAndLeave,
+            };
+            m_menuManager?.OpenWithArgs(MenuScreenId.UnsavedChanges, args);
+        }
+
         private void OnDestroy()
         {
             if (m_backButton != null)
-                m_backButton.onClick.RemoveListener(OnBack);
+                m_backButton.onClick.RemoveListener(TryLeave);
             if (m_saveButton != null)
                 m_saveButton.onClick.RemoveListener(OnSave);
 
@@ -148,17 +181,30 @@ namespace GlowCore.UI.Menus
             }
         }
 
-        private void OnBack()
+        private void RevertToSnapshot()
         {
             foreach (var pair in m_snapshot)
                 pair.Key.Write(pair.Value);
+        }
 
+        private void ApplyAndLeave()
+        {
+            m_repository?.Save();
+            m_snapshot.Clear();
+            m_menuManager?.Back();
+        }
+
+        private void DiscardAndLeave()
+        {
+            RevertToSnapshot();
+            m_snapshot.Clear();
             m_menuManager?.Back();
         }
 
         private void OnSave()
         {
             m_repository?.Save();
+            m_snapshot.Clear();
             m_menuManager?.Back();
         }
     }

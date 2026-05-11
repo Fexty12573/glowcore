@@ -8,5 +8,6 @@ namespace GlowCore.UI.Menus
         Pause,
         Settings,
         ConfirmDialog,
+        UnsavedChanges,
     }
 }
