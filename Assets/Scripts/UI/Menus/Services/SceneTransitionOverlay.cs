@@ -20,9 +20,10 @@ namespace GlowCore.UI.Menus
         private static SceneTransitionOverlay s_instance;
         private static TMP_FontAsset s_titleFont;
         private static TMP_FontAsset s_subtitleFont;
+        private static Sprite s_titleLogo;
 
         private CanvasGroup m_canvasGroup;
-        private TextMeshProUGUI m_titleText;
+        private Graphic m_titleGraphic;
         private TextMeshProUGUI m_subtitleText;
         private bool m_isAnimating;
 
@@ -44,6 +45,14 @@ namespace GlowCore.UI.Menus
                 s_instance.ApplyFonts();
         }
 
+        public static void ConfigureLogo(Sprite logo)
+        {
+            s_titleLogo = logo;
+            // The overlay is built lazily on first scene transition, so a configure call before
+            // the first transition is all that's needed. If the overlay already exists, we leave
+            // it alone — switching logo mid-session would require rebuilding the title node.
+        }
+
         public Coroutine LoadScene(string sceneName, string subtitle = "Awakening...")
         {
             return StartCoroutine(Run(sceneName, subtitle));
@@ -51,21 +60,21 @@ namespace GlowCore.UI.Menus
 
         private void ApplyFonts()
         {
-            if (m_titleText != null && s_titleFont != null)
-                m_titleText.font = s_titleFont;
+            if (m_titleGraphic is TextMeshProUGUI titleTmp && s_titleFont != null)
+                titleTmp.font = s_titleFont;
             if (m_subtitleText != null && s_subtitleFont != null)
                 m_subtitleText.font = s_subtitleFont;
         }
 
         private void Update()
         {
-            if (m_titleText == null || m_canvasGroup == null || m_canvasGroup.alpha < 0.05f)
+            if (m_titleGraphic == null || m_canvasGroup == null || m_canvasGroup.alpha < 0.05f)
                 return;
 
             var pulse = Mathf.Lerp(kPulseMin, kPulseMax, 0.5f + 0.5f * Mathf.Sin(Time.unscaledTime * kPulseFrequency));
-            Color c = m_titleText.color;
+            Color c = m_titleGraphic.color;
             c.a = pulse * m_canvasGroup.alpha;
-            m_titleText.color = c;
+            m_titleGraphic.color = c;
         }
 
         private IEnumerator Run(string sceneName, string subtitle)
@@ -147,24 +156,7 @@ namespace GlowCore.UI.Menus
 
             BuildEmbers(canvasGO.transform);
 
-            var titleGO = new GameObject("Title", typeof(RectTransform));
-            titleGO.transform.SetParent(canvasGO.transform, false);
-            var title = titleGO.AddComponent<TextMeshProUGUI>();
-            title.text = "GLOWCORE";
-            title.fontSize = 64f;
-            title.alignment = TextAlignmentOptions.Center;
-            title.color = (Color)UIColors.Accent;
-            title.fontStyle = FontStyles.Bold;
-            title.raycastTarget = false;
-            if (s_titleFont != null)
-                title.font = s_titleFont;
-
-            var titleRect = (RectTransform)titleGO.transform;
-            titleRect.anchorMin = new Vector2(0.5f, 0.5f);
-            titleRect.anchorMax = new Vector2(0.5f, 0.5f);
-            titleRect.pivot = new Vector2(0.5f, 0.5f);
-            titleRect.anchoredPosition = new Vector2(0f, 20f);
-            titleRect.sizeDelta = new Vector2(720f, 90f);
+            Graphic titleGraphic = BuildTitle(canvasGO.transform);
 
             var subGO = new GameObject("Subtitle", typeof(RectTransform));
             subGO.transform.SetParent(canvasGO.transform, false);
@@ -183,26 +175,49 @@ namespace GlowCore.UI.Menus
             subRect.anchorMin = new Vector2(0.5f, 0.5f);
             subRect.anchorMax = new Vector2(0.5f, 0.5f);
             subRect.pivot = new Vector2(0.5f, 0.5f);
-            subRect.anchoredPosition = new Vector2(0f, -45f);
+            subRect.anchoredPosition = new Vector2(0f, -95f);
             subRect.sizeDelta = new Vector2(400f, 30f);
-
-            var divider = new GameObject("Divider", typeof(RectTransform));
-            divider.transform.SetParent(canvasGO.transform, false);
-            Image dividerImg = divider.AddComponent<Image>();
-            dividerImg.color = (Color)UIColors.AccentDim;
-            dividerImg.raycastTarget = false;
-            var divRect = (RectTransform)divider.transform;
-            divRect.anchorMin = new Vector2(0.5f, 0.5f);
-            divRect.anchorMax = new Vector2(0.5f, 0.5f);
-            divRect.pivot = new Vector2(0.5f, 0.5f);
-            divRect.anchoredPosition = new Vector2(0f, -22f);
-            divRect.sizeDelta = new Vector2(140f, 1f);
 
             var overlay = root.AddComponent<SceneTransitionOverlay>();
             overlay.m_canvasGroup = cg;
-            overlay.m_titleText = title;
+            overlay.m_titleGraphic = titleGraphic;
             overlay.m_subtitleText = sub;
             return overlay;
+        }
+
+        private static Graphic BuildTitle(Transform parent)
+        {
+            var titleGO = new GameObject("Title", typeof(RectTransform));
+            titleGO.transform.SetParent(parent, false);
+
+            var titleRect = (RectTransform)titleGO.transform;
+            titleRect.anchorMin = new Vector2(0.5f, 0.5f);
+            titleRect.anchorMax = new Vector2(0.5f, 0.5f);
+            titleRect.pivot = new Vector2(0.5f, 0.5f);
+
+            if (s_titleLogo != null)
+            {
+                Image img = titleGO.AddComponent<Image>();
+                img.sprite = s_titleLogo;
+                img.preserveAspect = true;
+                img.raycastTarget = false;
+                titleRect.anchoredPosition = new Vector2(0f, 30f);
+                titleRect.sizeDelta = new Vector2(560f, 180f);
+                return img;
+            }
+
+            var tmp = titleGO.AddComponent<TextMeshProUGUI>();
+            tmp.text = "GLOWCORE";
+            tmp.fontSize = 64f;
+            tmp.alignment = TextAlignmentOptions.Center;
+            tmp.color = (Color)UIColors.Accent;
+            tmp.fontStyle = FontStyles.Bold;
+            tmp.raycastTarget = false;
+            if (s_titleFont != null)
+                tmp.font = s_titleFont;
+            titleRect.anchoredPosition = new Vector2(0f, 20f);
+            titleRect.sizeDelta = new Vector2(720f, 90f);
+            return tmp;
         }
 
         private static void FullStretch(RectTransform rt)

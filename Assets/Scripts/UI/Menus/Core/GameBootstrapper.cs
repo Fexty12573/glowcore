@@ -24,6 +24,9 @@ namespace GlowCore.UI.Menus
         [Header("Audio")]
         [SerializeField] private AudioMixerVolumeApplier m_audioApplier;
 
+        [Header("Branding")]
+        [SerializeField] private Sprite m_titleLogo;
+
         [Header("Scene refs")]
         [SerializeField] private WorldGrid m_worldGrid;
         [SerializeField] private PlayerCamera m_playerCamera;
@@ -65,6 +68,9 @@ namespace GlowCore.UI.Menus
 
             m_audioApplier?.Initialize(audioBridge);
             ApplyPersistedSettings(settingsRepository, audioBridge, displayService);
+
+            // Hand the logo to the transition overlay so it shows during scene loads.
+            SceneTransitionOverlay.ConfigureLogo(m_titleLogo);
 
             m_gameState = new GameStateController(saveService, sceneTransition);
 

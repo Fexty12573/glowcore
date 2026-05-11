@@ -12,6 +12,9 @@ namespace GlowCore.UI.Menus
         [Header("Audio")]
         [SerializeField] private AudioMixerVolumeApplier m_audioApplier;
 
+        [Header("Branding")]
+        [SerializeField] private Sprite m_titleLogo;
+
         private MenuManager m_menuManager;
 
         private void Awake()
@@ -44,6 +47,9 @@ namespace GlowCore.UI.Menus
 
             // Mixer applier subscribes to the bridge.
             m_audioApplier?.Initialize(audioBridge);
+
+            // Hand the logo to the transition overlay so it shows during scene loads.
+            SceneTransitionOverlay.ConfigureLogo(m_titleLogo);
 
             // Apply saved audio levels before the title shows so menu audio uses the right volume.
             // Display/camera settings are applied later by GameBootstrapper since they only matter in-game.
