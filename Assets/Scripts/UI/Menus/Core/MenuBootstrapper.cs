@@ -24,6 +24,20 @@ namespace GlowCore.UI.Menus
 
         private void Awake()
         {
+            // Refuse to boot a second instance — the save file at SaveData.GetPath() is shared
+            // across processes and concurrent writes would corrupt it.
+#if UNITY_EDITOR
+            ISingleInstanceGuard instanceGuard = new NullSingleInstanceGuard();
+#else
+            ISingleInstanceGuard instanceGuard = new NamedMutexSingleInstanceGuard(NamedMutexSingleInstanceGuard.kDefaultName);
+#endif
+            if (!ProcessGuard.TryAcquireOnce(instanceGuard))
+            {
+                Debug.LogWarning("[MenuBootstrapper] Another GlowCore instance is already running. Quitting.");
+                Application.Quit();
+                return;
+            }
+
             // Persistent context (DontDestroyOnLoad) carries the new-game world name across the scene load.
             IGameLaunchContext launchContext = GameLaunchContext.Instance;
 

@@ -38,6 +38,20 @@ namespace GlowCore.UI.Menus
 
         private void Awake()
         {
+            // Refuse to boot a second instance — guards the save file when MainWorldScene is the
+            // first scene loaded (e.g. dev play-mode iteration that skips TitleScene).
+#if UNITY_EDITOR
+            ISingleInstanceGuard instanceGuard = new NullSingleInstanceGuard();
+#else
+            ISingleInstanceGuard instanceGuard = new NamedMutexSingleInstanceGuard(NamedMutexSingleInstanceGuard.kDefaultName);
+#endif
+            if (!ProcessGuard.TryAcquireOnce(instanceGuard))
+            {
+                Debug.LogWarning("[GameBootstrapper] Another GlowCore instance is already running. Quitting.");
+                Application.Quit();
+                return;
+            }
+
             IGameLaunchContext launchContext = GameLaunchContext.Instance;
 
             ISceneTransition sceneTransition = new SceneTransitionService();
