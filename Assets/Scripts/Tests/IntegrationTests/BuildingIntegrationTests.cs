@@ -56,7 +56,7 @@ public class BuildingIntegrationTests
         grid.SetActive(true);
 
         GameObject chestPrefab =
-            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Items/Blocks/ChestBlock.prefab");
+            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Blocks/ChestBlock.prefab");
         m_blockBehaviour = chestPrefab.GetComponent<BlockBehaviour>();
         SetPrivateField(m_blockBehaviour, "m_inventory", m_inventory);
         m_chestItem =
