@@ -138,5 +138,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d6039bcce760e4387a21d08efb8a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::SawBlade
-  m_saw: {fileID: 589643925236765772}
-  m_spinSpeed: 50
+  m_transform: {fileID: 589643925236765772}
+  m_spinSpeed: {x: 0, y: 0, z: 50}
