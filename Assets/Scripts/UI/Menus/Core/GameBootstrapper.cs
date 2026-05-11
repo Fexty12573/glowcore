@@ -137,8 +137,11 @@ namespace GlowCore.UI.Menus
             audioBridge.RaiseMusic(repository.GetFloat(AudioSettingsCategory.kKeyMusic, AudioSettingsCategory.kDefaultMusic));
             audioBridge.RaiseSfx(repository.GetFloat(AudioSettingsCategory.kKeySfx, AudioSettingsCategory.kDefaultSfx));
 
-            displayService.SetMouseSensitivity(repository.GetFloat(
-                DisplaySettingsCategory.kKeyMouseSensitivity,
+            displayService.SetCameraSensitivityX(repository.GetFloat(
+                DisplaySettingsCategory.kKeyCameraSensitivityX,
+                DisplayService.kSensitivityDefaultSlider));
+            displayService.SetCameraSensitivityY(repository.GetFloat(
+                DisplaySettingsCategory.kKeyCameraSensitivityY,
                 DisplayService.kSensitivityDefaultSlider));
         }
     }

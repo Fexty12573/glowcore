@@ -30,15 +30,17 @@ public class DisplaySettingsCategoryTests
     }
 
     [Test]
-    public void Descriptors_AreOrderedFullscreenResolutionSensitivity()
+    public void Descriptors_AreOrderedFullscreenResolutionSensitivityXY()
     {
-        Assert.AreEqual(3, m_category.Descriptors.Count);
+        Assert.AreEqual(4, m_category.Descriptors.Count);
         Assert.AreEqual(DisplaySettingsCategory.kKeyFullscreen, m_category.Descriptors[0].Key);
         Assert.AreEqual(SettingControlKind.Toggle, m_category.Descriptors[0].Kind);
         Assert.AreEqual(DisplaySettingsCategory.kKeyResolution, m_category.Descriptors[1].Key);
         Assert.AreEqual(SettingControlKind.Dropdown, m_category.Descriptors[1].Kind);
-        Assert.AreEqual(DisplaySettingsCategory.kKeyMouseSensitivity, m_category.Descriptors[2].Key);
+        Assert.AreEqual(DisplaySettingsCategory.kKeyCameraSensitivityX, m_category.Descriptors[2].Key);
         Assert.AreEqual(SettingControlKind.Slider, m_category.Descriptors[2].Kind);
+        Assert.AreEqual(DisplaySettingsCategory.kKeyCameraSensitivityY, m_category.Descriptors[3].Key);
+        Assert.AreEqual(SettingControlKind.Slider, m_category.Descriptors[3].Kind);
     }
 
     [Test]
@@ -94,25 +96,74 @@ public class DisplaySettingsCategoryTests
     }
 
     [Test]
-    public void MouseSensitivityWrite_PersistsAndUpdatesDisplay()
+    public void ResolutionRead_DefaultsToNativeIndex_WhenUnset()
     {
-        Sensitivity().Write(0.42f);
-
-        Assert.AreEqual(0.42f, m_repository.GetFloat(DisplaySettingsCategory.kKeyMouseSensitivity, -1f));
-        Assert.AreEqual(0.42f, m_display.MouseSensitivity);
+        // Native is 2880 x 1800 from SetUp — that's index 2 in the resolution list.
+        Assert.AreEqual(2, (int)Dropdown().Read());
     }
 
     [Test]
-    public void MouseSensitivityRead_FallsBackToDefault_WhenUnset()
+    public void ResolutionRead_FallsBackToLastIndex_WhenNativeIsNotInList()
     {
-        Assert.AreEqual(DisplayService.kSensitivityDefaultSlider, (float)Sensitivity().Read());
+        m_display.Native = new Resolution { width = 9999, height = 9999 };
+        var category = new DisplaySettingsCategory(m_repository, m_display);
+        var dropdown = category.Descriptors.First(d => d.Key == DisplaySettingsCategory.kKeyResolution);
+
+        Assert.AreEqual(m_display.Resolutions.Count - 1, (int)dropdown.Read());
     }
 
     [Test]
-    public void MouseSensitivityRead_ReturnsSavedValue()
+    public void CameraSensitivityX_Write_PersistsAndUpdatesDisplay()
     {
-        m_repository.SetFloat(DisplaySettingsCategory.kKeyMouseSensitivity, 0.7f);
-        Assert.AreEqual(0.7f, (float)Sensitivity().Read());
+        SensitivityX().Write(0.42f);
+
+        Assert.AreEqual(0.42f, m_repository.GetFloat(DisplaySettingsCategory.kKeyCameraSensitivityX, -1f));
+        Assert.AreEqual(0.42f, m_display.CameraSensitivityX);
+    }
+
+    [Test]
+    public void CameraSensitivityX_Read_FallsBackToDefault_WhenUnset()
+    {
+        Assert.AreEqual(DisplayService.kSensitivityDefaultSlider, (float)SensitivityX().Read());
+    }
+
+    [Test]
+    public void CameraSensitivityX_Read_ReturnsSavedValue()
+    {
+        m_repository.SetFloat(DisplaySettingsCategory.kKeyCameraSensitivityX, 0.7f);
+        Assert.AreEqual(0.7f, (float)SensitivityX().Read());
+    }
+
+    [Test]
+    public void CameraSensitivityY_Write_PersistsAndUpdatesDisplay()
+    {
+        SensitivityY().Write(0.55f);
+
+        Assert.AreEqual(0.55f, m_repository.GetFloat(DisplaySettingsCategory.kKeyCameraSensitivityY, -1f));
+        Assert.AreEqual(0.55f, m_display.CameraSensitivityY);
+    }
+
+    [Test]
+    public void CameraSensitivityY_Read_FallsBackToDefault_WhenUnset()
+    {
+        Assert.AreEqual(DisplayService.kSensitivityDefaultSlider, (float)SensitivityY().Read());
+    }
+
+    [Test]
+    public void CameraSensitivityY_Read_ReturnsSavedValue()
+    {
+        m_repository.SetFloat(DisplaySettingsCategory.kKeyCameraSensitivityY, 0.9f);
+        Assert.AreEqual(0.9f, (float)SensitivityY().Read());
+    }
+
+    [Test]
+    public void CameraSensitivityX_And_Y_AreIndependent()
+    {
+        SensitivityX().Write(0.2f);
+        SensitivityY().Write(0.8f);
+
+        Assert.AreEqual(0.2f, m_display.CameraSensitivityX);
+        Assert.AreEqual(0.8f, m_display.CameraSensitivityY);
     }
 
     private SettingDescriptor Fullscreen() =>
@@ -121,6 +172,9 @@ public class DisplaySettingsCategoryTests
     private SettingDescriptor Dropdown() =>
         m_category.Descriptors.First(d => d.Key == DisplaySettingsCategory.kKeyResolution);
 
-    private SettingDescriptor Sensitivity() =>
-        m_category.Descriptors.First(d => d.Key == DisplaySettingsCategory.kKeyMouseSensitivity);
+    private SettingDescriptor SensitivityX() =>
+        m_category.Descriptors.First(d => d.Key == DisplaySettingsCategory.kKeyCameraSensitivityX);
+
+    private SettingDescriptor SensitivityY() =>
+        m_category.Descriptors.First(d => d.Key == DisplaySettingsCategory.kKeyCameraSensitivityY);
 }

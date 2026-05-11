@@ -8,10 +8,13 @@ namespace GlowCore.UI.Menus
     {
         IReadOnlyList<Resolution> AvailableResolutions { get; }
         Resolution NativeResolution { get; }
-        float MouseSensitivity { get; }
+        float CameraSensitivityX { get; }
+        float CameraSensitivityY { get; }
         void SetFullscreen(bool on);
         void SetResolution(int index);
-        void SetMouseSensitivity(float v);
-        event Action<float> OnMouseSensitivityChanged;
+        void SetCameraSensitivityX(float v);
+        void SetCameraSensitivityY(float v);
+        event Action<float> OnCameraSensitivityXChanged;
+        event Action<float> OnCameraSensitivityYChanged;
     }
 }

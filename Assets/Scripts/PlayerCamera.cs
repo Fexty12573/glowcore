@@ -12,7 +12,7 @@ using UnityEngine.InputSystem;
 
 The idea is that the camera orbits around the player.
 The camera anchor is at the same position as the player and serves as the center of the orbit.
-The orbit can be moved with the m_cameraOffset in PlayerMovement.cs. 
+The orbit can be moved with the m_cameraOffset in PlayerMovement.cs.
 Inspector transforms:
 * The Position of Camera Anchor should be set to the same value as m_cameraOffset.
 * The Position and Rotation of Main Camera should both be (0, 0, 0)
@@ -26,7 +26,8 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float m_maxPitch = 89f;
 
     private Vector2 m_lookInput;
-    private float m_sensitivityMultiplier = 1f;
+    private float m_sensitivityMultiplierX = 1f;
+    private float m_sensitivityMultiplierY = 1f;
     private IDisplayService m_displayService;
 
     public void Initialize(IDisplayService displayService)
@@ -37,8 +38,10 @@ public class PlayerCamera : MonoBehaviour
 
         if (m_displayService != null)
         {
-            m_displayService.OnMouseSensitivityChanged += OnMouseSensitivityChanged;
-            m_sensitivityMultiplier = DisplayService.SliderToMultiplier(m_displayService.MouseSensitivity);
+            m_displayService.OnCameraSensitivityXChanged += OnCameraSensitivityXChanged;
+            m_displayService.OnCameraSensitivityYChanged += OnCameraSensitivityYChanged;
+            m_sensitivityMultiplierX = DisplayService.SliderToMultiplier(m_displayService.CameraSensitivityX);
+            m_sensitivityMultiplierY = DisplayService.SliderToMultiplier(m_displayService.CameraSensitivityY);
         }
     }
 
@@ -51,13 +54,20 @@ public class PlayerCamera : MonoBehaviour
 
     private void UnsubscribeFrom(IDisplayService service)
     {
-        if (service != null)
-            service.OnMouseSensitivityChanged -= OnMouseSensitivityChanged;
+        if (service == null)
+            return;
+        service.OnCameraSensitivityXChanged -= OnCameraSensitivityXChanged;
+        service.OnCameraSensitivityYChanged -= OnCameraSensitivityYChanged;
     }
 
-    private void OnMouseSensitivityChanged(float slider)
+    private void OnCameraSensitivityXChanged(float slider)
     {
-        m_sensitivityMultiplier = DisplayService.SliderToMultiplier(slider);
+        m_sensitivityMultiplierX = DisplayService.SliderToMultiplier(slider);
+    }
+
+    private void OnCameraSensitivityYChanged(float slider)
+    {
+        m_sensitivityMultiplierY = DisplayService.SliderToMultiplier(slider);
     }
 
     private void OnLook(InputValue inputValue)
@@ -67,8 +77,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var yaw = m_lookInput.x * Time.fixedDeltaTime * m_horizontalCameraSpeed * m_sensitivityMultiplier;
-        var pitch = -m_lookInput.y * Time.fixedDeltaTime * m_verticalCameraSpeed * m_sensitivityMultiplier;
+        var yaw = m_lookInput.x * Time.fixedDeltaTime * m_horizontalCameraSpeed * m_sensitivityMultiplierX;
+        var pitch = -m_lookInput.y * Time.fixedDeltaTime * m_verticalCameraSpeed * m_sensitivityMultiplierY;
 
         var yawDegrees = yaw + m_cameraAnchor.localEulerAngles.y;
         var pitchDegrees = Mathf.Clamp(pitch + m_cameraAnchor.localEulerAngles.x, m_minPitch, m_maxPitch);

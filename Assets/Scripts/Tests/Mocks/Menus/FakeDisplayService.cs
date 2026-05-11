@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class FakeDisplayService : IDisplayService
 {
-    private float m_mouseSensitivity;
+    private float m_cameraSensitivityX;
+    private float m_cameraSensitivityY;
 
     public List<Resolution> Resolutions { get; } = new List<Resolution>();
     public Resolution Native { get; set; }
@@ -14,17 +15,25 @@ public class FakeDisplayService : IDisplayService
 
     public IReadOnlyList<Resolution> AvailableResolutions => Resolutions;
     public Resolution NativeResolution => Native;
-    public float MouseSensitivity => m_mouseSensitivity;
+    public float CameraSensitivityX => m_cameraSensitivityX;
+    public float CameraSensitivityY => m_cameraSensitivityY;
 
-    public event Action<float> OnMouseSensitivityChanged;
+    public event Action<float> OnCameraSensitivityXChanged;
+    public event Action<float> OnCameraSensitivityYChanged;
 
     public void SetFullscreen(bool on) => LastFullscreen = on;
 
     public void SetResolution(int index) => LastResolutionIndex = index;
 
-    public void SetMouseSensitivity(float v)
+    public void SetCameraSensitivityX(float v)
     {
-        m_mouseSensitivity = v;
-        OnMouseSensitivityChanged?.Invoke(v);
+        m_cameraSensitivityX = v;
+        OnCameraSensitivityXChanged?.Invoke(v);
+    }
+
+    public void SetCameraSensitivityY(float v)
+    {
+        m_cameraSensitivityY = v;
+        OnCameraSensitivityYChanged?.Invoke(v);
     }
 }

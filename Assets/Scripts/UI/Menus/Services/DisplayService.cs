@@ -12,9 +12,11 @@ namespace GlowCore.UI.Menus
 
         private readonly List<Resolution> m_resolutions;
         private readonly Resolution m_nativeResolution;
-        private float m_mouseSensitivity = kSensitivityDefaultSlider;
+        private float m_cameraSensitivityX = kSensitivityDefaultSlider;
+        private float m_cameraSensitivityY = kSensitivityDefaultSlider;
 
-        public event Action<float> OnMouseSensitivityChanged;
+        public event Action<float> OnCameraSensitivityXChanged;
+        public event Action<float> OnCameraSensitivityYChanged;
 
         public DisplayService()
         {
@@ -26,7 +28,9 @@ namespace GlowCore.UI.Menus
 
         public Resolution NativeResolution => m_nativeResolution;
 
-        public float MouseSensitivity => m_mouseSensitivity;
+        public float CameraSensitivityX => m_cameraSensitivityX;
+
+        public float CameraSensitivityY => m_cameraSensitivityY;
 
         public void SetFullscreen(bool on)
         {
@@ -42,10 +46,16 @@ namespace GlowCore.UI.Menus
             Screen.SetResolution(r.width, r.height, Screen.fullScreenMode, r.refreshRateRatio);
         }
 
-        public void SetMouseSensitivity(float v)
+        public void SetCameraSensitivityX(float v)
         {
-            m_mouseSensitivity = Mathf.Clamp01(v);
-            OnMouseSensitivityChanged?.Invoke(m_mouseSensitivity);
+            m_cameraSensitivityX = Mathf.Clamp01(v);
+            OnCameraSensitivityXChanged?.Invoke(m_cameraSensitivityX);
+        }
+
+        public void SetCameraSensitivityY(float v)
+        {
+            m_cameraSensitivityY = Mathf.Clamp01(v);
+            OnCameraSensitivityYChanged?.Invoke(m_cameraSensitivityY);
         }
 
         public static float SliderToMultiplier(float slider)
