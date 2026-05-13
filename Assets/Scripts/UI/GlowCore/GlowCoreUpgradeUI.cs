@@ -25,7 +25,6 @@ namespace GlowCore.UI.Upgrade
 
         [Header("Progress")]
         [SerializeField] private ProgressBarUI m_progressBar;
-        [SerializeField] private TextMeshProUGUI m_perkInfo;
 
         [Header("Feed Materials")]
         [SerializeField] private Transform m_feedRowContentParent;
@@ -258,9 +257,6 @@ namespace GlowCore.UI.Upgrade
                 else
                     m_levelText.text = currentLevel.ToString();
             }
-
-            if (m_perkInfo != null)
-                m_perkInfo.text = current != null ? current.FormatPerk() : string.Empty;
         }
 
         private void RefreshProgress()
