@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace GlowCore.UI.Inventory
@@ -253,6 +254,7 @@ namespace GlowCore.UI.Inventory
             if (m_chest == null)
                 return;
             ContainerOps.TransferAll(m_chest, (IItemContainer)m_inventoryService);
+            DeselectFocus();
         }
 
         private void OnInsertAllClicked()
@@ -260,6 +262,15 @@ namespace GlowCore.UI.Inventory
             if (m_chest == null)
                 return;
             ContainerOps.TransferAll((IItemContainer)m_inventoryService, m_chest);
+            DeselectFocus();
+        }
+
+        // Clears the EventSystem's selection so the button drops out of its highlighted
+        // / selected color-transition state and snaps back to normal after the click.
+        private static void DeselectFocus()
+        {
+            if (EventSystem.current != null)
+                EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }
