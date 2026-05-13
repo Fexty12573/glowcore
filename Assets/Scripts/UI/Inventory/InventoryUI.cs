@@ -239,7 +239,9 @@ namespace GlowCore.UI.Inventory
             }
             else if (hovered == null)
             {
-                if (m_heldContainer is PlayerInventory player)
+                // Don't drop to world while the GlowCore UI is open — the player is trying to feed
+                // the core, not litter the floor. CancelHeldItem snaps the stack back to its slot.
+                if (m_heldContainer is PlayerInventory player && !player.IsGlowCoreUIOpen)
                     DropItemToWorld(player);
             }
 
