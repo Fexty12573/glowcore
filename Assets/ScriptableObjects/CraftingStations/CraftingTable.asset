@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Crafting Table
   Description: Advanced Recipes
   RecipeList: {fileID: 11400000, guid: 20d39fcee632b0c4782ef6cba2942932, type: 2}
-  BackgroundColor: {r: 0.2688679, g: 0.15599413, b: 0.043120332, a: 1}
+  BackgroundSprite: {fileID: 21300000, guid: 43267e2552129a141b27aeb914e23656, type: 3}

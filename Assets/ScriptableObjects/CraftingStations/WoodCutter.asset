@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Wood Cutter
   Description: 
   RecipeList: {fileID: 11400000, guid: 47ea4027d81e599418d18e0e38ecafa2, type: 2}
-  BackgroundColor: {r: 0.2028302, g: 0.15212265, b: 0.1014151, a: 1}
+  BackgroundSprite: {fileID: 0}
