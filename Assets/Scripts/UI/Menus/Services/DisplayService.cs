@@ -12,8 +12,11 @@ namespace GlowCore.UI.Menus
 
         private readonly List<Resolution> m_resolutions;
         private readonly Resolution m_nativeResolution;
+        private readonly int m_recommendedResolutionIndex;
         private float m_cameraSensitivityX = kSensitivityDefaultSlider;
         private float m_cameraSensitivityY = kSensitivityDefaultSlider;
+        private int m_resolutionIndex;
+        private bool m_isFullscreen;
 
         public event Action<float> OnCameraSensitivityXChanged;
         public event Action<float> OnCameraSensitivityYChanged;
@@ -22,11 +25,16 @@ namespace GlowCore.UI.Menus
         {
             m_resolutions = BuildResolutionList();
             m_nativeResolution = QueryNativeResolution();
+            m_recommendedResolutionIndex = FindResolutionIndex(m_resolutions, m_nativeResolution);
+            m_resolutionIndex = m_recommendedResolutionIndex;
+            m_isFullscreen = Screen.fullScreen;
         }
 
         public IReadOnlyList<Resolution> AvailableResolutions => m_resolutions;
 
         public Resolution NativeResolution => m_nativeResolution;
+
+        public int RecommendedResolutionIndex => m_recommendedResolutionIndex;
 
         public float CameraSensitivityX => m_cameraSensitivityX;
 
@@ -34,7 +42,8 @@ namespace GlowCore.UI.Menus
 
         public void SetFullscreen(bool on)
         {
-            Screen.fullScreen = on;
+            m_isFullscreen = on;
+            ApplyDisplayMode();
         }
 
         public void SetResolution(int index)
@@ -42,8 +51,8 @@ namespace GlowCore.UI.Menus
             if (index < 0 || index >= m_resolutions.Count)
                 return;
 
-            Resolution r = m_resolutions[index];
-            Screen.SetResolution(r.width, r.height, Screen.fullScreenMode, r.refreshRateRatio);
+            m_resolutionIndex = index;
+            ApplyDisplayMode();
         }
 
         public void SetCameraSensitivityX(float v)
@@ -61,6 +70,29 @@ namespace GlowCore.UI.Menus
         public static float SliderToMultiplier(float slider)
         {
             return Mathf.Lerp(kSensitivityMin, kSensitivityMax, Mathf.Clamp01(slider));
+        }
+
+        // Single Screen.SetResolution call carries both the desired resolution AND the desired
+        // fullscreen mode explicitly — so a SetFullscreen→SetResolution sequence can't lose the
+        // fullscreen change to a stale Screen.fullScreenMode read between the two calls.
+        private void ApplyDisplayMode()
+        {
+            if (m_resolutionIndex < 0 || m_resolutionIndex >= m_resolutions.Count)
+                return;
+
+            Resolution r = m_resolutions[m_resolutionIndex];
+            FullScreenMode mode = m_isFullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
+            Screen.SetResolution(r.width, r.height, mode, r.refreshRateRatio);
+        }
+
+        private static int FindResolutionIndex(IReadOnlyList<Resolution> resolutions, Resolution target)
+        {
+            for (var i = 0; i < resolutions.Count; i++)
+            {
+                if (resolutions[i].width == target.width && resolutions[i].height == target.height)
+                    return i;
+            }
+            return Mathf.Max(0, resolutions.Count - 1);
         }
 
         private static Resolution QueryNativeResolution()
