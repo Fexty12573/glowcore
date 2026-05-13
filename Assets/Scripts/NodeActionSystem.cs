@@ -66,8 +66,10 @@ public class NodeActionSystem : MonoBehaviour
 
     private void UpdateOutlineHover()
     {
-        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingStationOpen ||
-                                          m_playerInventory.IsGlowCoreUIOpen || m_playerInventory.IsChestOpen))
+        var inventoryBlocking = m_playerInventory != null
+            && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingStationOpen
+                || m_playerInventory.IsGlowCoreUIOpen || m_playerInventory.IsChestOpen);
+        if (Time.timeScale == 0f || inventoryBlocking)
         {
             if (m_currentNode != null)
                 OnChangeSelectedNode?.Invoke(null);

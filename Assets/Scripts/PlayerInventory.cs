@@ -119,10 +119,18 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
         OnChestToggled?.Invoke(open);
     }
 
+    public void RequestCloseUI()
+    {
+        if (m_isOpen)
+            SetInventoryOpen(false);
+        OnCloseUIRequested?.Invoke();
+    }
+
     // IItemContainer — Commands not already on IInventoryService
     public void SetSlot(int flatIndex, Item item, int amount) => m_inventory.SetSlot(flatIndex, item, amount);
 
     public int AddStack(Item item, int amount) => m_inventory.AddStack(item, amount, kHotbarStartIndex);
+
 
     // Public Methods — Game Logic
     public Inventory GetInventory() => m_inventory;
@@ -164,19 +172,18 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
     }
 
     // Private Methods — Input Action Callbacks
-    private void OnInventory(InputValue value) => ToggleInventory();
+    private void OnInventory(InputValue value)
+    {
+        // Block inventory toggle while the game is paused (Time.timeScale == 0 indicates a blocking menu).
+        if (Time.timeScale == 0f)
+            return;
+        ToggleInventory();
+    }
 
     private void OnCrafting(InputValue value)
     {
         if (m_isOpen)
             OnCraftingToggled?.Invoke();
-    }
-
-    private void OnCloseUI(InputValue value)
-    {
-        if (m_isOpen)
-            SetInventoryOpen(false);
-        OnCloseUIRequested?.Invoke();
     }
 
     private void OnHotbarSlot1(InputValue value) => SelectHotbarSlot(0);

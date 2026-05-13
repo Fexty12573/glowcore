@@ -109,3 +109,5 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 CodeCoverage/
+# Local Claude Code settings/cache
+.claude/

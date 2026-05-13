@@ -25,6 +25,13 @@ public class SaveData
 
     public static bool Exists() => File.Exists(GetPath());
 
+    public static void Delete()
+    {
+        var path = GetPath();
+        if (File.Exists(path))
+            File.Delete(path);
+    }
+
     public static SaveData Load()
     {
         using var stream = File.OpenRead(GetPath());

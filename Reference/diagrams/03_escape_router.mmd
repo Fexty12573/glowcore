@@ -1,0 +1,14 @@
+flowchart LR
+    Esc(("Esc")) -->|InputAction.performed| PIH[PauseInputHandler]
+    PIH -->|router.Dispatch| ER[EscapeRouter]
+    ER -->|priority 100| IEC[InventoryEscapeConsumer]
+    IEC --> IsOpen{Inventory /<br/>crafting /<br/>glowcore<br/>open?}
+    IsOpen -->|yes| Close["PlayerInventory.RequestCloseUI<br/>fires OnCloseUIRequested<br/>return true"]
+    Close --> Stop[Router stops]
+    IsOpen -->|no, return false| Fall[Router falls through]
+    Fall -->|priority 0| PEC[PauseEscapeConsumer]
+    PEC --> Cur{MenuManager.Current?}
+    Cur -->|null| OpenP[Pause + Open Pause]
+    Cur -->|Pause| ClsP[Resume + CloseAll]
+    Cur -->|Settings / NewGame| Back[MenuManager.Back]
+    Cur -->|ConfirmDialog| Swallow[swallow, do nothing]

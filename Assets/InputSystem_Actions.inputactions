@@ -115,7 +115,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CloseUI",
+                    "name": "PauseEscape",
                     "type": "Button",
                     "id": "a1b2c3d4-0003-4000-8000-000000000003",
                     "expectedControlType": "Button",
@@ -622,7 +622,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "CloseUI",
+                    "action": "PauseEscape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
