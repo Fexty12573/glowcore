@@ -14,7 +14,7 @@ namespace GlowCore.UI
         private const float kLerpSpeed = 14f;
         private const float kPressScale = 0.97f;
 
-        private static readonly Color kDisabledTint = new Color(0.94f, 0.90f, 0.83f, 0.2f);
+        private static readonly Color s_disabledTint = new Color(0.94f, 0.90f, 0.83f, 0.2f);
 
         [SerializeField] private float m_hoverScale = 1.05f;
         [SerializeField] private Color m_hoverOutlineColor = new Color(1f, 0.92f, 0.66f, 0.95f);
@@ -106,7 +106,7 @@ namespace GlowCore.UI
 
             if (m_image != null)
             {
-                Color targetImageColor = interactable ? m_baseImageColor : kDisabledTint;
+                Color targetImageColor = interactable ? m_baseImageColor : s_disabledTint;
                 m_image.color = Color.Lerp(m_image.color, targetImageColor, t);
             }
 
