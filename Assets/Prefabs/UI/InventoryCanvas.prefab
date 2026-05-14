@@ -1643,7 +1643,6 @@ MonoBehaviour:
   m_nextLevelIcon: {fileID: 428335116272769961}
   m_levelText: {fileID: 4015544673855425405}
   m_progressBar: {fileID: 4800204662448800947}
-  m_perkInfo: {fileID: 0}
   m_feedRowContentParent: {fileID: 7913213074579929557}
   m_feedRowPrefab: {fileID: 4399522040802699559, guid: fba501a854611fc419c46fde76924364, type: 3}
   m_feedButton: {fileID: 4416100149506014493}
@@ -3734,7 +3733,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7913213074579929557}
-  - component: {fileID: 1224607490634991843}
   - component: {fileID: 2497688708492331444}
   m_Layer: 5
   m_Name: Content
@@ -3762,32 +3760,6 @@ RectTransform:
   m_AnchoredPosition: {x: 6, y: -0.52886504}
   m_SizeDelta: {x: 177.7, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1224607490634991843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4198920170970503840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
-  m_Padding:
-    m_Left: 4
-    m_Right: 4
-    m_Top: 4
-    m_Bottom: 4
-  m_ChildAlignment: 0
-  m_Spacing: 4
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &2497688708492331444
 MonoBehaviour:
   m_ObjectHideFlags: 0
