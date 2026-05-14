@@ -13,6 +13,11 @@ namespace GlowCore.UI.Upgrade
         [SerializeField] private Image m_icon;
         [SerializeField] private TextMeshProUGUI m_nameLabel;
         [SerializeField] private TextMeshProUGUI m_countLabel;
+        [SerializeField] private Image m_background;
+
+        [Header("Backgrounds")]
+        [SerializeField] private Sprite m_defaultBackground;
+        [SerializeField] private Sprite m_completeBackground;
 
         private IInventoryService m_inventoryService;
         private IGlowCoreObject m_target;
@@ -55,13 +60,16 @@ namespace GlowCore.UI.Upgrade
                 return;
 
             var accumulated = m_target != null ? m_target.AccumulatedFor(m_item) : 0;
+            var enough = accumulated >= m_required;
 
             if (m_countLabel != null)
             {
                 m_countLabel.text = $"{accumulated}/{m_required}";
-                var enough = accumulated >= m_required;
                 m_countLabel.color = enough ? (Color)UIColors.Green : (Color)UIColors.MissingMat;
             }
+
+            if (m_background != null)
+                m_background.sprite = enough ? m_completeBackground : m_defaultBackground;
         }
 
         private int GetMaxSelectable()
