@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: Crafting Table
   Description: Advanced Recipes
   RecipeList: {fileID: 11400000, guid: 20d39fcee632b0c4782ef6cba2942932, type: 2}
-  BackgroundSprite: {fileID: 21300000, guid: 43267e2552129a141b27aeb914e23656, type: 3}
+  BackgroundSprite: {fileID: 21300000, guid: 449d9e3ab70eec94598d2f449e59242c, type: 3}
+  RecipeRowTheme: {fileID: 0}
