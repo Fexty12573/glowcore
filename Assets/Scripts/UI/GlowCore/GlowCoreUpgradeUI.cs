@@ -253,9 +253,17 @@ namespace GlowCore.UI.Upgrade
             {
                 var currentLevel = current != null ? current.Level : m_target.Level;
                 if (next != null)
+                {
                     m_levelText.text = $"{currentLevel}    {next.Level}";
+                    m_levelText.horizontalAlignment = HorizontalAlignmentOptions.Center;
+                }
                 else
+                {
+                    // Max level: keep the lone number in the left slot instead of
+                    // centering it onto the arrow baked into the header art.
                     m_levelText.text = currentLevel.ToString();
+                    m_levelText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                }
             }
         }
 
