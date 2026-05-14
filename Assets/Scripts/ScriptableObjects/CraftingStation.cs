@@ -9,5 +9,6 @@ namespace ScriptableObjects
         public string Description;
         public RecipeList RecipeList;
         public Sprite BackgroundSprite;
+        public RecipeRowTheme RecipeRowTheme;
     }
 }

@@ -14,12 +14,20 @@ namespace GlowCore.UI.Inventory
         private const int kIngredientFontSize = 9;
 
         [Header("References")]
-        [SerializeField] private Image m_bgImage;
-        [SerializeField] private Image m_borderImage;
+        [SerializeField] private Image m_background;
         [SerializeField] private Image m_resultIcon;
         [SerializeField] private TextMeshProUGUI m_recipeName;
         [SerializeField] private Transform m_ingredientParent;
         [SerializeField] private Button m_craftButton;
+        [SerializeField] private Image m_craftButtonImage;
+
+        [Header("Backgrounds")]
+        [SerializeField] private Sprite m_defaultBackground;
+        [SerializeField] private Sprite m_craftableBackground;
+
+        [Header("Craft Button")]
+        [SerializeField] private Sprite m_craftButtonActive;
+        [SerializeField] private Sprite m_craftButtonInactive;
 
         private ICraftingService m_craftingService;
         private Recipe m_recipe;
@@ -47,10 +55,13 @@ namespace GlowCore.UI.Inventory
             public Recipe.Ingredient Ingredient;
         }
 
-        public void Initialize(ICraftingService craftingService, Recipe recipe, TooltipUI tooltip)
+        public void Initialize(ICraftingService craftingService, Recipe recipe, TooltipUI tooltip, RecipeRowTheme theme = null)
         {
             m_craftingService = craftingService;
             m_recipe = recipe;
+
+            if (theme != null)
+                ApplyTheme(theme);
 
             m_recipeName.text = recipe.Name;
 
@@ -155,21 +166,31 @@ namespace GlowCore.UI.Inventory
 
             m_craftButton.interactable = canCraft;
 
-            if (m_borderImage != null)
-                m_borderImage.color = canCraft ? (Color)UIColors.Green : (Color)UIColors.SlotBorder;
+            if (m_background != null)
+                m_background.sprite = canCraft ? m_craftableBackground : m_defaultBackground;
 
-            if (m_bgImage != null)
-            {
-                var bg = (Color)UIColors.SlotBg;
-                bg.a = canCraft ? bg.a : 0.35f;
-                m_bgImage.color = bg;
-            }
+            if (m_craftButtonImage != null)
+                m_craftButtonImage.sprite = canCraft ? m_craftButtonActive : m_craftButtonInactive;
         }
 
         private void OnCraftClicked()
         {
             m_craftingService.Craft(m_recipe);
             UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
+        }
+
+        // A theme overrides only the sprites it actually sets — a null sprite leaves the
+        // prefab default in place, so a station can re-skin just the parts it wants.
+        private void ApplyTheme(RecipeRowTheme theme)
+        {
+            if (theme.DefaultBackground != null)
+                m_defaultBackground = theme.DefaultBackground;
+            if (theme.CraftableBackground != null)
+                m_craftableBackground = theme.CraftableBackground;
+            if (theme.CraftButtonActive != null)
+                m_craftButtonActive = theme.CraftButtonActive;
+            if (theme.CraftButtonInactive != null)
+                m_craftButtonInactive = theme.CraftButtonInactive;
         }
     }
 }
