@@ -526,9 +526,10 @@ Performance Efficiency addresses the amount of resources used under stated condi
   id: [NFR105],
   description: [Minimal Hardware Requirements],
   requirements: [The game must run on minimal hardware with the following specifications:
-  - 2 GHz CPU
-  - 8 GB RAM
-  - NVIDIA GeForce GTX 1660],
+    - 2 GHz CPU
+    - 8 GB RAM
+    - NVIDIA GeForce GTX 1660
+  ],
   priority: [Optional / Medium],
   measurement: [Test the game on a defined minimum hardware baseline and verify all performance NFRs (FPS, load times) are met.],
   verification: [Execute a full gameplay session on minimum-spec hardware. Record FPS, load times, and memory usage to confirm compliance.],
@@ -720,3 +721,56 @@ Portability addresses the degree of effectiveness and efficiency with which a sy
   nfr_caption: [NFR503 -- Display Resolution Support],
   status_color: nfr-status.at("nfr503"),
 ) <NFR503>
+
+#pagebreak()
+==== NFR-Architecture Traceability
+
+The table below links NFRs to the specific technical solution in the architecture that is primarily responsible for satisfying it. The purpose of this table is to make the connection between quality requirements and design decisions explicit and verifiable.
+
+#figure(
+  table(
+    columns: (0.55fr, 1.2fr, 1.7fr, 1.9fr),
+    inset: 5pt,
+    align: (left, left, left, left),
+    stroke: 0.5pt,
+    fill: (x, y) => if y == 0 { luma(220) } else if calc.even(y) { luma(245) } else { white },
+    [*NFR*], [*Quality Attribute*], [*Technical Solution*], [*How the Architecture Addresses It*],
+
+    [@NFR401],
+    [Maintainability\ (Extensibility)],
+    [`IInteractable`, `IHandItem`,\ ScriptableObjects],
+    [New nodes implement `IInteractable`; new usable items implement `IHandItem`; new content is added as ScriptableObject assets. No existing class needs to change.],
+
+    [@NFR402],
+    [Maintainability\ (Test Coverage)],
+    [Plain C\# classes;\ interface-based design],
+    [`Inventory` and `CraftingSystem` are plain C\# classes, not MonoBehaviours, so NUnit can test them without a Unity scene. The service interfaces enable mock injection in integration tests.],
+
+    [@NFR501],
+    [Portability\ (Multi-Platform)],
+    [Unity, URP,\ New Input System],
+    [Unity builds natively to Windows, Linux, and WebGL from one codebase. URP renders consistently across all three. The New Input System abstracts platform-specific input, requiring no per-platform code.],
+
+    [@NFR502],
+    [Portability\ (Rendering Pipeline)],
+    [Universal Render Pipeline (URP)],
+    [URP was chosen over the Built-in Pipeline (deprecated) and HDRP (too heavy). It supports cross-platform shaders and custom post-processing (e.g. `LowResViewport`) without HDRP's hardware requirements.],
+
+    [@NFR103],
+    [Performance\ (Frame Rate)],
+    [URP; event-driven UI;\ Component-Based Architecture],
+    [URP has a lower per-frame GPU cost than HDRP. The event-driven UI only runs when events like `OnSlotChanged` fire, never polling each frame. Component-Based Architecture avoids monolithic `Update()` methods.],
+
+    [@NFR301\ @NFR302\ @NFR303],
+    [Reliability\ (Save System)],
+    [Binary serialization;\ ScriptableObject asset refs],
+    [Binary serialization keeps file sizes small (NFR104). Items are stored as ScriptableObject references rather than copies, ensuring consistency across sessions. Auto-save triggers on key game events, not only on shutdown.],
+
+    [@NFR201\ @NFR202\ @NFR203],
+    [Usability\ (Feedback &\ Learnability)],
+    [`GetActionPromptText()`;\ event-driven UI],
+    [The Use/Interact abstraction reduces controls to two input types, lowering cognitive load (NFR203). Each node provides its own prompt via `GetActionPromptText()` (NFR201). The event-driven UI updates instantly on state changes, keeping upgrade indicators accurate (NFR202).],
+  ),
+  caption: [NFR-to-Architecture Traceability],
+  supplement: [Table],
+)
