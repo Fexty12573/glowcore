@@ -1,4 +1,91 @@
 == Architecture
+=== Frontend Architecture
+The user interface of GlowCore is designed to be self-explanatory. Therefore, only selected screens are explained in detail below.
+
+==== Main Menu
+#figure(
+  image("../../resources/01 Product Documentation/frontend/MainMenu.png", width: 120%),
+  caption: [Main Menu],
+  supplement: [Image],
+)
+The Main Menu is the entry point of the game. The player can continue with an existing save of the game or create a new one. The player can only have one save at a time.
+#pagebreak()
+
+==== New Game
+#figure(
+  image("../../resources/01 Product Documentation/frontend/NewGame.png", width: 120%),
+  caption: [New Game],
+  supplement: [Image],
+)
+
+
+#pagebreak()
+==== Pause Menu
+#figure(
+  image("../../resources/01 Product Documentation/frontend/PauseMenu.png", width: 120%),
+  caption: [Pause Menu],
+  supplement: [Image],
+)
+In the Pause Menu the player can save the game manually. The game is also automatically saved when the player exits to the Main Menu.
+
+#pagebreak()
+==== Audio Settings
+#figure(
+  image("../../resources/01 Product Documentation/frontend/AudioSettings.png", width: 120%),
+  caption: [Audio Settings],
+  supplement: [Image],
+)
+
+#pagebreak()
+==== Display Settings
+#figure(
+  image("../../resources/01 Product Documentation/frontend/DisplaySettings.png", width: 120%),
+  caption: [Display Settings],
+  supplement: [Image],
+)
+The appropriate screen size is automatically detected and selected when the game starts.
+#pagebreak()
+==== Unapplied Changes
+#figure(
+  image("../../resources/01 Product Documentation/frontend/UnsavedChanges.png", width: 120%),
+  caption: [Unapplied Changes],
+  supplement: [Image],
+)
+When the player changes settings without applying them, this confirmation dialog is displayed. It prevents confusion by ensuring that unsaved changes are clearly communicated.
+#pagebreak()
+==== Inventory
+#figure(
+  image("../../resources/01 Product Documentation/frontend/Inventory.png", width: 120%),
+  caption: [Inventory],
+  supplement: [Image],
+)
+The item stacks can be drag-and-dropped within the inventory. By dragging an item outside the inventory panel, the player drops it into the world. The player can also craft certain items in the inventory without the need for a crafting station.
+#pagebreak()
+==== Crafting Table
+#figure(
+  image("../../resources/01 Product Documentation/frontend/CraftingTable.png", width: 120%),
+  caption: [Crafting Table],
+  supplement: [Image],
+)
+
+#pagebreak()
+==== More Crafting Stations
+#figure(
+  image("../../resources/01 Product Documentation/frontend/Furnace.png", width: 120%),
+  caption: [More Crafting Stations],
+  supplement: [Image],
+)
+Crafting Tables, Furnaces, Anvils etc. are abstracted into crafting stations that share a common UI but with different colors and different available crafting recipes. This design follows our extensibility principle and allows new crafting stations to be added easily.
+#pagebreak()
+==== Chest
+#figure(
+  image("../../resources/01 Product Documentation/frontend/Chest.png", width: 120%),
+  caption: [Chest],
+  supplement: [Image],
+)
+
+#pagebreak()
+
 
 === C4 Model
 To model the architecture of GlowCore we decided to use the C4 Model. The model is designed to provide stakeholders new to the project a high-level overview of GlowCore with different levels of abstraction. We decided against arc42 because it is too extensive for this project.
@@ -211,3 +298,49 @@ A major limit of our architecture that we are strongly tied to Unity. Switching 
 Our game is distributed via Steam, which is our only external dependency. Steam is responsible for installing, launching and updating the game on the end-user side. We also use Steam for marketing.
 
 We create the store page for our game on Steamworks, where we can configure the description, upload marketing material etc. The executable is uploaded using Steamworks SteamPipe, which handles distribution and versioning.
+
+#pagebreak()
+=== Game Design
+This chapter covers Gameplay Decisions rather than technical solutions, focusing on how the game is structured to create an entertaining experience. Game design can be understood as the application of user experience principles within the domain of game development.
+
+==== Core Gameplay Loop
+The core gameplay loop of GlowCore can be broken down into the following steps:
++ Gather resources
++ Craft items
++ Upgrade tools
++ Build Machines
++ Upgrade the GlowCore, which unlocks new areas and items
++ Repeat loop
+
+==== Gameplay Progression
+The following sections describe the gameplay progression in chronological order and explain the design decisions and their reasons.
+
+===== Early Game
+The player starts with a basic wooden axe and gathers wood by manually cutting trees. Early trees can be chopped quickly but only give a small amount of wood. Over time, larger trees appear which require significantly more time to cut but also give more wood.
+
+===== Automation Phase 1
+At this point, manual gathering becomes inefficient, encouraging the player to craft their first axe-machine. This machine is placed in front of a tree and automatically cuts it over time. While the machine is operating, the player is free to perform other actions, such as gathering additional resources to craft more machines.
+
+This creates a strong feeling of progress and a passive progression reward, since the player knows that progress is being made even while he is not directly interacting with the machine. This effect is reinforced as the player uses gathered resources to construct more machines, amplifying the loop.
+
+When returning to the machine, the player collects the gathered resources and moves the machine to a new tree. This is acceptable at this stage because repositioning requires significantly less effort than manual tree cutting.
+
+===== Automation Phase 2
+Over time, the player reaches a point where moving so many axe-machines becomes tedious. At this stage, a new system is introduced: The replanter block. The replanter automatically places saplings. This allows trees to regrow automatically, removing the need to constantly resposition machines. However, this introduces a trade-off, as machines remain inactive while waiting for trees to regrow. This adds strategic depth to the system.
+
+===== Automation Phase 3
+Later in progression, a new tree type is introduced that has short cut time and drops a relatively big amount of wood but has a very long growth time. To improve effiency the player crafts the newly unlocked axe-machine Tier 2, which moves automatically into the direction its facing and harvest trees sequentially.
+
+At this stage, multiple replanter blocks can be used per machine, enabling more complex automated setups. A key design decision is that replanter blocks must be significantly cheaper than Tier 2 machines, encouraging players to build efficient production lines.
+
+===== Full Automation
+However, this introduces a new problem: machine orientation and placement still require manual adjustment. This is resolved by the introduction of rotator blocks. When a machine collides with a rotator block, it automatically rotates by 90, 180, or 270 degrees depending on the block type. This enables fully automated resource gathering systems and allows players to design complex production paths.
+
+==== Automation Contraints
+A core design principle in this system is that not everything should be fully automatable. If all actions were automated, the player would just watch the machines and the player becomes bored. Instead, the player must still actively gather certain resources in order to craft and expand automation systems.
+
+==== Depth and Complexity
+We followed the principle of providing as much depth as possible with as little complexity as possible.
+The goal of this design is to allow the player to create complex and interesting systems without introducing a large number of different mechanics and complicated rules.
+
+In GlowCore, this is achieved by limiting the core automation system to only three main components: the axe-machine, the replanter, and the rotator. When combined, these simple systems interact in ways that allow for emergent complexity, such as automation lines with different layouts.
