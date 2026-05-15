@@ -8,23 +8,27 @@ namespace GlowCore.UI.Inventory
     public class ChestUI : MonoBehaviour
     {
         // Instance Fields
-        [Header("References")]
-        [SerializeField] private CanvasGroup m_panelCanvasGroup;
+        [Header("References")] [SerializeField]
+        private CanvasGroup m_panelCanvasGroup;
+
         [SerializeField] private CanvasGroup m_backdropCanvasGroup;
 
-        [Header("Close Button")]
-        [SerializeField] private Button m_closeButton;
+        [Header("Close Button")] [SerializeField]
+        private Button m_closeButton;
 
-        [Header("Chest Section")]
-        [SerializeField] private Transform m_chestGridParent;
+        [Header("Chest Section")] [SerializeField]
+        private Transform m_chestGridParent;
+
         [SerializeField] private GameObject m_slotPrefab;
 
-        [Header("Transfer Buttons")]
-        [SerializeField] private Button m_takeAllButton;
+        [Header("Transfer Buttons")] [SerializeField]
+        private Button m_takeAllButton;
+
         [SerializeField] private Button m_insertAllButton;
 
-        [Header("Inventory Display")]
-        [SerializeField] private Transform m_inventoryUpperGridParent;
+        [Header("Inventory Display")] [SerializeField]
+        private Transform m_inventoryUpperGridParent;
+
         [SerializeField] private Transform m_inventoryHotbarRowParent;
 
         private IInventoryService m_inventoryService;
@@ -46,9 +50,14 @@ namespace GlowCore.UI.Inventory
             EnsureInitialized();
             BindChest(chest);
             SetVisible(true);
+            AudioManager.Instance.Play(AudioManager.SoundType.OpenChest, AudioManager.AudioChannel.Environment);
         }
 
-        public void Hide() => SetVisible(false);
+        public void Hide()
+        {
+            SetVisible(false);
+            AudioManager.Instance.Play(AudioManager.SoundType.CloseChest, AudioManager.AudioChannel.Environment);
+        }
 
         public void SetVisible(bool visible)
         {

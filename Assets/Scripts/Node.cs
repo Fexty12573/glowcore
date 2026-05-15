@@ -41,6 +41,11 @@ namespace GlowCore.World
             m_effectiveBreakTime = m_nodeData.GetEffectiveBreakTime(tool);
             m_isHolding = true;
             m_holdTimer = 0f;
+
+            AudioManager.Instance.Play(
+                tool.Sound,
+                AudioManager.AudioChannel.Environment);
+
             OnStartBreaking?.Invoke(this);
         }
 
@@ -49,6 +54,7 @@ namespace GlowCore.World
             m_effectiveBreakTime = m_nodeData.BaseBreakTime;
             m_isHolding = false;
             m_holdTimer = 0f;
+            AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
             OnCancelBreaking?.Invoke(this);
         }
 
@@ -106,13 +112,16 @@ namespace GlowCore.World
                     Random.Range(-0.2f, 0.2f));
                 ItemStackDrop.Spawn(drop, transform.position + offset);
             }
+
             foreach (var tile in TilesUsed)
             {
                 WorldGrid.Instance.ClearNodeAt(tile);
             }
+
             m_markedForDeletion = true;
             OnNodeBroken?.Invoke(this);
             Destroy(gameObject);
+            AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
         }
     }
 }
