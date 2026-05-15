@@ -16,10 +16,8 @@
   links: "-",
 )
 
-// ==== Sprint goal
-// - Extend game content with phased progression
-// - Add new resources and mechanics
-// - Improve game playability and tutorial pacing
-// - Implement main menu, refine GlowCore UI and crafting system
+ ==== Sprint goal
+ - Finalise Audio system
+ - Finalise Game biomes and environment objects
 
 #pagebreak()
