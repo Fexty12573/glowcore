@@ -7,33 +7,66 @@
 #meeting_info(
   date: "15.05.2026",
   sprint: "Sprint 6",
-  lead: "Nathanael Fässler",
-  scribe: "Yoris Kucera",
-  time: "20:30–20:40",
+  lead: "Yoris Kucera",
+  scribe: "Cedric Cathomas",
+  time: "13:00-14:00",
   location: "Online",
   participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera, Cedric Cathomas",
   links: "-",
 )
 
-// ==== What went well
-// - Time management
-// - Proper prototype is cool
-// - Teamwork
-// - New outline looks good
-// - Savefile
 
-// ==== What didn't
-// - Time management
-// - Tasks still not done 1 day before sprint end
-// - Extra tasks from advisor
-// - Random features in one PR that were not planned
-// - BIG PRs
+==== Agenda
+#agenda_table((
+  [UI design and title scene],
+  [Cedric Cathomas],
+  [
+    - Showed how the implemented UI looks and works
+  ],
+  [Documentation],
+  [Nathanael Fässler and Yoris Kucera],
+  [
+    - Presented Documentation changes 
+    - Deployment diagram
+    - Design decisions
+    - Game design
+    - Frontend Architecture
+  ],
+  [Audio system],
+  [Dominik Wyss],
+  [
+    - Demo of how to implement new audio effects
+    - Presented Audio manager singleton
+  ],
+  [Biome and Environment],
+  [Dominik Wyss],
+  [
+    - Demo of how to implement biomes and environment objects
+  ],
+))
 
-// ==== Todos
-// #todo_table((
-//   [Think about items to be added to the game and what use they could have],
-//   [All],
-//   [24.04.2026],
-// ))
+
+==== What went well
+- Game looks much better, overall impression improved alot, looks like a real game now
+- Border looks nice
+- Good teamwork
+
+==== What didn’t
+- Discord communication tone  
+- Non documented documentation tasks
+
+
+==== Todos
+#todo_table((
+  [NFR Verification],
+  [Cedric Cathomas],
+  [17.05.2026],
+  [Time tracking],
+  [All],
+  [17.05.2026],
+))
+
+
 
 #pagebreak()
+
