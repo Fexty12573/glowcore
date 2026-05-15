@@ -47,9 +47,9 @@
 
 
 ==== What went well
-- Had fun beginning the work in Unity.
-- border looks nice
-- good teamwork
+- Game looks much better, overall impression improved alot, looks like a real game now
+- Border looks nice
+- Good teamwork
 
 ==== What didn’t
 - Discord communication tone  
@@ -70,4 +70,3 @@
 
 #pagebreak()
 
-#pagebreak()
