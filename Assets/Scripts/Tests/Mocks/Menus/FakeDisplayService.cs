@@ -10,6 +10,7 @@ public class FakeDisplayService : IDisplayService
 
     public List<Resolution> Resolutions { get; } = new List<Resolution>();
     public Resolution Native { get; set; }
+    public int RecommendedResolutionIndex { get; set; }
     public int LastResolutionIndex { get; private set; } = -1;
     public bool? LastFullscreen { get; private set; }
 

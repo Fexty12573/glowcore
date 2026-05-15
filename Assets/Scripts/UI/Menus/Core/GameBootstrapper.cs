@@ -115,7 +115,7 @@ namespace GlowCore.UI.Menus
             var router = new EscapeRouter();
             PlayerInventory inventory = m_playerInventory != null ? m_playerInventory : FindFirstObjectByType<PlayerInventory>();
             if (inventory != null)
-                router.Register(new InventoryEscapeConsumer(inventory));
+                router.Register(new InventoryEscapeConsumer(inventory, m_menuManager));
             if (m_settingsScreen != null)
                 router.Register(new SettingsEscapeConsumer(m_menuManager, m_settingsScreen));
             router.Register(new PauseEscapeConsumer(m_menuManager, m_gameState));
@@ -158,6 +158,15 @@ namespace GlowCore.UI.Menus
             displayService.SetCameraSensitivityY(repository.GetFloat(
                 DisplaySettingsCategory.kKeyCameraSensitivityY,
                 DisplayService.kSensitivityDefaultSlider));
+
+            // First-launch defaults: native resolution and the OS-reported fullscreen state. On
+            // subsequent launches the persisted values win.
+            displayService.SetResolution(repository.GetInt(
+                DisplaySettingsCategory.kKeyResolution,
+                displayService.RecommendedResolutionIndex));
+            displayService.SetFullscreen(repository.GetBool(
+                DisplaySettingsCategory.kKeyFullscreen,
+                Screen.fullScreen));
         }
     }
 }

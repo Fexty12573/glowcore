@@ -25,7 +25,6 @@ namespace GlowCore.UI.Upgrade
 
         [Header("Progress")]
         [SerializeField] private ProgressBarUI m_progressBar;
-        [SerializeField] private TextMeshProUGUI m_perkInfo;
 
         [Header("Feed Materials")]
         [SerializeField] private Transform m_feedRowContentParent;
@@ -210,7 +209,6 @@ namespace GlowCore.UI.Upgrade
                 }
 
                 row.Initialize(m_inventoryService, m_target, ingredient.Item, ingredient.Amount);
-                row.OnSelectionChanged += OnRowSelectionChanged;
                 m_rows.Add(row);
             }
         }
@@ -222,7 +220,6 @@ namespace GlowCore.UI.Upgrade
                 FeedMaterialRowUI row = m_rows[i];
                 if (row == null)
                     continue;
-                row.OnSelectionChanged -= OnRowSelectionChanged;
                 Destroy(row.gameObject);
             }
             m_rows.Clear();
@@ -256,13 +253,18 @@ namespace GlowCore.UI.Upgrade
             {
                 var currentLevel = current != null ? current.Level : m_target.Level;
                 if (next != null)
-                    m_levelText.text = $"{currentLevel} => {next.Level}";
+                {
+                    m_levelText.text = $"{currentLevel}    {next.Level}";
+                    m_levelText.horizontalAlignment = HorizontalAlignmentOptions.Center;
+                }
                 else
+                {
+                    // Max level: keep the lone number in the left slot instead of
+                    // centering it onto the arrow baked into the header art.
                     m_levelText.text = currentLevel.ToString();
+                    m_levelText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                }
             }
-
-            if (m_perkInfo != null)
-                m_perkInfo.text = current != null ? current.FormatPerk() : string.Empty;
         }
 
         private void RefreshProgress()
@@ -282,42 +284,29 @@ namespace GlowCore.UI.Upgrade
             if (m_feedButton == null)
                 return;
 
+            // Button sprite has "FEED ALL" baked in — leave the runtime label empty so it
+            // doesn't double-render. State (max level / ready-to-upgrade) is communicated
+            // through the button's interactable state and auto-upgrade-on-click behavior.
+            if (m_feedButtonLabel != null)
+                m_feedButtonLabel.text = string.Empty;
+
             if (m_target != null && m_target.IsReadyToUpgrade)
             {
-                if (!m_target.HasNextLevel)
-                {
-                    m_feedButton.interactable = false;
-                    if (m_feedButtonLabel != null)
-                        m_feedButtonLabel.text = "MAX LEVEL REACHED";
-                    return;
-                }
-
-                m_feedButton.interactable = true;
-                if (m_feedButtonLabel != null)
-                {
-                    GlowCoreLevelConfig next = m_target.NextLevelConfig;
-                    m_feedButtonLabel.text = next != null
-                        ? $"UPGRADE TO LEVEL {next.Level}"
-                        : "UPGRADE";
-                }
+                m_feedButton.interactable = m_target.HasNextLevel;
                 return;
             }
 
-            Debug.Log(m_feedButtonLabel.text);
-            if (m_feedButtonLabel != null)
-                m_feedButtonLabel.text = "FEED MATERIALS";
-
-            var anySelected = false;
+            var anyAvailable = false;
             for (var i = 0; i < m_rows.Count; i++)
             {
-                if (m_rows[i] != null && m_rows[i].SelectedAmount > 0)
+                if (m_rows[i] != null && m_rows[i].MaxFeedable > 0)
                 {
-                    anySelected = true;
+                    anyAvailable = true;
                     break;
                 }
             }
 
-            m_feedButton.interactable = anySelected;
+            m_feedButton.interactable = anyAvailable;
         }
 
         private void RefreshInventoryDisplay()
@@ -352,20 +341,21 @@ namespace GlowCore.UI.Upgrade
                 if (row == null)
                     continue;
 
-                var amount = row.SelectedAmount;
+                var amount = row.MaxFeedable;
                 if (amount <= 0)
                     continue;
 
                 m_target.FeedMaterial(row.Material, amount);
             }
 
-            for (var i = 0; i < m_rows.Count; i++)
-                m_rows[i]?.ResetSelection();
+            if (m_target.IsReadyToUpgrade && m_target.HasNextLevel)
+            {
+                m_target.Upgrade();
+                return;
+            }
 
             RefreshFeedButton();
         }
-
-        private void OnRowSelectionChanged() => RefreshFeedButton();
 
         private void OnTargetProgressChanged()
         {

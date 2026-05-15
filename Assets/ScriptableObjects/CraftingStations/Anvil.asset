@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Anvil
   Description: 
   RecipeList: {fileID: 11400000, guid: 702f34e6f06dd084faa2439d15ded887, type: 2}
-  BackgroundColor: {r: 0.684, g: 0.684, b: 0.684, a: 1}
+  BackgroundSprite: {fileID: 0}

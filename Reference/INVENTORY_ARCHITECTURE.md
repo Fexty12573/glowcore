@@ -463,6 +463,20 @@ Combines a recipe list (left) with a read-only inventory display (right) in a si
 **Single recipe row.** Initialized with `ICraftingService` — calls `CanCraft()`, `GetItemCount()`,
 and `Craft()` through the interface. No direct inventory access.
 
+`Refresh()` recomputes craftability: per-ingredient labels colored `UIColors.Green`/`UIColors.MissingMat`,
+craft button `interactable` set, and two sprite swaps driven by `CanCraft()` — the row background `Image`
+(`m_defaultBackground` `recipe_row` vs `m_craftableBackground` `recipe_row_craftable_preview`) and the
+craft button `Image` (`m_craftButtonInactive` vs `m_craftButtonActive`). Background/button state is
+sprite-based, not color-tinted.
+
+**Per-station theming:** `Initialize(..., RecipeRowTheme theme = null)` accepts an optional
+`RecipeRowTheme` ScriptableObject. `CraftingStationUI` passes `CraftingStation.RecipeRowTheme`;
+`CraftingUI` (hand-crafting) passes nothing. `ApplyTheme()` overrides only the sprites the theme
+actually sets — a null sprite on the theme leaves the prefab default, so a station can re-skin just
+the parts it wants. To give a station custom rows/buttons: create a `RecipeRowTheme` asset
+(Create → Scriptable Objects → RecipeRowTheme), fill the sprites, assign it to the station's
+`RecipeRowTheme` field. No prefab variants needed.
+
 ### `ChestUI` — MonoBehaviour (`ChestUI.cs`)
 
 **Two-panel chest controller.** Mirrors `CraftingStationUI` structure:
@@ -538,13 +552,11 @@ Central controller. Opens via `GlowCoreObject.Interact()` → `Show(IGlowCoreObj
 
 ### `FeedMaterialRowUI` — MonoBehaviour (`FeedMaterialRowUI.cs`)
 
-Single row: icon, name, count label, stepper, and an "Add All" button.
+Single row: icon, name, count label, and a background image.
 
-- `Initialize(IInventoryService, IGlowCoreObject target, Item, int required)` — takes `IGlowCoreObject`, not the concrete class. Wires icon via `ItemIconHelper.GetSprite`, binds the stepper to `[0, min(stillNeeded, have)]`.
-- `Refresh()` — calls `SetBounds(0, GetMaxSelectable())` first, **then** reads `m_stepper.Value` as `pending` (avoids stale-read after the stepper clamps). Count label format: `"{accumulated + pending}/{required}"`. Color: `UIColors.Green` when `accumulated + pending >= required`, otherwise `UIColors.MissingMat`. Border turns green when `accumulated >= required` (fully met in the data layer, not just preview).
-- `ResetSelection()` — zeroes the stepper (called after a feed).
-- `OnAddAllClicked()` — calls `m_stepper.SetValue(GetMaxSelectable())` to pre-fill the maximum feedable amount.
-- Exposes `Material`, `SelectedAmount`, and `OnSelectionChanged` for the controller.
+- `Initialize(IInventoryService, IGlowCoreObject target, Item, int required)` — takes `IGlowCoreObject`, not the concrete class. Sets the name label, wires the icon via `ItemIconHelper.GetSprite`, then calls `Refresh()`.
+- `Refresh()` — `accumulated = target.AccumulatedFor(item)`; `enough = accumulated >= required`. Count label format: `"{accumulated}/{required}"`, colored `UIColors.Green` when `enough`, otherwise `UIColors.MissingMat`. The background `Image` swaps between `m_defaultBackground` and `m_completeBackground` sprites on the same `enough` flag (`material_row` → `material_row_complete`).
+- Exposes `Material` and `MaxFeedable` (= `min(stillNeeded, have)`) for the controller; `GlowCoreUpgradeUI` reads `MaxFeedable` to decide what to feed and whether the feed button is enabled.
 
 ### `AmountStepperUI` — MonoBehaviour (`AmountStepperUI.cs`)
 
@@ -832,7 +844,7 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 | `GlowCore.cs` | Data | MonoBehaviour | `GlowCoreObject` — IInteractable + IGlowCoreObject; dispatch-by-level; FeedMaterial + Upgrade |
 | `Fire.cs` | Data | MonoBehaviour | Fire VFX scaling only — no world expansion logic |
 | `UI/GlowCore/GlowCoreUpgradeUI.cs` | UI | MonoBehaviour | GlowCore upgrade panel controller (left) + read-only inventory (right) |
-| `UI/GlowCore/FeedMaterialRowUI.cs` | UI | MonoBehaviour | Single feed-material row with stepper |
+| `UI/GlowCore/FeedMaterialRowUI.cs` | UI | MonoBehaviour | Single feed-material row — icon, name, count label, background swaps to "complete" sprite when met |
 | `UI/GlowCore/AmountStepperUI.cs` | UI | MonoBehaviour | Reusable −/+ numeric stepper |
 | `UI/GlowCore/ProgressBarUI.cs` | UI | MonoBehaviour | Reusable progress bar (Image.fillAmount + % label) |
 

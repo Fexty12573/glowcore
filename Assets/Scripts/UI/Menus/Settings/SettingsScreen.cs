@@ -14,6 +14,12 @@ namespace GlowCore.UI.Menus
         [SerializeField] private Button m_backButton;
         [SerializeField] private Button m_saveButton;
 
+        // Per-tab sprites — order MUST match the category order from the bootstrapper
+        // (currently: 0 = Audio, 1 = Display). Wire in the Inspector.
+        [Header("Tab Sprites (parallel to categories)")]
+        [SerializeField] private Sprite[] m_tabActiveSprites;
+        [SerializeField] private Sprite[] m_tabInactiveSprites;
+
         private IMenuManager m_menuManager;
         private ISettingsRepository m_repository;
         private SettingsRowFactory m_rowFactory;
@@ -114,12 +120,28 @@ namespace GlowCore.UI.Menus
                 var index = i;
                 Button btn = Instantiate(m_tabButtonPrefab, m_tabButtonContainer);
                 btn.gameObject.SetActive(true);
-                var label = btn.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
-                if (label != null)
-                    label.text = m_categories[i].DisplayName;
+
+                // Set the inactive sprite immediately so a freshly built row of tabs renders
+                // correctly before any ActivateCategory call. ActivateCategory then promotes
+                // the active one.
+                Image img = btn.GetComponent<Image>();
+                if (img != null)
+                {
+                    Sprite inactive = GetTabSprite(m_tabInactiveSprites, i);
+                    if (inactive != null)
+                        img.sprite = inactive;
+                }
+
                 btn.onClick.AddListener(() => ActivateCategory(index));
                 m_tabButtons.Add(btn);
             }
+        }
+
+        private static Sprite GetTabSprite(Sprite[] sprites, int index)
+        {
+            if (sprites == null || index < 0 || index >= sprites.Length)
+                return null;
+            return sprites[index];
         }
 
         private void ActivateCategory(int index)
@@ -143,15 +165,16 @@ namespace GlowCore.UI.Menus
                 var isActive = i == index;
                 Button tab = m_tabButtons[i];
 
-                var label = tab.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
-                if (label != null)
-                    label.color = isActive ? (Color)UIColors.Accent : (Color)UIColors.WhiteDim;
-
                 Image img = tab.GetComponent<Image>();
                 if (img != null)
                 {
+                    Sprite target = isActive ? GetTabSprite(m_tabActiveSprites, i) : GetTabSprite(m_tabInactiveSprites, i);
+                    if (target != null)
+                        img.sprite = target;
+
+                    // Ensure full opacity now that sprites encode the active/inactive look themselves.
                     Color c = img.color;
-                    c.a = isActive ? 1f : 0.35f;
+                    c.a = 1f;
                     img.color = c;
                 }
             }

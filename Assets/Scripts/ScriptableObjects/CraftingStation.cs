@@ -8,6 +8,7 @@ namespace ScriptableObjects
         public string Name;
         public string Description;
         public RecipeList RecipeList;
-        public Color BackgroundColor = new Color32(0x1C, 0x14, 0x0C, 255);
+        public Sprite BackgroundSprite;
+        public RecipeRowTheme RecipeRowTheme;
     }
 }

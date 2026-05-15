@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace GlowCore.UI.Menus
@@ -8,7 +9,6 @@ namespace GlowCore.UI.Menus
     public class PauseScreen : MonoBehaviour, IMenuScreen
     {
         private const string kReturnToMenuMessage = "Return to main menu? Your progress will be saved.";
-        private const string kSavedFeedbackText = "SAVED";
         private const float kSaveFeedbackSeconds = 0.9f;
 
         [SerializeField] private CanvasGroup m_canvasGroup;
@@ -16,6 +16,9 @@ namespace GlowCore.UI.Menus
         [SerializeField] private Button m_saveButton;
         [SerializeField] private Button m_settingsButton;
         [SerializeField] private Button m_mainMenuButton;
+
+        [Header("Save Feedback")]
+        [SerializeField] private Sprite m_savedFeedbackSprite;
 
         private IMenuManager m_menuManager;
         private IGameStateController m_gameState;
@@ -43,7 +46,14 @@ namespace GlowCore.UI.Menus
 
         public void Show() => m_canvasGroup?.SetVisible(true);
 
-        public void Hide() => m_canvasGroup?.SetVisible(false);
+        public void Hide()
+        {
+            // EventSystem keeps the last-clicked button as currentSelectedGameObject; with
+            // ColorTint that paints it in the selected color the next time the menu opens.
+            if (EventSystem.current != null)
+                EventSystem.current.SetSelectedGameObject(null);
+            m_canvasGroup?.SetVisible(false);
+        }
 
         private void OnDestroy()
         {
@@ -67,24 +77,25 @@ namespace GlowCore.UI.Menus
         {
             m_gameState?.SaveNow();
 
-            TextMeshProUGUI label = m_saveButton != null
-                ? m_saveButton.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true)
-                : null;
-            if (label == null)
+            if (m_saveButton == null || m_savedFeedbackSprite == null)
+                return;
+
+            Image img = m_saveButton.GetComponent<Image>();
+            if (img == null)
                 return;
 
             if (m_saveFeedbackCoroutine != null)
                 StopCoroutine(m_saveFeedbackCoroutine);
-            m_saveFeedbackCoroutine = StartCoroutine(ShowSaveFeedback(label));
+            m_saveFeedbackCoroutine = StartCoroutine(ShowSaveFeedback(img));
         }
 
-        private IEnumerator ShowSaveFeedback(TextMeshProUGUI label)
+        private IEnumerator ShowSaveFeedback(Image img)
         {
-            var original = label.text;
-            label.text = kSavedFeedbackText;
+            Sprite original = img.sprite;
+            img.sprite = m_savedFeedbackSprite;
             yield return new WaitForSecondsRealtime(kSaveFeedbackSeconds);
-            if (label != null)
-                label.text = original;
+            if (img != null)
+                img.sprite = original;
             m_saveFeedbackCoroutine = null;
         }
 

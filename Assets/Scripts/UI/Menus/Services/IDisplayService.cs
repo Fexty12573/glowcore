@@ -8,6 +8,7 @@ namespace GlowCore.UI.Menus
     {
         IReadOnlyList<Resolution> AvailableResolutions { get; }
         Resolution NativeResolution { get; }
+        int RecommendedResolutionIndex { get; }
         float CameraSensitivityX { get; }
         float CameraSensitivityY { get; }
         void SetFullscreen(bool on);

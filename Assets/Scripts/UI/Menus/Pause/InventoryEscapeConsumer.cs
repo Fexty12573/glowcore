@@ -5,10 +5,12 @@ namespace GlowCore.UI.Menus
         public const int kPriority = 100;
 
         private readonly IInventoryService m_inventory;
+        private readonly IMenuManager m_menuManager;
 
-        public InventoryEscapeConsumer(IInventoryService inventory)
+        public InventoryEscapeConsumer(IInventoryService inventory, IMenuManager menuManager)
         {
             m_inventory = inventory;
+            m_menuManager = menuManager;
         }
 
         public int Priority => kPriority;
@@ -16,6 +18,11 @@ namespace GlowCore.UI.Menus
         public bool TryConsumeEscape()
         {
             if (m_inventory == null)
+                return false;
+
+            // Defer to menu consumers when a screen is layered on top — closing the
+            // pause/settings/dialog must come before closing the inventory beneath it.
+            if (m_menuManager != null && m_menuManager.Current != null)
                 return false;
 
             var anyOpen = m_inventory.IsOpen

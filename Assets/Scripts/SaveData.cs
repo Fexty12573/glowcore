@@ -14,6 +14,24 @@ public class SaveData
     public PlayerData Player { get; private set; }
     public WorldData World { get; private set; }
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+    // WebGL has no writable local file system and no SpecialFolder support.
+    // Persistence is disabled there: every session starts from a fresh default
+    // save, and save/delete are no-ops so the game runs without crashing.
+    public static string GetPath() => null;
+
+    public static bool Exists() => false;
+
+    public static void Delete()
+    {
+    }
+
+    public static SaveData Load() => Default();
+
+    public static void Save(SaveData saveData)
+    {
+    }
+#else
     public static string GetPath()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -43,6 +61,7 @@ public class SaveData
         using var stream = File.OpenWrite(GetPath());
         SaveTo(stream, saveData);
     }
+#endif
 
     public static SaveData LoadFrom(Stream stream)
     {

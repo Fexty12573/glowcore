@@ -21,5 +21,3 @@ MonoBehaviour:
   m_tilesOnLevelUp: 2
   m_size: 16
   m_nextLevelPerkTemplate: Next level expands the glow radius by +{tiles} tiles
-  m_expansionItem: {fileID: 0}
-  m_expansionCostPerTile: 5

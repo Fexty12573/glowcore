@@ -38,6 +38,15 @@ namespace GlowCore.UI.Inventory
         private ItemSlotUI[] m_inventorySlots;
         private bool m_isVisible;
 
+        // Cached original visuals for the shared backgrounds, so we can restore them on Hide.
+        // The InventoryCanvas is shared across UIs (chest / furnace / crafting / regular inventory),
+        // and without this, the last-shown station's sprite leaks into the regular inventory view.
+        private Sprite m_inventoryBackgroundOriginalSprite;
+        private Color m_inventoryBackgroundOriginalColor;
+        private Sprite m_craftingBackgroundOriginalSprite;
+        private Color m_craftingBackgroundOriginalColor;
+        private bool m_originalsCaptured;
+
         // Properties
         public bool IsVisible => m_isVisible;
 
@@ -61,8 +70,46 @@ namespace GlowCore.UI.Inventory
 
             if (visible)
             {
+                ApplyStationBackground();
                 RefreshAllRows();
                 RefreshInventoryDisplay();
+            }
+            else
+            {
+                RestoreBackgroundOriginals();
+            }
+        }
+
+        private void CaptureBackgroundOriginals()
+        {
+            if (m_originalsCaptured)
+                return;
+            if (m_inventoryBackground != null)
+            {
+                m_inventoryBackgroundOriginalSprite = m_inventoryBackground.sprite;
+                m_inventoryBackgroundOriginalColor = m_inventoryBackground.color;
+            }
+            if (m_craftingBackground != null)
+            {
+                m_craftingBackgroundOriginalSprite = m_craftingBackground.sprite;
+                m_craftingBackgroundOriginalColor = m_craftingBackground.color;
+            }
+            m_originalsCaptured = true;
+        }
+
+        private void RestoreBackgroundOriginals()
+        {
+            if (!m_originalsCaptured)
+                return;
+            if (m_inventoryBackground != null)
+            {
+                m_inventoryBackground.sprite = m_inventoryBackgroundOriginalSprite;
+                m_inventoryBackground.color = m_inventoryBackgroundOriginalColor;
+            }
+            if (m_craftingBackground != null)
+            {
+                m_craftingBackground.sprite = m_craftingBackgroundOriginalSprite;
+                m_craftingBackground.color = m_craftingBackgroundOriginalColor;
             }
         }
 
@@ -105,6 +152,7 @@ namespace GlowCore.UI.Inventory
             {
                 m_closeButton.onClick.AddListener(OnCloseButtonClicked);
             }
+            CaptureBackgroundOriginals();
             BuildInventoryDisplay();
             SetVisible(false);
 
@@ -128,13 +176,35 @@ namespace GlowCore.UI.Inventory
 
         private void RebuildUI()
         {
-            m_inventoryBackground.color = m_craftingStation.BackgroundColor;
-            m_craftingBackground.color = m_craftingStation.BackgroundColor;
-            m_craftingTitleText.text = m_craftingStation.Name;
-            m_craftingDescriptionText.text = m_craftingStation.Description;
+            ApplyStationBackground();
+
+            if (m_craftingTitleText != null)
+                m_craftingTitleText.text = m_craftingStation.Name;
+            if (m_craftingDescriptionText != null)
+                m_craftingDescriptionText.text = m_craftingStation.Description;
 
             ClearRows();
             BuildRows();
+        }
+
+        // The InventoryCanvas backgrounds are shared and restored to their originals on Hide,
+        // so the station sprite must be re-applied every time the panel is shown — not only
+        // when the station changes (re-opening the same station skips RebuildUI).
+        private void ApplyStationBackground()
+        {
+            if (m_craftingStation == null || m_craftingStation.BackgroundSprite == null)
+                return;
+
+            if (m_inventoryBackground != null)
+            {
+                m_inventoryBackground.sprite = m_craftingStation.BackgroundSprite;
+                m_inventoryBackground.color = Color.white;
+            }
+            if (m_craftingBackground != null)
+            {
+                m_craftingBackground.sprite = m_craftingStation.BackgroundSprite;
+                m_craftingBackground.color = Color.white;
+            }
         }
 
         private void ClearRows()
@@ -160,7 +230,7 @@ namespace GlowCore.UI.Inventory
             {
                 var go = Instantiate(m_recipeRowPrefab, m_recipeContentParent);
                 var row = go.GetComponent<RecipeRowUI>();
-                row.Initialize(m_craftingService, recipes[i], m_tooltip);
+                row.Initialize(m_craftingService, recipes[i], m_tooltip, m_craftingStation.RecipeRowTheme);
                 m_rows[i] = row;
             }
         }

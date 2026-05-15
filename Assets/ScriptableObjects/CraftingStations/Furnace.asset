@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: Furnace
   Description: Smelt Ores
   RecipeList: {fileID: 11400000, guid: 4f81deef420732d4ab493029b142b1b4, type: 2}
-  BackgroundColor: {r: 0.23082057, g: 0.23483254, b: 0.2688679, a: 1}
+  BackgroundSprite: {fileID: 21300000, guid: 15ebdcf0a13e00e4eb82e3c7e0d0310a, type: 3}
+  RecipeRowTheme: {fileID: 11400000, guid: 09f55358f9682f54797017b46a5eb111, type: 2}
