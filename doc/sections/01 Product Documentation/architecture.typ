@@ -389,3 +389,27 @@ The following decisions had the greatest impact on the structure and long-term m
 
 *Why:* Tools and blocks need to read and modify the inventory at use-time (e.g. consuming the block stack when placing). Fetching `PlayerInventory.Instance` inside a prefab component hides the dependency, makes the coupling invisible to readers, and makes the component untestable in isolation. Passing the reference explicitly at equip time makes the dependency visible, eliminates hidden singleton coupling, and allows the component to be tested with any `PlayerInventory` instance, including a mock.
 
+#pagebreak()
+=== Deployment
+
+The game has two deployment paths, both automated through GitHub Actions. Which path runs depends on what is pushed to the repository.
+
+==== Continuous Deployment - WebGL (GitHub Pages)
+
+Every push to `main` or `dev` triggers the WebGL build job. All jobs run on a self-hosted Linux runner with Unity 6000.3.9f1 installed directly on the machine. The Unity Editor is invoked in batch mode via a custom `BuildScript`, which avoids the overhead of spinning up a Docker container on every run. The license is activated per-run using `buildalon/activate-unity-license`. The resulting build artifact is deployed to the `pages` branch via `JamesIves/github-pages-deploy-action`. Builds from `main` land in `prod/webgl`; builds from `dev` land in `dev/webgl`. This gives stakeholders an always-up-to-date playable version of the game in a browser without any manual steps.
+
+==== Release Deployment - Windows & Linux (GitHub Releases)
+
+Pushing a version tag (e.g. `v1.0.0`) triggers the Windows and Linux build jobs in parallel, both running on the same self-hosted runner. Each job invokes the Unity Editor directly in batch mode, targeting `StandaloneWindows64` and `StandaloneLinux64` respectively. Once both builds complete, a `release` job downloads the artifacts, zips them, and publishes them as a GitHub Release with auto-generated release notes. Players can download the zipped executables directly from the GitHub Releases page.
+
+==== Steam
+
+Once the project is ready to be published to Steam, the release pipeline will be extended with a SteamPipe upload step after the Windows and Linux builds. The `steamcmd` CLI can authenticate using Steamworks credentials stored as GitHub Actions secrets and upload the build depot to Steam. Steam would then handle CDN distribution to all players who own the game. No structural change to the existing pipeline would be required.
+
+==== Deployment Diagram
+
+#figure(
+  image("../../resources/01 Product Documentation/steam-deployment.png", width: 100%),
+  caption: [Deployment Diagram],
+  supplement: [Image],
+)
