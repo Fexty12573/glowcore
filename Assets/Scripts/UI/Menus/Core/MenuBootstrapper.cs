@@ -20,8 +20,9 @@ namespace GlowCore.UI.Menus
         private void Awake()
         {
             // Refuse to boot a second instance — the save file at SaveData.GetPath() is shared
-            // across processes and concurrent writes would corrupt it.
-#if UNITY_EDITOR
+            // across processes and concurrent writes would corrupt it. Named mutexes throw
+            // PlatformNotSupportedException on WebGL, and WebGL has no shared local FS anyway.
+#if UNITY_EDITOR || UNITY_WEBGL
             ISingleInstanceGuard instanceGuard = new NullSingleInstanceGuard();
 #else
             ISingleInstanceGuard instanceGuard = new NamedMutexSingleInstanceGuard(NamedMutexSingleInstanceGuard.kDefaultName);
