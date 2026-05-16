@@ -353,3 +353,39 @@ We followed the principle of providing as much depth as possible with as little 
 The goal of this design is to allow the player to create complex and interesting systems without introducing a large number of different mechanics and complicated rules.
 
 In GlowCore, this is achieved by limiting the core automation system to only three main components: the axe-machine, the replanter, and the rotator. When combined, these simple systems interact in ways that allow for emergent complexity, such as automation lines with different layouts.
+
+#pagebreak()
+=== Key Architectural Decisions
+
+The following decisions had the greatest impact on the structure and long-term maintainability of the game. Each one is recorded together with the problem it solved and the reasoning behind the chosen approach.
+
+==== ScriptableObjects as the Data Layer
+
+*Decision:* All item, node, and recipe definitions are stored as ScriptableObject `.asset` files rather than in C\# code or external data files (e.g. JSON).
+
+*Why:* Game content, items, nodes, crafting recipes, must be defined once and consumed from many places without creating code dependencies. ScriptableObjects let non-programmers create and configure new content entirely through the Unity Inspector. Each asset is an individual file, which keeps version control diffs small and conflict-free. Crucially, the connection to gameplay code is a serialised Unity reference, so adding a new item, node, or recipe never requires touching any C\# source file.
+
+==== IInteractable for World Interaction
+
+*Decision:* Every node that responds to player interaction implements the `IInteractable` interface. `NodeActionSystem` calls `Interact()` on whichever node is currently hovered, without knowing its concrete type.
+
+*Why:* Without a shared interface, `NodeActionSystem` would require an explicit branch for every interactive object type: chests, crafting stations, the GlowCore, signs, and anything added later. With `IInteractable` the input handler is permanently closed to modification on this axis, adding a new interactive node is purely additive. The `GetActionPromptText()` method on the same interface also lets each node control its own UI prompt label, removing another potential switch statement from the core input loop.
+
+==== IInventoryService and Event-Driven UI
+
+*Decision:* The inventory system is exposed to all UI components exclusively through the `IInventoryService` interface, which carries both commands and `Action<T>` events (`OnSlotChanged`, `OnHotbarSelectionChanged`, etc.).
+
+*Why:* Inventory state is modified from many independent sources: item collection, crafting, chest transfers, and GlowCore upgrades. A polling-based UI would either check every frame or miss updates; direct method calls from each source to each UI component would create a tightly coupled web of dependencies. Events mean every UI component reacts exactly when something relevant changes, at zero cost when idle. Because all UI depends only on the interface and not on `PlayerInventory` directly, the inventory implementation can change freely without any UI class breaking.
+
+==== Use Actions and Interact Actions
+
+*Decision:* Instead of implementing each player capability (breaking nodes, placing blocks, opening chests, crafting) as an isolated system with its own input handling, all player inputs are routed through exactly two abstractions: *Use Actions* (what the held item does, via `IHandItem`) and *Interact Actions* (what the hovered node does, via `IInteractable`).
+
+*Why:* The two abstractions map directly to the two roles the player's cursor plays: the held item and the targeted node. Routing them separately through `PlayerHand` and `NodeActionSystem` keeps input handling in exactly one place per axis and avoids duplicating raycast logic, inventory checks, and UI-open guards. Adding a new usable item only requires implementing `IHandItem` on its prefab; adding a new interactive node only requires implementing `IInteractable`. Neither addition changes any existing class.
+
+==== IPlayerInventoryAware via Explicit Injection
+
+*Decision:* Item prefab components that need access to the player's inventory receive it through `IPlayerInventoryAware.SetInventory()`, called by `PlayerHand` at equip time, not through a singleton or a `FindObjectOfType` lookup.
+
+*Why:* Tools and blocks need to read and modify the inventory at use-time (e.g. consuming the block stack when placing). Fetching `PlayerInventory.Instance` inside a prefab component hides the dependency, makes the coupling invisible to readers, and makes the component untestable in isolation. Passing the reference explicitly at equip time makes the dependency visible, eliminates hidden singleton coupling, and allows the component to be tested with any `PlayerInventory` instance, including a mock.
+
