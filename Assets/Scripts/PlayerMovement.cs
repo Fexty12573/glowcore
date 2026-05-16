@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             UpdateCamera();
             UpdateRotation(relativeMovement);
             ChangeAnimatorState("walk");
-            if (!m_isWalkingSoundPlaying)
+            if (!m_isWalkingSoundPlaying && AudioManager.Instance != null)
             {
                 AudioManager.Instance.Play(
                     AudioManager.SoundType.Walk,
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ChangeAnimatorState("idle");
 
-            if (m_isWalkingSoundPlaying)
+            if (m_isWalkingSoundPlaying && AudioManager.Instance != null)
             {
                 AudioManager.Instance.Stop(
                     AudioManager.AudioChannel.Player);

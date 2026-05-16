@@ -25,6 +25,14 @@ public class PlayerIntegrationTests : InputTestFixture
         m_playerMovement = m_playerInstance.GetComponentInChildren<PlayerMovement>();
         m_playerCamera = m_playerInstance.GetComponentInChildren<PlayerCamera>();
         m_mouse = InputSystem.AddDevice<Mouse>();
+        GameObject am = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/AudioManager.prefab");
+        GameObject es = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/EnvironmentSound.prefab");
+        GameObject m = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/Music.prefab");
+        GameObject ps = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/PlayerSound.prefab");
+        GameObject.Instantiate(am);
+        GameObject.Instantiate(es);
+        GameObject.Instantiate(m);
+        GameObject.Instantiate(ps);
     }
 
     [TearDown]
