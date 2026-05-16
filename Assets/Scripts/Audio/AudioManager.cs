@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using GlowCore.UI.Menus;
 
 public class AudioManager : MonoBehaviour
 {
@@ -113,8 +114,6 @@ public class AudioManager : MonoBehaviour
 
         source.clip = sound.Clip;
         source.volume = sound.Volume;
-
-        source.loop = false;
 
         Coroutine loopRoutine =
             StartCoroutine(PlayLoopRoutine(source, sound));
