@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.ItemRegistry
   m_items:
   - {fileID: 11400000, guid: e6e017e5378c46c4cbffaff4838aed3c, type: 2}
+  - {fileID: 11400000, guid: cd7508eec2110ab4e99f89dfc0bd0f53, type: 2}
+  - {fileID: 11400000, guid: 2f82bc4154f52b941a0447a2fba49bf4, type: 2}
   - {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
+  - {fileID: 11400000, guid: 28458360192a28847a61409301edb5a4, type: 2}
   - {fileID: 11400000, guid: 5d2b96bc79fca98469ed8cb6590b8ca8, type: 2}
+  - {fileID: 11400000, guid: 1034e613af5a6d647aafd0872f16f64b, type: 2}
   - {fileID: 11400000, guid: 2725de6b2a6e75a4880d31d0580db15e, type: 2}
   - {fileID: 11400000, guid: f194d09bd143d0d4f8eab981676f9e3c, type: 2}
   - {fileID: 11400000, guid: 7596b20dd6be0ec4782ef50472735fc6, type: 2}

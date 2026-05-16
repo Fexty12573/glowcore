@@ -127,7 +127,6 @@ public class Inventory
         OnSlotChanged?.Invoke(index);
     }
 
-
     public ItemStack GetSlot(int index)
     {
         if (index < 0 || index >= m_items.Length)

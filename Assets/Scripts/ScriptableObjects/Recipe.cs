@@ -17,8 +17,5 @@ namespace ScriptableObjects
         public Ingredient[] Ingredients;
         public Item ResultItem;
         [Min(1)] public int ResultAmount = 1;
-
-        [SerializeField] private bool m_craftableInInventory;
-        public bool CraftableInInventory => m_craftableInInventory;
     }
 }

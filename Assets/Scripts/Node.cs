@@ -13,6 +13,7 @@ namespace GlowCore.World
         private float m_effectiveBreakTime;
         private bool m_isHolding;
         private bool m_markedForDeletion;
+        private Chest m_breakOwner; // Chest is the storage of the machine that breaks this node, null if the player breaks it.
         private IInteractable m_interactable;
 
         public List<Vector2Int> TilesUsed = new();
@@ -20,10 +21,12 @@ namespace GlowCore.World
         public NodeData NodeData => m_nodeData;
         public Block SourceBlock { get; set; }
 
-        public static event Action<Node> OnStartBreaking;
+        public static event Action<Node, bool> OnStartBreaking; //second Argument tells if the player is the one who is breaking the Node.
         public static event Action<Node> OnCancelBreaking;
         public static event Action<Node> OnNodeBroken;
 
+        public bool IsHolding => m_isHolding;
+        public bool PlayerIsHolding => m_isHolding && m_breakOwner == null;
         public bool MarkedForDeletion => m_markedForDeletion;
 
         public float GetInteractionRange()
@@ -36,7 +39,7 @@ namespace GlowCore.World
             m_interactable?.Interact();
         }
 
-        public void StartHold(Tool tool)
+        public void StartHold(Tool tool, Chest machineStorage) //machineStorage is null if the player breaks it
         {
             m_effectiveBreakTime = m_nodeData.GetEffectiveBreakTime(tool);
             m_isHolding = true;
@@ -46,7 +49,8 @@ namespace GlowCore.World
                 tool.Sound,
                 AudioManager.AudioChannel.Environment);
 
-            OnStartBreaking?.Invoke(this);
+            m_breakOwner = machineStorage;
+            OnStartBreaking?.Invoke(this, (machineStorage is null));
         }
 
         public void EndHold()
@@ -104,13 +108,21 @@ namespace GlowCore.World
 
         private void Break()
         {
-            foreach (var drop in m_nodeData.ItemDrops)
+            if (m_breakOwner is null) //drop into world
             {
-                var offset = new Vector3(
-                    Random.Range(-0.2f, 0.2f),
-                    0f,
-                    Random.Range(-0.2f, 0.2f));
-                ItemStackDrop.Spawn(drop, transform.position + offset);
+                foreach (var drop in m_nodeData.ItemDrops)
+                    DropItems(drop);
+            }
+            else //move items into storage of machine
+            {
+                foreach (var drop in m_nodeData.ItemDrops)
+                {
+                    var amount = Random.Range(drop.Min, drop.Max + 1);
+                    if (m_breakOwner.CanAcceptItem(drop.Item, amount))
+                        m_breakOwner.AddStack(drop.Item, amount);
+                    else //drop into world if it doesn't fit into chest
+                        DropItems(drop);
+                }
             }
 
             foreach (var tile in TilesUsed)
@@ -122,6 +134,15 @@ namespace GlowCore.World
             OnNodeBroken?.Invoke(this);
             Destroy(gameObject);
             AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
+        }
+
+        private void DropItems(ItemDrop drop)
+        {
+            var offset = new Vector3(
+                Random.Range(-0.2f, 0.2f),
+                0f,
+                Random.Range(-0.2f, 0.2f));
+            ItemStackDrop.Spawn(drop, transform.position + offset);
         }
     }
 }

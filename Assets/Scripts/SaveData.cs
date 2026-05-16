@@ -212,8 +212,7 @@ public class SaveData
         {
             delta.BuildData = new BuildData { Block = block };
 
-            // TODO: Add a HasInventory field or something to `Block`
-            if (block.Name == "Chest")
+            if (block.HasInventory)
                 delta.BuildData.Inventory = LoadInventory(reader);
         }
         else if (item is null)
@@ -239,7 +238,14 @@ public class SaveData
             writer.Write(delta.BuildData.Block.Id.ToByteArray());
 
             if (delta.BuildData.Inventory != null)
+            {
+                if (!delta.BuildData.Block.HasInventory)
+                {
+                    Debug.LogError($"Block with Name {delta.BuildData.Block.Name} has an inventory, but HasInventory is false." +
+                                   $"This will corrupt all TileDeltas after this one when loading.");
+                }
                 SaveInventory(delta.BuildData.Inventory, writer);
+            }
         }
     }
 
