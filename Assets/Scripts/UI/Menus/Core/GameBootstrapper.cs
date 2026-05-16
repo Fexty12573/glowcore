@@ -43,8 +43,10 @@ namespace GlowCore.UI.Menus
         private void Awake()
         {
             // Refuse to boot a second instance — guards the save file when MainWorldScene is the
-            // first scene loaded (e.g. dev play-mode iteration that skips TitleScene).
-#if UNITY_EDITOR
+            // first scene loaded (e.g. dev play-mode iteration that skips TitleScene). Named
+            // mutexes throw PlatformNotSupportedException on WebGL, and there's no shared local
+            // FS to protect there anyway.
+#if UNITY_EDITOR || UNITY_WEBGL
             ISingleInstanceGuard instanceGuard = new NullSingleInstanceGuard();
 #else
             ISingleInstanceGuard instanceGuard = new NamedMutexSingleInstanceGuard(NamedMutexSingleInstanceGuard.kDefaultName);
