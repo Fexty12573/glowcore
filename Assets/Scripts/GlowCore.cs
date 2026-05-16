@@ -8,10 +8,12 @@ namespace GlowCore.World
 {
     public class GlowCoreObject : MonoBehaviour, IInteractable, IGlowCoreObject
     {
-        [Header("Level")] [SerializeField] private GlowCoreLevelConfig m_levelConfig;
+        [Header("Level")][SerializeField] private GlowCoreLevelConfig m_levelConfig;
         [SerializeField] private GameObject m_nextLevelPrefab;
 
-        [Header("References")] [SerializeField] [Min(0f)]
+        [Header("References")]
+        [SerializeField]
+        [Min(0f)]
         private float m_closeDistance = 5f;
 
         private readonly Dictionary<Item, int> m_accumulated = new();
@@ -29,7 +31,7 @@ namespace GlowCore.World
                 if (m_nextLevelPrefab == null)
                     return null;
                 GlowCoreObject next = m_nextLevelPrefab.GetComponent<GlowCoreObject>();
-                return next != null ? next.m_levelConfig : null;
+                return next?.m_levelConfig;
             }
         }
 
@@ -218,7 +220,7 @@ namespace GlowCore.World
 
             if (newGlowCoreObj.TryGetComponent(out Node newNode))
             {
-                var nextConfig = newGlowCore != null ? newGlowCore.LevelConfig : null;
+                var nextConfig = newGlowCore?.LevelConfig;
                 var tileCount = nextConfig != null ? nextConfig.TileCount : 1;
                 WorldGrid.Instance.PlaceNodeAt(newNode, worldX, worldZ, tileCount);
             }

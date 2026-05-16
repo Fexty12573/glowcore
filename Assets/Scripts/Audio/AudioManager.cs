@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -36,13 +36,14 @@ public class AudioManager : MonoBehaviour
         public float LoopDelay = 0f;
     }
 
-    [Header("Audio Sources")] [SerializeField]
+    [Header("Audio Sources")]
+    [SerializeField]
     private AudioSource m_playerSource;
 
     [SerializeField] private AudioSource m_environmentSource;
     [SerializeField] private AudioSource m_musicSource;
 
-    [Header("Sounds")] [SerializeField] private Sound[] m_allSounds;
+    [Header("Sounds")][SerializeField] private Sound[] m_allSounds;
 
     private Dictionary<SoundType, Sound> m_soundDictionary = new();
     private Dictionary<AudioChannel, Coroutine> m_loopCoroutines = new();
@@ -157,7 +158,8 @@ public class AudioManager : MonoBehaviour
     public void Stop(AudioChannel channel)
     {
         AudioSource source = GetSource(channel);
-        if (source == null) return;
+        if (source == null)
+            return;
         source.Stop();
         if (m_loopCoroutines.ContainsKey(channel))
         {

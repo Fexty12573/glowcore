@@ -8,25 +8,30 @@ namespace GlowCore.UI.Inventory
     public class ChestUI : MonoBehaviour
     {
         // Instance Fields
-        [Header("References")] [SerializeField]
+        [Header("References")]
+        [SerializeField]
         private CanvasGroup m_panelCanvasGroup;
 
         [SerializeField] private CanvasGroup m_backdropCanvasGroup;
 
-        [Header("Close Button")] [SerializeField]
+        [Header("Close Button")]
+        [SerializeField]
         private Button m_closeButton;
 
-        [Header("Chest Section")] [SerializeField]
+        [Header("Chest Section")]
+        [SerializeField]
         private Transform m_chestGridParent;
 
         [SerializeField] private GameObject m_slotPrefab;
 
-        [Header("Transfer Buttons")] [SerializeField]
+        [Header("Transfer Buttons")]
+        [SerializeField]
         private Button m_takeAllButton;
 
         [SerializeField] private Button m_insertAllButton;
 
-        [Header("Inventory Display")] [SerializeField]
+        [Header("Inventory Display")]
+        [SerializeField]
         private Transform m_inventoryUpperGridParent;
 
         [SerializeField] private Transform m_inventoryHotbarRowParent;
@@ -72,8 +77,7 @@ namespace GlowCore.UI.Inventory
 
             if (!visible)
             {
-                if (m_inventoryUI != null)
-                    m_inventoryUI.CancelHeldItem();
+                m_inventoryUI?.CancelHeldItem();
                 UnbindChest();
             }
             else
@@ -104,12 +108,9 @@ namespace GlowCore.UI.Inventory
 
             m_inventoryUI = FindFirstObjectByType<InventoryUI>();
 
-            if (m_closeButton != null)
-                m_closeButton.onClick.AddListener(OnCloseButtonClicked);
-            if (m_takeAllButton != null)
-                m_takeAllButton.onClick.AddListener(OnTakeAllClicked);
-            if (m_insertAllButton != null)
-                m_insertAllButton.onClick.AddListener(OnInsertAllClicked);
+            m_closeButton?.onClick.AddListener(OnCloseButtonClicked);
+            m_takeAllButton?.onClick.AddListener(OnTakeAllClicked);
+            m_insertAllButton?.onClick.AddListener(OnInsertAllClicked);
 
             BuildInventoryDisplay();
             m_inventoryService.OnSlotChanged += OnInventorySlotChanged;
@@ -117,12 +118,9 @@ namespace GlowCore.UI.Inventory
 
         private void OnDestroy()
         {
-            if (m_closeButton != null)
-                m_closeButton.onClick.RemoveListener(OnCloseButtonClicked);
-            if (m_takeAllButton != null)
-                m_takeAllButton.onClick.RemoveListener(OnTakeAllClicked);
-            if (m_insertAllButton != null)
-                m_insertAllButton.onClick.RemoveListener(OnInsertAllClicked);
+            m_closeButton?.onClick.RemoveListener(OnCloseButtonClicked);
+            m_takeAllButton?.onClick.RemoveListener(OnTakeAllClicked);
+            m_insertAllButton?.onClick.RemoveListener(OnInsertAllClicked);
 
             if (m_inventoryService != null)
                 m_inventoryService.OnSlotChanged -= OnInventorySlotChanged;
@@ -278,8 +276,7 @@ namespace GlowCore.UI.Inventory
         // / selected color-transition state and snaps back to normal after the click.
         private static void DeselectFocus()
         {
-            if (EventSystem.current != null)
-                EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current?.SetSelectedGameObject(null);
         }
     }
 }
