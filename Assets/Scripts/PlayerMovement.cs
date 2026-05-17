@@ -22,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
         m_moveInput = movement;
     }
 
+    public void UpdateCamera()
+    {
+        m_cameraAnchor.position = transform.position + m_cameraOffset; // necessary since the camera is not a child of the player
+    }
+
     private void OnMove(InputValue inputValue) // called on press and release
     {
         HandleMove(inputValue.Get<Vector2>());
@@ -56,11 +61,6 @@ public class PlayerMovement : MonoBehaviour
     {
         movement += Vector3.down; // this brings the player back to the ground
         m_controller.Move(Time.fixedDeltaTime * m_movementSpeed * movement);
-    }
-
-    private void UpdateCamera()
-    {
-        m_cameraAnchor.position = transform.position + m_cameraOffset; // necessary since the camera is not a child of the player
     }
 
     private void UpdateRotation(Vector3 movement)
