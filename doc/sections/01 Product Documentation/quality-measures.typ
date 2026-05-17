@@ -123,9 +123,9 @@ The downside is that Play Mode tests are significantly slower because they have 
 
 ==== Coverage Summary
 
-At the current stage of the project (approaching M09 Beta), 4 out of 11 Use Cases are fully verified (@UC01, @UC03, @UC04, @UC07), 3 are partially implemented (@UC02, @UC05, @UC06), and 4 have not been tested yet as they are planned for M10 (@UC08, @UC09, @UC10, @UC11).
+At the current stage of the project (M09 Beta reached, approaching M10 Release), 8 out of 11 Use Cases are fully verified (@UC01, @UC02, @UC03, @UC04, @UC05, @UC06, @UC07, @UC11) and 2 have not been verified yet as they are planned for M10 (@UC08, @UC10). @UC09 (Fight Enemies) is not applicable, since the team decided not to implement combat within the project scope.
 
-For the NFRs, 7 requirements have fully passed (@NFR103, @NFR105, @NFR201, @NFR202, @NFR206, @NFR401, @NFR501), 7 are partially met (@NFR101, @NFR104, @NFR204, @NFR301, @NFR302, @NFR303, @NFR402), and 4 have not been tested yet as they are scheduled for M10 (@NFR203, @NFR205, @NFR502, @NFR503). @NFR102 is not applicable since in-game scene transitions were removed from scope. The partially met NFRs are mostly related to the save system and input support, which still have known issues to be resolved before the final release.
+For the NFRs, 15 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501), 1 is partially met (@NFR204), and 2 have not been verified yet as they are scheduled for M10 (@NFR502, @NFR503). @NFR102 is not applicable since in-game scene transitions were removed from scope. The only remaining partial NFR is input support: keyboard input works for all gameplay actions, but controller bindings are not yet wired up. Adding them is straightforward given the project already uses the new Input System and is planned before the final release.
 // TODO: Describe the test strategy as discussed in SEP1.
 // - How each functional and non-functional requirement is verified
 // - At what level (Unit, Integration, System)

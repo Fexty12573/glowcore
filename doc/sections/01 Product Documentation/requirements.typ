@@ -119,19 +119,19 @@ The Use Cases marked with *Priority: Middle* are planned to be implemented, but 
 
 // ── UC Status Registry ──
 // Update the status color here once — it syncs to both the overview table and the detail table.
-// Colors: blue (not tested), green (passed), orange (partial), red (failed)
+// Colors: blue (not tested), green (passed), orange (partial), red (failed), gray (not applicable)
 #let uc-status = (
   uc01: green,
-  uc02: orange,
+  uc02: green,
   uc03: green,
   uc04: green,
-  uc05: orange,
-  uc06: orange,
+  uc05: green,
+  uc06: green,
   uc07: green,
   uc08: blue,
-  uc09: blue,
+  uc09: gray,
   uc10: blue,
-  uc11: blue,
+  uc11: green,
 )
 
 // Helper to render a status box from the registry
@@ -199,7 +199,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "When the player stops playing, the game saves his save state in a file and loads it when he resumes the game.",
-  result: [The game loads the save file on startup and autosaves periodically. However, some inventory items are lost on reload and the autosave does not keep triggering after the first save. Closing the game does not save either.],
+  result: "The game autosaves every 20 seconds and the save is loaded correctly the next time the player starts the game. Inventory contents, chest contents, the GlowCore level and any blocks the player built or broke are all restored. The player can also save at any time from the pause menu, and the game saves automatically when returning to the main menu. If the player just closes the window without saving, the most recent autosave is loaded next time.",
   uc_caption: "UC02 - Save Game",
   status_color: uc-status.at("uc02"),
 ) <UC02>
@@ -231,7 +231,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "Items that the player picks up are stored in his inventory. The player's inventory has a limited size. To organize items, the player can move items into chests and take them out again.",
-  result: "Verified manually. Items picked up by the player are correctly stored in the inventory. The inventory has a limited size and refuses additional items when full. Chest interaction is not yet implemented.",
+  result: "Verified manually. Items picked up by the player are stored in his inventory, and the inventory has a limited size and refuses additional items when it is full. The player can open a chest by interacting with it, move items between the chest and his inventory by dragging them, and the chest closes automatically when he walks away. Chest contents are saved and restored correctly on the next start, and breaking a chest drops its remaining contents on the ground.",
   uc_caption: "UC05 - Store Items",
   status_color: uc-status.at("uc05"),
 ) <UC05>
@@ -241,7 +241,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player can craft items into other items with predefined recipes. Without a workbench the player is limited to a few simple recipes. The player can interact with a workstation such as a workbench to unlock more crafting recipes. Workstations such as an oven require additional items: e.g. Coal to smelt an Ingot.",
-  result: "Verified manually. The crafting system works correctly. Without a workbench, the player has access to basic recipes. Interacting with a crafting table unlocks additional recipes. The crafting architecture supports multiple workstation types, but only the crafting table is currently implemented. Additional workstations such as an oven are not yet available.",
+  result: "Verified manually. Without a workbench the player has access to a few basic recipes that can be crafted directly from the inventory. Interacting with a crafting table opens its crafting UI and unlocks the full set of standard recipes. A furnace is also available as a second workstation with its own recipe list, where the player can smelt ores into ingots and has other furnace specific recipes.",
   uc_caption: "UC06 - Craft Items",
   status_color: uc-status.at("uc06"),
 ) <UC06>
@@ -291,7 +291,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Dedicated Player",
   priority: "Middle",
   description: "The player can change settings of the game, such as the FOV and the Volume.",
-  result: [],
+  result: "Verified manually. The player can open the settings from both the title screen and the in-game pause menu. The audio section has separate sliders for master, music and sound-effect volume. The display section has a fullscreen toggle, a resolution dropdown and separate camera sensitivity sliders for the X and Y axes. Changes are kept between sessions, and the player is asked to confirm before leaving the settings with unsaved changes.",
   uc_caption: "UC11 - Change Settings",
   status_color: uc-status.at("uc11"),
 ) <UC11>
@@ -312,22 +312,22 @@ The following table provides a compact overview of all Use Cases, their persona,
 // Update the status color here once — it syncs to both the overview table and the detail table.
 // Colors: blue (not tested), green (passed), orange (partial), red (failed)
 #let nfr-status = (
-  nfr101: orange,
+  nfr101: green,
   nfr102: gray,
   nfr103: green,
-  nfr104: orange,
+  nfr104: green,
   nfr105: green,
   nfr201: green,
   nfr202: green,
   nfr203: green,
   nfr204: orange,
-  nfr205: blue,
+  nfr205: green,
   nfr206: green,
-  nfr301: orange,
-  nfr302: orange,
-  nfr303: orange,
+  nfr301: green,
+  nfr302: green,
+  nfr303: green,
   nfr401: green,
-  nfr402: orange,
+  nfr402: green,
   nfr501: green,
   nfr502: blue,
   nfr503: blue,
@@ -481,7 +481,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   priority: [Required / High],
   measurement: [Measure elapsed time from pressing "Start" until the world is fully loaded and interactive. Tested on minimum hardware specification.],
   verification: [Automated load-time benchmark test across 10 consecutive loads with varying world states (new and existing). All runs must complete within 3 seconds.],
-  result: [Tested by launching the .exe directly. The world loads instantly, well within the 3-second threshold. However, there is no start button yet, so the requirement cannot yet be fully verified as specified.],
+  result: [Tested manually from the title screen. Both NEW GAME (which generates a fresh world) and CONTINUE (which restores an existing save) bring the player into a fully interactive world in approximately 1.5 seconds, easily below the 3-second threshold.],
   nfr_caption: [NFR101 -- World Load Time],
   status_color: nfr-status.at("nfr101"),
 ) <NFR101>
@@ -517,7 +517,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   priority: [Required / Medium],
   measurement: [Measure the file size of the save file after a full gameplay session under the defined maximum expected game progression and world configuration.],
   verification: [Create save files at various progression stages and verify the file size remains within the defined limit for the current scope. Confirm that a binary serialization format is used.],
-  result: [After a decent gameplay session the save file was around 1KB, peaking at about 2KB. Well within the 5MB limit and the binary format is confirmed. The only thing to keep in mind is that the save system is not fully working yet, so the file will grow a bit once everything is properly saved. But as a starting point this looks really good.],
+  result: [Tested by playing the game through several progression stages (fresh world, a few broken nodes, multiple chests filled with items, several built blocks) and measuring the on-disk size of the save file after each save. A fresh save was around 1KB, and a save taken after reaching the maximum GlowCore level peaked at 3KB, well under the 5MB limit. The save file is written in a custom binary format, as required.],
   nfr_caption: [NFR104 -- Save File Size],
   status_color: nfr-status.at("nfr104"),
 )<NFR104>
@@ -597,7 +597,7 @@ Usability covers the degree to which the product can be used effectively, effici
   priority: [Optional / Low],
   measurement: [Review all in-game text and UI elements for non-English content.],
   verification: [Manual review of all text-containing assets and UI screens to confirm English language throughout.],
-  result: [],
+  result: [Verified by walking through every screen of the game (title screen, new game, pause menu, settings, inventory, crafting and chest UIs) and reviewing all visible text. All labels, buttons, item names, recipe names and tooltips are in English. No localized or translated strings are present.],
   nfr_caption: [NFR205 -- Game Language],
   status_color: nfr-status.at("nfr205"),
 )<NFR205>
@@ -625,7 +625,7 @@ Reliability addresses the degree to which a system performs specified functions 
   priority: [Required / High],
   measurement: [Copy a world save file to a different machine or location, place it in the save folder, and verify the game loads it correctly with all progress intact.],
   verification: [Create a world save file with significant progress. Copy it to a new installation. Load the game and verify all progress, items, and world state for that world are preserved.],
-  result: [The save file (glowcore.bin) was successfully copied to a different location and placed back into the save folder. The game recognized it and loaded the world state and player position correctly. However, inventory items, GlowCore upgrade progress, and the camera position were not restored. The GlowCore level itself was saved fine. Portability works, but not all data survives the reload.],
+  result: [Tested manually by copying the save file (glowcore.bin) out of the save folder on one machine and dropping it into the save folder on a different installation. The save was checked after every scenario (moving the player, filling inventory and chests, breaking and building blocks, upgrading the GlowCore) and in each case the game recognized the file and restored everything correctly: player position, inventory contents, chest contents, GlowCore level and all blocks the player had built or broken. The save is a single self-contained file, so copying and moving it works without any additional steps.],
   nfr_caption: [NFR301 -- Save File Portability],
   status_color: nfr-status.at("nfr301"),
 )<NFR301>
@@ -637,7 +637,7 @@ Reliability addresses the degree to which a system performs specified functions 
   priority: [Required / High],
   measurement: [Verify auto-save triggers by monitoring save file timestamps during gameplay. Confirm no data loss after normal shutdown.],
   verification: [Play for several minutes, perform a light upgrade, then shut down the game normally. Restart and verify all progress is retained. Additionally, verify auto-save timestamps occur within 2-minute intervals.],
-  result: [The autosave triggered once but did not repeat for the rest of the session. There is no save-on-quit, so progress after the last autosave is lost when closing the game. After reloading, inventory items and GlowCore upgrade progress were missing, though the GlowCore level was saved correctly. Camera also resets to the middle on load. The requirement is not fully met.],
+  result: [Tested manually by playing several sessions and watching the save file timestamp. The autosave now fires every 20 seconds and keeps firing for the entire session, comfortably below the 2-minute limit required. After a normal shutdown and restart, the player position, inventory contents, chest contents, GlowCore level and all built or broken blocks were preserved. The worst case for unsaved progress is the 20 seconds since the last autosave, which is well within what the requirement allows.],
   nfr_caption: [NFR302 -- Game Progress Persistence],
   status_color: nfr-status.at("nfr302"),
 )<NFR302>
@@ -649,7 +649,7 @@ Reliability addresses the degree to which a system performs specified functions 
   priority: [Required / High],
   measurement: [Perform several manual save/load cycles and verify that the game state after loading matches the state at the time of saving.],
   verification: [Play the game, note the current state (inventory, player position, placed blocks), let the autosave trigger, restart the game, and verify the loaded state matches what was saved.],
-  result: [Checked player position, GlowCore level, upgrade progress, placed nodes, and inventory. Player position, GlowCore level, and all placed nodes were restored correctly. Inventory items and GlowCore upgrade progress were lost after the reload. The camera resets to the middle on load instead of restoring its previous position. Overall integrity is partial.],
+  result: [Tested manually by playing the game, noting the current state (player position, inventory contents, chest contents, GlowCore level and all placed or broken blocks), letting the autosave trigger, restarting the game, and comparing the loaded state to what was noted before. Across multiple save and load cycles the loaded state matched the saved state exactly in every case, with no missing items, misplaced blocks or corrupted data.],
   nfr_caption: [NFR303 -- Save Data Integrity],
   status_color: nfr-status.at("nfr303"),
 )<NFR303>
@@ -677,7 +677,7 @@ Maintainability represents the degree of effectiveness and efficiency with which
   priority: [Required / Medium],
   measurement: [Measure code coverage using the Unity Code Coverage package. Report overall and per-system coverage percentages.],
   verification: [Run the full automated test suite and generate a coverage report. Verify that overall coverage meets or exceeds 40%.],
-  result: [Coverage was measured using the Unity Code Coverage package. As of 01.05.2026 we are at 36.2% line coverage and 37.5% method coverage, just below the 40% target.],
+  result: [Coverage was measured using the Unity Code Coverage package. As of 16.05.2026 the project sits at 54.7% line coverage (1817 of 3320 coverable lines) and 60.5% method coverage (374 of 618 methods) across 4 assemblies, 72 classes and 70 files. Both numbers comfortably exceed the 40% target.],
   nfr_caption: [NFR402 -- Automated Test Coverage],
   status_color: nfr-status.at("nfr402"),
 )<NFR402>
