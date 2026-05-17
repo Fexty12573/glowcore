@@ -50,6 +50,8 @@ public class PlayerHand : MonoBehaviour
 
     private void OnUse(InputValue value)
     {
+        if (m_playerInventory != null && m_playerInventory.IsAnyUIOpen)
+            return;
         var handItem = m_itemGameObject?.GetComponent<IHandItem>();
         if (handItem is null)
             return;
