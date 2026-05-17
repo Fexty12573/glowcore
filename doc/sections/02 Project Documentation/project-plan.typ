@@ -666,20 +666,20 @@ Because in the week of 06.04.2026 to 12.04.2026 was the spring break we had a sp
 )
 
 
-// #pagebreak();
+#pagebreak();
 
-// ===== Sprint 6 01.05.2026 - 15.05.2026
-// #figure(
-//   image("../../resources/02 Project Documentation/Sprints/sprint-6-burndown.png"),
-//   caption: [Sprint 6 Burndown Chart],
-//   supplement: [Image],
-// )
+===== Sprint 6 01.05.2026 - 15.05.2026
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-6-burndown.png"),
+  caption: [Sprint 6 Burndown Chart],
+  supplement: [Image],
+)
 
-// #figure(
-//   image("../../resources/02 Project Documentation/Sprints/sprint-6-backlog.png"),
-//   caption: [Sprint 6 Backlog],
-//   supplement: [Image],
-// )
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-6-backlog.png"),
+  caption: [Sprint 6 Backlog],
+  supplement: [Image],
+)
 
 
 // #pagebreak();
