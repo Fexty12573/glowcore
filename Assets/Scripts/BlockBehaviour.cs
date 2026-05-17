@@ -77,10 +77,14 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
             return;
 
-        if (!WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value))
+        var node = WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value);
+        if (node == null)
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         else
+        {
+            node.SourceBlock = m_block;
             m_inventory.ConsumeHandItem(1);
+        }
 
         ChangeBuildGhost();
     }

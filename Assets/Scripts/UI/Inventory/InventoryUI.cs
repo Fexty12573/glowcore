@@ -33,12 +33,15 @@ namespace GlowCore.UI.Inventory
 
         private IInventoryService m_inventoryService;
         private ItemSlotUI[] m_allSlots;
+
+        private ItemSlotUI m_heldSlot;
+        private IItemContainer m_heldContainer;
         private int m_heldSlotIndex = -1;
         private bool m_isHolding;
-        private int m_hoveredSlotIndex = -1;
+
+        private ItemSlotUI m_hoveredSlot;
 
         public bool IsHoldingItem => m_isHolding;
-        public int HeldSlotIndex => m_heldSlotIndex;
 
         private void Awake()
         {
@@ -55,7 +58,7 @@ namespace GlowCore.UI.Inventory
             m_inventoryService = FindFirstObjectByType<PlayerInventory>();
             if (m_inventoryService == null)
             {
-                Debug.LogError("InventoryUI: Could not find PlayerInventory in scene.");
+                Debug.LogError("InventoryUI: Could not find Inventory in scene.");
                 return;
             }
 
@@ -87,6 +90,7 @@ namespace GlowCore.UI.Inventory
         {
             var totalSlots = m_inventoryService.SlotCount;
             var hotbarSlots = m_inventoryService.HotbarSlotCount;
+            var container = (IItemContainer)m_inventoryService;
 
             m_allSlots = new ItemSlotUI[totalSlots];
 
@@ -94,7 +98,7 @@ namespace GlowCore.UI.Inventory
             {
                 var slotGo = Instantiate(m_slotPrefab, m_hotbarRowParent);
                 var slotUI = slotGo.GetComponent<ItemSlotUI>();
-                slotUI.Initialize(this, i, m_inventoryService.GetSlotData(i));
+                slotUI.Initialize(this, container, i, m_inventoryService.GetSlotData(i));
                 slotUI.SetHotbarStyle(i + 1);
                 m_allSlots[i] = slotUI;
             }
@@ -103,7 +107,7 @@ namespace GlowCore.UI.Inventory
             {
                 var slotGo = Instantiate(m_slotPrefab, m_gridParent);
                 var slotUI = slotGo.GetComponent<ItemSlotUI>();
-                slotUI.Initialize(this, i, m_inventoryService.GetSlotData(i));
+                slotUI.Initialize(this, container, i, m_inventoryService.GetSlotData(i));
                 m_allSlots[i] = slotUI;
             }
         }
@@ -125,7 +129,7 @@ namespace GlowCore.UI.Inventory
                     m_craftingUI.Hide();
             }
             else
-                m_craftingUI.Show(); // Makes that the Crafting UI is opened by default
+                m_craftingUI.Show();
         }
 
         private void SetPanelVisible(bool visible)
@@ -139,23 +143,23 @@ namespace GlowCore.UI.Inventory
             }
         }
 
-        public void OnSlotPressed(int slotIndex)
+        public void OnSlotPressed(ItemSlotUI slot)
         {
-            if (m_isHolding)
+            if (m_isHolding || slot == null || slot.Container == null)
                 return;
 
-            var data = m_inventoryService.GetSlotData(slotIndex);
+            var data = slot.Container.GetSlotData(slot.SlotIndex);
             if (data.IsValid)
-                PickUpItem(slotIndex, data);
+                PickUpItem(slot, data);
         }
 
         public void OnSlotHoverEnter(ItemSlotUI slot)
         {
-            m_hoveredSlotIndex = slot.SlotIndex;
+            m_hoveredSlot = slot;
 
-            if (!m_isHolding && m_tooltip != null)
+            if (!m_isHolding && m_tooltip != null && slot.Container != null)
             {
-                var data = m_inventoryService.GetSlotData(slot.SlotIndex);
+                var data = slot.Container.GetSlotData(slot.SlotIndex);
                 if (data.IsValid)
                     m_tooltip.Show(data.Item);
             }
@@ -163,19 +167,21 @@ namespace GlowCore.UI.Inventory
 
         public void OnSlotHoverExit(ItemSlotUI slot)
         {
-            if (m_hoveredSlotIndex == slot.SlotIndex)
-                m_hoveredSlotIndex = -1;
+            if (m_hoveredSlot == slot)
+                m_hoveredSlot = null;
 
             if (m_tooltip != null)
                 m_tooltip.Hide();
         }
 
-        private void PickUpItem(int slotIndex, SlotData data)
+        private void PickUpItem(ItemSlotUI slot, SlotData data)
         {
-            m_heldSlotIndex = slotIndex;
+            m_heldSlot = slot;
+            m_heldContainer = slot.Container;
+            m_heldSlotIndex = slot.SlotIndex;
             m_isHolding = true;
 
-            SetSlotGhosted(slotIndex, true);
+            slot.SetGhosted(true);
 
             if (m_cursorIcon != null && data.Icon != null)
             {
@@ -211,34 +217,49 @@ namespace GlowCore.UI.Inventory
             if (!m_isHolding)
                 return;
 
-            if (m_hoveredSlotIndex >= 0 && m_hoveredSlotIndex != m_heldSlotIndex)
-            {
-                var targetData = m_inventoryService.GetSlotData(m_hoveredSlotIndex);
-                var heldData = m_inventoryService.GetSlotData(m_heldSlotIndex);
+            var hovered = m_hoveredSlot;
+            var heldData = m_heldContainer.GetSlotData(m_heldSlotIndex);
 
-                if (targetData.IsValid && heldData.IsValid && heldData.Item == targetData.Item)
-                    m_inventoryService.TryMerge(m_heldSlotIndex, m_hoveredSlotIndex);
-                else
-                    m_inventoryService.Swap(m_heldSlotIndex, m_hoveredSlotIndex);
-            }
-            else if (m_hoveredSlotIndex == -1)
+            if (hovered != null && hovered != m_heldSlot && hovered.Container != null)
             {
-                DropItemToWorld();
+                var hoverData = hovered.Container.GetSlotData(hovered.SlotIndex);
+
+                if (hovered.Container == m_heldContainer)
+                {
+                    if (hoverData.IsValid && heldData.IsValid && heldData.Item == hoverData.Item)
+                        m_heldContainer.TryMerge(m_heldSlotIndex, hovered.SlotIndex);
+                    else
+                        m_heldContainer.Swap(m_heldSlotIndex, hovered.SlotIndex);
+                }
+                else
+                {
+                    ContainerOps.MoveStack(m_heldContainer, m_heldSlotIndex, heldData,
+                                           hovered.Container, hovered.SlotIndex, hoverData);
+                }
+            }
+            else if (hovered == null)
+            {
+                // Don't drop to world while the GlowCore UI is open — the player is trying to feed
+                // the core, not litter the floor. CancelHeldItem snaps the stack back to its slot.
+                if (m_heldContainer is PlayerInventory player && !player.IsGlowCoreUIOpen)
+                    DropItemToWorld(player);
             }
 
             CancelHeldItem();
         }
 
-        private void DropItemToWorld()
+        private void DropItemToWorld(PlayerInventory player)
         {
-            var dropPos = m_dropPoint != null ? m_dropPoint.position : ((MonoBehaviour)m_inventoryService).transform.position;
-            m_inventoryService.DropItem(m_heldSlotIndex, dropPos);
+            var dropPos = m_dropPoint != null ? m_dropPoint.position : player.transform.position;
+            player.DropItem(m_heldSlotIndex, dropPos);
         }
 
         public void CancelHeldItem()
         {
-            var previousHeld = m_heldSlotIndex;
+            var previousHeld = m_heldSlot;
 
+            m_heldSlot = null;
+            m_heldContainer = null;
             m_heldSlotIndex = -1;
             m_isHolding = false;
 
@@ -248,14 +269,8 @@ namespace GlowCore.UI.Inventory
                 m_cursorIcon.color = Color.white;
             }
 
-            SetSlotGhosted(previousHeld, false);
-        }
-
-        private void SetSlotGhosted(int flatIndex, bool ghosted)
-        {
-            if (flatIndex < 0 || flatIndex >= m_allSlots.Length)
-                return;
-            m_allSlots[flatIndex].SetGhosted(ghosted);
+            if (previousHeld != null)
+                previousHeld.SetGhosted(false);
         }
 
         private void UpdateCursorPosition()

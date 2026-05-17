@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
+  m_Name: IronShovel
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
+  Name: Iron Shovel
+  Ingredients:
+  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
+    Amount: 3
+  ResultItem: {fileID: 11400000, guid: c208480446a81af47bc47d1d8451119b, type: 2}
+  ResultAmount: 1
+  m_craftableInInventory: 1

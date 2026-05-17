@@ -51,12 +51,15 @@ public class ActionPromptSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (NodeActionSystem.Instance == null)
-            return;
-        NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
+        // Node events are static — they outlive the scene, so unsubscribe unconditionally.
+        // A skipped unsubscribe leaves this destroyed instance handling events in the next
+        // scene and touching its destroyed progress bar (MissingReferenceException).
         Node.OnStartBreaking -= HandleNodeStartBreaking;
         Node.OnCancelBreaking -= HandleNodeCancelBreaking;
         Node.OnNodeBroken -= HandleNodeBroken;
+
+        if (NodeActionSystem.Instance != null)
+            NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
     }
 
     private void HandleNodeChanged(Node node)

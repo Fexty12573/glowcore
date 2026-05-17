@@ -18,7 +18,7 @@ namespace GlowCore.UI.Inventory
             m_inventoryService = FindFirstObjectByType<PlayerInventory>();
             if (m_inventoryService == null)
             {
-                Debug.LogError("HotbarUI: Could not find PlayerInventory in scene.");
+                Debug.LogError("HotbarUI: Could not find Inventory in scene.");
                 return;
             }
 
@@ -26,8 +26,9 @@ namespace GlowCore.UI.Inventory
             m_inventoryService.OnHotbarSelectionChanged += OnSelectionChanged;
             m_inventoryService.OnSlotChanged += OnSlotDataChanged;
             m_inventoryService.OnInventoryToggled += OnInventoryToggled;
-            m_inventoryService.OnCraftingTableToggled += OnInventoryToggled;
+            m_inventoryService.OnCraftingStationToggled += OnInventoryToggled;
             m_inventoryService.OnGlowCoreUIToggled += OnInventoryToggled;
+            m_inventoryService.OnChestToggled += OnInventoryToggled;
             UpdateSelection();
         }
 
@@ -38,8 +39,9 @@ namespace GlowCore.UI.Inventory
                 m_inventoryService.OnHotbarSelectionChanged -= OnSelectionChanged;
                 m_inventoryService.OnSlotChanged -= OnSlotDataChanged;
                 m_inventoryService.OnInventoryToggled -= OnInventoryToggled;
-                m_inventoryService.OnCraftingTableToggled -= OnInventoryToggled;
+                m_inventoryService.OnCraftingStationToggled -= OnInventoryToggled;
                 m_inventoryService.OnGlowCoreUIToggled -= OnInventoryToggled;
+                m_inventoryService.OnChestToggled -= OnInventoryToggled;
             }
         }
 

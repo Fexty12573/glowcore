@@ -3,21 +3,23 @@
 // ==============================
 // 4) Sprint Planning
 // ==============================
-=== Sprint Planning / 18.04.2026
+=== Sprint Planning / 01.05.2026
 #meeting_info(
   date: "01.05.2026",
   sprint: "Sprint 6",
   lead: "Nathanael Fässler",
-  scribe: "Yoris Kucera",
-  time: "14:00–15:00",
+  scribe: "Cedric Cathomas",
+  time: "13:00–15:00",
   location: "Online",
-  participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera, Cedric Cathomas",
+  participants: "Nathanael Fässler, Dominik Wyss, Cedric Cathomas",
+  excused: "Yoris Kucera",
   links: "-",
 )
 
-// ==== Sprint goal
-// - Document code style and testing
-// - Improve test coverage
-// - Focus on playtesting
+==== Sprint goal
+- Extend game content with phased progression
+- Add new resources and mechanics
+- Improve game playability and tutorial pacing
+- Implement main menu, refine GlowCore UI and crafting system
 
 #pagebreak()

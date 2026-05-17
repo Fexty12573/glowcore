@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController m_controller;
     [SerializeField] private Transform m_cameraAnchor;
     [SerializeField] private float m_movementSpeed = 5;
-    [SerializeField] private float m_rotationSpeed = 15;
+    [SerializeField] private float m_rotationSpeed = 12;
     [SerializeField] private Vector3 m_cameraOffset = Vector3.zero;
+    [SerializeField] private Animator m_animator;
 
+    private string m_currentState;
     private Vector2 m_moveInput;
 
     public void MultiplyMovementSpeed(float factor) => m_movementSpeed *= factor;
@@ -30,11 +32,24 @@ public class PlayerMovement : MonoBehaviour
         if (m_moveInput != Vector2.zero)
         {
             Vector3 movement3D = new(m_moveInput.x, 0, m_moveInput.y);
-            Vector3 relativeMovement = m_cameraAnchor.rotation * movement3D;
+            Vector3 relativeMovement = Quaternion.Euler(0, m_cameraAnchor.eulerAngles.y, 0) * movement3D;
             UpdateMovement(relativeMovement);
             UpdateCamera();
             UpdateRotation(relativeMovement);
+            ChangeAnimatorState("walk");
         }
+        else
+            ChangeAnimatorState("idle");
+
+    }
+
+    private void ChangeAnimatorState(string state)
+    {
+        if (state == m_currentState)
+            return;
+
+        m_animator.CrossFade(state, 0.1f);
+        m_currentState = state;
     }
 
     private void UpdateMovement(Vector3 movement)

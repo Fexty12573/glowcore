@@ -44,13 +44,19 @@ public class BuildingIntegrationTests
         SetPrivateField(worldGrid, "m_borderEast", new GameObject("E").transform);
         SetPrivateField(worldGrid, "m_borderWest", new GameObject("W").transform);
 
+        SetPrivateField(worldGrid, "m_visualBorderNorth", new GameObject("NV").transform);
+        SetPrivateField(worldGrid, "m_visualBorderSouth", new GameObject("SV").transform);
+        SetPrivateField(worldGrid, "m_visualBorderEast", new GameObject("EV").transform);
+        SetPrivateField(worldGrid, "m_visualBorderWest", new GameObject("WV").transform);
+
         SetPrivateField(worldGrid, "m_nodesParent", new GameObject("Nodes").transform);
         SetPrivateField(worldGrid, "m_worldMode", WorldMode.DesignedWorld);
 
+        worldGrid.SetSaveService(new MockSaveService());
         grid.SetActive(true);
 
         GameObject chestPrefab =
-            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Items/Blocks/ChestBlock.prefab");
+            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Blocks/ChestBlock.prefab");
         m_blockBehaviour = chestPrefab.GetComponent<BlockBehaviour>();
         SetPrivateField(m_blockBehaviour, "m_inventory", m_inventory);
         m_chestItem =

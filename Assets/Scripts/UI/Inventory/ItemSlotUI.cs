@@ -17,16 +17,20 @@ namespace GlowCore.UI.Inventory
 
         private int m_slotIndex;
         private InventoryUI m_owner;
+        private IItemContainer m_container;
         private bool m_isHovered;
         private bool m_isHotbarSlot;
         private bool m_isGhosted;
         private SlotData m_currentData;
 
         public int SlotIndex => m_slotIndex;
+        public IItemContainer Container => m_container;
+        public SlotData CurrentData => m_currentData;
 
-        public void Initialize(InventoryUI owner, int slotIndex, SlotData initialData)
+        public void Initialize(InventoryUI owner, IItemContainer container, int slotIndex, SlotData initialData)
         {
             m_owner = owner;
+            m_container = container;
             m_slotIndex = slotIndex;
 
             if (m_keyLabel != null)
@@ -71,7 +75,7 @@ namespace GlowCore.UI.Inventory
         public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
-                m_owner?.OnSlotPressed(m_slotIndex);
+                m_owner?.OnSlotPressed(this);
         }
 
         public void OnPointerUp(PointerEventData eventData)

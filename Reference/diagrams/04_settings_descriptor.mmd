@@ -1,0 +1,15 @@
+flowchart LR
+    U((User moves slider)) --> Ctrl[SliderSettingControl]
+    Ctrl -->|onValueChanged| W[SettingDescriptor.Write]
+    W -->|repository.SetFloat| Repo[PlayerPrefsSettingsRepository]
+    W -->|side effect| Side["bridge.RaiseMaster<br/>or<br/>displayService.SetMouseSensitivity"]
+    Repo --> Backend[IPlayerPrefsBackend]
+    Backend --> PP[(PlayerPrefs)]
+    Side -.->|event| Sub["AudioMixerVolumeApplier<br/>PlayerCamera"]
+
+    Show[SettingsScreen.Show] -->|snapshot for revert| Cat[Iterate ISettingsCategory.Descriptors]
+    Cat --> R[SettingDescriptor.Read]
+    R -->|repository.GetFloat| Repo
+
+    SaveBtn[user clicks SAVE] -->|repository.Save| Repo
+    Repo -->|backend.Save| Backend

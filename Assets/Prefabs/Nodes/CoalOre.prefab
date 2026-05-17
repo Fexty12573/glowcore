@@ -58,16 +58,31 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 13c2ff320ffd4fa45bbf87f384b03afa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -17606449138096495}
+      addedObject: {fileID: 7783212493944252530}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 13c2ff320ffd4fa45bbf87f384b03afa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7783212493944252530}
+      addedObject: {fileID: -17606449138096495}
   m_SourcePrefab: {fileID: 100100000, guid: 13c2ff320ffd4fa45bbf87f384b03afa, type: 3}
 --- !u!1 &8432772064553204096 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 13c2ff320ffd4fa45bbf87f384b03afa, type: 3}
   m_PrefabInstance: {fileID: 8774789239101113553}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7783212493944252530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432772064553204096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
+  m_nodeData: {fileID: 11400000, guid: 2a7e9053c47214f4592bbeb211cb9ec1, type: 2}
+  TilesUsed: []
+  Outline: {fileID: -17606449138096495}
 --- !u!114 &-17606449138096495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,17 +101,3 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &7783212493944252530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8432772064553204096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
-  m_nodeData: {fileID: 11400000, guid: 2a7e9053c47214f4592bbeb211cb9ec1, type: 2}
-  Outline: {fileID: -17606449138096495}

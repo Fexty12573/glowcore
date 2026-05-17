@@ -8,8 +8,9 @@ public interface IInventoryService
     int HotbarSlotCount { get; }
     int SelectedHotbarIndex { get; }
     bool IsOpen { get; }
-    bool IsCraftingTableOpen { get; }
+    bool IsCraftingStationOpen { get; }
     bool IsGlowCoreUIOpen { get; }
+    bool IsChestOpen { get; }
 
     SlotData GetSlotData(int flatIndex);
     int CountItem(Item item);
@@ -23,8 +24,10 @@ public interface IInventoryService
     void SelectHotbarSlot(int index);
     void ToggleInventory();
     void SetInventoryOpen(bool open);
-    void SetCraftingTableOpen(bool open);
+    void SetCraftingStationOpen(bool open);
     void SetGlowCoreUIOpen(bool open);
+    void SetChestOpen(bool open);
+    void RequestCloseUI();
     int RemoveItems(Item item, int amount);
     bool AddItem(Item item, int amount);
     bool AddItem(ItemStack stack);
@@ -34,7 +37,8 @@ public interface IInventoryService
     event Action<int> OnHotbarSelectionChanged;
     event Action<bool> OnInventoryToggled;
     event Action OnCraftingToggled;
-    event Action<bool> OnCraftingTableToggled;
+    event Action<bool> OnCraftingStationToggled;
     event Action<bool> OnGlowCoreUIToggled;
+    event Action<bool> OnChestToggled;
     event Action OnCloseUIRequested;
 }

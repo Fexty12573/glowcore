@@ -8,6 +8,8 @@ using UnityEngine.TestTools;
 
 public class PlayerIntegrationTests : InputTestFixture
 {
+    private const float kDelta = 0.0001f;
+
     private GameObject m_playerPrefab;
     private GameObject m_playerInstance;
     private PlayerMovement m_playerMovement;
@@ -55,7 +57,8 @@ public class PlayerIntegrationTests : InputTestFixture
         yield return new WaitForFixedUpdate();
 
         Vector3 newPosition = m_playerMovement.transform.position;
-        Assert.AreEqual(oldPosition, newPosition);
+        float difference = Vector3.Distance(oldPosition, newPosition);
+        Assert.AreEqual(0f, difference, kDelta);
     }
 
     [UnityTest]
@@ -64,12 +67,11 @@ public class PlayerIntegrationTests : InputTestFixture
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        InputSystem.QueueStateEvent(Mouse.current,
-            new MouseState { delta = lookInput, buttons = 1 << (int)MouseButton.Right });
+        m_playerCamera.HandleLook(lookInput);
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
-        Assert.AreEqual(oldRotation, newRotation);
+        Assert.AreNotEqual(oldRotation, newRotation);
     }
 
     [UnityTest]
@@ -82,7 +84,8 @@ public class PlayerIntegrationTests : InputTestFixture
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
-        Assert.AreEqual(oldRotation, newRotation);
+        float difference = Quaternion.Angle(oldRotation, newRotation);
+        Assert.AreEqual(0f, difference, kDelta);
     }
 
     [UnityTest]
@@ -90,12 +93,12 @@ public class PlayerIntegrationTests : InputTestFixture
     {
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
-
         InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = lookInput });
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
-        Assert.AreEqual(oldRotation, newRotation);
+        float difference = Quaternion.Angle(oldRotation, newRotation);
+        Assert.AreEqual(0f, difference, kDelta);
     }
 
     [UnityTest]
@@ -106,6 +109,7 @@ public class PlayerIntegrationTests : InputTestFixture
         yield return new WaitForFixedUpdate();
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
-        Assert.AreEqual(oldRotation, newRotation);
+        float difference = Quaternion.Angle(oldRotation, newRotation);
+        Assert.AreEqual(0f, difference, kDelta);
     }
 }

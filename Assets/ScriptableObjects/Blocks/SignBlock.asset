@@ -19,5 +19,6 @@ MonoBehaviour:
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
+  m_idBytes: 52442739ea72974eb80d33108e4b78dd
   NodeToBuild: {fileID: 7717570804344554808, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
   BuildRadius: 4

@@ -31,14 +31,14 @@ namespace GlowCore.UI.Inventory
             m_inventoryService = FindFirstObjectByType<PlayerInventory>();
             if (m_inventoryService == null)
             {
-                Debug.LogError("CraftingUI: Could not find PlayerInventory in scene.");
+                Debug.LogError("CraftingUI: Could not find Inventory in scene.");
                 return;
             }
 
             if (m_closeButton != null)
                 m_closeButton.onClick.AddListener(Hide);
 
-            var handRecipes = Array.FindAll(m_recipeList.Recipes, r => !r.RequiresCraftingTable);
+            var handRecipes = Array.FindAll(m_recipeList.Recipes, r => r.CraftableInInventory);
             m_craftingService = new CraftingSystem(m_inventoryService, handRecipes);
 
             BuildRows();

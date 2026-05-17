@@ -12,15 +12,10 @@ namespace GlowCore.World
         [SerializeField] private GlowCoreLevelConfig m_levelConfig;
         [SerializeField] private GameObject m_nextLevelPrefab;
 
-        [Header("Level 1 Logs")]
-        [SerializeField] private GameObject[] m_logs;
-
         [Header("References")]
-        [SerializeField] private Fire m_fire;
         [SerializeField][Min(0f)] private float m_closeDistance = 5f;
 
         private readonly Dictionary<Item, int> m_accumulated = new();
-        private int m_activeLogs;
         private int m_bankedForExpansion;
         private GlowCoreUpgradeUI m_ui;
         private PlayerInventory m_playerInventory;
@@ -129,8 +124,6 @@ namespace GlowCore.World
             m_playerInventory.RemoveItems(item, consume);
             m_accumulated[item] = accumulated + consume;
 
-            FeedPhysical(Level, item, consume);
-            ExpandIfConfigured(item, consume);
             OnProgressChanged?.Invoke();
         }
 
@@ -144,29 +137,19 @@ namespace GlowCore.World
             SpawnNextLevel();
         }
 
-        public void ActivateLogs(int amount)
+        public GlowCoreObject ForceUpgrade()
         {
-            if (m_logs == null || m_activeLogs >= m_logs.Length)
-                return;
+            if (!HasNextLevel)
+                return null;
 
-            var toActivate = Mathf.Min(amount, m_logs.Length - m_activeLogs);
-            for (var i = 0; i < toActivate; i++)
-            {
-                GameObject log = m_logs[m_activeLogs];
-                log.SetActive(true);
-                RegisterInteractableChildren(log);
-                m_activeLogs++;
-            }
-
-            if (TryGetComponent(out Outline outline))
-                outline.RefreshRenderers();
+            UpgradePhysical();
+            return SpawnNextLevel();
         }
 
         // Private Methods
         private void Awake()
         {
             m_playerInventory = FindFirstObjectByType<PlayerInventory>();
-            CreatePhysical(Level);
 
             RenderSettings.sun.intensity += 0.02f;
         }
@@ -185,62 +168,11 @@ namespace GlowCore.World
                 m_ui.Hide();
         }
 
-        private void CreatePhysical(int level)
-        {
-            CreatePhysicalLevel1();
-        }
-
-        private void FeedPhysical(int level, Item item, int amount)
-        {
-            FeedPhysicalLevel1(item, amount);
-        }
-
         private void UpgradePhysical()
         {
             if (WorldGrid.Instance != null && m_levelConfig != null)
                 WorldGrid.Instance.Expand(m_levelConfig.TilesOnLevelUp, isLevelUp: true);
         }
-
-        private void CreatePhysicalLevel1()
-        {
-            if (m_logs == null)
-                return;
-
-            foreach (GameObject log in m_logs)
-                log.SetActive(false);
-
-            ActivateLogs(m_levelConfig != null ? m_levelConfig.InitialActiveLogs : 0);
-        }
-
-        private void FeedPhysicalLevel1(Item item, int amount)
-        {
-            if (item == null)
-                return;
-
-            if (string.Equals(item.Name, "Wood", StringComparison.Ordinal))
-            {
-                ActivateLogs(amount);
-                if (m_fire != null)
-                    m_fire.FeedWood(amount);
-            }
-        }
-
-        private void ExpandIfConfigured(Item item, int amount)
-        {
-            if (WorldGrid.Instance == null || m_levelConfig == null)
-                return;
-            if (m_levelConfig.ExpansionItem == null || m_levelConfig.ExpansionItem != item)
-                return;
-
-            m_bankedForExpansion += amount;
-            var cost = m_levelConfig.ExpansionCostPerTile;
-            while (m_bankedForExpansion >= cost)
-            {
-                m_bankedForExpansion -= cost;
-                WorldGrid.Instance.Expand(1);
-            }
-        }
-
 
         private bool AreAllMaterialsMet()
         {
@@ -259,12 +191,12 @@ namespace GlowCore.World
             return true;
         }
 
-        private void SpawnNextLevel()
+        private GlowCoreObject SpawnNextLevel()
         {
             if (m_nextLevelPrefab == null)
             {
                 Debug.Log("GlowCore: Max level reached, no upgrade available.");
-                return;
+                return null;
             }
 
             Vector3 position = transform.position;
@@ -277,11 +209,12 @@ namespace GlowCore.World
                     WorldGrid.Instance.ClearNodeAt(oldNode.TilesUsed[i]);
             }
 
-            GameObject newGlowCore = Instantiate(m_nextLevelPrefab, position, Quaternion.identity, transform.parent);
+            GameObject newGlowCoreObj = Instantiate(m_nextLevelPrefab, position, Quaternion.identity, transform.parent);
+            var newGlowCore = newGlowCoreObj.GetComponent<GlowCoreObject>();
 
-            if (newGlowCore.TryGetComponent(out Node newNode))
+            if (newGlowCoreObj.TryGetComponent(out Node newNode))
             {
-                var nextConfig = newGlowCore.GetComponent<GlowCoreObject>()?.LevelConfig;
+                var nextConfig = newGlowCore != null ? newGlowCore.LevelConfig : null;
                 var tileCount = nextConfig != null ? nextConfig.TileCount : 1;
                 WorldGrid.Instance.PlaceNodeAt(newNode, worldX, worldZ, tileCount);
             }
@@ -291,6 +224,7 @@ namespace GlowCore.World
             }
 
             Destroy(gameObject);
+            return newGlowCore;
         }
 
         private void RegisterInteractableChildren(GameObject target)

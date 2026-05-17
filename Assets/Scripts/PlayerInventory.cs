@@ -3,7 +3,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInventory : MonoBehaviour, IInventoryService
+public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
 {
     [Serializable]
     private struct StartingItem
@@ -25,24 +25,27 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     private Inventory m_inventory;
     private int m_selectedHotbarIndex;
     private bool m_isOpen;
-    private bool m_isCraftingTableOpen;
+    private bool m_isCraftingStationOpen;
     private bool m_isGlowCoreUIOpen;
+    private bool m_isChestOpen;
 
     // IInventoryService — Properties
     public int SlotCount => m_inventory.Size;
     public int HotbarSlotCount => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
     public bool IsOpen => m_isOpen;
-    public bool IsCraftingTableOpen => m_isCraftingTableOpen;
+    public bool IsCraftingStationOpen => m_isCraftingStationOpen;
     public bool IsGlowCoreUIOpen => m_isGlowCoreUIOpen;
+    public bool IsChestOpen => m_isChestOpen;
 
     // IInventoryService — Events
     public event Action<SlotChangedEvent> OnSlotChanged;
     public event Action<int> OnHotbarSelectionChanged;
     public event Action<bool> OnInventoryToggled;
     public event Action OnCraftingToggled;
-    public event Action<bool> OnCraftingTableToggled;
+    public event Action<bool> OnCraftingStationToggled;
     public event Action<bool> OnGlowCoreUIToggled;
+    public event Action<bool> OnChestToggled;
     public event Action OnCloseUIRequested;
 
     // Public Methods — IInventoryService Queries
@@ -98,10 +101,10 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
         OnInventoryToggled?.Invoke(m_isOpen);
     }
 
-    public void SetCraftingTableOpen(bool open)
+    public void SetCraftingStationOpen(bool open)
     {
-        m_isCraftingTableOpen = open;
-        OnCraftingTableToggled?.Invoke(open);
+        m_isCraftingStationOpen = open;
+        OnCraftingStationToggled?.Invoke(open);
     }
 
     public void SetGlowCoreUIOpen(bool open)
@@ -110,7 +113,28 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
         OnGlowCoreUIToggled?.Invoke(open);
     }
 
-    // Public Methods — Game Logic (not on IInventoryService)
+    public void SetChestOpen(bool open)
+    {
+        m_isChestOpen = open;
+        OnChestToggled?.Invoke(open);
+    }
+
+    public void RequestCloseUI()
+    {
+        if (m_isOpen)
+            SetInventoryOpen(false);
+        OnCloseUIRequested?.Invoke();
+    }
+
+    // IItemContainer — Commands not already on IInventoryService
+    public void SetSlot(int flatIndex, Item item, int amount) => m_inventory.SetSlot(flatIndex, item, amount);
+
+    public int AddStack(Item item, int amount) => m_inventory.AddStack(item, amount, kHotbarStartIndex);
+
+
+    // Public Methods — Game Logic
+    public Inventory GetInventory() => m_inventory;
+
     public void ConsumeHandItem(int amount)
     {
         var slot = m_inventory.GetSlot(m_selectedHotbarIndex);
@@ -148,19 +172,18 @@ public class PlayerInventory : MonoBehaviour, IInventoryService
     }
 
     // Private Methods — Input Action Callbacks
-    private void OnInventory(InputValue value) => ToggleInventory();
+    private void OnInventory(InputValue value)
+    {
+        // Block inventory toggle while the game is paused (Time.timeScale == 0 indicates a blocking menu).
+        if (Time.timeScale == 0f)
+            return;
+        ToggleInventory();
+    }
 
     private void OnCrafting(InputValue value)
     {
         if (m_isOpen)
             OnCraftingToggled?.Invoke();
-    }
-
-    private void OnCloseUI(InputValue value)
-    {
-        if (m_isOpen)
-            SetInventoryOpen(false);
-        OnCloseUIRequested?.Invoke();
     }
 
     private void OnHotbarSlot1(InputValue value) => SelectHotbarSlot(0);
