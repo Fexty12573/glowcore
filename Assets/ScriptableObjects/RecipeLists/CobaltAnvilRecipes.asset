@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CobaltAnvilRecipes
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
-  - {fileID: 11400000, guid: 70324218a36e7ce4e8b2c2e680670eaf, type: 2}
-  - {fileID: 11400000, guid: 73418526d41d4d744936b25fa34d258e, type: 2}
-  - {fileID: 11400000, guid: 03629350d02daa344a47480fecc3391d, type: 2}
-  - {fileID: 11400000, guid: 7ff91c445a31bf74294be7ac2292287b, type: 2}
+  - {fileID: 11400000, guid: 5eb73bd6073325943a0dcf4f984d4863, type: 2}
+  - {fileID: 11400000, guid: d87916941692a364a93766031a43e6fb, type: 2}
+  - {fileID: 11400000, guid: 72489a5dd0b94884288aac5e80996fef, type: 2}
+  - {fileID: 11400000, guid: cf4876f05b5d1db40911dbf4d713c6e6, type: 2}
+  - {fileID: 11400000, guid: 61287b8e91d37d2408d4353667f72f88, type: 2}

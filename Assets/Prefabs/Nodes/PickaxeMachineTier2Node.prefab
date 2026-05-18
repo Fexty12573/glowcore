@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_block
       value: 
       objectReference: {fileID: 11400000, guid: c292d4beaf90ebc4687b76de6ad95752, type: 2}
+    - target: {fileID: 462560577206943356, guid: 46a468b027198b24dbd11e5522b9480d, type: 3}
+      propertyPath: m_height
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4760483252747527372, guid: 46a468b027198b24dbd11e5522b9480d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -28,10 +28,10 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        m_chestUI = FindFirstObjectByType<ChestUI>(FindObjectsInactive.Include);
+        m_chestUI = ChestUI.Instance;
         if (m_chestUI == null)
         {
-            Debug.LogWarning("ChestInteractable: Could not find ChestUI in scene.");
+            Debug.LogWarning("ChestInteractable: Could not find ChestUI Singleton d.");
             return;
         }
 

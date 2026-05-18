@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: CrystalFurnaceRecipes
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
-  - {fileID: 11400000, guid: 7f804a31c38f651468faeffe30083e4a, type: 2}
   - {fileID: 11400000, guid: ecac845a0fc4cf34195476f1286f1c17, type: 2}
+  - {fileID: 11400000, guid: 85700c6dc6f700e469bb0b3836d21455, type: 2}
+  - {fileID: 11400000, guid: d63f2837dac177a47a354edbd21ee9e9, type: 2}
+  - {fileID: 11400000, guid: 7f804a31c38f651468faeffe30083e4a, type: 2}
+  - {fileID: 11400000, guid: d2ee689c082d47544b313efb03721b3a, type: 2}
+  - {fileID: 11400000, guid: ad2f269521b50a341b1bf17d69b63e6b, type: 2}
+  - {fileID: 11400000, guid: 366081a3947f2804ebac5cf53ad7b1c9, type: 2}
+  - {fileID: 11400000, guid: 39336920d8a8cac45a5f8cbd40690b27, type: 2}
+  - {fileID: 11400000, guid: 7ace3e2a346ca714aa1da5d45c700da0, type: 2}

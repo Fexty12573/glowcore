@@ -303,7 +303,7 @@ namespace GlowCore.World
                     break;
             }
 
-            LogGrid();
+            // LogGrid();
             UpdateBorders();
         }
 
@@ -457,7 +457,7 @@ namespace GlowCore.World
             }
 
             m_player.position = new Vector3(saveData.Player.PosX, m_player.position.y, saveData.Player.PosZ);
-            m_playerMovement.UpdateCamera();
+            m_playerMovement.SetCameraStartPosition();
         }
 
         private HashSet<Vector2Int> BuildSnapshotPositions()

@@ -13,21 +13,10 @@ MonoBehaviour:
   m_Name: InventoryRecipes
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
-  - {fileID: 11400000, guid: d766687737ae3e446b4868d3ecc613a9, type: 2}
-  - {fileID: 11400000, guid: 1f5b70d5863b51546ac0e1fab72bda6d, type: 2}
-  - {fileID: 11400000, guid: 5a3934ab9ff390f48b5841271dbde33c, type: 2}
-  - {fileID: 11400000, guid: 61287b8e91d37d2408d4353667f72f88, type: 2}
-  - {fileID: 11400000, guid: b35053a9e77076747ac4772f31550189, type: 2}
-  - {fileID: 11400000, guid: ad2f269521b50a341b1bf17d69b63e6b, type: 2}
-  - {fileID: 11400000, guid: 366081a3947f2804ebac5cf53ad7b1c9, type: 2}
-  - {fileID: 11400000, guid: d2ee689c082d47544b313efb03721b3a, type: 2}
-  - {fileID: 11400000, guid: f4fe6a5ffc13b9248b26da70e4e53c17, type: 2}
   - {fileID: 11400000, guid: f949e4c148f166a46b4c8c374e7d239f, type: 2}
-  - {fileID: 11400000, guid: 1562f3873dcdbe4408aa8b3cccc120c9, type: 2}
-  - {fileID: 11400000, guid: bd9e3a79274e51e4aa380f321183bdae, type: 2}
-  - {fileID: 11400000, guid: 3e4eb1c98b0829e449e2ff9fbf04dd94, type: 2}
+  - {fileID: 11400000, guid: 3368e9f308dfc7e4ca0c7fa5906de546, type: 2}
+  - {fileID: 11400000, guid: d766687737ae3e446b4868d3ecc613a9, type: 2}
+  - {fileID: 11400000, guid: 3618d4753fb7bb34bae62149c3789342, type: 2}
+  - {fileID: 11400000, guid: 17b3d49f9399af74095a9048e618b3ef, type: 2}
   - {fileID: 11400000, guid: fe24fd4ec66625842b0e59a3037d5e9d, type: 2}
-  - {fileID: 11400000, guid: cb69c1ad05b1d17418c5fc39d81fca17, type: 2}
-  - {fileID: 11400000, guid: 61d97e10e610c2245898ea0cf52ac7ac, type: 2}
-  - {fileID: 11400000, guid: 1069c63e4ab362847950522bdf90fed2, type: 2}
-  - {fileID: 11400000, guid: a249b56e334112d428b5278afdb1759c, type: 2}
+  - {fileID: 11400000, guid: 54851d03149631c4087272548a6b743b, type: 2}

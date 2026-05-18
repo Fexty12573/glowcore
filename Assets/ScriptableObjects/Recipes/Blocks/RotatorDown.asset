@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Rotator Down
   Ingredients:
-  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 0
+  - Item: {fileID: 11400000, guid: c0501b15609df42459e32064866377c9, type: 2}
+    Amount: 10
+  - Item: {fileID: 11400000, guid: 2b4771e323d65d5439771e63d2788c21, type: 2}
+    Amount: 2
   ResultItem: {fileID: 11400000, guid: 6f22406105691e74487c9a00f0c2371e, type: 2}
   ResultAmount: 1

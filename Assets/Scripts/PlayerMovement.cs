@@ -8,13 +8,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController m_controller;
     [SerializeField] private Transform m_cameraAnchor;
     [SerializeField] private float m_movementSpeed = 5;
+    [SerializeField] private float m_smoothing = 20f;
     [SerializeField] private float m_rotationSpeed = 12;
     [SerializeField] private Vector3 m_cameraOffset = Vector3.zero;
+    [SerializeField] private float m_cameraFollowDelay = 0.1f;
     [SerializeField] private Animator m_animator;
 
     private string m_currentState;
     private Vector2 m_moveInput;
+    private Vector2 m_smoothedInput;
     private bool m_isWalkingSoundPlaying;
+    private Vector3 m_cameraVelocity;
 
     public void MultiplyMovementSpeed(float factor) => m_movementSpeed *= factor;
 
@@ -23,9 +27,9 @@ public class PlayerMovement : MonoBehaviour
         m_moveInput = movement;
     }
 
-    public void UpdateCamera()
+    public void SetCameraStartPosition()
     {
-        m_cameraAnchor.position = transform.position + m_cameraOffset; // necessary since the camera is not a child of the player
+        m_cameraAnchor.position = transform.position + m_cameraOffset;
     }
 
     private void OnMove(InputValue inputValue) // called on press and release
@@ -33,14 +37,15 @@ public class PlayerMovement : MonoBehaviour
         HandleMove(inputValue.Get<Vector2>());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (m_moveInput != Vector2.zero)
+        m_smoothedInput = Vector2.Lerp(m_smoothedInput, m_moveInput, m_smoothing * Time.deltaTime);
+
+        if (m_smoothedInput.magnitude >= 0.05f)
         {
-            Vector3 movement3D = new(m_moveInput.x, 0, m_moveInput.y);
+            Vector3 movement3D = new(m_smoothedInput.x, 0, m_smoothedInput.y);
             Vector3 relativeMovement = Quaternion.Euler(0, m_cameraAnchor.eulerAngles.y, 0) * movement3D;
             UpdateMovement(relativeMovement);
-            UpdateCamera();
             UpdateRotation(relativeMovement);
             ChangeAnimatorState("walk");
             if (!m_isWalkingSoundPlaying && AudioManager.Instance != null)
@@ -52,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         else
+        if (m_moveInput == Vector2.zero)
         {
             ChangeAnimatorState("idle");
 
@@ -62,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
                 m_isWalkingSoundPlaying = false;
             }
         }
+        UpdateCamera();
     }
 
     private void ChangeAnimatorState(string state)
@@ -76,7 +83,13 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateMovement(Vector3 movement)
     {
         movement += Vector3.down; // this brings the player back to the ground
-        m_controller.Move(Time.fixedDeltaTime * m_movementSpeed * movement);
+        m_controller.Move(Time.deltaTime * m_movementSpeed * movement);
+    }
+
+    private void UpdateCamera() // necessary since the camera is not a child of the player
+    {
+        Vector3 targetPosition = transform.position + m_cameraOffset;
+        m_cameraAnchor.position = Vector3.SmoothDamp(m_cameraAnchor.position, targetPosition, ref m_cameraVelocity, m_cameraFollowDelay);
     }
 
     private void UpdateRotation(Vector3 movement)
@@ -84,6 +97,6 @@ public class PlayerMovement : MonoBehaviour
         var newDirection = Quaternion.LookRotation(movement);
         transform.rotation =
             Quaternion.Lerp(transform.rotation, newDirection,
-                Time.fixedDeltaTime * m_rotationSpeed); // makes the player turn around smoothly
+                Time.deltaTime * m_rotationSpeed); // makes the player turn around smoothly
     }
 }

@@ -98,9 +98,9 @@ public class ActionPromptSystem : MonoBehaviour
 
     private void HandleNodeChanged(Node node)
     {
+        DisableProgressBar();
         if (node == null || node.IsHolding) //Only a machine can already be breaking this Node when this event is fired.
         {
-            DisableProgressBar();
             DisablePrompt();
             return;
         }

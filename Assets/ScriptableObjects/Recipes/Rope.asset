@@ -15,7 +15,6 @@ MonoBehaviour:
   Name: Rope
   Ingredients:
   - Item: {fileID: 11400000, guid: 90bb7157d7fd0b6429eca904b394e92c, type: 2}
-    Amount: 8
+    Amount: 3
   ResultItem: {fileID: 11400000, guid: 5bd2631771c6b154ab1ffeb957228e47, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 0

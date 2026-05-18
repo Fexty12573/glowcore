@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
+<<<<<<<< HEAD:Assets/ScriptableObjects/Nodes/AxeMachineTier1Node.asset
+  m_Name: AxeMachineTier1Node
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
+  InteractionRange: 3
+  ItemDrops:
+  - Item: {fileID: 11400000, guid: cd7508eec2110ab4e99f89dfc0bd0f53, type: 2}
+    Min: 1
+    Max: 1
+  BaseBreakTime: 0.5
+  IsIndestructible: 0
+  UsableTools:
+  - Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+    BreakMultiplier: 0.3
+========
+  m_Name: EmptyNode
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
+  InteractionRange: 3
+  ItemDrops: []
+  BaseBreakTime: 1
+  IsIndestructible: 1
+  UsableTools: []
+>>>>>>>> 05aef74 (add replant machine and saplings):Assets/ScriptableObjects/Nodes/EmptyNode.asset

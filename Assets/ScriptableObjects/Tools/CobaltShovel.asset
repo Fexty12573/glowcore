@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: Cobalt Shovel
   Description: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 7167212179699106302, guid: f5ee6a070753a6441b95b4a513478490, type: 3}
   Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
   m_idBytes: b693a15b614e714695f59fa01d042544
+  Sound: 0

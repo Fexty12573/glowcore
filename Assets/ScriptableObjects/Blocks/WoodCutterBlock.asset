@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
   m_Name: WoodCutterBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
-  Name: 
+  Name: Wood Cutter
   Description: 
   Prefab: {fileID: 1601511354680668933, guid: 90ddc2a0f7ffdbd4dbb5d1a68e863e70, type: 3}
-  Icon: {fileID: 21300000, guid: c512eb22185a9cd498fe1b045bf9c872, type: 3}
-  IconRotation: {x: 0, y: 102.7, z: 0}
-  DropScale: 1
-  InHandScale: 1
+  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  DropScale: 0.7
+  InHandScale: 0.7
   MaxStack: 99
   m_idBytes: 3608ad074fcb6544ae120029c6955abe
   NodeToBuild: {fileID: 5255011417645268635, guid: 38761d19d7dca5445bdd5aa2ae8c023c, type: 3}
   BuildRadius: 4
   HasInventory: 0
+  YRotationOffset: 0

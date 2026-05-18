@@ -20,4 +20,3 @@ MonoBehaviour:
     Amount: 2
   ResultItem: {fileID: 11400000, guid: 5d2b96bc79fca98469ed8cb6590b8ca8, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 1

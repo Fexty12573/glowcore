@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Crystal Axe
   Ingredients:
-  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
+  - Item: {fileID: 11400000, guid: 2b4771e323d65d5439771e63d2788c21, type: 2}
+    Amount: 10
+  - Item: {fileID: 11400000, guid: 4bad5259d43b0df419702c5f2184c80b, type: 2}
     Amount: 3
   ResultItem: {fileID: 11400000, guid: 52a7419b488d409479211d23c3ad029a, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 1

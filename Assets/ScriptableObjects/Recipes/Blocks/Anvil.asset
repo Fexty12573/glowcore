@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Anvil
   Ingredients:
-  - Item: {fileID: 11400000, guid: 79401a3b7caaf6344aa8b8bdc364355f, type: 2}
-    Amount: 10
-  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
-    Amount: 5
+  - Item: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
+    Amount: 3
   ResultItem: {fileID: 11400000, guid: e6e017e5378c46c4cbffaff4838aed3c, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 0
