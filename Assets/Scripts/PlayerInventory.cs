@@ -33,6 +33,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
     public int SlotCount => m_inventory.Size;
     public int HotbarSlotCount => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
+    public bool IsAnyUIOpen => m_isOpen || m_isCraftingStationOpen || m_isGlowCoreUIOpen || m_isChestOpen;
     public bool IsOpen => m_isOpen;
     public bool IsCraftingStationOpen => m_isCraftingStationOpen;
     public bool IsGlowCoreUIOpen => m_isGlowCoreUIOpen;
