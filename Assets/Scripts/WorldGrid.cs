@@ -68,6 +68,7 @@ namespace GlowCore.World
         private ISaveService m_saveService;
         private IGameLaunchContext m_launchContext;
         private string m_currentPlayerName = "Player";
+        private PlayerMovement m_playerMovement;
 
         // Properties
         public static WorldGrid Instance => s_instance;
@@ -81,6 +82,7 @@ namespace GlowCore.World
         {
             m_tiles = new Node[m_gridSize, m_gridSize];
             m_origin = new Vector2Int(m_gridSize / 2, m_gridSize / 2);
+            m_playerMovement = m_player.gameObject.GetComponent<PlayerMovement>();
         }
 
         public Node GetNodeAt(int x, int z)
@@ -414,6 +416,7 @@ namespace GlowCore.World
             }
 
             m_player.position = new Vector3(saveData.Player.PosX, m_player.position.y, saveData.Player.PosZ);
+            m_playerMovement.UpdateCamera();
         }
 
         private HashSet<Vector2Int> BuildSnapshotPositions()
