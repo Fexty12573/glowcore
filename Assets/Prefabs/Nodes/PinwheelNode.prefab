@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4500315209568147433}
   - component: {fileID: 7996910961723672879}
   m_Layer: 0
-  m_Name: Pinwheel
+  m_Name: PinwheelNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -234,6 +234,20 @@ public class Inventory
         return null;
     }
 
+    public Vector2Int? GetFirstNonEmptySlot()
+    {
+        for (var y = 0; y < m_height; y++)
+        {
+            for (var x = 0; x < m_width; x++)
+            {
+                if (this[x, y].Amount != 0)
+                    return new Vector2Int(x, y);
+            }
+        }
+
+        return null;
+    }
+
     public ItemStack this[int x, int y]
     {
         get => m_items[(y * m_width) + x];

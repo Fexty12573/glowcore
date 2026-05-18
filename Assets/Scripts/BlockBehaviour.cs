@@ -77,7 +77,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
             return;
 
         ActionPromptSystem.Instance?.EnableRotatePrompt(spawnPosition);
-        if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
+        if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition, 0.9f))
             m_activeBuildGhost = Instantiate(m_buildGhostOccupied, spawnPosition, m_buildGhostAllowed.transform.rotation);
         else
             m_activeBuildGhost = Instantiate(m_buildGhostAllowed, spawnPosition, m_buildGhostOccupied.transform.rotation);
@@ -90,7 +90,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
             return;
 
         Vector3 spawnPosition = WorldGrid.Instance.GetSpawnPosition(m_selectedTile.Value);
-        if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
+        if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition, 0.9f))
             return;
 
         var node = WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value, s_rotation, m_block.YRotationOffset);
