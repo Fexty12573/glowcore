@@ -12,6 +12,7 @@ public abstract class Consumable : MonoBehaviour, IHandItem, IPlayerInventoryAwa
         {
             ApplyConsumeEffect();
             m_inventory.ConsumeHandItem(1);
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.Consume, AudioManager.AudioChannel.Environment);
         }
     }
 

@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private string m_currentState;
     private Vector2 m_moveInput;
+    private bool m_isWalkingSoundPlaying;
 
     public void MultiplyMovementSpeed(float factor) => m_movementSpeed *= factor;
 
@@ -42,10 +43,25 @@ public class PlayerMovement : MonoBehaviour
             UpdateCamera();
             UpdateRotation(relativeMovement);
             ChangeAnimatorState("walk");
+            if (!m_isWalkingSoundPlaying && AudioManager.Instance != null)
+            {
+                AudioManager.Instance.Play(
+                    AudioManager.SoundType.Walk,
+                    AudioManager.AudioChannel.Player);
+                m_isWalkingSoundPlaying = true;
+            }
         }
         else
+        {
             ChangeAnimatorState("idle");
 
+            if (m_isWalkingSoundPlaying && AudioManager.Instance != null)
+            {
+                AudioManager.Instance.Stop(
+                    AudioManager.AudioChannel.Player);
+                m_isWalkingSoundPlaying = false;
+            }
+        }
     }
 
     private void ChangeAnimatorState(string state)
@@ -66,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateRotation(Vector3 movement)
     {
         var newDirection = Quaternion.LookRotation(movement);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newDirection, Time.fixedDeltaTime * m_rotationSpeed); // makes the player turn around smoothly
+        transform.rotation =
+            Quaternion.Lerp(transform.rotation, newDirection,
+                Time.fixedDeltaTime * m_rotationSpeed); // makes the player turn around smoothly
     }
 }

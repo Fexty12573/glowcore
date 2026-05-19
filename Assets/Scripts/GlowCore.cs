@@ -8,12 +8,13 @@ namespace GlowCore.World
 {
     public class GlowCoreObject : MonoBehaviour, IInteractable, IGlowCoreObject
     {
-        [Header("Level")]
-        [SerializeField] private GlowCoreLevelConfig m_levelConfig;
+        [Header("Level")][SerializeField] private GlowCoreLevelConfig m_levelConfig;
         [SerializeField] private GameObject m_nextLevelPrefab;
 
         [Header("References")]
-        [SerializeField][Min(0f)] private float m_closeDistance = 5f;
+        [SerializeField]
+        [Min(0f)]
+        private float m_closeDistance = 5f;
 
         private readonly Dictionary<Item, int> m_accumulated = new();
         private int m_bankedForExpansion;
@@ -30,7 +31,7 @@ namespace GlowCore.World
                 if (m_nextLevelPrefab == null)
                     return null;
                 GlowCoreObject next = m_nextLevelPrefab.GetComponent<GlowCoreObject>();
-                return next != null ? next.m_levelConfig : null;
+                return next?.m_levelConfig;
             }
         }
 
@@ -56,6 +57,7 @@ namespace GlowCore.World
                     totalRequired += materials[i].Amount;
                     totalAccumulated += Mathf.Min(AccumulatedFor(materials[i].Item), materials[i].Amount);
                 }
+
                 return totalRequired == 0 ? 0f : (float)totalAccumulated / totalRequired;
             }
         }
@@ -83,6 +85,7 @@ namespace GlowCore.World
                 if (materials[i].Item == item)
                     return materials[i].Amount;
             }
+
             return 0;
         }
 
@@ -135,6 +138,8 @@ namespace GlowCore.World
             OnLevelUp?.Invoke();
             UpgradePhysical();
             SpawnNextLevel();
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.GlowCoreUpgrade,
+                AudioManager.AudioChannel.Environment);
         }
 
         public GlowCoreObject ForceUpgrade()
@@ -188,6 +193,7 @@ namespace GlowCore.World
                 if (AccumulatedFor(materials[i].Item) < materials[i].Amount)
                     return false;
             }
+
             return true;
         }
 
@@ -214,7 +220,7 @@ namespace GlowCore.World
 
             if (newGlowCoreObj.TryGetComponent(out Node newNode))
             {
-                var nextConfig = newGlowCore != null ? newGlowCore.LevelConfig : null;
+                var nextConfig = newGlowCore?.LevelConfig;
                 var tileCount = nextConfig != null ? nextConfig.TileCount : 1;
                 WorldGrid.Instance.PlaceNodeAt(newNode, worldX, worldZ, tileCount);
             }
