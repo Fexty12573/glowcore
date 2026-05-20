@@ -48,8 +48,8 @@ public class AxeMachineAnimation : MonoBehaviour
         m_axeGroup3.speed = m_axeAnimationSpeed;
 
         var speedVector = new Vector3(-m_wheelSpinningSpeed, 0f, 0f);
-        m_wheel1.m_spinSpeed = speedVector;
-        m_wheel2.m_spinSpeed = speedVector;
+        m_wheel1.SpinSpeed = speedVector;
+        m_wheel2.SpinSpeed = speedVector;
     }
 
     private IEnumerator StartDesyncedAxes()
