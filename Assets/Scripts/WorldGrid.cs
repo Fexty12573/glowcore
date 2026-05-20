@@ -94,6 +94,8 @@ namespace GlowCore.World
             return m_tiles[index.x, index.y];
         }
 
+        public Node GetNodeAt(Vector2Int tile) => GetNodeAt(tile.x, tile.y);
+
         public bool PlaceNodeAtTile(Vector2Int tile, Node node)
         {
             if (!IsInBounds(tile) || IsOccupied(tile))

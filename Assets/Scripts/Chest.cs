@@ -31,6 +31,8 @@ public class Chest : MonoBehaviour, IItemContainer
         return stack != null ? new SlotData(stack) : SlotData.Empty;
     }
 
+    public bool HasEmptySlot() => m_inventory.GetFirstEmptySlot().HasValue;
+
     public int CountItem(Item item) => m_inventory.CountItem(item);
 
     public bool CanAcceptItem(Item item, int amount) => m_inventory.CanAccept(item, amount);

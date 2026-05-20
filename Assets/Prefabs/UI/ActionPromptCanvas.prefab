@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4749629001530397146}
   - component: {fileID: 2919714164390032362}
   - component: {fileID: 8192624636849376738}
+  - component: {fileID: 8640699543480195661}
   m_Layer: 5
   m_Name: ActionPromptCanvas
   m_TagString: Untagged
@@ -137,7 +138,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4749629001530397146
 MonoBehaviour:
@@ -199,6 +200,21 @@ MonoBehaviour:
   m_eButtonIcon: {fileID: 5434869709388709700}
   m_progressBarOffset: {x: 0, y: 0.6, z: 0}
   m_nodeBreakProgressBar: {fileID: 9118436989585034324}
+--- !u!114 &8640699543480195661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498391041369867585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe31131e361ccc24098a81365b46c503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  m_camera: {fileID: 0}
+  m_progressBarPrefab: {fileID: 776448589184916873, guid: 68b5f2bc72951bb49859220fe73399f2, type: 3}
+  m_offset: {x: 0, y: 0.4, z: 0}
 --- !u!1 &2840592776042717634
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +344,7 @@ RectTransform:
   m_Father: {fileID: 4621664914211249184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.608, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

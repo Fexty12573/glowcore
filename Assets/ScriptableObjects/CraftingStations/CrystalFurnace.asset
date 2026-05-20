@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95f522c16b3dbe4ab2d541d38975c6a, type: 3}
+  m_Name: CrystalFurnace
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.CraftingStation
+  Name: Crystal Furnace
+  Description: 
+  RecipeList: {fileID: 11400000, guid: 07342150f8b1c4a4281cfa15f80a550d, type: 2}
+  BackgroundSprite: {fileID: 0}
+  RecipeRowTheme: {fileID: 0}

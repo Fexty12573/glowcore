@@ -21,9 +21,9 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
             return;
 
         m_isHolding = value.Get<float>() >= 0.5f;
-        if (m_isHolding)
-            m_selectedNode.StartHold(m_tool);
-        else
+        if (m_isHolding && !m_selectedNode.IsHolding) //only StartHold if no Machine is already holding
+            m_selectedNode.StartHold(m_tool, null);
+        else if (m_selectedNode.PlayerIsHolding) //only endhold, if the break owner was the player
             m_selectedNode.EndHold();
     }
 
@@ -52,14 +52,15 @@ public class ToolBehaviour : MonoBehaviour, IHandItem
         if (NodeActionSystem.Instance == null)
             return;
         NodeActionSystem.Instance.OnChangeSelectedNode -= HandleNodeChanged;
-        // m_selectedNode?.EndHold();
+        if (m_selectedNode?.PlayerIsHolding == true)
+            m_selectedNode.EndHold();
     }
 
     private void HandleNodeChanged(Node newNode)
     {
-        if (m_selectedNode != newNode && m_isHolding)
+        if (m_selectedNode != newNode && m_isHolding && m_selectedNode?.PlayerIsHolding == true)
         {
-            m_selectedNode?.EndHold();
+            m_selectedNode.EndHold();
             m_isHolding = false;
         }
         m_selectedNode = newNode;

@@ -64,8 +64,9 @@ public class ActionPromptSystem : MonoBehaviour
 
     private void HandleNodeChanged(Node node)
     {
-        if (node is null)
+        if (node == null || node.IsHolding) //Only a machine can already be breaking this Node when this event is fired.
         {
+            DisableProgressBar();
             DisablePrompt();
             return;
         }
@@ -110,8 +111,11 @@ public class ActionPromptSystem : MonoBehaviour
         m_nodeBreakProgressBar.value = m_currentNode.GetBreakProgress();
     }
 
-    private void HandleNodeStartBreaking(Node node)
+    private void HandleNodeStartBreaking(Node node, bool byPlayer)
     {
+        if (node != m_currentNode || !byPlayer)
+            return;
+
         m_isBreaking = true;
         m_nodeBreakProgressBar.gameObject.SetActive(true);
         m_promptUI.SetActive(false);
@@ -120,13 +124,20 @@ public class ActionPromptSystem : MonoBehaviour
 
     private void HandleNodeCancelBreaking(Node node)
     {
-        m_isBreaking = false;
-        m_nodeBreakProgressBar.gameObject.SetActive(false);
+        if (node != m_currentNode)
+            return;
+
+        DisableProgressBar();
         if (!node.MarkedForDeletion && m_currentNode == node)
             m_promptUI.SetActive(true);
     }
 
     private void HandleNodeBroken(Node node)
+    {
+        DisableProgressBar();
+    }
+
+    private void DisableProgressBar()
     {
         m_isBreaking = false;
         m_nodeBreakProgressBar.gameObject.SetActive(false);
