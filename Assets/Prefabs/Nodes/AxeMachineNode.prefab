@@ -1838,37 +1838,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::SpinningObject
   m_transform: {fileID: 4014573147750300357}
   m_spinSpeed: {x: -80, y: 0, z: 0}
---- !u!1 &7051767819703094145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6522686914192106047}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6522686914192106047
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7051767819703094145}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7449030927602310130}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &7385849329273104529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,7 +2270,6 @@ Transform:
   m_LocalScale: {x: 80, y: 84, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6522686914192106047}
   - {fileID: 213122475918068264}
   - {fileID: 1751640070539497070}
   - {fileID: 4620642553314024613}

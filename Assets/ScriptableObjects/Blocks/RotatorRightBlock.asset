@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
-  m_Name: RotatorLeftBlock
+  m_Name: RotatorRightBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
-  Name: Rotator Left
+  Name: Rotator Right
   Description: 
-  Prefab: {fileID: 5535623595052943214, guid: 191715f0a3cfed745972142fd95f79fe, type: 3}
+  Prefab: {fileID: 2445987108104843051, guid: 6259c78f9da949c44a076f76e757abf7, type: 3}
   Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
   DropScale: 0.5
   InHandScale: 0.5
   MaxStack: 99
-  m_idBytes: ac24f4f84525e042914c2223746f1b81
-  NodeToBuild: {fileID: 9081544328528237058, guid: 03ce92aeb1343d54eae2459454edbbd3, type: 3}
+  m_idBytes: 81dd22fe93fb1d45afbe02e2d53ae014
+  NodeToBuild: {fileID: 2136795310999347240, guid: 4776321f80db2b14ca1a485eec5a9cfa, type: 3}
   BuildRadius: 4
   HasInventory: 0
   YRotationOffset: 0

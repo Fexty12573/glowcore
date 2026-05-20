@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
-  m_Name: RotatorLeft
+  m_Name: RotatorDown
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Rotator Left
+  Name: Rotator Down
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Amount: 0
-  ResultItem: {fileID: 11400000, guid: e38c7096c0e316d4c91838fe59f0aaec, type: 2}
+  ResultItem: {fileID: 11400000, guid: 6f22406105691e74487c9a00f0c2371e, type: 2}
   ResultAmount: 1

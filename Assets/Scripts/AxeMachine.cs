@@ -183,10 +183,23 @@ public class AxeMachine : MonoBehaviour
 
     private bool TryStartRotating()
     {
-        if (m_targetNode.SourceBlock is null || m_targetNode.SourceBlock.Name != "Rotator Left")
+        if (m_targetNode.SourceBlock is null)
             return false;
 
-        m_machineNode.Rotation = (BlockRotation)(((int)m_machineNode.Rotation + 3) % 4); // set rotation 90 degrees to the left
+        switch (m_targetNode.SourceBlock.Name)
+        {
+            case "Rotator Right":
+                m_machineNode.Rotation = (BlockRotation)(((int)m_machineNode.Rotation + 1) % 4); // set rotation 90 degrees to the right
+                break;
+            case "Rotator Down":
+                m_machineNode.Rotation = (BlockRotation)(((int)m_machineNode.Rotation + 2) % 4); // set rotation 180 degrees to the right
+                break;
+            case "Rotator Left":
+                m_machineNode.Rotation = (BlockRotation)(((int)m_machineNode.Rotation + 3) % 4); // set rotation 270 degrees to the right
+                break;
+            default:
+                return false;
+        }
         return true;
     }
 
@@ -229,7 +242,6 @@ public class AxeMachine : MonoBehaviour
             GetTargetYRotation(),
             transform.eulerAngles.z);
     }
-    
 
     private Vector2Int DirectionToVector2Int(BlockRotation direction)
     {

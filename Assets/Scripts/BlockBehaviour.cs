@@ -51,7 +51,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
     {
         if (NodeActionSystem.Instance != null)
             NodeActionSystem.Instance.OnChangeSelectedTile -= HandleTileChanged;
-        
+
         ActionPromptSystem.Instance?.DisableRotatePrompt();
 
     }
@@ -67,7 +67,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
 
     private void ChangeBuildGhost()
     {
-        ActionPromptSystem.Instance.DisableRotatePrompt();
+        ActionPromptSystem.Instance?.DisableRotatePrompt();
         ClearBuildGhost();
         if (m_selectedTile is null)
             return;
@@ -76,7 +76,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!IsWithinBuildRange(spawnPosition))
             return;
 
-        ActionPromptSystem.Instance.EnableRotatePrompt(spawnPosition);
+        ActionPromptSystem.Instance?.EnableRotatePrompt(spawnPosition);
         if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
             m_activeBuildGhost = Instantiate(m_buildGhostOccupied, spawnPosition, m_buildGhostAllowed.transform.rotation);
         else
