@@ -26,7 +26,7 @@ public class MachineProgressBars : MonoBehaviour
 
     private void Update()
     {
-        foreach ((Node node, Slider slider) in m_progressBars)
+        foreach (var (node, slider) in m_progressBars)
         {
             Vector3 promptPosition = node.transform.position + m_offset;
             slider.transform.position = m_camera.WorldToScreenPoint(promptPosition);

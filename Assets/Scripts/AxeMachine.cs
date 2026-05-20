@@ -102,7 +102,7 @@ public class AxeMachine : MonoBehaviour
     private bool TryStartBreakingTargetNode()
     {
         //Machine can't break anything if it's not in the border to prevent IndexOutOfBoundsException (shouldn't be possible anyway)
-        if (!WorldGrid.Instance.IsInBounds(WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y))))
+        if (!WorldGrid.Instance.IsInBounds(GetLastWorldPosition()))
             return false;
 
         if (m_targetNode.MarkedForDeletion)
@@ -136,7 +136,7 @@ public class AxeMachine : MonoBehaviour
     private bool TryStartMovingForward()
     {
         //Machine can't move if it's not in the border to prevent IndexOutOfBoundsException (shouldn't be possible anyway)
-        if (!WorldGrid.Instance.IsInBounds(WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y))))
+        if (!WorldGrid.Instance.IsInBounds(GetLastWorldPosition()))
             return false;
 
         Vector2Int newPosition = m_position + DirectionToVector2Int(m_direction);
@@ -164,10 +164,15 @@ public class AxeMachine : MonoBehaviour
 
         transform.position = targetPosition; //snap to new target position
 
-        if (m_machineNode.TilesUsed.Remove(WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y)))) //free the old tile only if it was registered
-            WorldGrid.Instance.ClearNodeAt(WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y)));
+        if (m_machineNode.TilesUsed.Remove(GetLastWorldPosition())) //free the old tile only if it was registered
+            WorldGrid.Instance.ClearNodeAt(GetLastWorldPosition());
 
         return true;
+    }
+
+    private Vector2Int GetLastWorldPosition()
+    {
+        return WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y));
     }
 
     private Vector2Int DirectionToVector2Int(Direction direction)

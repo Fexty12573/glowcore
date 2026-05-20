@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   m_tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
-  m_movementSpeed: 0.2
+  m_movementSpeed: 0.8
   m_machineNode: {fileID: 8948960035896214443}
   m_storage: {fileID: -6263579756112433677}
   m_direction: 2
@@ -2400,9 +2400,11 @@ MonoBehaviour:
   m_axeGroup1: {fileID: 3565031721638795551}
   m_axeGroup2: {fileID: 2847204033450641603}
   m_axeGroup3: {fileID: 3092574270063163233}
-  m_axeAnimationLength: 2
+  m_axeAnimationBaseLength: 2
+  m_axeAnimationSpeed: 1
   m_wheel1: {fileID: 7052369039416825029}
   m_wheel2: {fileID: 1665434111749382774}
+  m_wheelSpinningSpeed: 200
 --- !u!114 &-6263579756112433677
 MonoBehaviour:
   m_ObjectHideFlags: 0
