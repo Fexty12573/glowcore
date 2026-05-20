@@ -156,9 +156,9 @@ public class ActionPromptSystem : MonoBehaviour
         UpdateNodeBreakProgress();
     }
 
-    private void HandleNodeCancelBreaking(Node node)
+    private void HandleNodeCancelBreaking(Node node, bool byPlayer)
     {
-        if (node != m_currentNode)
+        if (node != m_currentNode || !byPlayer)
             return;
 
         DisableProgressBar();
@@ -166,9 +166,10 @@ public class ActionPromptSystem : MonoBehaviour
             m_promptUI.SetActive(true);
     }
 
-    private void HandleNodeBroken(Node node)
+    private void HandleNodeBroken(Node node, bool byPlayer)
     {
-        DisableProgressBar();
+        if (byPlayer)
+            DisableProgressBar();
     }
 
     private void DisableProgressBar()

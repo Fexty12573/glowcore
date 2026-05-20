@@ -147,7 +147,7 @@ public class NodeActionSystem : MonoBehaviour
         }
     }
 
-    private void HandleNodeBroken(Node brokenNode)
+    private void HandleNodeBroken(Node brokenNode, bool byPlayer)
     {
         if (brokenNode == m_currentNode)
         {

@@ -28,8 +28,8 @@ namespace GlowCore.World
         public Block SourceBlock { get; set; }
 
         public static event Action<Node, bool> OnStartBreaking; //second Argument tells if the player is the one who is breaking the Node.
-        public static event Action<Node> OnCancelBreaking;
-        public static event Action<Node> OnNodeBroken;
+        public static event Action<Node, bool> OnCancelBreaking;
+        public static event Action<Node, bool> OnNodeBroken;
 
         public bool IsHolding => m_isHolding;
         public bool PlayerIsHolding => m_isHolding && m_breakOwner == null;
@@ -77,7 +77,7 @@ namespace GlowCore.World
             m_isHolding = false;
             m_holdTimer = 0f;
             AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
-            OnCancelBreaking?.Invoke(this);
+            OnCancelBreaking?.Invoke(this, (m_breakOwner is null));
         }
 
         public void UpdateHold(float deltaTime)
@@ -149,7 +149,7 @@ namespace GlowCore.World
             }
 
             m_markedForDeletion = true;
-            OnNodeBroken?.Invoke(this);
+            OnNodeBroken?.Invoke(this, (m_breakOwner is null));
             Destroy(gameObject);
             AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
         }

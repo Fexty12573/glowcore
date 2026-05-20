@@ -2414,9 +2414,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   m_tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
   m_movementSpeed: 0.8
+  m_rotationSpeed: 200
   m_machineNode: {fileID: 8948960035896214443}
   m_storage: {fileID: -6263579756112433677}
-  m_direction: 2
   m_animation: {fileID: 370450607319101614}
 --- !u!114 &370450607319101614
 MonoBehaviour:

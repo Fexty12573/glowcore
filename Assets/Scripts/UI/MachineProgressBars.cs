@@ -46,9 +46,9 @@ public class MachineProgressBars : MonoBehaviour
         m_progressBars.Add(node, progressBar);
     }
 
-    private void HandleNodeEndBreaking(Node node)
+    private void HandleNodeEndBreaking(Node node, bool byPlayer)
     {
-        if (!m_progressBars.TryGetValue(node, out Slider progressBar))
+        if (byPlayer || !m_progressBars.TryGetValue(node, out Slider progressBar))
             return;
 
         Destroy(progressBar.gameObject);

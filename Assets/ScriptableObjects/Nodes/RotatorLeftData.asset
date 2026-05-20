@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
-  m_Name: StoneNode
+  m_Name: RotatorLeftData
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
   InteractionRange: 3
   ItemDrops:
-  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
+  - Item: {fileID: 11400000, guid: e38c7096c0e316d4c91838fe59f0aaec, type: 2}
     Min: 1
-    Max: 99
-  BaseBreakTime: 4
+    Max: 1
+  BaseBreakTime: 0.5
   IsIndestructible: 0
   UsableTools:
-  - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}
+  - Tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
     BreakMultiplier: 1
-  - Tool: {fileID: 11400000, guid: ae7388be54fb6ce458ac89a0768a1c3e, type: 2}
-    BreakMultiplier: 0.15
+  - Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
+    BreakMultiplier: 0

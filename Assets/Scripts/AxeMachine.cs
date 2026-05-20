@@ -13,11 +13,13 @@ public class AxeMachine : MonoBehaviour
     {
         Idle,
         Breaking,
-        Moving
+        Moving,
+        Rotating
     }
 
     [SerializeField] private Tool m_tool;
     [SerializeField] private float m_movementSpeed = 2f;
+    [SerializeField] private float m_rotationSpeed = 40f;
     [SerializeField] private Node m_machineNode;
     [SerializeField] private Chest m_storage;
     [SerializeField] private AxeMachineAnimation m_animation;
@@ -26,6 +28,7 @@ public class AxeMachine : MonoBehaviour
     private Node m_targetNode;
     private Vector2Int m_position;
     private Vector2Int m_lastPosition;
+    // private bool m_isRotatingRight; // false means that he rotates left //todo delete
 
     private void Start()
     {
@@ -56,6 +59,14 @@ public class AxeMachine : MonoBehaviour
 
                     return;
                 }
+
+                if (TryStartRotating())
+                {
+                    m_state = MachineState.Rotating;
+                    m_animation.SetRotateAnimation();
+                    return;
+                }
+
                 if (m_storage.HasEmptySlot() && TryStartBreakingTargetNode()) //only break node if the storage has enough space
                 {
                     m_state = MachineState.Breaking;
@@ -79,6 +90,15 @@ public class AxeMachine : MonoBehaviour
                     m_state = MachineState.Idle;
                     m_animation.SetIdleAnimation();
                     Update(); // prevents the machine from stoping moving for one frame if he can drive again
+                }
+                break;
+            case MachineState.Rotating:
+                ContinueRotating();
+                if (TryFinishRotating())
+                {
+                    m_state = MachineState.Idle;
+                    m_animation.SetIdleAnimation();
+                    Update();
                 }
                 break;
         }
@@ -153,11 +173,42 @@ public class AxeMachine : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPosition) > 0.0001f)
             return false;
 
-        transform.position = targetPosition; //snap to new target position
+        transform.position = targetPosition; // snap to new target position
 
-        if (m_machineNode.TilesUsed.Remove(GetLastWorldPosition())) //free the old tile only if it was registered
+        if (m_machineNode.TilesUsed.Remove(GetLastWorldPosition())) // free the old tile only if it was registered
             WorldGrid.Instance.ClearNodeAt(GetLastWorldPosition());
 
+        return true;
+    }
+
+    private bool TryStartRotating()
+    {
+        if (m_targetNode.SourceBlock is null || m_targetNode.SourceBlock.Name != "Rotator Left")
+            return false;
+
+        m_machineNode.Rotation = (BlockRotation)(((int)m_machineNode.Rotation + 3) % 4); // set rotation 90 degrees to the left
+        return true;
+    }
+
+    private void ContinueRotating()
+    {
+        float targetY = GetTargetYRotation();
+        float currentY = transform.eulerAngles.y;
+
+        float newY = Mathf.MoveTowardsAngle(currentY, targetY, Time.deltaTime * m_rotationSpeed);
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.y = newY;
+        transform.eulerAngles = newRotation;
+    }
+
+    private bool TryFinishRotating()
+    {
+        float targetY = GetTargetYRotation();
+
+        if (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetY)) > 0.0001f)
+            return false;
+
+        transform.eulerAngles = GetTargetRotation(); // snap
         return true;
     }
 
@@ -165,6 +216,20 @@ public class AxeMachine : MonoBehaviour
     {
         return WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y));
     }
+
+    private float GetTargetYRotation()
+    {
+        return Node.BlockRotationToDegrees(m_machineNode.Rotation) + m_machineNode.SourceBlock.YRotationOffset;
+    }
+
+    private Vector3 GetTargetRotation()
+    {
+        return new Vector3(
+            transform.eulerAngles.x,
+            GetTargetYRotation(),
+            transform.eulerAngles.z);
+    }
+    
 
     private Vector2Int DirectionToVector2Int(BlockRotation direction)
     {
