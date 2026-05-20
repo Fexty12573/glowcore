@@ -109,7 +109,7 @@ public class SaveData
                 GlowCoreLevel = 1,
                 PosX = 0,
                 PosZ = 0,
-                GlowCoreInventory = new Inventory(1, 1),
+                GlowCoreInventory = new Inventory(8, 4),
                 Inventory = new Inventory(8, 4),
             },
             World = new WorldData { TileDeltas = Array.Empty<TileDelta>(), }

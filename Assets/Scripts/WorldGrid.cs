@@ -334,12 +334,28 @@ namespace GlowCore.World
             m_currentPlayerName = saveData.Player.Name;
             var glowCore = FindFirstObjectByType<GlowCoreObject>();
 
-            // Advance GlowCore to the saved level
             if (glowCore != null)
             {
+                // Advance GlowCore to the saved level
                 var targetLevel = (int)saveData.Player.GlowCoreLevel;
                 while (glowCore != null && glowCore.Level < targetLevel)
                     glowCore = glowCore.ForceUpgrade();
+
+                // it is important that Inventory is transferred after the level ups, because every new GlowCore Level
+                // has it's own prefab that resets the inventory in Awake.
+                var inventory = glowCore.GetInventory();
+                for (var x = 0; x < inventory.Width; x++)
+                {
+                    for (var y = 0; y < inventory.Height; y++)
+                    {
+                        var index = (y * inventory.Width) + x;
+                        var stack = saveData.Player.GlowCoreInventory[x, y];
+                        if (stack.IsValid)
+                            inventory.SetSlot(index, stack.Item, stack.Amount);
+                        else
+                            inventory.ClearSlot(index);
+                    }
+                }
             }
 
             // Apply saved world changes
@@ -444,7 +460,10 @@ namespace GlowCore.World
             var playerInventory = FindFirstObjectByType<PlayerInventory>();
 
             if (glowCore != null)
+            {
                 saveData.Player.GlowCoreLevel = (ushort)glowCore.Level;
+                saveData.Player.GlowCoreInventory = glowCore.GetInventory();
+            }
 
             saveData.Player.PosX = m_player.position.x;
             saveData.Player.PosZ = m_player.position.z;

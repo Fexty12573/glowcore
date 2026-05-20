@@ -16,7 +16,7 @@ namespace GlowCore.World
         [Min(0f)]
         private float m_closeDistance = 5f;
 
-        private readonly Dictionary<Item, int> m_accumulated = new();
+        private Inventory m_glowCoreInventory;
         private int m_bankedForExpansion;
         private GlowCoreUpgradeUI m_ui;
         private PlayerInventory m_playerInventory;
@@ -38,6 +38,7 @@ namespace GlowCore.World
         public int Level => m_levelConfig != null ? m_levelConfig.Level : 1;
         public bool HasNextLevel => m_nextLevelPrefab != null;
         public bool IsReadyToUpgrade => AreAllMaterialsMet();
+        public Inventory GetInventory() => m_glowCoreInventory;
 
         public float TotalProgress01
         {
@@ -71,7 +72,7 @@ namespace GlowCore.World
         {
             if (item == null)
                 return 0;
-            return m_accumulated.TryGetValue(item, out var value) ? value : 0;
+            return m_glowCoreInventory.CountItem(item);
         }
 
         public int RequiredFor(Item item)
@@ -125,7 +126,7 @@ namespace GlowCore.World
                 return;
 
             m_playerInventory.RemoveItems(item, consume);
-            m_accumulated[item] = accumulated + consume;
+            m_glowCoreInventory.AddItems(new(item, consume));
 
             OnProgressChanged?.Invoke();
         }
@@ -154,6 +155,7 @@ namespace GlowCore.World
         // Private Methods
         private void Awake()
         {
+            m_glowCoreInventory = new Inventory(8, 4);
             m_playerInventory = FindFirstObjectByType<PlayerInventory>();
 
             RenderSettings.sun.intensity += 0.02f;
