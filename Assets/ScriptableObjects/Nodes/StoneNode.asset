@@ -15,8 +15,8 @@ MonoBehaviour:
   InteractionRange: 3
   ItemDrops:
   - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
-    Min: 1
-    Max: 99
+    Min: 15
+    Max: 15
   BaseBreakTime: 4
   IsIndestructible: 0
   UsableTools:

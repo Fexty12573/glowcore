@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5385785256396467907}
   - component: {fileID: 4338846536709327639}
   - component: {fileID: 6972355351753365677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Post
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2537732320963353628}
   - component: {fileID: 4586335771950984416}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SignBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6595914971261399931}
   - component: {fileID: 6984882232737331208}
   - component: {fileID: 615579256673762515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}

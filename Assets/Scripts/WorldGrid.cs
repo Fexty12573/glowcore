@@ -173,7 +173,7 @@ namespace GlowCore.World
             return node;
         }
 
-        public void ReplaceNode(Node oldNode, Block blockOfNewNode) //Used by saplings
+        public void ReplaceNode(Node oldNode, Block blockOfNewNode, bool keepRotation) //Used by saplings
         {
             if (oldNode == null || blockOfNewNode == null)
                 return;
@@ -185,13 +185,14 @@ namespace GlowCore.World
             Destroy(oldNode.gameObject);
 
             var tile = WorldToGrid(oldNode.transform.position);
-            Node newNode = CreateNodeAt(blockOfNewNode.NodeToBuild, tile);
+            var rotation = keepRotation ? oldNode.Rotation : (BlockRotation)Random.Range(0, 4);
+            Node newNode = CreateNodeAt(blockOfNewNode.NodeToBuild, tile, rotation, blockOfNewNode.YRotationOffset);
             if (newNode == null)
             {
                 Debug.LogError($"Node wasn't able to be replaced into {blockOfNewNode.Name} at {tile}.");
             }
 
-            newNode.SourceBlock = blockOfNewNode; //for savefile
+            newNode.SourceBlock = blockOfNewNode; // for savefile
             newNode.TilesUsed.Clear();
             newNode.TilesUsed.Add(tile);
         }

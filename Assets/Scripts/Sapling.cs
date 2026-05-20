@@ -22,6 +22,6 @@ public class Sapling : MonoBehaviour
 
     private void FinishGrow()
     {
-        WorldGrid.Instance.ReplaceNode(m_node, m_grownUpTree);
+        WorldGrid.Instance.ReplaceNode(m_node, m_grownUpTree, false);
     }
 }

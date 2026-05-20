@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CobaltAnvilBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

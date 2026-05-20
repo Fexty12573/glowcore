@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 29551b0ba466d7642bd5108b3b2ab105, type: 2}
+  Rotation: 0
   TilesUsed: []
   Outline: {fileID: 2504671357020030133}
 --- !u!114 &2504671357020030133
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f6989af0f0b7e40b0f6422fe5e89c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  m_node: {fileID: 6645925316339538566}
+  m_replanterNode: {fileID: 6645925316339538566}
   m_storage: {fileID: 2302284367345539016}
 --- !u!114 &2302284367345539016
 MonoBehaviour:

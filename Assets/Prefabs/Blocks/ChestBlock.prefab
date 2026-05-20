@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5237189987264342577}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3395611513983427603}
   - component: {fileID: 1139691784695331456}
   - component: {fileID: 2227869470635987272}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8198472957288953699}
   - component: {fileID: -3549749940150531703}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ChestBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 8782015888175367863}
   - component: {fileID: 38618338483561204}
   - component: {fileID: 2098235282880131829}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}

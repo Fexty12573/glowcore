@@ -49,7 +49,7 @@ public class AxeMachine : MonoBehaviour
         {
             case MachineState.Idle:
                 UpdateTargetNode();
-                if (m_targetNode == null)
+                if (m_targetNode == null || m_targetNode.MarkedForDeletion)
                 {
                     if (TryStartMovingForward())
                     {
@@ -79,6 +79,7 @@ public class AxeMachine : MonoBehaviour
                     EndBreaking();
                     m_state = MachineState.Idle;
                     m_animation.SetIdleAnimation();
+                    Update(); // makes that the axe machine immediately claims the tile that it just freed
                     return;
                 }
                 UpdateBreakingNode();
@@ -106,7 +107,7 @@ public class AxeMachine : MonoBehaviour
 
     private void UpdateTargetNode()
     {
-        Vector2Int targetPosition = m_position + DirectionToVector2Int(m_machineNode.Rotation);
+        Vector2Int targetPosition = m_position + Node.RotationToDirectionVector2Int(m_machineNode.Rotation);
         m_targetNode = WorldGrid.Instance.GetNodeAt(targetPosition);
     }
 
@@ -150,7 +151,7 @@ public class AxeMachine : MonoBehaviour
         if (!WorldGrid.Instance.IsInBounds(GetLastWorldPosition()))
             return false;
 
-        Vector2Int newPosition = m_position + DirectionToVector2Int(m_machineNode.Rotation);
+        Vector2Int newPosition = m_position + Node.RotationToDirectionVector2Int(m_machineNode.Rotation);
         if (!WorldGrid.Instance.PlaceNodeAt(m_machineNode, newPosition.x, newPosition.y))
             return false;
 
@@ -241,22 +242,5 @@ public class AxeMachine : MonoBehaviour
             transform.eulerAngles.x,
             GetTargetYRotation(),
             transform.eulerAngles.z);
-    }
-
-    private Vector2Int DirectionToVector2Int(BlockRotation direction)
-    {
-        switch (direction)
-        {
-            case BlockRotation.North:
-                return Vector2Int.up;
-            case BlockRotation.East:
-                return Vector2Int.right;
-            case BlockRotation.South:
-                return Vector2Int.down;
-            case BlockRotation.West:
-                return Vector2Int.left;
-            default:
-                return Vector2Int.zero;
-        }
     }
 }

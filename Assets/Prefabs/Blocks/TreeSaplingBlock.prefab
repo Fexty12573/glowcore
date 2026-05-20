@@ -64,9 +64,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8135102679260024624, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7421033346236238759, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
       propertyPath: m_Name
       value: TreeSaplingBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e29f7fb51685aac4482858f5499582bd, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -94,5 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::BlockBehaviour
   m_block: {fileID: 11400000, guid: 32af9d62005f11241859efab0ab31613, type: 2}
-  m_buildGhostAllowed: {fileID: 5482746373729648181, guid: 438883cf47b7e914eb85e10e4321248b, type: 3}
-  m_buildGhostOccupied: {fileID: 5482746373729648181, guid: 11fdb015fdbad804c91f34d71ac9a883, type: 3}
+  m_buildGhostAllowed: {fileID: 5124231440842827354, guid: 1a5a7163e678a1146a7497a3e0a00f80, type: 3}
+  m_buildGhostOccupied: {fileID: 5070225296955533715, guid: 211947993e308b045a8e8ea912b3df03, type: 3}
