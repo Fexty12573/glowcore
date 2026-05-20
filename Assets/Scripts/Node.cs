@@ -9,7 +9,6 @@ public enum BlockRotation
     North, East, South, West
 }
 
-
 namespace GlowCore.World
 {
     public class Node : MonoBehaviour

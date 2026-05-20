@@ -196,6 +196,7 @@ MonoBehaviour:
   m_camera: {fileID: 0}
   m_promptOffset: {x: 0, y: 0.4, z: 0}
   m_promptUI: {fileID: 4597283643695780159}
+  m_rotatePromptUI: {fileID: 7895453327946647860}
   m_promptText: {fileID: 2136804915772962508}
   m_leftClickIcon: {fileID: 2840592776042717634}
   m_eButtonIcon: {fileID: 5434869709388709700}

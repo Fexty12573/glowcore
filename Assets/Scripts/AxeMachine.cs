@@ -16,19 +16,10 @@ public class AxeMachine : MonoBehaviour
         Moving
     }
 
-    private enum Direction
-    {
-        North,
-        East,
-        South,
-        West
-    }
-
     [SerializeField] private Tool m_tool;
     [SerializeField] private float m_movementSpeed = 2f;
     [SerializeField] private Node m_machineNode;
     [SerializeField] private Chest m_storage;
-    [SerializeField] Direction m_direction = Direction.South;
     [SerializeField] private AxeMachineAnimation m_animation;
 
     private MachineState m_state = MachineState.Idle;
@@ -95,7 +86,7 @@ public class AxeMachine : MonoBehaviour
 
     private void UpdateTargetNode()
     {
-        Vector2Int targetPosition = m_position + DirectionToVector2Int(m_direction);
+        Vector2Int targetPosition = m_position + DirectionToVector2Int(m_machineNode.Rotation);
         m_targetNode = WorldGrid.Instance.GetNodeAt(targetPosition);
     }
 
@@ -139,7 +130,7 @@ public class AxeMachine : MonoBehaviour
         if (!WorldGrid.Instance.IsInBounds(GetLastWorldPosition()))
             return false;
 
-        Vector2Int newPosition = m_position + DirectionToVector2Int(m_direction);
+        Vector2Int newPosition = m_position + DirectionToVector2Int(m_machineNode.Rotation);
         if (!WorldGrid.Instance.PlaceNodeAt(m_machineNode, newPosition.x, newPosition.y))
             return false;
 
@@ -175,17 +166,17 @@ public class AxeMachine : MonoBehaviour
         return WorldGrid.Instance.WorldToGrid(new Vector3(m_lastPosition.x, 0, m_lastPosition.y));
     }
 
-    private Vector2Int DirectionToVector2Int(Direction direction)
+    private Vector2Int DirectionToVector2Int(BlockRotation direction)
     {
         switch (direction)
         {
-            case Direction.North:
+            case BlockRotation.North:
                 return Vector2Int.up;
-            case Direction.East:
+            case BlockRotation.East:
                 return Vector2Int.right;
-            case Direction.South:
+            case BlockRotation.South:
                 return Vector2Int.down;
-            case Direction.West:
+            case BlockRotation.West:
                 return Vector2Int.left;
             default:
                 return Vector2Int.zero;

@@ -129,11 +129,11 @@ namespace GlowCore.World
 
         public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
 
-        public Node CreateNodeAt(GameObject prefab, Vector2Int tile, BlockRotation rotation)
+        public Node CreateNodeAt(GameObject prefab, Vector2Int tile, BlockRotation rotation, float yRotationOffset)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
             Vector3 spawnRotation = prefab.transform.eulerAngles; // Keep x and z rotation of the prefab
-            spawnRotation.y = Node.BlockRotationToDegrees(rotation);
+            spawnRotation.y = Node.BlockRotationToDegrees(rotation) + yRotationOffset;
             GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.Euler(spawnRotation), m_nodesParent);
             if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
             {
@@ -384,7 +384,7 @@ namespace GlowCore.World
                                 }
                             }
 
-                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile, delta.BuildData.Rotation);
+                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile, delta.BuildData.Rotation, delta.BuildData.Block.YRotationOffset);
                             node.SourceBlock = delta.BuildData.Block;
 
                             if (delta.BuildData.Inventory != null && node.TryGetComponent(out Chest chest))

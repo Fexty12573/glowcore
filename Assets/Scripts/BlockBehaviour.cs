@@ -93,7 +93,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
             return;
 
-        var node = WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value, s_rotation);
+        var node = WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value, s_rotation, m_block.YRotationOffset);
         if (node == null)
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         else
