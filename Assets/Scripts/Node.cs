@@ -4,6 +4,12 @@ using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum BlockRotation
+{
+    North, East, South, West
+}
+
+
 namespace GlowCore.World
 {
     public class Node : MonoBehaviour
@@ -16,6 +22,7 @@ namespace GlowCore.World
         private Chest m_breakOwner; // Chest is the storage of the machine that breaks this node, null if the player breaks it.
         private IInteractable m_interactable;
 
+        public BlockRotation Rotation = BlockRotation.North;
         public List<Vector2Int> TilesUsed = new();
         public Outline Outline;
         public NodeData NodeData => m_nodeData;
@@ -28,6 +35,18 @@ namespace GlowCore.World
         public bool IsHolding => m_isHolding;
         public bool PlayerIsHolding => m_isHolding && m_breakOwner == null;
         public bool MarkedForDeletion => m_markedForDeletion;
+
+        public static float BlockRotationToDegrees(BlockRotation rotation)
+        {
+            return rotation switch
+            {
+                BlockRotation.North => 0f,
+                BlockRotation.East => 90f,
+                BlockRotation.South => 180f,
+                BlockRotation.West => 270f,
+                _ => 0f
+            };
+        }
 
         public float GetInteractionRange()
         {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e29f7fb51685aac4482858f5499582bd
+guid: a72fffb5f0d2a7f41a05a58b15078605
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: df1cb9df8f5c6f3449e5477af980c255, type: 2}
+      name: Arrow
+    second: {fileID: 2100000, guid: 4643afe356dce234c8cf9dc1e7615a47, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: 777d1ed46b74de3459e36380558cdd17, type: 2}
+      name: Block
+    second: {fileID: 2100000, guid: 9e68d7a2b9c0c4b4595d6d0d36e8d065, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +45,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1

@@ -129,16 +129,18 @@ namespace GlowCore.World
 
         public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
 
-        public Node CreateNodeAt(GameObject prefab, Vector2Int tile)
+        public Node CreateNodeAt(GameObject prefab, Vector2Int tile, BlockRotation rotation)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
-            // GC-142: Use prefab's own rotation so placed nodes respect their saved orientation
-            GameObject nodeObject = Instantiate(prefab, spawnPosition, prefab.transform.rotation, m_nodesParent);
+            Vector3 spawnRotation = prefab.transform.eulerAngles; // Keep x and z rotation of the prefab
+            spawnRotation.y = Node.BlockRotationToDegrees(rotation);
+            GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.Euler(spawnRotation), m_nodesParent);
             if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
             {
                 Destroy(nodeObject);
                 return null;
             }
+            node.Rotation = rotation;
             return node;
         }
 
@@ -382,7 +384,7 @@ namespace GlowCore.World
                                 }
                             }
 
-                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile);
+                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile, delta.BuildData.Rotation);
                             node.SourceBlock = delta.BuildData.Block;
 
                             if (delta.BuildData.Inventory != null && node.TryGetComponent(out Chest chest))
@@ -508,7 +510,7 @@ namespace GlowCore.World
                         continue;
 
                     Vector2Int worldPos = GridToWorld(x, z);
-                    var buildData = new BuildData { Block = node.SourceBlock };
+                    var buildData = new BuildData { Block = node.SourceBlock, Rotation = node.Rotation };
 
                     if (node.TryGetComponent(out Chest chest))
                         buildData.Inventory = chest.GetInventory();
