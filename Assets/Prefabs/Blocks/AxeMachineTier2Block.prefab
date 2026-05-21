@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4031011383997184944
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3578041532742632149, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_Name
+      value: AxeMachineTier2Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245787779621476463, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594136103025786547, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      propertyPath: m_machineNode
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5667196072203607471, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+    - {fileID: 6594136103025786547, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+    - {fileID: 4483909061216599561, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+    - {fileID: 1396300094507649668, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+    - {fileID: 521390681550278169, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+    - {fileID: 1649896943240566521, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3578041532742632149, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4068473225190529486}
+  m_SourcePrefab: {fileID: 100100000, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+--- !u!1 &456770863019932005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3578041532742632149, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+  m_PrefabInstance: {fileID: 4031011383997184944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4068473225190529486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456770863019932005}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3727846b70a78114ab98a4957a815f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::BlockBehaviour
+  m_block: {fileID: 11400000, guid: 5f047741924f7734db0c62671525e3d3, type: 2}
+  m_buildGhostAllowed: {fileID: 5124231440842827354, guid: 1a5a7163e678a1146a7497a3e0a00f80, type: 3}
+  m_buildGhostOccupied: {fileID: 5070225296955533715, guid: 211947993e308b045a8e8ea912b3df03, type: 3}

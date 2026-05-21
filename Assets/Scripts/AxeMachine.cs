@@ -17,18 +17,21 @@ public class AxeMachine : MonoBehaviour
         Rotating
     }
 
-    [SerializeField] private Tool m_tool;
-    [SerializeField] private float m_movementSpeed = 2f;
-    [SerializeField] private float m_rotationSpeed = 40f;
+    [Header("References")]
     [SerializeField] private Node m_machineNode;
     [SerializeField] private Chest m_storage;
+    [SerializeField] private Tool m_tool;
     [SerializeField] private AxeMachineAnimation m_animation;
+
+    [Header("Parameters")]
+    [SerializeField] private float m_movementSpeed = 2f;
+    [SerializeField] private float m_rotationSpeed = 40f;
+    [SerializeField] private bool m_canDrive = true;
 
     private MachineState m_state = MachineState.Idle;
     private Node m_targetNode;
     private Vector2Int m_position;
     private Vector2Int m_lastPosition;
-    // private bool m_isRotatingRight; // false means that he rotates left //todo delete
 
     private void Start()
     {
@@ -51,7 +54,7 @@ public class AxeMachine : MonoBehaviour
                 UpdateTargetNode();
                 if (m_targetNode == null || m_targetNode.MarkedForDeletion)
                 {
-                    if (TryStartMovingForward())
+                    if (m_canDrive && TryStartMovingForward())
                     {
                         m_state = MachineState.Moving;
                         m_animation.SetMoveAnimation();
@@ -60,7 +63,7 @@ public class AxeMachine : MonoBehaviour
                     return;
                 }
 
-                if (TryStartRotating())
+                if (m_canDrive && TryStartRotating())
                 {
                     m_state = MachineState.Rotating;
                     m_animation.SetRotateAnimation();

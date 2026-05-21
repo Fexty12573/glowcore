@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
-  m_Name: AxeMachine
+  m_Name: AxeMachineTier1
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Axe Machine
+  Name: Axe Machine Tier 1
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Amount: 1
   ResultItem: {fileID: 11400000, guid: cd7508eec2110ab4e99f89dfc0bd0f53, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 1

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
-  m_Name: AxeMachineBlock
+  m_Name: AxeMachineTier1Block
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
-  Name: Axe Machine
+  Name: Axe Machine Tier 1
   Description: 
-  Prefab: {fileID: 8145822802655608284, guid: bc9f3cfbaa6fd7c4c9d39fe3aeed1938, type: 3}
+  Prefab: {fileID: 1091309073033471452, guid: 3bf20688edb07e54d820ab5c6761a6c9, type: 3}
   Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
   DropScale: 0.3
   InHandScale: 0.5
   MaxStack: 99
-  m_idBytes: 82884ad41a9ddb4d8e7d1e483b4dee44
-  NodeToBuild: {fileID: 7794489081862422856, guid: 37692dfa1ca5db546b02a3bcf628ef20, type: 3}
+  m_idBytes: 3b5565c0bbf9a54bbace7ede85f71208
+  NodeToBuild: {fileID: 3578041532742632149, guid: d5bd74acfb118b447b479fc92eeb94ce, type: 3}
   BuildRadius: 4
   HasInventory: 1
-  YRotationOffset: 180
+  YRotationOffset: 0
