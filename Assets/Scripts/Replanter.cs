@@ -40,7 +40,7 @@ public class Replanter : MonoBehaviour
     private bool TryPlaceBlock(Block block)
     {
         Vector3 targetWorldPosition = transform.position + Node.RotationToDirectionVector3(m_replanterNode.Rotation);
-        Vector2Int targetTile =  WorldGrid.Instance.WorldToGrid(targetWorldPosition);
+        Vector2Int targetTile = WorldGrid.Instance.WorldToGrid(targetWorldPosition);
 
         if (WorldGrid.Instance.IsOccupied(targetTile) || !WorldGrid.Instance.IsInBounds(targetTile) ||
             WorldGrid.Instance.IsPlayerObstructing(targetWorldPosition, 1.5f))
@@ -53,7 +53,7 @@ public class Replanter : MonoBehaviour
         m_delayTimer += Time.deltaTime;
         if (m_delayTimer < m_replantDelay)
             return false;
-        
+
         Node node = WorldGrid.Instance.CreateNodeAt(block.NodeToBuild, targetTile, m_replanterNode.Rotation, block.YRotationOffset);
         m_delayTimer = 0f;
         return node is not null;
