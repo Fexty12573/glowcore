@@ -8,7 +8,7 @@ public class Replanter : MonoBehaviour
     [SerializeField] private Chest m_storage;
     [SerializeField] private float m_replantDelay = 0.5f; // when the tile is free, the replanter waits for this time before planting
 
-    private float m_delayTimer = 0f;
+    private float m_delayTimer;
 
     private void Update()
     {

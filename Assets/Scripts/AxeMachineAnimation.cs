@@ -52,7 +52,7 @@ public class AxeMachineAnimation : MonoBehaviour
         if (!m_wheel1 || !m_wheel2)
             return;
 
-        var speedVector = new Vector3(-m_wheelSpinningSpeed, 0f, 0f);
+        var speedVector = new Vector3(m_wheelSpinningSpeed, 0f, 0f);
         m_wheel1.SpinSpeed = speedVector;
         m_wheel2.SpinSpeed = speedVector;
     }

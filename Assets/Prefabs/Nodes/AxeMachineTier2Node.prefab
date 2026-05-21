@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 1396300094507649668}
     - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
       propertyPath: m_movementSpeed
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
       propertyPath: m_rotationSpeed
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 244054637387308918, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
       propertyPath: m_wheelSpinningSpeed
-      value: 80
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 497143532656755467, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
       propertyPath: m_block
