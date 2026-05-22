@@ -2,12 +2,11 @@
 
 public class FogFollow : MonoBehaviour
 {
-    public Transform player;
+    [SerializeField] private Transform m_player;
 
-    public float speed = 10f;
-    public float triggerDistance = 30f;
-
-    public FollowMode followMode;
+    [SerializeField] private float m_speed = 10f;
+    [SerializeField] private float m_triggerDistance = 30f;
+    [SerializeField] private FollowMode m_followMode;
 
     private float targetValue;
 
@@ -23,22 +22,22 @@ public class FogFollow : MonoBehaviour
 
         Vector3 pos = transform.position;
 
-        switch (followMode)
+        switch (m_followMode)
         {
             case FollowMode.CompareZ_MoveX:
 
                 compareDistance =
-                    player.position.z - transform.position.z;
+                    m_player.position.z - transform.position.z;
 
-                if (Mathf.Abs(compareDistance) > triggerDistance)
+                if (Mathf.Abs(compareDistance) > m_triggerDistance)
                     return;
 
-                targetValue = player.position.x;
+                targetValue = m_player.position.x;
 
                 pos.x = Mathf.Lerp(
                     pos.x,
                     targetValue,
-                    speed * Time.deltaTime
+                    m_speed * Time.deltaTime
                 );
 
                 break;
@@ -46,17 +45,17 @@ public class FogFollow : MonoBehaviour
             case FollowMode.CompareX_MoveZ:
 
                 compareDistance =
-                    player.position.x - transform.position.x;
+                    m_player.position.x - transform.position.x;
 
-                if (Mathf.Abs(compareDistance) > triggerDistance)
+                if (Mathf.Abs(compareDistance) > m_triggerDistance)
                     return;
 
-                targetValue = player.position.z;
+                targetValue = m_player.position.z;
 
                 pos.z = Mathf.Lerp(
                     pos.z,
                     targetValue,
-                    speed * Time.deltaTime
+                    m_speed * Time.deltaTime
                 );
 
                 break;
