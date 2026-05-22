@@ -8,7 +8,7 @@ public class FogFollow : MonoBehaviour
     [SerializeField] private float m_triggerDistance = 30f;
     [SerializeField] private FollowMode m_followMode;
 
-    private float targetValue;
+    private float m_targetValue;
 
     public enum FollowMode
     {
@@ -32,11 +32,11 @@ public class FogFollow : MonoBehaviour
                 if (Mathf.Abs(compareDistance) > m_triggerDistance)
                     return;
 
-                targetValue = m_player.position.x;
+                m_targetValue = m_player.position.x;
 
                 pos.x = Mathf.Lerp(
                     pos.x,
-                    targetValue,
+                    m_targetValue,
                     m_speed * Time.deltaTime
                 );
 
@@ -50,11 +50,11 @@ public class FogFollow : MonoBehaviour
                 if (Mathf.Abs(compareDistance) > m_triggerDistance)
                     return;
 
-                targetValue = m_player.position.z;
+                m_targetValue = m_player.position.z;
 
                 pos.z = Mathf.Lerp(
                     pos.z,
-                    targetValue,
+                    m_targetValue,
                     m_speed * Time.deltaTime
                 );
 
