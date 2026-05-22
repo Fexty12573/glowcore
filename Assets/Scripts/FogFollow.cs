@@ -16,9 +16,9 @@ public class FogFollow : MonoBehaviour
         CompareX_MoveZ
     }
 
-    void Update()
+    private void Update()
     {
-        float compareDistance = 0f;
+        var compareDistance = 0f;
 
         Vector3 pos = transform.position;
 
