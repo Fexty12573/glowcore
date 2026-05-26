@@ -10,6 +10,8 @@ namespace ScriptableObjects
         [TextArea(1, 3)] public string Description;
         public GameObject Prefab;
         public Sprite Icon;
+        [Tooltip("Euler rotation (degrees) applied to the prefab only when generating the icon. Use it when the prefab's world orientation lays the mesh flat.")]
+        public Vector3 IconRotation;
         public float DropScale = 1f;
         public float InHandScale = 1f;
         [Min(0)] public int MaxStack = 99;

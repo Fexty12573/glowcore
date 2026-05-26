@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bb3d3c2422536418c1e221d3a7646a, type: 3}
+  m_Name: IconCaptureSettings
+  m_EditorClassIdentifier: Gameplay::Editors.IconGeneration.IconCaptureSettings
+  m_outputFolder: Assets/Sprites/Items/Generated
+  m_rigScenePath: Assets/Scenes/Editor/ItemIconRig.unity
+  m_targetWidth: 256
+  m_targetHeight: 256
+  m_supersample: 2
+  m_fillFraction: 0.85
