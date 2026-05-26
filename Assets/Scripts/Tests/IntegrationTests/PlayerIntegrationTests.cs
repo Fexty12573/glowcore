@@ -51,8 +51,8 @@ public class PlayerIntegrationTests : InputTestFixture
         Vector3 oldPosition = m_playerMovement.transform.position;
 
         m_playerMovement.HandleMove(movementInput);
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+
 
         Vector3 newPosition = m_playerMovement.transform.position;
         Assert.AreNotEqual(oldPosition, newPosition);
@@ -63,8 +63,8 @@ public class PlayerIntegrationTests : InputTestFixture
     {
         Vector3 oldPosition = m_playerMovement.transform.position;
 
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+
 
         Vector3 newPosition = m_playerMovement.transform.position;
         float difference = Vector3.Distance(oldPosition, newPosition);
@@ -78,8 +78,8 @@ public class PlayerIntegrationTests : InputTestFixture
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
         m_playerCamera.HandleLook(lookInput);
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
         Assert.AreNotEqual(oldRotation, newRotation);
@@ -92,8 +92,8 @@ public class PlayerIntegrationTests : InputTestFixture
 
         InputSystem.QueueStateEvent(Mouse.current,
             new MouseState { delta = Vector2.zero, buttons = 1 << (int)MouseButton.Right });
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
         float difference = Quaternion.Angle(oldRotation, newRotation);
@@ -106,8 +106,8 @@ public class PlayerIntegrationTests : InputTestFixture
         Vector2 lookInput = new(5, -9);
         Quaternion oldRotation = m_playerCamera.transform.rotation;
         InputSystem.QueueStateEvent(Mouse.current, new MouseState { delta = lookInput });
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
         float difference = Quaternion.Angle(oldRotation, newRotation);
@@ -119,8 +119,7 @@ public class PlayerIntegrationTests : InputTestFixture
     {
         Quaternion oldRotation = m_playerCamera.transform.rotation;
 
-        yield return null;
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
 
         Quaternion newRotation = m_playerCamera.transform.rotation;
         float difference = Quaternion.Angle(oldRotation, newRotation);
