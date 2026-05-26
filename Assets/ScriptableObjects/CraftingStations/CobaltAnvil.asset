@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Cobalt Anvil
   Description: Better Anvil
   RecipeList: {fileID: 11400000, guid: 6ad8510522eeb6b468f15f4f2748f2ca, type: 2}
-  BackgroundSprite: {fileID: 0}
-  RecipeRowTheme: {fileID: 0}
+  BackgroundSprite: {fileID: 21300000, guid: ce3090337d5e49978919880ee2f28fe9, type: 3}
+  RecipeRowTheme: {fileID: 11400000, guid: 40fa7829c362491ab669bdd6d08d4110, type: 2}

@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Crystal Furnace
   Description: 
   RecipeList: {fileID: 11400000, guid: 07342150f8b1c4a4281cfa15f80a550d, type: 2}
-  BackgroundSprite: {fileID: 0}
-  RecipeRowTheme: {fileID: 0}
+  BackgroundSprite: {fileID: 21300000, guid: 37ea586b7732435392e1fb12c2ce9e75, type: 3}
+  RecipeRowTheme: {fileID: 11400000, guid: 90580615f4b948dcb18b18945d91f98c, type: 2}
