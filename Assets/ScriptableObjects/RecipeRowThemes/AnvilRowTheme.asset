@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ecd8b720dfe05488065f8a081a8500, type: 3}
+  m_Name: AnvilRowTheme
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeRowTheme
+  m_defaultBackground: {fileID: 21300000, guid: bd5e740a4e4b45d99e96dcaa6144a077, type: 3}
+  m_craftableBackground: {fileID: 21300000, guid: 02b56cec466d46bfb60101a178b5a75c, type: 3}
+  m_craftButtonActive: {fileID: 21300000, guid: 03299f8e37594779be52ffc93b8c5e9c, type: 3}
+  m_craftButtonInactive: {fileID: 21300000, guid: 4f904215352548aba717bd1bc8680f50, type: 3}
