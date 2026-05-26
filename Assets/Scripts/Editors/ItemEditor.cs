@@ -67,10 +67,9 @@ namespace Editors
             {
                 if (GUILayout.Button("Generate Icon"))
                 {
-                    // Dispose the preview before the capture opens/closes scenes —
-                    // otherwise the PRU's scene reference can be invalidated and leak.
                     CleanupPreview();
-                    IconCaptureService.CaptureIconFor(item);
+                    Item captured = item;
+                    EditorApplication.delayCall += () => IconCaptureService.CaptureIconFor(captured);
                 }
             }
 

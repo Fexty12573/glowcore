@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Iron Pickaxe
   Description: 
   Prefab: {fileID: 7758018788070402541, guid: 42fde56e1aeae0e429bb583fb205505a, type: 3}
-  Icon: {fileID: 21300000, guid: 3cec791bb138cc74a89237ebb278e559, type: 3}
+  Icon: {fileID: 21300000, guid: d32c96714ec5be64db10af8d227ade7f, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 1
   m_idBytes: 7607cbfd0971074790c84396d5dcb5d8
+  Sound: 0

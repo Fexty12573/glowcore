@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Steel Beam
   Description: 
   Prefab: {fileID: 3977279147443472486, guid: 5e3047b8916e7544788b0e3ef0e8e25f, type: 3}
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 201ca6fd54773fb4ba5b98460f7c8eab, type: 3}
+  IconRotation: {x: 0.3, y: 167.27, z: 6.7}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99

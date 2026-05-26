@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Iron Axe
   Description: 
   Prefab: {fileID: 7901837652391703331, guid: 864d382305227ff46884ee3680409e91, type: 3}
-  Icon: {fileID: 21300000, guid: af4690f0362a0be4cb5d873acb379375, type: 3}
+  Icon: {fileID: 21300000, guid: b2dc388321ec08e44904c2fafecec13a, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 0.7
   MaxStack: 1
   m_idBytes: 54c97b7a35f62d4e87a9ca7d7e0a50e1
+  Sound: 0

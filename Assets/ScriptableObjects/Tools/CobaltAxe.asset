@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Cobalt Axe
   Description: 
   Prefab: {fileID: 1892525193706370954, guid: afd573ded3c8e184c833ecebfe7e9fc1, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 42ef925a5d73a4042b52d4ab580ac473, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 0.8
   MaxStack: 1
   m_idBytes: 8b0d41715933cb409bd3f0b5f4a91ae7
+  Sound: 0

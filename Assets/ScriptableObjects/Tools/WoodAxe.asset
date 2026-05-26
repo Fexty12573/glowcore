@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Wood Axe
   Description: 
   Prefab: {fileID: 5056978600972422149, guid: d5c34e1fef54e8443aef867101228340, type: 3}
-  Icon: {fileID: 21300000, guid: cef7a6aee9079f043ba0cb4fcc655361, type: 3}
+  Icon: {fileID: 21300000, guid: d6e7c384d6d7af646a8056bb1b5c7568, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 0.7
   MaxStack: 1
   m_idBytes: 97d0746cff60de4991b2eaff72a35f15
+  Sound: 0

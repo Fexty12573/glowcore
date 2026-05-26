@@ -15,10 +15,12 @@ MonoBehaviour:
   Name: Wood Path
   Description: 
   Prefab: {fileID: 7423707188447930306, guid: bb41314ca412114458a353c56695e01b, type: 3}
-  Icon: {fileID: 21300000, guid: 36d5456d1e02f9647bf73bd566dba068, type: 3}
+  Icon: {fileID: 21300000, guid: 0d9b9e2f65eacb4448a324bc864cbc6e, type: 3}
+  IconRotation: {x: -5.15, y: 0.4, z: -2.41}
   DropScale: 0.5
   InHandScale: 0.5
   MaxStack: 99
   m_idBytes: 725eeb698d7feb4387fff76ab4784c60
   NodeToBuild: {fileID: 7423707188447930306, guid: 636858f970544ee4f8f6ea41e0c7b69c, type: 3}
   BuildRadius: 6
+  HasInventory: 0
