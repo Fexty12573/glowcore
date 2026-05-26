@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
 {
+    private static BlockRotation s_rotation;
     private Vector2Int? m_selectedTile;
     private GameObject m_activeBuildGhost;
     private PlayerInventory m_inventory;
@@ -19,6 +20,15 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
     {
         if (inputValue.Get<float>() >= 0.5f)
             TryToBuild();
+    }
+
+    public void Rotate(InputValue inputValue)
+    {
+        if (inputValue.Get<float>() < 0.5f)
+            return;
+
+        Rotate90Degrees();
+        UpdateGhostBlockRotation();
     }
 
     private void Start()
@@ -41,6 +51,9 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
     {
         if (NodeActionSystem.Instance != null)
             NodeActionSystem.Instance.OnChangeSelectedTile -= HandleTileChanged;
+
+        ActionPromptSystem.Instance?.DisableRotatePrompt();
+
     }
 
     private void HandleTileChanged(Vector2Int? newTile)
@@ -54,6 +67,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
 
     private void ChangeBuildGhost()
     {
+        ActionPromptSystem.Instance?.DisableRotatePrompt();
         ClearBuildGhost();
         if (m_selectedTile is null)
             return;
@@ -62,10 +76,12 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!IsWithinBuildRange(spawnPosition))
             return;
 
+        ActionPromptSystem.Instance?.EnableRotatePrompt(spawnPosition);
         if (WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
-            m_activeBuildGhost = Instantiate(m_buildGhostOccupied, spawnPosition, Quaternion.identity);
+            m_activeBuildGhost = Instantiate(m_buildGhostOccupied, spawnPosition, m_buildGhostAllowed.transform.rotation);
         else
-            m_activeBuildGhost = Instantiate(m_buildGhostAllowed, spawnPosition, Quaternion.identity);
+            m_activeBuildGhost = Instantiate(m_buildGhostAllowed, spawnPosition, m_buildGhostOccupied.transform.rotation);
+        UpdateGhostBlockRotation();
     }
 
     private void TryToBuild()
@@ -77,16 +93,25 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
         if (!IsWithinBuildRange(spawnPosition) || WorldGrid.Instance.IsOccupied(m_selectedTile.Value) || WorldGrid.Instance.IsPlayerObstructing(spawnPosition))
             return;
 
-        var node = WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value);
+        var node = WorldGrid.Instance.CreateNodeAt(m_block.NodeToBuild, m_selectedTile.Value, s_rotation, m_block.YRotationOffset);
         if (node == null)
             Debug.LogWarning($"Failed to create Node at {m_selectedTile}");
         else
         {
             node.SourceBlock = m_block;
+            ChangeBuildGhost();
             m_inventory.ConsumeHandItem(1);
         }
+    }
 
-        ChangeBuildGhost();
+    private void UpdateGhostBlockRotation()
+    {
+        if (m_activeBuildGhost is null)
+            return;
+
+        Vector3 newRotation = m_activeBuildGhost.transform.eulerAngles;
+        newRotation.y = Node.BlockRotationToDegrees(s_rotation);
+        m_activeBuildGhost.transform.eulerAngles = newRotation;
     }
 
     private bool IsWithinBuildRange(Vector3 spawnPosition) => Vector3.Distance(spawnPosition, transform.position) <= m_block.BuildRadius;
@@ -95,5 +120,10 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
     {
         Destroy(m_activeBuildGhost);
         m_activeBuildGhost = null;
+    }
+
+    private void Rotate90Degrees()
+    {
+        s_rotation = (BlockRotation)(((int)s_rotation + 1) % 4);
     }
 }

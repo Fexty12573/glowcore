@@ -57,4 +57,14 @@ public class PlayerHand : MonoBehaviour
             return;
         handItem.Use(value);
     }
+
+    private void OnRotate(InputValue value)
+    {
+        if (m_playerInventory != null && m_playerInventory.IsAnyUIOpen)
+            return;
+        var block = m_itemGameObject?.GetComponent<BlockBehaviour>();
+        if (block is null)
+            return;
+        block.Rotate(value);
+    }
 }

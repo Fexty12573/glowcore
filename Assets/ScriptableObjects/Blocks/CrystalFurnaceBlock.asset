@@ -22,3 +22,5 @@ MonoBehaviour:
   m_idBytes: a661976b0e35ae448e0cbdc48068c8ad
   NodeToBuild: {fileID: 8456415646383154424, guid: ce031044b82e15246bf48dcbd63ae205, type: 3}
   BuildRadius: 4
+  HasInventory: 0
+  YRotationOffset: 90

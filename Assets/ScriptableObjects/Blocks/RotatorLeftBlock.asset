@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: RotatorLeftBlock
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Rotator Left
+  Description: 
+  Prefab: {fileID: 5535623595052943214, guid: 191715f0a3cfed745972142fd95f79fe, type: 3}
+  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  DropScale: 0.5
+  InHandScale: 0.5
+  MaxStack: 99
+  m_idBytes: ac24f4f84525e042914c2223746f1b81
+  NodeToBuild: {fileID: 9081544328528237058, guid: 03ce92aeb1343d54eae2459454edbbd3, type: 3}
+  BuildRadius: 4
+  HasInventory: 0
+  YRotationOffset: 0

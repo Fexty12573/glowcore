@@ -2265,7 +2265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7794489081862422856}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80, y: 84, z: 80}
   m_ConstrainProportionsScale: 0
@@ -2276,7 +2276,7 @@ Transform:
   - {fileID: 3064706236101342908}
   - {fileID: 4252852237996541810}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5823046275044299863
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2347,6 +2347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: e28b5ea6d961e4c4ab30740fa56ba22c, type: 2}
+  Rotation: 0
   TilesUsed: []
   Outline: {fileID: 4624943184925913541}
 --- !u!114 &4624943184925913541
@@ -2381,9 +2382,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   m_tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
   m_movementSpeed: 0.8
+  m_rotationSpeed: 200
   m_machineNode: {fileID: 8948960035896214443}
   m_storage: {fileID: -6263579756112433677}
-  m_direction: 2
   m_animation: {fileID: 370450607319101614}
 --- !u!114 &370450607319101614
 MonoBehaviour:

@@ -4,6 +4,11 @@ using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum BlockRotation
+{
+    North, East, South, West
+}
+
 namespace GlowCore.World
 {
     public class Node : MonoBehaviour
@@ -16,18 +21,31 @@ namespace GlowCore.World
         private Chest m_breakOwner; // Chest is the storage of the machine that breaks this node, null if the player breaks it.
         private IInteractable m_interactable;
 
+        public BlockRotation Rotation = BlockRotation.North;
         public List<Vector2Int> TilesUsed = new();
         public Outline Outline;
         public NodeData NodeData => m_nodeData;
         public Block SourceBlock { get; set; }
 
         public static event Action<Node, bool> OnStartBreaking; //second Argument tells if the player is the one who is breaking the Node.
-        public static event Action<Node> OnCancelBreaking;
-        public static event Action<Node> OnNodeBroken;
+        public static event Action<Node, bool> OnCancelBreaking;
+        public static event Action<Node, bool> OnNodeBroken;
 
         public bool IsHolding => m_isHolding;
         public bool PlayerIsHolding => m_isHolding && m_breakOwner == null;
         public bool MarkedForDeletion => m_markedForDeletion;
+
+        public static float BlockRotationToDegrees(BlockRotation rotation)
+        {
+            return rotation switch
+            {
+                BlockRotation.North => 0f,
+                BlockRotation.East => 90f,
+                BlockRotation.South => 180f,
+                BlockRotation.West => 270f,
+                _ => 0f
+            };
+        }
 
         public float GetInteractionRange()
         {
@@ -59,7 +77,7 @@ namespace GlowCore.World
             m_isHolding = false;
             m_holdTimer = 0f;
             AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
-            OnCancelBreaking?.Invoke(this);
+            OnCancelBreaking?.Invoke(this, (m_breakOwner is null));
         }
 
         public void UpdateHold(float deltaTime)
@@ -131,7 +149,7 @@ namespace GlowCore.World
             }
 
             m_markedForDeletion = true;
-            OnNodeBroken?.Invoke(this);
+            OnNodeBroken?.Invoke(this, (m_breakOwner is null));
             Destroy(gameObject);
             AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
         }

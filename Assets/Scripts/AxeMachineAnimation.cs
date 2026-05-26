@@ -41,6 +41,8 @@ public class AxeMachineAnimation : MonoBehaviour
         SetBreakingBools(m_axeGroup3, false);
     }
 
+    public void SetRotateAnimation() => SetIdleAnimation();
+
     private void Start()
     {
         m_axeGroup1.speed = m_axeAnimationSpeed;

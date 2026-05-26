@@ -201,6 +201,7 @@ public class SaveData
             return delta;
 
         var id = new Guid(reader.ReadBytes(16));
+        var rotation = (BlockRotation)reader.ReadByte();
         if (id == Guid.Empty)
         {
             Debug.LogWarning($"Empty build tile delta at ({x}, {z}), ignoring");
@@ -210,7 +211,7 @@ public class SaveData
         var item = ItemRegistry.Instance.Lookup(id);
         if (item is Block block)
         {
-            delta.BuildData = new BuildData { Block = block };
+            delta.BuildData = new BuildData { Block = block, Rotation = rotation };
 
             if (block.HasInventory)
                 delta.BuildData.Inventory = LoadInventory(reader);
@@ -236,6 +237,8 @@ public class SaveData
         if (delta.Type == DeltaType.Build)
         {
             writer.Write(delta.BuildData.Block.Id.ToByteArray());
+            byte b = (byte)delta.BuildData.Rotation;
+            writer.Write((byte)delta.BuildData.Rotation);
 
             if (delta.BuildData.Inventory != null)
             {
@@ -337,6 +340,7 @@ public class TileDelta
 public class BuildData
 {
     public Block Block;
+    public BlockRotation Rotation;
     [CanBeNull] public Inventory Inventory;
 }
 

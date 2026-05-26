@@ -8,5 +8,6 @@ namespace ScriptableObjects
         public GameObject NodeToBuild;
         public float BuildRadius = 4f;
         public bool HasInventory = false;
+        public float YRotationOffset;
     }
 }

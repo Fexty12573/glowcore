@@ -23,3 +23,4 @@ MonoBehaviour:
   NodeToBuild: {fileID: 7794489081862422856, guid: 37692dfa1ca5db546b02a3bcf628ef20, type: 3}
   BuildRadius: 4
   HasInventory: 1
+  YRotationOffset: 180

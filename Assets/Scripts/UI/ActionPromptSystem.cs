@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class ActionPromptSystem : MonoBehaviour
 {
+    private static ActionPromptSystem s_instance;
+
     [SerializeField] private Camera m_camera;
 
     [Header("ActionPrompt")]
     [SerializeField] private Vector3 m_promptOffset;
     [SerializeField] private GameObject m_promptUI; // An Action Prompt is a visual UI Element that pops up when the player hovers over a Node and says e.g. "Break with Leftclick".
+    [SerializeField] private GameObject m_rotatePromptUI;
     [SerializeField] private TextMeshProUGUI m_promptText;
     [SerializeField] private GameObject m_leftClickIcon;
     [SerializeField] private GameObject m_eButtonIcon;
+
+    public static ActionPromptSystem Instance => s_instance;
 
     [Header("ProgressBar")]
     [SerializeField] private Vector3 m_progressBarOffset;
@@ -21,9 +26,38 @@ public class ActionPromptSystem : MonoBehaviour
     private bool m_isInteractableNode;
     private bool m_showBreakNodePrompt; // Only shown on the first Node that the player breaks.
     private bool m_isBreaking;
+    private Vector3? m_rotatePromptPosition; // Null means that it is turned off
+
+    public void EnableRotatePrompt(Vector3 position)
+    {
+        m_rotatePromptPosition = position;
+        m_rotatePromptUI.SetActive(true);
+        UpdateRotatePromptPosition();
+    }
+
+    public void DisableRotatePrompt()
+    {
+        m_rotatePromptPosition = null;
+        m_rotatePromptUI.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        if (s_instance != null)
+        {
+            Debug.LogError("ActionPromptSystem: Duplicate instance detected. Destroying this one.");
+            Destroy(gameObject);
+            return;
+        }
+
+        s_instance = this;
+    }
 
     private void Update()
     {
+        if (m_rotatePromptPosition is not null)
+            UpdateRotatePromptPosition();
+
         if (m_currentNode == null || m_currentNode.MarkedForDeletion)
             return;
 
@@ -122,9 +156,9 @@ public class ActionPromptSystem : MonoBehaviour
         UpdateNodeBreakProgress();
     }
 
-    private void HandleNodeCancelBreaking(Node node)
+    private void HandleNodeCancelBreaking(Node node, bool byPlayer)
     {
-        if (node != m_currentNode)
+        if (node != m_currentNode || !byPlayer)
             return;
 
         DisableProgressBar();
@@ -132,14 +166,20 @@ public class ActionPromptSystem : MonoBehaviour
             m_promptUI.SetActive(true);
     }
 
-    private void HandleNodeBroken(Node node)
+    private void HandleNodeBroken(Node node, bool byPlayer)
     {
-        DisableProgressBar();
+        if (byPlayer)
+            DisableProgressBar();
     }
 
     private void DisableProgressBar()
     {
         m_isBreaking = false;
         m_nodeBreakProgressBar.gameObject.SetActive(false);
+    }
+
+    private void UpdateRotatePromptPosition()
+    {
+        m_rotatePromptUI.transform.position = m_camera.WorldToScreenPoint(m_rotatePromptPosition!.Value);
     }
 }
