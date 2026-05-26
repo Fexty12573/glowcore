@@ -49,7 +49,10 @@ public class AxeMachineAnimation : MonoBehaviour
         m_axeGroup2.speed = m_axeAnimationSpeed;
         m_axeGroup3.speed = m_axeAnimationSpeed;
 
-        var speedVector = new Vector3(-m_wheelSpinningSpeed, 0f, 0f);
+        if (!m_wheel1 || !m_wheel2)
+            return;
+
+        var speedVector = new Vector3(m_wheelSpinningSpeed, 0f, 0f);
         m_wheel1.SpinSpeed = speedVector;
         m_wheel2.SpinSpeed = speedVector;
     }
@@ -71,6 +74,9 @@ public class AxeMachineAnimation : MonoBehaviour
 
     private void SetWheels(bool on)
     {
+        if (!m_wheel1 || !m_wheel2)
+            return;
+
         m_wheel1.enabled = on;
         m_wheel2.enabled = on;
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GlowCore.UI.Menus;
+using ScriptableObjects;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -131,7 +132,7 @@ namespace GlowCore.World
             Vector3 spawnRotation = prefab.transform.eulerAngles; // Keep x and z rotation of the prefab
             spawnRotation.y = Node.BlockRotationToDegrees(rotation) + yRotationOffset;
             GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.Euler(spawnRotation), m_nodesParent);
-            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
+            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition, 0.9f) || !PlaceNodeAtTile(tile, node))
             {
                 Destroy(nodeObject);
                 return null;
@@ -172,6 +173,30 @@ namespace GlowCore.World
             return node;
         }
 
+        public void ReplaceNode(Node oldNode, Block blockOfNewNode, bool keepRotation) //Used by saplings
+        {
+            if (oldNode == null || blockOfNewNode == null)
+                return;
+
+            foreach (var usedTile in oldNode.TilesUsed)
+            {
+                ClearNodeAt(usedTile);
+            }
+            Destroy(oldNode.gameObject);
+
+            var tile = WorldToGrid(oldNode.transform.position);
+            var rotation = keepRotation ? oldNode.Rotation : (BlockRotation)Random.Range(0, 4);
+            Node newNode = CreateNodeAt(blockOfNewNode.NodeToBuild, tile, rotation, blockOfNewNode.YRotationOffset);
+            if (newNode == null)
+            {
+                Debug.LogError($"Node wasn't able to be replaced into {blockOfNewNode.Name} at {tile}.");
+            }
+
+            newNode.SourceBlock = blockOfNewNode; // for savefile
+            newNode.TilesUsed.Clear();
+            newNode.TilesUsed.Add(tile);
+        }
+
         public bool IsInBounds(Vector2Int tile)
         {
             return tile.x >= 0 && tile.x < m_gridSize
@@ -183,9 +208,9 @@ namespace GlowCore.World
             return !IsInBounds(tile) || m_tiles[tile.x, tile.y] is not null;
         }
 
-        public bool IsPlayerObstructing(Vector3 worldPosition)
+        public bool IsPlayerObstructing(Vector3 worldPosition, float minDistance)
         {
-            return Vector3.Distance(worldPosition, m_player.position) <= 0.9f;
+            return Vector3.Distance(worldPosition, m_player.position) <= minDistance;
         }
 
         public bool IsNodeInBounds(Node node)

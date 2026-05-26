@@ -26,4 +26,10 @@ MonoBehaviour:
   - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}
     BreakMultiplier: 1
   - Tool: {fileID: 11400000, guid: ae7388be54fb6ce458ac89a0768a1c3e, type: 2}
-    BreakMultiplier: 0.15
+    BreakMultiplier: 0.3
+  - Tool: {fileID: 11400000, guid: 9327768fbee7b7c4dbe561d5d082a881, type: 2}
+    BreakMultiplier: 0.1
+  - Tool: {fileID: 11400000, guid: d767929bf4acd044fb6cd04dc83422bd, type: 2}
+    BreakMultiplier: 0.03
+  - Tool: {fileID: 11400000, guid: 1032b6eebcd8efa43adec53c29a22b10, type: 2}
+    BreakMultiplier: 0.01

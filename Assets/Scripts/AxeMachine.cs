@@ -17,18 +17,21 @@ public class AxeMachine : MonoBehaviour
         Rotating
     }
 
-    [SerializeField] private Tool m_tool;
-    [SerializeField] private float m_movementSpeed = 2f;
-    [SerializeField] private float m_rotationSpeed = 40f;
+    [Header("References")]
     [SerializeField] private Node m_machineNode;
     [SerializeField] private Chest m_storage;
+    [SerializeField] private Tool m_tool;
     [SerializeField] private AxeMachineAnimation m_animation;
+
+    [Header("Parameters")]
+    [SerializeField] private float m_movementSpeed = 2f;
+    [SerializeField] private float m_rotationSpeed = 40f;
+    [SerializeField] private bool m_canDrive = true;
 
     private MachineState m_state = MachineState.Idle;
     private Node m_targetNode;
     private Vector2Int m_position;
     private Vector2Int m_lastPosition;
-    // private bool m_isRotatingRight; // false means that he rotates left //todo delete
 
     private void Start()
     {
@@ -49,9 +52,9 @@ public class AxeMachine : MonoBehaviour
         {
             case MachineState.Idle:
                 UpdateTargetNode();
-                if (m_targetNode == null)
+                if (m_targetNode == null || m_targetNode.MarkedForDeletion)
                 {
-                    if (TryStartMovingForward())
+                    if (m_canDrive && TryStartMovingForward())
                     {
                         m_state = MachineState.Moving;
                         m_animation.SetMoveAnimation();
@@ -60,7 +63,7 @@ public class AxeMachine : MonoBehaviour
                     return;
                 }
 
-                if (TryStartRotating())
+                if (m_canDrive && TryStartRotating())
                 {
                     m_state = MachineState.Rotating;
                     m_animation.SetRotateAnimation();
@@ -79,6 +82,7 @@ public class AxeMachine : MonoBehaviour
                     EndBreaking();
                     m_state = MachineState.Idle;
                     m_animation.SetIdleAnimation();
+                    Update(); // makes that the axe machine immediately claims the tile that it just freed
                     return;
                 }
                 UpdateBreakingNode();
@@ -106,7 +110,7 @@ public class AxeMachine : MonoBehaviour
 
     private void UpdateTargetNode()
     {
-        Vector2Int targetPosition = m_position + DirectionToVector2Int(m_machineNode.Rotation);
+        Vector2Int targetPosition = m_position + Node.RotationToDirectionVector2Int(m_machineNode.Rotation);
         m_targetNode = WorldGrid.Instance.GetNodeAt(targetPosition);
     }
 
@@ -150,7 +154,7 @@ public class AxeMachine : MonoBehaviour
         if (!WorldGrid.Instance.IsInBounds(GetLastWorldPosition()))
             return false;
 
-        Vector2Int newPosition = m_position + DirectionToVector2Int(m_machineNode.Rotation);
+        Vector2Int newPosition = m_position + Node.RotationToDirectionVector2Int(m_machineNode.Rotation);
         if (!WorldGrid.Instance.PlaceNodeAt(m_machineNode, newPosition.x, newPosition.y))
             return false;
 
@@ -241,22 +245,5 @@ public class AxeMachine : MonoBehaviour
             transform.eulerAngles.x,
             GetTargetYRotation(),
             transform.eulerAngles.z);
-    }
-
-    private Vector2Int DirectionToVector2Int(BlockRotation direction)
-    {
-        switch (direction)
-        {
-            case BlockRotation.North:
-                return Vector2Int.up;
-            case BlockRotation.East:
-                return Vector2Int.right;
-            case BlockRotation.South:
-                return Vector2Int.down;
-            case BlockRotation.West:
-                return Vector2Int.left;
-            default:
-                return Vector2Int.zero;
-        }
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: AxeMachineTier3Block
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Axe Machine Tier 3
+  Description: 
+  Prefab: {fileID: 3018811792293280483, guid: 42077755978cbc54581e1b29eaf3d332, type: 3}
+  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  DropScale: 0.3
+  InHandScale: 0.5
+  MaxStack: 99
+  m_idBytes: 4cd3df7fbc233e41875109c689d09e63
+  NodeToBuild: {fileID: 3578041532742632149, guid: 2d5be4d23a6f2bf45b1e108ab4ac4fb0, type: 3}
+  BuildRadius: 4
+  HasInventory: 1
+  YRotationOffset: 0

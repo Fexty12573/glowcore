@@ -245,7 +245,7 @@ public class SaveData
                 if (!delta.BuildData.Block.HasInventory)
                 {
                     Debug.LogError($"Block with Name {delta.BuildData.Block.Name} has an inventory, but HasInventory is false." +
-                                   $"This will corrupt all TileDeltas after this one when loading.");
+                                   $" This will corrupt all TileDeltas after this one when loading.");
                 }
                 SaveInventory(delta.BuildData.Inventory, writer);
             }

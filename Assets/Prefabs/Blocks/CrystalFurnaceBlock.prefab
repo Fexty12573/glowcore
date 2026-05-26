@@ -52,9 +52,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3133498875991405556, guid: 2dab2bc9d47afc14a9f746fccaff6a47, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2dab2bc9d47afc14a9f746fccaff6a47, type: 3}
       propertyPath: m_Name
       value: CrystalFurnaceBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2dab2bc9d47afc14a9f746fccaff6a47, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251683326431710176, guid: 2dab2bc9d47afc14a9f746fccaff6a47, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

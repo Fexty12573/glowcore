@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1153952777588233714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_tool
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cdf2a033815fdd4da8afb643e64a3ea, type: 2}
+    - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_animation
+      value: 
+      objectReference: {fileID: 1396300094507649668}
+    - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_rotationSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 244054637387308918, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_axeAnimationSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 244054637387308918, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_wheelSpinningSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 497143532656755467, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_block
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f047741924f7734db0c62671525e3d3, type: 2}
+    - target: {fileID: 1058018798797690788, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 046ad1ba73227fa4cbf313ca80fb7573, type: 2}
+    - target: {fileID: 1058018798797690788, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3df207ce7f82528469695ab3ad1c772a, type: 2}
+    - target: {fileID: 1058018798797690788, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d02f48f87efb3e49adcfa69534da9c2, type: 2}
+    - target: {fileID: 1528388800962833772, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 046ad1ba73227fa4cbf313ca80fb7573, type: 2}
+    - target: {fileID: 1528388800962833772, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3df207ce7f82528469695ab3ad1c772a, type: 2}
+    - target: {fileID: 1528388800962833772, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d02f48f87efb3e49adcfa69534da9c2, type: 2}
+    - target: {fileID: 2424177118771468071, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_Name
+      value: AxeMachineTier2Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093894408373833117, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225665416660219634, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c63d7a36e71d69449acf7267a0d70c1, type: 2}
+    - target: {fileID: 5580627915417987005, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 046ad1ba73227fa4cbf313ca80fb7573, type: 2}
+    - target: {fileID: 5580627915417987005, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3df207ce7f82528469695ab3ad1c772a, type: 2}
+    - target: {fileID: 5580627915417987005, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d02f48f87efb3e49adcfa69534da9c2, type: 2}
+    - target: {fileID: 6820214701378996317, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+      propertyPath: m_nodeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 41a11bdf31c94534a8174ca5485d125d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+--- !u!114 &1396300094507649668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 244054637387308918, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
+  m_PrefabInstance: {fileID: 1153952777588233714}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8f0ccd6e1b7eb4388b636c74e79e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::AxeMachineAnimation

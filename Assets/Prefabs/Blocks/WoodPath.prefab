@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8438868731944617712}
   - component: {fileID: 7442264667115277360}
   - component: {fileID: 1660529444174309389}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WoodPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}

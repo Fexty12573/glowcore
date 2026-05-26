@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8039772199092435016}
   - component: {fileID: 4036034783242722288}
   - component: {fileID: 1385050351602102435}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332942450725404584}
   - component: {fileID: -6756777183740244166}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FurnaceBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3053945673601115759}
   - component: {fileID: 8845104427362186428}
   - component: {fileID: 2753604939105253677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Furnace
   m_TagString: Untagged
   m_Icon: {fileID: 0}

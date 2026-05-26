@@ -47,6 +47,28 @@ namespace GlowCore.World
             };
         }
 
+        public static Vector2Int RotationToDirectionVector2Int(BlockRotation rotation)
+        {
+            switch (rotation)
+            {
+                case BlockRotation.North:
+                    return Vector2Int.up;
+                case BlockRotation.East:
+                    return Vector2Int.right;
+                case BlockRotation.South:
+                    return Vector2Int.down;
+                case BlockRotation.West:
+                    return Vector2Int.left;
+                default:
+                    return Vector2Int.zero;
+            }
+        }
+
+        public static Vector3 RotationToDirectionVector3(BlockRotation rotation)
+        {
+            var vector = RotationToDirectionVector2Int(rotation);
+            return new Vector3(vector.x, 0f, vector.y);
+        }
         public float GetInteractionRange()
         {
             return m_nodeData.InteractionRange;
