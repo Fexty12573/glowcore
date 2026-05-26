@@ -48,7 +48,7 @@ public class MapUI : MonoBehaviour
         float normalizedY = m_playerPosition.position.z / m_worldWidth;
         var anchorPosition = new Vector2(normalizedX * mapUIWidth, normalizedY * mapUIWidth); // 0 0 is middle
         m_playerMarker.anchoredPosition = anchorPosition;
-        
+
         m_playerMarker.localRotation = Quaternion.Euler(0f, 0f, -m_playerPosition.eulerAngles.y);
     }
 }
