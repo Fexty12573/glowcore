@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Furnace
   Description: Smelt ores
   Prefab: {fileID: 5787699858781684794, guid: 6bab4ea7054dada44a37b8249f07a7b8, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: a01e9bdc6222f1142a20d34d3b12fbab, type: 3}
+  IconRotation: {x: 0, y: 226.5, z: 0}
   DropScale: 0.4
   InHandScale: 0.4
   MaxStack: 99

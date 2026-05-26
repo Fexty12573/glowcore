@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Crystal Axe
   Description: 
   Prefab: {fileID: 6921411076567766555, guid: c4c33a65cf155f74982c5905caa70392, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 0172bd4a78b48e048ac5943fa9c570a5, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 1
   m_idBytes: 1097960366feaa43a74bef3826fdbabd
+  Sound: 0

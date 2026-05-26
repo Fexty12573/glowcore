@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Brown Mushroom
   Description: 
   Prefab: {fileID: 5241578314773801813, guid: 812bbef0f3766144db65fd53394b1f0f, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 38252a45408c63b4d85f5fe451f71004, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
