@@ -15,6 +15,8 @@ MonoBehaviour:
   Name: Axe Machine Tier 1
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 1
+    Amount: 4
+  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
+    Amount: 3
   ResultItem: {fileID: 11400000, guid: cd7508eec2110ab4e99f89dfc0bd0f53, type: 2}
   ResultAmount: 1

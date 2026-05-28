@@ -6,6 +6,7 @@ public class FogFollow : MonoBehaviour
 
     [SerializeField] private float m_speed = 10f;
     [SerializeField] private float m_triggerDistance = 30f;
+    [SerializeField] private float m_activateDistance = 10f; // How far away must the player be away from 0 0 so that the follow activates
     [SerializeField] private FollowMode m_followMode;
 
     private float m_targetValue;
@@ -18,6 +19,9 @@ public class FogFollow : MonoBehaviour
 
     private void Update()
     {
+        if (Vector2.Distance(new(m_player.position.x, m_player.position.z), Vector2.zero) < m_activateDistance)
+            return;
+
         var compareDistance = 0f;
 
         Vector3 pos = transform.position;

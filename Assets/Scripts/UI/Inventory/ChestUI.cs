@@ -7,6 +7,8 @@ namespace GlowCore.UI.Inventory
 {
     public class ChestUI : MonoBehaviour
     {
+        private static ChestUI s_instance;
+
         // Instance Fields
         [Header("References")]
         [SerializeField]
@@ -44,6 +46,7 @@ namespace GlowCore.UI.Inventory
         private bool m_isVisible;
 
         // Properties
+        public static ChestUI Instance => s_instance;
         public bool IsVisible => m_isVisible;
 
         // Events
@@ -55,13 +58,13 @@ namespace GlowCore.UI.Inventory
             EnsureInitialized();
             BindChest(chest);
             SetVisible(true);
-            AudioManager.Instance.Play(AudioManager.SoundType.OpenChest, AudioManager.AudioChannel.Environment);
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.OpenChest, AudioManager.AudioChannel.Environment);
         }
 
         public void Hide()
         {
             SetVisible(false);
-            AudioManager.Instance.Play(AudioManager.SoundType.CloseChest, AudioManager.AudioChannel.Environment);
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.CloseChest, AudioManager.AudioChannel.Environment);
         }
 
         public void SetVisible(bool visible)
@@ -88,6 +91,18 @@ namespace GlowCore.UI.Inventory
         }
 
         // Private Methods
+        private void Awake()
+        {
+            if (s_instance != null)
+            {
+                Debug.LogError("ChestUI: Duplicate instance detected. Destroying this one.");
+                Destroy(gameObject);
+                return;
+            }
+
+            s_instance = this;
+        }
+
         private void Start()
         {
             EnsureInitialized();

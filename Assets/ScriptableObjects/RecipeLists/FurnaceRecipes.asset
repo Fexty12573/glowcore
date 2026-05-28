@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: FurnaceRecipes
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
-  - {fileID: 11400000, guid: 3e4eb1c98b0829e449e2ff9fbf04dd94, type: 2}
+  - {fileID: 11400000, guid: 7414a4b2d37ed804481d3e62373634a1, type: 2}
+  - {fileID: 11400000, guid: da1c5ad11f4a87b429b9c0e1495466ab, type: 2}
+  - {fileID: 11400000, guid: 87f4c55ed9e99d64e94dc5ff68895d70, type: 2}
+  - {fileID: 11400000, guid: 065506d0e8dc119419bfb6fba042cb82, type: 2}
+  - {fileID: 11400000, guid: e2452c1ad3bb21846972981666858155, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
+  m_Name: Map
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
+  Name: Map
+  Ingredients:
+  - Item: {fileID: 11400000, guid: d6f04cb604f15c54c8def24b7e10c4b7, type: 2}
+    Amount: 3
+  - Item: {fileID: 11400000, guid: 882afcbd25f0c4b44b9fe8fbb75ba306, type: 2}
+    Amount: 3
+  ResultItem: {fileID: 11400000, guid: bf9579c2fac4fb64aa2fe4acdefd7c7e, type: 2}
+  ResultAmount: 1

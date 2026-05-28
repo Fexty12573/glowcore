@@ -12,14 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3234de94a168274194c4cf274b3d85c, type: 3}
   m_Name: GlowCoreLevel3Config
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.GlowCoreLevelConfig
-  m_levelName: GlowCore
   m_level: 3
   m_levelIcon: {fileID: 21300000, guid: ccc77e0be07c6124a9c2f018cb30200d, type: 3}
   m_requiredMaterials:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 1
-  m_tilesOnLevelUp: 1
-  m_size: 9
-  m_nextLevelPerkTemplate: Next level expands the glow radius by +{tiles} tiles
-  m_expansionItem: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-  m_expansionCostPerTile: 99
+    Amount: 20
+  m_tilesOnLevelUp: 3

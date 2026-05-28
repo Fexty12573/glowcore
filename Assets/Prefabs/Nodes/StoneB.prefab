@@ -80,7 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d713cfab3a445f1b79071b0cc76368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
-  m_nodeData: {fileID: 11400000, guid: 910d7916b2de78e47ba3c1fb5751c132, type: 2}
+  m_nodeData: {fileID: 11400000, guid: 0b970080f1703cd458ad430cbef58905, type: 2}
+  Rotation: 0
   TilesUsed: []
   Outline: {fileID: -2013617300270851725}
 --- !u!114 &-2013617300270851725

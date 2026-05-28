@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
+  m_Name: DirtNode
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
+  InteractionRange: 3
+  ItemDrops:
+  - Item: {fileID: 11400000, guid: e522ccabcc5c30d46bd62d9abdfcdc46, type: 2}
+    Min: 1
+    Max: 1
+  BaseBreakTime: 3
+  IsIndestructible: 0
+  UsableTools:
+  - Tool: {fileID: 11400000, guid: c21a2145c1974314ea70b8d33e95dfd4, type: 2}
+    BreakMultiplier: 1
+  - Tool: {fileID: 11400000, guid: 376dede65d78649469193ca6ba7ea354, type: 2}
+    BreakMultiplier: 0.3
+  - Tool: {fileID: 11400000, guid: c208480446a81af47bc47d1d8451119b, type: 2}
+    BreakMultiplier: 0.1
+  - Tool: {fileID: 11400000, guid: 3b552051243877849ba971f347637874, type: 2}
+    BreakMultiplier: 0.05
+  - Tool: {fileID: 11400000, guid: 234c9150ca4ebd6418cfc27496063efc, type: 2}
+    BreakMultiplier: 0.025

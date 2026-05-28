@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: CoalOreBlock
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Coal Ore
+  Description: this item should not be obtainable
+  Prefab: {fileID: 8432772064553204096, guid: d0def4099e60dd94da2459e7f05a4e42, type: 3}
+  Icon: {fileID: 21300000, guid: 711375c852c5b2a4787e9547c3680982, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
+  DropScale: 1
+  InHandScale: 1
+  MaxStack: 99
+  m_idBytes: 9b98dd3068dd65449d0910b36ce3b2a0
+  NodeToBuild: {fileID: 8432772064553204096, guid: a505ed93361c54045b1eac0bf54d9211, type: 3}
+  BuildRadius: 4
+  HasInventory: 0
+  YRotationOffset: 0

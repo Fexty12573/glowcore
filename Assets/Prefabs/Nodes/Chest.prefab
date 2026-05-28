@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 4ee04bed3397ce34caaf820f7048120b, type: 2}
+  Rotation: 0
   TilesUsed: []
   Outline: {fileID: 3485674928449247075}
 --- !u!114 &3485674928449247075
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Chest
   m_width: 8
-  m_height: 2
+  m_height: 4
   m_block: {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
 --- !u!114 &8713903101887034799
 MonoBehaviour:

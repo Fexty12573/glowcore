@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: Wood Sickle
   Description: 
-  Prefab: {fileID: 0}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Prefab: {fileID: 7100668399805763768, guid: 6e772da547c16034098b51b0c8df35cd, type: 3}
+  Icon: {fileID: 21300000, guid: c31346f313d0f1f4a8d463a6bb21685c, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
   m_idBytes: 9064b27892ba484a8676446ab8cff604
+  Sound: 0

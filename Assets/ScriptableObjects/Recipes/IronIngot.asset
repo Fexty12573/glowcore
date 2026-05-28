@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
   m_Name: IronIngot
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Cobalt Ingot
+  Name: Iron Ingot
   Ingredients:
   - Item: {fileID: 11400000, guid: 294af3de1b0ad1d469e90e006a9ab5f7, type: 2}
-    Amount: 5
+    Amount: 1
   - Item: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
-    Amount: 5
+    Amount: 1
   ResultItem: {fileID: 11400000, guid: 79401a3b7caaf6344aa8b8bdc364355f, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 0

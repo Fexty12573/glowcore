@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
+  m_Name: Ropex5
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
+  Name: Rope 5x
+  Ingredients:
+  - Item: {fileID: 11400000, guid: 90bb7157d7fd0b6429eca904b394e92c, type: 2}
+    Amount: 15
+  ResultItem: {fileID: 11400000, guid: 5bd2631771c6b154ab1ffeb957228e47, type: 2}
+  ResultAmount: 5

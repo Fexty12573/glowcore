@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
   - {fileID: 11400000, guid: 55d63d0eefdaa024b9704c8b91737e8f, type: 2}
-  - {fileID: 11400000, guid: 6cf93245f93c90749a25c26a20b35121, type: 2}
-  - {fileID: 11400000, guid: 7682e3d2bcc0f76419e7c4e1830c1bc8, type: 2}
-  - {fileID: 11400000, guid: 5eb73bd6073325943a0dcf4f984d4863, type: 2}
-  - {fileID: 11400000, guid: d87916941692a364a93766031a43e6fb, type: 2}
+  - {fileID: 11400000, guid: 5a3934ab9ff390f48b5841271dbde33c, type: 2}
+  - {fileID: 11400000, guid: a249b56e334112d428b5278afdb1759c, type: 2}
+  - {fileID: 11400000, guid: 70324218a36e7ce4e8b2c2e680670eaf, type: 2}
+  - {fileID: 11400000, guid: 73418526d41d4d744936b25fa34d258e, type: 2}
+  - {fileID: 11400000, guid: 03629350d02daa344a47480fecc3391d, type: 2}
+  - {fileID: 11400000, guid: 7ff91c445a31bf74294be7ac2292287b, type: 2}
+  - {fileID: 11400000, guid: 7300b81ffa7447f49808c9edc1fd8b69, type: 2}
+  - {fileID: 11400000, guid: f15bd3400b9c9a84ea36323c25b8ecf3, type: 2}

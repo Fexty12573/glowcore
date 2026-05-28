@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: CraftingTableRecipes
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
-  - {fileID: 11400000, guid: fe24fd4ec66625842b0e59a3037d5e9d, type: 2}
+  - {fileID: 11400000, guid: 1f5b70d5863b51546ac0e1fab72bda6d, type: 2}
+  - {fileID: 11400000, guid: 1069c63e4ab362847950522bdf90fed2, type: 2}
+  - {fileID: 11400000, guid: f4fe6a5ffc13b9248b26da70e4e53c17, type: 2}
+  - {fileID: 11400000, guid: b35053a9e77076747ac4772f31550189, type: 2}
+  - {fileID: 11400000, guid: 6281462369bbe13479e2b1766412f925, type: 2}
   - {fileID: 11400000, guid: 1562f3873dcdbe4408aa8b3cccc120c9, type: 2}
   - {fileID: 11400000, guid: bd9e3a79274e51e4aa380f321183bdae, type: 2}
-  - {fileID: 11400000, guid: f4fe6a5ffc13b9248b26da70e4e53c17, type: 2}
-  - {fileID: 11400000, guid: cb69c1ad05b1d17418c5fc39d81fca17, type: 2}
-  - {fileID: 11400000, guid: 61d97e10e610c2245898ea0cf52ac7ac, type: 2}
+  - {fileID: 11400000, guid: 92cb7f5497ee9bf43a9715e1dfc1f25e, type: 2}
+  - {fileID: 11400000, guid: 7fea8419acaaa174cb69f3f75143c937, type: 2}
+  - {fileID: 11400000, guid: 6cf93245f93c90749a25c26a20b35121, type: 2}
+  - {fileID: 11400000, guid: 7682e3d2bcc0f76419e7c4e1830c1bc8, type: 2}
+  - {fileID: 11400000, guid: 7fbd255429f94d348b6fc89c92cad137, type: 2}
+  - {fileID: 11400000, guid: 4af704fb0eafc7c4caa98806f21cee5b, type: 2}
+  - {fileID: 11400000, guid: b84c19872a032ed4385ede86f36149f7, type: 2}
+  - {fileID: 11400000, guid: cb8ee11b680fb2647969a0313433c39f, type: 2}
+  - {fileID: 11400000, guid: e209b5f1c2a4b084aa97fb4fdc1a1919, type: 2}

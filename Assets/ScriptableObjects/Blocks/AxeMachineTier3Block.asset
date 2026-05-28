@@ -15,11 +15,12 @@ MonoBehaviour:
   Name: Axe Machine Tier 3
   Description: 
   Prefab: {fileID: 3018811792293280483, guid: 42077755978cbc54581e1b29eaf3d332, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 6590abe60d642a7439a943d0f474c1f0, type: 3}
+  IconRotation: {x: 22.83, y: 90.49, z: -21.9}
   DropScale: 0.3
   InHandScale: 0.5
   MaxStack: 99
-  m_idBytes: 4cd3df7fbc233e41875109c689d09e63
+  m_idBytes: 8e731ca128e22b4696e354c7a3f0ec36
   NodeToBuild: {fileID: 3578041532742632149, guid: 2d5be4d23a6f2bf45b1e108ab4ac4fb0, type: 3}
   BuildRadius: 4
   HasInventory: 1

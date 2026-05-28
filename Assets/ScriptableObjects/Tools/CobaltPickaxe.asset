@@ -21,4 +21,4 @@ MonoBehaviour:
   InHandScale: 1
   MaxStack: 1
   m_idBytes: 89f97c45c4945c4383d7ae749a518363
-  Sound: 0
+  Sound: 1

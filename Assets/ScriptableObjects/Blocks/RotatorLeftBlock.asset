@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Rotator Left
   Description: 
   Prefab: {fileID: 5535623595052943214, guid: 191715f0a3cfed745972142fd95f79fe, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: d2af631099f0ebc4c9f20c68ef3b618f, type: 3}
+  IconRotation: {x: 0, y: 45, z: 0}
   DropScale: 0.5
   InHandScale: 0.5
   MaxStack: 99

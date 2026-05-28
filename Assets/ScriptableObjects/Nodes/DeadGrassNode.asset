@@ -17,6 +17,16 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: ca3f33bf8988ac74da27761c73eb8b49, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 1
+  BaseBreakTime: 3
   IsIndestructible: 0
-  UsableTools: []
+  UsableTools:
+  - Tool: {fileID: 11400000, guid: e2d39e01e3f78a44eaa196a20732f452, type: 2}
+    BreakMultiplier: 1
+  - Tool: {fileID: 11400000, guid: ed23e77183978ee4aade42ea6d3ade0d, type: 2}
+    BreakMultiplier: 0.3
+  - Tool: {fileID: 11400000, guid: ca23d5a5899058c42929c8050e654758, type: 2}
+    BreakMultiplier: 0.1
+  - Tool: {fileID: 11400000, guid: 98e3b0b5c8f64b049bd6c9b7f7f7b52f, type: 2}
+    BreakMultiplier: 0.05
+  - Tool: {fileID: 11400000, guid: d69964e250e8e1b45b30c05a57b2a687, type: 2}
+    BreakMultiplier: 0.025

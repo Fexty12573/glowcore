@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Cobalt Pickaxe
   Ingredients:
-  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 3
+  - Item: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
+    Amount: 10
+  - Item: {fileID: 11400000, guid: a2813d0d25371a04ab6b5f1ef3cbc17a, type: 2}
+    Amount: 10
   ResultItem: {fileID: 11400000, guid: 1032b6eebcd8efa43adec53c29a22b10, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 1

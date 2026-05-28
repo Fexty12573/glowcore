@@ -24,6 +24,7 @@ public class NodeActionSystem : MonoBehaviour
 
     public static NodeActionSystem Instance => s_instance;
 
+    public float PotionBreakMultiplier = 1f;
     public Node CurrentNode => m_currentNode;
     public Vector2Int? CurrentTile => m_currentTile;
 
