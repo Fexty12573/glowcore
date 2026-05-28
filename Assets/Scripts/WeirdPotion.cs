@@ -4,13 +4,13 @@ using UnityEngine;
 public class WeirdPotion : Consumable
 {
     private static Coroutine s_activeRoutine;
+    private static float s_defaultPlayerSmoothing;
+    private static float s_defaultCameraFollowDelay;
 
-    [SerializeField] private float m_playerMovementSmoothingEffect = 2f;
+    [SerializeField] private float m_playerMovementSmoothingEffect = 1f;
     [SerializeField] private float m_playerCameraFollowDelay = 3f;
     [SerializeField] private float m_duration = 50f;
 
-    private static float m_defaultPlayerSmoothing;
-    private static float m_defaultCameraFollowDelay;
     protected override void ApplyConsumeEffect()
     {
         PlayerMovement movement = FindFirstObjectByType<PlayerMovement>();
@@ -23,8 +23,8 @@ public class WeirdPotion : Consumable
         }
         else
         {
-            m_defaultPlayerSmoothing = movement.Smoothing;
-            m_defaultCameraFollowDelay = movement.CameraFollowDelay;
+            s_defaultPlayerSmoothing = movement.Smoothing;
+            s_defaultCameraFollowDelay = movement.CameraFollowDelay;
         }
 
         movement.Smoothing = m_playerMovementSmoothingEffect;
@@ -35,8 +35,8 @@ public class WeirdPotion : Consumable
     private IEnumerator RemoveEffect(PlayerMovement movement)
     {
         yield return new WaitForSeconds(m_duration);
-        movement.Smoothing = m_defaultPlayerSmoothing;
-        movement.CameraFollowDelay = m_defaultCameraFollowDelay;
+        movement.Smoothing = s_defaultPlayerSmoothing;
+        movement.CameraFollowDelay = s_defaultCameraFollowDelay;
         s_activeRoutine = null;
     }
 }

@@ -19,7 +19,7 @@ public class FogFollow : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(new (m_player.position.x, m_player.position.z), Vector2.zero) < m_activateDistance)
+        if (Vector2.Distance(new(m_player.position.x, m_player.position.z), Vector2.zero) < m_activateDistance)
             return;
 
         var compareDistance = 0f;
