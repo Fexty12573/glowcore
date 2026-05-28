@@ -17,6 +17,18 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Min: 1
     Max: 1
+  - Item: {fileID: 11400000, guid: f543110fd3dc1d5478e1dde151b98d8b, type: 2}
+    Min: 1
+    Max: 1
+  - Item: {fileID: 11400000, guid: aae48da43cf5a7d418fe7e812b279383, type: 2}
+    Min: 1
+    Max: 1
+  - Item: {fileID: 11400000, guid: 88eeaf99f9749754c82760c7b8f91b8e, type: 2}
+    Min: 1
+    Max: 1
+  - Item: {fileID: 11400000, guid: 595a0f3f81f15554c8224cf33c6ca9e9, type: 2}
+    Min: 1
+    Max: 1
   BaseBreakTime: 0.7
   IsIndestructible: 0
   UsableTools:

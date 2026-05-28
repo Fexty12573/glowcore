@@ -134,5 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Sapling
   m_node: {fileID: 4944318876508151804}
-  m_grownUpTree: {fileID: 11400000, guid: a9130494204ff2a42a3104db63c36aeb, type: 2}
-  m_growthTime: 30
+  m_canGrowIntoBlocks:
+  - {fileID: 11400000, guid: 4b6e2bf03e5f3e648846ff89f664e030, type: 2}
+  m_growthTime: 70

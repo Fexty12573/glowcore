@@ -505,10 +505,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43a2c3f95b7cc5428e23176a1cc41a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
+  m_mainCamera: {fileID: 7304261506459258767}
+  m_raycastCamera: {fileID: 3600561823655006463}
   m_cameraAnchor: {fileID: 6192860682458780908}
   m_horizontalCameraSpeed: 40
   m_verticalCameraSpeed: 30
-  m_minPitch: 10
+  m_minPitch: 16
   m_maxPitch: 89
 --- !u!114 &320889612761066827
 MonoBehaviour:
@@ -526,6 +528,7 @@ MonoBehaviour:
   m_player: {fileID: 1631564033306397339}
   m_playerInventory: {fileID: 4257862106641557325}
   m_raycastRange: 100
+  PotionBreakMultiplier: 1
 --- !u!114 &8627664650195704367
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f3df26cce0dbc2346bb30337333636af, type: 3}
       propertyPath: m_Name
-      value: TreeDSapling
+      value: TreeDSaplingNode
       objectReference: {fileID: 0}
     - target: {fileID: 5155288612038275026, guid: f3df26cce0dbc2346bb30337333636af, type: 3}
       propertyPath: m_LocalScale.x
@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Sapling
   m_node: {fileID: -4869652869546311586}
-  m_grownUpTree: {fileID: 11400000, guid: d9c8a2ce6e4148449bfa4b2245752cc7, type: 2}
+  m_canGrowIntoBlocks:
+  - {fileID: 11400000, guid: d9c8a2ce6e4148449bfa4b2245752cc7, type: 2}
   m_growthTime: 30

@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Sun Ore
   Description: 
   Prefab: {fileID: 7066667558987239045, guid: 8aa6b3d6ce0701d4ea93b0b27ee29c30, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 3eed39f38c7739743b078524c687248e, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99

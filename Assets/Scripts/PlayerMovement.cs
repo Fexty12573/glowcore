@@ -19,8 +19,25 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 m_smoothedInput;
     private bool m_isWalkingSoundPlaying;
     private Vector3 m_cameraVelocity;
+    private float m_potionSpeedMultiplier = 1f;
 
-    public void MultiplyMovementSpeed(float factor) => m_movementSpeed *= factor;
+    public float Smoothing
+    {
+        get => m_smoothing;
+        set => m_smoothing = value;
+    }
+
+    public float CameraFollowDelay
+    {
+        get => m_cameraFollowDelay;
+        set => m_cameraFollowDelay = value;
+    }
+
+    public float PotionSpeedMultiplier
+    {
+        get => m_potionSpeedMultiplier;
+        set => m_potionSpeedMultiplier = value;
+    }
 
     public void HandleMove(Vector2 movement)
     {
@@ -83,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateMovement(Vector3 movement)
     {
         movement += Vector3.down; // this brings the player back to the ground
-        m_controller.Move(Time.deltaTime * m_movementSpeed * movement);
+        m_controller.Move(Time.deltaTime * m_movementSpeed * m_potionSpeedMultiplier * movement);
     }
 
     private void UpdateCamera() // necessary since the camera is not a child of the player

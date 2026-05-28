@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Cobalt Pickaxe
   Description: 
   Prefab: {fileID: 5258146188248359928, guid: bcd92b6364386ce48b4c3efbcdf45a54, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: f096fb516da4bc7498cd7a9a7e653a26, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 1

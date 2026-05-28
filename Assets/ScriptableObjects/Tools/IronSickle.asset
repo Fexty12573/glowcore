@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Iron Sickle
   Description: 
   Prefab: {fileID: 3037711813058574989, guid: 6156cfcbdffa29245a05d3f2e541636d, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 8e1d0b049f16b514dbf9aab8beaea762, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99

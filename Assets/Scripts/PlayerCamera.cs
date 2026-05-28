@@ -19,6 +19,8 @@ Inspector transforms:
  */
 public class PlayerCamera : MonoBehaviour
 {
+    [SerializeField] private Camera m_mainCamera;
+    [SerializeField] private Camera m_raycastCamera;
     [SerializeField] private Transform m_cameraAnchor;
     [SerializeField] private float m_horizontalCameraSpeed = 50;
     [SerializeField] private float m_verticalCameraSpeed = 40;
@@ -30,6 +32,9 @@ public class PlayerCamera : MonoBehaviour
     private float m_sensitivityMultiplierY = 1f;
     private IDisplayService m_displayService;
     private PlayerInventory m_playerInventory;
+
+    public Camera MainCamera => m_mainCamera;
+    public Camera Raycastcamera => m_raycastCamera;
 
     public void Initialize(IDisplayService displayService)
     {

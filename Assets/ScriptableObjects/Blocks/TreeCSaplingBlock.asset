@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Cedar Sapling
   Description: 
   Prefab: {fileID: 6437164055635173262, guid: c2a252e5d1f74e74fb4a76b022567e19, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 8af71f79d03983c46a96fbd87c00a5dc, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99

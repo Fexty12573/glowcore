@@ -15,13 +15,14 @@ MonoBehaviour:
   InteractionRange: 3
   ItemDrops:
   - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
-    Min: 5
+    Min: 2
     Max: 10
+  - Item: {fileID: 11400000, guid: c951a0fec4d2d144fac7fe92416fc49b, type: 2}
+    Min: 0
+    Max: 3
   BaseBreakTime: 50
   IsIndestructible: 0
   UsableTools:
-  - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}
-    BreakMultiplier: 1
   - Tool: {fileID: 11400000, guid: ae7388be54fb6ce458ac89a0768a1c3e, type: 2}
     BreakMultiplier: 0.3
   - Tool: {fileID: 11400000, guid: 9327768fbee7b7c4dbe561d5d082a881, type: 2}

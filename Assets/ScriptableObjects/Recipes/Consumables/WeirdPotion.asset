@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
+  m_Name: WeirdPotion
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
+  Name: Weird Potion
+  Ingredients:
+  - Item: {fileID: 11400000, guid: ca3f33bf8988ac74da27761c73eb8b49, type: 2}
+    Amount: 5
+  - Item: {fileID: 11400000, guid: e522ccabcc5c30d46bd62d9abdfcdc46, type: 2}
+    Amount: 1
+  ResultItem: {fileID: 11400000, guid: 595a0f3f81f15554c8224cf33c6ca9e9, type: 2}
+  ResultAmount: 1

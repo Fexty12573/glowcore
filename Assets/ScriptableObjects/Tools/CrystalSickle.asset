@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Crystal Sickle
   Description: 
   Prefab: {fileID: 1576837620122400647, guid: 8e79e1c0e57265947949915c0ea19130, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Icon: {fileID: 21300000, guid: 23259edc8015a124e85b04d21b729996, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99

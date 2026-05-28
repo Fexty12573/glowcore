@@ -449,6 +449,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5041275283516779628, guid: 94119d0d620c5794892dd08513c58ef7, type: 3}
+      propertyPath: m_dropPoint
+      value: 
+      objectReference: {fileID: 4775361754903699260}
     - target: {fileID: 5197945809353075261, guid: 94119d0d620c5794892dd08513c58ef7, type: 3}
       propertyPath: m_Size
       value: 1
@@ -587,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7913213074579929557, guid: 94119d0d620c5794892dd08513c58ef7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00018407367
+      value: -0.000002053911
       objectReference: {fileID: 0}
     - target: {fileID: 8540317423495768308, guid: 94119d0d620c5794892dd08513c58ef7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2078,6 +2082,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43a2c3f95b7cc5428e23176a1cc41a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
+--- !u!4 &4775361754903699260 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 609734049189646819, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+  m_PrefabInstance: {fileID: 4775361754903699258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5299890422514428381
 PrefabInstance:
   m_ObjectHideFlags: 0
