@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace GlowCore.UI.Inventory
 {
     [RequireComponent(typeof(Image))]
-    public class ItemSlotUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+    public class ItemSlotUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image m_background;
         [SerializeField] private Image m_icon;
@@ -82,6 +82,12 @@ namespace GlowCore.UI.Inventory
         {
             if (eventData.button == PointerEventData.InputButton.Left)
                 m_owner?.OnSlotReleased();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right)
+                m_owner?.OnSlotRightClicked(this);
         }
 
         public void OnBeginDrag(PointerEventData eventData)

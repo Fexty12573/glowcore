@@ -29,6 +29,7 @@ public class PlayerCamera : MonoBehaviour
     private float m_sensitivityMultiplierX = 1f;
     private float m_sensitivityMultiplierY = 1f;
     private IDisplayService m_displayService;
+    private PlayerInventory m_playerInventory;
 
     public void Initialize(IDisplayService displayService)
     {
@@ -47,7 +48,15 @@ public class PlayerCamera : MonoBehaviour
 
     public void HandleLook(Vector2 lookInput)
     {
-        m_lookInput = lookInput;
+        // The Look action is bound to RightMouse + Pointer/delta — that same RMB also drives
+        // right-click stack splitting in the inventory. Suppress camera rotation while any
+        // inventory-style UI is open so splitting doesn't pan the world.
+        if (m_playerInventory == null)
+            m_playerInventory = FindFirstObjectByType<PlayerInventory>();
+
+        m_lookInput = m_playerInventory != null && m_playerInventory.IsAnyUIOpen
+            ? Vector2.zero
+            : lookInput;
     }
 
     private void OnDestroy() => UnsubscribeFrom(m_displayService);
