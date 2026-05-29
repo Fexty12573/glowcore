@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: WeirdPotion
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
   Name: Weird Potion
-  Description: 
+  Description: ??????????
   Prefab: {fileID: 6225409455757918117, guid: a788608eb9635f84cb7ff4c96b91edf4, type: 3}
   Icon: {fileID: 21300000, guid: 1fe2ab86e8f48b44c86839d06d2a6d8b, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}
-  DropScale: 0.7
+  DropScale: 0.9
   InHandScale: 0.7
   MaxStack: 1
   m_idBytes: 0c987f83bd2e8842aa1334f6579e2b79

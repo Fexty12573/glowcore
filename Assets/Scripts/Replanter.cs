@@ -55,6 +55,7 @@ public class Replanter : MonoBehaviour
             return false;
 
         Node node = WorldGrid.Instance.CreateNodeAt(block.NodeToBuild, targetTile, m_replanterNode.Rotation, block.YRotationOffset);
+        AudioManager.Instance.PlayOneShot(AudioManager.SoundType.Build, AudioManager.AudioChannel.Player);
         m_delayTimer = 0f;
         return node is not null;
     }

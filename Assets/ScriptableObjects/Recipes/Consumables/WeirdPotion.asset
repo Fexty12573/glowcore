@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Weird Potion
   Ingredients:
   - Item: {fileID: 11400000, guid: ca3f33bf8988ac74da27761c73eb8b49, type: 2}
-    Amount: 5
+    Amount: 4
   - Item: {fileID: 11400000, guid: e522ccabcc5c30d46bd62d9abdfcdc46, type: 2}
     Amount: 1
   ResultItem: {fileID: 11400000, guid: 595a0f3f81f15554c8224cf33c6ca9e9, type: 2}

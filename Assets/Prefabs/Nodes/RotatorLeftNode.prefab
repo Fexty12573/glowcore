@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4855aba27200bb428d4f7eb04eee613, type: 3}
       insertIndex: -1
       addedObject: {fileID: 853030102523570267}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4855aba27200bb428d4f7eb04eee613, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2303350672941369448}
   m_SourcePrefab: {fileID: 100100000, guid: c4855aba27200bb428d4f7eb04eee613, type: 3}
 --- !u!1 &9081544328528237058 stripped
 GameObject:
@@ -102,3 +105,17 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &2303350672941369448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9081544328528237058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004be363a5c1440d9284d3b983b311d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::Rotator
+  m_node: {fileID: 6169521368742541456}
+  m_rotatorBlock: {fileID: 11400000, guid: e38c7096c0e316d4c91838fe59f0aaec, type: 2}

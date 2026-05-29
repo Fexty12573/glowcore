@@ -15,8 +15,8 @@ MonoBehaviour:
   Name: Steel 5x
   Ingredients:
   - Item: {fileID: 11400000, guid: 79401a3b7caaf6344aa8b8bdc364355f, type: 2}
-    Amount: 25
+    Amount: 15
   - Item: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
-    Amount: 20
+    Amount: 10
   ResultItem: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
   ResultAmount: 5

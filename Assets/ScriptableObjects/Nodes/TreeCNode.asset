@@ -15,8 +15,8 @@ MonoBehaviour:
   InteractionRange: 3
   ItemDrops:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Min: 30
-    Max: 30
+    Min: 70
+    Max: 80
   - Item: {fileID: 11400000, guid: 9149e648005b88841bfa43e25d27fa9b, type: 2}
     Min: 2
     Max: 3

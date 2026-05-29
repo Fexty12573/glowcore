@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: CobaltAnvil
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Cobalt Anvil
-  Ingredients: []
+  Ingredients:
+  - Item: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
+    Amount: 15
+  - Item: {fileID: 11400000, guid: 17d0f41bea5e1fe4eb360c049516f2dc, type: 2}
+    Amount: 1
   ResultItem: {fileID: 11400000, guid: 28458360192a28847a61409301edb5a4, type: 2}
   ResultAmount: 1

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,14 +10,22 @@ public class AudioManager : MonoBehaviour
     {
         Tree,
         Stone,
+        Dirt,
+        Fiber,
+        Pickup,
         Craft,
+        Build,
         GlowCoreUpgrade,
+        UIDrag,
+        UIDrop,
         OpenChest,
         CloseChest,
         Consume,
         Walk,
 
-        MusicMain
+        Music1,
+        Music2,
+        Music3
     }
 
     public enum AudioChannel
@@ -31,7 +40,7 @@ public class AudioManager : MonoBehaviour
     {
         public SoundType Type;
         public AudioClip Clip;
-        [Range(0f, 1f)] public float Volume = 1f;
+        [Range(0f, 3f)] public float Volume = 1f;
         public bool Loop = false;
         public float LoopDelay = 0f;
     }
@@ -48,10 +57,10 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundType, Sound> m_soundDictionary = new();
     private Dictionary<AudioChannel, Coroutine> m_loopCoroutines = new();
 
-    // private void Start()
-    // {
-    //     PlayMusic(SoundType.MusicMain);
-    // }
+    private void Start()
+    {
+        StartCoroutine(PlayMusicLoop());
+    }
 
     private void Awake()
     {
@@ -83,9 +92,23 @@ public class AudioManager : MonoBehaviour
         };
     }
 
-    public void PlayMusic(SoundType type)
+    public IEnumerator PlayMusicLoop()
     {
-        Play(type, AudioChannel.Music);
+        SoundType[] songs = { SoundType.Music1, SoundType.Music2, SoundType.Music3 };
+
+        yield return new WaitForSeconds(10f);
+        while (true)
+        {
+            var nextSong = songs[Random.Range(0, songs.Length)];
+            Play(nextSong, AudioChannel.Music);
+
+            AudioSource source = GetSource(AudioChannel.Music);
+            while (source != null && source.isPlaying)
+                yield return null;
+
+            float pauseSeconds = Random.Range(60f, 150f);
+            yield return new WaitForSeconds(pauseSeconds);
+        }
     }
 
     public void Play(SoundType type, AudioChannel channel)
@@ -119,13 +142,20 @@ public class AudioManager : MonoBehaviour
         source.clip = sound.Clip;
         source.volume = sound.Volume;
 
-        Coroutine loopRoutine =
-            StartCoroutine(PlayLoopRoutine(source, sound));
-
-        if (loopRoutine != null)
+        if (channel == AudioChannel.Music)
         {
-            m_loopCoroutines[channel] = loopRoutine;
+            source.Play();
         }
+        else
+        {
+            Coroutine loopRoutine =
+                StartCoroutine(PlayLoopRoutine(source, sound));
+            if (loopRoutine != null)
+            {
+                m_loopCoroutines[channel] = loopRoutine;
+            }
+        }
+
     }
 
     public void PlayOneShot(SoundType type, AudioChannel channel)

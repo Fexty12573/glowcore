@@ -156,4 +156,5 @@ MonoBehaviour:
   m_node: {fileID: -4869652869546311586}
   m_canGrowIntoBlocks:
   - {fileID: 11400000, guid: d9c8a2ce6e4148449bfa4b2245752cc7, type: 2}
-  m_growthTime: 30
+  m_minGrowthTime: 1
+  m_maxGrowthTime: 60

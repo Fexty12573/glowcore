@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
   m_Name: GlowGem
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: Sun Gem
+  Name: Glow Gem
   Description: 
   Prefab: {fileID: 5370895912106787612, guid: 3382bf54225227d4ea346dec21d3f991, type: 3}
   Icon: {fileID: 21300000, guid: b0ec8e70fb91d144eb525a90987a88b0, type: 3}
   IconRotation: {x: -12.32, y: -21.5, z: -6.26}
   DropScale: 1
   InHandScale: 1
-  MaxStack: 99
+  MaxStack: 1
   m_idBytes: 17f55c9a2cc1e4428554675c36447066

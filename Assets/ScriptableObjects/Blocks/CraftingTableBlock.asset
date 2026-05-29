@@ -17,8 +17,8 @@ MonoBehaviour:
   Prefab: {fileID: 6570926365179302594, guid: 8a11e8e40d11a814fb035a548d47a9c6, type: 3}
   Icon: {fileID: 21300000, guid: 1e6ebad72f5c45d409ca2250e8b22de1, type: 3}
   IconRotation: {x: 0, y: 126.76, z: 0}
-  DropScale: 0.5
-  InHandScale: 0.5
+  DropScale: 0.7
+  InHandScale: 0.7
   MaxStack: 99
   m_idBytes: 5e052cee6ce4f94ea29dad6fefa715bb
   NodeToBuild: {fileID: 1812523118880574166, guid: a6f2af7ea61c9e348a829bdd532466ba, type: 3}

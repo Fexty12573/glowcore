@@ -17,7 +17,7 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 2b4771e323d65d5439771e63d2788c21, type: 2}
     Min: 1
     Max: 3
-  BaseBreakTime: 40
+  BaseBreakTime: 60
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: ae7388be54fb6ce458ac89a0768a1c3e, type: 2}

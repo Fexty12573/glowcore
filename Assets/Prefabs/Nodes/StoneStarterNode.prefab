@@ -144,4 +144,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}
   - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}
   - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}
-  m_growthTime: 60
+  m_minGrowthTime: 1
+  m_maxGrowthTime: 120
