@@ -142,6 +142,7 @@ public class ItemStackDrop : MonoBehaviour
 
         if (inventory.CanAcceptItem(Stack.Item, Stack.Amount) && inventory.AddItem(Stack))
         {
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.Pickup, AudioManager.AudioChannel.Player);
             m_collected = true;
             Destroy(gameObject);
         }

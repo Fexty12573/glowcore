@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: FurnaceNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
-  InteractionRange: 3
+  InteractionRange: 2
   ItemDrops:
   - Item: {fileID: 11400000, guid: 2725de6b2a6e75a4880d31d0580db15e, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 10
+  BaseBreakTime: 5
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}

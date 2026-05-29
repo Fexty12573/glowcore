@@ -29,6 +29,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
 
         Rotate90Degrees();
         UpdateGhostBlockRotation();
+        AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
     }
 
     private void Start()
@@ -101,6 +102,7 @@ public class BlockBehaviour : MonoBehaviour, IHandItem, IPlayerInventoryAware
             node.SourceBlock = m_block;
             ChangeBuildGhost();
             m_inventory.ConsumeHandItem(1);
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.Build, AudioManager.AudioChannel.Player);
         }
     }
 

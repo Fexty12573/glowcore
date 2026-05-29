@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: GlowCoreLevel17Config
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.GlowCoreLevelConfig
   m_level: 17
-  m_levelIcon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  m_levelIcon: {fileID: 21300000, guid: 6267259de01fd4e43b5c40721b18bae6, type: 3}
   m_requiredMaterials:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 10000
+    Amount: 20000
   - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
     Amount: 2000
   - Item: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
-    Amount: 300
+    Amount: 100
   - Item: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
     Amount: 30
   - Item: {fileID: 11400000, guid: 16a9d49ec84e1c2429ae3a60afb3140f, type: 2}

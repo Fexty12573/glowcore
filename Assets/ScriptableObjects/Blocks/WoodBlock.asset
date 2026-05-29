@@ -17,10 +17,11 @@ MonoBehaviour:
   Prefab: {fileID: 4036851125508495449, guid: 863875edce0feb541a7415494f1e93da, type: 3}
   Icon: {fileID: 21300000, guid: d8204320ff002e844be745fe92b42c3b, type: 3}
   IconRotation: {x: 0.38, y: 72.37, z: 0}
-  DropScale: 0.4
-  InHandScale: 0.3
+  DropScale: 0.5
+  InHandScale: 0.4
   MaxStack: 99
   m_idBytes: a436cf709f2d504d87990c2e34add166
   NodeToBuild: {fileID: 1740881200549026535, guid: b8002c6969d917a46872b8b735fe209f, type: 3}
   BuildRadius: 4
   HasInventory: 0
+  YRotationOffset: 0

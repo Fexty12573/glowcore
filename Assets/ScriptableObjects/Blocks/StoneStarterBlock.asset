@@ -19,7 +19,7 @@ MonoBehaviour:
   IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
-  MaxStack: 99
+  MaxStack: 999
   m_idBytes: 2f9a0a448ddaca408bb8ce0c40106231
   NodeToBuild: {fileID: 7343564340759336017, guid: c7912e6928620f645943aed9e330a8b2, type: 3}
   BuildRadius: 4

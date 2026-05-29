@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: WoodCutterNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
-  InteractionRange: 3
+  InteractionRange: 2
   ItemDrops:
   - Item: {fileID: 11400000, guid: 2998b16eeeab71c4cb54d631a0a50dfb, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 3
+  BaseBreakTime: 5
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}

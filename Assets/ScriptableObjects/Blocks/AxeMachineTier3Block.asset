@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
   m_Name: AxeMachineTier3Block
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
-  Name: Axe Machine Tier 3
+  Name: Axe Machine T3
   Description: 
   Prefab: {fileID: 3018811792293280483, guid: 42077755978cbc54581e1b29eaf3d332, type: 3}
   Icon: {fileID: 21300000, guid: 6590abe60d642a7439a943d0f474c1f0, type: 3}
   IconRotation: {x: 22.83, y: 90.49, z: -21.9}
-  DropScale: 0.3
-  InHandScale: 0.5
+  DropScale: 0.6
+  InHandScale: 0.6
   MaxStack: 99
   m_idBytes: 8e731ca128e22b4696e354c7a3f0ec36
   NodeToBuild: {fileID: 3578041532742632149, guid: 2d5be4d23a6f2bf45b1e108ab4ac4fb0, type: 3}

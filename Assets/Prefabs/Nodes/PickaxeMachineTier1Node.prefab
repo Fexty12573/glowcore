@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_axeAnimationSpeed
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: -1433992760760108349, guid: 46a468b027198b24dbd11e5522b9480d, type: 3}
+      propertyPath: m_closeDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -1216881591028350794, guid: 46a468b027198b24dbd11e5522b9480d, type: 3}
       propertyPath: m_nodeData
       value: 

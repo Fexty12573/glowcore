@@ -8,7 +8,8 @@ public class Sapling : MonoBehaviour
 {
     [SerializeField] private Node m_node;
     [SerializeField] private Block[] m_canGrowIntoBlocks;
-    [SerializeField] private float m_growthTime = 4f;
+    [SerializeField] private float m_minGrowthTime = 4f;
+    [SerializeField] private float m_maxGrowthTime = 7f;
 
     private void Start()
     {
@@ -17,7 +18,8 @@ public class Sapling : MonoBehaviour
 
     private IEnumerator WaitGrow()
     {
-        yield return new WaitForSeconds(m_growthTime);
+        float growthTime = Random.Range(m_minGrowthTime, m_maxGrowthTime);
+        yield return new WaitForSeconds(growthTime);
         FinishGrow();
     }
 

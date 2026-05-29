@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Steel Beam
   Ingredients:
   - Item: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
-    Amount: 10
+    Amount: 5
   - Item: {fileID: 11400000, guid: 949a068454758cf43af1a75618e33896, type: 2}
     Amount: 2
   ResultItem: {fileID: 11400000, guid: 17d0f41bea5e1fe4eb360c049516f2dc, type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Sight Potion
   Ingredients:
   - Item: {fileID: 11400000, guid: 2727c302bf0060343a1a5d2f3b6db861, type: 2}
-    Amount: 10
+    Amount: 4
   - Item: {fileID: 11400000, guid: 882afcbd25f0c4b44b9fe8fbb75ba306, type: 2}
     Amount: 3
   ResultItem: {fileID: 11400000, guid: 88eeaf99f9749754c82760c7b8f91b8e, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
   InteractionRange: 3
   ItemDrops: []
-  BaseBreakTime: 20
+  BaseBreakTime: 15
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: e2d39e01e3f78a44eaa196a20732f452, type: 2}

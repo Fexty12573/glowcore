@@ -18,7 +18,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 8af71f79d03983c46a96fbd87c00a5dc, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
-  InHandScale: 1
+  InHandScale: 3
   MaxStack: 99
   m_idBytes: 91f6904def1e3942b51f87872e4df91f
   NodeToBuild: {fileID: 6439730351927141399, guid: ee2e56703fde5774c92934dcadab6927, type: 3}
