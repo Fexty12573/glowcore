@@ -18,20 +18,9 @@ The time is grouped by member and by sprint. Per sprint and person the time is r
     [4], [25h], [13h], [15h], [17h], [70h],
     [5], [7h], [14h], [18h], [15h], [54h],
     [6], [20h], [23h], [20h], [19h], [82h],
-    [7], [], [], [], [], [],
-    [Total], [115h], [112h], [112h], [113h], [452h],
+    [7], [8h], [17h], [10h], [18h], [53h],
+    [Total], [123h], [129h], [122h], [131h], [505h],
   ),
-  caption: [Time Statistics Sprint 1],
+  caption: [Time Statistics],
   supplement: [Table],
 )
-// TODO: The goal is to show stakeholders that the project is on track.
-// Cover two topics:
-//
-// 1. Describe HOW you track time in your project (avoid duplication with Project Plan).
-//
-// 2. Current time tracking statistics (keep it high-level):
-//    - How much time invested in total? How much remaining?
-//    - How much time per iteration (1, 2, 3, ...)?
-//    - How much time per topic?
-//    Diagrams work very well here.
-//    Low-level details (e.g. time on task XYZ) are best kept in the tracking tool.

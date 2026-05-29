@@ -19,8 +19,3 @@
 
 = List of Tables
 #outline(title: none, target: figure.where(kind: table))
-
-#pagebreak()
-
-= Code Listings
-#outline(title: none, target: figure.where(kind: raw))
