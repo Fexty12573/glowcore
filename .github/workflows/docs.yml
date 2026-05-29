@@ -61,21 +61,36 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Download Artifacts
         uses: actions/download-artifact@v6
         with:
           name: Documentation-PDFs
           path: docs
-        
+
       - name: Find Target Dir
         id: find-dir
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "dest=prod/docs" >> $GITHUB_OUTPUT
+          REF="${{ github.ref }}"
+          SHA="${{ github.sha }}"
+          if [[ "$REF" == "refs/heads/main" ]]; then
+            DEST="prod/docs"
+          elif [[ "$REF" == "refs/heads/dev" ]]; then
+            DEST="dev/docs"
+          elif [[ "$REF" == refs/tags/* ]]; then
+            git fetch origin main:refs/remotes/origin/main
+            if git merge-base --is-ancestor "$SHA" origin/main; then
+              DEST="prod/docs"
+            else
+              DEST="dev/docs"
+            fi
           else
-            echo "dest=dev/docs" >> $GITHUB_OUTPUT
+            DEST="dev/docs"
           fi
+          echo "Target directory: $DEST"
+          echo "dest=$DEST" >> $GITHUB_OUTPUT
 
       - name: Copy Index Page
         run: cp doc/index.html docs/index.html
