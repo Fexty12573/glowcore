@@ -48,10 +48,10 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundType, Sound> m_soundDictionary = new();
     private Dictionary<AudioChannel, Coroutine> m_loopCoroutines = new();
 
-    private void Start()
-    {
-        PlayMusic(SoundType.MusicMain);
-    }
+    // private void Start()
+    // {
+    //     PlayMusic(SoundType.MusicMain);
+    // }
 
     private void Awake()
     {
