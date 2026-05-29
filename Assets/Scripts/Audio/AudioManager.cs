@@ -104,9 +104,13 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        if (m_loopCoroutines.ContainsKey(channel))
+        if (m_loopCoroutines.TryGetValue(channel, out var routine))
         {
-            StopCoroutine(m_loopCoroutines[channel]);
+            if (routine != null)
+            {
+                StopCoroutine(routine);
+            }
+
             m_loopCoroutines.Remove(channel);
         }
 
@@ -118,7 +122,10 @@ public class AudioManager : MonoBehaviour
         Coroutine loopRoutine =
             StartCoroutine(PlayLoopRoutine(source, sound));
 
-        m_loopCoroutines[channel] = loopRoutine;
+        if (loopRoutine != null)
+        {
+            m_loopCoroutines[channel] = loopRoutine;
+        }
     }
 
     public void PlayOneShot(SoundType type, AudioChannel channel)
@@ -161,9 +168,14 @@ public class AudioManager : MonoBehaviour
         if (source == null)
             return;
         source.Stop();
-        if (m_loopCoroutines.ContainsKey(channel))
+
+        if (m_loopCoroutines.TryGetValue(channel, out var routine))
         {
-            StopCoroutine(m_loopCoroutines[channel]);
+            if (routine != null)
+            {
+                StopCoroutine(routine);
+            }
+
             m_loopCoroutines.Remove(channel);
         }
     }
