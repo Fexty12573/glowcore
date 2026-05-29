@@ -13,41 +13,28 @@
   links: "-",
 )
 
-// ==== Agenda
-// #agenda_table((
-//   [Savefile],
-//   [Yoris Kucera],
-//   [
-//     - Autosave service runs every 5 minutes
-//     - Saved to `%LOCALAPPDATA%\GlowCore\savedata\glowcore.bin`
-//   ],
-//   [Steam Page],
-//   [Nathanael Fässler],
-//   [
-//     - Now in Review
-//     - Logo and Trailer done
-//   ],
-//   [Code Coverage],
-//   [Dominik Wyss],
-//   [
-//     - Coverage Report now automatically generated in CI
-//     - Currently at 37%
-//   ],
-//   [Lines of Code],
-//   [Dominik Wyss],
-//   [
-//     - Scripts to check LoC over time
-//     - Individual contributions
-//   ],
-// ))
+==== Agenda
+#agenda_table((
+  [New Crafting Stations],
+  [Nathanael Fässler],
+  [
+    - Anvil
+    - Furnace
+  ],
+  [Chest UI],
+  [Cedric Cathomas],
+  [
+    - Chest has its own UI now
+  ],
+))
 
 
 
-// ==== Todos
-// #todo_table((
-//   [Create new color code for the verification of UC's and NFR's],
-//   [Cedric Cathomas],
-//   [01.05.2026],
-// ))
+==== Todos
+#todo_table((
+  [Fix Unity Crash in Test Workflow],
+  [Yoris Kucera],
+  [09.05.2026],
+))
 
 #pagebreak()

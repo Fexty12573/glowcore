@@ -36,11 +36,6 @@
     - New Unity scene to generate these icons
     - Integrated directly into item prefabs
   ],
-  [Bug Fixes],
-  [Yoris Kucera],
-  [
-    -
-  ],
 ))
 
 
