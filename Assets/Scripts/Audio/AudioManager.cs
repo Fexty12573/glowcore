@@ -90,6 +90,24 @@ public class AudioManager : MonoBehaviour
 
     public void Play(SoundType type, AudioChannel channel)
     {
+        Debug.LogError("Sound Size " + m_allSounds.Length);
+        foreach (var s in m_allSounds)
+        {
+            if (s == null)
+            {
+                Debug.LogError("Sound entry is NULL");
+                continue;
+            }
+
+            if (s.Clip == null)
+            {
+                Debug.LogError("MISSING AUDIO CLIP: " + s.Type);
+            }
+            else
+            {
+                Debug.Log("OK CLIP: " + s.Type + " -> " + s.Clip.name);
+            }
+        }
         if (!m_soundDictionary.TryGetValue(type, out Sound sound))
         {
             Debug.LogWarning($"Sound type {type} not found!");
