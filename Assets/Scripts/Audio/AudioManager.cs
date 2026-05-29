@@ -95,8 +95,16 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning($"Sound type {type} not found!");
             return;
         }
+        Debug.LogError("SoundType " + type);
+        Debug.LogError("Sound " + sound);
+        Debug.LogError("SoundClip " + sound.Clip);
+        Debug.LogError("SoundVolume " + sound.Volume);
 
         AudioSource source = GetSource(channel);
+        Debug.LogError("source " + source);
+        Debug.LogError("Environment " + AudioChannel.Environment);
+        Debug.LogError("Music " + AudioChannel.Music);
+        Debug.LogError("Player " + AudioChannel.Player);
 
         if (source == null)
         {
