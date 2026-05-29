@@ -7,32 +7,36 @@
 #meeting_info(
   date: "29.05.2026",
   sprint: "Sprint 7",
-  lead: "Nathanael Fässler",
+  lead: "Dominik Wyss",
   scribe: "Yoris Kucera",
-  time: "20:30–20:40",
+  time: "13:30–13:40",
   location: "Online",
   participants: "Nathanael Fässler, Dominik Wyss, Yoris Kucera, Cedric Cathomas",
   links: "-",
 )
 
-// ==== What went well
-// - Time management
-// - Proper prototype is cool
-// - Teamwork
-// - New outline looks good
-// - Savefile
+==== What went well
+- Game looks good
+- "Mandatory" tasks are almost all completed
+- Icons look cool
+- Automation is good, game has proper progression
 
-// ==== What didn't
-// - Time management
-// - Tasks still not done 1 day before sprint end
-// - Extra tasks from advisor
-// - Random features in one PR that were not planned
-// - BIG PRs
+==== What didn't
+- Still many open tasks
+- Merge conflicts in Unity Scene files
+- Pull Requests took a long time to get approved
+- Still a few annoying bugs
 
-// ==== Todos
-// #todo_table((
-//   [Think about items to be added to the game and what use they could have],
-//   [All],
-//   [24.04.2026],
-// ))
+==== Todos
+#todo_table((
+  [Turn in final documentation on Moodle],
+  [All],
+  [05.06.2026],
+  [Write personal Reports],
+  [All],
+  [02.06.2026],
+  [Release Game on Steam],
+  [Nathanael Fässler],
+  [05.06.2026],
+))
 

@@ -49,3 +49,4 @@
 #include "22_Sprint_Review_(Advisor)_19-05-2026.typ"
 #include "23_Weekly_Scrum_22-05-2026.typ"
 #include "24_Sprint_Retrospective_29-05-2026.typ"
+#include "25_Weekly_Scrum_29-05-2026.typ"
