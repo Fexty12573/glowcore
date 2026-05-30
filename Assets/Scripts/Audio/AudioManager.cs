@@ -48,25 +48,13 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundType, Sound> m_soundDictionary = new();
     private Dictionary<AudioChannel, Coroutine> m_loopCoroutines = new();
 
-    // private void Start()
-    // {
-    //     PlayMusic(SoundType.MusicMain);
-    // }
+    private void Start()
+    {
+        PlayMusic(SoundType.MusicMain);
+    }
 
     private void Awake()
     {
-        Debug.LogError("palyer source: " + m_playerSource);
-        Debug.LogError("environment source: " + m_environmentSource);
-        Debug.LogError("music source: " + m_musicSource);
-        Debug.LogError("Sound count: " + m_allSounds.Length);
-
-        for (int i = 0; i < m_allSounds.Length; i++)
-        {
-            Debug.LogError(
-                $"[{i}] Type={m_allSounds[i].Type}, Clip={m_allSounds[i].Clip}"
-            );
-        }
-        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -102,39 +90,13 @@ public class AudioManager : MonoBehaviour
 
     public void Play(SoundType type, AudioChannel channel)
     {
-        Debug.LogError("Sound Size " + m_allSounds.Length);
-        foreach (var s in m_allSounds)
-        {
-            if (s == null)
-            {
-                Debug.LogError("Sound entry is NULL");
-                continue;
-            }
-
-            if (s.Clip == null)
-            {
-                Debug.LogError("MISSING AUDIO CLIP: " + s.Type);
-            }
-            else
-            {
-                Debug.Log("OK CLIP: " + s.Type + " -> " + s.Clip.name);
-            }
-        }
         if (!m_soundDictionary.TryGetValue(type, out Sound sound))
         {
             Debug.LogWarning($"Sound type {type} not found!");
             return;
         }
-        Debug.LogError("SoundType " + type);
-        Debug.LogError("Sound " + sound);
-        Debug.LogError("SoundClip " + sound.Clip);
-        Debug.LogError("SoundVolume " + sound.Volume);
 
         AudioSource source = GetSource(channel);
-        Debug.LogError("source " + source);
-        Debug.LogError("Environment " + AudioChannel.Environment);
-        Debug.LogError("Music " + AudioChannel.Music);
-        Debug.LogError("Player " + AudioChannel.Player);
 
         if (source == null)
         {
