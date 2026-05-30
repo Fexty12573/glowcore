@@ -1,11 +1,16 @@
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
+using UnityEngine;
 
 public static class BuildScript
 {
     public static void BuildWebGL()
     {
+        foreach (var scene in EditorBuildSettings.scenes)
+        {
+            Debug.LogError("BUILD SCENE: " + scene.path);
+        }
         Build(new BuildPlayerOptions
         {
             scenes = GetScenes(),

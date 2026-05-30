@@ -55,6 +55,18 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.LogError("palyer source: " + m_playerSource);
+        Debug.LogError("environment source: " + m_environmentSource);
+        Debug.LogError("music source: " + m_musicSource);
+        Debug.LogError("Sound count: " + m_allSounds.Length);
+
+        for (int i = 0; i < m_allSounds.Length; i++)
+        {
+            Debug.LogError(
+                $"[{i}] Type={m_allSounds[i].Type}, Clip={m_allSounds[i].Clip}"
+            );
+        }
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
