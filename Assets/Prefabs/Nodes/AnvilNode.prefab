@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 0659eb58bb6cace488aae74c829723d3, type: 2}
+  Rotation: 0
   TilesUsed: []
   Outline: {fileID: 1284560648457992088}
 --- !u!114 &1284560648457992088
@@ -120,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c7346c5903d34bb99bf2da4fc7890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::CraftingStationInteractable
-  m_closeDistance: 3
+  m_closeDistance: 2
   m_craftingStation: {fileID: 11400000, guid: bfe3787546061c9449d2b51e5586f2c2, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: AxeMachineTier2Node
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
-  InteractionRange: 3
+  InteractionRange: 2
   ItemDrops:
   - Item: {fileID: 11400000, guid: 5f047741924f7734db0c62671525e3d3, type: 2}
     Min: 1

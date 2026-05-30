@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -75,6 +75,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4016087706172399490}
   m_SourcePrefab: {fileID: 100100000, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
+--- !u!4 &1602357420764769167 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8614371469583642526, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
+  m_PrefabInstance: {fileID: 7039357803494884369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7886290519329012032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 33a8d02b87499ca4ba164987a779a37a, type: 3}
@@ -107,5 +112,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d6039bcce760e4387a21d08efb8a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::SawBlade
-  m_transform: {fileID: 0}
-  m_spinSpeed: {x: 0, y: 0, z: 100}
+  m_transform: {fileID: 1602357420764769167}
+  m_spinSpeed: {x: 150, y: 0, z: 0}

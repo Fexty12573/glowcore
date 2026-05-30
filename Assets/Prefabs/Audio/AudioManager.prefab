@@ -50,46 +50,86 @@ MonoBehaviour:
   m_allSounds:
   - Type: 0
     Clip: {fileID: 8300000, guid: 0e096b11e808f9448bc113230a1d2dde, type: 3}
-    Volume: 1
+    Volume: 0.79
     Loop: 1
     LoopDelay: 0.5
   - Type: 1
     Clip: {fileID: 8300000, guid: f9bf7641a16d0774a999e3f128e37bdc, type: 3}
-    Volume: 1
+    Volume: 0.85
     Loop: 1
     LoopDelay: 0.5
   - Type: 2
+    Clip: {fileID: 8300000, guid: 4391bb84cbe07cd47b36b5afdd452118, type: 3}
+    Volume: 0.4
+    Loop: 1
+    LoopDelay: 0.5
+  - Type: 3
+    Clip: {fileID: 8300000, guid: fe6090d5befabff4986d61a8937949b9, type: 3}
+    Volume: 3
+    Loop: 1
+    LoopDelay: 0.5
+  - Type: 4
+    Clip: {fileID: 8300000, guid: ee4a2ffa009ecb74884784593b2970a9, type: 3}
+    Volume: 3
+    Loop: 0
+    LoopDelay: 0
+  - Type: 5
     Clip: {fileID: 8300000, guid: 72e0e63077540c84090068cdd77bf890, type: 3}
     Volume: 1
     Loop: 0
     LoopDelay: 0
-  - Type: 3
-    Clip: {fileID: 8300000, guid: 1dda67bdf5f30264796451077dfb893e, type: 3}
+  - Type: 6
+    Clip: {fileID: 8300000, guid: 7ea42a24573c64745bb1768ef183040e, type: 3}
+    Volume: 2.5
+    Loop: 0
+    LoopDelay: 0
+  - Type: 7
+    Clip: {fileID: 8300000, guid: ff7c0348d173f384a9e74a9d0287a575, type: 3}
     Volume: 1
     Loop: 0
     LoopDelay: 0
-  - Type: 4
+  - Type: 8
+    Clip: {fileID: 8300000, guid: 152fa959ba5f04f4c8c676350ffffd90, type: 3}
+    Volume: 3
+    Loop: 0
+    LoopDelay: 0
+  - Type: 9
+    Clip: {fileID: 8300000, guid: 5859ba8083dee0e4f84886a0410c0828, type: 3}
+    Volume: 3
+    Loop: 0
+    LoopDelay: 0
+  - Type: 10
     Clip: {fileID: 8300000, guid: 2a2e05eec611bea45bf381953bc45888, type: 3}
     Volume: 1
     Loop: 0
     LoopDelay: 0
-  - Type: 5
+  - Type: 11
     Clip: {fileID: 8300000, guid: 9b0ebeda077795042bd4c9f28f1ab1a6, type: 3}
-    Volume: 1
+    Volume: 0.8
     Loop: 0
     LoopDelay: 0
-  - Type: 6
+  - Type: 12
     Clip: {fileID: 8300000, guid: ee726fa1cea15cd41867bd61d3b25942, type: 3}
     Volume: 1
     Loop: 0
     LoopDelay: 0
-  - Type: 7
+  - Type: 13
     Clip: {fileID: 8300000, guid: 7f83f45e6cef3dc4aa898ae8160ace1c, type: 3}
     Volume: 0.11
     Loop: 1
     LoopDelay: 0
-  - Type: 8
-    Clip: {fileID: 8300000, guid: bb0a8ff4ae35eaa41a03b1d1ef16f961, type: 3}
-    Volume: 0.1
-    Loop: 1
+  - Type: 14
+    Clip: {fileID: 8300000, guid: 10b3666129c66c342b8091ece0d1ae84, type: 3}
+    Volume: 0.5
+    Loop: 0
+    LoopDelay: 0
+  - Type: 15
+    Clip: {fileID: 8300000, guid: d07c511a87d2dad46871b932e098b50e, type: 3}
+    Volume: 0.5
+    Loop: 0
+    LoopDelay: 0
+  - Type: 16
+    Clip: {fileID: 8300000, guid: c26fc5c4e85746844a9832c0712aa5b5, type: 3}
+    Volume: 0.5
+    Loop: 0
     LoopDelay: 0

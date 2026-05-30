@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
   m_Name: AxeMachineTier2
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Axe Machine Tier 2
+  Name: Axe Machine T2
   Ingredients:
   - Item: {fileID: 11400000, guid: cd7508eec2110ab4e99f89dfc0bd0f53, type: 2}
     Amount: 1
   - Item: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
-    Amount: 5
-  - Item: {fileID: 11400000, guid: 5bd2631771c6b154ab1ffeb957228e47, type: 2}
     Amount: 2
+  - Item: {fileID: 11400000, guid: 5bd2631771c6b154ab1ffeb957228e47, type: 2}
+    Amount: 1
   ResultItem: {fileID: 11400000, guid: 5f047741924f7734db0c62671525e3d3, type: 2}
   ResultAmount: 1

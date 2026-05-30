@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db16315c8ce266447ad9405a5c3f81d9, type: 3}
   m_Name: RedMushroom
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
-  Name: Brown Mushroom
+  Name: Red Mushroom
   Description: 
   Prefab: {fileID: 230859197445001144, guid: 2eae431793514e44ca41bb8aa59e19e2, type: 3}
   Icon: {fileID: 21300000, guid: 4c2c3a46f2970b04f856251c345f452a, type: 3}

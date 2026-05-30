@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: ChestNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjectScripts.InteractableData
-  InteractionRange: 3
+  InteractionRange: 2
   ItemDrops:
   - Item: {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 10
+  BaseBreakTime: 5
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}

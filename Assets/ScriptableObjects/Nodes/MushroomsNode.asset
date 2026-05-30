@@ -16,10 +16,10 @@ MonoBehaviour:
   ItemDrops:
   - Item: {fileID: 11400000, guid: 3c6838652a9f5a049891fc8df5af0fa4, type: 2}
     Min: 0
-    Max: 1
+    Max: 3
   - Item: {fileID: 11400000, guid: 59384b70d608e4744953217932eee4bb, type: 2}
     Min: 0
-    Max: 1
+    Max: 3
   BaseBreakTime: 3
   IsIndestructible: 0
   UsableTools:

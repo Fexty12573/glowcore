@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: PickaxeMachineTier1Node
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.NodeData
-  InteractionRange: 3
+  InteractionRange: 2
   ItemDrops:
   - Item: {fileID: 11400000, guid: 1b928495da4d0e74898699856e92782b, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 5
+  BaseBreakTime: 3
   IsIndestructible: 0
   UsableTools:
   - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}

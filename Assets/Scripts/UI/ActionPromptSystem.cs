@@ -12,6 +12,7 @@ public class ActionPromptSystem : MonoBehaviour
     [Header("ActionPrompt")]
     [SerializeField] private Vector3 m_promptOffset;
     [SerializeField] private GameObject m_promptUI; // An Action Prompt is a visual UI Element that pops up when the player hovers over a Node and says e.g. "Break with Leftclick".
+    [SerializeField] private Vector3 m_rotatePromptOffset;
     [SerializeField] private GameObject m_rotatePromptUI;
     [SerializeField] private TextMeshProUGUI m_promptText;
     [SerializeField] private GameObject m_leftClickIcon;
@@ -30,7 +31,7 @@ public class ActionPromptSystem : MonoBehaviour
 
     public void EnableRotatePrompt(Vector3 position)
     {
-        m_rotatePromptPosition = position;
+        m_rotatePromptPosition = position + m_rotatePromptOffset;
         m_rotatePromptUI.SetActive(true);
         UpdateRotatePromptPosition();
     }

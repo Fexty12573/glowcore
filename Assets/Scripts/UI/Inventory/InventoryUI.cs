@@ -257,6 +257,7 @@ namespace GlowCore.UI.Inventory
                 slot.Container.SetSlot(slot.SlotIndex, m_floatingItem, 1);
             }
 
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
             m_floatingAmount--;
             if (m_floatingAmount <= 0)
                 EndFloatingHold();
@@ -302,6 +303,7 @@ namespace GlowCore.UI.Inventory
 
         private void BeginFloatingHold(Item item, int amount, IItemContainer source)
         {
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
             m_floatingItem = item;
             m_floatingAmount = amount;
             m_floatingSource = source;
@@ -385,6 +387,7 @@ namespace GlowCore.UI.Inventory
 
         private void PickUpItem(ItemSlotUI slot, SlotData data)
         {
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
             m_heldSlot = slot;
             m_heldContainer = slot.Container;
             m_heldSlotIndex = slot.SlotIndex;
@@ -420,6 +423,8 @@ namespace GlowCore.UI.Inventory
         {
             if (!m_isHolding)
                 return;
+
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrop, AudioManager.AudioChannel.Player);
 
             var hovered = m_hoveredSlot;
             var heldData = m_heldContainer.GetSlotData(m_heldSlotIndex);

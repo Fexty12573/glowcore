@@ -8,7 +8,8 @@ namespace GlowCore.World
     public enum WorldMode
     {
         ProceduralGeneration,
-        DesignedWorld
+        DesignedWorld,
+        TitleScreenDemo
     }
 
     [RequireComponent(typeof(AutosaveService))]
@@ -301,6 +302,9 @@ namespace GlowCore.World
                 case WorldMode.DesignedWorld:
                     InitializeDesignedWorld();
                     break;
+                case WorldMode.TitleScreenDemo:
+                    InitializeDemoWorld();
+                    break;
             }
 
             // LogGrid();
@@ -320,10 +324,18 @@ namespace GlowCore.World
             m_snapshotPositions = BuildSnapshotPositions();
         }
 
+        private void InitializeDemoWorld()
+        {
+            RegisterExistingNodes();
+        }
+
         private void Start()
         {
             m_saveService ??= new SaveService();
             m_launchContext ??= GameLaunchContext.Instance;
+
+            if (m_worldMode == WorldMode.TitleScreenDemo)
+                m_saveService = new MockSaveService();
 
             if (m_launchContext != null && m_launchContext.Mode == GameLaunchMode.NewGame)
             {
