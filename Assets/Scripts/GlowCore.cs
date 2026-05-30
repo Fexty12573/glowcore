@@ -163,7 +163,7 @@ namespace GlowCore.World
         // Private Methods
         private void Awake()
         {
-            m_glowCoreInventory = new Inventory(8, 4);
+            m_glowCoreInventory = new Inventory(8, 32);
             m_playerInventory = FindFirstObjectByType<PlayerInventory>();
 
             RenderSettings.sun.intensity += 0.02f;

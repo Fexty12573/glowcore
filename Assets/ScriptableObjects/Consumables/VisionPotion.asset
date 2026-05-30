@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VisionPotion
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
   Name: Vision Potion
-  Description: Lasts 5 minutes
+  Description: Lasts 8 minutes
   Prefab: {fileID: 1898712131464847166, guid: 69d72256755a1e1489ca722e62255e0f, type: 3}
   Icon: {fileID: 21300000, guid: 33f5c38de41073846b770369845cf407, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}

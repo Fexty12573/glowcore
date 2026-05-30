@@ -196,6 +196,15 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
     private void OnHotbarSlot7(InputValue value) => SelectHotbarSlot(6);
     private void OnHotbarSlot8(InputValue value) => SelectHotbarSlot(7);
 
+    private void OnHotbarScroll(InputValue value)
+    {
+        float scroll = value.Get<float>();
+        if (scroll < 0)
+            SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
+        else if (scroll > 0)
+            SelectHotbarSlot((m_selectedHotbarIndex - 1 + kHotbarSlots) % kHotbarSlots);
+    }
+
     private void OnPrevious(InputValue value) =>
         SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
 

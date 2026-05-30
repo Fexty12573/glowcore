@@ -1319,6 +1319,7 @@ Transform:
   - {fileID: 5536445488297010277}
   - {fileID: 2084198378111037598}
   - {fileID: 398873010730535250}
+  - {fileID: 3620912745225754390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6819714440606876
@@ -57022,6 +57023,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2163070379999519043, guid: 2108449fc56673b4a9ec32a4a1eb7a23, type: 3}
   m_PrefabInstance: {fileID: 5907809852282679468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5913667869321709716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5046967978836752674}
+    m_Modifications:
+    - target: {fileID: 313060639262729481, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_signText
+      value: Use Stone-Starters to make a Ore Farm!
+      objectReference: {fileID: 0}
+    - target: {fileID: 313060639262729481, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_showFixedText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717570804344554808, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+--- !u!4 &3620912745225754390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6940470807169752962, guid: 9ccb8e90d4f934a44bd39539199bc628, type: 3}
+  m_PrefabInstance: {fileID: 5913667869321709716}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5916863238799179825
 PrefabInstance:

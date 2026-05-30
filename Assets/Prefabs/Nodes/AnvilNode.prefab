@@ -100,5 +100,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c7346c5903d34bb99bf2da4fc7890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::CraftingStationInteractable
-  m_closeDistance: 2
+  m_closeDistance: 3
   m_craftingStation: {fileID: 11400000, guid: bfe3787546061c9449d2b51e5586f2c2, type: 2}

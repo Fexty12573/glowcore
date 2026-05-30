@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0856c3316a7c03f4cb9499073c189cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::ChestInteractable
-  m_closeDistance: 2
+  m_closeDistance: 3
 --- !u!65 &79598707053079816
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PickaxeMachineTier2Block
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Pickaxe Machine T2
-  Description: 
+  Description: Faster and better
   Prefab: {fileID: 5686994675970800261, guid: 374669c3c49e7e148b81233113e29366, type: 3}
   Icon: {fileID: 21300000, guid: 81f4cadc887a94e4e8d061aa49204477, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}
