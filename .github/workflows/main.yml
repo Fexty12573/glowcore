@@ -23,27 +23,40 @@ jobs:
   buildWebGL:
     name: Build WebGL
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev' || github.event_name == 'pull_request'
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          dotnet: false
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
           lfs: true
-
-      - name: Activate Unity License
-        uses: buildalon/activate-unity-license@v2
+      - name: Cache Unity Library
+        uses: actions/cache@v4
         with:
-          license: 'Personal'
-          username: ${{ secrets.UNITY_EMAIL }}
-          password: ${{ secrets.UNITY_PASSWORD }}
+          path: Library
+          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}
+          restore-keys: Library-WebGL-
+
+      # - name: Activate Unity License
+      #   uses: buildalon/activate-unity-license@v2
+      #   with:
+      #     license: 'Personal'
+      #     username: ${{ secrets.UNITY_EMAIL }}
+      #     password: ${{ secrets.UNITY_PASSWORD }}
 
       - name: Build WebGL
-        run: |
-          "${{ env.UNITY_EDITOR_PATH }}" -batchmode -nographics -quit \
-            -projectPath "${{ github.workspace }}" \
-            -buildTarget WebGL \
-            -executeMethod BuildScript.BuildWebGL \
-            -logFile -
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: .
+          targetPlatform: WebGL
 
       - name: Upload WebGL Artifact
         uses: actions/upload-artifact@v4
