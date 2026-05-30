@@ -24,7 +24,6 @@ The diagram shows a modified version of the Use Case Diagram. The Personas take 
   caption: [Use Case Diagram],
   supplement: [Image],
 )
-#v(1em)
 #pagebreak()
 
 ==== Use Cases

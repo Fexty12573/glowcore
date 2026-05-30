@@ -3,11 +3,11 @@
 
 #part_page("I", "Management Summary")
 
-#v(10em)
+#v(1.5em)
 
 #title_without_numbering(title: "Management Summary")
 
-#v(2em)
+#v(0.5em)
 
 #title_without_numbering(title: "Starting Point", depth: 3)
 

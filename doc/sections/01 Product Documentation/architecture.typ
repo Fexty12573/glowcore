@@ -4,96 +4,85 @@ The user interface of GlowCore is designed to be self-explanatory. Therefore, on
 
 ==== Main Menu
 #figure(
-  image("../../resources/01 Product Documentation/frontend/MainMenu.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/MainMenu.png", width: 70%),
   caption: [Main Menu],
   supplement: [Image],
 )
 The Main Menu is the entry point of the game. The player can continue with an existing save of the game or create a new one. The player can only have one save at a time.
-#pagebreak()
 
 ==== New Game
 #figure(
-  image("../../resources/01 Product Documentation/frontend/NewGame.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/NewGame.png", width: 60%),
   caption: [New Game],
   supplement: [Image],
 )
 
 
-#pagebreak()
 ==== Pause Menu
 #figure(
-  image("../../resources/01 Product Documentation/frontend/PauseMenu.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/PauseMenu.png", width: 60%),
   caption: [Pause Menu],
   supplement: [Image],
 )
 In the Pause Menu the player can save the game manually. The game is also automatically saved when the player exits to the Main Menu.
 
-#pagebreak()
 ==== Audio Settings
 #figure(
-  image("../../resources/01 Product Documentation/frontend/AudioSettings.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/AudioSettings.png", width: 60%),
   caption: [Audio Settings],
   supplement: [Image],
 )
 
-#pagebreak()
 ==== Display Settings
 #figure(
-  image("../../resources/01 Product Documentation/frontend/DisplaySettings.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/DisplaySettings.png", width: 60%),
   caption: [Display Settings],
   supplement: [Image],
 )
 The appropriate screen size is automatically detected and selected when the game starts.
-#pagebreak()
 ==== Unapplied Changes
 #figure(
-  image("../../resources/01 Product Documentation/frontend/UnsavedChanges.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/UnsavedChanges.png", width: 60%),
   caption: [Unapplied Changes],
   supplement: [Image],
 )
 When the player changes settings without applying them, this confirmation dialog is displayed. It prevents confusion by ensuring that unsaved changes are clearly communicated.
-#pagebreak()
 ==== Inventory
 #figure(
-  image("../../resources/01 Product Documentation/frontend/Inventory.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/Inventory.png", width: 100%),
   caption: [Inventory],
   supplement: [Image],
 )
 The item stacks can be drag-and-dropped within the inventory. By dragging an item outside the inventory panel, the player drops it into the world. The player can also craft certain items in the inventory without the need for a crafting station.
-#pagebreak()
 ==== Crafting Table
 #figure(
-  image("../../resources/01 Product Documentation/frontend/CraftingTable.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/CraftingTable.png", width: 100%),
   caption: [Crafting Table],
   supplement: [Image],
 )
 
-#pagebreak()
 ==== More Crafting Stations
 #figure(
-  image("../../resources/01 Product Documentation/frontend/Furnace.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/Furnace.png", width: 90%),
   caption: [More Crafting Stations],
   supplement: [Image],
 )
 Crafting Tables, Furnaces, Anvils etc. are abstracted into crafting stations that share a common UI but with different backgrounds and different available crafting recipes. This design follows our extensibility principle and allows new crafting stations to be added easily.
-#pagebreak()
 
 ==== GlowCore Upgrade
 #figure(
-  image("../../resources/01 Product Documentation/frontend/GlowCoreUpgrade.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/GlowCoreUpgrade.png", width: 87%),
   caption: [GlowCore Upgrade],
   supplement: [Image],
 )
-#pagebreak()
 
 ==== Chest
 #figure(
-  image("../../resources/01 Product Documentation/frontend/Chest.png", width: 110%),
+  image("../../resources/01 Product Documentation/frontend/Chest.png", width: 100%),
   caption: [Chest],
   supplement: [Image],
 )
 
-#pagebreak()
 
 
 === C4 Model
