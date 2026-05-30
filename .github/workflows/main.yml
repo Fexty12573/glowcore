@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          lfs: true
 
       - name: Activate Unity License
         uses: buildalon/activate-unity-license@v2
