@@ -123,9 +123,9 @@ The downside is that Play Mode tests are significantly slower because they have 
 
 ==== Coverage Summary
 
-At the current stage of the project (M09 Beta reached, approaching M10 Release), 8 out of 11 Use Cases are fully verified (@UC01, @UC02, @UC03, @UC04, @UC05, @UC06, @UC07, @UC11) and 2 have not been verified yet as they are planned for M10 (@UC08, @UC10). @UC09 (Fight Enemies) is not applicable, since the team decided not to implement combat within the project scope.
+At the final stage of the project (M10 Release reached), 9 out of 11 Use Cases are fully verified (@UC01, @UC02, @UC03, @UC04, @UC05, @UC06, @UC07, @UC10, @UC11). @UC08 (Experience Story) was not implemented due to time constraints. @UC09 (Fight Enemies) is not applicable, since the team decided not to implement combat within the project scope.
 
-For the NFRs, 15 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501), 1 is partially met (@NFR204), and 2 have not been verified yet as they are scheduled for M10 (@NFR502, @NFR503). @NFR102 is not applicable since in-game scene transitions were removed from scope. The only remaining partial NFR is input support: keyboard input works for all gameplay actions, but controller bindings are not yet wired up. Adding them is straightforward given the project already uses the new Input System and is planned before the final release.
+For the NFRs, 17 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501, @NFR502, @NFR503), and 1 is partially met (@NFR204). @NFR102 is not applicable since in-game scene transitions were removed from scope. The only partial NFR is input support: keyboard input works for all gameplay actions, but controller support was not implemented due to time constraints.
 
 
 === Code metrics
