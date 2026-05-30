@@ -149,16 +149,11 @@ public class AudioManager : MonoBehaviour
 
     private System.Collections.IEnumerator PlayLoopRoutine(AudioSource source, Sound sound)
     {
-        yield return new WaitUntil(() =>
-            sound.Clip.loadState == AudioDataLoadState.Loaded);
-
-        float clipLength = sound.Clip.length;
-        
         while (true)
         {
             source.Play();
 
-            yield return new WaitForSeconds(clipLength);
+            yield return new WaitWhile(() => source.isPlaying);
 
             if (sound.LoopDelay > 0f)
             {
