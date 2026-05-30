@@ -153,7 +153,7 @@ public class AudioManager : MonoBehaviour
         {
             source.Play();
 
-            yield return new WaitForSeconds(sound.Clip.length);
+            yield return new WaitWhile(() => source.isPlaying);
 
             if (sound.LoopDelay > 0f)
             {
