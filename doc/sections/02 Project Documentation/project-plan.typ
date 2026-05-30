@@ -682,20 +682,21 @@ Because in the week of 06.04.2026 to 12.04.2026 was the spring break we had a sp
 )
 
 
-// #pagebreak();
+#pagebreak();
 
-// ===== Sprint 7 15.05.2026 - 29.05.2026
-// #figure(
-//   image("../../resources/02 Project Documentation/Sprints/sprint-7-burndown.png"),
-//   caption: [Sprint 7 Burndown Chart],
-//   supplement: [Image],
-// )
+===== Sprint 7 15.05.2026 - 29.05.2026
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-7-burndown.png"),
+  caption: [Sprint 7 Burndown Chart],
+  supplement: [Image],
+)
 
-// #figure(
-//   image("../../resources/02 Project Documentation/Sprints/sprint-7-backlog.png"),
-//   caption: [Sprint 7 Backlog],
-//   supplement: [Image],
-// )
+#image("../../resources/02 Project Documentation/Sprints/sprint-7-backlog1.png")
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-7-backlog2.png"),
+  caption: [Sprint 7 Backlog],
+  supplement: [Image],
+)
 
 
 
@@ -958,12 +959,3 @@ Overall, both risks are now considered slightly more likely, but appropriate mit
 #v(1em)
 
 
-// TODO: Describe the project plan as covered in SEP2.
-// A project plan typically consists of:
-// - Processes, meetings, and roles
-// - Phases, iterations, and milestones
-// - A rough list of things to be done (work items)
-// - Risk management
-// - Planning tools (issue tracker, time tracker, ...)
-//
-// Do NOT describe your technical solution here — this chapter is about organizing the project.

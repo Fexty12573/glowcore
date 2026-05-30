@@ -1,7 +1,5 @@
 == Requirements
 
-// TODO: Describe the functional and non-functional requirements as covered in SEP1.
-
 === Functional Requirements
 ==== Actors / Personas
 Since a game typically only has one primary actor - *The Player* - it makes sense to define Personas that reflect different types of players. The categorization into Casual- and Dedicated Players covers most player types. In the following, the pronoun *he* is used for simplicity, but the Personas are meant to include all players.
@@ -297,12 +295,6 @@ The following table provides a compact overview of all Use Cases, their persona,
 ) <UC11>
 
 
-// TODO: Include at least:
-// - The actors of the system under development (SUD)
-// - The goals of each actor
-// - A use case diagram (overview of actors, use cases, and relationships)
-// - Use case descriptions (brief, casual, or fully-dressed format) -brief
-// - Tip: Use identifiers such as 'UC1', 'UC2', ... as references
 
 === Non-Functional Requirements
 
