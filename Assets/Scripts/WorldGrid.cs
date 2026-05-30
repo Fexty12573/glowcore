@@ -595,23 +595,6 @@ namespace GlowCore.World
             Debug.Log(sb.ToString());
         }
 
-        // private void ClearTreesInGrid()
-        // {
-        //     for (int x = 0; x < m_gridSize; x++)
-        //     {
-        //         for (int z = 0; z < m_gridSize; z++)
-        //         {
-        //             if (m_tiles[x, z] == null || !m_tiles[x, z].TryGetComponent(out Node _))
-        //                 continue;
-        //
-        //             Destroy(m_tiles[x, z].gameObject);
-        //             m_tiles[x, z] = null;
-        //         }
-        //     }
-        //
-        //     m_totalTreeCount = 0;
-        // }
-
         private GameObject PickRandomNodePrefab()
         {
             if (m_spawnableNodes == null || m_spawnableNodes.Length == 0)
