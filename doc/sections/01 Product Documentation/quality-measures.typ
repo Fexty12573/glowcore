@@ -125,7 +125,7 @@ The downside is that Play Mode tests are significantly slower because they have 
 
 At the final stage of the project (M10 Release reached), 9 out of 11 Use Cases are fully verified (@UC01, @UC02, @UC03, @UC04, @UC05, @UC06, @UC07, @UC10, @UC11). @UC08 (Experience Story) was not implemented due to time constraints. @UC09 (Fight Enemies) is not applicable, since the team decided not to implement combat within the project scope.
 
-For the NFRs, 17 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501, @NFR502, @NFR503), and 1 is partially met (@NFR204). @NFR102 is not applicable since in-game scene transitions were removed from scope. The only partial NFR is input support: keyboard input works for all gameplay actions, but controller support was not implemented due to time constraints.
+For the NFRs, 16 requirements have fully passed (@NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501, @NFR502, @NFR503), 1 is partially met (@NFR204), and 1 failed (@NFR101). @NFR102 is not applicable since in-game scene transitions were removed from scope. The partial NFR is input support: keyboard input works for all gameplay actions, but controller support was not implemented due to time constraints. @NFR101 (World Load Time) failed because load times grew with world content beyond what the 3-second target anticipated.
 
 
 === Code metrics

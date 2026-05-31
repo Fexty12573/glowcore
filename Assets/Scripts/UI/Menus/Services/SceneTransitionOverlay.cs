@@ -10,7 +10,6 @@ namespace GlowCore.UI.Menus
     {
         private const float kFadeInSeconds = 0.25f;
         private const float kFadeOutSeconds = 0.25f;
-        private const float kMinHoldSeconds = 0.55f;
         private const float kPostLoadHoldSeconds = 0.05f;
         private const float kPulseFrequency = 2.0f;
         private const float kPulseMin = 0.55f;
@@ -92,13 +91,8 @@ namespace GlowCore.UI.Menus
             AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
             op.allowSceneActivation = false;
 
-            var startTime = Time.unscaledTime;
             while (op.progress < 0.9f)
                 yield return null;
-
-            var elapsed = Time.unscaledTime - startTime;
-            if (elapsed < kMinHoldSeconds)
-                yield return new WaitForSecondsRealtime(kMinHoldSeconds - elapsed);
 
             op.allowSceneActivation = true;
             while (!op.isDone)

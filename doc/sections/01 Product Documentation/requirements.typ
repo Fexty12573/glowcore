@@ -304,7 +304,7 @@ The following table provides a compact overview of all Use Cases, their persona,
 // Update the status color here once — it syncs to both the overview table and the detail table.
 // Colors: blue (not tested), green (passed), orange (partial), red (failed)
 #let nfr-status = (
-  nfr101: green,
+  nfr101: red,
   nfr102: gray,
   nfr103: green,
   nfr104: green,
@@ -473,7 +473,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   priority: [Required / High],
   measurement: [Measure elapsed time from pressing "Start" until the world is fully loaded and interactive. Tested on minimum hardware specification.],
   verification: [Automated load-time benchmark test across 10 consecutive loads with varying world states (new and existing). All runs must complete within 3 seconds.],
-  result: [Tested manually from the title screen. Both NEW GAME (which generates a fresh world) and CONTINUE (which restores an existing save) bring the player into a fully interactive world in approximately 1.5 seconds, easily below the 3-second threshold.],
+  result: [Failed. Tested manually on the Windows build. A new world takes about 4 seconds, a small save about 6 seconds, and a late-game save up to 20 seconds. The world stays the same size, but the player fills it with placed and planted things, and all of that has to load. The more a save grows, the longer it takes. The 3-second target is not met. When we set this target, we did not expect to build a game of this size, so the original goal no longer fits what we ended up with. Bringing it back in range would need extra work on how the world is loaded.],
   nfr_caption: [NFR101 -- World Load Time],
   status_color: nfr-status.at("nfr101"),
 ) <NFR101>
