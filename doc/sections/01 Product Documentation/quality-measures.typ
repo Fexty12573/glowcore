@@ -22,7 +22,6 @@ The project uses GitHub Actions for all build, test, and deployment automation. 
 
 - *LABELER*: fires on pull-request targets to `main` or `dev` (skipped for `dev` → `main` promotion PRs). Automatically applies labels to each PR based on branch prefix and changed paths (`feature/*` → _feature_, `bug/*` → _bug_, `docs/*` or changes under `doc/**/*` → _doc_).
 
-#v(23cm)
 ==== Definition of Ready and Definition of Done
 
 Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and conditionally -> UI consistency and documentation updates.

@@ -70,4 +70,3 @@
   [remove seperate meeting minutes pdf typst code], [Cedric Cathomas], [07.03.2026],
 ))
 
-#pagebreak()
