@@ -61,9 +61,6 @@ PrefabInstance:
       addedObject: {fileID: 6645925316339538566}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d6880c5d1358f4448801498ade884793, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2504671357020030133}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d6880c5d1358f4448801498ade884793, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3924621926219798331}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d6880c5d1358f4448801498ade884793, type: 3}
       insertIndex: -1
@@ -95,25 +92,7 @@ MonoBehaviour:
   m_nodeData: {fileID: 11400000, guid: 29551b0ba466d7642bd5108b3b2ab105, type: 2}
   Rotation: 0
   TilesUsed: []
-  Outline: {fileID: 2504671357020030133}
---- !u!114 &2504671357020030133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7014327414291518729}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  Outline: {fileID: 0}
 --- !u!114 &3924621926219798331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::Chest
   m_width: 8
   m_height: 2
+  m_startingItems: []
   m_block: {fileID: 11400000, guid: 1de5807dafb1c93438b7099515ceb576, type: 2}
 --- !u!114 &1269754671410458018
 MonoBehaviour:

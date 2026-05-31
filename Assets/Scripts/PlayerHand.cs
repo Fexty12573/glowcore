@@ -40,8 +40,6 @@ public class PlayerHand : MonoBehaviour
         m_itemGameObject.transform.localScale *= m_itemsInHand.Item.InHandScale;
         Rigidbody rb = m_itemGameObject.GetComponent<Rigidbody>();
         Destroy(rb);
-        Outline outline = m_itemGameObject.GetComponent<Outline>();
-        Destroy(outline);
         if (m_itemGameObject.TryGetComponent(out IHandItem handItem) && handItem is MonoBehaviour bhv)
             bhv.enabled = true;
         if (m_itemGameObject.TryGetComponent(out IPlayerInventoryAware inventoryAware))

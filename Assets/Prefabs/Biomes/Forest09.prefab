@@ -187,6 +187,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -235,7 +239,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1440)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -253,6 +258,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -301,7 +310,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1488)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -319,6 +329,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -363,7 +377,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (398)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -381,6 +396,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -425,7 +444,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1186)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -443,6 +463,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -491,7 +515,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1543)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -509,6 +534,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -557,7 +586,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1254)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -575,6 +605,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6350984209789599, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3969790297899246270, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
       propertyPath: m_Name
       value: RedBerryBush (24)
@@ -619,7 +653,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4165381468806873471, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -637,6 +672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -681,7 +720,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (371)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -699,6 +739,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -743,7 +787,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1305)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -761,6 +806,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -805,7 +854,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1250)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -823,6 +873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -867,7 +921,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1385)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -885,6 +940,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -929,7 +988,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (361)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -947,6 +1007,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16
@@ -991,7 +1055,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1342)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1009,6 +1074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -1053,7 +1122,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1201)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1071,6 +1141,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -1119,7 +1193,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1255)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1137,6 +1212,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -1181,7 +1260,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (27)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1199,6 +1279,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -1247,7 +1331,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1544)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1265,6 +1350,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -1309,7 +1398,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1336)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1327,6 +1417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -1371,7 +1465,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (408)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1389,6 +1484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -1433,7 +1532,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (419)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1451,6 +1551,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9
@@ -1495,7 +1599,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (465)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1513,6 +1618,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -1557,7 +1666,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (367)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1575,6 +1685,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -1619,7 +1733,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (396)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1637,6 +1752,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -1685,7 +1804,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1314)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1703,6 +1823,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -1747,7 +1871,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1182)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1765,6 +1890,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -1809,7 +1938,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1184)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1827,6 +1957,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -1871,7 +2005,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (394)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1889,6 +2024,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
@@ -1933,7 +2072,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1316)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1951,6 +2091,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16
@@ -1995,7 +2139,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1351)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2013,6 +2158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -2057,7 +2206,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1364)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2075,6 +2225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16
@@ -2119,7 +2273,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1330)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2137,6 +2292,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2185,7 +2344,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1593)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2203,6 +2363,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -2247,7 +2411,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (431)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2265,6 +2430,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 5722656408229120573, guid: 3ae6d0b6208b0ff4e9c79a342ee2dc10, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7212149454984224285, guid: 3ae6d0b6208b0ff4e9c79a342ee2dc10, type: 3}
       propertyPath: m_Name
       value: WalnutNode (22)
@@ -2309,7 +2478,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3005736824545625264, guid: 3ae6d0b6208b0ff4e9c79a342ee2dc10, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2327,6 +2497,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2375,7 +2549,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1313)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2396,6 +2571,10 @@ PrefabInstance:
     - target: {fileID: 4832954862425806239, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
       propertyPath: m_Name
       value: Mushrooms (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986241372478935848, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
+      propertyPath: Outline
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5213420676590030629, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2437,7 +2616,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4680355902459035783, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2455,6 +2635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -2499,7 +2683,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1334)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2517,6 +2702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2565,7 +2754,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1478)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2583,6 +2773,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2631,7 +2825,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1423)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2649,6 +2844,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2697,7 +2896,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1204)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2715,6 +2915,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -2759,7 +2963,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1346)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2777,6 +2982,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2825,7 +3034,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1285)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2843,6 +3053,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2891,7 +3105,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1235)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2909,6 +3124,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -2957,7 +3176,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1200)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2975,6 +3195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3023,7 +3247,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1441)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3041,6 +3266,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3089,7 +3318,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1542)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3107,6 +3337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3155,7 +3389,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1339)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3173,6 +3408,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3221,7 +3460,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1248)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3239,6 +3479,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3287,7 +3531,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1421)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3305,6 +3550,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3353,7 +3602,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1340)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3371,6 +3621,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -3415,7 +3669,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (421)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3433,6 +3688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9
@@ -3477,7 +3736,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (384)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3495,6 +3755,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -3539,7 +3803,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (402)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3557,6 +3822,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3605,7 +3874,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1443)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3623,6 +3893,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3671,7 +3945,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1592)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3689,6 +3964,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3737,7 +4016,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1530)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3755,6 +4035,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -3799,7 +4083,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (435)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3817,6 +4102,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3865,7 +4154,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1442)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3883,6 +4173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -3931,7 +4225,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1591)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3949,6 +4244,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
@@ -3993,7 +4292,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (433)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4011,6 +4311,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -4055,7 +4359,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1203)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4073,6 +4378,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -4117,7 +4426,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (439)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4135,6 +4445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -4179,7 +4493,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (385)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4197,6 +4512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -4241,7 +4560,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (442)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4259,6 +4579,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -4303,7 +4627,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1395)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4321,6 +4646,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -4369,7 +4698,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1444)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4387,6 +4717,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -4435,7 +4769,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1422)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4453,6 +4788,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -4497,7 +4836,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (363)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4515,6 +4855,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -4563,7 +4907,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1476)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4581,6 +4926,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -4629,7 +4978,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1487)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4647,6 +4997,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -4691,7 +5045,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1188)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4709,6 +5064,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -4753,7 +5112,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1205)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4771,6 +5131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -4815,7 +5179,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1387)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4833,6 +5198,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -4881,7 +5250,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1262)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4899,6 +5269,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -4947,7 +5321,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1477)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4965,6 +5340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -5009,7 +5388,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1326)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5027,6 +5407,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5075,7 +5459,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1206)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5093,6 +5478,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5141,7 +5530,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1205)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5159,6 +5549,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -5203,7 +5597,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (437)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5221,6 +5616,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16
@@ -5265,7 +5664,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (423)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5283,6 +5683,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6350984209789599, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3969790297899246270, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
       propertyPath: m_Name
       value: RedBerryBush (22)
@@ -5327,7 +5731,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4165381468806873471, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5345,6 +5750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6350984209789599, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3969790297899246270, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
       propertyPath: m_Name
       value: RedBerryBush (28)
@@ -5389,7 +5798,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4165381468806873471, guid: 0cab19c036ad3b44994c61522055047c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5407,6 +5817,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5455,7 +5869,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1208)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5473,6 +5888,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -5517,7 +5936,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1237)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5535,6 +5955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5583,7 +6007,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1427)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5601,6 +6026,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -5645,7 +6074,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1353)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5663,6 +6093,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -5707,7 +6141,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1344)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5725,6 +6160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5773,7 +6212,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1426)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5791,6 +6231,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4716102170378812305, guid: 525816657c110fe49a1d10618e6e4257, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 404139991942872403, guid: 525816657c110fe49a1d10618e6e4257, type: 3}
       propertyPath: m_LocalScale.z
       value: 81.33014
@@ -5839,7 +6283,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush (32)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2143826927248814199, guid: 525816657c110fe49a1d10618e6e4257, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5857,6 +6302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5905,7 +6354,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1554)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5923,6 +6373,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -5971,7 +6425,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1596)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5989,6 +6444,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6037,7 +6496,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1531)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6055,6 +6515,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -6099,7 +6563,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1199)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6117,6 +6582,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6165,7 +6634,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1479)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6183,6 +6653,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6231,7 +6705,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1312)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6249,6 +6724,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -6293,7 +6772,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1239)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6311,6 +6791,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -6355,7 +6839,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1231)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6373,6 +6858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -6417,7 +6906,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1190)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6435,6 +6925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6483,7 +6977,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1231)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6501,6 +6996,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -6545,7 +7044,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1349)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6563,6 +7063,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -6607,7 +7111,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (357)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6625,6 +7130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6673,7 +7182,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1425)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6691,6 +7201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -6735,7 +7249,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (460)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6753,6 +7268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6801,7 +7320,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1210)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6819,6 +7339,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -6867,7 +7391,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1211)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6885,6 +7410,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -6929,7 +7458,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (476)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6950,6 +7480,10 @@ PrefabInstance:
     - target: {fileID: 4832954862425806239, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
       propertyPath: m_Name
       value: Mushrooms (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986241372478935848, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
+      propertyPath: Outline
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5213420676590030629, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6991,7 +7525,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4680355902459035783, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7009,6 +7544,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -7053,7 +7592,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1292)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7071,6 +7611,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -7119,7 +7663,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1545)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7137,6 +7682,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
@@ -7181,7 +7730,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1314)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7199,6 +7749,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -7243,7 +7797,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (466)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7261,6 +7816,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -7305,7 +7864,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1328)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7323,6 +7883,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -7367,7 +7931,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1332)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7385,6 +7950,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -7429,7 +7998,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1383)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7447,6 +8017,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -7495,7 +8069,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1253)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7513,6 +8088,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -7561,7 +8140,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1553)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7579,6 +8159,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -7623,7 +8207,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1402)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7641,6 +8226,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -7689,7 +8278,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1529)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7707,6 +8297,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -7755,7 +8349,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1197)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7773,6 +8368,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9
@@ -7817,7 +8416,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (383)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7835,6 +8435,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -7879,7 +8483,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (356)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7900,6 +8505,10 @@ PrefabInstance:
     - target: {fileID: 4832954862425806239, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
       propertyPath: m_Name
       value: Mushrooms (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986241372478935848, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
+      propertyPath: Outline
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5213420676590030629, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7941,7 +8550,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4680355902459035783, guid: 4596b194b46dd2043a7fdf397ac06e13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7959,6 +8569,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16
@@ -8003,7 +8617,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1180)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8021,6 +8636,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -8065,7 +8684,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1235)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8083,6 +8703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -8127,7 +8751,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (459)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8145,6 +8770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -8193,7 +8822,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1202)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8211,6 +8841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -8255,7 +8889,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1307)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8273,6 +8908,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -8321,7 +8960,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1527)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8339,6 +8979,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -8383,7 +9027,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1209)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8401,6 +9046,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -8445,7 +9094,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1207)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8463,6 +9113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: 6089828254267944864, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6200575059397112801, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -8507,7 +9161,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeA (479)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1276782729435525690, guid: 0c0fd927dd2dd6649ab666d868c1627c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8525,6 +9180,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -8573,7 +9232,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1424)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8591,6 +9251,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -8639,7 +9303,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1486)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8657,6 +9322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -8705,7 +9374,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1338)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8723,6 +9393,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -8767,7 +9441,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (26)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8785,6 +9460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4716102170378812305, guid: 525816657c110fe49a1d10618e6e4257, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 404139991942872403, guid: 525816657c110fe49a1d10618e6e4257, type: 3}
       propertyPath: m_LocalScale.z
       value: 81.33013
@@ -8833,7 +9512,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush (35)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2143826927248814199, guid: 525816657c110fe49a1d10618e6e4257, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8851,6 +9531,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -8895,7 +9579,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1233)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8913,6 +9598,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -8961,7 +9650,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1300)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8979,6 +9669,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -9023,7 +9717,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1290)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9041,6 +9736,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -9089,7 +9788,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1207)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9107,6 +9807,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -9151,7 +9855,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (28)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9169,6 +9874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -9213,7 +9922,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1197)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9231,6 +9941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -9279,7 +9993,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1597)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9297,6 +10012,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -9345,7 +10064,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1552)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9363,6 +10083,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -9411,7 +10135,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1209)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9429,6 +10154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17
@@ -9473,7 +10202,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1340)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9491,6 +10221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5166665
@@ -9539,7 +10273,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1199)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9557,6 +10292,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3019002510368931156}
     m_Modifications:
+    - target: {fileID: -4869652869546311586, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1335657269790903587, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -9601,7 +10340,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeD (1309)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 200091584182800572, guid: 2f4cd421c038f984c983b0a4fff2e488, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -172,6 +172,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (845)
@@ -220,7 +224,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -238,6 +243,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -290,7 +299,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (165)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -308,6 +318,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (566)
@@ -356,7 +370,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -374,6 +389,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (708)
@@ -422,7 +441,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -440,6 +460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -53
@@ -484,7 +508,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (86)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -502,6 +527,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (733)
@@ -550,7 +579,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -568,6 +598,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (655)
@@ -616,7 +650,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -634,6 +669,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (597)
@@ -682,7 +721,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -700,6 +740,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (679)
@@ -748,7 +792,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -766,6 +811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (664)
@@ -814,7 +863,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -832,6 +882,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (629)
@@ -880,7 +934,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -898,6 +953,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (725)
@@ -946,7 +1005,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -964,6 +1024,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (818)
@@ -1012,7 +1076,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1030,6 +1095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (763)
@@ -1078,7 +1147,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1096,6 +1166,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (537)
@@ -1144,7 +1218,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1162,6 +1237,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (782)
@@ -1210,7 +1289,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1228,6 +1308,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (719)
@@ -1276,7 +1360,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1294,6 +1379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (680)
@@ -1342,7 +1431,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1360,6 +1450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (608)
@@ -1408,7 +1502,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1478,7 +1573,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (117)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1496,6 +1596,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (610)
@@ -1544,7 +1648,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1614,7 +1719,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (109)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1632,6 +1742,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56
@@ -1676,7 +1790,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (87)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1694,6 +1809,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (552)
@@ -1742,7 +1861,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1760,6 +1880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -1812,7 +1936,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (119)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1830,6 +1955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -1882,7 +2011,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (167)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1900,6 +2030,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (573)
@@ -1948,7 +2082,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1966,6 +2101,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (717)
@@ -2014,7 +2153,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2032,6 +2172,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -2084,7 +2228,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (123)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2102,6 +2247,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -2154,7 +2303,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (107)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2172,6 +2322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (650)
@@ -2220,7 +2374,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2238,6 +2393,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (773)
@@ -2286,7 +2445,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2304,6 +2464,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -2356,7 +2520,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (113)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2374,6 +2539,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (543)
@@ -2422,7 +2591,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2440,6 +2610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (774)
@@ -2488,7 +2662,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2506,6 +2681,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (630)
@@ -2554,7 +2733,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2624,7 +2804,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (101)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2642,6 +2827,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (574)
@@ -2690,7 +2879,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2708,6 +2898,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (639)
@@ -2756,7 +2950,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2774,6 +2969,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (606)
@@ -2822,7 +3021,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2840,6 +3040,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (559)
@@ -2888,7 +3092,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2906,6 +3111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -2958,7 +3167,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (154)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3028,7 +3238,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (128)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3046,6 +3261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (576)
@@ -3094,7 +3313,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3164,7 +3384,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (126)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3182,6 +3407,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (767)
@@ -3230,7 +3459,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3248,6 +3478,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (628)
@@ -3296,7 +3530,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3314,6 +3549,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (705)
@@ -3362,7 +3601,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3380,6 +3620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (776)
@@ -3428,7 +3672,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3446,6 +3691,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (579)
@@ -3494,7 +3743,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3564,7 +3814,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (112)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3582,6 +3837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (728)
@@ -3630,7 +3889,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3648,6 +3908,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (572)
@@ -3696,7 +3960,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3714,6 +3979,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (731)
@@ -3762,7 +4031,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3780,6 +4050,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (702)
@@ -3828,7 +4102,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3846,6 +4121,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -3890,7 +4169,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (91)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3908,6 +4188,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (570)
@@ -3956,7 +4240,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3974,6 +4259,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -4026,7 +4315,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (116)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4044,6 +4334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -4096,7 +4390,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (149)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4114,6 +4409,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (546)
@@ -4162,7 +4461,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4180,6 +4480,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (644)
@@ -4228,7 +4532,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4246,6 +4551,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (765)
@@ -4294,7 +4603,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4364,7 +4674,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (141)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4382,6 +4697,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (590)
@@ -4430,7 +4749,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4448,6 +4768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (666)
@@ -4496,7 +4820,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4514,6 +4839,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (649)
@@ -4562,7 +4891,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4580,6 +4910,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (564)
@@ -4628,7 +4962,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4646,6 +4981,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (829)
@@ -4694,7 +5033,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4712,6 +5052,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (706)
@@ -4760,7 +5104,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4778,6 +5123,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43
@@ -4822,7 +5171,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (88)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4840,6 +5190,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -4892,7 +5246,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (162)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4910,6 +5265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (562)
@@ -4958,7 +5317,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4976,6 +5336,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -5028,7 +5392,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (134)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5046,6 +5411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -5090,7 +5459,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (90)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5108,6 +5478,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (710)
@@ -5156,7 +5530,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5174,6 +5549,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (626)
@@ -5222,7 +5601,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5240,6 +5620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -5292,7 +5676,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (118)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5310,6 +5695,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56
@@ -5354,7 +5743,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (85)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5372,6 +5762,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -5424,7 +5818,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (142)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5442,6 +5837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (598)
@@ -5490,7 +5889,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5508,6 +5908,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -5560,7 +5964,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (152)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5578,6 +5983,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (603)
@@ -5626,7 +6035,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5644,6 +6054,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (715)
@@ -5692,7 +6106,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5762,7 +6177,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (105)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5832,7 +6252,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (103)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5850,6 +6275,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (568)
@@ -5898,7 +6327,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5916,6 +6346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (534)
@@ -5964,7 +6398,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5982,6 +6417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (675)
@@ -6030,7 +6469,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6100,7 +6540,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (95)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6118,6 +6563,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (802)
@@ -6166,7 +6615,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6236,7 +6686,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (93)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6254,6 +6709,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38
@@ -6298,7 +6757,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (92)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6316,6 +6776,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (804)
@@ -6364,7 +6828,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6382,6 +6847,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (618)
@@ -6430,7 +6899,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6448,6 +6918,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51
@@ -6492,7 +6966,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (83)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6510,6 +6985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38
@@ -6554,7 +7033,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (89)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6572,6 +7052,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (754)
@@ -6620,7 +7104,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6638,6 +7123,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (647)
@@ -6686,7 +7175,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6704,6 +7194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (739)
@@ -6752,7 +7246,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6770,6 +7265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -6822,7 +7321,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (146)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6840,6 +7340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (769)
@@ -6888,7 +7392,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6906,6 +7411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (634)
@@ -6954,7 +7463,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6972,6 +7482,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (737)
@@ -7020,7 +7534,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7038,6 +7553,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (673)
@@ -7086,7 +7605,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7104,6 +7624,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (743)
@@ -7152,7 +7676,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7170,6 +7695,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (700)
@@ -7218,7 +7747,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7236,6 +7766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (746)
@@ -7284,7 +7818,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7302,6 +7837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (662)
@@ -7350,7 +7889,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7368,6 +7908,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (600)
@@ -7416,7 +7960,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7486,7 +8031,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (132)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7504,6 +8054,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (723)
@@ -7552,7 +8106,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7622,7 +8177,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (94)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7640,6 +8200,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (698)
@@ -7688,7 +8252,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7706,6 +8271,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -7758,7 +8327,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (112)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7776,6 +8346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (714)
@@ -7824,7 +8398,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7842,6 +8417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (668)
@@ -7890,7 +8469,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7908,6 +8488,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (749)
@@ -7956,7 +8540,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7974,6 +8559,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (624)
@@ -8022,7 +8611,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8040,6 +8630,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -8092,7 +8686,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (109)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8162,7 +8757,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (99)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8180,6 +8780,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (735)
@@ -8228,7 +8832,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8246,6 +8851,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (575)
@@ -8294,7 +8903,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8312,6 +8922,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -8364,7 +8978,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (129)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8382,6 +8997,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (577)
@@ -8430,7 +9049,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8448,6 +9068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (843)
@@ -8496,7 +9120,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8566,7 +9191,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (118)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8584,6 +9214,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52
@@ -8628,7 +9262,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (84)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8698,7 +9333,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DryTreeNode (120)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7585315630569333881, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5044494796230338707, guid: bef29356403767a46bdba43b6067ee1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8716,6 +9356,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (632)
@@ -8764,7 +9408,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8782,6 +9427,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (821)
@@ -8830,7 +9479,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8848,6 +9498,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -8900,7 +9554,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (136)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8918,6 +9573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -1990128613391399275, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2429476458478252570, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
       propertyPath: m_LocalScale.x
       value: 99.992966
@@ -8970,7 +9629,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadGrass (150)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4018223171541780399, guid: d6a8d71b89f19a24fb39b1c4dde63af6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8988,6 +9648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7041816833915044353}
     m_Modifications:
+    - target: {fileID: -7661032077153198229, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6154469326470797937, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
       propertyPath: m_Name
       value: SandNode (547)
@@ -9036,7 +9700,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2723409868375239858, guid: e161c82a509e3944687bf40d9d8d93f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

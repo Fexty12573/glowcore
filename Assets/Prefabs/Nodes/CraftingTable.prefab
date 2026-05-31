@@ -132,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1327630058042364012}
   - component: {fileID: 8663476463882978162}
-  - component: {fileID: 7198663000940523609}
   - component: {fileID: -4316476973867050644}
   m_Layer: 0
   m_Name: CraftingTable
@@ -172,25 +171,7 @@ MonoBehaviour:
   m_nodeData: {fileID: 11400000, guid: 9da358ff6c593d748af9d3420f06ee3c, type: 2}
   Rotation: 0
   TilesUsed: []
-  Outline: {fileID: 7198663000940523609}
---- !u!114 &7198663000940523609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812523118880574166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  Outline: {fileID: 0}
 --- !u!114 &-4316476973867050644
 MonoBehaviour:
   m_ObjectHideFlags: 0

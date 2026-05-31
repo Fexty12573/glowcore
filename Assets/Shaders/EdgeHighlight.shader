@@ -8,6 +8,7 @@ Shader "Custom/Edge Highlight"
 		g_depthStrength ("Depth Strength", Float) = 1.0
 		g_normalStrength ("Normal Strength", Float) = 1.0
 		g_blendStrength ("Blend Strength", Float) = 1.0
+		g_hoverFeather ("Hover Feather (px)", Float) = 2.0
 	}
 	
 	SubShader
@@ -37,12 +38,17 @@ Shader "Custom/Edge Highlight"
 
 			SAMPLER(sampler_BlitTexture);
 
+			// Screen-space silhouette of the hovered object, written by HoverMaskRendererFeature.
+			TEXTURE2D_X(_HoverMask);
+			SAMPLER(sampler_HoverMask);
+
 			float4 g_highlightColor;
 			float g_depthThreshold;
 			float g_normalThreshold;
 			float g_depthStrength;
 			float g_normalStrength;
 			float g_blendStrength;
+			float g_hoverFeather;
 
 			float SampleLinearDepth(float2 uv) {
 				// Some platforms use a reversed Z buffer so we have to handle that explicitly.
@@ -67,6 +73,27 @@ Shader "Custom/Edge Highlight"
 			float NormalEdge(float3 centerNormal, float3 neighborNormal) {
 				float invDot = 1.0 - saturate(dot(centerNormal, neighborNormal));
 				return saturate(invDot / max(g_normalThreshold, 1e-5));
+			}
+
+			// Box-blurs the hover mask so the white outline fades smoothly into the black
+			// edge over g_hoverFeather pixels instead of cutting off hard.
+			float SampleHoverMask(float2 uv, float2 texel) {
+				if (g_hoverFeather <= 0.0)
+					return SAMPLE_TEXTURE2D_X(_HoverMask, sampler_HoverMask, uv).r;
+
+				float spacing = g_hoverFeather * 0.5;
+				float total = 0.0;
+
+				UNITY_UNROLL
+				for (int x = -2; x <= 2; x++) {
+					UNITY_UNROLL
+					for (int y = -2; y <= 2; y++) {
+						float2 offset = float2(x, y) * texel * spacing;
+						total += SAMPLE_TEXTURE2D_X(_HoverMask, sampler_HoverMask, uv + offset).r;
+					}
+				}
+
+				return total / 25.0;
 			}
 
 			half4 Frag(Varyings input) : SV_Target {
@@ -104,7 +131,12 @@ Shader "Custom/Edge Highlight"
 
 				float edge = saturate(max(depthEdge, normalEdge));
 			    float edgeHard = step(0.5, edge * g_blendStrength);
-			    float3 outColor = lerp(baseColor.rgb, g_highlightColor.rgb, edgeHard);
+
+			    // Tint the outline white where it overlaps the hovered object's mask,
+			    // feathering the transition into the surrounding black edge.
+			    float hover = saturate(SampleHoverMask(uv, texel));
+			    float3 lineColor = lerp(g_highlightColor.rgb, float3(1.0, 1.0, 1.0), hover);
+			    float3 outColor = lerp(baseColor.rgb, lineColor, edgeHard);
 
 				return half4(outColor, baseColor.a);
 			}
