@@ -1,4 +1,5 @@
 using System;
+using GlowCore.Rendering;
 using GlowCore.World;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +19,6 @@ public class NodeActionSystem : MonoBehaviour
     [SerializeField] private PlayerInventory m_playerInventory;
     [SerializeField] private float m_raycastRange = 100f;
     private Node m_currentNode;
-    private Outline m_currentOutline;
     private Vector2Int? m_currentTile;
     private Vector2 m_mousePos;
 
@@ -108,7 +108,6 @@ public class NodeActionSystem : MonoBehaviour
         float distance = Vector3.Distance(playerPos, hitPos);
 
         Node node = child.Root;
-        Outline outline = node.Outline;
 
         if (distance > node.GetInteractionRange() || !WorldGrid.Instance.IsNodeInBounds(node))
         {
@@ -124,10 +123,7 @@ public class NodeActionSystem : MonoBehaviour
             Clear();
 
             m_currentNode = node;
-            m_currentOutline = outline;
-
-            if (m_currentOutline)
-                m_currentOutline.enabled = true;
+            HoverMaskRegistry.Set(node.Renderers);
 
             OnChangeSelectedNode?.Invoke(m_currentNode);
         }
@@ -167,11 +163,9 @@ public class NodeActionSystem : MonoBehaviour
 
     private void Clear()
     {
-        if (m_currentOutline)
-            m_currentOutline.enabled = false;
+        HoverMaskRegistry.Clear();
 
         m_currentNode = null;
-        m_currentOutline = null;
         m_currentTile = null;
     }
 

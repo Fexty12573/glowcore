@@ -20,12 +20,14 @@ namespace GlowCore.World
         private bool m_markedForDeletion;
         private Chest m_breakOwner; // Chest is the storage of the machine that breaks this node, null if the player breaks it.
         private IInteractable m_interactable;
+        private Renderer[] m_renderers;
 
         public BlockRotation Rotation = BlockRotation.North;
         public List<Vector2Int> TilesUsed = new();
         public Outline Outline;
         public NodeData NodeData => m_nodeData;
         public Block SourceBlock { get; set; }
+        public IReadOnlyList<Renderer> Renderers => m_renderers;
 
         public static event Action<Node, bool> OnStartBreaking; //second Argument tells if the player is the one who is breaking the Node.
         public static event Action<Node, bool> OnCancelBreaking;
@@ -125,6 +127,16 @@ namespace GlowCore.World
         private void Awake()
         {
             TryGetComponent(out Outline);
+
+            Renderer[] foundRenderers = GetComponentsInChildren<Renderer>(true);
+            List<Renderer> rendererList = new List<Renderer>(foundRenderers.Length);
+            foreach (var foundRenderer in foundRenderers)
+            {
+                if (foundRenderer is not ParticleSystemRenderer)
+                    rendererList.Add(foundRenderer);
+            }
+            m_renderers = rendererList.ToArray();
+
             Collider[] colliders = GetComponentsInChildren<Collider>();
             HashSet<GameObject> processed = new HashSet<GameObject>();
 
