@@ -67,6 +67,11 @@ namespace GlowCore.World
         public event Action OnProgressChanged;
         public event Action OnLevelUp;
 
+        // Raised once when a player upgrade brings the GlowCore to its final level.
+        // Static because each upgrade destroys this instance and spawns the next level's object,
+        // so listeners (e.g. the ending sequence) cannot bind to a specific instance.
+        public static event Action OnEndingReached;
+
         // Public Methods
         public int AccumulatedFor(Item item)
         {
@@ -138,9 +143,12 @@ namespace GlowCore.World
 
             OnLevelUp?.Invoke();
             UpgradePhysical();
-            SpawnNextLevel();
+            GlowCoreObject next = SpawnNextLevel();
             AudioManager.Instance.PlayOneShot(AudioManager.SoundType.GlowCoreUpgrade,
                 AudioManager.AudioChannel.Environment);
+
+            if (next != null && !next.HasNextLevel)
+                OnEndingReached?.Invoke();
         }
 
         public GlowCoreObject ForceUpgrade()

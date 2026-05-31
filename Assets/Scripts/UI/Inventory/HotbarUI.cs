@@ -97,5 +97,11 @@ namespace GlowCore.UI.Inventory
             for (var i = 0; i < m_slots.Length; i++)
                 m_slots[i].Refresh(m_inventoryService.GetSlotData(i));
         }
+
+        public void SetVisible(bool visible)
+        {
+            if (m_canvasGroup != null)
+                m_canvasGroup.SetVisible(visible);
+        }
     }
 }
