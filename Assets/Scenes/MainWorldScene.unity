@@ -166,6 +166,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7304261506459258767, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
   m_PrefabInstance: {fileID: 4775361754903699258}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &634353012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5450274790128009157, guid: 94119d0d620c5794892dd08513c58ef7, type: 3}
+  m_PrefabInstance: {fileID: 1101278096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b8e322be1bb744b908458dcfa26f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.UI.Inventory.HotbarUI
 --- !u!82 &780161629 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5645895411257557084, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
@@ -626,6 +637,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94119d0d620c5794892dd08513c58ef7, type: 3}
+--- !u!114 &1113273411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6330522811145022465, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
+  m_PrefabInstance: {fileID: 1593662840328382587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18896234347a8144fbe90b9dbc2bbf2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::GlowCore.UI.Menus.EndingScreen
 --- !u!1001 &1118927440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -733,6 +755,7 @@ MonoBehaviour:
   m_settingsScreen: {fileID: 502775529}
   m_confirmDialogScreen: {fileID: 907124309}
   m_unsavedChangesScreen: {fileID: 1593662840328382588}
+  m_endingScreen: {fileID: 1113273411}
   m_pauseButton: {fileID: 1683167962}
   m_sliderRowPrefab: {fileID: 8426088777401179993, guid: 850cb044da9c9be43a17e4092e1e4796, type: 3}
   m_toggleRowPrefab: {fileID: 7635243520397017747, guid: c2a979aa948fdd5448a5e7e2268e8f9c, type: 3}
@@ -1458,6 +1481,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -33.64241
       objectReference: {fileID: 0}
+    - target: {fileID: 6330522811145022465, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
+      propertyPath: m_hotbar
+      value: 
+      objectReference: {fileID: 634353012}
     - target: {fileID: 6543674586521428320, guid: 4b0c187a5b133654ab24b7bb35d55ddb, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.67058825
