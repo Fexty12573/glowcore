@@ -59,9 +59,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a4961e20df26d642a9b12ada2f820d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4986241372478935848}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a4961e20df26d642a9b12ada2f820d6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4680355902459035783}
   m_SourcePrefab: {fileID: 100100000, guid: 8a4961e20df26d642a9b12ada2f820d6, type: 3}
 --- !u!1 &4832954862425806239 stripped
 GameObject:
@@ -81,23 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 562fba9ed5578074da0c8b0eb13dc548, type: 2}
+  Rotation: 0
   TilesUsed: []
-  Outline: {fileID: -4680355902459035783}
---- !u!114 &-4680355902459035783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4832954862425806239}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  Outline: {fileID: 0}

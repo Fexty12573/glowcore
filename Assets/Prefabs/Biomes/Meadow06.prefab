@@ -246,6 +246,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50
@@ -290,7 +294,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (81)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -308,6 +313,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80
@@ -352,7 +361,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (366)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -422,7 +432,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1787)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -492,7 +507,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1649)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -562,7 +582,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1910)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -632,7 +657,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1826)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -702,7 +732,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1839)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -772,7 +807,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1781)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -842,7 +882,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1536)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -912,7 +957,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1788)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -930,6 +980,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60
@@ -974,7 +1028,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (344)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1044,7 +1099,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1669)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1062,6 +1122,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50
@@ -1106,7 +1170,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (360)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1176,7 +1241,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1922)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1246,7 +1316,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1701)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1316,7 +1391,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1807)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1386,7 +1466,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1707)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1456,7 +1541,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1779)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1526,7 +1616,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1710)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1596,7 +1691,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1859)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1666,7 +1766,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1746)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1736,7 +1841,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1816)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1806,7 +1916,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1728)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1824,6 +1939,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -59
@@ -1868,7 +1987,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (80)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1938,7 +2058,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1867)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1956,6 +2081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52
@@ -2000,7 +2129,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (337)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2070,7 +2200,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1801)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2140,7 +2275,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1765)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2210,7 +2350,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1943)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2280,7 +2425,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1952)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2350,7 +2500,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1891)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2420,7 +2575,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1809)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2490,7 +2650,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1542)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2560,7 +2725,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1763)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2630,7 +2800,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1730)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2700,7 +2875,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1928)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2770,7 +2950,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1707)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2840,7 +3025,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1556)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2910,7 +3100,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1780)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2980,7 +3175,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1596)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3050,7 +3250,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1939)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3120,7 +3325,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1712)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3138,6 +3348,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -72
@@ -3182,7 +3396,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (361)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3200,6 +3415,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57
@@ -3244,7 +3463,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (354)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3314,7 +3534,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1807)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3384,7 +3609,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1560)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3454,7 +3684,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1849)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3524,7 +3759,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1798)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3594,7 +3834,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1770)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3664,7 +3909,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1600)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3734,7 +3984,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1752)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3804,7 +4059,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1929)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3874,7 +4134,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1737)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3944,7 +4209,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1844)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3962,6 +4232,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -79
@@ -4006,7 +4280,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (344)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4024,6 +4299,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69
@@ -4068,7 +4347,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (83)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4138,7 +4418,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1739)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4208,7 +4493,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1918)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4226,6 +4516,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -83
@@ -4270,7 +4564,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (371)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4340,7 +4635,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1741)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4410,7 +4710,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1903)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4428,6 +4733,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60
@@ -4472,7 +4781,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (82)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4542,7 +4852,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1687)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4560,6 +4875,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62
@@ -4604,7 +4923,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (370)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4674,7 +4994,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1915)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4744,7 +5069,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1799)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4814,7 +5144,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1549)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4832,6 +5167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70
@@ -4876,7 +5215,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (361)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4946,7 +5286,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1541)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5016,7 +5361,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1873)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5086,7 +5436,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1960)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5156,7 +5511,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1726)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5226,7 +5586,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1796)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5296,7 +5661,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1691)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5366,7 +5736,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1855)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5436,7 +5811,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1753)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5506,7 +5886,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1965)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5524,6 +5909,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -71
@@ -5568,7 +5957,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (346)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5638,7 +6028,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1711)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5656,6 +6051,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68
@@ -5700,7 +6099,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (358)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5770,7 +6170,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1548)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5840,7 +6245,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1633)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5858,6 +6268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -74
@@ -5902,7 +6316,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (331)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5972,7 +6387,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1837)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6042,7 +6462,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1856)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6112,7 +6537,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1618)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6182,7 +6612,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1578)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6252,7 +6687,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1802)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6322,7 +6762,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1607)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6392,7 +6837,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1911)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6462,7 +6912,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1828)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6532,7 +6987,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1694)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6602,7 +7062,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1573)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6672,7 +7137,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1886)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6742,7 +7212,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1620)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6812,7 +7287,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1705)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6882,7 +7362,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1917)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6952,7 +7437,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1729)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6970,6 +7460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62
@@ -7014,7 +7508,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (313)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7084,7 +7579,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1736)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7154,7 +7654,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1893)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7224,7 +7729,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1830)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7294,7 +7804,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1759)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7364,7 +7879,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1933)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7382,6 +7902,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51
@@ -7426,7 +7950,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (385)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7496,7 +8021,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1745)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7566,7 +8096,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1963)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7636,7 +8171,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1572)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7654,6 +8194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -72
@@ -7698,7 +8242,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (79)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7768,7 +8313,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1769)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7838,7 +8388,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1718)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7908,7 +8463,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1643)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7978,7 +8538,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1935)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8048,7 +8613,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1786)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8066,6 +8636,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -77
@@ -8110,7 +8684,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (375)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8128,6 +8703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -76
@@ -8172,7 +8751,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (356)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8242,7 +8822,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1815)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8312,7 +8897,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1808)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8382,7 +8972,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1944)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8452,7 +9047,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1576)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8522,7 +9122,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1750)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8592,7 +9197,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1795)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8662,7 +9272,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1803)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8732,7 +9347,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1962)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8802,7 +9422,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1704)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8820,6 +9445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82
@@ -8864,7 +9493,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (327)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8934,7 +9564,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1697)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9004,7 +9639,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1524)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9074,7 +9714,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1925)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9144,7 +9789,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1824)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9214,7 +9864,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1767)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9284,7 +9939,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1899)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9354,7 +10014,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1811)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9424,7 +10089,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1871)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9442,6 +10112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70
@@ -9486,7 +10160,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (358)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9556,7 +10231,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1880)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9626,7 +10306,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1586)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9696,7 +10381,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1742)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9766,7 +10456,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1779)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9836,7 +10531,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1758)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9906,7 +10606,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1735)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9976,7 +10681,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1735)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10046,7 +10756,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1795)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10116,7 +10831,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1784)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10186,7 +10906,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1782)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10256,7 +10981,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1604)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10326,7 +11056,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1777)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10396,7 +11131,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1771)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10466,7 +11206,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1716)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10536,7 +11281,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1614)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10554,6 +11304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80
@@ -10598,7 +11352,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (367)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10616,6 +11371,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60
@@ -10660,7 +11419,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (343)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10730,7 +11490,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1948)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10800,7 +11565,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1701)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10870,7 +11640,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1672)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10940,7 +11715,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1657)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11010,7 +11790,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1768)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11080,7 +11865,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1700)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11150,7 +11940,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1805)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11220,7 +12015,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1554)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11238,6 +12038,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64
@@ -11282,7 +12086,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (78)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11352,7 +12157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1711)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11370,6 +12180,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -63
@@ -11414,7 +12228,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (349)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11484,7 +12299,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1730)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11554,7 +12374,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1545)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11624,7 +12449,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1860)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11694,7 +12524,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1568)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11764,7 +12599,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1885)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11834,7 +12674,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1529)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11904,7 +12749,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1656)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11974,7 +12824,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1791)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12044,7 +12899,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1877)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12114,7 +12974,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1955)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12184,7 +13049,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1637)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12254,7 +13124,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1721)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12324,7 +13199,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1822)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12394,7 +13274,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1748)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12464,7 +13349,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1733)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12534,7 +13424,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1879)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12552,6 +13447,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82
@@ -12596,7 +13495,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (351)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12614,6 +13514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -63
@@ -12658,7 +13562,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (85)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12728,7 +13633,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1789)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12746,6 +13656,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69
@@ -12790,7 +13704,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (340)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12808,6 +13723,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65
@@ -12852,7 +13771,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (374)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12922,7 +13842,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1774)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12992,7 +13917,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1706)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13062,7 +13992,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1759)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13132,7 +14067,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1634)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13202,7 +14142,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1901)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13220,6 +14165,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -3092591295601198183, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 563375730177908073, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67
@@ -13264,7 +14213,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowOreNode (84)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729930394579073447, guid: d34c71017a0cd0444a999b498872aa27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13334,7 +14284,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1819)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13404,7 +14359,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1564)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13422,6 +14382,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60
@@ -13466,7 +14430,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (318)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13484,6 +14449,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -71
@@ -13528,7 +14497,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (382)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13546,6 +14516,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70
@@ -13590,7 +14564,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (380)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13660,7 +14635,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1720)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13730,7 +14710,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1719)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13800,7 +14785,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1820)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13870,7 +14860,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1611)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13940,7 +14935,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1836)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14010,7 +15010,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1563)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14080,7 +15085,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1746)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14098,6 +15108,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377281715812654947}
     m_Modifications:
+    - target: {fileID: -6053308871246132710, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4978387829162205139, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62
@@ -14142,7 +15156,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotNode (325)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2455043728179367436, guid: 4170ef1488b785d49adeb3376727d069, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14212,7 +15227,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1653)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14282,7 +15302,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1676)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14352,7 +15377,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1583)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14422,7 +15452,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiber (1553)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8702656275883908389, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
+      propertyPath: Outline
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5621774799050677790, guid: 06525a77583ab9b4faa18a6919e105c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

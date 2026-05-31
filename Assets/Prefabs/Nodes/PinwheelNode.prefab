@@ -124,7 +124,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3315092334783360760}
   - component: {fileID: -6657659669604714735}
-  - component: {fileID: 4500315209568147433}
   - component: {fileID: 7996910961723672879}
   m_Layer: 0
   m_Name: PinwheelNode
@@ -165,25 +164,7 @@ MonoBehaviour:
   m_nodeData: {fileID: 11400000, guid: dca125d0aeb9f53468e696f351bbb03c, type: 2}
   Rotation: 0
   TilesUsed: []
-  Outline: {fileID: 4500315209568147433}
---- !u!114 &4500315209568147433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5819595144877183926}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  Outline: {fileID: 0}
 --- !u!114 &7996910961723672879
 MonoBehaviour:
   m_ObjectHideFlags: 0

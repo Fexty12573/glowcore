@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ScriptableObjects;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -24,7 +25,6 @@ namespace GlowCore.World
 
         public BlockRotation Rotation = BlockRotation.North;
         public List<Vector2Int> TilesUsed = new();
-        public Outline Outline;
         public NodeData NodeData => m_nodeData;
         public Block SourceBlock { get; set; }
         public IReadOnlyList<Renderer> Renderers => m_renderers;
@@ -126,16 +126,9 @@ namespace GlowCore.World
 
         private void Awake()
         {
-            TryGetComponent(out Outline);
-
-            Renderer[] foundRenderers = GetComponentsInChildren<Renderer>(true);
-            List<Renderer> rendererList = new List<Renderer>(foundRenderers.Length);
-            foreach (var foundRenderer in foundRenderers)
-            {
-                if (foundRenderer is not ParticleSystemRenderer)
-                    rendererList.Add(foundRenderer);
-            }
-            m_renderers = rendererList.ToArray();
+            m_renderers = GetComponentsInChildren<Renderer>(true)
+                .Where(r => r is not ParticleSystemRenderer)
+                .ToArray();
 
             Collider[] colliders = GetComponentsInChildren<Collider>();
             HashSet<GameObject> processed = new HashSet<GameObject>();
