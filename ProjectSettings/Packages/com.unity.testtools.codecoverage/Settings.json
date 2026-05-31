@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "PathsToExclude",
-                "value": "{\"m_Value\":\"{ProjectPath}/Assets/Scripts/UI/**,{ProjectPath}/Assets/Scripts/PostProcessing/**,{ProjectPath}/Assets/TutorialInfo/**\"}"
+                "value": "{\"m_Value\":\"{ProjectPath}/Assets/Scripts/UI/**,{ProjectPath}/Assets/Scripts/PostProcessing/**,{ProjectPath}/Assets/TutorialInfo/**,{ProjectPath}/Assets/Animations/**,{ProjectPath}/Assets/Audio/**,{ProjectPath}/Assets/Editor/**,{ProjectPath}/Assets/Fonts/**,{ProjectPath}/Assets/Import/**,{ProjectPath}/Assets/Materials/**,{ProjectPath}/Assets/Palettes/**,{ProjectPath}/Assets/Particles/**,{ProjectPath}/Assets/Prefabs/**,{ProjectPath}/Assets/Resources/**,{ProjectPath}/Assets/Scenes/**,{ProjectPath}/Assets/ScriptableObjects/**,{ProjectPath}/Assets/Shaders/**,{ProjectPath}/Assets/Settings/**,{ProjectPath}/Assets/Sprites/**,{ProjectPath}/Assets/TextMesh Pro/**,{ProjectPath}/Assets/ThirdParty/**,{ProjectPath}/Assets/Scripts/ThirdParty/**,{ProjectPath}/Assets/Scripts/ScriptableObjects/**,{ProjectPath}/Assets/Scripts/Audio/**,{ProjectPath}/Assets/Scripts/FogFollow.cs,{ProjectPath}/Assets/Scripts/WorldGrid.cs,{ProjectPath}/Assets/Scripts/GlowCore.cs,{ProjectPath}/Assets/Scripts/Editors/**,{ProjectPath}/Assets/Scripts/Node.cs,{ProjectPath}/Assets/Scripts/NodeActionSystem.cs\"}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
