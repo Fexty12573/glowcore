@@ -108,6 +108,8 @@ We intentionally omitted the Code Diagram (Layer 4 of C4) in this documentation 
   supplement: [Image],
 )
 
+#pagebreak()
+
 ==== Component Diagram
 The Component Diagram zooms into selected Containers to provide a deeper overview.
 
@@ -120,7 +122,6 @@ Instead, we analyzed the features and abstracted them into two groups: *Use Acti
 Use Actions are responsible for using the Item in the players hand (The item that is selected in the hotbar and visually displayed in the players hand). The player can only break Nodes when he holds a tool in his hand and he can only place Nodes if he holds a Block in his hand.
 
 Interact Actions define the behaviour of hovered over Nodes. For example the player opens a chest by hovering over it with the cursor and pressing the corresponding button. The GlowCore and all crafting stations share the same input to avoid code duplication. This approach also makes our game extensible.
-
 
 #figure(
   image("../../resources/01 Product Documentation/C4GameplayLogic.png"),
@@ -297,7 +298,6 @@ Our game is distributed via Steam, which is our only external dependency. Steam 
 
 We create the store page for our game on Steamworks, where we can configure the description, upload marketing material etc. The executable is uploaded using Steamworks SteamPipe, which handles distribution and versioning.
 
-#pagebreak()
 === Game Design
 This chapter covers Gameplay Decisions rather than technical solutions, focusing on how the game is structured to create an entertaining experience. Game design can be understood as the application of user experience principles within the domain of game development.
 
@@ -316,6 +316,8 @@ The following sections describe the gameplay progression in chronological order 
 ===== Early Game
 The player starts with a basic wooden axe and gathers wood by manually cutting trees. Early trees can be chopped quickly but only give a small amount of wood. Over time, larger trees appear which require significantly more time to cut but also give more wood.
 
+#pagebreak()
+
 ===== Automation Phase 1
 At this point, manual gathering becomes inefficient, encouraging the player to craft their first axe-machine. This machine is placed in front of a tree and automatically cuts it over time. While the machine is operating, the player is free to perform other actions, such as gathering additional resources to craft more machines.
 
@@ -331,6 +333,7 @@ Later in progression, a new tree type is introduced that has short cut time and 
 
 At this stage, multiple replanter blocks can be used per machine, enabling more complex automated setups. A key design decision is that replanter blocks must be significantly cheaper than Tier 2 machines, encouraging players to build efficient production lines.
 
+
 ===== Full Automation
 However, this introduces a new problem: machine orientation and placement still require manual adjustment. This is resolved by the introduction of rotator blocks. When a machine collides with a rotator block, it automatically rotates by 90, 180, or 270 degrees depending on the block type. This enables fully automated resource gathering systems and allows players to design complex production paths.
 
@@ -344,6 +347,7 @@ The goal of this design is to allow the player to create complex and interesting
 In GlowCore, this is achieved by limiting the core automation system to only three main components: the axe-machine, the replanter, and the rotator. When combined, these simple systems interact in ways that allow for emergent complexity, such as automation lines with different layouts.
 
 #pagebreak()
+
 === Key Architectural Decisions
 
 The following decisions had the greatest impact on the structure and long-term maintainability of the game. Each one is recorded together with the problem it solved and the reasoning behind the chosen approach.
@@ -372,13 +376,14 @@ The following decisions had the greatest impact on the structure and long-term m
 
 *Why:* The two abstractions map directly to the two roles the player's cursor plays: the held item and the targeted node. Routing them separately through `PlayerHand` and `NodeActionSystem` keeps input handling in exactly one place per axis and avoids duplicating raycast logic, inventory checks, and UI-open guards. Adding a new usable item only requires implementing `IHandItem` on its prefab; adding a new interactive node only requires implementing `IInteractable`. Neither addition changes any existing class.
 
+#pagebreak()
+
 ==== IPlayerInventoryAware via Explicit Injection
 
 *Decision:* Item prefab components that need access to the player's inventory receive it through `IPlayerInventoryAware.SetInventory()`, called by `PlayerHand` at equip time, not through a singleton or a `FindObjectOfType` lookup.
 
 *Why:* Tools and blocks need to read and modify the inventory at use-time (e.g. consuming the block stack when placing). Fetching `PlayerInventory.Instance` inside a prefab component hides the dependency, makes the coupling invisible to readers, and makes the component untestable in isolation. Passing the reference explicitly at equip time makes the dependency visible, eliminates hidden singleton coupling, and allows the component to be tested with any `PlayerInventory` instance, including a mock.
 
-#pagebreak()
 === Deployment
 
 The game has two deployment paths, both automated through GitHub Actions. Which path runs depends on what is pushed to the repository.

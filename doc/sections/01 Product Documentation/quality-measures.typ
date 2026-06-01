@@ -22,6 +22,9 @@ The project uses GitHub Actions for all build, test, and deployment automation. 
 
 - *LABELER*: fires on pull-request targets to `main` or `dev` (skipped for `dev` → `main` promotion PRs). Automatically applies labels to each PR based on branch prefix and changed paths (`feature/*` → _feature_, `bug/*` → _bug_, `docs/*` or changes under `doc/**/*` → _doc_).
 
+#pagebreak()
+
+
 ==== Definition of Ready and Definition of Done
 
 Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and conditionally -> UI consistency and documentation updates.
@@ -75,6 +78,8 @@ There is a strict limit to what we can test automatically in a game project. A s
 
 We will conduct regular playtesting sessions where we let several new users play the game without giving them any prior instructions. Our main goal here is to find out what feels good, what is frustrating, and if the core mechanics are actually understandable. For instance, we want to see if a brand-new player can figure out how to move, gather resources, and upgrade within the first 5 minutes. We will also observe if players naturally understand the visual cues for restricted actions (like red-tinted UI elements) or if they can accurately track their light upgrade progress.
 
+#pagebreak()
+
 ==== Non-Functional Requirements (NFR) Verification
 NFR tests are not done once at the end, but at appropriate points throughout the project. Each NFR is assigned to a milestone at which it must be verified. Additionally, our Definition of Done requires that any change which could affect an NFR is accompanied by a re-verification of that NFR and an updated result in the documentation. This ensures NFR results stay current and are not just a snapshot from a single test session.
 
@@ -101,6 +106,8 @@ In Unity, however, our code doesn't just sit there. It lives inside an engine th
 Edit Mode tests are the closest thing we have to "traditional" unit tests. They run entirely within the Unity Editor and do not require the game to actually start. Since they don't have to load scenes or wait for the physics engine to initialize, they are fast.
 
 Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it in during our CI/CD run without us ever having to open a game window.
+
+#pagebreak()
 
 ==== Play Mode Tests
 Play Mode tests are where we handle the Unity Engine of the project. Unlike Edit Mode, these tests actually trigger the full game engine. They can load specific test scenes, instantiate Prefabs, and, most importantly, they can run over multiple frames.
@@ -134,6 +141,9 @@ For the NFRs, 16 requirements have fully passed (@NFR103, @NFR104, @NFR105, @NFR
   caption: [Interface Overview Diagram],
   supplement: [Image],
 )
+
+#pagebreak()
+
 #{
   let data = csv("../../resources/01 Product Documentation/loc_files_final.csv")
     .flatten()
@@ -283,6 +293,8 @@ Based on the feedback we will make improvements to the UI, in particular we will
 ===== Conclusion
 This user test provided valuable feedback on what the gameplay is missing and what it is already doing right. In Sprint 6 we will refine the UI and controls accordingly. We will also add more Items, Nodes and Crafting Recipes. Thanks to our extensible architecture which follows the Open-Closed Principle (OCP), new content can be added without modifying existing code.
 
+#pagebreak()
+
 === Coding Guidelines
 
 Our coding guidelines are based on the Unity C\# scripting conventions and are enforced through Roslyn analyzers and EditorConfig rules. Every C\# file must conform to these rules, which are checked automatically on every push to `main` or `dev` via the CI pipeline.
@@ -330,6 +342,8 @@ Members within a class must appear in the following order:
 *Access modifiers:* Always declare access modifiers explicitly; never rely on C\# defaults.
 
 *Public fields:* Avoid `public` fields in classes, use properties instead. Public fields in structs are acceptable.
+
+#pagebreak()
 
 ==== Formatting Rules
 

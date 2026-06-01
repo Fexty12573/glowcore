@@ -148,11 +148,8 @@ FakeSaveDataGateway.cs,4,0,12
 ICraftingService.cs,3,3,11
 SpinningObject.cs,2,0,11
 DamageCalculator.cs,2,0,11
-FakeSettingsCategory.cs,2,0,11
-MockSaveService.cs,3,0,11
 IGameStateController.cs,0,0,11
 RecipeList.cs,2,0,10
-FakeSceneTransition.cs,4,0,10
 IMenuScreen.cs,0,0,10
 IGameLaunchContext.cs,0,0,10
 Tool.cs,1,0,9
@@ -173,5 +170,4 @@ SaveService.cs,1,0,6
 IHandItem.cs,1,0,5
 ISaveService.cs,0,0,5
 IWeapon.cs,0,0,5
-MockWeapon.cs,0,0,5
 IPlayerInventoryAware.cs,0,0,4

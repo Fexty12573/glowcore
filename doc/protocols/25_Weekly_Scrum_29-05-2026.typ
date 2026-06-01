@@ -1,5 +1,7 @@
 #import "../lib.typ": agenda_table, meeting_info, todo_table
 
+#pagebreak()
+
 === Weekly Scrum / 22.05.2026
 #meeting_info(
   date: "29.05.2026",
