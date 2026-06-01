@@ -20,11 +20,11 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: a2813d0d25371a04ab6b5f1ef3cbc17a, type: 2}
     Amount: 200
   - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
-    Amount: 4000
+    Amount: 1500
   - Item: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
-    Amount: 80
+    Amount: 50
   - Item: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
-    Amount: 40
+    Amount: 20
   - Item: {fileID: 11400000, guid: 16a9d49ec84e1c2429ae3a60afb3140f, type: 2}
     Amount: 3
   m_tilesOnLevelUp: 3

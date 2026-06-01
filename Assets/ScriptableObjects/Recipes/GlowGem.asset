@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Glow Gem
   Ingredients:
   - Item: {fileID: 11400000, guid: e796d2dce7cb1004b833f5f5ef2c04f3, type: 2}
-    Amount: 5
+    Amount: 3
   - Item: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
     Amount: 5
   ResultItem: {fileID: 11400000, guid: 16a9d49ec84e1c2429ae3a60afb3140f, type: 2}
