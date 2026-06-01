@@ -261,6 +261,12 @@ To create our 3D Models we use Blender. Blender is free and open-source and offe
 ==== Audacity
 We use Audacity to record and edit our soundeffects. Audacity is free, easy to use and provides all necessary tools for simple sound design, so there was no need to choose a more sophisticated audio editing software.
 
+#figure(
+  image("../../resources/01 Product Documentation/dev-env-diagram.png"),
+  caption: [Technologies Diagram],
+  supplement: [Image],
+)
+
 #pagebreak()
 === Used Design Patterns
 
