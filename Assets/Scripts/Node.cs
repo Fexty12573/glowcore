@@ -87,9 +87,10 @@ namespace GlowCore.World
             m_isHolding = true;
             m_holdTimer = 0f;
 
-            AudioManager.Instance.Play(
-                tool.Sound,
-                AudioManager.AudioChannel.Environment);
+            if (machineStorage is null)
+                AudioManager.Instance.Play(
+                    tool.Sound,
+                    AudioManager.AudioChannel.Environment);
 
             m_breakOwner = machineStorage;
             OnStartBreaking?.Invoke(this, (machineStorage is null));
@@ -100,7 +101,8 @@ namespace GlowCore.World
             m_effectiveBreakTime = m_nodeData.BaseBreakTime;
             m_isHolding = false;
             m_holdTimer = 0f;
-            AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
+            if (m_breakOwner is null)
+                AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
             OnCancelBreaking?.Invoke(this, (m_breakOwner is null));
         }
 
@@ -178,7 +180,9 @@ namespace GlowCore.World
             m_markedForDeletion = true;
             OnNodeBroken?.Invoke(this, (m_breakOwner is null));
             Destroy(gameObject);
-            AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
+
+            if (m_breakOwner is null)
+                AudioManager.Instance.Stop(AudioManager.AudioChannel.Environment);
         }
 
         private void DropItems(ItemDrop drop)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PinwheelBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Pinwheel
-  Description: 
+  Description: Everybody loves pinwheels!
   Prefab: {fileID: 7886290519329012032, guid: 6a999862f17592d4fa51c79f34a00302, type: 3}
   Icon: {fileID: 21300000, guid: ce965437ad23e9b469c21301e83e30c4, type: 3}
   IconRotation: {x: 0, y: 56.4, z: 0}

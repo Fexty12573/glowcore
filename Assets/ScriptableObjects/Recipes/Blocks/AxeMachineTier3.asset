@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Axe Machine T3
   Ingredients:
-  - Item: {fileID: 11400000, guid: ba80d3b88d7c53046b1a6dbfef8ed05c, type: 2}
+  - Item: {fileID: 11400000, guid: 5f047741924f7734db0c62671525e3d3, type: 2}
     Amount: 1
   - Item: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
     Amount: 20

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RotatorDownBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Rotator Down
-  Description: 
+  Description: Watch what happens when an Axe Machine drives into it!
   Prefab: {fileID: 8456580895854087453, guid: 13379dcd2e5f82749afa7f360cc247ea, type: 3}
   Icon: {fileID: 21300000, guid: d0fab9b9d62c74b47b561a9777c4b3a4, type: 3}
   IconRotation: {x: 0, y: 45, z: 0}

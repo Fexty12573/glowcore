@@ -127,7 +127,7 @@
                     "name": "PauseEscape",
                     "type": "Button",
                     "id": "a1b2c3d4-0003-4000-8000-000000000003",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -172,7 +172,7 @@
                     "name": "HotbarSlot5",
                     "type": "Button",
                     "id": "a1b2c3d4-0015-4000-8000-000000000015",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -203,6 +203,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HotbarScroll",
+                    "type": "Value",
+                    "id": "f8a167e7-2958-46b9-be62-4e6e603e8f6f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -659,6 +668,17 @@
                 },
                 {
                     "name": "",
+                    "id": "79a83f43-f0d9-494e-8406-9c856b16b8f3",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "PauseEscape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b1b2c3d4-0011-4000-8000-000000000011",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -744,6 +764,17 @@
                     "action": "HotbarSlot8",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc59cd54-27c9-412c-a364-27a5a1bae00f",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HotbarScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -764,7 +795,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "7607c7b6-cd76-4816-beef-bd0341cfe950",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -773,7 +804,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "15cef263-9014-4fd5-94d9-4e4a6234a6ef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1125,6 +1156,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2546a56a-095e-44f9-bf66-d1d1bac3e675",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false

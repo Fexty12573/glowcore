@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AxeMachineTier3Block
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Axe Machine T3
-  Description: 
+  Description: Faster and better
   Prefab: {fileID: 3018811792293280483, guid: 42077755978cbc54581e1b29eaf3d332, type: 3}
   Icon: {fileID: 21300000, guid: 6590abe60d642a7439a943d0f474c1f0, type: 3}
   IconRotation: {x: 22.83, y: 90.49, z: -21.9}

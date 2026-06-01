@@ -21,7 +21,7 @@ MonoBehaviour:
   InHandScale: 1.3
   MaxStack: 99
   m_idBytes: f7efcbf0648a9641b65ee18f9be9ad6a
-  NodeToBuild: {fileID: 7343564340759336017, guid: c7912e6928620f645943aed9e330a8b2, type: 3}
+  NodeToBuild: {fileID: 8349955516253419966, guid: 70c1ada95d7b1194b9872792ad83807b, type: 3}
   BuildRadius: 4
   HasInventory: 0
   YRotationOffset: 0

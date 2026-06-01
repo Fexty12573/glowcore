@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WoodCutterBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Wood Cutter
-  Description: 
+  Description: Redecorate
   Prefab: {fileID: 1601511354680668933, guid: 90ddc2a0f7ffdbd4dbb5d1a68e863e70, type: 3}
   Icon: {fileID: 21300000, guid: c512eb22185a9cd498fe1b045bf9c872, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}

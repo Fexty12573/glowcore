@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GlowOreItem
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Item
   Name: Glow Ore
-  Description: 
+  Description: The most valuable ore
   Prefab: {fileID: 7066667558987239045, guid: 8aa6b3d6ce0701d4ea93b0b27ee29c30, type: 3}
   Icon: {fileID: 21300000, guid: 3eed39f38c7739743b078524c687248e, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}

@@ -1562,6 +1562,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 320889612761066827, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_camera
+      value: 
+      objectReference: {fileID: 314439063}
     - target: {fileID: 1631564033306397339, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.7071068
@@ -1588,7 +1592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3546791577693057494, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3600561823655006463, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_Enabled
@@ -1597,6 +1601,26 @@ PrefabInstance:
     - target: {fileID: 4354204533246897938, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192860682458780908, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.6797147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192860682458780908, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.19490503
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192860682458780908, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6797147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192860682458780908, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.19490503
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192860682458780908, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 7304261506459258767, guid: 45e0011ac58073b4c934996fb562a634, type: 3}
       propertyPath: m_Enabled
@@ -4513,6 +4537,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1560234588}
     m_Modifications:
+    - target: {fileID: 1649896943240566521, guid: 2d5be4d23a6f2bf45b1e108ab4ac4fb0, type: 3}
+      propertyPath: m_height
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3578041532742632149, guid: 2d5be4d23a6f2bf45b1e108ab4ac4fb0, type: 3}
       propertyPath: m_Name
       value: AxeMachineTier3Node
@@ -21356,6 +21384,10 @@ PrefabInstance:
     - target: {fileID: 4547388919811666596, guid: 929cee678293f12478108f8f47a23ce2, type: 3}
       propertyPath: Rotation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227368766395911278, guid: 929cee678293f12478108f8f47a23ce2, type: 3}
+      propertyPath: m_height
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

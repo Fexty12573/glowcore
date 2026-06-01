@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PickaxeMachineTier1Block
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Pickaxe Machine T1
-  Description: 
+  Description: Automatically drives forward
   Prefab: {fileID: 7949303267047839568, guid: 3f7a0fe7710e4264595ad11b391cf600, type: 3}
   Icon: {fileID: 21300000, guid: e2d461bf945f9a34dab2dd92cf17fd43, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}

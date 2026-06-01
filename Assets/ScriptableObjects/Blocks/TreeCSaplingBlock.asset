@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TreeCSaplingBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Cedar Sapling
-  Description: 
+  Description: Replant and harvest to get more!
   Prefab: {fileID: 6437164055635173262, guid: c2a252e5d1f74e74fb4a76b022567e19, type: 3}
   Icon: {fileID: 21300000, guid: 8af71f79d03983c46a96fbd87c00a5dc, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}

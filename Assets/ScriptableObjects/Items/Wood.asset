@@ -19,5 +19,5 @@ MonoBehaviour:
   IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1.1
-  MaxStack: 999
+  MaxStack: 9999
   m_idBytes: 90c9b49d80c098408842b95bbbf158c8

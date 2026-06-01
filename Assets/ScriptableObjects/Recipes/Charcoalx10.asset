@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
-  m_Name: GlowGem
+  m_Name: Charcoalx10
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
-  Name: Glow Gem
+  Name: Coal 10x
   Ingredients:
-  - Item: {fileID: 11400000, guid: e796d2dce7cb1004b833f5f5ef2c04f3, type: 2}
-    Amount: 3
-  - Item: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
-    Amount: 5
-  ResultItem: {fileID: 11400000, guid: 16a9d49ec84e1c2429ae3a60afb3140f, type: 2}
-  ResultAmount: 1
+  - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
+    Amount: 80
+  ResultItem: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
+  ResultAmount: 10

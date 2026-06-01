@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7548046306905154581, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
       propertyPath: m_closeDistance
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -3782818942564242623, guid: a8744888683d215479ae20f08d12e3cf, type: 3}
       propertyPath: m_tool

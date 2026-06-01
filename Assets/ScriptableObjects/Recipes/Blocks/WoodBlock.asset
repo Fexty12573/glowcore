@@ -15,7 +15,6 @@ MonoBehaviour:
   Name: Wood Block
   Ingredients:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
-    Amount: 1
+    Amount: 20
   ResultItem: {fileID: 11400000, guid: 550dfcca5eedc7f48a12f63907782a6e, type: 2}
-  ResultAmount: 1
-  m_requiresCraftingTable: 1
+  ResultAmount: 5
