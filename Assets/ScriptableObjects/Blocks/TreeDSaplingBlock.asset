@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TreeDSaplingBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Fir Sapling
-  Description: 
+  Description: Replant and harvest to get more!
   Prefab: {fileID: 8577272406756842312, guid: 6a4705a4c2077474e965239d849b45ab, type: 3}
   Icon: {fileID: 21300000, guid: c2dc4e875afcc284d98214da6767741d, type: 3}
   IconRotation: {x: 0, y: 0, z: 0}

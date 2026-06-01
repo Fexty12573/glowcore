@@ -17,12 +17,14 @@ MonoBehaviour:
   m_requiredMaterials:
   - Item: {fileID: 11400000, guid: 81820b26b07fa614da43ee6ebb5fb9b5, type: 2}
     Amount: 35000
+  - Item: {fileID: 11400000, guid: a2813d0d25371a04ab6b5f1ef3cbc17a, type: 2}
+    Amount: 100
   - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
     Amount: 2000
   - Item: {fileID: 11400000, guid: a1d0d03bf7beb9b4688ad919dcf5f68e, type: 2}
-    Amount: 100
+    Amount: 50
   - Item: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
-    Amount: 30
+    Amount: 25
   - Item: {fileID: 11400000, guid: 16a9d49ec84e1c2429ae3a60afb3140f, type: 2}
-    Amount: 5
+    Amount: 1
   m_tilesOnLevelUp: 3

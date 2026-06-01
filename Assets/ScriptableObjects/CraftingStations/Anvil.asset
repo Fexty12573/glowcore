@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anvil
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.CraftingStation
   Name: Anvil
-  Description: 
+  Description: The Forge
   RecipeList: {fileID: 11400000, guid: 702f34e6f06dd084faa2439d15ded887, type: 2}
   BackgroundSprite: {fileID: 21300000, guid: ff14dc32df694ceca3f9b036c13c543b, type: 3}
   RecipeRowTheme: {fileID: 11400000, guid: aca1bd5bc291482592ea3753fcd11fa4, type: 2}

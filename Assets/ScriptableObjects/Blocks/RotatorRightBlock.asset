@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RotatorRightBlock
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
   Name: Rotator Right
-  Description: 
+  Description: Watch what happens when an Axe Machine drives into it!
   Prefab: {fileID: 2445987108104843051, guid: 6259c78f9da949c44a076f76e757abf7, type: 3}
   Icon: {fileID: 21300000, guid: 931655311e47330478674d8b022d5e7e, type: 3}
   IconRotation: {x: 0, y: 45, z: 0}

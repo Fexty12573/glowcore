@@ -198,6 +198,9 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
 
     private void OnHotbarScroll(InputValue value)
     {
+        if (IsAnyUIOpen)
+            return;
+
         float scroll = value.Get<float>();
         if (scroll < 0)
             SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);

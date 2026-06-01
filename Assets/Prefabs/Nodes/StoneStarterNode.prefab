@@ -99,7 +99,6 @@ MonoBehaviour:
   m_nodeData: {fileID: 11400000, guid: 5b391d042ce4f734fb5148a5679fca09, type: 2}
   Rotation: 0
   TilesUsed: []
-  Outline: {fileID: 0}
 --- !u!114 &-3417273982888366943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +118,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5fa516da5af32464b9f2e4207374ec00, type: 2}
   - {fileID: 11400000, guid: 0b1998feb3f04a647a9f7eb224226927, type: 2}
   - {fileID: 11400000, guid: f93c2c535dc265f40941c3edfee449d1, type: 2}
+  - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}
   - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}
   - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}
   - {fileID: 11400000, guid: 820b2d8438badf348b162e78e6cab0ed, type: 2}

@@ -94,10 +94,20 @@ namespace GlowCore.World
 
         public Node GetNodeAt(Vector2Int tile) => GetNodeAt(tile.x, tile.y);
 
-        public bool PlaceNodeAtTile(Vector2Int tile, Node node)
+        public bool PlaceNodeAtTile(Vector2Int tile, Node node, bool destroyExistingNodes)
         {
-            if (!IsInBounds(tile) || IsOccupied(tile))
+            if (!IsInBounds(tile) || (IsOccupied(tile) && !destroyExistingNodes))
                 return false;
+
+            if (IsOccupied(tile))
+            {
+                Node existingNode = m_tiles[tile.x, tile.y];
+                foreach (var existingTile in existingNode.TilesUsed)
+                    ClearNodeAt(existingTile);
+
+                Destroy(existingNode.gameObject);
+            }
+
             m_tiles[tile.x, tile.y] = node;
             node.TilesUsed.Add(tile);
             return true;
@@ -106,7 +116,7 @@ namespace GlowCore.World
         public bool PlaceNodeAt(Node node, int x, int z)
         {
             Vector2Int index = WorldToGrid(x, z);
-            return PlaceNodeAtTile(index, node);
+            return PlaceNodeAtTile(index, node, false);
         }
 
         public void PlaceNodeAt(Node node, int x, int z, int tileCount)
@@ -119,8 +129,8 @@ namespace GlowCore.World
                 for (var dz = start; dz < end; dz++)
                 {
                     Vector2Int tile = WorldToGrid(x + dx, z + dz);
-                    if (IsInBounds(tile) && !IsOccupied(tile))
-                        PlaceNodeAtTile(tile, node);
+                    if (IsInBounds(tile))
+                        PlaceNodeAtTile(tile, node, true);
                 }
             }
         }
@@ -133,7 +143,7 @@ namespace GlowCore.World
             Vector3 spawnRotation = prefab.transform.eulerAngles; // Keep x and z rotation of the prefab
             spawnRotation.y = Node.BlockRotationToDegrees(rotation) + yRotationOffset;
             GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.Euler(spawnRotation), m_nodesParent);
-            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition, 0.9f) || !PlaceNodeAtTile(tile, node))
+            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition, 0.9f) || !PlaceNodeAtTile(tile, node, false))
             {
                 Destroy(nodeObject);
                 return null;
