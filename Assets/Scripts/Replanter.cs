@@ -55,6 +55,11 @@ public class Replanter : MonoBehaviour
             return false;
 
         Node node = WorldGrid.Instance.CreateNodeAt(block.NodeToBuild, targetTile, m_replanterNode.Rotation, block.YRotationOffset);
+        if (node != null)
+            node.SourceBlock = block;
+        else
+            Debug.Log($"Replanter was not able to place {block.Name}");
+
         m_delayTimer = 0f;
         return node is not null;
     }
