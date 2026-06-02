@@ -27,7 +27,7 @@ One of the more important decisions we made during the project came after the fi
 
 For the game itself we designed a core loop around gathering wood, crafting tools, upgrading the GlowCore and slowly automating the work with the axe machine. The intention was to give the player a steady sense of progress and to make automation feel like a reward rather than something the game hands out from the start.
 
-#v(1em)
+#pagebreak()
 
 #title_without_numbering(title: "Result", depth: 3)
 

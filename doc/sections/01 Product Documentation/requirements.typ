@@ -16,6 +16,8 @@ Since a game typically only has one primary actor - *The Player* - it makes sens
 - The Dedicated Player has already played the game multiple times before, thus he doesn't want to be bored with a long tutorial everytime he starts a new game. He wants to be able to dictate the pacing of the game.
 - He doesn't care for the story and lore in games. He doesn't want to read through dialogues and doesn't like long cutscenes.
 
+#pagebreak()
+
 ==== Use Case Diagram
 The diagram shows a modified version of the Use Case Diagram. The Personas take the place of the Actors. An arrow indicates that a Persona uses a feature. A missing arrow means that the Persona is not interested in using a feature, although it remains accessible to him.
 
@@ -293,7 +295,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   status_color: uc-status.at("uc11"),
 ) <UC11>
 
-
+#pagebreak()
 
 === Non-Functional Requirements
 
@@ -374,6 +376,7 @@ Each NFR table includes a colored status indicator in the top-right corner repre
   supplement: [Table],
 )
 
+#pagebreak()
 ==== NFR Overview
 
 The following table provides a compact overview of all non-functional requirements, their category, priority, verification milestone, and current status. This serves as a quick reference before diving into the detailed NFR descriptions below.
@@ -433,6 +436,7 @@ Verification is tied to project milestones (see @UpdatedMilestones) rather than 
 - *M09 -- Beta Release (15.05.2026)*: Required / Medium and Optional / Medium NFRs are verified. Performance tuning and playtesting rounds.
 - *M10 -- Official Release (05.06.2026)*: Remaining Optional / Low NFRs are verified. Final polish and compliance check.
 
+#pagebreak()
 ==== Priority Matrix
 
 The priority matrix visualizes the distribution of NFRs across the two priority dimensions. This helps identify where the project's quality focus lies and whether the prioritization is balanced.
