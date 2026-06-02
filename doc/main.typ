@@ -40,13 +40,25 @@
     column-gutter: 1.6em,
     row-gutter: 0.85em,
     align: (right + top, left + top),
-    text(weight: 600)[Authors],
-    [Cedric Cathomas, Yoris Kucera, \ Dominik Wyss, Nathanael Fässler],
+    text(weight: 600)[Authors], [Cedric Cathomas, Yoris Kucera, \ Dominik Wyss, Nathanael Fässler],
     text(weight: 600)[Advisor], [Thomas Bocek],
     text(weight: 600)[Date], datetime.today().display("[day].[month].[year]"),
     text(weight: 600)[Version], text("__VERSION__"),
     text(weight: 600)[Git Version], text("__GIT_VERSION__"),
   )
+]
+
+#align(center)[
+  #pad(left: 10.7em)[
+    #set text(size: text_size)
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 1.6em,
+      row-gutter: 0.85em,
+      align: (right + top, left + top),
+      text(weight: 600)[Steam Link], text("https://store.steampowered.com/app/4613470/GlowCore/"),
+    )
+  ]
 ]
 
 #v(16mm)
