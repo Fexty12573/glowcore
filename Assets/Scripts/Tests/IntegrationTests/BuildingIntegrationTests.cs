@@ -7,6 +7,7 @@ using UnityEngine.TestTools;
 
 public class BuildingIntegrationTests
 {
+    private readonly int m_defaultPlayerInventoryItemCount = 2; // Describes how many item stacks are in the player's inventory at the start
     private WorldGrid m_world;
     private BlockBehaviour m_blockBehaviour;
 
@@ -44,11 +45,6 @@ public class BuildingIntegrationTests
         SetPrivateField(worldGrid, "m_borderEast", new GameObject("E").transform);
         SetPrivateField(worldGrid, "m_borderWest", new GameObject("W").transform);
 
-        SetPrivateField(worldGrid, "m_visualBorderNorth", new GameObject("NV").transform);
-        SetPrivateField(worldGrid, "m_visualBorderSouth", new GameObject("SV").transform);
-        SetPrivateField(worldGrid, "m_visualBorderEast", new GameObject("EV").transform);
-        SetPrivateField(worldGrid, "m_visualBorderWest", new GameObject("WV").transform);
-
         SetPrivateField(worldGrid, "m_nodesParent", new GameObject("Nodes").transform);
         SetPrivateField(worldGrid, "m_worldMode", WorldMode.DesignedWorld);
 
@@ -70,7 +66,7 @@ public class BuildingIntegrationTests
         var itemsField = inventoryInstance.GetType().GetField("m_items",
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         ItemStack[] items = (ItemStack[])itemsField.GetValue(inventoryInstance);
-        (items[0], items[1]) = (items[1], items[0]);
+        (items[0], items[m_defaultPlayerInventoryItemCount]) = (items[m_defaultPlayerInventoryItemCount], items[0]);
 
         yield return null;
     }

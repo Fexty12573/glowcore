@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Tool
   Name: Iron Shovel
   Description: 
-  Prefab: {fileID: 0}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
+  Prefab: {fileID: 5436973242435318681, guid: a98e33457e25eca4ebffdb0531c030ad, type: 3}
+  Icon: {fileID: 21300000, guid: 1a97c0e6562a9a545912edf1e6d1c6eb, type: 3}
+  IconRotation: {x: 0, y: 40, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 99
   m_idBytes: fb7977147076b34a937d30bf5941d89d
+  Sound: 2

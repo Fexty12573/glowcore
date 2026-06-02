@@ -7,48 +7,45 @@
 #meeting_info(
   date: "19.05.2026",
   sprint: "Sprint 7",
-  lead: "Dominik Wyss",
-  scribe: "Nathanael Fässler",
+  lead: "Yoris Kucera",
+  scribe: "Dominik Wyss",
   time: "15:00–16:00",
   location: "Building 8",
   participants: "Thomas Bocek, Dominik Wyss, Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
   links: "GitHub repository + Jira board (internal team links)",
 )
 
-// ==== Agenda
-// #agenda_table((
-//   [GlowCore v0.2.0 demo],
-//   [Dominik Wyss],
-//   [Works, but still needs improvements.],
-//   [GitHub selfhosted runner],
-//   [Yoris Kucera],
-//   [Is working. We have to be careful if we make the repository public.],
-//   [Quality measures],
-//   [Dominik Wyss],
-//   [There are files with less than 10 lines of code. In our case it makes sense to keep them separate.],
-//   [User Tests],
-//   [Nathanael Fässler],
-//   [The first two user tets provided valuable feedback.],
-//   [Code Review],
-//   [Dominik Wyss],
-//   [WorldGrid.cs was reviewed. No unclean code found.],
-//   [Steampage],
-//   [Dominik Wyss],
-//   [Looks good.],
-// ))
-
-// ==== Todos
-// #todo_table((
-//   [Document deployment on steam],
-//   [not assigned],
-//   [19.05.2026],
-// ))
-
-
-// ==== Next dates
-// #next_dates((
-//   [Review 5 - Architecture],
-//   [19.05.2026 15:00],
-// ))
-
 #pagebreak()
+
+==== Agenda
+#agenda_table((
+  [Linux Build],
+  [Yoris Kuvcera],
+  [Game doesn't start because of error.],
+  [GlowCore near finish demo],
+  [Yoris Kuvcera],
+  [Great working game, but it still needs some finishing touches.],
+  [New GlowCore levels],
+  [Nathanael Fässler],
+  [New progress fo the game, looks good.],
+  [New Biomes and their creation],
+  [Nathanael Fässler],
+  [Great map for the world.],
+  [Sound],
+  [Nathanael Fässler],
+  [Sound is very nice, brings the game to life.],
+  [Automation],
+  [Nathanael Fässler],
+  [New automation feature is impressive.],
+))
+
+==== Todos
+#todo_table((
+  [Fix Linux build],
+  [not assigned],
+  [05.06.2026],
+  [Shorten the documentation],
+  [not assigned],
+  [05.06.2026],
+))
+

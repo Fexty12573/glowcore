@@ -1,7 +1,7 @@
 # Inventory System Architecture
 
 > Reference document for the GlowCore inventory UI system.
-> Last updated: 2026-05-08 (GC-143: Chest UI added; new `IItemContainer` interface for any slot-based container; `ItemSlotUI` is now container-aware; `InventoryUI` handles cross-container drag/drop via `ContainerOps.MoveStack`; `PlayerInventory` implements `IItemContainer` in addition to `IInventoryService`; `Chest`/`ChestInteractable` mirror the CraftingStation split; `IInventoryService` gained `IsChestOpen`, `SetChestOpen`, `OnChestToggled`; `NodeActionSystem` and `HotbarUI` guard/dim on chest open. CraftingTable* references corrected to CraftingStation* throughout the doc. `Chest.m_slotCount` is a `[SerializeField, Min(1)]` field so each chest can declare its own size.)
+> Last updated: 2026-05-26 (GC-224: Right-click stack splitting added. `ItemSlotUI` now implements `IPointerClickHandler` and forwards right-clicks to `InventoryUI.OnSlotRightClicked`. `InventoryUI` gained a parallel "floating-hold" state (`m_floatingItem`, `m_floatingAmount`, `m_floatingSource`) that coexists with the existing left-click whole-slot ghost-hold. Right-click halves an idle stack; right-click while floating-holding places one item onto a compatible slot. A polled `Update()` follows the cursor only while floating-holding. Closing any panel returns floating items to the source container via `AddStack`. Works across all `IItemContainer`s — no per-container code.)
 
 ---
 
@@ -416,10 +416,36 @@ Never accesses `Inventory` or `PlayerInventory` directly for data operations.
 - `ItemSlotUI` owns drag lifecycle (`OnBeginDrag`, `OnDrag`, `OnEndDrag`)
 - `InventoryUI` receives forwarded calls — they all pass `ItemSlotUI` (the slot itself), not just an index, so the controller can read the slot's owning `IItemContainer`.
 
-**Held-item state — container-aware:**
-`InventoryUI` tracks the held item with three fields: `m_heldSlot` (the source `ItemSlotUI`), `m_heldContainer` (`IItemContainer` it came from), and `m_heldSlotIndex`. This lets a single drag controller handle drops on slots in *any* panel.
+**Held-item state — two parallel modes:**
 
-**Drag-and-drop flow:**
+| Mode | Trigger | Fields | Source slot | Cancel behavior |
+|---|---|---|---|---|
+| **Ghost-hold** | Left-click drag | `m_heldSlot`, `m_heldContainer`, `m_heldSlotIndex`, `m_isHolding` | Ghosted, data unchanged | Un-ghost; data never moved |
+| **Floating-hold** | Right-click halve | `m_floatingItem`, `m_floatingAmount`, `m_floatingSource` | Mutated (split already applied) | `AddStack` remainder back to `m_floatingSource` |
+
+Only one mode is active at a time. Both share the same `m_cursorIcon` for rendering. `IsHoldingItem` returns `m_isHolding || m_floatingAmount > 0`. This lets a single drag controller handle drops on slots in *any* panel for both interaction styles.
+
+**Right-click handler — `OnSlotRightClicked(ItemSlotUI slot)`** (single entry point):
+- **Idle:** `TryHalveSlot` → if `data.Amount > 1`, takes `pickup = data.Amount / 2`, mutates source slot to `N − pickup`, begins floating-hold. Slots with a single item (incl. unstackable items like the axe) are skipped — left-drag is the right tool for moving them.
+- **Floating-hold:** `TryPlaceOneOnSlot` → places 1 onto target if empty or same-item-with-room; decrements `m_floatingAmount`; ends floating-hold when it hits 0.
+- **Ghost-hold:** no-op (right-click during a left-drag is reserved for future use).
+
+**Off-slot click while floating — `HandleOffSlotClick()` (polled from `Update`)**:
+Any mouse click whose target is not a slot is treated as a world-drop intent. The check is `m_hoveredSlot == null` at click time — slot clicks are dispatched by `IPointerDownHandler` before `Update` runs, so the hover state is authoritative. Rules:
+- Source = `PlayerInventory` and GlowCore UI closed: drops to world. **Left-click drops all** floating, **right-click drops one**, mirroring the slot place-all/place-one rule.
+- Source = chest, or GlowCore UI open: cancels (returns floating to source). Chest items never drop to world — same rule as the left-drag release-outside path.
+- No backdrop GameObject or Inspector wiring needed; works wherever the inventory is open.
+
+**Left-click handler while floating — `TryDumpFloatingOnSlot(ItemSlotUI slot)`**:
+- Empty target → places the whole floating stack and ends floating-hold.
+- Same item → tops the target up to `MaxStack`, keeps the remainder floating.
+- Different item → Minecraft-style swap: target's old contents become the new floating stack and the floating stack is placed into the target. (Use this to cancel a halve by left-clicking the original source slot.)
+
+**Cursor visuals:** `UpdateCursorIcon(Item)` / `UpdateCursorCount(int)` / `HideCursor()` are shared by both hold modes. The icon is the `RawImage`; the count is `m_cursorCountText` (TextMeshProUGUI, optional — leave unwired if not desired). Count is hidden when amount ≤ 1, matching slot-count rendering in `ItemIconHelper`.
+
+**Cursor follow during floating-hold:** right-click doesn't fire `IDragHandler`, so there's no pointer-move event to ride. `InventoryUI.Update()` polls `Mouse.current.position` only while `m_floatingAmount > 0` — does nothing when idle. This is the only `Update()` in the entire UI layer.
+
+**Drag-and-drop flow (left-click):**
 1. `OnSlotPressed(ItemSlotUI slot)` → reads `slot.Container`, `slot.SlotIndex`, calls `PickUpItem(slot, data)`
 2. `PickUpItem(slot, data)` → ghosts source slot, shows cursor icon, stores held container + index
 3. `ItemSlotUI.OnDrag` → `InventoryUI.OnDragUpdate` updates cursor and tooltip position
@@ -428,13 +454,28 @@ Never accesses `Inventory` or `PlayerInventory` directly for data operations.
    - Same container as source: existing `Swap`/`TryMerge` on the container
    - **Different container:** `ContainerOps.MoveStack(heldContainer, heldIdx, heldData, hoveredContainer, hoveredIdx, hoveredData)`
    - Released outside any slot: world-drop, but **only if held came from `PlayerInventory`** (chest items don't drop to world)
-6. `CancelHeldItem()` → cleanup
+6. `CancelHeldItem()` → cleanup (also calls `ReturnFloatingToSource` + `EndFloatingHold`, no-ops when not floating)
+
+**Right-click flow (split / place-one):**
+1. `ItemSlotUI.OnPointerClick` filters for `InputButton.Right` → `InventoryUI.OnSlotRightClicked(slot)`
+2. Idle → halve (only when source `Amount > 1`): `SetSlot(idx, item, N − pickup)` on the slot's container, begin floating-hold with `(item, pickup)`. Single-item slots are skipped.
+3. Floating-hold → place one: `SetSlot(idx, item, hoverData.Amount + 1)` (or `1` if empty); decrement floating amount; end floating-hold at 0
+
+**Left-click flow while floating (dump / swap):**
+1. `ItemSlotUI.OnPointerDown` (Left) → `InventoryUI.OnSlotPressed(slot)`. While floating, routes to `TryDumpFloatingOnSlot`.
+2. Empty target → place all, end floating.
+3. Same item → top up to `MaxStack`, keep remainder floating.
+4. Different item → swap: target contents become the new floating stack.
+
+**Close-while-holding cleanup:** UI close path (`OnInventoryToggled(false)`, `ChestUI.Hide`, `GlowCoreUpgradeUI.Hide`) all route through `CancelHeldItem` → `ReturnFloatingToSource` → `m_floatingSource.AddStack(item, remaining)`. Ghost-hold un-ghosts the source slot (data never moved).
 
 ### `ItemSlotUI` — MonoBehaviour (`ItemSlotUI.cs`)
 
 **Reusable slot component, container-aware.** Receives `SlotData` via `Refresh(SlotData)` — never queries the data layer. Initialized with `Initialize(InventoryUI owner, IItemContainer container, int slotIndex, SlotData)`.
 
 The slot exposes `Container`, `SlotIndex`, and `CurrentData` properties so the owner (`InventoryUI`) can route drag operations to the correct container without caring whether the slot belongs to the player inventory, a chest, or a future container type.
+
+**Pointer interfaces:** `IPointerDownHandler` + `IPointerUpHandler` (left-click drag lifecycle), `IPointerClickHandler` (forwards right-click via `OnSlotRightClicked`), `IBeginDragHandler` + `IDragHandler` + `IEndDragHandler` (drag), `IPointerEnterHandler` + `IPointerExitHandler` (hover). All logic lives in `InventoryUI`; the slot only forwards.
 
 ### `CraftingUI` — MonoBehaviour (`CraftingUI.cs`)
 
@@ -902,8 +943,10 @@ All input is event-driven via Unity Input System action callbacks on `PlayerInve
 4. Leave `RequiresCraftingTable = false` for hand-craftable recipes — they appear in both UIs
 
 ### Add right-click actions
-Add `IPointerClickHandler` to `ItemSlotUI`, check for `InputButton.Right`,
-call a new method on `InventoryUI`.
+The seam is already in place: `ItemSlotUI` forwards right-clicks to
+`InventoryUI.OnSlotRightClicked(ItemSlotUI slot)`. Extend that single method with a new
+branch (or refactor to a strategy if more than 3 modes accumulate). Existing branches:
+**idle → halve**, **floating-hold → place 1**, **ghost-hold → no-op**.
 
 ### Make a usable held item
 1. Attach a component implementing `IHandItem` to the item's Prefab root.

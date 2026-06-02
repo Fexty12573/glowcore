@@ -40,8 +40,6 @@ public class PlayerHand : MonoBehaviour
         m_itemGameObject.transform.localScale *= m_itemsInHand.Item.InHandScale;
         Rigidbody rb = m_itemGameObject.GetComponent<Rigidbody>();
         Destroy(rb);
-        Outline outline = m_itemGameObject.GetComponent<Outline>();
-        Destroy(outline);
         if (m_itemGameObject.TryGetComponent(out IHandItem handItem) && handItem is MonoBehaviour bhv)
             bhv.enabled = true;
         if (m_itemGameObject.TryGetComponent(out IPlayerInventoryAware inventoryAware))
@@ -50,9 +48,21 @@ public class PlayerHand : MonoBehaviour
 
     private void OnUse(InputValue value)
     {
+        if (m_playerInventory != null && m_playerInventory.IsAnyUIOpen)
+            return;
         var handItem = m_itemGameObject?.GetComponent<IHandItem>();
         if (handItem is null)
             return;
         handItem.Use(value);
+    }
+
+    private void OnRotate(InputValue value)
+    {
+        if (m_playerInventory != null && m_playerInventory.IsAnyUIOpen)
+            return;
+        var block = m_itemGameObject?.GetComponent<BlockBehaviour>();
+        if (block is null)
+            return;
+        block.Rotate(value);
     }
 }

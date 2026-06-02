@@ -19,6 +19,8 @@ Inspector transforms:
  */
 public class PlayerCamera : MonoBehaviour
 {
+    [SerializeField] private Camera m_mainCamera;
+    [SerializeField] private Camera m_raycastCamera;
     [SerializeField] private Transform m_cameraAnchor;
     [SerializeField] private float m_horizontalCameraSpeed = 50;
     [SerializeField] private float m_verticalCameraSpeed = 40;
@@ -29,6 +31,10 @@ public class PlayerCamera : MonoBehaviour
     private float m_sensitivityMultiplierX = 1f;
     private float m_sensitivityMultiplierY = 1f;
     private IDisplayService m_displayService;
+    private PlayerInventory m_playerInventory;
+
+    public Camera MainCamera => m_mainCamera;
+    public Camera Raycastcamera => m_raycastCamera;
 
     public void Initialize(IDisplayService displayService)
     {
@@ -47,7 +53,15 @@ public class PlayerCamera : MonoBehaviour
 
     public void HandleLook(Vector2 lookInput)
     {
-        m_lookInput = lookInput;
+        // The Look action is bound to RightMouse + Pointer/delta — that same RMB also drives
+        // right-click stack splitting in the inventory. Suppress camera rotation while any
+        // inventory-style UI is open so splitting doesn't pan the world.
+        if (m_playerInventory == null)
+            m_playerInventory = FindFirstObjectByType<PlayerInventory>();
+
+        m_lookInput = m_playerInventory != null && m_playerInventory.IsAnyUIOpen
+            ? Vector2.zero
+            : lookInput;
     }
 
     private void OnDestroy() => UnsubscribeFrom(m_displayService);
@@ -75,7 +89,7 @@ public class PlayerCamera : MonoBehaviour
         HandleLook(inputValue.Get<Vector2>());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         var yaw = m_lookInput.x * Time.fixedDeltaTime * m_horizontalCameraSpeed * m_sensitivityMultiplierX;
         var pitch = -m_lookInput.y * Time.fixedDeltaTime * m_verticalCameraSpeed * m_sensitivityMultiplierY;
@@ -84,7 +98,7 @@ public class PlayerCamera : MonoBehaviour
         var pitchDegrees = Mathf.Clamp(pitch + m_cameraAnchor.localEulerAngles.x, m_minPitch, m_maxPitch);
 
         Quaternion target = Quaternion.Euler(pitchDegrees, yawDegrees, 0);
-        m_cameraAnchor.localRotation = Quaternion.Slerp(m_cameraAnchor.localRotation, target, 15 * Time.fixedDeltaTime);
+        m_cameraAnchor.localRotation = Quaternion.Slerp(m_cameraAnchor.localRotation, target, 15 * Time.deltaTime);
         m_cameraAnchor.eulerAngles = new Vector3(m_cameraAnchor.eulerAngles.x, m_cameraAnchor.eulerAngles.y, 0f); // Remove rotation around z axis
     }
 }

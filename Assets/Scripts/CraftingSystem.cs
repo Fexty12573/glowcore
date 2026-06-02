@@ -49,6 +49,8 @@ public class CraftingSystem : ICraftingService, IDisposable
 
         m_inventory.AddItem(recipe.ResultItem, recipe.ResultAmount);
 
+        AudioManager.Instance.PlayOneShot(AudioManager.SoundType.Craft, AudioManager.AudioChannel.Environment);
+
         return true;
     }
 

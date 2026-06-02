@@ -8,14 +8,15 @@ namespace GlowCore.World
 {
     public class GlowCoreObject : MonoBehaviour, IInteractable, IGlowCoreObject
     {
-        [Header("Level")]
-        [SerializeField] private GlowCoreLevelConfig m_levelConfig;
+        [Header("Level")][SerializeField] private GlowCoreLevelConfig m_levelConfig;
         [SerializeField] private GameObject m_nextLevelPrefab;
 
         [Header("References")]
-        [SerializeField][Min(0f)] private float m_closeDistance = 5f;
+        [SerializeField]
+        [Min(0f)]
+        private float m_closeDistance = 5f;
 
-        private readonly Dictionary<Item, int> m_accumulated = new();
+        private Inventory m_glowCoreInventory;
         private int m_bankedForExpansion;
         private GlowCoreUpgradeUI m_ui;
         private PlayerInventory m_playerInventory;
@@ -30,13 +31,14 @@ namespace GlowCore.World
                 if (m_nextLevelPrefab == null)
                     return null;
                 GlowCoreObject next = m_nextLevelPrefab.GetComponent<GlowCoreObject>();
-                return next != null ? next.m_levelConfig : null;
+                return next?.m_levelConfig;
             }
         }
 
         public int Level => m_levelConfig != null ? m_levelConfig.Level : 1;
         public bool HasNextLevel => m_nextLevelPrefab != null;
         public bool IsReadyToUpgrade => AreAllMaterialsMet();
+        public Inventory GetInventory() => m_glowCoreInventory;
 
         public float TotalProgress01
         {
@@ -56,6 +58,7 @@ namespace GlowCore.World
                     totalRequired += materials[i].Amount;
                     totalAccumulated += Mathf.Min(AccumulatedFor(materials[i].Item), materials[i].Amount);
                 }
+
                 return totalRequired == 0 ? 0f : (float)totalAccumulated / totalRequired;
             }
         }
@@ -64,12 +67,17 @@ namespace GlowCore.World
         public event Action OnProgressChanged;
         public event Action OnLevelUp;
 
+        // Raised once when a player upgrade brings the GlowCore to its final level.
+        // Static because each upgrade destroys this instance and spawns the next level's object,
+        // so listeners (e.g. the ending sequence) cannot bind to a specific instance.
+        public static event Action OnEndingReached;
+
         // Public Methods
         public int AccumulatedFor(Item item)
         {
             if (item == null)
                 return 0;
-            return m_accumulated.TryGetValue(item, out var value) ? value : 0;
+            return m_glowCoreInventory.CountItem(item);
         }
 
         public int RequiredFor(Item item)
@@ -83,6 +91,7 @@ namespace GlowCore.World
                 if (materials[i].Item == item)
                     return materials[i].Amount;
             }
+
             return 0;
         }
 
@@ -122,7 +131,7 @@ namespace GlowCore.World
                 return;
 
             m_playerInventory.RemoveItems(item, consume);
-            m_accumulated[item] = accumulated + consume;
+            m_glowCoreInventory.AddItems(new(item, consume));
 
             OnProgressChanged?.Invoke();
         }
@@ -134,7 +143,12 @@ namespace GlowCore.World
 
             OnLevelUp?.Invoke();
             UpgradePhysical();
-            SpawnNextLevel();
+            GlowCoreObject next = SpawnNextLevel();
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.GlowCoreUpgrade,
+                AudioManager.AudioChannel.Environment);
+
+            if (next != null && !next.HasNextLevel)
+                OnEndingReached?.Invoke();
         }
 
         public GlowCoreObject ForceUpgrade()
@@ -149,6 +163,7 @@ namespace GlowCore.World
         // Private Methods
         private void Awake()
         {
+            m_glowCoreInventory = new Inventory(8, 32);
             m_playerInventory = FindFirstObjectByType<PlayerInventory>();
 
             RenderSettings.sun.intensity += 0.02f;
@@ -188,6 +203,7 @@ namespace GlowCore.World
                 if (AccumulatedFor(materials[i].Item) < materials[i].Amount)
                     return false;
             }
+
             return true;
         }
 
@@ -214,7 +230,7 @@ namespace GlowCore.World
 
             if (newGlowCoreObj.TryGetComponent(out Node newNode))
             {
-                var nextConfig = newGlowCore != null ? newGlowCore.LevelConfig : null;
+                var nextConfig = newGlowCore?.LevelConfig;
                 var tileCount = nextConfig != null ? nextConfig.TileCount : 1;
                 WorldGrid.Instance.PlaceNodeAt(newNode, worldX, worldZ, tileCount);
             }

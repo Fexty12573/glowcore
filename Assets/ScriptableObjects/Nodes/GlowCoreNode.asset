@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: GlowCoreNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjectScripts.NodeData
-  InteractionRange: 3
+  InteractionRange: 5
   ItemDrops: []
   BaseBreakTime: 0
   IsIndestructible: 1

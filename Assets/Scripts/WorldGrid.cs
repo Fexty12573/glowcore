@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GlowCore.UI.Menus;
+using ScriptableObjects;
 using UnityEngine;
 
 namespace GlowCore.World
@@ -7,7 +8,8 @@ namespace GlowCore.World
     public enum WorldMode
     {
         ProceduralGeneration,
-        DesignedWorld
+        DesignedWorld,
+        TitleScreenDemo
     }
 
     [RequireComponent(typeof(AutosaveService))]
@@ -43,10 +45,6 @@ namespace GlowCore.World
         [SerializeField] private Transform m_borderSouth;
         [SerializeField] private Transform m_borderEast;
         [SerializeField] private Transform m_borderWest;
-        [SerializeField] private Transform m_visualBorderNorth;
-        [SerializeField] private Transform m_visualBorderSouth;
-        [SerializeField] private Transform m_visualBorderEast;
-        [SerializeField] private Transform m_visualBorderWest;
 
         [Header("Nodes")]
         [SerializeField] private SpawnableNode[] m_spawnableNodes;
@@ -68,6 +66,7 @@ namespace GlowCore.World
         private ISaveService m_saveService;
         private IGameLaunchContext m_launchContext;
         private string m_currentPlayerName = "Player";
+        private PlayerMovement m_playerMovement;
 
         // Properties
         public static WorldGrid Instance => s_instance;
@@ -81,6 +80,7 @@ namespace GlowCore.World
         {
             m_tiles = new Node[m_gridSize, m_gridSize];
             m_origin = new Vector2Int(m_gridSize / 2, m_gridSize / 2);
+            m_playerMovement = m_player.gameObject.GetComponent<PlayerMovement>();
         }
 
         public Node GetNodeAt(int x, int z)
@@ -92,10 +92,22 @@ namespace GlowCore.World
             return m_tiles[index.x, index.y];
         }
 
-        public bool PlaceNodeAtTile(Vector2Int tile, Node node)
+        public Node GetNodeAt(Vector2Int tile) => GetNodeAt(tile.x, tile.y);
+
+        public bool PlaceNodeAtTile(Vector2Int tile, Node node, bool destroyExistingNodes)
         {
-            if (!IsInBounds(tile) || IsOccupied(tile))
+            if (!IsInBounds(tile) || (IsOccupied(tile) && !destroyExistingNodes))
                 return false;
+
+            if (IsOccupied(tile))
+            {
+                Node existingNode = m_tiles[tile.x, tile.y];
+                foreach (var existingTile in existingNode.TilesUsed)
+                    ClearNodeAt(existingTile);
+
+                Destroy(existingNode.gameObject);
+            }
+
             m_tiles[tile.x, tile.y] = node;
             node.TilesUsed.Add(tile);
             return true;
@@ -104,7 +116,7 @@ namespace GlowCore.World
         public bool PlaceNodeAt(Node node, int x, int z)
         {
             Vector2Int index = WorldToGrid(x, z);
-            return PlaceNodeAtTile(index, node);
+            return PlaceNodeAtTile(index, node, false);
         }
 
         public void PlaceNodeAt(Node node, int x, int z, int tileCount)
@@ -117,24 +129,26 @@ namespace GlowCore.World
                 for (var dz = start; dz < end; dz++)
                 {
                     Vector2Int tile = WorldToGrid(x + dx, z + dz);
-                    if (IsInBounds(tile) && !IsOccupied(tile))
-                        PlaceNodeAtTile(tile, node);
+                    if (IsInBounds(tile))
+                        PlaceNodeAtTile(tile, node, true);
                 }
             }
         }
 
         public void ClearNodeAt(Vector2Int tile) => m_tiles[tile.x, tile.y] = null;
 
-        public Node CreateNodeAt(GameObject prefab, Vector2Int tile)
+        public Node CreateNodeAt(GameObject prefab, Vector2Int tile, BlockRotation rotation, float yRotationOffset)
         {
             Vector3 spawnPosition = GetSpawnPosition(tile);
-            // GC-142: Use prefab's own rotation so placed nodes respect their saved orientation
-            GameObject nodeObject = Instantiate(prefab, spawnPosition, prefab.transform.rotation, m_nodesParent);
-            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition) || !PlaceNodeAtTile(tile, node))
+            Vector3 spawnRotation = prefab.transform.eulerAngles; // Keep x and z rotation of the prefab
+            spawnRotation.y = Node.BlockRotationToDegrees(rotation) + yRotationOffset;
+            GameObject nodeObject = Instantiate(prefab, spawnPosition, Quaternion.Euler(spawnRotation), m_nodesParent);
+            if (!nodeObject.TryGetComponent(out Node node) || IsPlayerObstructing(spawnPosition, 0.9f) || !PlaceNodeAtTile(tile, node, false))
             {
                 Destroy(nodeObject);
                 return null;
             }
+            node.Rotation = rotation;
             return node;
         }
 
@@ -170,6 +184,30 @@ namespace GlowCore.World
             return node;
         }
 
+        public void ReplaceNode(Node oldNode, Block blockOfNewNode, bool keepRotation) //Used by saplings
+        {
+            if (oldNode == null || blockOfNewNode == null)
+                return;
+
+            foreach (var usedTile in oldNode.TilesUsed)
+            {
+                ClearNodeAt(usedTile);
+            }
+            Destroy(oldNode.gameObject);
+
+            var tile = WorldToGrid(oldNode.transform.position);
+            var rotation = keepRotation ? oldNode.Rotation : (BlockRotation)Random.Range(0, 4);
+            Node newNode = CreateNodeAt(blockOfNewNode.NodeToBuild, tile, rotation, blockOfNewNode.YRotationOffset);
+            if (newNode == null)
+            {
+                Debug.LogError($"Node wasn't able to be replaced into {blockOfNewNode.Name} at {tile}.");
+            }
+
+            newNode.SourceBlock = blockOfNewNode; // for savefile
+            newNode.TilesUsed.Clear();
+            newNode.TilesUsed.Add(tile);
+        }
+
         public bool IsInBounds(Vector2Int tile)
         {
             return tile.x >= 0 && tile.x < m_gridSize
@@ -181,9 +219,9 @@ namespace GlowCore.World
             return !IsInBounds(tile) || m_tiles[tile.x, tile.y] is not null;
         }
 
-        public bool IsPlayerObstructing(Vector3 worldPosition)
+        public bool IsPlayerObstructing(Vector3 worldPosition, float minDistance)
         {
-            return Vector3.Distance(worldPosition, m_player.position) <= 0.9f;
+            return Vector3.Distance(worldPosition, m_player.position) <= minDistance;
         }
 
         public bool IsNodeInBounds(Node node)
@@ -274,9 +312,12 @@ namespace GlowCore.World
                 case WorldMode.DesignedWorld:
                     InitializeDesignedWorld();
                     break;
+                case WorldMode.TitleScreenDemo:
+                    InitializeDemoWorld();
+                    break;
             }
 
-            LogGrid();
+            // LogGrid();
             UpdateBorders();
         }
 
@@ -293,10 +334,18 @@ namespace GlowCore.World
             m_snapshotPositions = BuildSnapshotPositions();
         }
 
+        private void InitializeDemoWorld()
+        {
+            RegisterExistingNodes();
+        }
+
         private void Start()
         {
             m_saveService ??= new SaveService();
             m_launchContext ??= GameLaunchContext.Instance;
+
+            if (m_worldMode == WorldMode.TitleScreenDemo)
+                m_saveService = new MockSaveService();
 
             if (m_launchContext != null && m_launchContext.Mode == GameLaunchMode.NewGame)
             {
@@ -330,12 +379,28 @@ namespace GlowCore.World
             m_currentPlayerName = saveData.Player.Name;
             var glowCore = FindFirstObjectByType<GlowCoreObject>();
 
-            // Advance GlowCore to the saved level
             if (glowCore != null)
             {
+                // Advance GlowCore to the saved level
                 var targetLevel = (int)saveData.Player.GlowCoreLevel;
                 while (glowCore != null && glowCore.Level < targetLevel)
                     glowCore = glowCore.ForceUpgrade();
+
+                // it is important that Inventory is transferred after the level ups, because every new GlowCore Level
+                // has it's own prefab that resets the inventory in Awake.
+                var inventory = glowCore.GetInventory();
+                for (var x = 0; x < inventory.Width; x++)
+                {
+                    for (var y = 0; y < inventory.Height; y++)
+                    {
+                        var index = (y * inventory.Width) + x;
+                        var stack = saveData.Player.GlowCoreInventory[x, y];
+                        if (stack.IsValid)
+                            inventory.SetSlot(index, stack.Item, stack.Amount);
+                        else
+                            inventory.ClearSlot(index);
+                    }
+                }
             }
 
             // Apply saved world changes
@@ -362,7 +427,7 @@ namespace GlowCore.World
                                 }
                             }
 
-                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile);
+                            var node = CreateNodeAt(delta.BuildData.Block.NodeToBuild, tile, delta.BuildData.Rotation, delta.BuildData.Block.YRotationOffset);
                             node.SourceBlock = delta.BuildData.Block;
 
                             if (delta.BuildData.Inventory != null && node.TryGetComponent(out Chest chest))
@@ -414,6 +479,7 @@ namespace GlowCore.World
             }
 
             m_player.position = new Vector3(saveData.Player.PosX, m_player.position.y, saveData.Player.PosZ);
+            m_playerMovement.SetCameraStartPosition();
         }
 
         private HashSet<Vector2Int> BuildSnapshotPositions()
@@ -439,7 +505,10 @@ namespace GlowCore.World
             var playerInventory = FindFirstObjectByType<PlayerInventory>();
 
             if (glowCore != null)
+            {
                 saveData.Player.GlowCoreLevel = (ushort)glowCore.Level;
+                saveData.Player.GlowCoreInventory = glowCore.GetInventory();
+            }
 
             saveData.Player.PosX = m_player.position.x;
             saveData.Player.PosZ = m_player.position.z;
@@ -484,7 +553,7 @@ namespace GlowCore.World
                         continue;
 
                     Vector2Int worldPos = GridToWorld(x, z);
-                    var buildData = new BuildData { Block = node.SourceBlock };
+                    var buildData = new BuildData { Block = node.SourceBlock, Rotation = node.Rotation };
 
                     if (node.TryGetComponent(out Chest chest))
                         buildData.Inventory = chest.GetInventory();
@@ -526,16 +595,6 @@ namespace GlowCore.World
             m_borderWest.position = new Vector3(-center, kBorderHeight / 2f, 0f);
             m_borderWest.localScale = borderScaleEW;
 
-            // Update visual Border
-            m_visualBorderNorth.localScale = new Vector3(m_gridSize, m_visualBorderNorth.localScale.y, m_visualBorderNorth.localScale.z);
-            m_visualBorderSouth.localScale = new Vector3(m_gridSize, m_visualBorderSouth.localScale.y, m_visualBorderSouth.localScale.z);
-            m_visualBorderEast.localScale = new Vector3(m_gridSize, m_visualBorderEast.localScale.y, m_visualBorderEast.localScale.z);
-            m_visualBorderWest.localScale = new Vector3(m_gridSize, m_visualBorderWest.localScale.y, m_visualBorderWest.localScale.z);
-
-            m_visualBorderNorth.position = new Vector3(0, m_visualBorderNorth.position.y, halfSize);
-            m_visualBorderSouth.position = new Vector3(0, m_visualBorderSouth.position.y, -halfSize);
-            m_visualBorderEast.position = new Vector3(halfSize, m_visualBorderSouth.position.y, 0);
-            m_visualBorderWest.position = new Vector3(-halfSize, m_visualBorderSouth.position.y, 0);
         }
 
         private void LogGrid()
@@ -557,23 +616,6 @@ namespace GlowCore.World
 
             Debug.Log(sb.ToString());
         }
-
-        // private void ClearTreesInGrid()
-        // {
-        //     for (int x = 0; x < m_gridSize; x++)
-        //     {
-        //         for (int z = 0; z < m_gridSize; z++)
-        //         {
-        //             if (m_tiles[x, z] == null || !m_tiles[x, z].TryGetComponent(out Node _))
-        //                 continue;
-        //
-        //             Destroy(m_tiles[x, z].gameObject);
-        //             m_tiles[x, z] = null;
-        //         }
-        //     }
-        //
-        //     m_totalTreeCount = 0;
-        // }
 
         private GameObject PickRandomNodePrefab()
         {

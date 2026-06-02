@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5385785256396467907}
   - component: {fileID: 4338846536709327639}
   - component: {fileID: 6972355351753365677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Post
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2537732320963353628}
   - component: {fileID: 4586335771950984416}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SignBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::BlockBehaviour
   m_block: {fileID: 11400000, guid: 7596b20dd6be0ec4782ef50472735fc6, type: 2}
-  m_buildGhostAllowed: {fileID: 5482746373729648181, guid: 438883cf47b7e914eb85e10e4321248b, type: 3}
-  m_buildGhostOccupied: {fileID: 5482746373729648181, guid: 11fdb015fdbad804c91f34d71ac9a883, type: 3}
+  m_buildGhostAllowed: {fileID: 5124231440842827354, guid: 1a5a7163e678a1146a7497a3e0a00f80, type: 3}
+  m_buildGhostOccupied: {fileID: 5070225296955533715, guid: 211947993e308b045a8e8ea912b3df03, type: 3}
 --- !u!1 &6220786779950999284
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6595914971261399931}
   - component: {fileID: 6984882232737331208}
   - component: {fileID: 615579256673762515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}

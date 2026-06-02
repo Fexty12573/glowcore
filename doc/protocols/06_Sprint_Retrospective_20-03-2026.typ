@@ -52,6 +52,8 @@
 - Keep Jira Board up to date.
 - Better coordinate the task assignment.
 
+#pagebreak()
+
 ==== Todos
 #todo_table((
   [Send documentation to Advisor],
@@ -67,4 +69,3 @@
 
 
 
-#pagebreak()

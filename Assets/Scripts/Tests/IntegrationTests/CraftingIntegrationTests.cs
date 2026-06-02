@@ -43,6 +43,18 @@ public class CraftingIntegrationTests
 
         m_crafting = new CraftingSystem(m_inventory, new[] { m_recipe });
 
+        GameObject am =
+            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/AudioManager.prefab");
+        GameObject es =
+            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/EnvironmentSound.prefab");
+        GameObject m = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/Music.prefab");
+        GameObject ps =
+            UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Audio/PlayerSound.prefab");
+        GameObject.Instantiate(am);
+        GameObject.Instantiate(es);
+        GameObject.Instantiate(m);
+        GameObject.Instantiate(ps);
+
         yield return null;
     }
 

@@ -12,15 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acf6e000571417393d45d79b1a55c01, type: 3}
   m_Name: ChestNode
   m_EditorClassIdentifier: Gameplay::ScriptableObjectScripts.InteractableData
-  InteractionRange: 3
+  InteractionRange: 2
   ItemDrops:
   - Item: {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
     Min: 1
     Max: 1
-  BaseBreakTime: 3
+  BaseBreakTime: 5
   IsIndestructible: 0
   UsableTools:
-  - Tool: {fileID: 11400000, guid: d3a1f13b2148e2e4ba636ff71b874a6e, type: 2}
+  - Tool: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
     BreakMultiplier: 1
   - Tool: {fileID: 11400000, guid: c016090ec14919b438ff9b93d9a54c1c, type: 2}
-    BreakMultiplier: 0.5
+    BreakMultiplier: 0.3
+  - Tool: {fileID: 11400000, guid: 9cdf2a033815fdd4da8afb643e64a3ea, type: 2}
+    BreakMultiplier: 0.1
+  - Tool: {fileID: 11400000, guid: 52a7419b488d409479211d23c3ad029a, type: 2}
+    BreakMultiplier: 0.05
+  - Tool: {fileID: 11400000, guid: 5faace79b0938a741baf08bb44bd7dba, type: 2}
+    BreakMultiplier: 0.025

@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour, IItemContainer
 {
+    [Serializable]
+    private struct StartingItem
+    {
+        public Item Item;
+        public int Amount;
+    }
     // Instance Fields
     [SerializeField, Min(1)] private int m_width = 8;
     [SerializeField, Min(1)] private int m_height = 2;
+    [SerializeField] private StartingItem[] m_startingItems;
 
     // Block this chest represents. Used by the save system so pre-placed scene
     // chests get persisted the same way as player-built ones.
@@ -30,6 +37,8 @@ public class Chest : MonoBehaviour, IItemContainer
         var stack = m_inventory.GetSlot(flatIndex);
         return stack != null ? new SlotData(stack) : SlotData.Empty;
     }
+
+    public bool HasEmptySlot() => m_inventory.GetFirstEmptySlot().HasValue;
 
     public int CountItem(Item item) => m_inventory.CountItem(item);
 
@@ -54,6 +63,15 @@ public class Chest : MonoBehaviour, IItemContainer
 
         if (m_block != null && TryGetComponent(out Node node) && node.SourceBlock == null)
             node.SourceBlock = m_block;
+
+        if (m_startingItems != null)
+        {
+            foreach (StartingItem entry in m_startingItems)
+            {
+                if (entry.Item != null && entry.Amount > 0)
+                    m_inventory.AddItems(new ItemStack(entry.Item, entry.Amount));
+            }
+        }
     }
 
     private void OnDestroy()

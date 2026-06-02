@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
   Name: Speed Potion
   Ingredients:
-  - Item: {fileID: 11400000, guid: 7596b20dd6be0ec4782ef50472735fc6, type: 2}
-    Amount: 2
-  - Item: {fileID: 11400000, guid: d5ba62c98877caa41a8d58685cd320df, type: 2}
-    Amount: 1
+  - Item: {fileID: 11400000, guid: d6f04cb604f15c54c8def24b7e10c4b7, type: 2}
+    Amount: 3
+  - Item: {fileID: 11400000, guid: 59384b70d608e4744953217932eee4bb, type: 2}
+    Amount: 3
   ResultItem: {fileID: 11400000, guid: aae48da43cf5a7d418fe7e812b279383, type: 2}
   ResultAmount: 1
-  m_requiresCraftingTable: 1

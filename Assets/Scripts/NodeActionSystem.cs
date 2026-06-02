@@ -1,4 +1,5 @@
 using System;
+using GlowCore.Rendering;
 using GlowCore.World;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,12 +19,12 @@ public class NodeActionSystem : MonoBehaviour
     [SerializeField] private PlayerInventory m_playerInventory;
     [SerializeField] private float m_raycastRange = 100f;
     private Node m_currentNode;
-    private Outline m_currentOutline;
     private Vector2Int? m_currentTile;
     private Vector2 m_mousePos;
 
     public static NodeActionSystem Instance => s_instance;
 
+    public float PotionBreakMultiplier = 1f;
     public Node CurrentNode => m_currentNode;
     public Vector2Int? CurrentTile => m_currentTile;
 
@@ -66,10 +67,7 @@ public class NodeActionSystem : MonoBehaviour
 
     private void UpdateOutlineHover()
     {
-        var inventoryBlocking = m_playerInventory != null
-            && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingStationOpen
-                || m_playerInventory.IsGlowCoreUIOpen || m_playerInventory.IsChestOpen);
-        if (Time.timeScale == 0f || inventoryBlocking)
+        if (Time.timeScale == 0f || (m_playerInventory != null && m_playerInventory.IsAnyUIOpen))
         {
             if (m_currentNode != null)
                 OnChangeSelectedNode?.Invoke(null);
@@ -110,7 +108,6 @@ public class NodeActionSystem : MonoBehaviour
         float distance = Vector3.Distance(playerPos, hitPos);
 
         Node node = child.Root;
-        Outline outline = node.Outline;
 
         if (distance > node.GetInteractionRange() || !WorldGrid.Instance.IsNodeInBounds(node))
         {
@@ -126,10 +123,7 @@ public class NodeActionSystem : MonoBehaviour
             Clear();
 
             m_currentNode = node;
-            m_currentOutline = outline;
-
-            if (m_currentOutline)
-                m_currentOutline.enabled = true;
+            HoverMaskRegistry.Set(node.Renderers);
 
             OnChangeSelectedNode?.Invoke(m_currentNode);
         }
@@ -150,7 +144,7 @@ public class NodeActionSystem : MonoBehaviour
         }
     }
 
-    private void HandleNodeBroken(Node brokenNode)
+    private void HandleNodeBroken(Node brokenNode, bool byPlayer)
     {
         if (brokenNode == m_currentNode)
         {
@@ -161,8 +155,7 @@ public class NodeActionSystem : MonoBehaviour
 
     private void OnInteract(InputValue value)
     {
-        if (m_playerInventory != null && (m_playerInventory.IsOpen || m_playerInventory.IsCraftingStationOpen ||
-                                          m_playerInventory.IsGlowCoreUIOpen || m_playerInventory.IsChestOpen))
+        if (m_playerInventory != null && m_playerInventory.IsAnyUIOpen)
             return;
 
         m_currentNode?.Interact();
@@ -170,11 +163,9 @@ public class NodeActionSystem : MonoBehaviour
 
     private void Clear()
     {
-        if (m_currentOutline)
-            m_currentOutline.enabled = false;
+        HoverMaskRegistry.Clear();
 
         m_currentNode = null;
-        m_currentOutline = null;
         m_currentTile = null;
     }
 

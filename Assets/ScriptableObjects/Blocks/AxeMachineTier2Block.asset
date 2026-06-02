@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: AxeMachineTier2Block
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Axe Machine T2
+  Description: Automatically drives forward
+  Prefab: {fileID: 456770863019932005, guid: efd62a9458b575e4fb054d9f847625da, type: 3}
+  Icon: {fileID: 21300000, guid: 7f53463422a407a4f83e903fa632e919, type: 3}
+  IconRotation: {x: 22.83, y: 90.49, z: -21.9}
+  DropScale: 0.5
+  InHandScale: 0.5
+  MaxStack: 99
+  m_idBytes: 197266614f979c4ab6690ebecc77faa3
+  NodeToBuild: {fileID: 3578041532742632149, guid: 9ce5a19eafc10d14f9d475fbdd9c5899, type: 3}
+  BuildRadius: 4
+  HasInventory: 1
+  YRotationOffset: 0

@@ -1,3 +1,5 @@
+using ScriptableObjects;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -14,6 +16,7 @@ namespace GlowCore.UI.Inventory
 
         [Header("Cursor Item")]
         [SerializeField] private RawImage m_cursorIcon;
+        [SerializeField] private TextMeshProUGUI m_cursorCountText;
         [SerializeField] private Canvas m_parentCanvas;
 
         [Header("Backdrop")]
@@ -39,9 +42,16 @@ namespace GlowCore.UI.Inventory
         private int m_heldSlotIndex = -1;
         private bool m_isHolding;
 
+        // Floating-hold state. Split from a slot via right-click. Independent of any source slot's
+        // live data: the source slot was already mutated when the split happened. m_floatingSource
+        // is only used to put the items back if the player closes the UI without placing them.
+        private Item m_floatingItem;
+        private int m_floatingAmount;
+        private IItemContainer m_floatingSource;
+
         private ItemSlotUI m_hoveredSlot;
 
-        public bool IsHoldingItem => m_isHolding;
+        public bool IsHoldingItem => m_isHolding || m_floatingAmount > 0;
 
         private void Awake()
         {
@@ -51,6 +61,54 @@ namespace GlowCore.UI.Inventory
                 m_cursorIcon.enabled = false;
                 m_cursorIcon.raycastTarget = false;
             }
+        }
+
+        // Right-click halve doesn't go through IDragHandler, so there's no pointer-move event to ride
+        // for cursor following or "release outside any slot" detection. Polled only while
+        // floating-holding, no cost when idle.
+        private void Update()
+        {
+            if (m_floatingAmount <= 0)
+                return;
+
+            UpdateCursorPosition();
+            HandleOffSlotClick();
+        }
+
+        // When floating-holding, a click that lands anywhere except a slot is treated as a
+        // world-drop intent (matching the existing left-drag release-outside behavior). Slot
+        // clicks are dispatched by IPointerDownHandler before this runs, so m_hoveredSlot is the
+        // authoritative "did the click hit a slot" signal.
+        private void HandleOffSlotClick()
+        {
+            if (Mouse.current == null)
+                return;
+
+            var leftPressed = Mouse.current.leftButton.wasPressedThisFrame;
+            var rightPressed = Mouse.current.rightButton.wasPressedThisFrame;
+            if (!leftPressed && !rightPressed)
+                return;
+
+            if (m_hoveredSlot != null)
+                return;
+
+            // Chest / GlowCore source items don't drop to the world. Falling back to cancel keeps
+            // the items recoverable from wherever they were split.
+            if (m_floatingSource is not PlayerInventory player || player.IsGlowCoreUIOpen)
+            {
+                CancelHeldItem();
+                return;
+            }
+
+            var dropAmount = rightPressed ? 1 : m_floatingAmount;
+            var dropPos = m_dropPoint != null ? m_dropPoint.position : player.transform.position;
+            ItemStackDrop.Spawn(new ItemStack(m_floatingItem, dropAmount), dropPos);
+
+            m_floatingAmount -= dropAmount;
+            if (m_floatingAmount <= 0)
+                EndFloatingHold();
+            else
+                UpdateCursorCount(m_floatingAmount);
         }
 
         private void Start()
@@ -148,16 +206,169 @@ namespace GlowCore.UI.Inventory
             if (m_isHolding || slot == null || slot.Container == null)
                 return;
 
+            if (m_floatingAmount > 0)
+            {
+                TryDumpFloatingOnSlot(slot);
+                return;
+            }
+
             var data = slot.Container.GetSlotData(slot.SlotIndex);
             if (data.IsValid)
                 PickUpItem(slot, data);
+        }
+
+        public void OnSlotRightClicked(ItemSlotUI slot)
+        {
+            if (slot == null || slot.Container == null || m_isHolding)
+                return;
+
+            if (m_floatingAmount > 0)
+                TryPlaceOneOnSlot(slot);
+            else
+                TryHalveSlot(slot);
+        }
+
+        private void TryHalveSlot(ItemSlotUI slot)
+        {
+            var data = slot.Container.GetSlotData(slot.SlotIndex);
+            // Slots holding a single item aren't splittable, halving would just be a pickup, which
+            // the left-click drag already handles. Skipping here keeps unstackable items (axe etc.)
+            // from being lifted by an accidental right-click.
+            if (!data.IsValid || data.Amount <= 1)
+                return;
+
+            var pickup = data.Amount / 2;
+            slot.Container.SetSlot(slot.SlotIndex, data.Item, data.Amount - pickup);
+            BeginFloatingHold(data.Item, pickup, slot.Container);
+        }
+
+        private void TryPlaceOneOnSlot(ItemSlotUI slot)
+        {
+            var data = slot.Container.GetSlotData(slot.SlotIndex);
+
+            if (data.IsValid)
+            {
+                if (data.Item != m_floatingItem || data.Amount >= m_floatingItem.MaxStack)
+                    return;
+                slot.Container.SetSlot(slot.SlotIndex, m_floatingItem, data.Amount + 1);
+            }
+            else
+            {
+                slot.Container.SetSlot(slot.SlotIndex, m_floatingItem, 1);
+            }
+
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
+            m_floatingAmount--;
+            if (m_floatingAmount <= 0)
+                EndFloatingHold();
+            else
+                UpdateCursorCount(m_floatingAmount);
+        }
+
+        private void TryDumpFloatingOnSlot(ItemSlotUI slot)
+        {
+            var data = slot.Container.GetSlotData(slot.SlotIndex);
+
+            if (!data.IsValid)
+            {
+                slot.Container.SetSlot(slot.SlotIndex, m_floatingItem, m_floatingAmount);
+                EndFloatingHold();
+                return;
+            }
+
+            if (data.Item == m_floatingItem)
+            {
+                var space = m_floatingItem.MaxStack - data.Amount;
+                if (space <= 0)
+                    return;
+                var move = Mathf.Min(space, m_floatingAmount);
+                slot.Container.SetSlot(slot.SlotIndex, m_floatingItem, data.Amount + move);
+                m_floatingAmount -= move;
+                if (m_floatingAmount <= 0)
+                    EndFloatingHold();
+                else
+                    UpdateCursorCount(m_floatingAmount);
+                return;
+            }
+
+            // Different item, Minecraft-style swap: place floating into target, target's old
+            // contents become the new floating stack. Source slot of the original split is left
+            // alone; on UI close any unplaced floating goes back to wherever it was split from.
+            slot.Container.SetSlot(slot.SlotIndex, m_floatingItem, m_floatingAmount);
+            m_floatingItem = data.Item;
+            m_floatingAmount = data.Amount;
+            UpdateCursorIcon(m_floatingItem);
+            UpdateCursorCount(m_floatingAmount);
+        }
+
+        private void BeginFloatingHold(Item item, int amount, IItemContainer source)
+        {
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
+            m_floatingItem = item;
+            m_floatingAmount = amount;
+            m_floatingSource = source;
+
+            UpdateCursorIcon(item);
+            UpdateCursorCount(amount);
+
+            if (m_tooltip != null)
+                m_tooltip.Hide();
+
+            UpdateCursorPosition();
+        }
+
+        private void EndFloatingHold()
+        {
+            m_floatingItem = null;
+            m_floatingAmount = 0;
+            m_floatingSource = null;
+
+            HideCursor();
+        }
+
+        private void UpdateCursorIcon(Item item)
+        {
+            if (m_cursorIcon == null || item == null || item.Icon == null)
+                return;
+            m_cursorIcon.texture = item.Icon.texture;
+            m_cursorIcon.color = new Color(1f, 1f, 1f, 0.75f);
+            m_cursorIcon.enabled = true;
+            m_cursorIcon.transform.SetAsLastSibling();
+        }
+
+        private void UpdateCursorCount(int amount)
+        {
+            if (m_cursorCountText == null)
+                return;
+            var show = amount > 1;
+            m_cursorCountText.enabled = show;
+            if (show)
+                m_cursorCountText.text = amount.ToString();
+        }
+
+        private void HideCursor()
+        {
+            if (m_cursorIcon != null)
+            {
+                m_cursorIcon.enabled = false;
+                m_cursorIcon.color = Color.white;
+            }
+            if (m_cursorCountText != null)
+                m_cursorCountText.enabled = false;
+        }
+
+        private void ReturnFloatingToSource()
+        {
+            if (m_floatingAmount <= 0 || m_floatingItem == null || m_floatingSource == null)
+                return;
+            m_floatingSource.AddStack(m_floatingItem, m_floatingAmount);
         }
 
         public void OnSlotHoverEnter(ItemSlotUI slot)
         {
             m_hoveredSlot = slot;
 
-            if (!m_isHolding && m_tooltip != null && slot.Container != null)
+            if (!m_isHolding && m_floatingAmount <= 0 && m_tooltip != null && slot.Container != null)
             {
                 var data = slot.Container.GetSlotData(slot.SlotIndex);
                 if (data.IsValid)
@@ -176,6 +387,7 @@ namespace GlowCore.UI.Inventory
 
         private void PickUpItem(ItemSlotUI slot, SlotData data)
         {
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrag, AudioManager.AudioChannel.Player);
             m_heldSlot = slot;
             m_heldContainer = slot.Container;
             m_heldSlotIndex = slot.SlotIndex;
@@ -183,13 +395,8 @@ namespace GlowCore.UI.Inventory
 
             slot.SetGhosted(true);
 
-            if (m_cursorIcon != null && data.Icon != null)
-            {
-                m_cursorIcon.texture = data.Icon.texture;
-                m_cursorIcon.color = new Color(1f, 1f, 1f, 0.75f);
-                m_cursorIcon.enabled = true;
-                m_cursorIcon.transform.SetAsLastSibling();
-            }
+            UpdateCursorIcon(data.Item);
+            UpdateCursorCount(data.Amount);
 
             if (m_tooltip != null)
                 m_tooltip.Hide();
@@ -216,6 +423,8 @@ namespace GlowCore.UI.Inventory
         {
             if (!m_isHolding)
                 return;
+
+            AudioManager.Instance.PlayOneShot(AudioManager.SoundType.UIDrop, AudioManager.AudioChannel.Player);
 
             var hovered = m_hoveredSlot;
             var heldData = m_heldContainer.GetSlotData(m_heldSlotIndex);
@@ -263,11 +472,10 @@ namespace GlowCore.UI.Inventory
             m_heldSlotIndex = -1;
             m_isHolding = false;
 
-            if (m_cursorIcon != null)
-            {
-                m_cursorIcon.enabled = false;
-                m_cursorIcon.color = Color.white;
-            }
+            ReturnFloatingToSource();
+            EndFloatingHold();
+
+            HideCursor();
 
             if (previousHeld != null)
                 previousHeld.SetGhosted(false);

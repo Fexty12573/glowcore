@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: TreeDSaplingBlock
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Fir Sapling
+  Description: Replant and harvest to get more!
+  Prefab: {fileID: 8577272406756842312, guid: 6a4705a4c2077474e965239d849b45ab, type: 3}
+  Icon: {fileID: 21300000, guid: c2dc4e875afcc284d98214da6767741d, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
+  DropScale: 1
+  InHandScale: 1
+  MaxStack: 99
+  m_idBytes: 38988c34ff54a54393ecb46ae8a35e64
+  NodeToBuild: {fileID: 1856298442951645081, guid: 4f641364badd5714faa35cc2451e541d, type: 3}
+  BuildRadius: 4
+  HasInventory: 0
+  YRotationOffset: 0

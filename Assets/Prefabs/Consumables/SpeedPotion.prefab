@@ -78,3 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::SpeedPotion
   m_speedBoostFactor: 2
+  m_duration: 480

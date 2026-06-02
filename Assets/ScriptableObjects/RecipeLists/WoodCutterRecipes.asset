@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: WoodCutterRecipes
   m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeList
   m_recipes:
+  - {fileID: 11400000, guid: b1b7d0d778436d04e8beb3b2d319d302, type: 2}
   - {fileID: 11400000, guid: cb69c1ad05b1d17418c5fc39d81fca17, type: 2}
   - {fileID: 11400000, guid: 61d97e10e610c2245898ea0cf52ac7ac, type: 2}
+  - {fileID: 11400000, guid: fced04a3d48cfe540aaab3349aacb4e6, type: 2}

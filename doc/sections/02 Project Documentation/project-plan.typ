@@ -147,6 +147,7 @@ The project runs from 16.02.2026 to 12.06.2026 with an estimated effort of 120 h
 Most required tools and platform are freely available through free or student licenses. We plan on publishing GlowCore on steam for which steam charges a 100 US-Dollar publishing fee. The cost will be shared by the members.
 #v(1em)
 
+#pagebreak()
 
 === Organization
 ==== Meetings
@@ -290,6 +291,9 @@ We work with 5 types of Work Items
   caption: [Work Items],
   supplement: [Table],
 )
+
+#pagebreak()
+
 ==== Long Term Plan
 The Long Term Planning is separated into two categories:
 - Milestones: Serve as checkpoint for releases and review meetings.
@@ -382,6 +386,8 @@ In agile project management it is common to reevaluate the Long Term Plan during
   caption: [Initial Milestones],
   supplement: [Table],
 ) <InitialMilestones>
+
+#pagebreak()
 
 ====== Updated Milestones as of 07.04.2026
 Milestone M08 - Beta Release was updated and the combat system and the automation mechanics were removed. The reduction in scope allows the team to deliver a stable and more polished game at the end. The savestate system was moved from Alpha to Beta. We prioritize quality over quantity. If there is enough time at the end of the project, we can still implement the features as a bonus.
@@ -572,6 +578,7 @@ The Long Term Plan was updated on 07.04.2026. The following image shows the new 
 )
 
 #v(1em)
+#pagebreak()
 
 ===== Initial Backlog & MVP
 The priority of Stories is defined by the ordering in the backlog. As we progress in Agile, we may divide Stories further and add new Stories. The MVP is reached when every Story up to and including *GC-101 Build World* is completed.
@@ -682,20 +689,21 @@ Because in the week of 06.04.2026 to 12.04.2026 was the spring break we had a sp
 )
 
 
-// #pagebreak();
+#pagebreak();
 
-// ===== Sprint 7 15.05.2026 - 29.05.2026
-// #figure(
-//   image("../../resources/02 Project Documentation/Sprints/sprint-7-burndown.png"),
-//   caption: [Sprint 7 Burndown Chart],
-//   supplement: [Image],
-// )
+===== Sprint 7 15.05.2026 - 29.05.2026
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-7-burndown.png"),
+  caption: [Sprint 7 Burndown Chart],
+  supplement: [Image],
+)
 
-// #figure(
-//   image("../../resources/02 Project Documentation/Sprints/sprint-7-backlog.png"),
-//   caption: [Sprint 7 Backlog],
-//   supplement: [Image],
-// )
+#image("../../resources/02 Project Documentation/Sprints/sprint-7-backlog1.png")
+#figure(
+  image("../../resources/02 Project Documentation/Sprints/sprint-7-backlog2.png"),
+  caption: [Sprint 7 Backlog],
+  supplement: [Image],
+)
 
 
 
@@ -805,6 +813,8 @@ This chapter describes potential risks to the project and how we plan to mitigat
 #let cell-bg-low = rgb("#8fff87")
 #let cell-bg-very-high = rgb("#f2665c")
 #let cell-bg-eliminated = rgb("#b3f6ff")
+
+#pagebreak()
 
 ==== Risk Matrix <risk-matrix>
 
@@ -946,6 +956,9 @@ The below table shows the risk assessment of the identified risks, after mitigat
   caption: [Assessed Risk Matrix (14.04.2026)],
   supplement: [Table],
 )
+
+#pagebreak()
+
 ==== Adjustment of Current Risk Assessment
 
 In the current risk matrix, we increased the probability by one level for both R01 (Lack of familiarity with Unity) and R02 (Unity CI/CD Complexity).
@@ -958,12 +971,3 @@ Overall, both risks are now considered slightly more likely, but appropriate mit
 #v(1em)
 
 
-// TODO: Describe the project plan as covered in SEP2.
-// A project plan typically consists of:
-// - Processes, meetings, and roles
-// - Phases, iterations, and milestones
-// - A rough list of things to be done (work items)
-// - Risk management
-// - Planning tools (issue tracker, time tracker, ...)
-//
-// Do NOT describe your technical solution here — this chapter is about organizing the project.

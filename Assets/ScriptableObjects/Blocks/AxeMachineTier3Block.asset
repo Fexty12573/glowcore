@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: AxeMachineTier3Block
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Axe Machine T3
+  Description: Faster and better
+  Prefab: {fileID: 3018811792293280483, guid: 42077755978cbc54581e1b29eaf3d332, type: 3}
+  Icon: {fileID: 21300000, guid: 6590abe60d642a7439a943d0f474c1f0, type: 3}
+  IconRotation: {x: 22.83, y: 90.49, z: -21.9}
+  DropScale: 0.6
+  InHandScale: 0.6
+  MaxStack: 99
+  m_idBytes: 8e731ca128e22b4696e354c7a3f0ec36
+  NodeToBuild: {fileID: 3578041532742632149, guid: 2d5be4d23a6f2bf45b1e108ab4ac4fb0, type: 3}
+  BuildRadius: 4
+  HasInventory: 1
+  YRotationOffset: 0

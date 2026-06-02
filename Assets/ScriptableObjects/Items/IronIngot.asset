@@ -15,8 +15,9 @@ MonoBehaviour:
   Name: Iron Ingot
   Description: 
   Prefab: {fileID: 1061752774521678269, guid: 8f416e99be8164741a880778e9402b80, type: 3}
-  Icon: {fileID: 0}
-  DropScale: 1
-  InHandScale: 1
+  Icon: {fileID: 21300000, guid: 9f0b0d1d5ebf5f34ab38a796d9faedeb, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
+  DropScale: 0.3
+  InHandScale: 0.4
   MaxStack: 99
   m_idBytes: 8a948c3b1b316c449285ff9ebeed5925

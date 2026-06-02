@@ -15,8 +15,9 @@ MonoBehaviour:
   Name: Fiber
   Description: 
   Prefab: {fileID: 3168865568923816221, guid: eab12e8f9323f3c47b56ceddbb20cc91, type: 3}
-  Icon: {fileID: 21300000, guid: ba179eef5789e214f8ceb400d39d7183, type: 3}
-  DropScale: 1
-  InHandScale: 1
-  MaxStack: 99
+  Icon: {fileID: 21300000, guid: 6afc46ff20738904d906fc091d4aad92, type: 3}
+  IconRotation: {x: 0, y: 112.45, z: 0}
+  DropScale: 1.5
+  InHandScale: 2
+  MaxStack: 999
   m_idBytes: 84cc7b39d12e7943a5a16618ba850cdd

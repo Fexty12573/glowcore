@@ -15,9 +15,8 @@ MonoBehaviour:
   Name: Cobalt Ingot
   Ingredients:
   - Item: {fileID: 11400000, guid: e31fe2164262dee4ead6e0ae757c42fb, type: 2}
-    Amount: 5
+    Amount: 2
   - Item: {fileID: 11400000, guid: 1eb55e545ccabba4790de62ccaa72a5f, type: 2}
     Amount: 5
   ResultItem: {fileID: 11400000, guid: fe124ee9dc9cc394e84d7d7ca9a32fe0, type: 2}
   ResultAmount: 1
-  m_craftableInInventory: 0

@@ -12,6 +12,7 @@ namespace GlowCore.UI.Menus
         [SerializeField] private SettingsScreen m_settingsScreen;
         [SerializeField] private ConfirmDialogScreen m_confirmDialogScreen;
         [SerializeField] private UnsavedChangesDialogScreen m_unsavedChangesScreen;
+        [SerializeField] private EndingScreen m_endingScreen;
 
         [Header("HUD")]
         [SerializeField] private PauseButton m_pauseButton;
@@ -97,6 +98,15 @@ namespace GlowCore.UI.Menus
                 locator.Register(m_unsavedChangesScreen);
             }
 
+            if (m_endingScreen != null)
+            {
+                Camera gameCamera = m_playerCamera != null ? m_playerCamera.MainCamera : null;
+                m_endingScreen.Initialize(m_menuManager, m_gameState, gameCamera);
+                locator.Register(m_endingScreen);
+            }
+
+            GlowCoreObject.OnEndingReached += HandleEndingReached;
+
             if (m_settingsScreen != null)
             {
                 SettingsRowFactory rowFactory = BuildRowFactory();
@@ -115,6 +125,7 @@ namespace GlowCore.UI.Menus
             // that consumes the keypress wins. Adding a new screen that should swallow Esc
             // means a new IEscapeConsumer + register here, no edits to PauseInputHandler.
             var router = new EscapeRouter();
+            router.Register(new EndingEscapeConsumer(m_menuManager));
             PlayerInventory inventory = m_playerInventory != null ? m_playerInventory : FindFirstObjectByType<PlayerInventory>();
             if (inventory != null)
                 router.Register(new InventoryEscapeConsumer(inventory, m_menuManager));
@@ -131,6 +142,20 @@ namespace GlowCore.UI.Menus
 
             m_worldGrid?.SetLaunchContext(launchContext);
             m_playerCamera?.Initialize(displayService);
+        }
+
+        private void OnDestroy()
+        {
+            GlowCoreObject.OnEndingReached -= HandleEndingReached;
+        }
+
+        private void HandleEndingReached()
+        {
+            if (m_endingScreen == null)
+                return;
+
+            m_gameState?.Pause();
+            m_menuManager?.Open(MenuScreenId.Ending);
         }
 
         private SettingsRowFactory BuildRowFactory()

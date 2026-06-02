@@ -12,6 +12,7 @@ Below is the domain model diagram for the problem domain of our project. Due to 
 
 One of the key aspects of the domain is the relationship between "Nodes" and "Items". Some items can be placed in the world which turns them into Nodes. This means that the same concept can have different representations and behaviors depending on the context.
 
+#pagebreak()
 === Enemy State Machine
 
 The below diagram represents the state machine for the enemy behavior in our project. It captures the various states an enemy can be in as well as the transitions between those states and the conditions that trigger those transitions.

@@ -1,7 +1,5 @@
 == Requirements
 
-// TODO: Describe the functional and non-functional requirements as covered in SEP1.
-
 === Functional Requirements
 ==== Actors / Personas
 Since a game typically only has one primary actor - *The Player* - it makes sense to define Personas that reflect different types of players. The categorization into Casual- and Dedicated Players covers most player types. In the following, the pronoun *he* is used for simplicity, but the Personas are meant to include all players.
@@ -18,6 +16,8 @@ Since a game typically only has one primary actor - *The Player* - it makes sens
 - The Dedicated Player has already played the game multiple times before, thus he doesn't want to be bored with a long tutorial everytime he starts a new game. He wants to be able to dictate the pacing of the game.
 - He doesn't care for the story and lore in games. He doesn't want to read through dialogues and doesn't like long cutscenes.
 
+#pagebreak()
+
 ==== Use Case Diagram
 The diagram shows a modified version of the Use Case Diagram. The Personas take the place of the Actors. An arrow indicates that a Persona uses a feature. A missing arrow means that the Persona is not interested in using a feature, although it remains accessible to him.
 
@@ -26,7 +26,6 @@ The diagram shows a modified version of the Use Case Diagram. The Personas take 
   caption: [Use Case Diagram],
   supplement: [Image],
 )
-#v(1em)
 #pagebreak()
 
 ==== Use Cases
@@ -128,9 +127,9 @@ The Use Cases marked with *Priority: Middle* are planned to be implemented, but 
   uc05: green,
   uc06: green,
   uc07: green,
-  uc08: blue,
+  uc08: red,
   uc09: gray,
-  uc10: blue,
+  uc10: green,
   uc11: green,
 )
 
@@ -261,7 +260,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Casual Player",
   priority: "Low",
   description: "The player can experience a story while playing the game. When the game starts there is an intro sequence. There is an end to the game, at which point a cutscene is played. The game contains small narrative hints that fit into the story conveyed by the GlowCore-World, including the acoustic, the visual art style and the overall gameplay experience.",
-  result: [],
+  result: "Not implemented. Due to time constraints, no intro sequence, cutscene, or narrative elements were built. The feature was intentionally deprioritised as a Low-priority item, and the team's effort was directed at the MVP and automation instead.",
   uc_caption: "UC08 - Experience Story",
   status_color: uc-status.at("uc08"),
 ) <UC08>
@@ -281,7 +280,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Dedicated Player",
   priority: "Middle",
   description: "The player can automate tedious tasks, such as breaking Nodes. He can craft machines that are placed as Nodes and they automatically perform a task e.g. chopping down trees. There is a selection of machines that can be combined to automate more and more. Example: The player places multiple Replanter-Machines in a row which automatically replant trees on the neighbouring tile. The player places an Axe-Machine onto the start of the line, at which point the Axe-Machine chops one tree after another and then moves onto the next tile. To automate it even further, the player places Rotaters on both which cause the Axe-Machine to turn around on contact.",
-  result: [],
+  result: "Verified manually. The player can craft three automation machines and place them as nodes. The Axe Machine faces a direction and automatically breaks the node in front of it using the appropriate tool. When the target tile is empty it drives forward to the next node. Drops are stored in the Axe Machine's built-in chest and the player can retrieve them at any time. The Replanter Machine plants saplings or other block items from its own chest onto the tile in front of it, automatically restocking resource nodes after the Axe Machine passes. Rotator nodes (Right, Down, Left) redirect the Axe Machine's heading when it drives into them, allowing the player to build looping or branching automation tracks. All three machines are craftable from the workbench. All acceptance criteria met.",
   uc_caption: "UC10 - Automate Resource Gathering",
   status_color: uc-status.at("uc10"),
 ) <UC10>
@@ -296,13 +295,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   status_color: uc-status.at("uc11"),
 ) <UC11>
 
-
-// TODO: Include at least:
-// - The actors of the system under development (SUD)
-// - The goals of each actor
-// - A use case diagram (overview of actors, use cases, and relationships)
-// - Use case descriptions (brief, casual, or fully-dressed format) -brief
-// - Tip: Use identifiers such as 'UC1', 'UC2', ... as references
+#pagebreak()
 
 === Non-Functional Requirements
 
@@ -312,7 +305,7 @@ The following table provides a compact overview of all Use Cases, their persona,
 // Update the status color here once — it syncs to both the overview table and the detail table.
 // Colors: blue (not tested), green (passed), orange (partial), red (failed)
 #let nfr-status = (
-  nfr101: green,
+  nfr101: red,
   nfr102: gray,
   nfr103: green,
   nfr104: green,
@@ -329,8 +322,8 @@ The following table provides a compact overview of all Use Cases, their persona,
   nfr401: green,
   nfr402: green,
   nfr501: green,
-  nfr502: blue,
-  nfr503: blue,
+  nfr502: green,
+  nfr503: green,
 )
 
 // Helper to render a status box from the registry
@@ -383,6 +376,7 @@ Each NFR table includes a colored status indicator in the top-right corner repre
   supplement: [Table],
 )
 
+#pagebreak()
 ==== NFR Overview
 
 The following table provides a compact overview of all non-functional requirements, their category, priority, verification milestone, and current status. This serves as a quick reference before diving into the detailed NFR descriptions below.
@@ -442,6 +436,7 @@ Verification is tied to project milestones (see @UpdatedMilestones) rather than 
 - *M09 -- Beta Release (15.05.2026)*: Required / Medium and Optional / Medium NFRs are verified. Performance tuning and playtesting rounds.
 - *M10 -- Official Release (05.06.2026)*: Remaining Optional / Low NFRs are verified. Final polish and compliance check.
 
+#pagebreak()
 ==== Priority Matrix
 
 The priority matrix visualizes the distribution of NFRs across the two priority dimensions. This helps identify where the project's quality focus lies and whether the prioritization is balanced.
@@ -481,7 +476,7 @@ Performance Efficiency addresses the amount of resources used under stated condi
   priority: [Required / High],
   measurement: [Measure elapsed time from pressing "Start" until the world is fully loaded and interactive. Tested on minimum hardware specification.],
   verification: [Automated load-time benchmark test across 10 consecutive loads with varying world states (new and existing). All runs must complete within 3 seconds.],
-  result: [Tested manually from the title screen. Both NEW GAME (which generates a fresh world) and CONTINUE (which restores an existing save) bring the player into a fully interactive world in approximately 1.5 seconds, easily below the 3-second threshold.],
+  result: [Failed. Tested manually on the Windows build. A new world takes about 4 seconds, a small save about 6 seconds, and a late-game save up to 20 seconds. The world stays the same size, but the player fills it with placed and planted things, and all of that has to load. The more a save grows, the longer it takes. The 3-second target is not met. When we set this target, we did not expect to build a game of this size, so the original goal no longer fits what we ended up with. Bringing it back in range would need extra work on how the world is loaded.],
   nfr_caption: [NFR101 -- World Load Time],
   status_color: nfr-status.at("nfr101"),
 ) <NFR101>
@@ -585,7 +580,7 @@ Usability covers the degree to which the product can be used effectively, effici
   priority: [Optional / Medium],
   measurement: [Test all core gameplay actions with both a standard controller (e.g. Xbox controller) and keyboard. All actions must be executable with both input methods.],
   verification: [Perform a full gameplay session using only controller, then only keyboard. Verify all interactions, menus, and gameplay mechanics are fully accessible with each input method.],
-  result: [Keyboard input works perfectly for all core gameplay actions. Controller support is not implemented yet, but since the game uses Unity's new Input System, adding controller bindings to the existing input actions would not require much effort.],
+  result: [Keyboard input works for all core gameplay actions. Controller support was not implemented due to time constraints. Since the game uses Unity's new Input System, all input actions are already defined and adding controller bindings would not require significant effort.],
   nfr_caption: [NFR204 -- Input Support],
   status_color: nfr-status.at("nfr204"),
 )<NFR204>
@@ -677,7 +672,7 @@ Maintainability represents the degree of effectiveness and efficiency with which
   priority: [Required / Medium],
   measurement: [Measure code coverage using the Unity Code Coverage package. Report overall and per-system coverage percentages.],
   verification: [Run the full automated test suite and generate a coverage report. Verify that overall coverage meets or exceeds 40%.],
-  result: [Coverage was measured using the Unity Code Coverage package. As of 16.05.2026 the project sits at 54.7% line coverage (1817 of 3320 coverable lines) and 60.5% method coverage (374 of 618 methods) across 4 assemblies, 72 classes and 70 files. Both numbers comfortably exceed the 40% target.],
+  result: [Coverage was measured using the Unity Code Coverage package. The project achieves 43.1% method coverage, exceeding the 40% target. Line coverage sits at 38.9%.],
   nfr_caption: [NFR402 -- Automated Test Coverage],
   status_color: nfr-status.at("nfr402"),
 )<NFR402>
@@ -705,7 +700,7 @@ Portability addresses the degree of effectiveness and efficiency with which a sy
   priority: [Optional / Low],
   measurement: [Verify project settings confirm Unity with PhysX and URP are configured as the active engine and rendering pipeline.],
   verification: [Review Unity project settings and confirm PhysX is the active physics engine and URP is the active render pipeline. Verify no fallback to built-in pipeline occurs during gameplay.],
-  result: [],
+  result: [Verified via Unity project settings and by running the game. The GraphicsSettings.asset confirms URP is the active render pipeline, and no fallback to the built-in pipeline was observed during gameplay. PhysX is Unity's default physics engine and is used throughout the project with no override configured. Both requirements are met.],
   nfr_caption: [NFR502 -- Engine and Rendering Pipeline],
   status_color: nfr-status.at("nfr502"),
 ) <NFR502>
@@ -717,7 +712,7 @@ Portability addresses the degree of effectiveness and efficiency with which a sy
   priority: [Optional / Medium],
   measurement: [Launch the game at each supported resolution and verify the UI scales correctly, no elements are clipped, and the game renders properly.],
   verification: [Test the game at all specified resolutions. Take screenshots and verify correct rendering, UI scaling, and absence of visual artifacts.],
-  result: [],
+  result: [Tested manually in windowed mode. The settings menu provides a resolution dropdown and switching between resolutions correctly resizes the window and scales the UI. All tested resolutions from 1280x720 up to 1920x1080 rendered correctly with no clipping or visual artifacts.],
   nfr_caption: [NFR503 -- Display Resolution Support],
   status_color: nfr-status.at("nfr503"),
 ) <NFR503>

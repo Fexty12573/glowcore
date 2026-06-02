@@ -804,7 +804,6 @@ GameObject:
   - component: {fileID: 8397714100148932550}
   - component: {fileID: 5521693159139001631}
   - component: {fileID: 7811442656446228288}
-  - component: {fileID: 6616208329584795571}
   m_Layer: 0
   m_Name: GlowCorePhase1BasePrefab
   m_TagString: Untagged
@@ -881,8 +880,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::Node
   m_nodeData: {fileID: 11400000, guid: 0ec27346c1b65bb4b984993f4e28e296, type: 2}
+  Rotation: 0
   TilesUsed: []
-  Outline: {fileID: 6616208329584795571}
+  Outline: {fileID: 0}
 --- !u!114 &5521693159139001631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,24 +914,6 @@ MonoBehaviour:
   m_levelConfig: {fileID: 0}
   m_nextLevelPrefab: {fileID: 0}
   m_closeDistance: 5
---- !u!114 &6616208329584795571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4021549194003423150}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &4528740939249812703
 GameObject:
   m_ObjectHideFlags: 0

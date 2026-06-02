@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &208335907436351563
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_Name
+      value: CobaltAnvilBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6387728362578476735}
+  m_SourcePrefab: {fileID: 100100000, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+--- !u!1 &1019293142903352602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd8f93713193bef44a2831a5fc744fe3, type: 3}
+  m_PrefabInstance: {fileID: 208335907436351563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6387728362578476735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019293142903352602}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3727846b70a78114ab98a4957a815f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Gameplay::BlockBehaviour
+  m_block: {fileID: 11400000, guid: 28458360192a28847a61409301edb5a4, type: 2}
+  m_buildGhostAllowed: {fileID: 5124231440842827354, guid: 1a5a7163e678a1146a7497a3e0a00f80, type: 3}
+  m_buildGhostOccupied: {fileID: 5070225296955533715, guid: 211947993e308b045a8e8ea912b3df03, type: 3}

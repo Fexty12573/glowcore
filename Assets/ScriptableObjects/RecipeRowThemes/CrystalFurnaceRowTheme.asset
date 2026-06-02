@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ecd8b720dfe05488065f8a081a8500, type: 3}
+  m_Name: CrystalFurnaceRowTheme
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.RecipeRowTheme
+  m_defaultBackground: {fileID: 21300000, guid: 8faea9c8a77345108d89eb8faa703505, type: 3}
+  m_craftableBackground: {fileID: 21300000, guid: 5b2063921adb48d2857b6887587b35a1, type: 3}
+  m_craftButtonActive: {fileID: 21300000, guid: 12e0d04dd1cd40b6b2631987381f836a, type: 3}
+  m_craftButtonInactive: {fileID: 21300000, guid: 82d2d9104bf1410d9a66706b92cdb621, type: 3}

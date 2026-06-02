@@ -15,8 +15,9 @@ MonoBehaviour:
   Name: Cobalt Ore
   Description: 
   Prefab: {fileID: 5435249746969923503, guid: 6b262f32f4d21e04bb3ecc1bfdd75a3c, type: 3}
-  Icon: {fileID: 0}
-  DropScale: 1
-  InHandScale: 1
-  MaxStack: 99
+  Icon: {fileID: 21300000, guid: 4ad28a4ef3320c945b1cc49e4a07e193, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
+  DropScale: 0.7
+  InHandScale: 0.7
+  MaxStack: 999
   m_idBytes: 853388aa3c75944e8d0416c034f7fff7

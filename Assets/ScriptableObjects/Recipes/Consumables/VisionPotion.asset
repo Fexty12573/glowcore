@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
+  m_Name: VisionPotion
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
+  Name: Sight Potion
+  Ingredients:
+  - Item: {fileID: 11400000, guid: 2727c302bf0060343a1a5d2f3b6db861, type: 2}
+    Amount: 2
+  - Item: {fileID: 11400000, guid: 882afcbd25f0c4b44b9fe8fbb75ba306, type: 2}
+    Amount: 2
+  ResultItem: {fileID: 11400000, guid: 88eeaf99f9749754c82760c7b8f91b8e, type: 2}
+  ResultAmount: 1

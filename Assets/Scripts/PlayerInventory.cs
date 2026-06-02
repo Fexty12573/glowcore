@@ -33,6 +33,7 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
     public int SlotCount => m_inventory.Size;
     public int HotbarSlotCount => kHotbarSlots;
     public int SelectedHotbarIndex => m_selectedHotbarIndex;
+    public bool IsAnyUIOpen => m_isOpen || m_isCraftingStationOpen || m_isGlowCoreUIOpen || m_isChestOpen;
     public bool IsOpen => m_isOpen;
     public bool IsCraftingStationOpen => m_isCraftingStationOpen;
     public bool IsGlowCoreUIOpen => m_isGlowCoreUIOpen;
@@ -194,6 +195,18 @@ public class PlayerInventory : MonoBehaviour, IInventoryService, IItemContainer
     private void OnHotbarSlot6(InputValue value) => SelectHotbarSlot(5);
     private void OnHotbarSlot7(InputValue value) => SelectHotbarSlot(6);
     private void OnHotbarSlot8(InputValue value) => SelectHotbarSlot(7);
+
+    private void OnHotbarScroll(InputValue value)
+    {
+        if (IsAnyUIOpen)
+            return;
+
+        float scroll = value.Get<float>();
+        if (scroll < 0)
+            SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);
+        else if (scroll > 0)
+            SelectHotbarSlot((m_selectedHotbarIndex - 1 + kHotbarSlots) % kHotbarSlots);
+    }
 
     private void OnPrevious(InputValue value) =>
         SelectHotbarSlot((m_selectedHotbarIndex + 1) % kHotbarSlots);

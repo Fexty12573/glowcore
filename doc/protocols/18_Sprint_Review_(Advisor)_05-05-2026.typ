@@ -15,6 +15,8 @@
   links: "GitHub repository + Jira board (internal team links)",
 )
 
+#pagebreak()
+
 ==== Agenda
 #agenda_table((
   [GlowCore v0.2.0 demo],
@@ -51,4 +53,3 @@
   [19.05.2026 15:00],
 ))
 
-#pagebreak()

@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Wood Pickaxe
   Description: 
   Prefab: {fileID: 1120321545808541956, guid: a469530c339ad8b428025436562c7204, type: 3}
-  Icon: {fileID: 21300000, guid: 9834d50122cdbac41a329f5fb2ba4ba9, type: 3}
+  Icon: {fileID: 21300000, guid: ea97dc2d752770d4e9b9e6ccdd7b2736, type: 3}
+  IconRotation: {x: 0, y: 0, z: 0}
   DropScale: 1
   InHandScale: 1
   MaxStack: 1
   m_idBytes: c5ae6d75943cae4eb5dc16ee5b5bea90
+  Sound: 1

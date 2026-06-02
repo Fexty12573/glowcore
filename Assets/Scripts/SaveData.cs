@@ -109,7 +109,7 @@ public class SaveData
                 GlowCoreLevel = 1,
                 PosX = 0,
                 PosZ = 0,
-                GlowCoreInventory = new Inventory(1, 1),
+                GlowCoreInventory = new Inventory(8, 4),
                 Inventory = new Inventory(8, 4),
             },
             World = new WorldData { TileDeltas = Array.Empty<TileDelta>(), }
@@ -201,6 +201,7 @@ public class SaveData
             return delta;
 
         var id = new Guid(reader.ReadBytes(16));
+        var rotation = (BlockRotation)reader.ReadByte();
         if (id == Guid.Empty)
         {
             Debug.LogWarning($"Empty build tile delta at ({x}, {z}), ignoring");
@@ -210,10 +211,9 @@ public class SaveData
         var item = ItemRegistry.Instance.Lookup(id);
         if (item is Block block)
         {
-            delta.BuildData = new BuildData { Block = block };
+            delta.BuildData = new BuildData { Block = block, Rotation = rotation };
 
-            // TODO: Add a HasInventory field or something to `Block`
-            if (block.Name == "Chest")
+            if (block.HasInventory)
                 delta.BuildData.Inventory = LoadInventory(reader);
         }
         else if (item is null)
@@ -237,9 +237,18 @@ public class SaveData
         if (delta.Type == DeltaType.Build)
         {
             writer.Write(delta.BuildData.Block.Id.ToByteArray());
+            byte b = (byte)delta.BuildData.Rotation;
+            writer.Write((byte)delta.BuildData.Rotation);
 
             if (delta.BuildData.Inventory != null)
+            {
+                if (!delta.BuildData.Block.HasInventory)
+                {
+                    Debug.LogError($"Block with Name {delta.BuildData.Block.Name} has an inventory, but HasInventory is false." +
+                                   $" This will corrupt all TileDeltas after this one when loading.");
+                }
                 SaveInventory(delta.BuildData.Inventory, writer);
+            }
         }
     }
 
@@ -331,6 +340,7 @@ public class TileDelta
 public class BuildData
 {
     public Block Block;
+    public BlockRotation Rotation;
     [CanBeNull] public Inventory Inventory;
 }
 

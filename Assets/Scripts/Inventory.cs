@@ -127,7 +127,6 @@ public class Inventory
         OnSlotChanged?.Invoke(index);
     }
 
-
     public ItemStack GetSlot(int index)
     {
         if (index < 0 || index >= m_items.Length)
@@ -228,6 +227,20 @@ public class Inventory
             for (var x = 0; x < m_width; x++)
             {
                 if (this[x, y].Amount == 0)
+                    return new Vector2Int(x, y);
+            }
+        }
+
+        return null;
+    }
+
+    public Vector2Int? GetFirstNonEmptySlot()
+    {
+        for (var y = 0; y < m_height; y++)
+        {
+            for (var x = 0; x < m_width; x++)
+            {
+                if (this[x, y].Amount != 0)
                     return new Vector2Int(x, y);
             }
         }

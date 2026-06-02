@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8039772199092435016}
   - component: {fileID: 4036034783242722288}
   - component: {fileID: 1385050351602102435}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332942450725404584}
   - component: {fileID: -6756777183740244166}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FurnaceBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::BlockBehaviour
   m_block: {fileID: 11400000, guid: 2725de6b2a6e75a4880d31d0580db15e, type: 2}
-  m_buildGhostAllowed: {fileID: 5482746373729648181, guid: 438883cf47b7e914eb85e10e4321248b, type: 3}
-  m_buildGhostOccupied: {fileID: 5482746373729648181, guid: 11fdb015fdbad804c91f34d71ac9a883, type: 3}
+  m_buildGhostAllowed: {fileID: 5124231440842827354, guid: 1a5a7163e678a1146a7497a3e0a00f80, type: 3}
+  m_buildGhostOccupied: {fileID: 5070225296955533715, guid: 211947993e308b045a8e8ea912b3df03, type: 3}
 --- !u!1 &8424558609227090973
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3053945673601115759}
   - component: {fileID: 8845104427362186428}
   - component: {fileID: 2753604939105253677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Furnace
   m_TagString: Untagged
   m_Icon: {fileID: 0}

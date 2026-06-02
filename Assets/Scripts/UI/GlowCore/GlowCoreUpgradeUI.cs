@@ -193,7 +193,7 @@ namespace GlowCore.UI.Upgrade
             }
 
             IReadOnlyList<Recipe.Ingredient> materials = m_target.LevelConfig.RequiredMaterials;
-            Debug.Log($"GlowCoreUpgradeUI.BuildFeedRows: {materials.Count} materials on config {m_target.LevelConfig.name}");
+            // Debug.Log($"GlowCoreUpgradeUI.BuildFeedRows: {materials.Count} materials on config {m_target.LevelConfig.name}");
             for (var i = 0; i < materials.Count; i++)
             {
                 Recipe.Ingredient ingredient = materials[i];

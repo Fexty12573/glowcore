@@ -462,7 +462,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7945667929741818763}
   - component: {fileID: 8945772521574028370}
-  - component: {fileID: 7360672575491393241}
   - component: {fileID: 2940214319333937239}
   - component: {fileID: 2845616885914966595}
   - component: {fileID: 7364163968496900261}
@@ -516,26 +515,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::GlowCore.World.Node
   m_nodeData: {fileID: 11400000, guid: 0ec27346c1b65bb4b984993f4e28e296, type: 2}
+  Rotation: 0
   TilesUsed: []
-  Outline: {fileID: 7360672575491393241}
---- !u!114 &7360672575491393241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3883161230965214533}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Gameplay::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  Outline: {fileID: 0}
 --- !u!64 &2940214319333937239
 MeshCollider:
   m_ObjectHideFlags: 0

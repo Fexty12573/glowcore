@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using GlowCore.World;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -20,7 +21,7 @@ namespace ScriptableObjects
 
             var usableTool = UsableTools.SingleOrDefault(tool => tool.Tool == usedTool);
             if (usableTool is not null)
-                return BaseBreakTime * usableTool.BreakMultiplier;
+                return BaseBreakTime * usableTool.BreakMultiplier * NodeActionSystem.Instance.PotionBreakMultiplier;
 
             return BaseBreakTime;
         }

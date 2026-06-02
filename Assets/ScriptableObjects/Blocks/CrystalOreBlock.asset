@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1bf68ad7e147649a443d004c79829a, type: 3}
+  m_Name: CrystalOreBlock
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Block
+  Name: Crystal Ore
+  Description: this item should not be obtainable
+  Prefab: {fileID: 7006868747609148204, guid: 37ab188943ca39146b1e453e18f31e88, type: 3}
+  Icon: {fileID: 21300000, guid: f9e90a6caf258b84f8161b78ac5264c6, type: 3}
+  IconRotation: {x: -9.07, y: 4.1, z: -12.3}
+  DropScale: 0.7
+  InHandScale: 0.7
+  MaxStack: 99
+  m_idBytes: bb171c78f87eb845acbafac25ad7ab15
+  NodeToBuild: {fileID: 7006868747609148204, guid: 8e2703431f2e2c54ea712a0fc6b8ad52, type: 3}
+  BuildRadius: 4
+  HasInventory: 0
+  YRotationOffset: 0

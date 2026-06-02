@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70be70ef849acb4ea64d1719891774e, type: 3}
+  m_Name: PickaxeMachineTier1
+  m_EditorClassIdentifier: Gameplay::ScriptableObjects.Recipe
+  Name: Pickaxe Machine T1
+  Ingredients:
+  - Item: {fileID: 11400000, guid: df78ac7dffb2f3c4e8d6284278a0ae31, type: 2}
+    Amount: 4
+  - Item: {fileID: 11400000, guid: 79401a3b7caaf6344aa8b8bdc364355f, type: 2}
+    Amount: 2
+  ResultItem: {fileID: 11400000, guid: 1b928495da4d0e74898699856e92782b, type: 2}
+  ResultAmount: 1

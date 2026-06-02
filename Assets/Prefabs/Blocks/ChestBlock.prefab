@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5237189987264342577}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3395611513983427603}
   - component: {fileID: 1139691784695331456}
   - component: {fileID: 2227869470635987272}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8198472957288953699}
   - component: {fileID: -3549749940150531703}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ChestBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Gameplay::BlockBehaviour
   m_block: {fileID: 11400000, guid: e4265c4217ca3e143bf354ec2ec4fc74, type: 2}
-  m_buildGhostAllowed: {fileID: 5482746373729648181, guid: 438883cf47b7e914eb85e10e4321248b, type: 3}
-  m_buildGhostOccupied: {fileID: 5482746373729648181, guid: 11fdb015fdbad804c91f34d71ac9a883, type: 3}
+  m_buildGhostAllowed: {fileID: 5124231440842827354, guid: 1a5a7163e678a1146a7497a3e0a00f80, type: 3}
+  m_buildGhostOccupied: {fileID: 5070225296955533715, guid: 211947993e308b045a8e8ea912b3df03, type: 3}
 --- !u!1 &7326050409074695793
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 8782015888175367863}
   - component: {fileID: 38618338483561204}
   - component: {fileID: 2098235282880131829}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}

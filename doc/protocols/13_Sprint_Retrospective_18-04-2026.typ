@@ -49,6 +49,8 @@
 - Uneven distribution of work-types (e.g. one person doing more docs)
 - PRs with only small doc changes take a long time until review
 
+#pagebreak()
+
 ==== Todos
 #todo_table((
   [Think about items to be added to the game and what use they could have],
@@ -56,4 +58,3 @@
   [24.04.2026],
 ))
 
-#pagebreak()

@@ -22,7 +22,9 @@ The project uses GitHub Actions for all build, test, and deployment automation. 
 
 - *LABELER*: fires on pull-request targets to `main` or `dev` (skipped for `dev` → `main` promotion PRs). Automatically applies labels to each PR based on branch prefix and changed paths (`feature/*` → _feature_, `bug/*` → _bug_, `docs/*` or changes under `doc/**/*` → _doc_).
 
-#v(23cm)
+#pagebreak()
+
+
 ==== Definition of Ready and Definition of Done
 
 Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and conditionally -> UI consistency and documentation updates.
@@ -76,6 +78,8 @@ There is a strict limit to what we can test automatically in a game project. A s
 
 We will conduct regular playtesting sessions where we let several new users play the game without giving them any prior instructions. Our main goal here is to find out what feels good, what is frustrating, and if the core mechanics are actually understandable. For instance, we want to see if a brand-new player can figure out how to move, gather resources, and upgrade within the first 5 minutes. We will also observe if players naturally understand the visual cues for restricted actions (like red-tinted UI elements) or if they can accurately track their light upgrade progress.
 
+#pagebreak()
+
 ==== Non-Functional Requirements (NFR) Verification
 NFR tests are not done once at the end, but at appropriate points throughout the project. Each NFR is assigned to a milestone at which it must be verified. Additionally, our Definition of Done requires that any change which could affect an NFR is accompanied by a re-verification of that NFR and an updated result in the documentation. This ensures NFR results stay current and are not just a snapshot from a single test session.
 
@@ -103,6 +107,8 @@ Edit Mode tests are the closest thing we have to "traditional" unit tests. They 
 
 Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it in during our CI/CD run without us ever having to open a game window.
 
+#pagebreak()
+
 ==== Play Mode Tests
 Play Mode tests are where we handle the Unity Engine of the project. Unlike Edit Mode, these tests actually trigger the full game engine. They can load specific test scenes, instantiate Prefabs, and, most importantly, they can run over multiple frames.
 
@@ -123,12 +129,9 @@ The downside is that Play Mode tests are significantly slower because they have 
 
 ==== Coverage Summary
 
-At the current stage of the project (M09 Beta reached, approaching M10 Release), 8 out of 11 Use Cases are fully verified (@UC01, @UC02, @UC03, @UC04, @UC05, @UC06, @UC07, @UC11) and 2 have not been verified yet as they are planned for M10 (@UC08, @UC10). @UC09 (Fight Enemies) is not applicable, since the team decided not to implement combat within the project scope.
+At the final stage of the project (M10 Release reached), 9 out of 11 Use Cases are fully verified (@UC01, @UC02, @UC03, @UC04, @UC05, @UC06, @UC07, @UC10, @UC11). @UC08 (Experience Story) was not implemented due to time constraints. @UC09 (Fight Enemies) is not applicable, since the team decided not to implement combat within the project scope.
 
-For the NFRs, 15 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501), 1 is partially met (@NFR204), and 2 have not been verified yet as they are scheduled for M10 (@NFR502, @NFR503). @NFR102 is not applicable since in-game scene transitions were removed from scope. The only remaining partial NFR is input support: keyboard input works for all gameplay actions, but controller bindings are not yet wired up. Adding them is straightforward given the project already uses the new Input System and is planned before the final release.
-// TODO: Describe the test strategy as discussed in SEP1.
-// - How each functional and non-functional requirement is verified
-// - At what level (Unit, Integration, System)
+For the NFRs, 16 requirements have fully passed (@NFR103, @NFR104, @NFR105, @NFR201, @NFR202, @NFR203, @NFR205, @NFR206, @NFR301, @NFR302, @NFR303, @NFR401, @NFR402, @NFR501, @NFR502, @NFR503), 1 is partially met (@NFR204), and 1 failed (@NFR101). @NFR102 is not applicable since in-game scene transitions were removed from scope. The partial NFR is input support: keyboard input works for all gameplay actions, but controller support was not implemented due to time constraints. @NFR101 (World Load Time) failed because load times grew with world content beyond what the 3-second target anticipated.
 
 
 === Code metrics
@@ -138,6 +141,9 @@ For the NFRs, 15 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR
   caption: [Interface Overview Diagram],
   supplement: [Image],
 )
+
+#pagebreak()
+
 #{
   let data = csv("../../resources/01 Product Documentation/loc_files_final.csv")
     .flatten()
@@ -167,7 +173,11 @@ For the NFRs, 15 requirements have fully passed (@NFR101, @NFR103, @NFR104, @NFR
   )
 }
 ==== Test Coverage
-#image("../../resources/01 Product Documentation/test-coverage-chart.png")
+#figure(
+  image("../../resources/01 Product Documentation/test-coverage-chart.png"),
+  caption: [Test Coverage Chart],
+  supplement: [Image],
+)
 
 === User Testing
 In game development, the most important aspect of the product is that it is entertaining. As developers, we are not representative users for playtesting, since we have spent many hours developing the features and already know how everything works. A first-time player may not immediately understand game rules that are obvious to us. This strongly relates to our usability NFRs, which require the game to be intuitive which is a prerequisite for it to be enjoyable. This is the main purpose of the user tests of GlowCore.
@@ -283,6 +293,8 @@ Based on the feedback we will make improvements to the UI, in particular we will
 ===== Conclusion
 This user test provided valuable feedback on what the gameplay is missing and what it is already doing right. In Sprint 6 we will refine the UI and controls accordingly. We will also add more Items, Nodes and Crafting Recipes. Thanks to our extensible architecture which follows the Open-Closed Principle (OCP), new content can be added without modifying existing code.
 
+#pagebreak()
+
 === Coding Guidelines
 
 Our coding guidelines are based on the Unity C\# scripting conventions and are enforced through Roslyn analyzers and EditorConfig rules. Every C\# file must conform to these rules, which are checked automatically on every push to `main` or `dev` via the CI pipeline.
@@ -330,6 +342,8 @@ Members within a class must appear in the following order:
 *Access modifiers:* Always declare access modifiers explicitly; never rely on C\# defaults.
 
 *Public fields:* Avoid `public` fields in classes, use properties instead. Public fields in structs are acceptable.
+
+#pagebreak()
 
 ==== Formatting Rules
 

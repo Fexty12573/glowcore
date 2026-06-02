@@ -15,10 +15,13 @@ MonoBehaviour:
   Name: Chest
   Description: 
   Prefab: {fileID: 7208416411730412183, guid: d9e0ca1360705e8489a7ac4647ca1566, type: 3}
-  Icon: {fileID: 21300000, guid: c5d3ad014e696ee49ae80499e39f037b, type: 3}
+  Icon: {fileID: 21300000, guid: 66ba3afbb00e1af4f9ec98601e253c3b, type: 3}
+  IconRotation: {x: 0, y: -45.1, z: 0}
   DropScale: 0.5
   InHandScale: 0.5
   MaxStack: 99
   m_idBytes: af650ac46ceaba4488c13887c963cd28
   NodeToBuild: {fileID: 6348191760633195365, guid: e88a89ab48c141b47970093c6a02adf0, type: 3}
   BuildRadius: 4
+  HasInventory: 1
+  YRotationOffset: 180
