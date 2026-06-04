@@ -47,7 +47,7 @@
 
 
 ==== What went well
-- Game looks much better, overall impression improved alot, looks like a real game now
+- Game looks much better, overall impression improved a lot, looks like a real game now
 - Border looks nice
 - Good teamwork
 

@@ -27,7 +27,7 @@ The project uses GitHub Actions for all build, test, and deployment automation. 
 
 ==== Definition of Ready and Definition of Done
 
-Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and conditionally -> UI consistency and documentation updates.
+Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and, conditionally, UI consistency and documentation updates.
 
 #figure(
   image("../../resources/01 Product Documentation/dor_dod_flowchart.drawio.png", width: 100%),
@@ -59,7 +59,7 @@ The following example shows the same ticket (GC-186) with all acceptance criteri
 )
 
 === Test Concept
-Our testing strategy for GlowCore is fundamentally shaped by the nature of the project. Since GlowCore is a standalone Unity game built for Windows, Linux, and WebGL, we don't have any server connections, huge amount of data in a database or a frontend beyond simple game-menus. This allows us to focus our entire testing effort directly on the client-side application, ensuring gameplay mechanics, performance, and user experience are as solid as possible.
+Our testing strategy for GlowCore is fundamentally shaped by the nature of the project. Since GlowCore is a standalone Unity game built for Windows, Linux, and WebGL, we don't have any server connections, a huge amount of data in a database or a frontend beyond simple game menus. This allows us to focus our entire testing effort directly on the client-side application, ensuring gameplay mechanics, performance, and user experience are as solid as possible.
 
 The test concept is divided into automated testing for our codebase, manual system verification, extensive usability testing, and targeted checks for our non-functional requirements (NFRs).
 
@@ -105,14 +105,14 @@ In Unity, however, our code doesn't just sit there. It lives inside an engine th
 ==== Edit Mode Tests
 Edit Mode tests are the closest thing we have to "traditional" unit tests. They run entirely within the Unity Editor and do not require the game to actually start. Since they don't have to load scenes or wait for the physics engine to initialize, they are fast.
 
-Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it in during our CI/CD run without us ever having to open a game window.
+Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it during our CI/CD run without us ever having to open a game window.
 
 #pagebreak()
 
 ==== Play Mode Tests
 Play Mode tests are where we handle the Unity Engine of the project. Unlike Edit Mode, these tests actually trigger the full game engine. They can load specific test scenes, instantiate Prefabs, and, most importantly, they can run over multiple frames.
 
-This is essential for Games because many mechanics are time dependent. For example, if we want to test if the player really moves on input, we need the game clock to actually run. In Play Mode, we can use yield return new WaitForSeconds(1); to let the game simulate for a moment before checking the results. Play Mode tests can be used for:
+This is essential for games because many mechanics are time-dependent. For example, if we want to test if the player really moves on input, we need the game clock to actually run. In Play Mode, we can use yield return new WaitForSeconds(1); to let the game simulate for a moment before checking the results. Play Mode tests can be used for:
 
 - Physics interactions
 - Component Lifecycle
@@ -138,7 +138,7 @@ For the NFRs, 16 requirements have fully passed (@NFR103, @NFR104, @NFR105, @NFR
 ==== Lines of Code
 #figure(
   image("../../resources/01 Product Documentation/loc-diagramm.png", width: 100%),
-  caption: [Interface Overview Diagram],
+  caption: [Lines of Code over Time],
   supplement: [Image],
 )
 
@@ -225,7 +225,7 @@ During testing, the participant is given the game on a device with a keyboard an
     [GlowCore UI],
     [He didn't notice that he had to click "Upgrade To Level 2" to progress. At level 14 it was not obvious that he had to scroll down to add coal.],
 
-    [Signs], [At first he did not read second sign, assuming that all signs display the same text.],
+    [Signs], [At first he did not read the second sign, assuming that all signs display the same text.],
     [Node hovering],
     [It should be possible to select a Node located behind the player (the raycast should go through the player).],
 
@@ -238,7 +238,7 @@ During testing, the participant is given the game on a device with a keyboard an
 )
 
 ===== Conclusion
-The participant was mainly motivated to progress because he wanted to craft better tools in order to break things faster to progress faster creating a continous progression loop. This loop is called the core game loop of a game and this is exactly what we wanted to accomplish and what makes the game entertaining ultimately. This user test confirms that the core game loop is engaging.
+The participant was mainly motivated to progress because he wanted to craft better tools in order to break things faster to progress faster creating a continuous progression loop. This loop is called the core game loop of a game and this is exactly what we wanted to accomplish and what makes the game entertaining ultimately. This user test confirms that the core game loop is engaging.
 
 Based on the feedback we will make improvements to the UI, in particular we will change the GlowCore upgrade UI to be more intuitive.
 

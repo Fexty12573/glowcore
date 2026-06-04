@@ -13,7 +13,7 @@ Since a game typically only has one primary actor - *The Player* - it makes sens
 
 ===== Dedicated Player
 - The Dedicated Player plays GlowCore in long sessions. He loves games where you build factories and automate everything. He searches for the feeling of progression and finds satisfaction in it. He always searches for a better way to progress and optimize his gameplay.
-- The Dedicated Player has already played the game multiple times before, thus he doesn't want to be bored with a long tutorial everytime he starts a new game. He wants to be able to dictate the pacing of the game.
+- The Dedicated Player has already played the game multiple times before, thus he doesn't want to be bored with a long tutorial every time he starts a new game. He wants to be able to dictate the pacing of the game.
 - He doesn't care for the story and lore in games. He doesn't want to read through dialogues and doesn't like long cutscenes.
 
 #pagebreak()
@@ -32,7 +32,7 @@ The diagram shows a modified version of the Use Case Diagram. The Personas take 
 The Use Cases are described in the brief format, with each Use Case including an appropriately detailed description.
 
 It is essential for the project that all Use Cases that define the *MVP* are implemented.
-The Use Cases marked with *Priority: Middle* are planned to be implemented, but can be reduced if the MVP takes more time than anticipated. The Use Cases marked with *Priority: Low* will be implemted if enough time is left.
+The Use Cases marked with *Priority: Middle* are planned to be implemented, but can be reduced if the MVP takes more time than anticipated. The Use Cases marked with *Priority: Low* will be implemented if enough time is left.
 
 
 // #table(
@@ -240,7 +240,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Casual Player & Dedicated Player",
   priority: "High - Required for MVP",
   description: "The player can craft items into other items with predefined recipes. Without a workbench the player is limited to a few simple recipes. The player can interact with a workstation such as a workbench to unlock more crafting recipes. Workstations such as an oven require additional items: e.g. Coal to smelt an Ingot.",
-  result: "Verified manually. Without a workbench the player has access to a few basic recipes that can be crafted directly from the inventory. Interacting with a crafting table opens its crafting UI and unlocks the full set of standard recipes. A furnace is also available as a second workstation with its own recipe list, where the player can smelt ores into ingots and has other furnace specific recipes.",
+  result: "Verified manually. Without a workbench the player has access to a few basic recipes that can be crafted directly from the inventory. Interacting with a crafting table opens its crafting UI and unlocks the full set of standard recipes. A furnace is also available as a second workstation with its own recipe list, where the player can smelt ores into ingots and has other furnace-specific recipes.",
   uc_caption: "UC06 - Craft Items",
   status_color: uc-status.at("uc06"),
 ) <UC06>
@@ -270,7 +270,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   persona: "Casual Player & Dedicated Player",
   priority: "Low",
   description: "The player can engage in combat with enemies. Defeated enemies drop items that are useful for the player. When the enemy hits the player, he loses hitpoints. When the player has no hitpoints left, he loses some of his items and respawns near the center of the map.",
-  result: [],
+  result: "N/A — combat was intentionally removed from the project scope (see the Coverage Summary).",
   uc_caption: "UC09 - Fight Enemies",
   status_color: uc-status.at("uc09"),
 ) <UC09>
@@ -279,7 +279,7 @@ The following table provides a compact overview of all Use Cases, their persona,
   name: "Automate Resource Gathering",
   persona: "Dedicated Player",
   priority: "Middle",
-  description: "The player can automate tedious tasks, such as breaking Nodes. He can craft machines that are placed as Nodes and they automatically perform a task e.g. chopping down trees. There is a selection of machines that can be combined to automate more and more. Example: The player places multiple Replanter-Machines in a row which automatically replant trees on the neighbouring tile. The player places an Axe-Machine onto the start of the line, at which point the Axe-Machine chops one tree after another and then moves onto the next tile. To automate it even further, the player places Rotaters on both which cause the Axe-Machine to turn around on contact.",
+  description: "The player can automate tedious tasks, such as breaking Nodes. He can craft machines that are placed as Nodes and they automatically perform a task e.g. chopping down trees. There is a selection of machines that can be combined to automate more and more. Example: The player places multiple Replanter Machines in a row which automatically replant trees on the neighbouring tile. The player places an Axe Machine onto the start of the line, at which point the Axe Machine chops one tree after another and then moves onto the next tile. To automate it even further, the player places Rotators on both which cause the Axe Machine to turn around on contact.",
   result: "Verified manually. The player can craft three automation machines and place them as nodes. The Axe Machine faces a direction and automatically breaks the node in front of it using the appropriate tool. When the target tile is empty it drives forward to the next node. Drops are stored in the Axe Machine's built-in chest and the player can retrieve them at any time. The Replanter Machine plants saplings or other block items from its own chest onto the tile in front of it, automatically restocking resource nodes after the Axe Machine passes. Rotator nodes (Right, Down, Left) redirect the Axe Machine's heading when it drives into them, allowing the player to build looping or branching automation tracks. All three machines are craftable from the workbench. All acceptance criteria met.",
   uc_caption: "UC10 - Automate Resource Gathering",
   status_color: uc-status.at("uc10"),
@@ -412,7 +412,7 @@ The following table provides a compact overview of all non-functional requiremen
     [@NFR402], [Automated Test Coverage], [Maintainability], [Required /\ Medium], [M09 Beta], [#status-box("nfr402")],
     [@NFR501], [Multi-Platform Support], [Portability], [Required /\ Medium], [M09 Beta], [#status-box("nfr501")],
     [@NFR502],
-    [Engine and Rendering\, Pipeline],
+    [Engine and Rendering Pipeline],
     [Portability],
     [Optional / Low],
     [M10 Release],
@@ -430,10 +430,10 @@ The following table provides a compact overview of all non-functional requiremen
 )
 
 
-Verification is tied to project milestones (see @UpdatedMilestones) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
+Verification is tied to project milestones (see #link(<UpdatedMilestones>)[Updated Milestones]) rather than fixed dates to ensure NFRs are checked at meaningful delivery checkpoints:
 
-- *M08 -- Alpha Release (10.04.2026)*: All Required / High NFRs must pass. This is the MVP gate.
-- *M09 -- Beta Release (15.05.2026)*: Required / Medium and Optional / Medium NFRs are verified. Performance tuning and playtesting rounds.
+- *M08 -- Alpha Release (10.04.2026)*: The core Required / High NFRs scheduled for this milestone must pass. This is the MVP gate.
+- *M09 -- Beta Release (15.05.2026)*: The remaining Required / High NFRs are verified, along with the Required / Medium and Optional / Medium NFRs. Performance tuning and playtesting rounds.
 - *M10 -- Official Release (05.06.2026)*: Remaining Optional / Low NFRs are verified. Final polish and compliance check.
 
 #pagebreak()
@@ -568,7 +568,7 @@ Usability covers the degree to which the product can be used effectively, effici
   priority: [Required / High],
   measurement: [Time how long a new player takes to perform their first gather, move to a new area, and initiate an upgrade without any external help.],
   verification: [Conduct playtesting with at least 3 players who have never seen the game. Measure time to complete core actions. All players must achieve this within 5 minutes.],
-  result: [User testing was conducted. All participants were able to upgrade the GlowCore multiple times in under 5 minutes. They learned the core mechanic quickly and were able progress without external help.],
+  result: [User testing was conducted. All participants were able to upgrade the GlowCore multiple times in under 5 minutes. They learned the core mechanic quickly and were able to progress without external help.],
   nfr_caption: [NFR203 -- New Player Learnability],
   status_color: nfr-status.at("nfr203"),
 )<NFR203>
@@ -656,7 +656,7 @@ Maintainability represents the degree of effectiveness and efficiency with which
 #nfr_table(
   id: [NFR401],
   description: [Extensibility of Game Systems],
-  requirements: [The code must allow adding new LightCore upgrades and new items with their resource nodes without requiring code restructuring.],
+  requirements: [The code must allow adding new GlowCore upgrades and new items with their resource nodes without requiring code restructuring.],
   priority: [Optional / Medium],
   measurement: [A developer unfamiliar with the codebase must be able to add a new upgrade or item by following existing patterns, without modifying core system code.],
   verification: [Task a team member with adding a new test upgrade and resource node. Measure the time required and verify no structural code changes were necessary.],

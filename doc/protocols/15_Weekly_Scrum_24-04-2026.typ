@@ -31,8 +31,8 @@
   [New Tasks in Backlog due to discussion with Advisor],
   [Dominik Wyss],
   [- Dominik explained wished changes of the advisor
-   - 4 new tasks got created in jira
-   - further descriptions of the tasks can be found on the corresponding ticket or we can ask dominik.
+   - 4 new tasks got created in Jira
+   - further descriptions of the tasks can be found on the corresponding ticket or we can ask Dominik.
     ],
 ))
 

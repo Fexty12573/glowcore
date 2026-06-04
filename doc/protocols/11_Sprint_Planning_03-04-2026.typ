@@ -18,5 +18,5 @@
 ==== Sprint goal
 - Finish tickets from old sprint
 - Working prototype with all core mechanics
-- Focus on diagramm and documentation changes for review 3
+- Focus on diagram and documentation changes for review 3
 

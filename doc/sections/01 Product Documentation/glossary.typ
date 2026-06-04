@@ -16,7 +16,7 @@
     [World Items are items that can be picked up by the player and physically exist somewhere in the GlowCore world. In contrast to Nodes they do not belong to a Tile and do not have a hitbox.],
 
     [Inventory Item],
-    [Inventory Items refer to the items that the player posseses. Certain Nodes such as Chests can also hold Inventory Items.],
+    [Inventory Items refer to the items that the player possesses. Certain Nodes such as Chests can also hold Inventory Items.],
 
     [Tool], [A Tool is an Inventory Item that can be used to break certain Nodes. For example an Axe can break Trees.],
 
