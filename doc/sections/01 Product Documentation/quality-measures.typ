@@ -27,7 +27,7 @@ The project uses GitHub Actions for all build, test, and deployment automation. 
 
 ==== Definition of Ready and Definition of Done
 
-Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and conditionally -> UI consistency and documentation updates.
+Every Jira ticket follows a structured lifecycle governed by our Definition of Ready (DoR) and Definition of Done (DoD). A ticket may only be pulled into a sprint once all DoR criteria are met, including a clear description, defined acceptance criteria, story point estimate, epic assignment, and team sign-off during sprint planning. A ticket is only considered done once all DoD criteria are satisfied, covering code quality, CI/CD pipeline status, test coverage, PR approval and, conditionally, UI consistency and documentation updates.
 
 #figure(
   image("../../resources/01 Product Documentation/dor_dod_flowchart.drawio.png", width: 100%),
@@ -105,7 +105,7 @@ In Unity, however, our code doesn't just sit there. It lives inside an engine th
 ==== Edit Mode Tests
 Edit Mode tests are the closest thing we have to "traditional" unit tests. They run entirely within the Unity Editor and do not require the game to actually start. Since they don't have to load scenes or wait for the physics engine to initialize, they are fast.
 
-Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it in during our CI/CD run without us ever having to open a game window.
+Edit Mode tests can be used for our "pure" logic things like calculating resource costs, managing inventory math, or utility functions that don't depend on the game's frame rate. If a bug appears in our math, an Edit Mode test will catch it during our CI/CD run without us ever having to open a game window.
 
 #pagebreak()
 
@@ -138,7 +138,7 @@ For the NFRs, 16 requirements have fully passed (@NFR103, @NFR104, @NFR105, @NFR
 ==== Lines of Code
 #figure(
   image("../../resources/01 Product Documentation/loc-diagramm.png", width: 100%),
-  caption: [Interface Overview Diagram],
+  caption: [Lines of Code over Time],
   supplement: [Image],
 )
 
@@ -238,7 +238,7 @@ During testing, the participant is given the game on a device with a keyboard an
 )
 
 ===== Conclusion
-The participant was mainly motivated to progress because he wanted to craft better tools in order to break things faster to progress faster creating a continous progression loop. This loop is called the core game loop of a game and this is exactly what we wanted to accomplish and what makes the game entertaining ultimately. This user test confirms that the core game loop is engaging.
+The participant was mainly motivated to progress because he wanted to craft better tools in order to break things faster to progress faster creating a continuous progression loop. This loop is called the core game loop of a game and this is exactly what we wanted to accomplish and what makes the game entertaining ultimately. This user test confirms that the core game loop is engaging.
 
 Based on the feedback we will make improvements to the UI, in particular we will change the GlowCore upgrade UI to be more intuitive.
 

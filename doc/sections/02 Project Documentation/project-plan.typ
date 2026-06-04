@@ -144,14 +144,14 @@ The project runs from 16.02.2026 to 12.06.2026 with an estimated effort of 120 h
 
 #v(1em)
 ==== Cost
-Most required tools and platform are freely available through free or student licenses. We plan on publishing GlowCore on steam for which steam charges a 100 US-Dollar publishing fee. The cost will be shared by the members.
+Most required tools and platform are freely available through free or student licenses. We plan on publishing GlowCore on Steam for which Steam charges a 100 US-Dollar publishing fee. The cost will be shared by the members.
 #v(1em)
 
 #pagebreak()
 
 === Organization
 ==== Meetings
-The project meetings follow mainly the Scrum standard. With weekly Scrum meetings replacing daily stand-ups and biweekly sprint planning including retrospectives. Also the Regular advisor meetings to present and discuss our results so far.
+The project meetings follow mainly the Scrum standard, with weekly Scrum meetings replacing daily stand-ups and biweekly sprint planning including retrospectives. We also hold regular advisor meetings to present and discuss our results so far.
 
 #figure(
   table(
@@ -380,7 +380,7 @@ In agile project management it is common to reevaluate the Long Term Plan during
     [Official Release and Final Submission],
     [05.06.2026],
     [
-      The game is polished and has no mayor bugs. The game has a beginning and an ending.
+      The game is polished and has no major bugs. The game has a beginning and an ending.
     ],
   ),
   caption: [Initial Milestones],
@@ -390,7 +390,7 @@ In agile project management it is common to reevaluate the Long Term Plan during
 #pagebreak()
 
 ====== Updated Milestones as of 07.04.2026
-Milestone M08 - Beta Release was updated and the combat system and the automation mechanics were removed. The reduction in scope allows the team to deliver a stable and more polished game at the end. The savestate system was moved from Alpha to Beta. We prioritize quality over quantity. If there is enough time at the end of the project, we can still implement the features as a bonus.
+Milestone M09 - Beta Release was updated and the combat system and the automation mechanics were removed. The reduction in scope allows the team to deliver a stable and more polished game at the end. The savestate system was moved from Alpha to Beta. We prioritize quality over quantity. If there is enough time at the end of the project, we can still implement the features as a bonus.
 #figure(
   table(
     columns: (0.3fr, 1fr, 1fr, 2fr),
@@ -466,7 +466,7 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
     [Official Release and Final Submission],
     [05.06.2026],
     [
-      The game is polished and has no mayor bugs. The game has a beginning and an ending.
+      The game is polished and has no major bugs. The game has a beginning and an ending.
     ],
   ),
   caption: [Updated Milestones],
@@ -497,7 +497,7 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
 
     [Core Gameplay Loop Mechanics],
     [
-      - The player can chop down trees, collect wood and feed it into the GlowcCore.
+      - The player can chop down trees, collect wood and feed it into the GlowCore.
       - The GlowCore levels up and expands the map.
       - The player is restricted to the unlocked map. The grid system is implemented.
     ],
@@ -511,16 +511,16 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
 
     [Graphics],
     [
-      - The Artstyle of the game ist set.
+      - The Artstyle of the game is set.
       - The 3D Models follow a consistent Artstyle.
-      - A Shader is implementet.
+      - A Shader is implemented.
     ],
 
     [Game Framework & Completeness],
     [
       This epic contains everything that makes a game complete and feel like a game.
       - Intro: When the Game starts the GlowCore Logo is displayed. After the title screen a Cutscene is played that leads into the game.
-      - Ending: A ending of the game is defined. When the player finishes the game, a Cutscene is played and the credits roll.
+      - Ending: An ending of the game is defined. When the player finishes the game, a Cutscene is played and the credits roll.
       - UI: A Title Screen is available. In-Game there is a Debug Screen, and a Settings Menu.
       - Gamedata Saving: The player can save his progress.
     ],
@@ -533,8 +533,8 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
 
     [Biomes & Materials],
     [
-      - The world has multitple biomes: e.g. Forest, Grassland, Mountain, Volcano, Jungle etc.
-      - Each biome has unique ressources.
+      - The world has multiple biomes: e.g. Forest, Grassland, Mountain, Volcano, Jungle etc.
+      - Each biome has unique resources.
       - There are Caves which you can enter.
     ],
 
@@ -543,7 +543,7 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
       - Enemies can spawn and fight with the player.
       - The player can take damage and can die.
       - A respawn mechanic is set up.
-      - There are peacuful mobs.
+      - There are peaceful mobs.
     ],
 
     [Resource Automation],
@@ -554,8 +554,8 @@ Milestone M08 - Beta Release was updated and the combat system and the automatio
 
     [Playtesting & Release],
     [
-      - Playtesting: The game is testet by players that play it for the first time (blind test).
-      - Release: The game is released on steam on its own steam page and has a trailer, screenshots and a description.
+      - Playtesting: The game is tested by players that play it for the first time (blind test).
+      - Release: The game is released on Steam on its own Steam page and has a trailer, screenshots and a description.
     ],
   ),
   caption: [Epics],
@@ -588,7 +588,7 @@ The following is the Initial Backlog as of 04.03.2026.
 #image("../../resources/02 Project Documentation/jira-initial-backlog-1.png")
 #figure(
   image("../../resources/02 Project Documentation/jira-initial-backlog-2.png"),
-  caption: [Inital Backlog],
+  caption: [Initial Backlog],
   supplement: [Image],
 )
 
@@ -626,7 +626,7 @@ In this sprint the first actual work on the game was carried out in Unity. The f
 #pagebreak()
 
 ===== Sprint 3 20.03.2026 - 03.04.2026
-In Sprint 3 we focused on implementing the MVP. The planned amount of storypoints was too ambitious so we had to move some Tasks into Sprint 4. From this experience we gained a better understanding of out team's capacity.
+In Sprint 3 we focused on implementing the MVP. The planned amount of storypoints was too ambitious so we had to move some Tasks into Sprint 4. From this experience we gained a better understanding of our team's capacity.
 
 #figure(
   image("../../resources/02 Project Documentation/Sprints/sprint-3-burndown.png"),
@@ -765,7 +765,7 @@ This chapter describes potential risks to the project and how we plan to mitigat
   [R05],
   [Team Member is MIA],
   [
-    A team member might be MIA for an extended period of time due to various reasons, such as an illness or damaged hardware. This would recude our capacity and slow down development.
+    A team member might be MIA for an extended period of time due to various reasons, such as an illness or damaged hardware. This would reduce our capacity and slow down development.
   ],
   [
     We can't reduce the possibility of this occurring, but we can distribute work across the remaining team members. We also avoid knowledge monopolies and always aim to share discoveries with the other team members.
@@ -786,7 +786,7 @@ This chapter describes potential risks to the project and how we plan to mitigat
     There is the potential of local storage media failing, resulting in significant data loss.
   ],
   [
-    We mititage this by prequently committing our changes to GitHub, and keeping untracked files in cloud based locations.
+    We mitigate this by frequently committing our changes to GitHub, and keeping untracked files in cloud based locations.
   ],
 
   [R08],

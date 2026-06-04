@@ -34,7 +34,7 @@
     - Version is updated automatically on pull request to main via GitHub Action
   ],
   [How do we manage smaller tasks that are not worth creating a new task on jira. (small documentation changes)], [Dominik Wyss], [We create ticket for small backlog tasks that do not need an own Jira item so we can reference it on our pull request and use the name of that ticket for the branch],
-  [Decide if we need a seperate pdf for protocols], [Cedric Cathomas], [We decided that theres no use in having a seperate page just for meeting minutes, so we have one thing less to worry about]
+  [Decide if we need a separate pdf for protocols], [Cedric Cathomas], [We decided that theres no use in having a separate page just for meeting minutes, so we have one thing less to worry about]
 ))
 
 ==== Sprint 1 Retrospective
@@ -67,6 +67,6 @@
   [Change date format in documentation to use dots], [Cedric Cathomas], [07.03.2026],
   [Create task for combined build and documentation pipeline], [Nathanael Fässler], [07.03.2026],
   [Use figures for images so they appear in the list of figures], [Nathanael Fässler], [07.03.2026],
-  [remove seperate meeting minutes pdf typst code], [Cedric Cathomas], [07.03.2026],
+  [remove separate meeting minutes pdf typst code], [Cedric Cathomas], [07.03.2026],
 ))
 
