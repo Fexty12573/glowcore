@@ -11,7 +11,7 @@
   scribe: "Nathanael Fässler",
   time: "15:00–16:00",
   location: "Building 8",
-  participants: "Thomas Bocek, Dominik Wyss,  Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
+  participants: "Thomas Bocek, Dominik Wyss, Yoris Kucera, Nathanael Fässler, Cedric Cathomas",
   links: "-",
 )
 

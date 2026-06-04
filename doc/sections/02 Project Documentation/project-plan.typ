@@ -144,7 +144,7 @@ The project runs from 16.02.2026 to 12.06.2026 with an estimated effort of 120 h
 
 #v(1em)
 ==== Cost
-Most required tools and platform are freely available through free or student licenses. We plan on publishing GlowCore on Steam for which Steam charges a 100 US-Dollar publishing fee. The cost will be shared by the members.
+Most required tools and platforms are freely available through free or student licenses. We plan on publishing GlowCore on Steam for which Steam charges a 100 US-Dollar publishing fee. The cost will be shared by the members.
 #v(1em)
 
 #pagebreak()
@@ -643,7 +643,7 @@ In Sprint 3 we focused on implementing the MVP. The planned amount of storypoint
 #pagebreak();
 
 ===== Sprint 4 03.04.2026 - 17.04.2026
-Because in the week of 06.04.2026 to 12.04.2026 was the spring break we had a sprint with reduced work.
+Because the week of 06.04.2026 to 12.04.2026 was the spring break, we had a sprint with reduced work.
 
 #figure(
   image("../../resources/02 Project Documentation/Sprints/sprint-4-burndown.png"),
@@ -740,7 +740,7 @@ This chapter describes potential risks to the project and how we plan to mitigat
     the context of a CI/CD pipeline. We also potentially rely on pre-existing GitHub Actions for Unity, which may not be well-maintained or compatible with our project.
   ],
   [
-    We will set up the CI/CD pipeline very early into the project and did
+    We set up the CI/CD pipeline very early in the project and did
     earlier tests. We tried out pre-existing GitHub Actions to make sure they satisfy our needs.
   ],
 
@@ -750,7 +750,7 @@ This chapter describes potential risks to the project and how we plan to mitigat
     As we are developing a game, we run the risk of encountering scope creep, i.e. continuously planning new features, which would result in us eventually not being able to keep up with the workload.
   ],
   [
-    We created a detailed project plan with long-term and short-term planning, along with well defined milestones and a clear MVP.
+    We created a detailed project plan with long-term and short-term planning, along with well-defined milestones and a clear MVP.
   ],
 
   [R04],

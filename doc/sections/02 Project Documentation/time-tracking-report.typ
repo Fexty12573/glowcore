@@ -1,6 +1,6 @@
 == Time Tracking Report
 === Time Tracking
-Every member tracks time on Jira on the corresponding task/story. Time spent in meetings is documented in the meeting protocols. The time is logged in 15 minute blocks in the format e.g. 3h 15m.
+Every member tracks time on Jira on the corresponding task/story. Time spent in meetings is documented in the meeting protocols. The time is logged in 15-minute blocks in the format e.g. 3h 15m.
 
 === Time Statistics
 The time is grouped by member and by sprint. Per sprint and person the time is rounded to the nearest hour.

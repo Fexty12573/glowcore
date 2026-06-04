@@ -59,7 +59,7 @@ The following example shows the same ticket (GC-186) with all acceptance criteri
 )
 
 === Test Concept
-Our testing strategy for GlowCore is fundamentally shaped by the nature of the project. Since GlowCore is a standalone Unity game built for Windows, Linux, and WebGL, we don't have any server connections, huge amount of data in a database or a frontend beyond simple game-menus. This allows us to focus our entire testing effort directly on the client-side application, ensuring gameplay mechanics, performance, and user experience are as solid as possible.
+Our testing strategy for GlowCore is fundamentally shaped by the nature of the project. Since GlowCore is a standalone Unity game built for Windows, Linux, and WebGL, we don't have any server connections, a huge amount of data in a database or a frontend beyond simple game menus. This allows us to focus our entire testing effort directly on the client-side application, ensuring gameplay mechanics, performance, and user experience are as solid as possible.
 
 The test concept is divided into automated testing for our codebase, manual system verification, extensive usability testing, and targeted checks for our non-functional requirements (NFRs).
 
@@ -112,7 +112,7 @@ Edit Mode tests can be used for our "pure" logic things like calculating resourc
 ==== Play Mode Tests
 Play Mode tests are where we handle the Unity Engine of the project. Unlike Edit Mode, these tests actually trigger the full game engine. They can load specific test scenes, instantiate Prefabs, and, most importantly, they can run over multiple frames.
 
-This is essential for Games because many mechanics are time dependent. For example, if we want to test if the player really moves on input, we need the game clock to actually run. In Play Mode, we can use yield return new WaitForSeconds(1); to let the game simulate for a moment before checking the results. Play Mode tests can be used for:
+This is essential for games because many mechanics are time-dependent. For example, if we want to test if the player really moves on input, we need the game clock to actually run. In Play Mode, we can use yield return new WaitForSeconds(1); to let the game simulate for a moment before checking the results. Play Mode tests can be used for:
 
 - Physics interactions
 - Component Lifecycle
@@ -225,7 +225,7 @@ During testing, the participant is given the game on a device with a keyboard an
     [GlowCore UI],
     [He didn't notice that he had to click "Upgrade To Level 2" to progress. At level 14 it was not obvious that he had to scroll down to add coal.],
 
-    [Signs], [At first he did not read second sign, assuming that all signs display the same text.],
+    [Signs], [At first he did not read the second sign, assuming that all signs display the same text.],
     [Node hovering],
     [It should be possible to select a Node located behind the player (the raycast should go through the player).],
 
