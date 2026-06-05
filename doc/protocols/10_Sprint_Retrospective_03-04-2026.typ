@@ -43,12 +43,12 @@
 - Good communication within the team
 - Strong interest and engagement in the project
 - Attention to detail
-- Review comments were questioned and discussed, not just - blindly accepted
+- Review comments were questioned and discussed, not just blindly accepted
 - Everything came together into a working game
 
 ==== What didn’t
 - Conflicting ideas about how to implement features and resulting dependencies sometimes disrupted the workflow.
-- Tickets should be described more clearly to support - conceptual implementation
+- Tickets should be described more clearly to support conceptual implementation
 - Planned too much
 - The 3D player model was more difficult than expected
 

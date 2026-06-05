@@ -65,10 +65,10 @@ increase complexity and strategic depth.
 === Proposed Realisation
 
 The project will be implemented using Unity as the primary game engine, using its
-integrated systems for rendering, physics, input handling, animation, audio, and crossplatform deployment. Development will be done in C\# using Unity's component-based
-architecture (GameObjects, MonoBehaviours, and ScriptableObjects) to structure gameplay logic and systems. Unity's built in physics engine and animation system (Animator)
+integrated systems for rendering, physics, input handling, animation, audio, and cross-platform deployment. Development will be done in C\# using Unity's component-based
+architecture (GameObjects, MonoBehaviours, and ScriptableObjects) to structure gameplay logic and systems. Unity's built-in physics engine and animation system (Animator)
 will be used to realise core gameplay and user interaction. Visual assets will be rendered
-using Unity's Universal Render Pipeline (URP). Individual systems will be tested for robustness using unit tests by method of Unity's own testing framework, based on NUnit.
+using Unity's Universal Render Pipeline (URP). Individual systems will be tested for robustness using unit tests by means of Unity's own testing framework, based on NUnit.
 Version control will be handled with Git. The project will be developed within the Unity
 Editor.
 

@@ -20,14 +20,14 @@
 ==== Agenda
 #agenda_table((
   [Linux Build],
-  [Yoris Kuvcera],
+  [Yoris Kucera],
   [Game doesn't start because of error.],
   [GlowCore near finish demo],
-  [Yoris Kuvcera],
+  [Yoris Kucera],
   [Great working game, but it still needs some finishing touches.],
   [New GlowCore levels],
   [Nathanael Fässler],
-  [New progress fo the game, looks good.],
+  [New progress for the game, looks good.],
   [New Biomes and their creation],
   [Nathanael Fässler],
   [Great map for the world.],

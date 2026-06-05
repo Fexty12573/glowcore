@@ -50,7 +50,7 @@
   [Research solution to reduce GitHub Runner minutes],
   [Yoris Kucera],
   [28.04.2026],
-  [Document Steam as a external dependency],
+  [Document Steam as an external dependency],
   [Dominik Wyss],
   [28.04.2026],
 ))

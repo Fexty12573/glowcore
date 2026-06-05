@@ -88,7 +88,7 @@ Crafting Tables, Furnaces, Anvils etc. are abstracted into crafting stations tha
 === C4 Model
 To model the architecture of GlowCore we decided to use the C4 Model. The model is designed to provide stakeholders new to the project a high-level overview of GlowCore with different levels of abstraction. We decided against arc42 because it is too extensive for this project.
 
-We intentionally omitted the Code Diagram (Layer 4 of C4) in this documentation because of how much complexity it would add without providing much value. This is common in project management to omit the Code Diagram.
+We intentionally omitted the Code Diagram (Layer 4 of C4) in this documentation because of how much complexity it would add without providing much value. It is common practice in project management to omit the Code Diagram.
 
 
 ==== System Context Diagram
@@ -115,11 +115,11 @@ The Component Diagram zooms into selected Containers to provide a deeper overvie
 
 
 ===== Gameplay Logic
-A naive approach to implement features like Breaking Nodes, Building, Inventories and Crafting would be to just implement them separately, each with its own isolated input handling and execution logic. This would result in duplicated code and poorly maintanable code.
+A naive approach to implement features like Breaking Nodes, Building, Inventories and Crafting would be to just implement them separately, each with its own isolated input handling and execution logic. This would result in duplicated code and poorly maintainable code.
 
 Instead, we analyzed the features and abstracted them into two groups: *Use Actions* and *Interact Actions*.
 
-Use Actions are responsible for using the Item in the players hand (The item that is selected in the hotbar and visually displayed in the players hand). The player can only break Nodes when he holds a tool in his hand and he can only place Nodes if he holds a Block in his hand.
+Use Actions are responsible for using the Item in the player's hand (The item that is selected in the hotbar and visually displayed in the player's hand). The player can only break Nodes when he holds a tool in his hand and he can only place Nodes if he holds a Block in his hand.
 
 Interact Actions define the behaviour of hovered over Nodes. For example the player opens a chest by hovering over it with the cursor and pressing the corresponding button. The GlowCore and all crafting stations share the same input to avoid code duplication. This approach also makes our game extensible.
 
@@ -238,7 +238,7 @@ The inventory and crafting UI are equally easy to extend. Because `InventoryUI` 
 === Technologies
 
 ==== Unity
-The most important decision was the selection of the game engine. We decided to use Unity because we had the most experience in it and all members have already learned C\#. Had our game been 2D and not 3D, Godot would have been our preferred choice.
+The most important decision was the selection of the game engine. We decided to use Unity because we had the most experience with it and all members have already learned C\#. Had our game been 2D and not 3D, Godot would have been our preferred choice.
 
 ==== Universal Render Pipeline (URP)
 Unity provides 3 rendering pipelines:
@@ -248,18 +248,18 @@ Unity provides 3 rendering pipelines:
 We chose URP because the HDRP would be overkill for our project and the Built-in Render Pipeline is deprecated and new projects should use URP instead. URP is perfectly suitable to create custom shaders and viewports.
 
 ==== .NET & C\#
-Unity's default scripting language is C\#, so this decision came bundled with the selection of the game engine. Altough it is possible to use Plugins to run other languages such as e.g. C++, there are no significant benefits, so we settled on C\#.
+Unity's default scripting language is C\#, so this decision came bundled with the selection of the game engine. Although it is possible to use Plugins to run other languages such as C++, there are no significant benefits, so we settled on C\#.
 
-Unity uses Mono, a .NET runtime to create cross-platform applications. We use NUnit via the Unity Testing Framework for automated testing.
+Unity uses Mono, a .NET runtime, to create cross-platform applications. We use NUnit via the Unity Testing Framework for automated testing.
 
 ==== GitHub
 We use GitHub for version control. At the beginning of the project we used GitLab, but we switched to GitHub because we experienced problems setting up the CI/CD Pipeline to work. The documentation on GitLab was limited, since most tutorials and examples are focused on GitHub Actions.
 
 ==== Blender
-To create our 3D Models we use Blender. Blender is free and open-source and offers all features of its competitors, so the choice was obvious. The workflow to import 3D Models from Blender into Unity is great and preserves all important informations.
+To create our 3D Models we use Blender. Blender is free and open-source and offers all features of its competitors, so the choice was obvious. The workflow to import 3D Models from Blender into Unity is great and preserves all important information.
 
 ==== Audacity
-We use Audacity to record and edit our soundeffects. Audacity is free, easy to use and provides all necessary tools for simple sound design, so there was no need to choose a more sophisticated audio editing software.
+We use Audacity to record and edit our sound effects. Audacity is free, easy to use and provides all necessary tools for simple sound design, so there was no need to choose a more sophisticated audio editing software.
 
 #figure(
   image("../../resources/01 Product Documentation/dev-env-diagram.png"),
@@ -282,7 +282,7 @@ We use the Singleton Pattern where appropriate. In our game it definitely makes 
 Games often have tightly coupled systems. To counter this we use dependency injection wherever appropriate to decrease coupling.
 
 ==== Scriptable Objects
-In our game we have to define and store data about Items and Nodes in a organized way. Meant are the Item/Node-Definitions, not the instances at runtime. For example for the Wood-Item we need to store its ID, 3D Model, Max Stack-Size etc..
+In our game we have to define and store data about Items and Nodes in an organized way. Meant are the Item/Node-Definitions, not the instances at runtime. For example for the Wood-Item we need to store its ID, 3D Model, Max Stack-Size etc.
 
 Scriptable Objects solve this problem. Scriptable Objects are objects that are not bound to a GameObject. Instances of ScriptableObjects can be saved as *.asset* files. This improves Version Control for Items/Nodes since they are saved as individual files.
 
@@ -293,11 +293,11 @@ We use Prefabs to save specific GameObjects as *.prefab* files. This enables us 
 === Extensibility
 Our game is designed to be extensible and exchangeable wherever feasible. Thanks to our ScriptableObject Architecture we can easily add new Items/Nodes just by creating a new Instance of the corresponding ScriptableObject and setting the parameters and referencing the 3D Model and Icon.
 
-Thanks to the Component-Based Architecture we can easily add new Items that perform a specific action when used by the players. It would be easy to add for example Consumables. An additional benefit that it is easy to add Nodes with custom behaviour for when the player interacts with it. For example you could just create a Signpost component and add it to a Node to create a Node where you can write something on it and read it.
+Thanks to the Component-Based Architecture we can easily add new Items that perform a specific action when used by the player. It would be easy to add for example Consumables. An additional benefit is that it is easy to add Nodes with custom behaviour for when the player interacts with it. For example you could just create a Signpost component and add it to a Node to create a Node where you can write something on it and read it.
 
-We save our 3D Models separate from the ScriptableObjects in the .fbx format to improve exchangeability. It is possible to only exchange the 3D Model without touching the ScriptableObject.
+We save our 3D Models separately from the ScriptableObjects in the .fbx format to improve exchangeability. It is possible to only exchange the 3D Model without touching the ScriptableObject.
 
-A major limit of our architecture that we are strongly tied to Unity. Switching to another game engine would require a significant effort due to how our systems are relying on Unity's systems.
+A major limit of our architecture is that we are strongly tied to Unity. Switching to another game engine would require a significant effort due to how our systems are relying on Unity's systems.
 
 === External Dependencies
 Our game is distributed via Steam, which is our only external dependency. Steam is responsible for installing, launching and updating the game on the end-user side. We also use Steam for marketing.
@@ -325,32 +325,32 @@ The player starts with a basic wooden axe and gathers wood by manually cutting t
 #pagebreak()
 
 ===== Automation Phase 1
-At this point, manual gathering becomes inefficient, encouraging the player to craft their first axe-machine. This machine is placed in front of a tree and automatically cuts it over time. While the machine is operating, the player is free to perform other actions, such as gathering additional resources to craft more machines.
+At this point, manual gathering becomes inefficient, encouraging the player to craft their first Axe Machine. This machine is placed in front of a tree and automatically cuts it over time. While the machine is operating, the player is free to perform other actions, such as gathering additional resources to craft more machines.
 
 This creates a strong feeling of progress and a passive progression reward, since the player knows that progress is being made even while he is not directly interacting with the machine. This effect is reinforced as the player uses gathered resources to construct more machines, amplifying the loop.
 
 When returning to the machine, the player collects the gathered resources and moves the machine to a new tree. This is acceptable at this stage because repositioning requires significantly less effort than manual tree cutting.
 
 ===== Automation Phase 2
-Over time, the player reaches a point where moving so many axe-machines becomes tedious. At this stage, a new system is introduced: The replanter block. The replanter automatically places saplings. This allows trees to regrow automatically, removing the need to constantly resposition machines. However, this introduces a trade-off, as machines remain inactive while waiting for trees to regrow. This adds strategic depth to the system.
+Over time, the player reaches a point where moving so many Axe Machines becomes tedious. At this stage, a new system is introduced: The Replanter block. The Replanter automatically places saplings. This allows trees to regrow automatically, removing the need to constantly reposition machines. However, this introduces a trade-off, as machines remain inactive while waiting for trees to regrow. This adds strategic depth to the system.
 
 ===== Automation Phase 3
-Later in progression, a new tree type is introduced that has short cut time and drops a relatively big amount of wood but has a very long growth time. To improve effiency the player crafts the newly unlocked axe-machine Tier 2, which moves automatically into the direction its facing and harvest trees sequentially.
+Later in progression, a new tree type is introduced that has short cut time and drops a relatively big amount of wood but has a very long growth time. To improve efficiency the player crafts the newly unlocked Axe Machine Tier 2, which moves automatically in the direction it's facing and harvests trees sequentially.
 
-At this stage, multiple replanter blocks can be used per machine, enabling more complex automated setups. A key design decision is that replanter blocks must be significantly cheaper than Tier 2 machines, encouraging players to build efficient production lines.
+At this stage, multiple Replanter blocks can be used per machine, enabling more complex automated setups. A key design decision is that Replanter blocks must be significantly cheaper than Tier 2 machines, encouraging players to build efficient production lines.
 
 
 ===== Full Automation
-However, this introduces a new problem: machine orientation and placement still require manual adjustment. This is resolved by the introduction of rotator blocks. When a machine collides with a rotator block, it automatically rotates by 90, 180, or 270 degrees depending on the block type. This enables fully automated resource gathering systems and allows players to design complex production paths.
+However, this introduces a new problem: machine orientation and placement still require manual adjustment. This is resolved by the introduction of Rotator blocks. When a machine collides with a Rotator block, it automatically rotates by 90, 180, or 270 degrees depending on the block type. This enables fully automated resource gathering systems and allows players to design complex production paths.
 
-==== Automation Contraints
-A core design principle in this system is that not everything should be fully automatable. If all actions were automated, the player would just watch the machines and the player becomes bored. Instead, the player must still actively gather certain resources in order to craft and expand automation systems.
+==== Automation Constraints
+A core design principle in this system is that not everything should be fully automatable. If all actions were automated, the player would just watch the machines and become bored. Instead, the player must still actively gather certain resources in order to craft and expand automation systems.
 
 ==== Depth and Complexity
 We followed the principle of providing as much depth as possible with as little complexity as possible.
 The goal of this design is to allow the player to create complex and interesting systems without introducing a large number of different mechanics and complicated rules.
 
-In GlowCore, this is achieved by limiting the core automation system to only three main components: the axe-machine, the replanter, and the rotator. When combined, these simple systems interact in ways that allow for emergent complexity, such as automation lines with different layouts.
+In GlowCore, this is achieved by limiting the core automation system to only three main components: the Axe Machine, the Replanter, and the Rotator. When combined, these simple systems interact in ways that allow for emergent complexity, such as automation lines with different layouts.
 
 #pagebreak()
 

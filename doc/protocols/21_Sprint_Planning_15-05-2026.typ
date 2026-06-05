@@ -12,7 +12,7 @@
   time: "14:00–15:00",
   location: "Online",
   participants: "Nathanael Fässler, Dominik Wyss, Cedric Cathomas, Yoris Kucera",
-  excused: ".",
+  excused: "-",
   links: "-",
 )
 
