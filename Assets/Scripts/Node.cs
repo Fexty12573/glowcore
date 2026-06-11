@@ -78,6 +78,9 @@ namespace GlowCore.World
 
         public void Interact()
         {
+            if (m_interactable is null)
+                Start();
+
             m_interactable?.Interact();
         }
 
